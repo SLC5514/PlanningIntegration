@@ -1,0 +1,19 @@
+{
+  "name": "ts-demo",
+  "version": "1.0.0",
+  "description": "手动试验TS的各种特性。",
+  "private": true,
+  "scripts": {
+    "watch": "rimraf dist & tsc -w",
+    "build": "rimraf dist & tsc",
+    "prune": "npm prune",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "rimraf": "^3.0.2"
+  },
+  "devDependencies": {}
+}

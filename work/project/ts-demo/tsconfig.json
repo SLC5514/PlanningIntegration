@@ -1,0 +1,28 @@
+{
+  // https://www.typescriptlang.org/zh/tsconfig
+  // "extends": "./configs/base",
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "**/*.spec.ts"],
+  "compilerOptions": {
+    // https://www.tslang.cn/docs/handbook/compiler-options.html
+    "outFile": "dist/page.js" ,                  // 合并输出文件（不支持commonjs/es6模块）
+    "outDir": "dist" ,                           // 输出目录
+    "rootDirs": ["src"] ,                        // 源文件目录
+    "target": "es5",                             // 编译目标
+    "module": "amd",                          // 指定生成哪个模块系统代码
+    "strict": true,                              // 严格模式
+    "allowJs": true,                             // 允许js文件联通引入
+    "preserveConstEnums": true,                  // 保留const和enum声明
+    "noImplicitAny": true,                       // 注解类型any需要特意表明
+    "strictNullChecks": true,                    // 严格的null检查模式，null和undefined值不包含在任何类型里，只允许用它们自己和any来赋值（有个例外，undefined可以赋值到void）
+    // "noUnusedLocals": true,                   // 检查未使用的局部变量
+    // "noUnusedParameters": true,               // 检查未使用的参数
+    "removeComments": true,                      // 编译后删除注释
+    // "importHelpers": true,                    // 从tslib导入辅助工具函数
+    "sourceMap": true,                           // 生成相应的.map文件
+    "esModuleInterop": true,                     // ES模块互操作性
+    "skipLibCheck": true,                        // 跳过默认库声明文件的类型检查
+    "strictPropertyInitialization": false,       // 严格的属性初始化
+    "forceConsistentCasingInFileNames": true     // 文件名强制使用一致的大小写
+  }
+}

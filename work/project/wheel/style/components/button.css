@@ -1,0 +1,437 @@
+/* Button 默认 ================================================ */
+[s-btn] + [s-btn] {
+    margin-left: 10px;
+}
+[s-btn] {
+    display: inline-block;
+    margin: 0;
+    padding: 8px 10px;
+    line-height: 1;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 4px;
+    text-align: center;
+    color: #606266;
+    background: #fff;
+    border: 1px solid #dcdfe6;
+    transition: 0.1s;
+    outline: none;
+    cursor: pointer;
+    white-space: nowrap;
+    box-sizing: border-box;
+    user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    appearance: none;
+    -webkit-appearance: none;
+}
+[s-btn]:focus {
+    color: #606266;
+    border-color: #dcdfe6;
+    background-color: #fff;
+}
+[s-btn]:hover {
+    color: #409eff;
+    border-color: #c6e2ff;
+    background-color: #ecf5ff;
+}
+[s-btn]:active {
+    color: #3a8ee6;
+    border-color: #3a8ee6;
+}
+/* Button 主要 */
+[s-btn~='primary'],
+[s-btn~='primary']:focus {
+    color: #fff;
+    border-color: #409eff;
+    background-color: #409eff;
+}
+[s-btn~='primary']:hover {
+    color: #fff;
+    border-color: #66b1ff;
+    background-color: #66b1ff;
+}
+[s-btn~='primary']:active {
+    color: #fff;
+    border-color: #3a8ee6;
+    background-color: #3a8ee6;
+}
+/* Button 成功 */
+[s-btn~='success'],
+[s-btn~='success']:focus {
+    color: #fff;
+    border-color: #67c23a;
+    background-color: #67c23a;
+}
+[s-btn~='success']:hover {
+    color: #fff;
+    border-color: #85ce61;
+    background-color: #85ce61;
+}
+[s-btn~='success']:active {
+    color: #fff;
+    border-color: #5daf34;
+    background-color: #5daf34;
+}
+/* Button 警告 */
+[s-btn~='warning'],
+[s-btn~='warning']:focus {
+    color: #fff;
+    border-color: #e6a23c;
+    background-color: #e6a23c;
+}
+[s-btn~='warning']:hover {
+    color: #fff;
+    border-color: #ebb563;
+    background-color: #ebb563;
+}
+[s-btn~='warning']:active {
+    color: #fff;
+    border-color: #cf9236;
+    background-color: #cf9236;
+}
+/* Button 危险 */
+[s-btn~='danger'],
+[s-btn~='danger']:focus {
+    color: #fff;
+    border-color: #f56c6c;
+    background-color: #f56c6c;
+}
+[s-btn~='danger']:hover {
+    color: #fff;
+    border-color: #f78989;
+    background-color: #f78989;
+}
+[s-btn~='danger']:active {
+    color: #fff;
+    border-color: #dd6161;
+    background-color: #dd6161;
+}
+/* Button 信息 */
+[s-btn~='info'],
+[s-btn~='info']:focus {
+    color: #fff;
+    border-color: #909399;
+    background-color: #909399;
+}
+[s-btn~='info']:hover {
+    color: #fff;
+    border-color: #a6a9ad;
+    background-color: #a6a9ad;
+}
+[s-btn~='info']:active {
+    color: #fff;
+    border-color: #82848a;
+    background-color: #82848a;
+}
+
+/* Button 朴素 ================================================ */
+[s-btn~='plain']:hover {
+    color: #409eff;
+    border-color: #409eff;
+    background-color: #fff;
+}
+[s-btn~='plain']:active {
+    color: #3a8ee6;
+    border-color: #3a8ee6;
+}
+/* Button 朴素 主要 */
+[s-btn~='plain'][s-btn~='primary'],
+[s-btn~='plain'][s-btn~='primary']:focus {
+    color: #409eff;
+    border-color: #b3d8ff;
+    background-color: #ecf5ff;
+}
+[s-btn~='plain'][s-btn~='primary']:hover {
+    color: #fff;
+    border-color: #409eff;
+    background-color: #409eff;
+}
+[s-btn~='plain'][s-btn~='primary']:active {
+    color: #fff;
+    border-color: #3a8ee6;
+    background-color: #3a8ee6;
+}
+/* Button 朴素 成功 */
+[s-btn~='plain'][s-btn~='success'],
+[s-btn~='plain'][s-btn~='success']:focus {
+    color: #67c23a;
+    border-color: #c2e7b0;
+    background-color: #f0f9eb;
+}
+[s-btn~='plain'][s-btn~='success']:hover {
+    color: #fff;
+    border-color: #67c23a;
+    background-color: #67c23a;
+}
+[s-btn~='plain'][s-btn~='success']:active {
+    color: #fff;
+    border-color: #5daf34;
+    background-color: #5daf34;
+}
+/* Button 朴素 警告 */
+[s-btn~='plain'][s-btn~='warning'],
+[s-btn~='plain'][s-btn~='warning']:focus {
+    color: #e6a23c;
+    border-color: #f5dab1;
+    background-color: #fdf6ec;
+}
+[s-btn~='plain'][s-btn~='warning']:hover {
+    color: #fff;
+    border-color: #e6a23c;
+    background-color: #e6a23c;
+}
+[s-btn~='plain'][s-btn~='warning']:active {
+    color: #fff;
+    border-color: #cf9236;
+    background-color: #cf9236;
+}
+/* Button 朴素 危险 */
+[s-btn~='plain'][s-btn~='danger'],
+[s-btn~='plain'][s-btn~='danger']:focus {
+    color: #f56c6c;
+    border-color: #fbc4c4;
+    background-color: #fef0f0;
+}
+[s-btn~='plain'][s-btn~='danger']:hover {
+    color: #fff;
+    border-color: #f56c6c;
+    background-color: #f56c6c;
+}
+[s-btn~='plain'][s-btn~='danger']:active {
+    color: #fff;
+    border-color: #dd6161;
+    background-color: #dd6161;
+}
+/* Button 朴素 信息 */
+[s-btn~='plain'][s-btn~='info'],
+[s-btn~='plain'][s-btn~='info']:focus {
+    color: #909399;
+    border-color: #d3d4d6;
+    background-color: #f4f4f5;
+}
+[s-btn~='plain'][s-btn~='info']:hover {
+    color: #fff;
+    border-color: #909399;
+    background-color: #909399;
+}
+[s-btn~='plain'][s-btn~='info']:active {
+    color: #fff;
+    border-color: #82848a;
+    background-color: #82848a;
+}
+
+/* Button 文字 ================================================ */
+[s-btn~='text'] {
+    padding-left: 0;
+    padding-right: 0;
+    color: #409eff;
+    border-color: transparent;
+    background-color: transparent;
+}
+[s-btn~='text']:focus {
+    color: #409eff;
+    border-color: transparent;
+    background-color: transparent;
+}
+[s-btn~='text']:hover {
+    color: #66b1ff;
+    border-color: transparent;
+    background-color: transparent;
+}
+[s-btn~='text']:active {
+    color: #3a8ee6;
+}
+[s-btn~='text'][s-btn~='disabled'],
+[s-btn~='text'][s-btn~='disabled']:focus,
+[s-btn~='text'][s-btn~='disabled']:hover,
+[s-btn~='text']:active {
+    border-color: transparent;
+    background-color: transparent;
+}
+
+/* Button 禁用 ================================================ */
+[s-btn~='disabled'],
+[s-btn~='disabled']:focus,
+[s-btn~='disabled']:hover {
+    color: #c0c4cc;
+    cursor: not-allowed;
+    border-color: #ebeef5;
+    background-image: none;
+    background-color: #fff;
+}
+/* Button 禁用 主要 */
+[s-btn~='disabled'][s-btn~='primary'],
+[s-btn~='disabled'][s-btn~='primary']:active,
+[s-btn~='disabled'][s-btn~='primary']:focus,
+[s-btn~='disabled'][s-btn~='primary']:hover {
+    color: #fff;
+    border-color: #a0cfff;
+    background-color: #a0cfff;
+}
+/* Button 禁用 成功 */
+[s-btn~='disabled'][s-btn~='success'],
+[s-btn~='disabled'][s-btn~='success']:active,
+[s-btn~='disabled'][s-btn~='success']:focus,
+[s-btn~='disabled'][s-btn~='success']:hover {
+    color: #fff;
+    border-color: #b3e19d;
+    background-color: #b3e19d;
+}
+/* Button 禁用 警告 */
+[s-btn~='disabled'][s-btn~='warning'],
+[s-btn~='disabled'][s-btn~='warning']:active,
+[s-btn~='disabled'][s-btn~='warning']:focus,
+[s-btn~='disabled'][s-btn~='warning']:hover {
+    color: #fff;
+    border-color: #f3d19e;
+    background-color: #f3d19e;
+}
+/* Button 禁用 危险 */
+[s-btn~='disabled'][s-btn~='danger'],
+[s-btn~='disabled'][s-btn~='danger']:active,
+[s-btn~='disabled'][s-btn~='danger']:focus,
+[s-btn~='disabled'][s-btn~='danger']:hover {
+    color: #fff;
+    border-color: #fab6b6;
+    background-color: #fab6b6;
+}
+/* Button 禁用 信息 */
+[s-btn~='disabled'][s-btn~='info'],
+[s-btn~='disabled'][s-btn~='info']:active,
+[s-btn~='disabled'][s-btn~='info']:focus,
+[s-btn~='disabled'][s-btn~='info']:hover {
+    color: #fff;
+    border-color: #c8c9cc;
+    background-color: #c8c9cc;
+}
+
+/* Button 禁用 朴素 ================================================ */
+[s-btn~='disabled'][s-btn~='plain'],
+[s-btn~='disabled'][s-btn~='plain']:focus,
+[s-btn~='disabled'][s-btn~='plain']:hover {
+    color: #c0c4cc;
+    border-color: #ebeef5;
+    background-color: #fff;
+}
+/* Button 禁用 朴素 主要 */
+[s-btn~='disabled'][s-btn~='plain'][s-btn~='primary'],
+[s-btn~='disabled'][s-btn~='plain'][s-btn~='primary']:focus,
+[s-btn~='disabled'][s-btn~='plain'][s-btn~='primary']:hover {
+    color: #8cc5ff;
+    border-color: #d9ecff;
+    background-color: #ecf5ff;
+}
+/* Button 禁用 朴素 成功 */
+[s-btn~='disabled'][s-btn~='plain'][s-btn~='success'],
+[s-btn~='disabled'][s-btn~='plain'][s-btn~='success']:focus,
+[s-btn~='disabled'][s-btn~='plain'][s-btn~='success']:hover {
+    color: #a4da89;
+    border-color: #e1f3d8;
+    background-color: #f0f9eb;
+}
+/* Button 禁用 朴素 警告 */
+[s-btn~='disabled'][s-btn~='plain'][s-btn~='warning'],
+[s-btn~='disabled'][s-btn~='plain'][s-btn~='warning']:focus,
+[s-btn~='disabled'][s-btn~='plain'][s-btn~='warning']:hover {
+    color: #f0c78a;
+    border-color: #faecd8;
+    background-color: #fdf6ec;
+}
+/* Button 禁用 朴素 危险 */
+[s-btn~='disabled'][s-btn~='plain'][s-btn~='danger'],
+[s-btn~='disabled'][s-btn~='plain'][s-btn~='danger']:focus,
+[s-btn~='disabled'][s-btn~='plain'][s-btn~='danger']:hover {
+    color: #f9a7a7;
+    border-color: #fde2e2;
+    background-color: #fef0f0;
+}
+/* Button 禁用 朴素 信息 */
+[s-btn~='disabled'][s-btn~='plain'][s-btn~='info'],
+[s-btn~='disabled'][s-btn~='plain'][s-btn~='info']:focus,
+[s-btn~='disabled'][s-btn~='plain'][s-btn~='info']:hover {
+    color: #bcbec2;
+    border-color: #e9e9eb;
+    background-color: #f4f4f5;
+}
+
+/* Button 按钮组 ================================================ */
+[s-btn-group] + [s-btn-group] {
+    margin-left: 10px;
+}
+[s-btn-group] {
+    display: inline-block;
+    vertical-align: middle;
+}
+[s-btn-group]:after,
+[s-btn-group]:before {
+    display: table;
+    content: '';
+}
+[s-btn-group] > [s-btn] + [s-btn] {
+    margin-left: 0;
+}
+[s-btn-group] > [s-btn] {
+    float: left;
+    position: relative;
+}
+[s-btn-group] > [s-btn]:first-child {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+[s-btn-group] > [s-btn]:last-child {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+[s-btn-group] > [s-btn]:not(:last-child) {
+    margin-right: -1px;
+}
+[s-btn-group] > [s-btn]:not(:first-child):not(:last-child) {
+    border-radius: 0;
+    border-left-color: hsla(0, 0%, 100%, 0.5);
+    border-right-color: hsla(0, 0%, 100%, 0.5);
+}
+[s-btn-group] > [s-btn]:first-child {
+    border-right-color: hsla(0, 0%, 100%, 0.5);
+}
+[s-btn-group] > [s-btn]:last-child {
+    border-left-color: hsla(0, 0%, 100%, 0.5);
+}
+
+/* Button 加载中 ================================================ */
+[s-btn~='loading'] {
+    position: relative;
+    pointer-events: none;
+}
+[s-btn~='loading']:before {
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    left: -1px;
+    top: -1px;
+    right: -1px;
+    bottom: -1px;
+    border-radius: inherit;
+    background-color: hsla(0, 0%, 100%, 0.35);
+}
+
+/* Button 圆角 ================================================ */
+[s-btn~='round'] {
+    border-radius: 20px;
+}
+
+/* Button 圆形 */
+[s-btn~='circle'] {
+    padding: 8px;
+    border-radius: 50%;
+}
+
+/* Button 图标 ================================================ */
+[s-btn] [s-icon] + *,
+[s-btn] * + [s-icon] {
+    margin-left: 5px;
+}
+[s-btn~='disabled'] > [s-icon] {
+    opacity: 0.5;
+}

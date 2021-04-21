@@ -1,0 +1,145 @@
+/* Link 默认 ================================================ */
+[s-link] {
+    position: relative;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: #606266;
+    vertical-align: middle;
+    text-decoration: none;
+    cursor: pointer;
+    outline: none;
+}
+[s-link]:focus {
+    color: #606266;
+}
+[s-link]:hover {
+    color: #409eff;
+}
+[s-link]:active {
+    color: #3a8ee6;
+}
+/* Link 主要 */
+[s-link~='primary'],
+[s-link~='primary']:focus {
+    color: #409eff;
+}
+[s-link~='primary']:hover {
+    color: #66b1ff;
+}
+[s-link~='primary']:active {
+    color: #3a8ee6;
+}
+/* Link 成功 */
+[s-link~='success'],
+[s-link~='success']:focus {
+    color: #67c23a;
+}
+[s-link~='success']:hover {
+    color: #85ce61;
+}
+[s-link~='success']:active {
+    color: #5daf34;
+}
+/* Link 警告 */
+[s-link~='warning'],
+[s-link~='warning']:focus {
+    color: #e6a23c;
+}
+[s-link~='warning']:hover {
+    color: #ebb563;
+}
+[s-link~='warning']:active {
+    color: #cf9236;
+}
+/* Link 危险 */
+[s-link~='danger'],
+[s-link~='danger']:focus {
+    color: #f56c6c;
+}
+[s-link~='danger']:hover {
+    color: #f78989;
+}
+[s-link~='danger']:active {
+    color: #dd6161;
+}
+/* Link 信息 */
+[s-link~='info'],
+[s-link~='info']:focus {
+    color: #909399;
+}
+[s-link~='info']:hover {
+    color: #a6a9ad;
+}
+[s-link~='info']:active {
+    color: #82848a;
+}
+
+/* Link 下划线 ================================================ */
+[s-link][s-link~='underline']:hover:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 0;
+    bottom: 0;
+    border-bottom: 1px solid #409eff;
+}
+/* Link 下划线 成功 */
+[s-link][s-link~='underline'][s-link~='success']:hover:after {
+    border-color: #67c23a;
+}
+/* Link 下划线 警告 */
+[s-link][s-link~='underline'][s-link~='warning']:hover:after {
+    border-color: #ebb563;
+}
+/* Link 下划线 危险 */
+[s-link][s-link~='underline'][s-link~='danger']:hover:after {
+    border-color: #f78989;
+}
+/* Link 下划线 信息 */
+[s-link][s-link~='underline'][s-link~='info']:hover:after {
+    border-color: #a6a9ad;
+}
+
+/* Link 禁用 ================================================ */
+[s-link][s-link~='disabled'] {
+    color: #c0c4cc;
+    cursor: not-allowed;
+}
+[s-link][s-link~='disabled']:after {
+    display: none;
+}
+/* Link 禁用 主要 */
+[s-link][s-link~='disabled'][s-link~='primary'] {
+    color: #a0cfff;
+}
+/* Link 禁用 成功 */
+[s-link][s-link~='disabled'][s-link~='success'] {
+    color: #b3e19d;
+}
+/* Link 禁用 警告 */
+[s-link][s-link~='disabled'][s-link~='warning'] {
+    color: #f3d19e;
+}
+/* Link 禁用 危险 */
+[s-link][s-link~='disabled'][s-link~='danger'] {
+    color: #fab6b6;
+}
+/* Link 禁用 信息 */
+[s-link][s-link~='disabled'][s-link~='info'] {
+    color: #c8c9cc;
+}
+
+/* Link 图标 ================================================ */
+[s-link] [s-icon] + *,
+[s-link] * + [s-icon] {
+    margin-left: 5px;
+}
+[s-link~='disabled'] > [s-icon] {
+    opacity: 0.5;
+}

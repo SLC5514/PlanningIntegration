@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用TS造轮子！-UI/DOM/JS/Tpl/Frame</title>
+
+    <link rel="stylesheet" href="./style/grid-attr.css">
+    <link rel="stylesheet" href="./style/components/button.css">
+    <link rel="stylesheet" href="./style/components/link.css">
+
+    <link rel="stylesheet" href="./style/main.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+</head>
+<body>
+    <h1 class="gradient-title">使用TS造轮子！</h1>
+    <section>
+        <h2 class="gradient-title">Button 按钮</h2>
+        <br>
+        <button s-btn>默认按钮</button>
+        <button s-btn="primary">主要按钮</button>
+        <button s-btn="success">成功按钮</button>
+        <button s-btn="info">信息按钮</button>
+        <button s-btn="warning">警告按钮</button>
+        <button s-btn="danger">危险按钮</button>
+        <div class="h10"></div>
+        <button s-btn="plain">朴素按钮</button>
+        <button s-btn="plain primary">主要按钮</button>
+        <button s-btn="plain success">成功按钮</button>
+        <button s-btn="plain info">信息按钮</button>
+        <button s-btn="plain warning">警告按钮</button>
+        <button s-btn="plain danger">危险按钮</button>
+        <div class="h10"></div>
+        <button s-btn="round">圆角按钮</button>
+        <button s-btn="round primary">主要按钮</button>
+        <button s-btn="round success">成功按钮</button>
+        <button s-btn="round info">信息按钮</button>
+        <button s-btn="round warning">警告按钮</button>
+        <button s-btn="round danger">危险按钮</button>
+        <div class="h10"></div>
+        <button s-btn="circle primary"><i s-icon="loading"></i></button>
+        <button s-btn="circle success"><i s-icon="loading"></i></button>
+        <button s-btn="circle info"><i s-icon="loading"></i></button>
+        <button s-btn="circle warning"><i s-icon="loading"></i></button>
+        <button s-btn="circle danger"><i s-icon="loading"></i></button>
+        <button s-btn><span>图标按钮</span><i s-icon="loading black"></i></button>
+        <button s-btn="primary"><i s-icon="loading"></i></button>
+        <button s-btn="success"><i s-icon="loading"></i></button>
+        <div class="h10"></div>
+        <button s-btn="disabled">禁用按钮</button>
+        <button s-btn="disabled primary">主要按钮</button>
+        <button s-btn="disabled success">成功按钮</button>
+        <button s-btn="disabled info">信息按钮</button>
+        <button s-btn="disabled warning">警告按钮</button>
+        <button s-btn="disabled danger">危险按钮</button>
+        <button s-btn="disabled round primary"><i s-icon="loading"></i></button>
+        <button s-btn="disabled"><i s-icon="loading black"></i><span>禁用按钮</span></button>
+        <div class="h10"></div>
+        <button s-btn="disabled plain">禁用按钮</button>
+        <button s-btn="disabled plain primary">主要按钮</button>
+        <button s-btn="disabled plain success">成功按钮</button>
+        <button s-btn="disabled plain info">信息按钮</button>
+        <button s-btn="disabled plain warning">警告按钮</button>
+        <button s-btn="disabled plain danger">危险按钮</button>
+        <button s-btn="disabled plain round primary"><i s-icon="loading"></i></button>
+        <button s-btn="disabled plain round primary"><i s-icon="loading"></i><span>禁用按钮</span></button>
+        <div class="h10"></div>
+        <button s-btn="text">文字按钮</button>
+        <button s-btn="text disabled">文字按钮</button>
+        <div class="h10"></div>
+        <div s-btn-group>
+            <button s-btn="info"><i s-icon="loading"></i><span>上一页</span></button>
+            <button s-btn="primary"><span>下一页</span><i s-icon="loading"></i></button>
+        </div>
+        <div s-btn-group>
+            <button s-btn="primary"><i s-icon="loading"></i></button>
+            <button s-btn="success"><i s-icon="loading"></i></button>
+            <button s-btn="primary"><i s-icon="loading"></i></button>
+        </div>
+        <div class="h10"></div>
+        <button s-btn="loading primary"><i s-icon="loading"></i><span>加载中</span></button>
+        <button s-btn="loading"><i s-icon="loading black"></i><span>加载中</span></button>
+    </section>
+    <section>
+        <h2 class="gradient-title">Link 文字链接</h2>
+        <br>
+        <a s-link="underline" href="#">默认链接</a>
+        <a s-link="underline primary" href="#">主要链接</a>
+        <a s-link="underline success" href="#">成功链接</a>
+        <a s-link="underline warning" href="#">警告链接</a>
+        <a s-link="underline danger" href="#">危险链接</a>
+        <a s-link="underline info" href="#">信息链接</a>
+        <div class="h10"></div>
+        <a s-link="disabled" href="#">默认链接</a>
+        <a s-link="disabled underline primary" href="#">主要链接</a>
+        <a s-link="disabled underline success" href="#">成功链接</a>
+        <a s-link="disabled underline warning" href="#">警告链接</a>
+        <a s-link="disabled underline danger" href="#">危险链接</a>
+        <a s-link="disabled underline info" href="#">信息链接</a>
+        <div class="h10"></div>
+        <a s-link="underline" href="#"><i s-icon="loading black"></i><span>默认链接</span></a>
+    </section>
+    <section>
+        <h2 class="gradient-title">Radio 单选框</h2>
+        <br>
+        <label s-radio="checked">
+            <span s-radio-input><input type="radio"></span>
+            <span>备选项</span>
+        </label>
+        <label s-radio>
+            <span s-radio-input><input type="radio"></span>
+            <span>备选项</span>
+        </label>
+        <div class="h10"></div>
+        <label s-radio="disabled checked">
+            <span s-radio-input><input type="radio"></span>
+            <span>备选项</span>
+        </label>
+        <label s-radio="disabled">
+            <span s-radio-input><input type="radio"></span>
+            <span>备选项</span>
+        </label>
+    </section>
+</body>
+<script src="./dist/main.js"></script>
+</html>

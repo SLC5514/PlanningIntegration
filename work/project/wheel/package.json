@@ -1,0 +1,17 @@
+{
+  "name": "wheel",
+  "version": "1.0.0",
+  "description": "使用TS造轮子！",
+  "private": true,
+  "scripts": {
+    "watch": "rimraf dist & tsc -w",
+    "build": "rimraf dist & tsc",
+    "prune": "npm prune"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "rimraf": "^3.0.2"
+  }
+}

@@ -9,7 +9,7 @@
   "dependencies": {
     "egg": "^2.15.1",
     "egg-scripts": "^2.11.0",
-    "egg-view": "^2.1.3",
+    "egg-view-nunjucks": "^2.3.0",
     "vue": "^3.0.5"
   },
   "devDependencies": {
@@ -40,9 +40,9 @@
     "lint": "eslint .",
     "ci": "npm run lint && npm run cov",
     "autod": "autod",
-    "front-dev": "cd front && vite",
-    "front-build": "cd front && vue-tsc --noEmit && vite build",
-    "front-serve": "cd front && vite preview"
+    "web-dev": "cd app/web && vite",
+    "web-build": "cd app/web && vue-tsc --noEmit && vite build",
+    "web-serve": "cd app/web && vite preview"
   },
   "ci": {
     "version": "10"

@@ -2,6 +2,8 @@
 
 'use strict';
 
+const path = require('path');
+
 /**
  * @param {Egg.EggAppInfo} appInfo app info
  */
@@ -21,6 +23,23 @@ module.exports = appInfo => {
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',
+    view: {
+      root: [
+        path.join(appInfo.baseDir, 'app/view'),
+        path.join(appInfo.baseDir, 'app/web/dist'),
+      ].join(','),
+      defaultViewEngine: 'nunjucks',
+      defaultExtension: '.html',
+      mapping: {
+        '.html': 'nunjucks',
+      },
+    },
+    static: {
+      dir: [
+        path.join(appInfo.baseDir, 'app/public'),
+        path.join(appInfo.baseDir, 'app/web/dist/public'),
+      ],
+    },
   };
 
   return {

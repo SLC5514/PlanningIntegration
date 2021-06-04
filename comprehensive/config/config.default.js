@@ -26,7 +26,7 @@ module.exports = appInfo => {
     view: {
       root: [
         path.join(appInfo.baseDir, 'app/view'),
-        path.join(appInfo.baseDir, 'app/web/dist'),
+        path.join(appInfo.baseDir, 'web/dist'),
       ].join(','),
       defaultViewEngine: 'nunjucks',
       defaultExtension: '.html',
@@ -37,7 +37,7 @@ module.exports = appInfo => {
     static: {
       dir: [
         path.join(appInfo.baseDir, 'app/public'),
-        path.join(appInfo.baseDir, 'app/web/dist/public'),
+        path.join(appInfo.baseDir, 'web/dist/public'),
       ],
     },
   };

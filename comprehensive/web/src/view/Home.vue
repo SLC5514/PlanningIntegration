@@ -1,7 +1,7 @@
 <template>
   <a-layout class="home-control">
     <a-layout-sider theme="light" v-model:collapsed="collapsed" collapsible class="noselect">
-      <div class="logo" />
+      <router-link class="logo" to="/"></router-link>
       <a-menu theme="light" mode="inline" v-model:selectedKeys="selectedKeys">
         <template v-for="item in menuList">
           <a-sub-menu v-if="item.children" :key="item.value">
@@ -28,8 +28,10 @@
           <a-breadcrumb-item>Bill</a-breadcrumb-item>
         </a-breadcrumb>
         <div class="content">
-          Bill is a cat.
+          <router-link to="/">首页</router-link>
+          <router-link to="/html">HTML</router-link>
           <a-button type="primary">按钮</a-button>
+          <router-view></router-view>
         </div>
       </a-layout-content>
       <a-layout-footer class="noselect">Ant Design ©2018 Created by Ant UED</a-layout-footer>
@@ -118,6 +120,7 @@ export default defineComponent({
   min-height: 100vh;
   .logo {
     position: relative;
+    display: block;
     height: 32px;
     padding: 16px;
     box-sizing: content-box;

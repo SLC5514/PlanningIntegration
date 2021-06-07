@@ -5,18 +5,23 @@ const routes = [
     path: "/",
     name: "Home",
     component: () => import("/@/view/Home.vue"),
+    children: [
+      {
+        path: "/html",
+        name: "HTML",
+        component: () => import("/@/view/HTML.vue"),
+      },
+      {
+        path: "/css",
+        name: "CSS",
+        component: () => import("/@/view/CSS.vue"),
+      },
+    ]
   },
-  {
-    path: "/antdv-layout",
-    name: "AntdvLayout",
-    component: () => import("/@/layout/Antdv.vue"),
-  },
-
-  // { path: "/:catchAll(.*)", redirect: "/404", hidden: true },
 ]
 
 const router = createRouter({
-  history: createWebHistory(), //history模式使用HTML5模式
+  history: createWebHistory(),
   routes,
 })
 

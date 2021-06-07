@@ -4,10 +4,12 @@ import styleImport from 'vite-plugin-style-import'
 
 import path from 'path'
 
+const resolve = (dir: string) => path.resolve(__dirname, dir)
+
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
-    alias: { '/@': path.resolve(__dirname, 'src') },
+    alias: { '/@': resolve('src') },
   },
   build: {
     assetsDir: 'public',
@@ -16,6 +18,9 @@ export default defineConfig({
     preprocessorOptions: {
       less: {
         javascriptEnabled: true,
+        modifyVars: {
+          hack: `true; @import "${resolve('./src/assets/style/custom-vant-style.less')}";`,
+        },
       },
     },
   },

@@ -6,14 +6,14 @@ import {
   // InputNumber,
   Button,
   // Switch,
-  // Radio,
+  Radio,
   // Checkbox,
   // Select,
   // Card,
   // Form,
   Row,
   Col,
-  // Modal,
+  Modal,
   // Table,
   // Tabs,
   // Icon,
@@ -31,7 +31,7 @@ import {
   // Alert,
   // Tag,
   // Divider,
-  // DatePicker,
+  DatePicker,
   // TimePicker,
   // Upload,
   // Progress,
@@ -55,14 +55,14 @@ const AntdvInit = function(App: any) {
   // App.use(InputNumber)
   App.use(Button)
   // App.use(Switch)
-  // App.use(Radio)
+  App.use(Radio)
   // App.use(Checkbox)
   // App.use(Select)
   // App.use(Card)
   // App.use(Form)
   App.use(Row)
   App.use(Col)
-  // App.use(Modal)
+  App.use(Modal)
   // App.use(Table)
   // App.use(Tabs)
   // App.use(Icon)
@@ -80,7 +80,7 @@ const AntdvInit = function(App: any) {
   // App.use(Alert)
   // App.use(Tag)
   // App.use(Divider)
-  // App.use(DatePicker)
+  App.use(DatePicker)
   // App.use(TimePicker)
   // App.use(Upload)
   // App.use(Progress)

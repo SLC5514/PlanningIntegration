@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>综合知识复习</title>
+  <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+  <div id="app" v-cloak>
+    <header class="header">
+      <div class="logo">{{title}}</div>
+    </header>
+    <section class="st-content">
+      <aside class="aside">
+        <ul>
+          <li :class="page === 1 && 'on' || ''"><a href="javascript:;" @click.prevent="asideChange(1)">666</a></li>
+          <li :class="page === 2 && 'on' || ''"><a href="javascript:;" @click.prevent="asideChange(2)">666</a></li>
+        </ul>
+      </aside>
+      <div class="content">{{page}}</div>
+    </section>
+  </div>
+</body>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+  fetch('./data.json')
+    .then(res => res.json())
+    .then(res => console.log(res))
+    .catch(err => {
+      console.log(err)
+    })
+  /* 初始化 */
+  const ref = Vue.ref;
+  const onMounted = Vue.onMounted;
+  const app = Vue.createApp({
+    setup() {
+      // 监听hash
+      // if(("onhashchange" in window) && ((typeof document.documentMode === "undefined") || document.documentMode == 8)) {
+      //   window.onhashchange = hashChangeHot;
+      // }
+      // function hashChangeHot() { alert("URL产生了变化") }
+      const page = ref(1);
+      const asideChange = (val) => {
+        console.log('asideChange', val)
+        if (!val) return;
+        page.value = val;
+      };
+      onMounted(asideChange);
+      return {
+        title: '综合知识复习',
+        page,
+        asideChange,
+      }
+    }
+  })
+  const vm = app.mount('#app')
+</script>
+</html>

@@ -15,46 +15,67 @@
     <section class="st-content">
       <aside class="aside">
         <ul>
-          <li :class="page === 1 && 'on' || ''"><a href="javascript:;" @click.prevent="asideChange(1)">666</a></li>
-          <li :class="page === 2 && 'on' || ''"><a href="javascript:;" @click.prevent="asideChange(2)">666</a></li>
+          <li v-for="(v, i) in pageData.aside" :key="i"
+            :class="{
+              on: page === i,
+              active: collapsed.includes(i),
+              collapse: !!v.children
+            }">
+            <a href="javascript:;" @click.prevent="pageChange(i)">
+              <template v-if="v.children">
+                <svg viewBox="0 0 1024 1024" focusable="false" width="1em" height="1em" fill="currentColor" 
+                  @click.prevent.stop="collapseChange(i)">
+                  <path d="M715.8 493.5L335 165.1c-14.2-12.2-35-1.2-35 18.5v656.8c0 19.7 20.8 30.7 35 18.5l380.8-328.4c10.9-9.4 10.9-27.6 0-37z"></path>
+                </svg>
+                <div class="full">{{v.name}}</div>
+              </template>
+              <template v-else>{{v.name}}</template>
+            </a>
+            <div class="collapse-content" v-if="v.children">
+              <a href="javascript:;"
+                v-for="(sub, idx) in v.children" :key="i + '-' + idx"
+                :class="{on: page === i + '-' + idx}"
+                @click.prevent.stop="pageChange(i + '-' + idx)">{{sub.name}}</a>
+            </div>
+          </li>
         </ul>
       </aside>
-      <div class="content">{{page}}</div>
+      <div class="content">
+        <div v-show="page === 0" class="page0">
+          <h2>知识库</h2>
+          <h3>官方链接/参考文档</h3>
+          <ul class="link-list">
+            <li><a href="https://www.w3school.com.cn/index.html" target="_black">W3C</a></li>
+            <li><a href="https://developer.mozilla.org/zh-CN/docs/Web" target="_black">MDN</a></li>
+            <li><a href="https://www.w3school.com.cn/tags/index.asp" target="_black">HTML</a></li>
+            <li><a href="https://www.sass.hk/docs/" target="_black">SCSS</a></li>
+            <li><a href="https://www.tslang.cn/docs/handbook/basic-types.html" target="_black">TS</a></li>
+            <li><a href="https://cn.vuejs.org/v2/api/" target="_black">Vue</a></li>
+            <li><a href="https://react.docschina.org/docs/react-api.html" target="_black">React</a></li>
+            <li><a href="http://api.nodejs.cn/" target="_black">NodeJs</a></li>
+            <li><a href="https://developer.mozilla.org/zh-CN/docs/Web/Security" target="_black">WEB安全</a></li>
+            <li><a href="https://www.w3school.com.cn/python/index.asp" target="_black">Python-W3C</a></li>
+            <li><a href="https://www.liaoxuefeng.com/wiki/1016959663602400" target="_black">Python-廖雪峰</a></li>
+            <li><a href="https://www.w3school.com.cn/php/index.asp" target="_black">Php-W3C</a></li>
+            <li><a href="https://www.php.net/manual/zh/" target="_black">Php</a></li>
+          </ul>
+        </div>
+        <div v-show="page === '0-0'" class="page0">HTML</div>
+        <div v-show="page === '0-1'" class="page0-1">CSS</div>
+        <div v-show="page === '0-2'" class="page0-2">JS</div>
+        <div v-show="page === '0-3'" class="page0-3">Vue</div>
+        <div v-show="page === '0-4'" class="page0-4">React</div>
+        <div v-show="page === '0-5'" class="page0-5">NodeJs</div>
+        <div v-show="page === '0-6'" class="page0-6">WEB安全</div>
+        <div v-show="page === '0-7'" class="page0-7">Python</div>
+        <div v-show="page === '0-8'" class="page0-8">Php</div>
+        <div v-show="page === '0-9'" class="page0-9">数据库</div>
+        <div v-show="page === '0-10'" class="page0-10">其他</div>
+        <div v-show="page === 1" class="page1">项目</div>
+      </div> 
     </section>
   </div>
 </body>
 <script src="https://unpkg.com/vue@next"></script>
-<script>
-  fetch('./data.json')
-    .then(res => res.json())
-    .then(res => console.log(res))
-    .catch(err => {
-      console.log(err)
-    })
-  /* 初始化 */
-  const ref = Vue.ref;
-  const onMounted = Vue.onMounted;
-  const app = Vue.createApp({
-    setup() {
-      // 监听hash
-      // if(("onhashchange" in window) && ((typeof document.documentMode === "undefined") || document.documentMode == 8)) {
-      //   window.onhashchange = hashChangeHot;
-      // }
-      // function hashChangeHot() { alert("URL产生了变化") }
-      const page = ref(1);
-      const asideChange = (val) => {
-        console.log('asideChange', val)
-        if (!val) return;
-        page.value = val;
-      };
-      onMounted(asideChange);
-      return {
-        title: '综合知识复习',
-        page,
-        asideChange,
-      }
-    }
-  })
-  const vm = app.mount('#app')
-</script>
+<script src="./index.js"></script>
 </html>

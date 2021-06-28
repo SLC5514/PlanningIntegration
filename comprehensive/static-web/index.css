@@ -12,6 +12,9 @@
 * {
   margin: 0;
   padding: 0;
+  font: inherit;
+  color: inherit;
+  cursor: inherit;
   box-sizing: border-box;
 }
 a {
@@ -21,6 +24,26 @@ a {
 ul, ol, li {
   list-style: none;
 }
+select {
+  outline: none;
+  border: 1px solid #333;
+  border-radius: 5px;
+  background-color: #fff;
+}
+.btn-group {
+  display: inline-block;
+  user-select: none;
+}
+.btn-group label {
+  cursor: pointer;
+}
+.btn-group label input {
+  margin-right: 5px;
+}
+.btn-group label + label {
+  margin-left: 10px;
+}
+/* 页面 */
 html {
   font-size: 10px;
 }
@@ -34,6 +57,21 @@ html {
 .st-content {
   display: flex;
   flex: 1;
+}
+.page-loadding {
+  display: none;
+}
+[v-cloak] .page-loadding {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 /* 头部 */
 .header {
@@ -146,9 +184,17 @@ html {
   position: relative;
   z-index: 7;
 }
+.content > div {
+  width: 100%;
+  height: 100%;
+}
 .content > div > h2,
 .content > div > h3 {
   margin-bottom: 20px;
+}
+.content > div > iframe {
+  width: 100%;
+  height: 100%;
 }
 .link-list > li {
   padding: 5px;
@@ -158,4 +204,13 @@ html {
 }
 .link-list a:hover {
   text-decoration: underline;
+}
+/* 定制 */
+.page0-0 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.page0-0 iframe {
+  margin-top: 10px;
 }

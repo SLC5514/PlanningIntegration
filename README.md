@@ -1,5 +1,7 @@
 ## Welcome to GitHub Pages
 
+[PlanningIntegration](https://slc5514.github.io/PlanningIntegration/)
+
 You can use the [editor on GitHub](https://github.com/SLC5514/PlanningIntegration/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.

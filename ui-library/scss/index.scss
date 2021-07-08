@@ -21,6 +21,7 @@ html {
 }
 body {
   padding: 2rem;
+  // background-color: #eee;
 }
 hr {
   background-color: $text-color;
@@ -33,17 +34,44 @@ hr {
     font-size: #{7 - $i}em;
     font-weight: bold;
     margin: 1rem 0;
-    // color: $heading-color;
+    color: $heading-color;
   }
 }
 
 /* Button */
+/* Button default */
 button {
   // reset
-  background: none;
   outline: none;
-  padding: 0;
+  cursor: pointer;
+  user-select: none;
+  background-color: #ffffff;
+  line-height: 1;
   // init
-  border-radius: 2px;
-  border: 1px solid #d9d9d9;
+  padding: 0.5em 0.6em;
+  color: #606266;
+  font-size: 1.4rem;
+  border-radius: 4px;
+  border: 1px solid $border-color-base;
+  transition: all 0.3s ease;
+}
+// button:focus,
+button:hover {
+  color: #409eff;
+  border-color: #c6e2ff;
+  background-color: #ecf5ff;
+}
+button:active {
+  color: #3a8ee6;
+  border-color: #3a8ee6;
+}
+/* Button primary */
+button[primary] {
+  color: #fff;
+  border-color: #409eff;
+  background-color: #409eff;
+}
+/* Button modify */
+button + button {
+  margin-left: 1em;
 }

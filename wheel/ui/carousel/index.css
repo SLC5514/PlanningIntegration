@@ -1,4 +1,4 @@
-h2{font-size: 1.5em;font-weight: bold;margin: 10px;}
+h2{font-size: 1.5em;font-weight: bold;margin: 10px;color: transparent;-webkit-text-stroke: 1px #333;text-stroke: 1px #000;}
 section{margin: 20px;}
 .carousel{width: 500px;}
 

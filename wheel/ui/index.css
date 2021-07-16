@@ -1,0 +1,9 @@
+h2{font-size: 1.5em;font-weight: bold;margin: 10px;}
+section{margin: 20px;}
+.carousel{width: 500px;}
+
+/* carousel wheel*/
+.wheel-carousel{position: relative;font-size: 0;white-space: nowrap;overflow: hidden;}
+.wheel-carousel-content{ transform: translate3d(0,0,0); -webkit-transform: translate3d(0,0,0); -moz-transform: translate3d(0,0,0); -ms-transform: translate3d(0,0,0); -o-transform: translate3d(0,0,0); transition: transform 0.3s ease; -webkit-transition: transform 0.3s ease; -moz-transition: transform 0.3s ease; -ms-transition: transform 0.3s ease; -o-transition: transform 0.3s ease; }
+.wheel-carousel-content>*{display: inline-block;width: 100%;height: 100%;}
+.wheel-carousel-content>*>img{width: 100%;height: 100%;}

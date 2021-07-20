@@ -2,7 +2,7 @@
  * @Author: SLC
  * @Date: 2021-07-19 16:49:18
  * @LastEditors: SLC
- * @LastEditTime: 2021-07-20 13:57:46
+ * @LastEditTime: 2021-07-20 14:57:57
  * @Description: file content
  */
 
@@ -13,9 +13,6 @@ function batchDownload(params) {
   this.error = params.error || function () {};
   this._log = params.log || false;
   this._folder = params.folder || "压缩文件";
-  this._base64Arr = new Array(this.fileList.length);
-  this._jsZip = new JSZip();
-  this._reDownCount = 0;
   this._log && console.log("初始化");
 }
 batchDownload.prototype.downLoad = function () {
@@ -136,7 +133,15 @@ var fileList = [
   },
   {
     name: "test",
-    url: "https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg",
+    url: "https://imgf2.pop-fashion.com/fashion/stylegraphic/2021071600000916360/women/2021SS/159/top/t_shirt/202107160012755567/big/0ed995c0812c2683f2368ea4d79ab01b.jpg",
+  },
+  {
+    name: "test1",
+    url: "https://imgf2.pop-fashion.com/fashion/graphic/2021071404-SH5989/small/05.jpg",
+  },
+  {
+    name: "test2",
+    url: "https://imgf3.pop-fashion.com/fashion/graphic/2021071404-SH5989/small/04.jpg",
   },
 ]; // 元数据
 

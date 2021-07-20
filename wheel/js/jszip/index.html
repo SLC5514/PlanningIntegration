@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #progress{width: 300px;height: 10px;border-radius: 5px;background-color: gray;}
+    #progress>div{width: 0;height: 100%;border-radius: 5px;background-color: blue;transition: all 0.3s linear;}
+  </style>
+</head>
+<body>
+  <button id="downloadBtn">点击下载</button>
+  <button id="updateBtn">修改参数</button>
+  <div id="xiazai">状态：</div>
+  <div id="progress"><div></div></div>
+</body>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="../../assets/lib/jszip/jszip.min.js"></script>
+<script src="../../assets/lib/fileSaver/FileSaver.min.js"></script>
+<script src="./index.js"></script>
+</html>

@@ -2,7 +2,7 @@
  * @Author: SLC
  * @Date: 2021-07-19 09:20:11
  * @LastEditors: SLC
- * @LastEditTime: 2021-07-19 15:31:36
+ * @LastEditTime: 2021-07-21 10:43:16
  * @Description: file content
  */
 
@@ -15,6 +15,7 @@ const uglify = require("gulp-uglify");
 const rename = require("gulp-rename");
 const babel = require("gulp-babel");
 const sass = require("gulp-sass")(require("sass"));
+const cleanCSS = require("gulp-clean-css");
 const sourcemaps = require("gulp-sourcemaps");
 const autoprefixer = require("gulp-autoprefixer");
 
@@ -80,6 +81,7 @@ function cssTask(next: any) {
     .pipe(sourcemaps.init()) // 源映射
     .pipe(gulpif(isScss, sass().on("error", sass.logError))) // sass编译
     .pipe(autoprefixer()) // 添加样式前缀
+    .pipe(cleanCSS({ compatibility: "ie8" })) // 压缩文件
     .pipe(sourcemaps.write("../maps")) // 源映射
     .pipe(dest("output/"));
   next();

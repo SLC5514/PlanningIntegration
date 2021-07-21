@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>moment</title>
+  </head>
+  <body>
+    moment
+  </body>
+  <script>
+    function formatDate(date) {
+      function moment(date) {
+        this._d = date ? new Date(date) : new Date();
+      }
+      moment.prototype.format = function (inputString) {
+        return inputString
+          .replace(/YYYY/, this._d.getFullYear())
+          .replace(/YY/, this._d.getFullYear().toString().substr(-2))
+          .replace(/MM/, this.prefixInteger(this._d.getMonth() + 1, 2))
+          .replace(/M/, this._d.getMonth() + 1)
+          .replace(/DD/, this.prefixInteger(this._d.getDate(), 2))
+          .replace(/D/, this._d.getDate())
+          .replace(/HH/, this.prefixInteger(this._d.getHours(), 2))
+          .replace(/H/, this._d.getHours())
+          .replace(/hh/, this.prefixInteger(this.hours12Clock(this._d.getHours()), 2))
+          .replace(/h/, this.hours12Clock(this._d.getHours()))
+          .replace(/mm/, this.prefixInteger(this._d.getMinutes(), 2))
+          .replace(/m/, this._d.getMinutes())
+          .replace(/ss/, this.prefixInteger(this._d.getSeconds(), 2))
+          .replace(/s/, this._d.getSeconds());
+      };
+      moment.prototype.prefixInteger = function (num, n) {
+        return (Array(n).join(0) + num).slice(-n);
+      };
+      moment.prototype.hours12Clock = function (num) {
+        return num > 12 ? num - 12 : num;
+      };
+      return new moment(date);
+    }
+  </script>
+  <script>
+    var Mo = formatDate();
+    console.log(Mo);
+    console.log(Mo.format("YYYY/MM/DD HH:mm:ss"));
+  </script>
+</html>

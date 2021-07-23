@@ -1,0 +1,292 @@
+{
+  "keys": "F:\\PlanningIntegration\\work\\project\\scfun-system\\src\\config\\config.default.ts",
+  "middleware": "F:\\PlanningIntegration\\work\\project\\scfun-system\\src\\config\\config.default.ts",
+  "static": {
+    "prefix": "F:\\PlanningIntegration\\work\\project\\scfun-system\\src\\config\\config.default.ts",
+    "dir": "F:\\PlanningIntegration\\work\\project\\scfun-system\\src\\config\\config.default.ts",
+    "dynamic": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-static\\config\\config.default.js",
+    "preload": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-static\\config\\config.default.js",
+    "buffer": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-static\\config\\config.default.js",
+    "maxFiles": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-static\\config\\config.default.js"
+  },
+  "session": {
+    "maxAge": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-session\\config\\config.default.js",
+    "key": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-session\\config\\config.default.js",
+    "httpOnly": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-session\\config\\config.default.js",
+    "encrypt": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-session\\config\\config.default.js",
+    "logValue": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-session\\config\\config.default.js"
+  },
+  "security": {
+    "domainWhiteList": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-security\\config\\config.default.js",
+    "protocolWhiteList": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-security\\config\\config.default.js",
+    "defaultMiddleware": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-security\\config\\config.default.js",
+    "csrf": {
+      "enable": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-security\\config\\config.default.js",
+      "type": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-security\\config\\config.default.js",
+      "ignoreJSON": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\@midwayjs\\web\\config\\config.default.js",
+      "useSession": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-security\\config\\config.default.js",
+      "cookieName": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-security\\config\\config.default.js",
+      "sessionName": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-security\\config\\config.default.js",
+      "headerName": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-security\\config\\config.default.js",
+      "bodyName": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-security\\config\\config.default.js",
+      "queryName": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-security\\config\\config.default.js",
+      "refererWhiteList": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "xframe": {
+      "enable": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-security\\config\\config.default.js",
+      "value": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "hsts": {
+      "enable": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-security\\config\\config.local.js",
+      "maxAge": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-security\\config\\config.default.js",
+      "includeSubdomains": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "dta": {
+      "enable": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "methodnoallow": {
+      "enable": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "noopen": {
+      "enable": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "nosniff": {
+      "enable": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "referrerPolicy": {
+      "enable": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-security\\config\\config.default.js",
+      "value": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "xssProtection": {
+      "enable": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-security\\config\\config.default.js",
+      "value": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "csp": {
+      "enable": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-security\\config\\config.default.js",
+      "policy": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "ssrf": {
+      "ipBlackList": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-security\\config\\config.default.js",
+      "ipExceptionList": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-security\\config\\config.default.js",
+      "checkAddress": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-security\\config\\config.default.js"
+    }
+  },
+  "helper": {
+    "shtml": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-security\\config\\config.default.js"
+  },
+  "jsonp": {
+    "limit": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-jsonp\\config\\config.default.js",
+    "callback": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-jsonp\\config\\config.default.js",
+    "csrf": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-jsonp\\config\\config.default.js"
+  },
+  "onerror": {
+    "errorPageUrl": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-onerror\\config\\config.default.js",
+    "appErrorFilter": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-onerror\\config\\config.default.js",
+    "templatePath": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-onerror\\config\\config.default.js"
+  },
+  "i18n": {
+    "defaultLocale": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-i18n\\config\\config.default.js",
+    "dirs": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-i18n\\config\\config.default.js",
+    "queryField": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-i18n\\config\\config.default.js",
+    "cookieField": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-i18n\\config\\config.default.js",
+    "cookieDomain": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-i18n\\config\\config.default.js",
+    "cookieMaxAge": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-i18n\\config\\config.default.js"
+  },
+  "customLogger": {
+    "scheduleLogger": {
+      "consoleLevel": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-schedule\\config\\config.default.js",
+      "file": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-schedule\\config\\config.default.js"
+    }
+  },
+  "schedule": {
+    "directory": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-schedule\\config\\config.default.js"
+  },
+  "multipart": {
+    "mode": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-multipart\\config\\config.default.js",
+    "autoFields": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-multipart\\config\\config.default.js",
+    "defaultCharset": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-multipart\\config\\config.default.js",
+    "fieldNameSize": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-multipart\\config\\config.default.js",
+    "fieldSize": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-multipart\\config\\config.default.js",
+    "fields": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-multipart\\config\\config.default.js",
+    "fileSize": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-multipart\\config\\config.default.js",
+    "files": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-multipart\\config\\config.default.js",
+    "fileExtensions": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-multipart\\config\\config.default.js",
+    "whitelist": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-multipart\\config\\config.default.js",
+    "allowArrayField": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-multipart\\config\\config.default.js",
+    "tmpdir": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-multipart\\config\\config.default.js",
+    "cleanSchedule": {
+      "cron": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-multipart\\config\\config.default.js",
+      "disable": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-multipart\\config\\config.default.js"
+    }
+  },
+  "logrotator": {
+    "filesRotateByHour": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "hourDelimiter": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "filesRotateBySize": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "maxFileSize": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "maxFiles": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "rotateDuration": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "maxDays": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-logrotator\\config\\config.default.js"
+  },
+  "view": {
+    "root": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-view\\config\\config.default.js",
+    "cache": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-view\\config\\config.local.js",
+    "defaultExtension": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-view\\config\\config.default.js",
+    "defaultViewEngine": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-view\\config\\config.default.js",
+    "mapping": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg-view\\config\\config.default.js"
+  },
+  "env": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+  "name": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+  "cookies": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+  "proxy": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+  "maxIpsCount": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+  "maxProxyCount": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+  "protocolHeaders": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+  "ipHeaders": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+  "hostHeaders": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+  "pkg": {
+    "name": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+    "version": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+    "private": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+    "dependencies": {
+      "@midwayjs/decorator": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+      "@midwayjs/web": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+      "egg": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+      "egg-scripts": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+      "ssr-core-vue3": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+      "ssr-types": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+      "swiper": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+      "vue": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+      "vue-router": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+      "vuex": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js"
+    },
+    "devDependencies": {
+      "@midwayjs/egg-ts-helper": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+      "cross-env": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+      "eslint-config-standard-vue-ts": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+      "ssr": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+      "ssr-plugin-midway": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+      "ssr-plugin-vue3": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+      "typescript": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js"
+    },
+    "scripts": {
+      "prod": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+      "stop": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+      "start": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+      "start:vite": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+      "build": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+      "deploy": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+      "deploy:tencent": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+      "lint": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+      "lint:fix": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js"
+    },
+    "midway-integration": {
+      "tsCodeRoot": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js"
+    },
+    "midway-luckyeye": {
+      "packages": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js"
+    },
+    "egg": {
+      "framework": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js"
+    }
+  },
+  "baseDir": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+  "HOME": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+  "rundir": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\@midwayjs\\web\\config\\config.default.js",
+  "dump": {
+    "ignore": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js"
+  },
+  "confusedConfigurations": {
+    "bodyparser": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+    "notFound": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+    "sitefile": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+    "middlewares": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+    "httpClient": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js"
+  },
+  "notfound": {
+    "pageUrl": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js"
+  },
+  "siteFile": {
+    "/favicon.ico": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js"
+  },
+  "bodyParser": {
+    "enable": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+    "encoding": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+    "formLimit": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+    "jsonLimit": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+    "textLimit": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+    "strict": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+    "queryString": {
+      "arrayLimit": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+      "depth": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+      "parameterLimit": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js"
+    },
+    "onerror": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js"
+  },
+  "logger": {
+    "dir": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+    "encoding": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+    "env": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+    "level": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+    "consoleLevel": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+    "disableConsoleAfterReady": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+    "outputJSON": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+    "buffer": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+    "appLogName": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\@midwayjs\\web\\config\\config.default.js",
+    "coreLogName": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\@midwayjs\\web\\config\\config.default.js",
+    "agentLogName": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\@midwayjs\\web\\config\\config.default.js",
+    "errorLogName": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+    "coreLogger": {
+      "consoleLevel": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.local.js"
+    },
+    "allowDebugAtProd": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js"
+  },
+  "httpclient": {
+    "enableDNSCache": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+    "dnsCacheLookupInterval": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+    "dnsCacheMaxLength": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+    "request": {
+      "timeout": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js"
+    },
+    "httpAgent": {
+      "keepAlive": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+      "freeSocketTimeout": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+      "maxSockets": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+      "maxFreeSockets": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js"
+    },
+    "httpsAgent": {
+      "keepAlive": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+      "freeSocketTimeout": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+      "maxSockets": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+      "maxFreeSockets": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js"
+    }
+  },
+  "meta": {
+    "enable": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+    "logging": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js"
+  },
+  "coreMiddleware": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+  "workerStartTimeout": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+  "serverTimeout": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+  "cluster": {
+    "listen": {
+      "path": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+      "port": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+      "hostname": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js"
+    }
+  },
+  "clusterClient": {
+    "maxWaitTime": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+    "responseTimeout": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js"
+  },
+  "onClientError": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\egg\\config\\config.default.js",
+  "midwayFeature": {
+    "replaceEggLogger": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\@midwayjs\\web\\config\\config.default.js"
+  },
+  "pluginOverwrite": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\@midwayjs\\web\\config\\config.default.js",
+  "alinode": {
+    "logdir": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\@midwayjs\\web\\config\\config.default.js",
+    "error_log": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\@midwayjs\\web\\config\\config.default.js",
+    "packages": "F:\\PlanningIntegration\\work\\project\\scfun-system\\node_modules\\@midwayjs\\web\\config\\config.default.js"
+  }
+}

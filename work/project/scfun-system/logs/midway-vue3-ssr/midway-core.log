@@ -1,0 +1,223 @@
+2021-07-23 13:25:39,119 INFO 25128 [egg:logger] init all loggers with options: {"dir":"F:\\PlanningIntegration\\work\\project\\scfun-system\\logs\\midway-vue3-ssr","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"midway-web.log","coreLogName":"midway-core.log","agentLogName":"midway-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"application"}
+2021-07-23 13:25:39,119 INFO 25128 [egg:core] dump config after load, 64ms
+2021-07-23 13:25:42,494 INFO 25128 [egg-multipart] stream mode enable
+2021-07-23 13:25:43,916 INFO 25128 [egg-static] starting static serve / -> F:\PlanningIntegration\work\project\scfun-system\build
+2021-07-23 13:25:43,962 INFO 25128 [egg-security] use csrf middleware
+2021-07-23 13:25:43,991 INFO 25128 [egg-security] use methodnoallow middleware
+2021-07-23 13:25:44,001 INFO 25128 [egg-security] use noopen middleware
+2021-07-23 13:25:44,026 INFO 25128 [egg-security] use nosniff middleware
+2021-07-23 13:25:44,037 INFO 25128 [egg-security] use xssProtection middleware
+2021-07-23 13:25:44,051 INFO 25128 [egg-security] use xframe middleware
+2021-07-23 13:25:44,060 INFO 25128 [egg-security] use dta middleware
+2021-07-23 13:25:44,061 INFO 25128 [egg-security] compose 7 middlewares into one security middleware
+2021-07-23 13:25:44,127 INFO 25128 [egg:core] dump config after ready, 27ms
+2021-07-23 13:53:25,309 INFO 15132 [egg:logger] init all loggers with options: {"dir":"F:\\PlanningIntegration\\work\\project\\scfun-system\\logs\\midway-vue3-ssr","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"midway-web.log","coreLogName":"midway-core.log","agentLogName":"midway-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"application"}
+2021-07-23 13:53:25,309 INFO 15132 [egg:core] dump config after load, 37ms
+2021-07-23 13:53:27,894 INFO 15132 [egg-multipart] stream mode enable
+2021-07-23 13:53:29,023 INFO 15132 [egg-static] starting static serve / -> F:\PlanningIntegration\work\project\scfun-system\build
+2021-07-23 13:53:29,057 INFO 15132 [egg-security] use csrf middleware
+2021-07-23 13:53:29,076 INFO 15132 [egg-security] use methodnoallow middleware
+2021-07-23 13:53:29,084 INFO 15132 [egg-security] use noopen middleware
+2021-07-23 13:53:29,103 INFO 15132 [egg-security] use nosniff middleware
+2021-07-23 13:53:29,111 INFO 15132 [egg-security] use xssProtection middleware
+2021-07-23 13:53:29,119 INFO 15132 [egg-security] use xframe middleware
+2021-07-23 13:53:29,130 INFO 15132 [egg-security] use dta middleware
+2021-07-23 13:53:29,130 INFO 15132 [egg-security] compose 7 middlewares into one security middleware
+2021-07-23 13:53:29,179 INFO 15132 [egg:core] dump config after ready, 22ms
+2021-07-23 13:59:17,977 INFO 18548 [egg:logger] init all loggers with options: {"dir":"F:\\PlanningIntegration\\work\\project\\scfun-system\\logs\\midway-vue3-ssr","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"midway-web.log","coreLogName":"midway-core.log","agentLogName":"midway-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"application"}
+2021-07-23 13:59:17,977 INFO 18548 [egg:core] dump config after load, 15ms
+2021-07-23 13:59:21,300 INFO 18548 [egg-multipart] stream mode enable
+2021-07-23 14:00:57,704 INFO 20760 [egg:logger] init all loggers with options: {"dir":"F:\\PlanningIntegration\\work\\project\\scfun-system\\logs\\midway-vue3-ssr","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"midway-web.log","coreLogName":"midway-core.log","agentLogName":"midway-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"application"}
+2021-07-23 14:00:57,704 INFO 20760 [egg:core] dump config after load, 36ms
+2021-07-23 14:01:00,272 INFO 20760 [egg-multipart] stream mode enable
+2021-07-23 14:01:01,341 INFO 20760 [egg-static] starting static serve / -> F:\PlanningIntegration\work\project\scfun-system\build
+2021-07-23 14:01:01,385 INFO 20760 [egg-security] use csrf middleware
+2021-07-23 14:01:01,401 INFO 20760 [egg-security] use methodnoallow middleware
+2021-07-23 14:01:01,407 INFO 20760 [egg-security] use noopen middleware
+2021-07-23 14:01:01,423 INFO 20760 [egg-security] use nosniff middleware
+2021-07-23 14:01:01,430 INFO 20760 [egg-security] use xssProtection middleware
+2021-07-23 14:01:01,439 INFO 20760 [egg-security] use xframe middleware
+2021-07-23 14:01:01,447 INFO 20760 [egg-security] use dta middleware
+2021-07-23 14:01:01,448 INFO 20760 [egg-security] compose 7 middlewares into one security middleware
+2021-07-23 14:01:01,490 INFO 20760 [egg:core] dump config after ready, 16ms
+2021-07-23 15:02:39,452 INFO 14780 [egg:logger] init all loggers with options: {"dir":"F:\\PlanningIntegration\\work\\project\\scfun-system\\logs\\midway-vue3-ssr","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"midway-web.log","coreLogName":"midway-core.log","agentLogName":"midway-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"application"}
+2021-07-23 15:02:39,454 INFO 14780 [egg:core] dump config after load, 52ms
+2021-07-23 15:02:41,689 INFO 14780 [egg-multipart] stream mode enable
+2021-07-23 15:02:42,558 INFO 14780 [egg-static] starting static serve / -> F:\PlanningIntegration\work\project\scfun-system\build
+2021-07-23 15:02:42,580 INFO 14780 [egg-security] use csrf middleware
+2021-07-23 15:02:42,596 INFO 14780 [egg-security] use methodnoallow middleware
+2021-07-23 15:02:42,603 INFO 14780 [egg-security] use noopen middleware
+2021-07-23 15:02:42,616 INFO 14780 [egg-security] use nosniff middleware
+2021-07-23 15:02:42,626 INFO 14780 [egg-security] use xssProtection middleware
+2021-07-23 15:02:42,631 INFO 14780 [egg-security] use xframe middleware
+2021-07-23 15:02:42,636 INFO 14780 [egg-security] use dta middleware
+2021-07-23 15:02:42,636 INFO 14780 [egg-security] compose 7 middlewares into one security middleware
+2021-07-23 15:02:42,662 INFO 14780 [egg:core] dump config after ready, 11ms
+2021-07-23 15:10:19,319 INFO 5900 [egg:logger] init all loggers with options: {"dir":"F:\\PlanningIntegration\\work\\project\\scfun-system\\logs\\midway-vue3-ssr","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"midway-web.log","coreLogName":"midway-core.log","agentLogName":"midway-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"application"}
+2021-07-23 15:10:19,319 INFO 5900 [egg:core] dump config after load, 58ms
+2021-07-23 15:10:22,712 INFO 5900 [egg-multipart] stream mode enable
+2021-07-23 15:10:23,782 INFO 5900 [egg-static] starting static serve / -> F:\PlanningIntegration\work\project\scfun-system\build
+2021-07-23 15:10:23,822 INFO 5900 [egg-security] use csrf middleware
+2021-07-23 15:10:23,837 INFO 5900 [egg-security] use methodnoallow middleware
+2021-07-23 15:10:23,844 INFO 5900 [egg-security] use noopen middleware
+2021-07-23 15:10:23,858 INFO 5900 [egg-security] use nosniff middleware
+2021-07-23 15:10:23,865 INFO 5900 [egg-security] use xssProtection middleware
+2021-07-23 15:10:23,872 INFO 5900 [egg-security] use xframe middleware
+2021-07-23 15:10:23,880 INFO 5900 [egg-security] use dta middleware
+2021-07-23 15:10:23,880 INFO 5900 [egg-security] compose 7 middlewares into one security middleware
+2021-07-23 15:10:23,932 INFO 5900 [egg:core] dump config after ready, 21ms
+2021-07-23 15:18:04,524 INFO 24160 [egg:logger] init all loggers with options: {"dir":"F:\\PlanningIntegration\\work\\project\\scfun-system\\logs\\midway-vue3-ssr","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"midway-web.log","coreLogName":"midway-core.log","agentLogName":"midway-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"application"}
+2021-07-23 15:18:04,524 INFO 24160 [egg:core] dump config after load, 27ms
+2021-07-23 15:18:06,282 INFO 24160 [egg-multipart] stream mode enable
+2021-07-23 15:18:06,891 INFO 24160 [egg-static] starting static serve / -> F:\PlanningIntegration\work\project\scfun-system\build
+2021-07-23 15:18:06,918 INFO 24160 [egg-security] use csrf middleware
+2021-07-23 15:18:06,931 INFO 24160 [egg-security] use methodnoallow middleware
+2021-07-23 15:18:06,936 INFO 24160 [egg-security] use noopen middleware
+2021-07-23 15:18:06,947 INFO 24160 [egg-security] use nosniff middleware
+2021-07-23 15:18:06,952 INFO 24160 [egg-security] use xssProtection middleware
+2021-07-23 15:18:06,957 INFO 24160 [egg-security] use xframe middleware
+2021-07-23 15:18:06,963 INFO 24160 [egg-security] use dta middleware
+2021-07-23 15:18:06,963 INFO 24160 [egg-security] compose 7 middlewares into one security middleware
+2021-07-23 15:18:06,983 INFO 24160 [egg:core] dump config after ready, 8ms
+2021-07-23 15:19:19,132 INFO 13156 [egg:logger] init all loggers with options: {"dir":"F:\\PlanningIntegration\\work\\project\\scfun-system\\logs\\midway-vue3-ssr","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"midway-web.log","coreLogName":"midway-core.log","agentLogName":"midway-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"application"}
+2021-07-23 15:19:19,132 INFO 13156 [egg:core] dump config after load, 60ms
+2021-07-23 15:19:22,530 INFO 13156 [egg-multipart] stream mode enable
+2021-07-23 15:19:23,974 INFO 13156 [egg-static] starting static serve / -> F:\PlanningIntegration\work\project\scfun-system\build
+2021-07-23 15:19:24,021 INFO 13156 [egg-security] use csrf middleware
+2021-07-23 15:19:24,044 INFO 13156 [egg-security] use methodnoallow middleware
+2021-07-23 15:19:24,052 INFO 13156 [egg-security] use noopen middleware
+2021-07-23 15:19:24,078 INFO 13156 [egg-security] use nosniff middleware
+2021-07-23 15:19:24,093 INFO 13156 [egg-security] use xssProtection middleware
+2021-07-23 15:19:24,103 INFO 13156 [egg-security] use xframe middleware
+2021-07-23 15:19:24,112 INFO 13156 [egg-security] use dta middleware
+2021-07-23 15:19:24,112 INFO 13156 [egg-security] compose 7 middlewares into one security middleware
+2021-07-23 15:19:24,165 INFO 13156 [egg:core] dump config after ready, 28ms
+2021-07-23 15:20:08,866 INFO 22700 [egg:logger] init all loggers with options: {"dir":"F:\\PlanningIntegration\\work\\project\\scfun-system\\logs\\midway-vue3-ssr","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"midway-web.log","coreLogName":"midway-core.log","agentLogName":"midway-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"application"}
+2021-07-23 15:20:08,868 INFO 22700 [egg:core] dump config after load, 137ms
+2021-07-23 15:20:12,633 INFO 22700 [egg-multipart] stream mode enable
+2021-07-23 15:20:14,216 INFO 22700 [egg-static] starting static serve / -> F:\PlanningIntegration\work\project\scfun-system\build
+2021-07-23 15:20:14,248 INFO 22700 [egg-security] use csrf middleware
+2021-07-23 15:20:14,268 INFO 22700 [egg-security] use methodnoallow middleware
+2021-07-23 15:20:14,275 INFO 22700 [egg-security] use noopen middleware
+2021-07-23 15:20:14,291 INFO 22700 [egg-security] use nosniff middleware
+2021-07-23 15:20:14,298 INFO 22700 [egg-security] use xssProtection middleware
+2021-07-23 15:20:14,307 INFO 22700 [egg-security] use xframe middleware
+2021-07-23 15:20:14,316 INFO 22700 [egg-security] use dta middleware
+2021-07-23 15:20:14,316 INFO 22700 [egg-security] compose 7 middlewares into one security middleware
+2021-07-23 15:20:14,369 INFO 22700 [egg:core] dump config after ready, 32ms
+2021-07-23 15:23:47,342 INFO 13928 [egg:logger] init all loggers with options: {"dir":"F:\\PlanningIntegration\\work\\project\\scfun-system\\logs\\midway-vue3-ssr","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"midway-web.log","coreLogName":"midway-core.log","agentLogName":"midway-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"application"}
+2021-07-23 15:23:47,343 INFO 13928 [egg:core] dump config after load, 43ms
+2021-07-23 15:23:50,244 INFO 13928 [egg-multipart] stream mode enable
+2021-07-23 15:23:51,196 INFO 13928 [egg-static] starting static serve / -> F:\PlanningIntegration\work\project\scfun-system\build
+2021-07-23 15:23:51,239 INFO 13928 [egg-security] use csrf middleware
+2021-07-23 15:23:51,262 INFO 13928 [egg-security] use methodnoallow middleware
+2021-07-23 15:23:51,275 INFO 13928 [egg-security] use noopen middleware
+2021-07-23 15:23:51,311 INFO 13928 [egg-security] use nosniff middleware
+2021-07-23 15:23:51,323 INFO 13928 [egg-security] use xssProtection middleware
+2021-07-23 15:23:51,337 INFO 13928 [egg-security] use xframe middleware
+2021-07-23 15:23:51,349 INFO 13928 [egg-security] use dta middleware
+2021-07-23 15:23:51,350 INFO 13928 [egg-security] compose 7 middlewares into one security middleware
+2021-07-23 15:23:51,417 INFO 13928 [egg:core] dump config after ready, 36ms
+2021-07-23 15:24:28,151 ERROR 13928 nodejs.unhandledRejectionError: ENOENT: no such file or directory, open 'F:\PlanningIntegration\work\project\scfun-system\build\server\webpack:\node_modules\ssr-plugin-vue3\cjs\entry\server-entry.js'
+    at Object.openSync (fs.js:498:3)
+    at Object.readFileSync (fs.js:394:35)
+    at ErrorView.getFrameSource (F:\PlanningIntegration\work\project\scfun-system\node_modules\egg-onerror\lib\error_view.js:131:21)
+    at F:\PlanningIntegration\work\project\scfun-system\node_modules\egg-onerror\lib\error_view.js:154:30
+    at Array.map (<anonymous>)
+    at ErrorView.parseError (F:\PlanningIntegration\work\project\scfun-system\node_modules\egg-onerror\lib\error_view.js:152:18)
+    at ErrorView.toHTML (F:\PlanningIntegration\work\project\scfun-system\node_modules\egg-onerror\lib\error_view.js:36:24)
+    at Object.html (F:\PlanningIntegration\work\project\scfun-system\node_modules\egg-onerror\app.js:86:29)
+    at Object.app.context.onerror (F:\PlanningIntegration\work\project\scfun-system\node_modules\koa-onerror\index.js:84:23)
+    at onerror (F:\PlanningIntegration\work\project\scfun-system\node_modules\koa\lib\application.js:165:32)
+errno: -4058
+syscall: "open"
+code: "ENOENT"
+path: "F:\\PlanningIntegration\\work\\project\\scfun-system\\build\\server\\webpack:\\node_modules\\ssr-plugin-vue3\\cjs\\entry\\server-entry.js"
+name: "unhandledRejectionError"
+pid: 13928
+hostname: DESKTOP-9VMJRDM
+
+2021-07-23 15:26:46,220 INFO 24024 [egg:logger] init all loggers with options: {"dir":"F:\\PlanningIntegration\\work\\project\\scfun-system\\logs\\midway-vue3-ssr","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"midway-web.log","coreLogName":"midway-core.log","agentLogName":"midway-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"application"}
+2021-07-23 15:26:46,220 INFO 24024 [egg:core] dump config after load, 33ms
+2021-07-23 15:26:49,912 INFO 24024 [egg-multipart] stream mode enable
+2021-07-23 15:26:51,271 INFO 24024 [egg-static] starting static serve / -> F:\PlanningIntegration\work\project\scfun-system\build
+2021-07-23 15:26:51,331 INFO 24024 [egg-security] use csrf middleware
+2021-07-23 15:26:51,356 INFO 24024 [egg-security] use methodnoallow middleware
+2021-07-23 15:26:51,367 INFO 24024 [egg-security] use noopen middleware
+2021-07-23 15:26:51,421 INFO 24024 [egg-security] use nosniff middleware
+2021-07-23 15:26:51,434 INFO 24024 [egg-security] use xssProtection middleware
+2021-07-23 15:26:51,444 INFO 24024 [egg-security] use xframe middleware
+2021-07-23 15:26:51,451 INFO 24024 [egg-security] use dta middleware
+2021-07-23 15:26:51,451 INFO 24024 [egg-security] compose 7 middlewares into one security middleware
+2021-07-23 15:26:51,510 INFO 24024 [egg:core] dump config after ready, 26ms
+2021-07-23 15:55:56,137 INFO 24168 [egg:logger] init all loggers with options: {"dir":"F:\\PlanningIntegration\\work\\project\\scfun-system\\logs\\midway-vue3-ssr","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"midway-web.log","coreLogName":"midway-core.log","agentLogName":"midway-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"application"}
+2021-07-23 15:55:56,137 INFO 24168 [egg:core] dump config after load, 32ms
+2021-07-23 15:56:00,242 INFO 24168 [egg-multipart] stream mode enable
+2021-07-23 15:56:01,002 INFO 24168 [egg-static] starting static serve / -> F:\PlanningIntegration\work\project\scfun-system\build
+2021-07-23 15:56:01,024 INFO 24168 [egg-security] use csrf middleware
+2021-07-23 15:56:01,036 INFO 24168 [egg-security] use methodnoallow middleware
+2021-07-23 15:56:01,042 INFO 24168 [egg-security] use noopen middleware
+2021-07-23 15:56:01,051 INFO 24168 [egg-security] use nosniff middleware
+2021-07-23 15:56:01,055 INFO 24168 [egg-security] use xssProtection middleware
+2021-07-23 15:56:01,061 INFO 24168 [egg-security] use xframe middleware
+2021-07-23 15:56:01,065 INFO 24168 [egg-security] use dta middleware
+2021-07-23 15:56:01,065 INFO 24168 [egg-security] compose 7 middlewares into one security middleware
+2021-07-23 15:56:01,087 INFO 24168 [egg:core] dump config after ready, 8ms
+2021-07-23 15:56:52,392 INFO 20024 [egg:logger] init all loggers with options: {"dir":"F:\\PlanningIntegration\\work\\project\\scfun-system\\logs\\midway-vue3-ssr","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"midway-web.log","coreLogName":"midway-core.log","agentLogName":"midway-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"application"}
+2021-07-23 15:56:52,392 INFO 20024 [egg:core] dump config after load, 31ms
+2021-07-23 15:56:57,178 INFO 20024 [egg-multipart] stream mode enable
+2021-07-23 15:56:59,049 INFO 20024 [egg-static] starting static serve / -> F:\PlanningIntegration\work\project\scfun-system\build
+2021-07-23 15:56:59,203 INFO 20024 [egg-security] use csrf middleware
+2021-07-23 15:56:59,239 INFO 20024 [egg-security] use methodnoallow middleware
+2021-07-23 15:56:59,261 INFO 20024 [egg-security] use noopen middleware
+2021-07-23 15:56:59,285 INFO 20024 [egg-security] use nosniff middleware
+2021-07-23 15:56:59,296 INFO 20024 [egg-security] use xssProtection middleware
+2021-07-23 15:56:59,306 INFO 20024 [egg-security] use xframe middleware
+2021-07-23 15:56:59,313 INFO 20024 [egg-security] use dta middleware
+2021-07-23 15:56:59,313 INFO 20024 [egg-security] compose 7 middlewares into one security middleware
+2021-07-23 15:56:59,371 INFO 20024 [egg:core] dump config after ready, 21ms
+2021-07-23 15:58:33,237 INFO 25240 [egg:logger] init all loggers with options: {"dir":"F:\\PlanningIntegration\\work\\project\\scfun-system\\logs\\midway-vue3-ssr","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"midway-web.log","coreLogName":"midway-core.log","agentLogName":"midway-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"application"}
+2021-07-23 15:58:33,237 INFO 25240 [egg:core] dump config after load, 15ms
+2021-07-23 15:58:35,884 INFO 25240 [egg-multipart] stream mode enable
+2021-07-23 15:58:36,457 INFO 25240 [egg-static] starting static serve / -> F:\PlanningIntegration\work\project\scfun-system\build
+2021-07-23 15:58:36,482 INFO 25240 [egg-security] use csrf middleware
+2021-07-23 15:58:36,496 INFO 25240 [egg-security] use methodnoallow middleware
+2021-07-23 15:58:36,501 INFO 25240 [egg-security] use noopen middleware
+2021-07-23 15:58:36,512 INFO 25240 [egg-security] use nosniff middleware
+2021-07-23 15:58:36,517 INFO 25240 [egg-security] use xssProtection middleware
+2021-07-23 15:58:36,523 INFO 25240 [egg-security] use xframe middleware
+2021-07-23 15:58:36,528 INFO 25240 [egg-security] use dta middleware
+2021-07-23 15:58:36,529 INFO 25240 [egg-security] compose 7 middlewares into one security middleware
+2021-07-23 15:58:36,554 INFO 25240 [egg:core] dump config after ready, 10ms
+2021-07-23 16:02:19,413 INFO 6576 [egg:logger] init all loggers with options: {"dir":"F:\\PlanningIntegration\\work\\project\\scfun-system\\logs\\midway-vue3-ssr","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"midway-web.log","coreLogName":"midway-core.log","agentLogName":"midway-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"application"}
+2021-07-23 16:02:19,413 INFO 6576 [egg:core] dump config after load, 50ms
+2021-07-23 16:02:22,765 INFO 6576 [egg-multipart] stream mode enable
+2021-07-23 16:02:23,877 INFO 6576 [egg-static] starting static serve / -> F:\PlanningIntegration\work\project\scfun-system\build
+2021-07-23 16:02:23,918 INFO 6576 [egg-security] use csrf middleware
+2021-07-23 16:02:23,938 INFO 6576 [egg-security] use methodnoallow middleware
+2021-07-23 16:02:23,950 INFO 6576 [egg-security] use noopen middleware
+2021-07-23 16:02:23,967 INFO 6576 [egg-security] use nosniff middleware
+2021-07-23 16:02:23,977 INFO 6576 [egg-security] use xssProtection middleware
+2021-07-23 16:02:23,984 INFO 6576 [egg-security] use xframe middleware
+2021-07-23 16:02:23,991 INFO 6576 [egg-security] use dta middleware
+2021-07-23 16:02:23,991 INFO 6576 [egg-security] compose 7 middlewares into one security middleware
+2021-07-23 16:02:24,035 INFO 6576 [egg:core] dump config after ready, 22ms
+2021-07-23 17:00:56,074 ERROR 6576 nodejs.unhandledRejectionError: ENOENT: no such file or directory, open 'F:\PlanningIntegration\work\project\scfun-system\build\server\webpack:\webpack\bootstrap'
+    at Object.openSync (fs.js:498:3)
+    at Object.readFileSync (fs.js:394:35)
+    at ErrorView.getFrameSource (F:\PlanningIntegration\work\project\scfun-system\node_modules\egg-onerror\lib\error_view.js:131:21)
+    at F:\PlanningIntegration\work\project\scfun-system\node_modules\egg-onerror\lib\error_view.js:154:30
+    at Array.map (<anonymous>)
+    at ErrorView.parseError (F:\PlanningIntegration\work\project\scfun-system\node_modules\egg-onerror\lib\error_view.js:152:18)
+    at ErrorView.toHTML (F:\PlanningIntegration\work\project\scfun-system\node_modules\egg-onerror\lib\error_view.js:36:24)
+    at Object.html (F:\PlanningIntegration\work\project\scfun-system\node_modules\egg-onerror\app.js:86:29)
+    at Object.app.context.onerror (F:\PlanningIntegration\work\project\scfun-system\node_modules\koa-onerror\index.js:84:23)
+    at onerror (F:\PlanningIntegration\work\project\scfun-system\node_modules\koa\lib\application.js:165:32)
+errno: -4058
+syscall: "open"
+code: "ENOENT"
+path: "F:\\PlanningIntegration\\work\\project\\scfun-system\\build\\server\\webpack:\\webpack\\bootstrap"
+name: "unhandledRejectionError"
+pid: 6576
+hostname: DESKTOP-9VMJRDM
+

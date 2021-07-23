@@ -1,0 +1,85 @@
+2021-07-23 13:25:35,333 INFO 25128 [egg:logger] init all loggers with options: {"dir":"F:\\PlanningIntegration\\work\\project\\scfun-system\\logs\\midway-vue3-ssr","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"midway-web.log","coreLogName":"midway-core.log","agentLogName":"midway-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"agent"}
+2021-07-23 13:25:35,334 INFO 25128 [egg:core] dump config after load, 47ms
+2021-07-23 13:25:38,098 INFO 25128 [egg:core] dump config after ready, 26ms
+2021-07-23 13:53:22,646 INFO 15132 [egg:logger] init all loggers with options: {"dir":"F:\\PlanningIntegration\\work\\project\\scfun-system\\logs\\midway-vue3-ssr","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"midway-web.log","coreLogName":"midway-core.log","agentLogName":"midway-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"agent"}
+2021-07-23 13:53:22,647 INFO 15132 [egg:core] dump config after load, 46ms
+2021-07-23 13:53:24,268 INFO 15132 [egg:core] dump config after ready, 41ms
+2021-07-23 13:59:14,173 INFO 18548 [egg:logger] init all loggers with options: {"dir":"F:\\PlanningIntegration\\work\\project\\scfun-system\\logs\\midway-vue3-ssr","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"midway-web.log","coreLogName":"midway-core.log","agentLogName":"midway-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"agent"}
+2021-07-23 13:59:14,174 INFO 18548 [egg:core] dump config after load, 45ms
+2021-07-23 13:59:17,479 INFO 18548 [egg:core] dump config after ready, 29ms
+2021-07-23 14:00:54,276 INFO 20760 [egg:logger] init all loggers with options: {"dir":"F:\\PlanningIntegration\\work\\project\\scfun-system\\logs\\midway-vue3-ssr","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"midway-web.log","coreLogName":"midway-core.log","agentLogName":"midway-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"agent"}
+2021-07-23 14:00:54,277 INFO 20760 [egg:core] dump config after load, 45ms
+2021-07-23 14:00:56,700 INFO 20760 [egg:core] dump config after ready, 24ms
+2021-07-23 15:02:37,145 INFO 14780 [egg:logger] init all loggers with options: {"dir":"F:\\PlanningIntegration\\work\\project\\scfun-system\\logs\\midway-vue3-ssr","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"midway-web.log","coreLogName":"midway-core.log","agentLogName":"midway-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"agent"}
+2021-07-23 15:02:37,145 INFO 14780 [egg:core] dump config after load, 19ms
+2021-07-23 15:02:38,712 INFO 14780 [egg:core] dump config after ready, 41ms
+2021-07-23 15:10:15,513 INFO 5900 [egg:logger] init all loggers with options: {"dir":"F:\\PlanningIntegration\\work\\project\\scfun-system\\logs\\midway-vue3-ssr","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"midway-web.log","coreLogName":"midway-core.log","agentLogName":"midway-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"agent"}
+2021-07-23 15:10:15,513 INFO 5900 [egg:core] dump config after load, 44ms
+2021-07-23 15:10:18,096 INFO 5900 [egg:core] dump config after ready, 35ms
+2021-07-23 15:18:02,286 INFO 24160 [egg:logger] init all loggers with options: {"dir":"F:\\PlanningIntegration\\work\\project\\scfun-system\\logs\\midway-vue3-ssr","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"midway-web.log","coreLogName":"midway-core.log","agentLogName":"midway-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"agent"}
+2021-07-23 15:18:02,287 INFO 24160 [egg:core] dump config after load, 30ms
+2021-07-23 15:18:04,114 INFO 24160 [egg:core] dump config after ready, 8ms
+2021-07-23 15:19:15,342 INFO 13156 [egg:logger] init all loggers with options: {"dir":"F:\\PlanningIntegration\\work\\project\\scfun-system\\logs\\midway-vue3-ssr","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"midway-web.log","coreLogName":"midway-core.log","agentLogName":"midway-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"agent"}
+2021-07-23 15:19:15,343 INFO 13156 [egg:core] dump config after load, 63ms
+2021-07-23 15:19:18,032 INFO 13156 [egg:core] dump config after ready, 36ms
+2021-07-23 15:20:04,304 INFO 22700 [egg:logger] init all loggers with options: {"dir":"F:\\PlanningIntegration\\work\\project\\scfun-system\\logs\\midway-vue3-ssr","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"midway-web.log","coreLogName":"midway-core.log","agentLogName":"midway-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"agent"}
+2021-07-23 15:20:04,305 INFO 22700 [egg:core] dump config after load, 40ms
+2021-07-23 15:20:07,720 INFO 22700 [egg:core] dump config after ready, 19ms
+2021-07-23 15:23:44,607 INFO 13928 [egg:logger] init all loggers with options: {"dir":"F:\\PlanningIntegration\\work\\project\\scfun-system\\logs\\midway-vue3-ssr","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"midway-web.log","coreLogName":"midway-core.log","agentLogName":"midway-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"agent"}
+2021-07-23 15:23:44,608 INFO 13928 [egg:core] dump config after load, 54ms
+2021-07-23 15:23:46,388 INFO 13928 [egg:core] dump config after ready, 48ms
+2021-07-23 15:24:28,148 ERROR 13928 nodejs.unhandledRejectionError: ENOENT: no such file or directory, open 'F:\PlanningIntegration\work\project\scfun-system\build\server\webpack:\node_modules\ssr-plugin-vue3\cjs\entry\server-entry.js'
+    at Object.openSync (fs.js:498:3)
+    at Object.readFileSync (fs.js:394:35)
+    at ErrorView.getFrameSource (F:\PlanningIntegration\work\project\scfun-system\node_modules\egg-onerror\lib\error_view.js:131:21)
+    at F:\PlanningIntegration\work\project\scfun-system\node_modules\egg-onerror\lib\error_view.js:154:30
+    at Array.map (<anonymous>)
+    at ErrorView.parseError (F:\PlanningIntegration\work\project\scfun-system\node_modules\egg-onerror\lib\error_view.js:152:18)
+    at ErrorView.toHTML (F:\PlanningIntegration\work\project\scfun-system\node_modules\egg-onerror\lib\error_view.js:36:24)
+    at Object.html (F:\PlanningIntegration\work\project\scfun-system\node_modules\egg-onerror\app.js:86:29)
+    at Object.app.context.onerror (F:\PlanningIntegration\work\project\scfun-system\node_modules\koa-onerror\index.js:84:23)
+    at onerror (F:\PlanningIntegration\work\project\scfun-system\node_modules\koa\lib\application.js:165:32)
+errno: -4058
+syscall: "open"
+code: "ENOENT"
+path: "F:\\PlanningIntegration\\work\\project\\scfun-system\\build\\server\\webpack:\\node_modules\\ssr-plugin-vue3\\cjs\\entry\\server-entry.js"
+name: "unhandledRejectionError"
+pid: 13928
+hostname: DESKTOP-9VMJRDM
+
+2021-07-23 15:26:42,038 INFO 24024 [egg:logger] init all loggers with options: {"dir":"F:\\PlanningIntegration\\work\\project\\scfun-system\\logs\\midway-vue3-ssr","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"midway-web.log","coreLogName":"midway-core.log","agentLogName":"midway-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"agent"}
+2021-07-23 15:26:42,038 INFO 24024 [egg:core] dump config after load, 39ms
+2021-07-23 15:26:44,885 INFO 24024 [egg:core] dump config after ready, 28ms
+2021-07-23 15:55:52,459 INFO 24168 [egg:logger] init all loggers with options: {"dir":"F:\\PlanningIntegration\\work\\project\\scfun-system\\logs\\midway-vue3-ssr","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"midway-web.log","coreLogName":"midway-core.log","agentLogName":"midway-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"agent"}
+2021-07-23 15:55:52,459 INFO 24168 [egg:core] dump config after load, 23ms
+2021-07-23 15:55:54,721 INFO 24168 [egg:core] dump config after ready, 32ms
+2021-07-23 15:56:47,059 INFO 20024 [egg:logger] init all loggers with options: {"dir":"F:\\PlanningIntegration\\work\\project\\scfun-system\\logs\\midway-vue3-ssr","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"midway-web.log","coreLogName":"midway-core.log","agentLogName":"midway-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"agent"}
+2021-07-23 15:56:47,060 INFO 20024 [egg:core] dump config after load, 39ms
+2021-07-23 15:56:50,651 INFO 20024 [egg:core] dump config after ready, 64ms
+2021-07-23 15:58:30,490 INFO 25240 [egg:logger] init all loggers with options: {"dir":"F:\\PlanningIntegration\\work\\project\\scfun-system\\logs\\midway-vue3-ssr","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"midway-web.log","coreLogName":"midway-core.log","agentLogName":"midway-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"agent"}
+2021-07-23 15:58:30,490 INFO 25240 [egg:core] dump config after load, 38ms
+2021-07-23 15:58:32,696 INFO 25240 [egg:core] dump config after ready, 43ms
+2021-07-23 16:02:16,138 INFO 6576 [egg:logger] init all loggers with options: {"dir":"F:\\PlanningIntegration\\work\\project\\scfun-system\\logs\\midway-vue3-ssr","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"midway-web.log","coreLogName":"midway-core.log","agentLogName":"midway-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"agent"}
+2021-07-23 16:02:16,138 INFO 6576 [egg:core] dump config after load, 17ms
+2021-07-23 16:02:18,152 INFO 6576 [egg:core] dump config after ready, 42ms
+2021-07-23 17:00:56,074 ERROR 6576 nodejs.unhandledRejectionError: ENOENT: no such file or directory, open 'F:\PlanningIntegration\work\project\scfun-system\build\server\webpack:\webpack\bootstrap'
+    at Object.openSync (fs.js:498:3)
+    at Object.readFileSync (fs.js:394:35)
+    at ErrorView.getFrameSource (F:\PlanningIntegration\work\project\scfun-system\node_modules\egg-onerror\lib\error_view.js:131:21)
+    at F:\PlanningIntegration\work\project\scfun-system\node_modules\egg-onerror\lib\error_view.js:154:30
+    at Array.map (<anonymous>)
+    at ErrorView.parseError (F:\PlanningIntegration\work\project\scfun-system\node_modules\egg-onerror\lib\error_view.js:152:18)
+    at ErrorView.toHTML (F:\PlanningIntegration\work\project\scfun-system\node_modules\egg-onerror\lib\error_view.js:36:24)
+    at Object.html (F:\PlanningIntegration\work\project\scfun-system\node_modules\egg-onerror\app.js:86:29)
+    at Object.app.context.onerror (F:\PlanningIntegration\work\project\scfun-system\node_modules\koa-onerror\index.js:84:23)
+    at onerror (F:\PlanningIntegration\work\project\scfun-system\node_modules\koa\lib\application.js:165:32)
+errno: -4058
+syscall: "open"
+code: "ENOENT"
+path: "F:\\PlanningIntegration\\work\\project\\scfun-system\\build\\server\\webpack:\\webpack\\bootstrap"
+name: "unhandledRejectionError"
+pid: 6576
+hostname: DESKTOP-9VMJRDM
+
+2021-07-23 17:02:53,612 INFO 23616 [egg:logger] init all loggers with options: {"dir":"F:\\PlanningIntegration\\work\\project\\scfun-system\\logs\\midway-vue3-ssr","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"midway-web.log","coreLogName":"midway-core.log","agentLogName":"midway-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"agent"}
+2021-07-23 17:02:53,612 INFO 23616 [egg:core] dump config after load, 28ms

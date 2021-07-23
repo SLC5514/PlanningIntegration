@@ -1,0 +1,55 @@
+2021-07-23 15:24:28,110 ERROR 13928 [-/127.0.0.1/-/570ms GET /404] nodejs.Error: 
+    查找组件失败，请确认当前 path: /404 对应前端组件是否存在
+    若创建了新的页面文件夹，请重新执行 npm start 重启服务
+    
+    查找组件失败，请确认当前 path: /404 对应前端组件是否存在
+    若创建了新的页面文件夹，请重新执行 npm start 重启服务
+    
+    at _callee$ (F:\PlanningIntegration\work\project\scfun-system\build\server\webpack:\node_modules\ssr-plugin-vue3\cjs\entry\server-entry.js:24:15)
+    at tryCatch (F:\PlanningIntegration\work\project\scfun-system\node_modules\regenerator-runtime\runtime.js:63:40)
+    at Generator.invoke [as _invoke] (F:\PlanningIntegration\work\project\scfun-system\node_modules\regenerator-runtime\runtime.js:294:22)
+    at Generator.next (F:\PlanningIntegration\work\project\scfun-system\node_modules\regenerator-runtime\runtime.js:119:21)
+    at asyncGeneratorStep (F:\PlanningIntegration\work\project\scfun-system\node_modules\@babel\runtime\helpers\asyncToGenerator.js:3:24)
+    at _next (F:\PlanningIntegration\work\project\scfun-system\node_modules\@babel\runtime\helpers\asyncToGenerator.js:25:9)
+    at F:\PlanningIntegration\work\project\scfun-system\node_modules\@babel\runtime\helpers\asyncToGenerator.js:32:7
+    at new Promise (<anonymous>)
+    at F:\PlanningIntegration\work\project\scfun-system\node_modules\@babel\runtime\helpers\asyncToGenerator.js:21:12
+    at serverRender (F:\PlanningIntegration\work\project\scfun-system\build\server\webpack:\node_modules\ssr-plugin-vue3\cjs\entry\server-entry.js:10:19)
+
+pid: 13928
+hostname: DESKTOP-9VMJRDM
+
+2021-07-23 15:56:06,064 ERROR 24168 [-/undefined/-/973ms GET /404] nodejs.ECONNABORTEDError: write ECONNABORTED
+    at afterWriteDispatched (internal/stream_base_commons.js:156:25)
+    at writevGeneric (internal/stream_base_commons.js:139:3)
+    at Socket._writeGeneric (net.js:785:11)
+    at Socket._writev (net.js:794:8)
+    at doWrite (internal/streams/writable.js:375:12)
+    at clearBuffer (internal/streams/writable.js:521:5)
+    at Socket.Writable.uncork (internal/streams/writable.js:317:7)
+    at connectionCorkNT (_http_outgoing.js:759:8)
+    at processTicksAndRejections (internal/process/task_queues.js:81:21)
+errno: -4079
+code: "ECONNABORTED"
+syscall: "write"
+headerSent: true
+name: "ECONNABORTEDError"
+pid: 24168
+hostname: DESKTOP-9VMJRDM
+
+2021-07-23 17:00:56,033 ERROR 6576 [-/127.0.0.1/-/133ms GET /] nodejs.MODULE_NOT_FOUNDError: Cannot find module '@/assets/images/SLC%20@2x.png'
+    at webpackMissingModule (F:\PlanningIntegration\work\project\scfun-system\build\server\Page.server.js:968:45)
+    at Module../node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/dist/templateLoader.js?!./node_modules/vue-loader/dist/index.js?!./web/pages/index/render.vue?vue&type=template&id=6781c9f2&scoped=true (F:\PlanningIntegration\work\project\scfun-system\build\server\Page.server.js:968:149)
+    at __webpack_require__ (F:\PlanningIntegration\work\project\scfun-system\build\server\webpack:\webpack\bootstrap:19:1)
+    at Module../web/pages/index/render.vue?vue&type=template&id=6781c9f2&scoped=true (F:\PlanningIntegration\work\project\scfun-system\build\server\webpack:\web\pages\index\render.vue?95bf:1:1)
+    at __webpack_require__ (F:\PlanningIntegration\work\project\scfun-system\build\server\webpack:\webpack\bootstrap:19:1)
+    at Module../web/pages/index/render.vue (F:\PlanningIntegration\work\project\scfun-system\build\server\webpack:\web\pages\index\render.vue?77f1:1:1)
+    at require (F:\PlanningIntegration\work\project\scfun-system\build\server\webpack:\webpack\bootstrap:19:1)
+    at Module../node_modules/ssr-temporary-routes/route.js (F:\PlanningIntegration\work\project\scfun-system\build\server\webpack:\node_modules\ssr-temporary-routes\route.js:3:846)
+    at require (F:\PlanningIntegration\work\project\scfun-system\build\server\webpack:\webpack\bootstrap:19:1)
+    at Object../node_modules/ssr-plugin-vue3/cjs/entry/server-entry.js (F:\PlanningIntegration\work\project\scfun-system\build\server\webpack:\node_modules\ssr-plugin-vue3\cjs\entry\server-entry.js:7:16)
+code: "MODULE_NOT_FOUND"
+name: "MODULE_NOT_FOUNDError"
+pid: 6576
+hostname: DESKTOP-9VMJRDM
+

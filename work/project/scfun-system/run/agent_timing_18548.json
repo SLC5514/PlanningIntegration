@@ -1,0 +1,394 @@
+[
+  {
+    "name": "Process Start",
+    "start": 1627019922379,
+    "end": 1627019952920,
+    "duration": 30541,
+    "pid": 18548,
+    "index": 0
+  },
+  {
+    "name": "Application Start",
+    "start": 1627019952931,
+    "end": 1627019957449,
+    "duration": 4518,
+    "pid": 18548,
+    "index": 1
+  },
+  {
+    "name": "Load Plugin",
+    "start": 1627019952962,
+    "end": 1627019953192,
+    "duration": 230,
+    "pid": 18548,
+    "index": 2
+  },
+  {
+    "name": "Load Config",
+    "start": 1627019953192,
+    "end": 1627019954123,
+    "duration": 931,
+    "pid": 18548,
+    "index": 3
+  },
+  {
+    "name": "Require(0) config/config.default.ts",
+    "start": 1627019953201,
+    "end": 1627019953204,
+    "duration": 3,
+    "pid": 18548,
+    "index": 4
+  },
+  {
+    "name": "Require(1) config/config.local.ts",
+    "start": 1627019953212,
+    "end": 1627019953216,
+    "duration": 4,
+    "pid": 18548,
+    "index": 5
+  },
+  {
+    "name": "Require(2) F:/PlanningIntegration/work/project/scfun-system/node_modules/egg-session/config/config.default.js",
+    "start": 1627019953226,
+    "end": 1627019953231,
+    "duration": 5,
+    "pid": 18548,
+    "index": 6
+  },
+  {
+    "name": "Require(3) F:/PlanningIntegration/work/project/scfun-system/node_modules/egg-security/config/config.default.js",
+    "start": 1627019953241,
+    "end": 1627019953245,
+    "duration": 4,
+    "pid": 18548,
+    "index": 7
+  },
+  {
+    "name": "Require(4) F:/PlanningIntegration/work/project/scfun-system/node_modules/egg-jsonp/config/config.default.js",
+    "start": 1627019953256,
+    "end": 1627019953261,
+    "duration": 5,
+    "pid": 18548,
+    "index": 8
+  },
+  {
+    "name": "Require(5) F:/PlanningIntegration/work/project/scfun-system/node_modules/egg-onerror/config/config.default.js",
+    "start": 1627019953270,
+    "end": 1627019953275,
+    "duration": 5,
+    "pid": 18548,
+    "index": 9
+  },
+  {
+    "name": "Require(6) F:/PlanningIntegration/work/project/scfun-system/node_modules/egg-i18n/config/config.default.js",
+    "start": 1627019953284,
+    "end": 1627019953289,
+    "duration": 5,
+    "pid": 18548,
+    "index": 10
+  },
+  {
+    "name": "Require(7) F:/PlanningIntegration/work/project/scfun-system/node_modules/egg-schedule/config/config.default.js",
+    "start": 1627019953304,
+    "end": 1627019953309,
+    "duration": 5,
+    "pid": 18548,
+    "index": 11
+  },
+  {
+    "name": "Require(8) F:/PlanningIntegration/work/project/scfun-system/node_modules/egg-multipart/config/config.default.js",
+    "start": 1627019953332,
+    "end": 1627019953338,
+    "duration": 6,
+    "pid": 18548,
+    "index": 12
+  },
+  {
+    "name": "Require(9) F:/PlanningIntegration/work/project/scfun-system/node_modules/egg-logrotator/config/config.default.js",
+    "start": 1627019953352,
+    "end": 1627019953360,
+    "duration": 8,
+    "pid": 18548,
+    "index": 13
+  },
+  {
+    "name": "Require(10) F:/PlanningIntegration/work/project/scfun-system/node_modules/egg-static/config/config.default.js",
+    "start": 1627019953371,
+    "end": 1627019953377,
+    "duration": 6,
+    "pid": 18548,
+    "index": 14
+  },
+  {
+    "name": "Require(11) F:/PlanningIntegration/work/project/scfun-system/node_modules/egg-view/config/config.default.js",
+    "start": 1627019953389,
+    "end": 1627019953396,
+    "duration": 7,
+    "pid": 18548,
+    "index": 15
+  },
+  {
+    "name": "Require(12) F:/PlanningIntegration/work/project/scfun-system/node_modules/egg/config/config.default.js",
+    "start": 1627019953546,
+    "end": 1627019953635,
+    "duration": 89,
+    "pid": 18548,
+    "index": 16
+  },
+  {
+    "name": "Require(13) F:/PlanningIntegration/work/project/scfun-system/node_modules/@midwayjs/web/config/config.default.js",
+    "start": 1627019953734,
+    "end": 1627019953809,
+    "duration": 75,
+    "pid": 18548,
+    "index": 17
+  },
+  {
+    "name": "Require(14) config/config.default.ts",
+    "start": 1627019953830,
+    "end": 1627019953841,
+    "duration": 11,
+    "pid": 18548,
+    "index": 18
+  },
+  {
+    "name": "Require(15) F:/PlanningIntegration/work/project/scfun-system/node_modules/egg-security/config/config.local.js",
+    "start": 1627019953883,
+    "end": 1627019953891,
+    "duration": 8,
+    "pid": 18548,
+    "index": 19
+  },
+  {
+    "name": "Require(16) F:/PlanningIntegration/work/project/scfun-system/node_modules/egg-view/config/config.local.js",
+    "start": 1627019954003,
+    "end": 1627019954010,
+    "duration": 7,
+    "pid": 18548,
+    "index": 20
+  },
+  {
+    "name": "Require(17) F:/PlanningIntegration/work/project/scfun-system/node_modules/egg/config/config.local.js",
+    "start": 1627019954066,
+    "end": 1627019954075,
+    "duration": 9,
+    "pid": 18548,
+    "index": 21
+  },
+  {
+    "name": "Require(18) config/config.local.ts",
+    "start": 1627019954117,
+    "end": 1627019954122,
+    "duration": 5,
+    "pid": 18548,
+    "index": 22
+  },
+  {
+    "name": "Before Start in node_modules/@midwayjs/web/dist/base.js:222:22",
+    "start": 1627019954126,
+    "end": 1627019957071,
+    "duration": 2945,
+    "pid": 18548,
+    "index": 23
+  },
+  {
+    "name": "Load extend/agent.js",
+    "start": 1627019954219,
+    "end": 1627019955270,
+    "duration": 1051,
+    "pid": 18548,
+    "index": 24
+  },
+  {
+    "name": "Require(19) F:/PlanningIntegration/work/project/scfun-system/node_modules/egg-security/app/extend/agent.js",
+    "start": 1627019954239,
+    "end": 1627019954266,
+    "duration": 27,
+    "pid": 18548,
+    "index": 25
+  },
+  {
+    "name": "Require(20) F:/PlanningIntegration/work/project/scfun-system/node_modules/egg-schedule/app/extend/agent.js",
+    "start": 1627019954362,
+    "end": 1627019954685,
+    "duration": 323,
+    "pid": 18548,
+    "index": 26
+  },
+  {
+    "name": "Require(21) F:/PlanningIntegration/work/project/scfun-system/node_modules/egg-logrotator/app/extend/agent.js",
+    "start": 1627019954733,
+    "end": 1627019954780,
+    "duration": 47,
+    "pid": 18548,
+    "index": 27
+  },
+  {
+    "name": "Require(22) F:/PlanningIntegration/work/project/scfun-system/node_modules/egg-mock/app/extend/agent.js",
+    "start": 1627019954815,
+    "end": 1627019954862,
+    "duration": 47,
+    "pid": 18548,
+    "index": 28
+  },
+  {
+    "name": "Require(23) F:/PlanningIntegration/work/project/scfun-system/node_modules/@midwayjs/web/app/extend/agent.js",
+    "start": 1627019954919,
+    "end": 1627019954946,
+    "duration": 27,
+    "pid": 18548,
+    "index": 29
+  },
+  {
+    "name": "Load extend/context.js",
+    "start": 1627019955270,
+    "end": 1627019956831,
+    "duration": 1561,
+    "pid": 18548,
+    "index": 30
+  },
+  {
+    "name": "Require(24) F:/PlanningIntegration/work/project/scfun-system/node_modules/egg-security/app/extend/context.js",
+    "start": 1627019955291,
+    "end": 1627019955470,
+    "duration": 179,
+    "pid": 18548,
+    "index": 31
+  },
+  {
+    "name": "Require(25) F:/PlanningIntegration/work/project/scfun-system/node_modules/egg-jsonp/app/extend/context.js",
+    "start": 1627019955484,
+    "end": 1627019955513,
+    "duration": 29,
+    "pid": 18548,
+    "index": 32
+  },
+  {
+    "name": "Require(26) F:/PlanningIntegration/work/project/scfun-system/node_modules/egg-i18n/app/extend/context.js",
+    "start": 1627019955554,
+    "end": 1627019955567,
+    "duration": 13,
+    "pid": 18548,
+    "index": 33
+  },
+  {
+    "name": "Require(27) F:/PlanningIntegration/work/project/scfun-system/node_modules/egg-multipart/app/extend/context.js",
+    "start": 1627019955603,
+    "end": 1627019956283,
+    "duration": 680,
+    "pid": 18548,
+    "index": 34
+  },
+  {
+    "name": "Require(28) F:/PlanningIntegration/work/project/scfun-system/node_modules/egg-view/app/extend/context.js",
+    "start": 1627019956306,
+    "end": 1627019956323,
+    "duration": 17,
+    "pid": 18548,
+    "index": 35
+  },
+  {
+    "name": "Require(29) F:/PlanningIntegration/work/project/scfun-system/node_modules/egg/app/extend/context.js",
+    "start": 1627019956387,
+    "end": 1627019956460,
+    "duration": 73,
+    "pid": 18548,
+    "index": 36
+  },
+  {
+    "name": "Require(30) F:/PlanningIntegration/work/project/scfun-system/node_modules/@midwayjs/web/app/extend/context.js",
+    "start": 1627019956479,
+    "end": 1627019956503,
+    "duration": 24,
+    "pid": 18548,
+    "index": 37
+  },
+  {
+    "name": "Load agent.js",
+    "start": 1627019956831,
+    "end": 1627019957066,
+    "duration": 235,
+    "pid": 18548,
+    "index": 38
+  },
+  {
+    "name": "Require(31) F:/PlanningIntegration/work/project/scfun-system/node_modules/egg-security/agent.js",
+    "start": 1627019956849,
+    "end": 1627019956859,
+    "duration": 10,
+    "pid": 18548,
+    "index": 39
+  },
+  {
+    "name": "Require(32) F:/PlanningIntegration/work/project/scfun-system/node_modules/egg-onerror/agent.js",
+    "start": 1627019956879,
+    "end": 1627019956891,
+    "duration": 12,
+    "pid": 18548,
+    "index": 40
+  },
+  {
+    "name": "Require(33) F:/PlanningIntegration/work/project/scfun-system/node_modules/egg-schedule/agent.js",
+    "start": 1627019956923,
+    "end": 1627019956945,
+    "duration": 22,
+    "pid": 18548,
+    "index": 41
+  },
+  {
+    "name": "Require(34) F:/PlanningIntegration/work/project/scfun-system/node_modules/egg-logrotator/agent.js",
+    "start": 1627019956959,
+    "end": 1627019956967,
+    "duration": 8,
+    "pid": 18548,
+    "index": 42
+  },
+  {
+    "name": "Require(35) F:/PlanningIntegration/work/project/scfun-system/node_modules/midway-schedule/agent.js",
+    "start": 1627019956991,
+    "end": 1627019957007,
+    "duration": 16,
+    "pid": 18548,
+    "index": 43
+  },
+  {
+    "name": "Require(36) F:/PlanningIntegration/work/project/scfun-system/node_modules/egg/agent.js",
+    "start": 1627019957030,
+    "end": 1627019957038,
+    "duration": 8,
+    "pid": 18548,
+    "index": 44
+  },
+  {
+    "name": "Require(37) F:/PlanningIntegration/work/project/scfun-system/node_modules/@midwayjs/web/agent.js",
+    "start": 1627019957053,
+    "end": 1627019957059,
+    "duration": 6,
+    "pid": 18548,
+    "index": 45
+  },
+  {
+    "name": "Before Start in F:/PlanningIntegration/work/project/scfun-system/node_modules/egg-schedule/agent.js:12:9",
+    "start": 1627019957068,
+    "end": 1627019957437,
+    "duration": 369,
+    "pid": 18548,
+    "index": 46
+  },
+  {
+    "name": "Did Load in F:/PlanningIntegration/work/project/scfun-system/node_modules/@midwayjs/web/agent.js:didLoad",
+    "start": 1627019957070,
+    "end": 1627019957437,
+    "duration": 367,
+    "pid": 18548,
+    "index": 47
+  },
+  {
+    "name": "Will Ready in F:/PlanningIntegration/work/project/scfun-system/node_modules/@midwayjs/web/agent.js:willReady",
+    "start": 1627019957443,
+    "end": 1627019957443,
+    "duration": 0,
+    "pid": 18548,
+    "index": 48
+  }
+]

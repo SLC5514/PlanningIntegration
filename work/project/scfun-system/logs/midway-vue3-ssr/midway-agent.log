@@ -83,3 +83,4 @@ hostname: DESKTOP-9VMJRDM
 
 2021-07-23 17:02:53,612 INFO 23616 [egg:logger] init all loggers with options: {"dir":"F:\\PlanningIntegration\\work\\project\\scfun-system\\logs\\midway-vue3-ssr","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"midway-web.log","coreLogName":"midway-core.log","agentLogName":"midway-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"agent"}
 2021-07-23 17:02:53,612 INFO 23616 [egg:core] dump config after load, 28ms
+2021-07-23 17:02:55,534 INFO 23616 [egg:core] dump config after ready, 46ms

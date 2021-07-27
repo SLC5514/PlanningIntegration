@@ -85,3 +85,9 @@
 2021-07-23 16:02:24,058 INFO 6576 [Timer] F:\PlanningIntegration\work\project\scfun-system\node_modules\egg-multipart\app\schedule\clean_tmpdir.js next time will execute after 44855953ms at 2021-07-24 04:30:00.011
 2021-07-23 16:02:24,060 INFO 6576 [Timer] F:\PlanningIntegration\work\project\scfun-system\node_modules\egg-logrotator\app\schedule\clean_log.js next time will execute after 28655942ms at 2021-07-24 00:00:00.002
 2021-07-23 16:02:24,061 INFO 6576 [Timer] F:\PlanningIntegration\work\project\scfun-system\node_modules\egg-logrotator\app\schedule\rotate_by_file.js next time will execute after 28656940ms at 2021-07-24 00:00:01.001
+2021-07-23 17:02:59,402 INFO 23616 [egg-schedule]: register schedule F:\PlanningIntegration\work\project\scfun-system\node_modules\egg-multipart\app\schedule\clean_tmpdir.js
+2021-07-23 17:02:59,402 INFO 23616 [egg-schedule]: register schedule F:\PlanningIntegration\work\project\scfun-system\node_modules\egg-logrotator\app\schedule\clean_log.js
+2021-07-23 17:02:59,402 INFO 23616 [egg-schedule]: register schedule F:\PlanningIntegration\work\project\scfun-system\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
+2021-07-23 17:03:00,288 INFO 23616 [Timer] F:\PlanningIntegration\work\project\scfun-system\node_modules\egg-multipart\app\schedule\clean_tmpdir.js next time will execute after 41219728ms at 2021-07-24 04:30:00.016
+2021-07-23 17:03:00,289 INFO 23616 [Timer] F:\PlanningIntegration\work\project\scfun-system\node_modules\egg-logrotator\app\schedule\clean_log.js next time will execute after 25019711ms at 2021-07-24 00:00:00.000
+2021-07-23 17:03:00,290 INFO 23616 [Timer] F:\PlanningIntegration\work\project\scfun-system\node_modules\egg-logrotator\app\schedule\rotate_by_file.js next time will execute after 25020711ms at 2021-07-24 00:00:01.001

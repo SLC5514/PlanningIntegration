@@ -221,3 +221,16 @@ name: "unhandledRejectionError"
 pid: 6576
 hostname: DESKTOP-9VMJRDM
 
+2021-07-23 17:02:56,432 INFO 23616 [egg:logger] init all loggers with options: {"dir":"F:\\PlanningIntegration\\work\\project\\scfun-system\\logs\\midway-vue3-ssr","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"midway-web.log","coreLogName":"midway-core.log","agentLogName":"midway-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"application"}
+2021-07-23 17:02:56,432 INFO 23616 [egg:core] dump config after load, 31ms
+2021-07-23 17:02:59,403 INFO 23616 [egg-multipart] stream mode enable
+2021-07-23 17:03:00,123 INFO 23616 [egg-static] starting static serve / -> F:\PlanningIntegration\work\project\scfun-system\build
+2021-07-23 17:03:00,156 INFO 23616 [egg-security] use csrf middleware
+2021-07-23 17:03:00,175 INFO 23616 [egg-security] use methodnoallow middleware
+2021-07-23 17:03:00,184 INFO 23616 [egg-security] use noopen middleware
+2021-07-23 17:03:00,202 INFO 23616 [egg-security] use nosniff middleware
+2021-07-23 17:03:00,210 INFO 23616 [egg-security] use xssProtection middleware
+2021-07-23 17:03:00,218 INFO 23616 [egg-security] use xframe middleware
+2021-07-23 17:03:00,225 INFO 23616 [egg-security] use dta middleware
+2021-07-23 17:03:00,226 INFO 23616 [egg-security] compose 7 middlewares into one security middleware
+2021-07-23 17:03:00,263 INFO 23616 [egg:core] dump config after ready, 15ms

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <!-- <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <meta
+      http-equiv="X-Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    /> -->
+    <title>POP客户端</title>
+  </head>
+  <body>
+    <h1>Hello World!</h1>
+    We are using <br>
+    Node.js <span id="node-version"></span>, <br>
+    Chromium <span id="chrome-version"></span>, <br>
+    and Electron <span id="electron-version"></span>.<br>
+
+    <a id="aHref" href="https://baidu.com">百度</a>
+
+    <section>
+      <b>Mac地址</b><br>
+      <div id="mac-address"></div>
+      <b>默认浏览器</b><br>
+      <div id="def-browser">获取中</div>
+      <b>浏览器列表</b><br>
+      <select id="browser-list">
+        <option>获取中</option>
+      </select><br>
+      <b>浏览器列表(固定)</b><br>
+      <select id="browser-list-fixed">
+        <option data-cmd="" data-cwd="">默认浏览器</option>
+        <option data-cmd="chrome.exe" data-cwd="">谷歌浏览器（Chrome）</option>
+        <option data-cmd="firefox.exe" data-cwd="">火狐浏览器（Firefox）</option>
+        <!-- <option data-cmd="oprea.exe" data-cwd="">欧鹏浏览器（Oprea）</option> -->
+        <option data-cmd="360chrome.exe" data-cwd="">360急速浏览器</option>
+        <option data-cmd="360se.exe" data-cwd="">360安全浏览器</option>
+        <option data-cmd="QQBrowser.exe" data-cwd="D:\Program Files (x86)\Tencent\QQBrowser">QQ浏览器</option>
+        <option data-cmd="SogouExplorer.exe" data-cwd="">搜狗浏览器</option>
+        <option data-cmd="msedge.exe" data-cwd="">Edge浏览器</option>
+        <option data-cmd="iexplore.exe" data-cwd="">IE浏览器</option>
+      </select>
+      <button id="jump">跳转</button>
+    </section>
+
+    <!-- You can also require other files to run in this process -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/jsencrypt/3.2.0/jsencrypt.min.js"></script>
+    <script src="./render/index.js"></script>
+  </body>
+</html>

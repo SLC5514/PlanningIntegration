@@ -2,25 +2,33 @@
  * @Author: SLC
  * @Date: 2021-07-27 11:28:16
  * @LastEditors: SLC
- * @LastEditTime: 2021-07-29 15:25:41
+ * @LastEditTime: 2021-07-31 18:02:49
  * @Description: file content
  */
 
 const package = require("../package.json");
-const { contextBridge, shell } = require("electron");
+// const { contextBridge, shell } = require("electron");
 const cp = require("child_process");
 
 document.title += " v" + package.version;
 
 // 自定义api
-contextBridge.exposeInMainWorld("electron", {
+// contextBridge.exposeInMainWorld("electron", {
+//   openUrl: (url) => shell.openExternal(url),
+//   getDefBrowser: getDefBrowser,
+//   getBrowserList: getBrowserList,
+//   mac: require("getmac").default(),
+//   cpExec: (cmd, cwd) =>
+//     cp.exec("start " + cmd + " http://www.baidu.com", { cwd }),
+// });
+window.electron = {
   openUrl: (url) => shell.openExternal(url),
   getDefBrowser: getDefBrowser,
   getBrowserList: getBrowserList,
   mac: require("getmac").default(),
   cpExec: (cmd, cwd) =>
     cp.exec("start " + cmd + " http://www.baidu.com", { cwd }),
-});
+};
 
 // 监听dom加载完成
 window.addEventListener("DOMContentLoaded", () => {
@@ -186,19 +194,3 @@ function getBrowserName(cmd) {
 //     }
 //   }
 // );
-
-// const JSEncrypt = require("jsencrypt");
-// // const { sign, check } = require("sign");
-// import { sign, check } from 'sign';
-
-// const key = 'POP_GLOBAL_KEYS';
-// const params = 'xhQDNTlD2ViphDUJ82bwXKnbWT4bXTLY7dGZsk1xjxNjuyEPSrGaXkXrnhSTVslhZQwhhHAZJcwBaLjJo4PuA28qd3jMJt4mxpr3IGhzkWYDQHyAeF6r30uwaygqIBvnah6V7oyFnU0D5KLv64eZmuZT%2FT5y1FIb%2BJal0nfDkmTxOfFhSToyIsf9v7111a32a%2Fl%2BOUw7zS%2Bobc8GvROkdw%3D%3D';
-
-// const data = {
-//   Site: 1,
-//   Account: 1,
-//   Password: 1,
-//   Mac: 1,
-// }
-
-// console.log(new JSEncrypt().encrypt(JSON.stringify(data)))

@@ -19,13 +19,24 @@
     "electron": "^13.1.7"
   },
   "dependencies": {
+    "@babel/cli": "^7.14.8",
+    "@babel/core": "^7.14.8",
+    "@babel/node": "^7.14.7",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.14.8",
+    "ajax": "^0.0.4",
+    "crypto": "^1.0.1",
+    "cryptojs": "^2.5.3",
     "devtron": "^1.4.0",
     "electron-squirrel-startup": "^1.0.0",
     "getmac": "^5.18.0",
     "iconv-lite": "^0.6.3",
+    "jquery": "^3.6.0",
     "jsencrypt": "^3.2.0",
     "jsonpath": "^1.1.1",
+    "moment": "^2.29.1",
     "node-gyp": "^8.1.0",
+    "node-rsa": "^1.1.1",
     "sign": "^1.0.2"
   },
   "config": {

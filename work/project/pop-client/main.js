@@ -2,11 +2,11 @@
  * @Author: SLC
  * @Date: 2021-07-27 16:21:07
  * @LastEditors: SLC
- * @LastEditTime: 2021-07-27 13:11:32
+ * @LastEditTime: 2021-07-31 16:48:34
  * @Description: file content
  */
 
-const { app, BrowserWindow, Menu, globalShortcut /* Notification */ } = require("electron");
+const { app, BrowserWindow, Menu/* , globalShortcut, Notification */ } = require("electron");
 // const fs = require("fs");
 const path = require("path");
 
@@ -18,8 +18,8 @@ function createWindow() {
     width: 300,
     height: 400,
     webPreferences: {
-      // nodeIntegration: true,
-      // contextIsolation: false
+      nodeIntegration: true,
+      contextIsolation: false,
       // 预加载从渲染器访问nodejs
       preload: path.join(__dirname, "./preload/index.js"),
     },

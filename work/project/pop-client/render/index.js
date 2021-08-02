@@ -2,7 +2,7 @@
  * @Author: SLC
  * @Date: 2021-07-27 11:27:46
  * @LastEditors: SLC
- * @LastEditTime: 2021-07-31 17:59:30
+ * @LastEditTime: 2021-07-31 18:08:18
  * @Description: file content
  */
 
@@ -188,7 +188,7 @@ function clientLog() {
 // clientLog();
 
 /* 获取浏览器 */
-function getBrowserList() {
+function getWebsites() {
   const Timestamp = moment().format("YYYYMMDDHHmmss");
   const params = Object.assign(comParams, {
     Timestamp: Timestamp,
@@ -217,4 +217,4 @@ function getBrowserList() {
     },
   });
 }
-getBrowserList();
+getWebsites();

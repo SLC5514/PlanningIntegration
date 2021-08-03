@@ -2,11 +2,11 @@
  * @Author: SLC
  * @Date: 2021-07-30 10:10:30
  * @LastEditors: SLC
- * @LastEditTime: 2021-08-03 10:36:13
+ * @LastEditTime: 2021-08-03 15:51:31
  * @Description: file content
  */
 
-export default (function (g) {
+(function (g) {
   const fntk = {
     /* 基础函数 ================================ */
 

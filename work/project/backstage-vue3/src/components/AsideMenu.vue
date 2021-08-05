@@ -65,19 +65,27 @@ export default defineComponent({
     const selectedKeys = reactive(["1-1"]);
 
     const toggleOpenKeys = (val, refs) => {
+      const el = refs.cloneNode(true);
+      document.body.appendChild(el);
+      const height = el.clientHeight;
+      document.body.removeChild(el);
+      console.log(height);
       const idx = openKeys.indexOf(val);
       if (idx !== -1) {
         openKeys.splice(idx, 1);
-        if (refs?.style.height === 'auto' && refs?.clientHeight) {
-          refs.style.height = refs.clientHeight ? refs.clientHeight + "px" : "auto";
-        }
+        // if (refs?.style.height === "auto" && refs?.clientHeight) {
+        //   refs.style.height = refs.clientHeight
+        //     ? refs.clientHeight + "px"
+        //     : "auto";
+        // }
       } else {
         openKeys.push(val);
-        refs.style.height = refs.getAttribute('data-height') + 'px';
+        // refs.style.height = refs.getAttribute("data-height") + "px";
       }
-      clearTimeout(timer)
+      refs.style.height = height + "px";
+      clearTimeout(timer);
       timer = setTimeout(() => {
-        refs.style.height = '';
+        refs.style.height = "";
       }, 300);
     };
     const toggleSelectedKeys = (val) => {

@@ -1,8 +1,7 @@
 <template>
   <ul
-    :class="{ menu: true, close: asideClose }"
+    :class="{ menu: true, cor: level === 1, close: asideClose }"
     ref="menuRef"
-    style="height: auto !important"
   >
     <template v-for="(item, index) in menuData">
       <li
@@ -10,24 +9,22 @@
         :key="getMenuKey(parentKey, index)"
         :class="{
           'menu-submenu': true,
-          'menu-submenu-close': isMenuInit
-            ? openKeys.indexOf(getMenuKey(parentKey, index)) === -1
-            : false,
+          'menu-submenu-selected':
+            selectedKeys[0].indexOf(getMenuKey(parentKey, index) + '-') === 0,
+          'menu-submenu-close':
+            openKeys.indexOf(getMenuKey(parentKey, index)) === -1,
         }"
       >
         <div
           class="menu-submenu-title"
           :style="`padding-left: ${level * 16}px`"
-          @click="
-            toggleOpenKeys(getMenuKey(parentKey, index), submenuRef?.menuRef)
-          "
+          @click="toggleOpenKeys(getMenuKey(parentKey, index), menuRef, index)"
         >
           <i v-if="!parentKey" class="icon">♡</i>
-          <span class="menu-title">{{ item.name }} - {{menuHeight}}</span>
+          <span class="menu-title">{{ item.name }}</span>
           <i class="menu-submenu-arrow"></i>
         </div>
         <Menu
-          ref="submenuRef"
           :level="level + 1"
           :parent-key="getMenuKey(parentKey, index)"
           :aside-close="asideClose"
@@ -50,7 +47,7 @@
         @click="toggleSelectedKeys(getMenuKey(parentKey, index))"
       >
         <i v-if="!parentKey" class="icon">♡</i>
-        <span class="menu-title">{{ item.name }} - {{menuHeight}}</span>
+        <span class="menu-title">{{ item.name }}</span>
       </li>
     </template>
   </ul>
@@ -60,7 +57,7 @@
 </template>
 
 <script lang="ts">
-import { ref, defineComponent, onMounted } from "vue";
+import { ref, reactive, defineComponent, onMounted } from "vue";
 
 export default defineComponent({
   name: "AsideMenu",
@@ -98,31 +95,18 @@ export default defineComponent({
   setup: () => {
     /* ref元素声明 */
     const menuRef = ref(null);
-    const submenuRef = ref(null);
 
     /* 菜单逻辑 */
-    const isMenuInit = ref(false);
-    const menuHeight = ref(0);
     const getMenuKey = (parentKey, index) => {
       return parentKey ? parentKey + "-" + (index + 1) : String(index + 1);
     };
 
     /* 生命周期 */
-    onMounted(() => {
-      menuHeight.value = menuRef.value.clientHeight || 0;
-      // menuRef.value.style.height = menuRef.value.clientHeight
-      //   ? menuRef.value.clientHeight + "px"
-      //   : "auto";
-      menuRef.value.setAttribute('data-height', menuRef.value.clientHeight || 0)
-      menuRef.value.style.height = '';
-      isMenuInit.value = true;
-    });
+    // onMounted(() => {
+    // });
 
     return {
       menuRef,
-      submenuRef,
-      isMenuInit,
-      menuHeight,
       getMenuKey,
     };
   },
@@ -135,7 +119,6 @@ export default defineComponent({
   font-size: 14px;
   user-select: none;
   overflow: hidden;
-  transition: height 0.3s;
   .menu-item,
   .menu-submenu-title {
     position: relative;
@@ -233,25 +216,37 @@ export default defineComponent({
         }
       }
       & > .menu {
-        height: 0 !important;
+        height: 0;
+      }
+    }
+    &.menu-submenu-selected {
+      & > .menu-submenu-title {
+        color: #fff;
+        .menu-submenu-arrow {
+          opacity: 1;
+        }
       }
     }
   }
   &.close {
     .menu-item,
     .menu-submenu-title {
+      color: inherit;
+      &:hover {
+        color: #fff;
+      }
       .menu-title {
         opacity: 0;
       }
     }
     .menu-submenu {
-      .menu {
-        height: 0 !important;
-      }
       .menu-submenu-title .menu-submenu-arrow {
         right: -146px;
       }
     }
+  }
+  &.cor.close > .menu-submenu > .menu {
+    height: 0;
   }
 }
 .menu-submenu-popup {

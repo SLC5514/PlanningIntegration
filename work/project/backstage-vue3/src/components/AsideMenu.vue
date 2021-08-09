@@ -3,15 +3,16 @@
     <a class="logo"><i class="icon">♡</i> <span ref="logoCtnRef">LOGO</span></a>
     <div class="scroll-warp">
       <Menu
+        ref="menuRef"
         :aside-close="asideClose"
         :menu-data="menuData"
         :open-keys="openKeys"
         :selected-keys="selectedKeys"
-        :toggleOpenKeys="toggleOpenKeys"
-        :toggleSelectedKeys="toggleSelectedKeys"
+        :toggle-open-keys="toggleOpenKeys"
+        :toggle-selected-keys="toggleSelectedKeys"
       />
     </div>
-    <div class="aside-close" @click="asideClose = !asideClose">
+    <div class="aside-close" @click="asideCloseFn">
       <svg
         v-if="asideClose"
         viewBox="64 64 896 896"
@@ -44,6 +45,9 @@
 
 <script lang="ts">
 import { ref, reactive, defineComponent, onMounted } from "vue";
+import tween from "@/lib/tween.js";
+
+const { easeInOutQuad } = tween;
 
 export default defineComponent({
   name: "AsideMenu",
@@ -56,41 +60,72 @@ export default defineComponent({
   setup: (props) => {
     /* ref元素声明 */
     const logoCtnRef = ref(null);
+    const menuRef = ref(null);
 
     /* 侧栏菜单逻辑 */
-    let timer = null;
     const asideClose = ref(false);
     const menuData = reactive(props.menuData);
     const openKeys = reactive(["1"]);
     const selectedKeys = reactive(["1-1"]);
 
-    const toggleOpenKeys = (val, refs) => {
-      const el = refs.cloneNode(true);
-      document.body.appendChild(el);
-      const height = el.clientHeight;
-      document.body.removeChild(el);
-      console.log(height);
+    let anTime = 300,
+      anEle,
+      isClose;
+
+    const toggleOpenKeys = (val, refs, index) => {
+      anEle = refs.children[index].querySelector(".menu");
       const idx = openKeys.indexOf(val);
       if (idx !== -1) {
+        isClose = true;
         openKeys.splice(idx, 1);
-        // if (refs?.style.height === "auto" && refs?.clientHeight) {
-        //   refs.style.height = refs.clientHeight
-        //     ? refs.clientHeight + "px"
-        //     : "auto";
-        // }
       } else {
+        isClose = false;
         openKeys.push(val);
-        // refs.style.height = refs.getAttribute("data-height") + "px";
       }
-      refs.style.height = height + "px";
-      clearTimeout(timer);
-      timer = setTimeout(() => {
-        refs.style.height = "";
-      }, 300);
+      toggleSubmenu(isClose, anEle, anTime);
     };
     const toggleSelectedKeys = (val) => {
       selectedKeys.push(val);
       selectedKeys.splice(0, selectedKeys.length - 1);
+    };
+
+    const asideCloseFn = () => {
+      asideClose.value = !asideClose.value;
+      for (let i = 0; i < menuRef.value?.menuRef.children.length; i++) {
+        const item = menuRef.value?.menuRef.children[i];
+        const subClose = item.classList.contains("menu-submenu-close");
+        const menu = item.querySelector(".menu");
+        if (subClose) continue;
+        toggleSubmenu(asideClose.value, menu, anTime);
+      }
+    };
+
+    const toggleSubmenu = (isClose, element, time) => {
+      if (!element) return;
+      const cloneEl = element.cloneNode(true);
+      cloneEl.style.height = "auto";
+      document.body.appendChild(cloneEl);
+      const height = cloneEl.clientHeight;
+      document.body.removeChild(cloneEl);
+      let start = undefined;
+      const step = (timestamp) => {
+        if (!start) start = timestamp;
+        const elapsed = timestamp - start;
+        const pos = elapsed / time;
+        if (!isClose) {
+          element.style.height = easeInOutQuad(pos) * height + "px";
+        } else {
+          element.style.height = height - easeInOutQuad(pos) * height + "px";
+        }
+        if (elapsed < time) {
+          window.requestAnimationFrame(step);
+        }
+      };
+      window.requestAnimationFrame(step);
+      const timer = setTimeout(() => {
+        element.style.height = "";
+        clearTimeout(timer);
+      }, time + 50);
     };
 
     /* 生命周期 */
@@ -102,12 +137,14 @@ export default defineComponent({
 
     return {
       logoCtnRef,
+      menuRef,
       menuData,
       asideClose,
       openKeys,
       selectedKeys,
       toggleOpenKeys,
       toggleSelectedKeys,
+      asideCloseFn,
     };
   },
 });
@@ -138,10 +175,8 @@ export default defineComponent({
   .scroll-warp {
     flex: 1;
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    overflow: auto;
-    overflow-x: hidden;
+    overflow: hidden auto;
+    box-sizing: border-box;
   }
   .logo {
     position: relative;
@@ -178,6 +213,24 @@ export default defineComponent({
       color: #fff;
       background-color: #2b2f3a;
     }
+  }
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsla(0, 0%, 100%, 0.2);
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0 0 5px hsl(0deg 0% 100% / 5%);
+  }
+  ::-webkit-scrollbar-track {
+    background: hsla(0, 0%, 100%, 0.15);
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0 0 5px rgb(37 37 37 / 5%);
+  }
+  ::selection {
+    color: #fff;
+    background: #1890ff;
   }
 }
 </style>

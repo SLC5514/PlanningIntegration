@@ -221,12 +221,12 @@ export default defineComponent({
   ::-webkit-scrollbar-thumb {
     background: hsla(0, 0%, 100%, 0.2);
     border-radius: 3px;
-    -webkit-box-shadow: inset 0 0 5px hsl(0deg 0% 100% / 5%);
+    box-shadow: inset 0 0 5px hsl(0deg 0% 100% / 5%);
   }
   ::-webkit-scrollbar-track {
     background: hsla(0, 0%, 100%, 0.15);
     border-radius: 3px;
-    -webkit-box-shadow: inset 0 0 5px rgb(37 37 37 / 5%);
+    box-shadow: inset 0 0 5px rgb(37 37 37 / 5%);
   }
   ::selection {
     color: #fff;

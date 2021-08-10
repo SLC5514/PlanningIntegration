@@ -1,5 +1,5 @@
 <template>
-  <div id="aside-menu" :class="{ close: asideClose }">
+  <aside id="aside-menu" :class="{ close: asideClose }">
     <a class="logo"><i class="icon">♡</i> <span ref="logoCtnRef">LOGO</span></a>
     <div class="scroll-warp">
       <Menu
@@ -40,7 +40,7 @@
         ></path>
       </svg>
     </div>
-  </div>
+  </aside>
 </template>
 
 <script lang="ts">

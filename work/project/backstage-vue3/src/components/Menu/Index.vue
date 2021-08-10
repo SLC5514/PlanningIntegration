@@ -18,7 +18,7 @@
         <div
           class="menu-submenu-title"
           :style="`padding-left: ${level * 16}px`"
-          @click="toggleOpenKeys(getMenuKey(parentKey, index), menuRef, index)"
+          @click="toggleMenu(getMenuKey(parentKey, index), menuRef, index)"
         >
           <i v-if="!parentKey" class="icon">♡</i>
           <span class="menu-title">{{ item.name }}</span>
@@ -31,8 +31,8 @@
           :menu-data="item.children"
           :open-keys="openKeys"
           :selected-keys="selectedKeys"
-          :toggleOpenKeys="toggleOpenKeys"
-          :toggleSelectedKeys="toggleSelectedKeys"
+          :toggleMenu="toggleMenu"
+          :toggleSelected="toggleSelected"
         />
       </li>
       <li
@@ -44,7 +44,7 @@
           'menu-item-selected':
             selectedKeys.indexOf(getMenuKey(parentKey, index)) !== -1,
         }"
-        @click="toggleSelectedKeys(getMenuKey(parentKey, index), item)"
+        @click="toggleSelected(getMenuKey(parentKey, index), item)"
       >
         <i v-if="!parentKey" class="icon">♡</i>
         <span class="menu-title">{{ item.name }}</span>
@@ -85,10 +85,10 @@ export default defineComponent({
       type: Array,
       default: [],
     },
-    toggleOpenKeys: {
+    toggleMenu: {
       type: Function,
     },
-    toggleSelectedKeys: {
+    toggleSelected: {
       type: Function,
     },
   },

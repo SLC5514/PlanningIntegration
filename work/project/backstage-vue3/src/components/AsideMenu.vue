@@ -11,11 +11,11 @@
         :menu-data="menuData"
         :open-keys="openKeys"
         :selected-keys="selectedKeys"
-        :toggle-open-keys="toggleOpenKeys"
-        :toggle-selected-keys="toggleSelectedKeys"
+        :toggle-menu="toggleMenu"
+        :toggle-selected="toggleSelected"
       />
     </div>
-    <div class="aside-close" @click="asideCloseFn">
+    <div class="aside-close" @click="toggleAside">
       <svg
         v-if="asideClose"
         viewBox="64 64 896 896"
@@ -71,12 +71,12 @@ export default defineComponent({
     let menuData = reactive(props.menuData);
     let openKeys = reactive([]);
     let selectedKeys = reactive([]);
-
     let anTime = 300,
       anEle,
       isClose;
-
-    const toggleOpenKeys = (key, refs, index) => {
+    /* 菜单收展 */
+    const toggleMenu = (key, refs, index) => {
+      if (asideClose.value) return;
       anEle = refs.children[index].querySelector(".menu");
       const idx = openKeys.indexOf(key);
       if (idx !== -1) {
@@ -88,13 +88,14 @@ export default defineComponent({
       }
       toggleSubmenu(isClose, anEle, anTime);
     };
-    const toggleSelectedKeys = (key, item) => {
+    /* 菜单选中 */
+    const toggleSelected = (key, item) => {
       selectedKeys.push(key);
       selectedKeys.splice(0, selectedKeys.length - 1);
       if (item.url) router.push(item.url);
     };
-
-    const asideCloseFn = () => {
+    /* 侧栏收展 */
+    const toggleAside = () => {
       asideClose.value = !asideClose.value;
       for (let i = 0; i < menuRef.value?.menuRef.children.length; i++) {
         const item = menuRef.value?.menuRef.children[i];
@@ -104,7 +105,7 @@ export default defineComponent({
         toggleSubmenu(asideClose.value, menu, anTime);
       }
     };
-
+    /* 子菜单收展效果 */
     const toggleSubmenu = (isClose, element, time) => {
       if (!element) return;
       const cloneEl = element.cloneNode(true);
@@ -132,6 +133,7 @@ export default defineComponent({
         clearTimeout(timer);
       }, time + 50);
     };
+    // menu-submenu-popup
 
     /* 生命周期 */
     onMounted(() => {
@@ -147,9 +149,9 @@ export default defineComponent({
       asideClose,
       openKeys,
       selectedKeys,
-      toggleOpenKeys,
-      toggleSelectedKeys,
-      asideCloseFn,
+      toggleMenu,
+      toggleSelected,
+      toggleAside,
     };
   },
 });

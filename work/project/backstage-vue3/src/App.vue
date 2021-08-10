@@ -1,5 +1,19 @@
 <template>
   <AsideMenu ref="asideMenuRef" :menu-data="menuData" />
+  <div class="layout">
+    <router-view v-slot="{ Component, route }">
+      <transition :name="route.meta.transition || 'fade'" mode="out-in">
+        <keep-alive>
+          <component
+            :is="Component"
+            :key="route.meta.usePathKey ? route.path : undefined"
+          />
+        </keep-alive>
+      </transition>
+    </router-view>
+    <router-link to="/page1">page1</router-link>
+    <router-link to="/page2">page2</router-link>
+  </div>
 </template>
 
 <script lang="ts">
@@ -19,7 +33,10 @@ export default defineComponent({
     const menuData = reactive([
       {
         name: "菜单一",
-        children: [{ name: "子菜单1" }, { name: "子菜单2" }],
+        children: [
+          { name: "子菜单1", url: "/page1" },
+          { name: "子菜单2", url: "/page2" },
+        ],
       },
       {
         name: "菜单二",
@@ -66,5 +83,17 @@ export default defineComponent({
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
+  min-height: 100vh;
+  display: flex;
+  flex: auto;
+  flex-direction: row;
+  background: #f0f2f5;
+  .layout {
+    min-height: 100vh;
+    display: flex;
+    flex: auto;
+    flex-direction: column;
+    background: #f0f2f5;
+  }
 }
 </style>

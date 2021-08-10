@@ -10,7 +10,7 @@
         :class="{
           'menu-submenu': true,
           'menu-submenu-selected':
-            selectedKeys[0].indexOf(getMenuKey(parentKey, index) + '-') === 0,
+            selectedKeys[0]?.indexOf(getMenuKey(parentKey, index) + '-') === 0,
           'menu-submenu-close':
             openKeys.indexOf(getMenuKey(parentKey, index)) === -1,
         }"
@@ -44,7 +44,7 @@
           'menu-item-selected':
             selectedKeys.indexOf(getMenuKey(parentKey, index)) !== -1,
         }"
-        @click="toggleSelectedKeys(getMenuKey(parentKey, index))"
+        @click="toggleSelectedKeys(getMenuKey(parentKey, index), item)"
       >
         <i v-if="!parentKey" class="icon">♡</i>
         <span class="menu-title">{{ item.name }}</span>

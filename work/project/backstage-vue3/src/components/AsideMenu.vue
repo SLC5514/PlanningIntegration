@@ -1,6 +1,9 @@
 <template>
   <aside id="aside-menu" :class="{ close: asideClose }">
-    <a class="logo"><i class="icon">♡</i> <span ref="logoCtnRef">LOGO</span></a>
+    <router-link class="logo" to="/" @click="selectedKeys.pop()">
+      <i class="icon">♡</i>
+      <span ref="logoCtnRef">LOGO</span>
+    </router-link>
     <div class="scroll-warp">
       <Menu
         ref="menuRef"
@@ -45,7 +48,8 @@
 
 <script lang="ts">
 import { ref, reactive, defineComponent, onMounted } from "vue";
-import tween from "@/lib/tween.js";
+import router from '@/router'
+import tween from "@/lib/tween";
 
 const { easeInOutQuad } = tween;
 
@@ -59,34 +63,35 @@ export default defineComponent({
   },
   setup: (props) => {
     /* ref元素声明 */
-    const logoCtnRef = ref(null);
-    const menuRef = ref(null);
+    let logoCtnRef = ref(null);
+    let menuRef = ref(null);
 
     /* 侧栏菜单逻辑 */
-    const asideClose = ref(false);
-    const menuData = reactive(props.menuData);
-    const openKeys = reactive(["1"]);
-    const selectedKeys = reactive(["1-1"]);
+    let asideClose = ref(false);
+    let menuData = reactive(props.menuData);
+    let openKeys = reactive([]);
+    let selectedKeys = reactive([]);
 
     let anTime = 300,
       anEle,
       isClose;
 
-    const toggleOpenKeys = (val, refs, index) => {
+    const toggleOpenKeys = (key, refs, index) => {
       anEle = refs.children[index].querySelector(".menu");
-      const idx = openKeys.indexOf(val);
+      const idx = openKeys.indexOf(key);
       if (idx !== -1) {
         isClose = true;
         openKeys.splice(idx, 1);
       } else {
         isClose = false;
-        openKeys.push(val);
+        openKeys.push(key);
       }
       toggleSubmenu(isClose, anEle, anTime);
     };
-    const toggleSelectedKeys = (val) => {
-      selectedKeys.push(val);
+    const toggleSelectedKeys = (key, item) => {
+      selectedKeys.push(key);
       selectedKeys.splice(0, selectedKeys.length - 1);
+      if (item.url) router.push(item.url);
     };
 
     const asideCloseFn = () => {
@@ -152,10 +157,10 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 #aside-menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 100;
+  // position: fixed;
+  // top: 0;
+  // left: 0;
+  // z-index: 100;
   display: flex;
   flex-direction: column;
   width: $AsideMenuWidth;
@@ -188,8 +193,10 @@ export default defineComponent({
     padding: 16px;
     font-size: 18px;
     font-weight: bold;
+    color: inherit;
     background-color: #2b2f3a;
     text-align: center;
+    text-decoration: none;
     white-space: nowrap;
     box-sizing: border-box;
     overflow: hidden;

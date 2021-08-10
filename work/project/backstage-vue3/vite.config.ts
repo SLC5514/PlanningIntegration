@@ -24,7 +24,6 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'src/index.html'),
         home: resolve(__dirname, 'src/home/index.html'),
-        nested: resolve(__dirname, 'src/nested/index.html')
       }
     }
   },

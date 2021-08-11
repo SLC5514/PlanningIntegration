@@ -34,24 +34,24 @@ export default defineComponent({
       {
         name: "菜单一",
         children: [
-          { name: "子菜单1", url: "/page1" },
-          { name: "子菜单2", url: "/page2" },
+          { name: "菜单1-1", url: "/page1" },
+          { name: "菜单1-2", url: "/page2" },
         ],
       },
       {
         name: "菜单二",
         children: [
           {
-            name: "子菜单1",
+            name: "菜单2-1",
             children: [
-              { name: "孙菜单1" },
+              { name: "菜单2-1-1" },
               {
-                name: "孙菜单2",
-                children: [{ name: "孙子菜单1" }, { name: "孙子菜单2" }],
+                name: "菜单2-1-2",
+                children: [{ name: "菜单2-1-2-1" }, { name: "菜单2-1-2-2" }],
               },
             ],
           },
-          { name: "子菜单2" },
+          { name: "菜单2-2" },
         ],
       },
       { name: "菜单三" },

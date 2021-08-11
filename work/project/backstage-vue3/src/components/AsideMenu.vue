@@ -13,6 +13,7 @@
         :selected-keys="selectedKeys"
         :toggle-menu="toggleMenu"
         :toggle-selected="toggleSelected"
+        :submenu-popup="submenuPopup"
       />
     </div>
     <div class="aside-close" @click="toggleAside">
@@ -44,6 +45,7 @@
       </svg>
     </div>
   </aside>
+  <Popup ref="popupRef" />
 </template>
 
 <script lang="ts">
@@ -51,10 +53,15 @@ import { ref, reactive, defineComponent, onMounted } from "vue";
 import router from '@/router'
 import tween from "@/lib/tween";
 
+import Popup from "@/components/Menu/Popup.vue";
+
 const { easeInOutQuad } = tween;
 
 export default defineComponent({
   name: "AsideMenu",
+  components: {
+    Popup
+  },
   props: {
     menuData: {
       type: Array,
@@ -65,6 +72,7 @@ export default defineComponent({
     /* ref元素声明 */
     let logoCtnRef = ref(null);
     let menuRef = ref(null);
+    let popupRef = ref(null);
 
     /* 侧栏菜单逻辑 */
     let asideClose = ref(false);
@@ -133,6 +141,18 @@ export default defineComponent({
         clearTimeout(timer);
       }, time + 50);
     };
+    /* 子菜单弹出层 */
+    const submenuPopup = (e, item) => {
+      const el = e.target;
+      popupRef.value.menuList = item.children;
+      popupRef.value.show = true;
+      const leave = (event) => {
+        event.stopPropagation();
+        popupRef.value.show = false;
+        el.removeEventListener('mouseleave', leave);
+      }
+      el.addEventListener('mouseleave', leave);
+    }
     // menu-submenu-popup
 
     /* 生命周期 */
@@ -145,6 +165,7 @@ export default defineComponent({
     return {
       logoCtnRef,
       menuRef,
+      popupRef,
       menuData,
       asideClose,
       openKeys,
@@ -152,6 +173,7 @@ export default defineComponent({
       toggleMenu,
       toggleSelected,
       toggleAside,
+      submenuPopup,
     };
   },
 });

@@ -19,6 +19,7 @@
           class="menu-submenu-title"
           :style="`padding-left: ${level * 16}px`"
           @click="toggleMenu(getMenuKey(parentKey, index), menuRef, index)"
+          @mouseenter="submenuPopup($event, item)"
         >
           <i v-if="!parentKey" class="icon">♡</i>
           <span class="menu-title">{{ item.name }}</span>
@@ -33,6 +34,7 @@
           :selected-keys="selectedKeys"
           :toggleMenu="toggleMenu"
           :toggleSelected="toggleSelected"
+          :submenu-popup="submenuPopup"
         />
       </li>
       <li
@@ -51,9 +53,6 @@
       </li>
     </template>
   </ul>
-  <!-- <div class="menu-submenu-popup">
-    666
-  </div> -->
 </template>
 
 <script lang="ts">
@@ -91,6 +90,9 @@ export default defineComponent({
     toggleSelected: {
       type: Function,
     },
+    submenuPopup: {
+      type: Function,
+    },
   },
   setup: () => {
     /* ref元素声明 */
@@ -113,10 +115,11 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .menu {
   flex: 1;
   font-size: 14px;
+  color: rgba(255, 255, 255, 0.65);
   user-select: none;
   overflow: hidden;
   .menu-item,

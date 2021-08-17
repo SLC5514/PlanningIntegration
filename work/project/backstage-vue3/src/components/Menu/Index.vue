@@ -1,6 +1,6 @@
 <template>
   <ul
-    :class="{ menu: true, cor: level === 1, close: asideClose }"
+    :class="{ menu: true, popup: isPopup, cor: level === 1, close: !isPopup ? asideClose : false }"
     ref="menuRef"
   >
     <template v-for="(item, index) in menuData">
@@ -10,22 +10,23 @@
         :class="{
           'menu-submenu': true,
           'menu-submenu-selected':
-            selectedKeys[0]?.indexOf(getMenuKey(parentKey, index) + '-') === 0,
+            !isPopup ? selectedKeys[0]?.indexOf(getMenuKey(parentKey, index) + '-') === 0 : false,
           'menu-submenu-close':
-            openKeys.indexOf(getMenuKey(parentKey, index)) === -1,
+            !isPopup ? openKeys.indexOf(getMenuKey(parentKey, index)) === -1 : false,
         }"
       >
         <div
           class="menu-submenu-title"
-          :style="`padding-left: ${level * 16}px`"
+          :style="!isPopup ? `padding-left: ${level * 16}px` : ''"
           @click="toggleMenu(getMenuKey(parentKey, index), menuRef, index)"
-          @mouseenter="submenuPopup($event, item)"
+          @mouseenter="submenuPopup($event, item, getMenuKey(parentKey, index))"
         >
           <i v-if="!parentKey" class="icon">♡</i>
           <span class="menu-title">{{ item.name }}</span>
           <i class="menu-submenu-arrow"></i>
         </div>
         <Menu
+          :is-popup="isPopup"
           :level="level + 1"
           :parent-key="getMenuKey(parentKey, index)"
           :aside-close="asideClose"
@@ -40,7 +41,7 @@
       <li
         v-else
         :key="getMenuKey(parentKey, index)"
-        :style="`padding-left: ${level * 16}px`"
+        :style="!isPopup ? `padding-left: ${level * 16}px` : ''"
         :class="{
           'menu-item': true,
           'menu-item-selected':
@@ -56,11 +57,15 @@
 </template>
 
 <script lang="ts">
-import { ref, reactive, defineComponent, onMounted } from "vue";
+import { ref, reactive, defineComponent } from "vue";
 
 export default defineComponent({
   name: "AsideMenu",
   props: {
+    isPopup: {
+      type: Boolean,
+      default: false,
+    },
     asideClose: {
       type: Boolean,
       default: true,
@@ -86,12 +91,15 @@ export default defineComponent({
     },
     toggleMenu: {
       type: Function,
+      default: () => {},
     },
     toggleSelected: {
       type: Function,
+      default: () => {},
     },
     submenuPopup: {
       type: Function,
+      default: () => {},
     },
   },
   setup: () => {
@@ -103,10 +111,6 @@ export default defineComponent({
       return parentKey ? parentKey + "-" + (index + 1) : String(index + 1);
     };
 
-    /* 生命周期 */
-    // onMounted(() => {
-    // });
-
     return {
       menuRef,
       getMenuKey,
@@ -115,11 +119,12 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .menu {
   flex: 1;
   font-size: 14px;
   color: rgba(255, 255, 255, 0.65);
+  background-color: #001529;
   user-select: none;
   overflow: hidden;
   .menu-item,
@@ -148,6 +153,12 @@ export default defineComponent({
       opacity: 1;
       margin-left: 10px;
       transition: opacity 0.3s;
+      width: 80%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    * {
+      pointer-events: none;
     }
   }
   .menu-submenu {
@@ -156,7 +167,6 @@ export default defineComponent({
       .menu-submenu-arrow {
         display: inline-block;
         width: 10px;
-        color: rgba(0, 0, 0, 0.85);
         opacity: 1;
         position: absolute;
         top: 50%;
@@ -230,6 +240,27 @@ export default defineComponent({
         }
       }
     }
+    .popup {
+      position: absolute;
+      left: calc(100% + 4px);
+      top: -4px;
+      display: none;
+      .menu-item {
+        padding-left: 16px;
+      }
+      &:before {
+        content: " ";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: -7px;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        opacity: .0001;
+      }
+    }
   }
   &.close {
     .menu-item,
@@ -250,6 +281,36 @@ export default defineComponent({
   }
   &.cor.close > .menu-submenu > .menu {
     height: 0;
+  }
+  &.popup {
+    width: 160px;
+    overflow: initial;
+    & > .menu-submenu {
+      position: relative;
+      &:hover > .popup {
+        display: block;
+      }
+    }
+    .menu-submenu {
+      .menu-submenu-title {
+        color: rgba(255, 255, 255, 0.65);
+        .menu-submenu-arrow {
+          opacity: .45;
+          &::before {
+            transform: rotate(45deg) translateY(-2.5px);
+          }
+          &::after {
+            transform: rotate(-45deg) translateY(2.5px);
+          }
+        }
+      }
+      &:hover > .menu-submenu-title {
+        color: #fff;
+        & > .menu-submenu-arrow {
+          opacity: 1;
+        }
+      }
+    }
   }
 }
 .menu-submenu-popup {

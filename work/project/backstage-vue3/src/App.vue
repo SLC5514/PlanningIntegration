@@ -1,5 +1,6 @@
 <template>
-  <AsideMenu ref="asideMenuRef" :menu-data="menuData" />
+  <router-view />
+  <!-- <AsideMenu ref="asideMenuRef" :menu-data="menuData" />
   <div class="layout">
     <router-view v-slot="{ Component, route }">
       <transition :name="route.meta.transition || 'fade'" mode="out-in">
@@ -13,18 +14,18 @@
     </router-view>
     <router-link to="/page1">page1</router-link>
     <router-link to="/page2">page2</router-link>
-  </div>
+  </div> -->
 </template>
 
 <script lang="ts">
 import { ref, reactive, defineComponent, watch, onMounted } from "vue";
-import AsideMenu from "@/components/AsideMenu.vue";
+// import AsideMenu from "@/components/AsideMenu.vue";
 
 export default defineComponent({
   name: "App",
-  components: {
-    AsideMenu,
-  },
+  // components: {
+  //   AsideMenu,
+  // },
   setup: () => {
     /* ref元素声明 */
     const asideMenuRef = ref(null);
@@ -82,18 +83,18 @@ export default defineComponent({
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
   min-height: 100vh;
-  display: flex;
-  flex: auto;
-  flex-direction: row;
+  // display: flex;
+  // flex: auto;
+  // flex-direction: row;
+  color: #2c3e50;
   background: #f0f2f5;
-  .layout {
-    min-height: 100vh;
-    display: flex;
-    flex: auto;
-    flex-direction: column;
-    background: #f0f2f5;
-  }
+  // .layout {
+  //   min-height: 100vh;
+  //   display: flex;
+  //   flex: auto;
+  //   flex-direction: column;
+  //   background: #f0f2f5;
+  // }
 }
 </style>

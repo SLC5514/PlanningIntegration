@@ -49,7 +49,7 @@
 </template>
 
 <script lang="ts">
-import { ref, reactive, defineComponent, onMounted } from "vue";
+import { ref, reactive, defineComponent, nextTick, onMounted } from "vue";
 import router from '@/router'
 import tween from "@/lib/tween";
 
@@ -69,19 +69,13 @@ export default defineComponent({
     },
   },
   setup: (props) => {
-    /* ref元素声明 */
-    let logoCtnRef = ref(null);
-    let menuRef = ref(null);
-    let popupRef = ref(null);
-
     /* 侧栏菜单逻辑 */
     let asideClose = ref(false);
     let menuData = reactive(props.menuData);
     let openKeys = reactive([]);
     let selectedKeys = reactive([]);
-    let anTime = 300,
-      anEle,
-      isClose;
+    let anTime = 300, anEle, isClose;
+
     /* 菜单收展 */
     const toggleMenu = (key, refs, index) => {
       if (asideClose.value) return;
@@ -103,6 +97,7 @@ export default defineComponent({
       if (item.url) router.push(item.url);
     };
     /* 侧栏收展 */
+    let menuRef = ref(null);
     const toggleAside = () => {
       asideClose.value = !asideClose.value;
       for (let i = 0; i < menuRef.value?.menuRef.children.length; i++) {
@@ -142,20 +137,51 @@ export default defineComponent({
       }, time + 50);
     };
     /* 子菜单弹出层 */
-    const submenuPopup = (e, item) => {
+    let popupRef = ref(null);
+    let popupStatus = false, popupTimer = null, popupKey = '';
+    const submenuPopup = (e, item, key) => {
+      popupStatus = true;
+      if (popupRef.value.show && popupKey === key) return;
       const el = e.target;
+      const rect = el.getBoundingClientRect();
       popupRef.value.menuList = item.children;
+      popupRef.value.x = rect.left + rect.width;
+      popupRef.value.y = rect.top;
       popupRef.value.show = true;
-      const leave = (event) => {
-        event.stopPropagation();
-        popupRef.value.show = false;
-        el.removeEventListener('mouseleave', leave);
+      popupKey = key;
+      nextTick(() => {
+        const enter = () => {
+          popupStatus = true;
+        }
+        const leave = () => {
+          popupStatus = false;
+          clearTimeout(popupTimer);
+          popupTimer = setTimeout(() => {
+            if (!popupStatus) {
+              popupRef.value.show = false;
+              el.removeEventListener('mouseenter', enter);
+              el.removeEventListener('mouseleave', leave);
+            }
+          })
+        }
+        popupRef.value.$el.addEventListener('mouseenter', enter);
+        popupRef.value.$el.addEventListener('mouseleave', leave);
+      })
+      const leave = () => {
+        popupStatus = false;
+        clearTimeout(popupTimer);
+        popupTimer = setTimeout(() => {
+          if (!popupStatus) {
+            popupRef.value.show = false;
+            el.removeEventListener('mouseleave', leave);
+          }
+        }, 0);
       }
       el.addEventListener('mouseleave', leave);
     }
-    // menu-submenu-popup
 
     /* 生命周期 */
+    let logoCtnRef = ref(null);
     onMounted(() => {
       logoCtnRef.value.style.width = logoCtnRef.value.clientWidth
         ? logoCtnRef.value.clientWidth + "px"
@@ -166,10 +192,12 @@ export default defineComponent({
       logoCtnRef,
       menuRef,
       popupRef,
+
       menuData,
       asideClose,
       openKeys,
       selectedKeys,
+
       toggleMenu,
       toggleSelected,
       toggleAside,
@@ -244,24 +272,6 @@ export default defineComponent({
       color: #fff;
       background-color: #2b2f3a;
     }
-  }
-  ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: hsla(0, 0%, 100%, 0.2);
-    border-radius: 3px;
-    box-shadow: inset 0 0 5px hsl(0deg 0% 100% / 5%);
-  }
-  ::-webkit-scrollbar-track {
-    background: hsla(0, 0%, 100%, 0.15);
-    border-radius: 3px;
-    box-shadow: inset 0 0 5px rgb(37 37 37 / 5%);
-  }
-  ::selection {
-    color: #fff;
-    background: #1890ff;
   }
 }
 </style>

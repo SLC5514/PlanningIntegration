@@ -1,8 +1,8 @@
 <template>
   <div class="app-wrapper">
-    <AsideMenu ref="asideMenuRef" :menu-data="menuData" />
+    <Sidebar ref="asideMenuRef" :menu-data="menuData" />
     <div class="main-container">
-      <div class="fixed-header">fixed-header</div>
+      <div class="fixed-header">fixed-header {{loading}}</div>
       <section class="app-main">
         <router-view v-slot="{ Component, route }">
           <transition :name="route.meta.transition || 'fade'" mode="out-in">
@@ -17,15 +17,18 @@
 </template>
 
 <script lang="ts">
-import { ref, reactive, defineComponent } from "vue";
-import AsideMenu from "@/components/AsideMenu.vue";
+import { ref, reactive, defineComponent, computed } from "vue";
+import { useStore } from 'vuex'
+import Sidebar from "./components/Sidebar/Index.vue";
 
 export default defineComponent({
   name: "Layout",
   components: {
-    AsideMenu
+    Sidebar
   },
   setup(props) {
+    const store = useStore();
+
     /* ref元素声明 */
     const asideMenuRef = ref(null);
 
@@ -57,9 +60,15 @@ export default defineComponent({
       { name: "菜单三" },
     ]);
 
+    // setTimeout(() => {
+    //   store.state.app.loading = false
+    //   store.commit('app/SET_LOADING', false)
+    //   store.dispatch('app/setLoading', false)
+    // }, 5000);
     return {
       asideMenuRef,
       menuData,
+      loading: computed(() => store.getters.loading)
     };
   }
 })

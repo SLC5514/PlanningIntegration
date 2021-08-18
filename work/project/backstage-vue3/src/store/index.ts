@@ -2,7 +2,7 @@
  * @Author: SLC
  * @Date: 2021-08-17 17:15:11
  * @LastEditors: SLC
- * @LastEditTime: 2021-08-17 17:50:20
+ * @LastEditTime: 2021-08-18 10:11:49
  * @Description: file content
  */
 
@@ -28,18 +28,14 @@ import getters from './getters'
 //   }
 // })
 
-// https://webpack.js.org/guides/dependency-management/#requirecontext
-const modulesFiles = require.context('./modules', true, /\.js$/)
+let modules = {}
+const modulesFiles = import.meta.globEager('./modules/*.ts')
 
-// you do not need `import app from './modules/app'`
-// it will auto require all vuex module from modules file
-const modules = modulesFiles.keys().reduce((modules: any, modulePath: string) => {
-  // set './app.js' => 'app'
-  const moduleName = modulePath.replace(/^\.\/(.*)\.\w+$/, '$1')
-  const value = modulesFiles(modulePath)
-  modules[moduleName] = value.default
-  return modules
-}, {})
+for (const path in modulesFiles) {
+  const moduleName = path.replace(/(.*\/)*([^.]+).*/gi, '$2')
+  // modules = { ...modules, [moduleName]: modulesFiles[path].default }
+  modules[moduleName] = modulesFiles[path].default
+}
 
 const store = createStore({
   modules,

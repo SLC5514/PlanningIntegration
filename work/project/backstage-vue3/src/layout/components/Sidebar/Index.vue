@@ -7,8 +7,8 @@
     <div class="scroll-warp">
       <Menu
         ref="menuRef"
-        :aside-close="asideClose"
         :menu-data="menuData"
+        :aside-close="asideClose"
         :open-keys="openKeys"
         :selected-keys="selectedKeys"
         :toggle-menu="toggleMenu"
@@ -50,16 +50,17 @@
 
 <script lang="ts">
 import { ref, reactive, defineComponent, nextTick, onMounted } from "vue";
-import router from '@/router'
+import router from '@/router';
 import tween from "@/lib/tween";
-
-import Popup from "@/components/Menu/Popup.vue";
+import Menu from "./Menu.vue";
+import Popup from "./Popup.vue";
 
 const { easeInOutQuad } = tween;
 
 export default defineComponent({
   name: "AsideMenu",
   components: {
+    Menu,
     Popup
   },
   props: {
@@ -140,6 +141,7 @@ export default defineComponent({
     let popupRef = ref(null);
     let popupStatus = false, popupTimer = null, popupKey = '';
     const submenuPopup = (e, item, key) => {
+      // if (!asideClose.value) return;
       popupStatus = true;
       if (popupRef.value.show && popupKey === key) return;
       const el = e.target;
@@ -147,25 +149,29 @@ export default defineComponent({
       popupRef.value.menuList = item.children;
       popupRef.value.x = rect.left + rect.width;
       popupRef.value.y = rect.top;
-      popupRef.value.show = true;
+      popupRef.value.parentKey = key;
+      popupRef.value.show = false;
       popupKey = key;
       nextTick(() => {
-        const enter = () => {
-          popupStatus = true;
-        }
-        const leave = () => {
-          popupStatus = false;
-          clearTimeout(popupTimer);
-          popupTimer = setTimeout(() => {
-            if (!popupStatus) {
-              popupRef.value.show = false;
-              el.removeEventListener('mouseenter', enter);
-              el.removeEventListener('mouseleave', leave);
-            }
-          })
-        }
-        popupRef.value.$el.addEventListener('mouseenter', enter);
-        popupRef.value.$el.addEventListener('mouseleave', leave);
+        popupRef.value.show = true;
+        nextTick(() => {
+          const enter = () => {
+            popupStatus = true;
+          }
+          const leave = () => {
+            popupStatus = false;
+            clearTimeout(popupTimer);
+            popupTimer = setTimeout(() => {
+              if (!popupStatus) {
+                popupRef.value.show = false;
+                el.removeEventListener('mouseenter', enter);
+                el.removeEventListener('mouseleave', leave);
+              }
+            })
+          }
+          popupRef.value.$el.addEventListener('mouseenter', enter);
+          popupRef.value.$el.addEventListener('mouseleave', leave);
+        })
       })
       const leave = () => {
         popupStatus = false;
@@ -209,10 +215,6 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 #aside-menu {
-  // position: fixed;
-  // top: 0;
-  // left: 0;
-  // z-index: 100;
   display: flex;
   flex-direction: column;
   width: $AsideMenuWidth;

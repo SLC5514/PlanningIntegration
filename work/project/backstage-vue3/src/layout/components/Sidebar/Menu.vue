@@ -29,8 +29,8 @@
           :is-popup="isPopup"
           :level="level + 1"
           :parent-key="getMenuKey(parentKey, index)"
-          :aside-close="asideClose"
           :menu-data="item.children"
+          :aside-close="asideClose"
           :open-keys="openKeys"
           :selected-keys="selectedKeys"
           :toggleMenu="toggleMenu"
@@ -113,6 +113,7 @@ export default defineComponent({
 
     return {
       menuRef,
+
       getMenuKey,
     };
   },
@@ -283,7 +284,7 @@ export default defineComponent({
     height: 0;
   }
   &.popup {
-    width: 160px;
+    width: $PopupWidth;
     overflow: initial;
     & > .menu-submenu {
       position: relative;

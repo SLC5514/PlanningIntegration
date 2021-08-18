@@ -1,18 +1,31 @@
 <template>
   <div class="menu-submenu-popup" v-if="show" :style="{ left: x + 4 + 'px', top: y + 'px' }">
-    <Menu :is-popup="true" :menu-data="menuList" />
+    <Menu :is-popup="true"
+      :parent-key="parentKey"
+      :menu-data="menuList"
+      :aside-close="$parent.asideClose"
+      :open-keys="$parent.openKeys"
+      :selected-keys="$parent.selectedKeys"
+      :toggle-menu="$parent.toggleMenu"
+      :toggle-selected="$parent.toggleSelected"
+      :submenu-popup="$parent.submenuPopup" />
   </div>
 </template>
 
 <script lang="ts">
 import { ref, reactive, toRefs, defineComponent } from "vue";
+import Menu from "./Menu.vue";
 
 export default defineComponent({
   name: "Popup",
+  components: {
+    Menu
+  },
   setup: () => {
     let data = reactive({
       show: false,
       menuList: [],
+      parentKey: '1',
       x: 0,
       y: 0
     });

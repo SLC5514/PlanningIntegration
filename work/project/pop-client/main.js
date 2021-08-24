@@ -2,21 +2,23 @@
  * @Author: SLC
  * @Date: 2021-07-27 16:21:07
  * @LastEditors: SLC
- * @LastEditTime: 2021-07-31 16:48:34
+ * @LastEditTime: 2021-08-24 14:10:23
  * @Description: file content
  */
 
-const { app, BrowserWindow, Menu/* , globalShortcut, Notification */ } = require("electron");
+const { app, BrowserWindow, Menu, ipcMain, dialog, session/* , globalShortcut, Notification */ } = require("electron");
 // const fs = require("fs");
 const path = require("path");
+// const cp = require("child_process");
 
 // let progressInterval;
+let win;
 
 // 创建窗口
 function createWindow() {
-  const win = new BrowserWindow({
+  win = new BrowserWindow({
     width: 300,
-    height: 400,
+    height: 430,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
@@ -84,13 +86,9 @@ const template = [
 const menu = Menu.buildFromTemplate(template);
 
 /* 生命周期 ========================================================================= */
+
 app
   .whenReady()
-  // .then(() => {
-  //   globalShortcut.register('Alt+CommandOrControl+I', () => {
-  //     win.webContents.openDevTools();
-  //   })
-  // })
   .then(() => {
     Menu.setApplicationMenu(menu);
 
@@ -108,16 +106,85 @@ app.on("window-all-closed", function () {
   if (process.platform !== "darwin") app.quit();
 });
 
-// 退出前执行
-// app.on("before-quit", () => {
-//   clearInterval(progressInterval);
-// });
+/* 进程通信 ========================================================================= */
 
-// app.on("will-quit", () => {
-//   // 注销快捷键
-//   globalShortcut.unregister('CommandOrControl+X')
-//   // 注销所有快捷键
-//   globalShortcut.unregisterAll()
-// });
+// 退出
+ipcMain.on("quit", () => {
+  win.close();
+});
 
-// require('devtron').install();
+// 调整尺寸
+ipcMain.on("setBounds", (event, data) => {
+  win.setBounds({
+    width: data.width,
+    height: data.height,
+  })
+});
+
+// 消息弹框
+ipcMain.on("showMessageBox", (event, data) => {
+  dialog.showMessageBox({
+    type: data.type,
+    title: data.title,
+    message: data.message,
+    buttons: data.buttons
+  }).catch((error) => {
+    console.error(error)
+  })
+});
+
+// 数据存储
+ipcMain.handle('sessionCookies', async (event, data) => {
+  if (data.type === 'get') {
+    return await getCookies(data.url, data.name);
+  } else if (data.type === 'set') {
+    return await setCookie(data.url, data.name, data.value, data.days);
+  } else if (data.type === 'remove') {
+    return await removeCookies(data.url, data.name);
+  }
+})
+
+/* 数据存储 ========================================================================= */
+
+// 获得
+async function getCookies(url, name) {
+  let cookies = [];
+  try {
+    cookies = await session.defaultSession.cookies.get({ url: url, name: name });
+  } catch (error) {
+    console.error(error);
+  }
+  return cookies;
+};
+
+// 保存
+async function setCookie(url, name, value, days) {
+  let status = false;
+  let exp = new Date();
+  let date = days ? Math.round(exp.getTime() / 1000) + days * 24 * 60 * 60 : '';
+  const cookie = {
+    url: url,
+    name: name,
+    value: value,
+    expirationDate: date
+  };
+  try {
+    await session.defaultSession.cookies.set(cookie);
+    status = true;
+  } catch (error) {
+    console.error(error);
+  }
+  return status;
+};
+
+// 删除
+async function removeCookies(url, name) {
+  let status = false;
+  try {
+    await session.defaultSession.cookies.remove(url, name);
+    status = true;
+  } catch (error) {
+    console.error(error);
+  }
+  return status;
+};

@@ -2,44 +2,47 @@
  * @Author: SLC
  * @Date: 2021-07-27 11:28:16
  * @LastEditors: SLC
- * @LastEditTime: 2021-07-31 18:02:49
+ * @LastEditTime: 2021-08-24 14:44:37
  * @Description: file content
  */
 
 const package = require("../package.json");
-// const { contextBridge, shell } = require("electron");
+const { contextBridge, shell } = require("electron");
 const cp = require("child_process");
 
 document.title += " v" + package.version;
 
 // 自定义api
 // contextBridge.exposeInMainWorld("electron", {
-//   openUrl: (url) => shell.openExternal(url),
-//   getDefBrowser: getDefBrowser,
-//   getBrowserList: getBrowserList,
-//   mac: require("getmac").default(),
-//   cpExec: (cmd, cwd) =>
-//     cp.exec("start " + cmd + " http://www.baidu.com", { cwd }),
+//   // openUrl: (url) => shell.openExternal(url),
+//   // getDefBrowser: getDefBrowser,
+//   // getBrowserList: getBrowserList,
+//   // mac: require("getmac").default(),
+//   cpExec: (cmd, cwd, url) =>
+//     cp.exec("start " + cmd + " " + url, { cwd }),
 // });
+
 window.electron = {
-  openUrl: (url) => shell.openExternal(url),
+  // openUrl: (url) => shell.openExternal(url),
   getDefBrowser: getDefBrowser,
-  getBrowserList: getBrowserList,
-  mac: require("getmac").default(),
-  cpExec: (cmd, cwd) =>
-    cp.exec("start " + cmd + " http://www.baidu.com", { cwd }),
+  // getBrowserList: getBrowserList,
+  // mac: require("getmac").default(),
+  cpExec: (cmd, cwd, url, callback) =>
+    cp.exec('start ' + (cmd || '""') + ' "' + url + '"', { cwd }, function(error, stdout, stderr) {
+      callback && callback(error, stdout, stderr);
+    }),
 };
 
 // 监听dom加载完成
-window.addEventListener("DOMContentLoaded", () => {
-  const replaceText = (selector, text) => {
-    const element = document.getElementById(selector);
-    if (element) element.innerText = text;
-  };
-  for (const dependency of ["chrome", "node", "electron"]) {
-    replaceText(`${dependency}-version`, process.versions[dependency]);
-  }
-});
+// window.addEventListener("DOMContentLoaded", () => {
+//   const replaceText = (selector, text) => {
+//     const element = document.getElementById(selector);
+//     if (element) element.innerText = text;
+//   };
+//   for (const dependency of ["chrome", "node", "electron"]) {
+//     replaceText(`${dependency}-version`, process.versions[dependency]);
+//   }
+// });
 
 // 获取浏览器列表
 // const stdoutStr = iconv.decode(new Buffer.from(stdout, binaryEncoding), encoding);

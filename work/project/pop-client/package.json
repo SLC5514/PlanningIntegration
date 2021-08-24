@@ -7,9 +7,9 @@
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make",
-    "package-win": "electron-packager . myApp --platform=win32 --arch=x64 --download.mirrorOptions.mirror=https://npm.taobao.org/mirrors/electron/ --asar --out=out",
-    "package-mac": "electron-packager . myApp --platform=darwin --arch=x64 --download.mirrorOptions.mirror=https://npm.taobao.org/mirrors/electron/ --asar --out=out",
-    "package-linux": "electron-packager . myApp --platform=linux --arch=x64 --download.mirrorOptions.mirror=https://npm.taobao.org/mirrors/electron/ --asar --out=out"
+    "package-win": "electron-packager . myApp --platform=win32 --arch=x64 --download.mirrorOptions.mirror=https://npm.taobao.org/mirrors/electron/ --asar --out=out --icon=favicon.ico",
+    "package-mac": "electron-packager . myApp --platform=darwin --arch=x64 --download.mirrorOptions.mirror=https://npm.taobao.org/mirrors/electron/ --asar --out=out --icon=favicon.ico",
+    "package-linux": "electron-packager . myApp --platform=linux --arch=x64 --download.mirrorOptions.mirror=https://npm.taobao.org/mirrors/electron/ --asar --out=out --icon=favicon.ico"
   },
   "author": "slc",
   "license": "ISC",

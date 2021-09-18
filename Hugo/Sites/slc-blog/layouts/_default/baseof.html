@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    {{- partial "common/head.html" . -}}
+    {{- block "head" . }}{{- end }}
+  </head>
+  <body>
+    {{- partial "common/header.html" . -}}
+    <main>
+      {{- block "main" . }}{{- end }}
+    </main>
+    {{- partial "common/footer.html" . -}}
+
+    {{ if ($.Params.showVariables) }}
+    {{- partial "api-variables.html" . -}}
+    {{ end }}
+  </body>
+  {{- partial "common/foot.html" . -}}
+  {{- block "foot" . }}{{- end }}
+</html>

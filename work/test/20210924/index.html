@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="holder">
+      <img id="ripple" src="./banner.jpg" />
+    </div>
+  </body>
+  <script src="https://s1.pstatp.com/cdn/expire-1-M/jquery/1.10.2/jquery.min.js"></script>
+  <script src="./jquery.waterrippleeffect.min.js"></script>
+  <script src="./ripple.js"></script>
+  <script>
+    var rootSize = 52.1484; //parseFloat(document.documentElement.style["font-size"]);
+    $(document).ready(function() {
+      $("#ripple").waterripple({
+        arbitrary: 0,
+        riprad: 3,
+        delay: 3,
+        onclick: true,
+        onmove: true,
+        width: parseInt(20.48 * rootSize),
+        height: parseInt(10.4 * rootSize),
+      });
+    });
+  </script>
+  <!-- <script>
+    var rootSize = 52.1484; //parseFloat(document.documentElement.style["font-size"]);
+    var w = 2048, h = w * 0.5;
+    // 水波纹
+    var settings = {
+      image: "./banner.jpg", //背景图片
+      rippleRadius: 10, //radius of the ripple
+      // width: 480, //width
+      // height: 480, //height
+      // width: parseInt(20.48 * rootSize),
+      // height: parseInt(10.4 * rootSize),
+      width: w,
+      height: h,
+      delay: 3, //if auto param === true. 1 === 1 second delay for animation
+      auto: false, //if auto param === true, animation starts on it′s own
+    };
+    var waterRippleEffect = new WaterRippleEffect(document.getElementById("holder"), settings);
+    //鼠标点击事件
+    document.getElementById("holder").addEventListener("click", function (e) {
+      var mouseX = e.layerX;
+      var mouseY = e.layerY;
+      waterRippleEffect.disturb(mouseX, mouseY);
+    });
+    //鼠标移动事件
+    document.getElementById("holder").addEventListener("mousemove", function (e) {
+      var mouseX = e.layerX;
+      var mouseY = e.layerY;
+      waterRippleEffect.disturb(mouseX, mouseY);
+    });
+  </script> -->
+  <!-- <script>
+    $(function () {
+      //Settings - params for WaterRippleEffect
+      var settings = {
+        image:
+          "./banner.jpg", //背景图片
+        rippleRadius: 10, //radius of the ripple
+        width: 480, //width
+        height: 480, //height
+        delay: 1, //if auto param === true. 1 === 1 second delay for animation
+        auto: false, //if auto param === true, animation starts on it′s own
+      };
+      //------------------------------------------------------------------------
+      //standalone
+      //初始化
+      var waterRippleEffect = new WaterRippleEffect(
+        document.getElementById("holder"),
+        settings
+      );
+      document.getElementById("holder").style.cursor = "pointer";
+
+      //鼠标点击事件
+      document.getElementById("holder").addEventListener("click", function (e) {
+        var mouseX = e.layerX;
+        var mouseY = e.layerY;
+        waterRippleEffect.disturb(mouseX, mouseY);
+      });
+
+      //鼠标移动事件
+      document
+        .getElementById("holder")
+        .addEventListener("mousemove", function (e) {
+          var mouseX = e.layerX;
+          var mouseY = e.layerY;
+          waterRippleEffect.disturb(mouseX, mouseY);
+        });
+    });
+  </script> -->
+  <!-- <script>
+    $(document).ready(function () {
+      //------------------------------------------------------------------------
+
+      init();
+
+      //------------------------------------------------------------------------
+
+      function init() {
+        //Settings - params for WaterRippleEffect
+        var settings = {
+          image: "./banner.jpg", //image path
+          rippleRadius: 3, //radius of the ripple
+          width: 800, //width
+          height: 800, //height
+          delay: 1, //if auto param === true. 1 === 1 second delay for animation
+          auto: true, //if auto param === true, animation starts on it´s own
+        };
+
+        //------------------------------------------------------------------------
+
+        //standalone
+
+        //init
+
+        var waterRippleEffect = new WaterRippleEffect(
+          document.getElementById("holder"),
+          settings
+        );
+        document.getElementById("holder").style.cursor = "pointer";
+
+        //on click
+
+        document
+          .getElementById("holder")
+          .addEventListener("click", function (e) {
+            var mouseX = e.layerX;
+            var mouseY = e.layerY;
+
+            waterRippleEffect.disturb(mouseX, mouseY);
+          });
+
+        //on mousemove
+
+        document
+          .getElementById("holder")
+          .addEventListener("mousemove", function (e) {
+            var mouseX = e.layerX;
+            var mouseY = e.layerY;
+
+            waterRippleEffect.disturb(mouseX, mouseY);
+          });
+
+        //------------------------------------------------------------------------
+
+        //jQuery
+
+        //init
+        /*
+        $( '#holder' ).waterRippleEffect( settings );
+        $( '#holder' ).css( 'cursor', 'pointer' );
+        */
+
+            //on click
+            /*
+        $( '#holder' ).click( function( e ) {
+
+            var mouseX = e.pageX - $( this ).offset().left;
+            var mouseY = e.pageY - $( this ).offset().top;
+
+            $( '#holder' ).waterRippleEffect( "disturb", mouseX, mouseY );
+
+        } );
+        */
+
+            //on mousemove
+            /*
+        $( '#holder' ).mousemove( function( e ) {
+
+            var mouseX = e.pageX - $( this ).offset().left;
+            var mouseY = e.pageY - $( this ).offset().top;
+
+            $( '#holder' ).waterRippleEffect( "disturb", mouseX, mouseY );
+
+        } );
+        */
+      }
+
+      //------------------------------------------------------------------------
+    });
+  </script> -->
+</html>

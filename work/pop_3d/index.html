@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3D试衣</title>
+    <style>
+      body {
+        margin: 0;
+      }
+      #leftContainer {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 260px;
+        height: 100vh;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+      }
+      #leftContainer > img {
+        width: 80px;
+      }
+      #rightContainer {
+        position: fixed;
+        right: 0;
+        top: 0;
+        width: 260px;
+        height: 100vh;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+      }
+      #rightContainer button.active {
+        color: #fff;
+        background-color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="leftContainer">
+      <button id="model_toggle" data-type="show">model_toggle</button>
+      <p>面料</p>
+      <img data-type="fabric" src="./images/04.jpg" />
+      <img data-type="fabric" src="./images/03.jpg" />
+      <img data-type="fabric" src="./images/S07.jpg" />
+      <p>图案</p>
+      <img data-type="pat" src="./images/s_9.png" />
+      <img
+        data-type="pat"
+        src="./images/a66f55a8c3fa6c0ddcdb685fa9b20854.jpg"
+      />
+    </div>
+    <div id="rightContainer">
+      <div>
+        图案缩放：<input id="scale" type="number" value="1" min="1" max="5" />
+      </div>
+      <div>
+        图形旋转：<input id="range" type="number" value="0" min="0" max="360" />
+      </div>
+    </div>
+    <div id="mainCanvas"></div>
+  </body>
+  <script src="./js/jquery-1.9.1.min.js"></script>
+  <script src="./js/three.min.js"></script>
+  <script src="./js/controls/OrbitControls.js"></script>
+  <script src="./js/loader/OBJLoader.js"></script>
+  <!-- <script src="./loader/MTLLoader.js"></script> -->
+  <script>
+    (function (g) {
+      var selectors = {};
+      var Pop3d = function (selector, config) {
+        if (selectors[selector] == undefined) {
+          selectors[selector] = new Pop3d.prototype.init(selector, config);
+        }
+        return selectors[selector];
+      };
+      Pop3d.prototype = {
+        selector: "", //将要被渲染的选择器
+
+        //可配置参数
+        selected_childs: {}, //3D模型子部件选中模板
+        model_confs: {}, //所有3D模型参数
+        box_width: 0, //渲染宽度
+        box_height: 0, //渲染高度
+
+        //非配置参数
+        model_objects: {}, //所有3D模型
+        constructor: Pop3d,
+
+        init: function (selector, config) {
+          this.selector = selector;
+          for (var key in config) {
+            this[key] = config[key];
+          }
+          if ($(this.selector).length == 0) {
+            console.log("选择器不存在");
+            return this;
+          }
+          this.container = $(this.selector);
+          if (this.box_width == 0) {
+            this.box_width = window.innerWidth - this.container.offset().left;
+          }
+          if (this.box_height == 0) {
+            this.box_height = window.innerHeight - this.container.offset().top;
+          }
+
+          this.init_scene();
+          this.init_camera();
+          this.init_loader();
+          this.init_light();
+          this.init_renderer();
+          this.init_controls();
+          this.add_listener();
+
+          //自动加载参数中模型，也可以手动用add_obj_model方法加载
+          for (var name in this.model_confs) {
+            this.add_obj_model(
+              this.model_confs[name].src,
+              name,
+              function (scope, object, obj_name) {
+                var model_conf = scope.model_confs[obj_name];
+                object.position.set(
+                  model_conf.position.x,
+                  model_conf.position.y,
+                  model_conf.position.z
+                );
+                if (
+                  model_conf.hasOwnProperty("textures") ||
+                  model_conf.hasOwnProperty("defult_texture")
+                ) {
+                  var index = 0;
+                  html = "";
+                  object.traverse(function (child) {
+                    if (child.isMesh) {
+                      child.index = index;
+                      var textures_conf = {};
+                      var texture = null;
+                      if (model_conf.textures.hasOwnProperty(index)) {
+                        textures_conf = model_conf.textures[index];
+                      } else if (model_conf.hasOwnProperty("defult_texture")) {
+                        textures_conf = model_conf.defult_texture;
+                      }
+                      if (
+                        textures_conf.hasOwnProperty("type") &&
+                        textures_conf.type == "pop_canvas"
+                      ) {
+                        var pop_canvas = scope.PopCanvas(textures_conf);
+                        texture = new THREE.Texture(pop_canvas.canvas);
+                        pop_canvas.callback = function () {
+                          texture.needsUpdate = true;
+                          scope.render();
+                        };
+                        texture.pop_canvas = pop_canvas;
+                      }
+                      if (texture) {
+                        child.material = new THREE.MeshPhongMaterial({
+                          map: texture,
+                          side: THREE.FrontSide,
+                        });
+                        child.material.transparent = true;
+                        child.material.opacity = 1;
+                        child.material.shininess = 0;
+                      }
+                      if (scope.selected_childs.hasOwnProperty(obj_name)) {
+                        var str = scope.selected_childs[
+                          obj_name
+                        ].templete.replace("{index}", index);
+                        str = str.replace("{name}", "部件" + (index + 1));
+                        html += str;
+                      }
+                      index++;
+                    }
+                  });
+                  scope.selectedObjects = object;
+                  scope.selected_childs[obj_name].parent_dom.append(html);
+                }
+                scope.model_objects[obj_name] = object;
+                scope.scene.add(object);
+              }
+            );
+          }
+
+          this.scene.add(this.camera);
+          this.container[0].appendChild(this.renderer.domElement);
+
+          return this;
+        },
+        //初始化场景
+        init_scene: function () {
+          this.scene = new THREE.Scene();
+        },
+        //初始化相机
+        init_camera: function () {
+          this.camera = new THREE.PerspectiveCamera(
+            30,
+            this.box_width / this.box_height,
+            1,
+            5000
+          );
+          this.camera.position.set(0, 0, 150);
+          this.scene.add(this.camera);
+        },
+        //初始化渲染器
+        init_loader: function () {
+          var scope = this;
+          var mange_loader = new THREE.LoadingManager(function () {
+            console.log("总加载器");
+            scope.render(); //加载完成所有后，渲染
+          });
+          this.texture_loader = new THREE.TextureLoader(mange_loader);
+          this.object_loader = new THREE.OBJLoader(mange_loader);
+        },
+        //初始化光源
+        init_light: function () {
+          var ambient = new THREE.AmbientLight(0xffffff, 0.5);
+          this.scene.add(ambient);
+          var light = new THREE.DirectionalLight(0xffffff, 0.6);
+          light.position.set(200, 240, 200);
+          this.scene.add(light);
+          var light = new THREE.DirectionalLight(0xffffff, 0.6);
+          light.position.set(-200, 240, -200);
+          this.scene.add(light);
+        },
+        //初始化渲染器
+        init_renderer: function () {
+          this.renderer = new THREE.WebGLRenderer({
+            antialias: true,
+            alpha: true,
+            preserveDrawingBuffer: true,
+          });
+          this.renderer.setPixelRatio(window.devicePixelRatio);
+          this.renderer.setSize(this.box_width, this.box_height);
+          this.renderer.setClearAlpha(0);
+        },
+        //初始化相机自动控制器
+        init_controls: function () {
+          this.controls = new THREE.OrbitControls(
+            this.camera,
+            this.renderer.domElement
+          );
+          this.controls.minDistance = 50;
+          this.controls.maxDistance = 500;
+          //this.controls.enablePan=false;
+          this.controls.maxPolarAngle = 1.5;
+          this.controls.minPolarAngle = 1;
+          var scope = this;
+          this.controls.addEventListener("change", function () {
+            scope.render(); //加载完成所有后，渲染
+          });
+        },
+        add_listener: function () {
+          var scope = this;
+          //部件点击
+          var raycaster = new THREE.Raycaster();
+          var mouse = new THREE.Vector2();
+          var selectHandler = function (event) {
+            var event = event || window.event;
+            switch (event.type) {
+              case "mousedown":
+                mouse.x = (event.clientX / scope.box_width) * 2 - 1;
+                mouse.y =
+                  -(
+                    (event.clientY - scope.container.offset().top) /
+                    scope.box_height
+                  ) *
+                    2 +
+                  1;
+                raycaster.setFromCamera(mouse, scope.camera);
+                let intersects = raycaster.intersectObjects(
+                  scope.scene.children,
+                  true
+                );
+                if (
+                  intersects.length == 0 ||
+                  !intersects[0].object.material.map
+                ) {
+                  return;
+                }
+                scope.selectedObjects = intersects[0].object;
+
+                //获取点击纹理的位置
+                var uv = intersects[0].object.material.map.transformUv(
+                  intersects[0].uv
+                );
+                scope.selectedObjects.material.map.uv = uv;
+
+                //选中效果
+                $("#rightContainer button").removeClass("active");
+                $("#rightContainer button").each(function () {
+                  if ($(this).data("index") == scope.selectedObjects.index) {
+                    $(this).addClass("active");
+                  }
+                });
+
+                scope.selectedObjects.currentHex =
+                  scope.selectedObjects.material.color.getHex();
+                scope.selectedObjects.material.color.set(0x99999);
+                scope.render();
+                break;
+              case "mouseleave":
+              case "mouseup":
+                if (
+                  scope.selectedObjects != null &&
+                  scope.selectedObjects.isMesh
+                ) {
+                  scope.selectedObjects.material.color.set(
+                    scope.selectedObjects.currentHex
+                  );
+                  scope.render();
+                }
+                break;
+              case "mousemove":
+                break;
+            }
+          };
+          document.body.addEventListener("mousedown", selectHandler, false);
+          document.body.addEventListener("mouseleave", selectHandler, false);
+          document.body.addEventListener("mouseup", selectHandler, false);
+          document.body.addEventListener("mousemove", selectHandler, false);
+        },
+        //添加OBJ格式3D模型
+        add_obj_model: function (obj_src, obj_name, callback) {
+          var scope = this;
+          this.object_loader.load(obj_src, function (object) {
+            scope.model_objects[obj_name] = object;
+            callback(scope, object, obj_name);
+          });
+        },
+        //渲染
+        render: function () {
+          console.log("渲染");
+          this.renderer.render(this.scene, this.camera);
+        },
+      };
+
+      //2D画纹理图
+      Pop3d.prototype.PopCanvas = function (config) {
+        var obj = {
+          canvas: null,
+          context_2d: null,
+          background_img_src: null,
+          background_img: null,
+
+          content_img_src: null,
+          content_img: null,
+          content_img_scale: 1, //默认放大倍数
+          content_img_init_x: 0,
+          content_img_init_y: 0,
+          content_img_offset_x: 0,
+          content_img_offset_y: 0,
+          content_img_angle: 0,
+          callback: function () {},
+          //初始化
+          init: function () {
+            for (var key in config) {
+              if (this.hasOwnProperty(key)) {
+                this[key] = config[key];
+              }
+            }
+            this.canvas = document.createElement("canvas");
+            this.canvas.width = this.canvas.height = 1024;
+            this.context_2d = this.canvas.getContext("2d");
+            if (this.background_img_src) {
+              this.set_background_img(this.background_img_src);
+            }
+            if (this.content_img_src) {
+              this.set_content_img(this.content_img_src);
+            }
+          },
+          //设置背景图片
+          set_background_img: function (img_src) {
+            var scope = this;
+            var background_img = new Image();
+            background_img.src = img_src;
+            background_img.onload = function () {
+              scope.background_img = background_img;
+              scope.draw();
+            };
+          },
+          //设置内容图
+          set_content_img: function (img_src, init_x, init_y) {
+            var scope = this;
+            var content_img = new Image();
+            content_img.src = img_src;
+            content_img.onload = function () {
+              scope.content_img = content_img;
+              if (init_x) {
+                scope.content_img_init_x = init_x;
+              }
+              if (init_y) {
+                scope.content_img_init_y = init_y;
+              }
+              scope.draw();
+            };
+          },
+          //设置图案放大倍数
+          set_content_img_scale: function ($scale) {
+            this.content_img_scale = $scale;
+            if (this.content_img) {
+              this.draw();
+            }
+          },
+          //设置图案旋转角度，顺时针
+          set_content_img_rotate: function (angle) {
+            this.content_img_angle = angle;
+            if (this.content_img) {
+              this.draw();
+            }
+          },
+          //移动图案位置
+          set_content_img_position: function (x, y) {
+            this.content_img_offset_x = x;
+            this.content_img_offset_y = y;
+            if (this.content_img) {
+              this.draw();
+            }
+          },
+          //渲染2D图片
+          draw: function () {
+            if (this.background_img) {
+              this.context_2d.fillStyle = this.context_2d.createPattern(
+                this.background_img,
+                "repeat"
+              );
+            } else {
+              this.context_2d.fillStyle = "#000000"; //默认颜色
+            }
+            this.context_2d.rect(0, 0, this.canvas.width, this.canvas.height);
+            this.context_2d.fill();
+            if (this.content_img) {
+              var content_img_width =
+                this.content_img.width * this.content_img_scale; //缩放后图片宽度
+              var content_img_height =
+                this.content_img.height * this.content_img_scale; //缩放后图片高度
+              var init_x = this.content_img_init_x - content_img_width / 2; //默认X坐标
+              var init_y = this.content_img_init_y - content_img_height / 2; //默认y坐标
+              var x = this.content_img_offset_x + init_x;
+              var y = this.content_img_offset_y + init_y;
+              this.context_2d.translate(
+                x + content_img_width / 2,
+                y + content_img_height / 2
+              ); //设置旋转左边坐标
+              this.context_2d.rotate((this.content_img_angle * Math.PI) / 180);
+              this.context_2d.translate(
+                -x - content_img_width / 2,
+                -y - content_img_height / 2
+              ); //旋转后返回原来位置
+
+              this.context_2d.drawImage(
+                this.content_img,
+                x,
+                y,
+                content_img_width,
+                content_img_height
+              );
+            }
+            this.callback();
+          },
+        };
+        obj.init(config);
+        return obj;
+      };
+      Pop3d.prototype.init.prototype = Pop3d.prototype;
+
+      g.Pop3d = Pop3d;
+    })(window);
+  </script>
+  <script>
+    $json = {
+      //部件选中模板
+      selected_childs: {
+        main: {
+          parent_dom: $("#rightContainer"),
+          templete: '<button data-index="{index}">{name}</button>',
+        },
+      },
+      //3D模型参数
+      model_confs: {
+        human: {
+          src: "./3d_obj/BT_nanrenti_1222.obj",
+          position: { x: 0, y: -38, z: 0 },
+        },
+        main: {
+          src: "./3d_obj/jiake.obj",
+          position: { x: 0, y: -38, z: 0 },
+          defult_texture: {
+            //默认纹理
+            type: "pop_canvas", //纹理类型
+            background_img_src: "./images/04.jpg", //纹理其他参数
+          },
+          textures: {}, //每个部件自己的纹理
+        },
+      },
+    };
+
+    var pop_3d = Pop3d("#mainCanvas", $json);
+    console.log(pop_3d);
+  </script>
+</html>

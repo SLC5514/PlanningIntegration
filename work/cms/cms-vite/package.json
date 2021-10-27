@@ -1,0 +1,38 @@
+{
+  "name": "cms-vite",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "axios": "^0.22.0",
+    "echarts": "^5.2.1",
+    "element-plus": "^1.1.0-beta.19",
+    "fuse.js": "^6.4.6",
+    "js-cookie": "^3.0.1",
+    "normalize.css": "^8.0.1",
+    "nprogress": "^0.2.0",
+    "path-to-regexp": "^6.2.0",
+    "screenfull": "^5.1.0",
+    "vue": "^3.2.16",
+    "vue-count-to": "^1.0.13",
+    "vue-router": "4",
+    "vuex": "^4.0.2"
+  },
+  "devDependencies": {
+    "@types/js-cookie": "^3.0.0",
+    "@types/node": "^16.10.3",
+    "@vitejs/plugin-vue": "^1.9.3",
+    "mockjs": "^1.1.0",
+    "sass": "^1.42.1",
+    "typescript": "^4.4.3",
+    "unplugin-element-plus": "^0.1.0",
+    "unplugin-vue-components": "^0.15.6",
+    "vite": "^2.6.4",
+    "vite-plugin-svg-icons": "^1.0.5",
+    "vue-tsc": "^0.3.0"
+  },
+  "license": "UNLICENSED"
+}

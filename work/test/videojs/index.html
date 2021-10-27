@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.bootcdn.net/ajax/libs/video.js/7.15.0/video-js.min.css" rel="stylesheet">
+    <!-- <link href="https://cdn.bootcdn.net/ajax/libs/video.js/6.9.0/video-js.min.css" rel="stylesheet"> -->
+    <title>Document</title>
+  </head>
+  <body>
+    <video
+      id="e_video"
+      class="video-js"
+      style="width: 500px; height: 300px"
+    >
+      <source id="source" type="video/mp4" />
+    </video>
+  </body>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/video.js/7.15.0/video.min.js"></script>
+  <!-- <script src="https://cdn.bootcdn.net/ajax/libs/video.js/6.9.0/ie8/videojs-ie8.min.js"></script> -->
+  <!-- <script src="https://cdn.bootcdn.net/ajax/libs/video.js/6.9.0/alt/video.novtt.min.js"></script> -->
+  <!-- <script src="https://cdn.bootcdn.net/ajax/libs/video.js/6.9.0/video.min.js"></script> -->
+  <!-- <script src="https://cdn.bootcdn.net/ajax/libs/video.js/6.9.0/video.js"></script> -->
+  <script>
+    // videojs.options.flash.swf = 'https://cdn.bootcdn.net/ajax/libs/video.js/5.8.5/video-js.swf';
+
+    var myVid;
+    var vList = [
+      "http://vjs.zencdn.net/v/oceans.mp4",
+      "https://blz-videos.nosdn.127.net/1/HearthStone/f6cd63b590d416821d3e27e0.mp4",
+    ]; //视频集
+    var curr = 0; //播放第几个视频
+    var options = {
+      // muted: true,
+      controls: true,
+      autoplay: 'any', // play =no> muted & play
+      preload: 'auto', // metadata
+      playbackRates: [0.25, 0.5, 1, 1.5, 2, 4, 8, 16],
+      techOrder: [ 'html5'/* , 'flash' */ ]
+    };
+
+    //静态用于演示
+    $(function () {
+      $("#source").attr("src", vList[0]);
+      myVid = videojs("e_video", options, function onPlayerReady() {
+        this.play();
+        this.on("ended", function () {
+          videojs.log("Awww...over so soon?!");
+          if (curr >= vList.length) {
+            curr = 0; //重新循环播放
+          }
+
+          myVid.src(vList[curr]);
+          myVid.load();
+
+          console.log("curr1: " + curr);
+          curr++;
+          console.log("curr2: " + curr);
+        });
+      });
+      curr++;
+      console.log("curr: " + curr);
+    });
+
+    //动态
+    //$(function(){
+    //$.ajax({
+    // type:"post",
+    //url:"",  //获取视频url
+    //dataType : "json",
+    //success : function (data){
+    //    vList = data.list; //视频集
+    //    curr = data.subscript; //视频下标    如果不需要播放指定视频可以忽略  curr 赋值为0即可
+    //   var videoUrls = vList[curr]; //从视频集中获取播放指定视频url
+
+    //  $("#source").attr("src", videoUrls);  // 赋值给video标签
+
+    // myVid = videojs('e_video', options, function onPlayerReady() {
+    //    this.play();
+    //   this.on('ended', function () {
+
+    //     videojs.log('Awww...over so soon?!');
+    //待所有视频播放完成后  如果不需要重第一个视频播放则注释即可
+    //    if(curr >= vList.length){
+    //        curr = 0; //重新循环播放
+    //   }
+    //   myVid.src(vList[curr]);
+    //   myVid.load();
+    //    curr ++; //视频下标加1
+    //});
+    //})
+
+    // curr ++;
+    // }
+    // })
+    //})
+  </script>
+</html>

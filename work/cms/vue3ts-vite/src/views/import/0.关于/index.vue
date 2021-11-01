@@ -15,6 +15,7 @@ const count = ref(0);
         <li>动态title <mark>问题</mark>：自动导入页面的标题如何归置 <mark>方案</mark>：使用目录名</li>
         <li>面包屑导航</li>
         <li>页面过渡 <mark>*</mark>：需要有根节点</li>
+        <li>页面缓存 <mark>问题</mark>：已缓存的组件会执行setup？</li>
         <li>标签导航</li>
         <li>项目加载&进度</li>
       </ul>
@@ -24,8 +25,7 @@ const count = ref(0);
       <ul>
         <li>路由权限 <mark>*</mark>：须配合账号登陆系统</li>
         <li>列表过渡</li>
-        <li>页面缓存 <mark>*</mark>：进行中</li>
-        <li>全局动态配置</li>
+        <li>全局动态配置 <mark>*</mark>：进行中</li>
         <li>错误日志</li>
         <li>复制内容</li>
         <li>代码块</li>

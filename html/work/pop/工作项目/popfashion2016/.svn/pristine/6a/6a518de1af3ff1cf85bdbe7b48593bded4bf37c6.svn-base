@@ -1,0 +1,287 @@
+{extends file="layout.html"}
+{block name="title"}{$title}{/block}
+{block name=keywords}{$keywords}{/block}
+{block name=description}{$description}{/block}
+{block name="header"}{/block}
+{block name="selfcss"}	
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/pop_layer.css?{STATIC_CHANGE_TIME}">
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/new-detail/tbook-detail.css?{STATIC_CHANGE_TIME}">
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/lists/video-list-inside.css?{STATIC_CHANGE_TIME}">
+{/block}
+{block name="main"}
+<input id="encrypt" type="hidden" data-sign="{$sign}" data-timestamp="{$timeStamp}" data-token="{$token}">
+<input type="hidden" id="link" data-col="{$columnId}" data-sor="{$link['sortRandom']}" data-url="{if isset($link['url'])}{$link['url']}{/if}" data-param="{if isset($link['param'])}{$link['param']}{/if}" data-id="{$id}" data-bra="{$data.brand_tid}" data-reg="{$data.iRegion}" data-t="presscon" data-search="{if isset($link['search'])}{$link['search']}{/if}"/>
+<div class="video-detail-section">
+    <div class="video-detail-header clearfix">
+        <div class="web-logo js-web-logo fl">
+            <a href="/" target="_blank">
+                <img src="{STATIC_URL2}/global/images/lists/video_list/pop_logo.png"/>
+                <i></i>
+            </a>
+            <div class="web-all-link">
+                <a href="https://www.pop-fashion.com/" target="_blank">
+                    <em class="web-fashion"></em>服装
+                </a>
+                <a href="http://www.pop-bags.com/" target="_blank">
+                    <em class="web-bags"></em>箱包
+                </a>
+                <a href="http://www.pop-shoe.com/" target="_blank">
+                    <em class="web-shoe"></em>鞋子
+                </a>
+                <a href="http://www.51shoushi.com/" target="_blank">
+                    <em class="web-shoushi"></em>首饰
+                </a>
+                <a href="http://www.91jiafang.com/" target="_blank">
+                    <em class="web-jiafang"></em>家纺
+                </a>
+                <a href="http://yuntu.pop136.com/" target="_blank">
+                    <em class="web-yuntu"></em>云图
+                </a>
+                <a href="http://www.pop136.com/" target="_blank">
+                    <em class="web-gw"></em>官网
+                </a>
+                <!--<a href="http://www.mynfd.com/index.php?key=gElAIG6hX" target="_blank">-->
+                    <!--<em class="web-qushi"></em>趋势参考-->
+                <!--</a>-->
+            </div>
+        </div>
+        {if $data.brand_tid}
+        <div class="video-seleted-labels-section fl">
+            <a class="brand-selected-labels js-brand-selected" data-bra="{$data.brand_tid}">{$data.brand_name}</a>
+            <span class="split-line"></span>
+            <div class="season-seleted-labels-box js-swiper-season-main">
+                <div class="season-seleted-labels-content js-season-seleted-labels js-swiper-child">
+                    {if $filterData.iSeason}
+                    {foreach $filterData.iSeason as $id => $name}
+                        <a {if $id == $filter.sea}class="select-on" {/if} data-sea="{$id}">{$name}</a>
+                    {/foreach}
+                    {/if}
+                </div>
+                {if count($filterData.iSeason) > 4}
+                    <a class="labels-switch labels-switch-prev js-switch-btn js-swiper-switch-prev"></a>
+                    <a class="labels-switch labels-switch-next js-switch-btn js-swiper-switch-next"></a>
+                    <div class="b-nav-mask"></div>
+                {/if}
+            </div>
+        </div>
+        {/if}
+    </div>
+    <div class="video-detail-infor {if !$trend_lists && empty($videoData.tidbits_id) && empty($videoData.video_id)}video-detail-infor-blank{/if} {if $trend_lists}video-trend-lists-blank{/if}">
+        <div class="con_width clearfix">
+            <div class="video-detail-infor-lf fl">
+                <div class="video-detail-infor-main">
+                    <h1>{$data.nme}</h1>
+                    <p class="video-labels">
+                        {if $data.seasonName}
+                        <span>{$data.seasonName}</span>
+                        {/if}
+                        {if $data.regionName}
+                        <span><em></em>{$data.regionName}</span>
+                        {/if}
+                        {if $data.brand_name}
+                        <span><em></em>{$data.brand_name}</span>
+                        {/if}
+                        {if $data.genderName}
+                        <span><em></em>{$data.genderName}</span>
+                        {/if}
+                    </p>
+                    {if $P_UserType!=4}
+                    {if $bIsCollect == 1}
+                    <a class="collect-status" id="collect" href="javascript:void(0);" data-iscollected="{$bIsCollect}" data-col="{$columnId}" data-tab="presscon" data-id="{$data.id}" data-type="1" data-para="ver={$version}"><i></i><span>已收藏</span></a>
+                    {else}
+                    <a class="collect-status nzt" id="collect" href="javascript:void(0);" data-iscollected="{$bIsCollect}" data-col="{$columnId}" data-tab="presscon" data-id="{$data.id}" data-type="1" data-para="ver={$version}"><i></i><span>收藏</span></a>
+                    {/if}                    
+                    {/if}
+
+                    <!--关联报告数据-->
+                    {if $trend_lists}
+                    <div class="runway-more-contain">
+                        <div class="runway-more-lists js-runway-more-lists swiper-container">
+                            <ul class="swiper-wrapper clearfix">
+                                
+                                {foreach $trend_lists as $item}
+                                <li class="swiper-slide">
+                                    <a href="/details/report/t_{$item.tableName}-id_{$item.id}-col_{$item.columnId}/" target="_blank">
+                                        <div class="pic-detail-box clearfix">
+                                            <img class="fl" src="{$item.cover}"/>
+                                            <div class="fl">
+                                                <h3>{$item.title}</h3>
+                                                <p>{$item.description}</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                {/foreach}                                
+                            </ul>
+                        </div>
+                        {if count($trend_lists) > 3}
+                        <a class="switch-btn-video switch-btn-prev js-switch-btn-prev"></a>
+                        <a class="switch-btn-video switch-btn-next js-switch-btn-next"></a>
+                        {/if}
+                    </div>
+                    {/if}
+                </div>
+            </div>
+            {if !empty($videoData.video_id) || !empty($videoData.tidbits_id)}
+            <div class="video-detail-infor-rg fr">
+                <div class="video-detail-switch-main">
+                    <div class="switch-video-btn js-switch-video-btn">
+                        <a data-videoId="{$videoData.video_id}" {if empty($videoData.video_id)} style="display: none;" {else} class="v-on"{/if}>发布会视频</a>
+                        <a data-videoId="{$videoData.tidbits_id}" {if empty($videoData.video_id) && !empty($videoData.tidbits_id)} class="v-on" {/if} {if empty($videoData.tidbits_id)} style="display: none;"{/if}><i></i>幕后花絮</a>
+                    </div>
+                    <div class="play-video-box">
+                        <div class="play-video-img">
+                            <div class="close-video-positiion"></div>
+                            <div id="runwayPlayer"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {/if}
+        </div>
+    </div>
+    {if count($insideAllData) > 1}
+    <div class="video-detail-more-section">
+        <div class="contentW">
+            <div class="video-detail-more-box js-swiper-runway-main">
+                <div class="video-detail-lists-box js-swiper-child">
+                    {foreach $insideAllData as $item}
+                    <a href="{$item.inside_url}" {if $item.id == $filter.id} class="select-on" {/if} >{$item.title}</a>
+                    {/foreach}
+                </div>
+                {if count($insideAllData) > 3}
+                <a class="detail-more-switch detail-more-prev js-switch-btn js-swiper-switch-prev"></a>
+                <a class="detail-more-switch detail-more-next js-switch-btn js-swiper-switch-next"></a> 
+                {/if}               
+                <div class="nav-mask"></div>
+            </div>
+        </div>
+    </div>
+    {/if}
+    <div class="video-lists-section">
+        <div class="contentW">
+            <div class="neiye-infor-bottom">
+                <div class="listNav fl">
+                    {if isset($focus_flag)}
+                    <a class="{if $version == 'focus'}on{/if} version" href="javascript:void(0);" data-key="ver" data-val="focus">现场高清版</a>                    
+                    {/if}
+                    {if isset($special_flag)}
+                    <span></span>
+                    <a href="javascript:void(0);" class="{if $version == 'special'}on{/if} version" data-key="ver" data-val="special">品牌细节版</a>
+                    {/if}
+                    {if isset($detail_flag)}
+                    <span></span>
+                    <a href="javascript:void(0);" class="{if $version == 'live'}on{/if} version" data-key="ver" data-val="live">现场及时版</a>
+                    {/if}
+                </div>                
+                <!-- 普通用户 -->
+                {if $P_UserType==4}
+                <div class="apply-try-runw fr js-contact-qq-btn">
+                    <p>开通免费试用可清晰浏览全部内容</p><a class="js-contact-qq-btn" href="javascript:void(0);">免费申请试用</a>
+                </div>
+                {/if}                
+                {if $P_UserType!=4}
+                <div class="list-down-page fr">
+                    <div class="page-box fl clearfix" id="s_result">
+                        <p class="findstyle">{if isset($totalCount) && !empty($totalCount)}共 <a href="javascript:void(0);" title="{$totalCount}">{$totalCount}</a> 款{/if}</p>
+                        {if isset($simplePageHtml) && !empty($simplePageHtml)}{$simplePageHtml}{/if}
+                    </div>
+                    <span class="fl"></span> 
+                    {if $version != 'video'}
+                        {if $buttonStatue eq 1 AND  $userType == 'vip'}
+                            {if $version eq 'focus'}
+                            <a class="download fl" href="{$downLoadUrl}">打包下载高清版</a>
+                            {elseif $version eq 'live'}
+                            <a class="download fl" href="{$downLoadUrl}">打包下载及时版</a>
+                            {elseif $version eq 'special'}
+                            <a class="download fl" href="{$downLoadUrl}">打包下载细节版</a>
+                            {/if}
+                        {else}
+                            <a class="download fl cur" href="javascript:void(0);">立即打包下载</a>
+                        {/if}
+                    {/if}
+                </div>
+                {/if}
+            </div>
+            <div class="video-lists-content runways_neiye" id="main">
+                {if !empty($lists)}
+                <ul class="picbox clearfix lazyload">
+                    {foreach $lists as $val}
+                    <li>
+                        <a class="img_click" href="/details/bookpresscon/t_presscondetails-id_{$val.id}-col_3/" data-t="presscondetails" data-total="{$totalCount}" data-index="{$val.index}" data-ver="{$val.version}" data-id="{$val.id}" data-col="3" data-bp="/" data-sp="{$val.imgSmallPath}">
+                        <div class="{$val.shade}"></div>
+                        {if $P_UserType==4}
+                        <div class="shuiy"></div>
+                        {/if}
+                        {if $val['imgSmallPath']}
+                        <img src="{STATIC_URL2}/global/images/loading/style.gif" data-original="{$val['imgSmallPath']}" />
+                        {else}
+                        <img src="{STATIC_URL2}/global/images/loading/styleMR.jpg" />
+                        {/if}
+                        </a>
+                    </li>
+                    {/foreach}
+                </ul>
+                {else}
+                <div class="rightc_main con_width">
+                    {include file="lists/lists-common/search_null.html"}
+                </div>
+                {/if}
+                <div class="rightc_bottom">
+                    <div class="pages">
+                        {if isset($pageHtml) && !empty($pageHtml)}{$pageHtml}{/if}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div  class="pop_layer_page pop_layer_page1" id="pop_layer">
+    {include file="bookpresscon_layer_template.html"}
+</div>
+{/block}
+{block name="other"}
+<div id="loadingBg"><div class="noPic"></div></div>
+{/block}
+{block name="self"}
+<script type="text/javascript" src="//player.youku.com/jsapi"></script>
+<script type="text/javascript" src="{STATIC_URL2}/global/js/lib/swiper/swiper.min.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/secret/crypto-js/crypto-js.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/secret/jsencrypt.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/styles.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL2}/global/js/fashion/index.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/global.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/regionAction.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/waterFall.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/common/template.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL2}/global/js/common/imagesloaded.pkgd.min.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL2}/global/js/fashion/aggregation.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL2}/global/js/fashion/util.collect.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/lists/video-list-inside.js?{STATIC_CHANGE_TIME}"></script>
+
+<script>
+$(function(){
+	$(".shoucang_btn").click(function(){
+		$(".layershow").show();
+    })
+    
+    $(document).on('contextmenu', function(){   //去除右键默认事件
+        return false;
+    });
+
+	$('.guanbi_btn').click(function(){
+		$(".layershow").hide();
+	});
+
+    //包下载权限提示信息
+    // $('body').on('click', '.download', function () {
+    //     return oCommon.downloadPrivilege();
+    // });
+});
+</script>
+{literal}
+<script>         
+eval(function(p,a,c,k,e,d){e=function(c){return(c<a?"":e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)d[e(c)]=k[c]||e(c);k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1;};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p;}('8 B(2,b){D(C 2==\'x\'){2=w.n(2)}3 a=1.o.7(2,1.4.5.c(b),{r:1.4.5.c(\'e\')});9 1.4.s.n(a.y)};8 z(2,b){3 q=1.o.6(2,1.4.5.c(b),{r:1.4.5.c(\'e\')});9 q.A(1.4.5)};8 u(a){3 6=h d();6.t(v());p=6.6(R(a));9 p};8 T(m){3 7=h d();7.U(0());3 k=7.7(m);i=S(k).Q(/\\+/g,\'%X\');9 i};8 0(){3 0=\'-----Y l j-----\';0+=\'V+f+W\';0+=\'P\';0+=\'H+I\';0+=\'G\';0+=\'E/F/J\';0+=\'N/O+M\';0+=\'K\';0+=\'-----L l j-----\';9 0};',61,61,'pub_key|CryptoJS|plainText|var|enc|Utf8|decrypt|encrypt|function|return|encrypted|AES_KEY|parse|JSEncrypt|1234567887654301|||new|data_str|KEY|res|PUBLIC|str|stringify|AES|data_decrypted|decrypted|iv|Base64|setPrivateKey|rsa_decrypt|pri_key|JSON|object|ciphertext|aes_decrypt|toString|aes_encrypt|typeof|if|Avw5eS3UkIPixj4B0mZkhn9VZ9mOgBRgs9Lo|Ihc|GHGXr73iXRhLgqfQhC5dlMisbr3GqnGtPNVOBDYGtGgKS4mpaYzpO60kunooKmdH|3PSU5jrzuzDUEqZvEQaOHfKcUXRx3C61iR9iTnA6YCZLlIX3CnRJzYWCJNRjV|qp|hJXAk3kZvzQjIpzKrYAqHYp|hwIDAQAB|END|EfjuWjJxz02MuWsi|4cKyAfWCegA0G0fGo2aJWqpFrAg25FTDXFf0DRDz|AIEvJu|rcEaJOO94OSQsWzIQSGWM4yoVOVg85YKhW5JlwAHH53Zd8sASLk0ypQv5ze68zeS|replace|decodeURIComponent|encodeURI|rsa_encrypt|setPublicKey|MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1053Mcqn6WH|liJid6|2B|BEGIN'.split('|'),0,{}))
+</script>
+{/literal}
+{/block}

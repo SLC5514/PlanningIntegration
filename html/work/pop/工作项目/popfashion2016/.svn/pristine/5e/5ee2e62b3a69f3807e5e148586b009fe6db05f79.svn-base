@@ -1,0 +1,190 @@
+{extends file="layout.html"}
+{block name="title"}{$title}{/block}
+{block name=keywords}{$keywords}{/block}
+{block name=description}{$description}{/block}
+{block name="selfcss"}
+<link rel="stylesheet" href="{STATIC_URL2}/global/css/pop_layer.css?{STATIC_CHANGE_TIME}">
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/new-detail/style-detail.css?{STATIC_CHANGE_TIME}">
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/lists/common/list-common.css?{STATIC_CHANGE_TIME}">
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/lists/references-list.css?{STATIC_CHANGE_TIME}">
+{if $isReport}
+<link rel="stylesheet" href="{STATIC_URL2}/global/css/nfd-min.css?{STATIC_CHANGE_TIME}" />
+<link rel="stylesheet" href="{STATIC_URL2}/global/css/jquery.lightbox-0.5.css?{STATIC_CHANGE_TIME}" media="screen" charset="utf-8" />
+{/if}
+{/block}
+{block name="main"}
+<div class="contant conheight">
+    <input type="hidden" id="link"
+        data-sor="{$link['sortRandom']}"
+        data-url="{if isset($link['url'])}{$link['url']}{/if}"
+        data-param="{$link['param']}"
+        data-urlprefix="{$urlprefix}"
+        data-col="{$columnId}"
+        data-search="{if isset($link['search'])}{$link['search']}{/if}"
+        data-pow="{if $powers['P_UserType'] == 4}2{/if}"
+        data-page="{$page}"
+        data-limitnum=""
+        data-pagesize="{$pageSize}"/>
+    <div name='anchor' id='anchor' class="anchor"></div>
+    <!--头部轮播-->
+    <div class="banner-top new-banner-top">
+        {block name="topads"}        
+        {include file="lists/lists-common/banner_ads.html"}
+        {/block}
+        <!-- 列表导航 -->
+		{include file="lists/lists-common/nav_common_select.html"}
+    </div>
+    <div class="select-common-fixed js-select-common-fixed">
+        <div class="contentW">
+            {include file="lists/lists-common/nav_common_select.html"}
+        </div>
+    </div>    
+	<div class="right_nav new-right-nav">
+		<div class="rightc_top contentW">
+
+            <!--灵感报告-->
+            {if $columnId == 90}
+            <div class="rightc_main js-inspiration-list-box">
+                <ul class="inspiration clearfix">
+                    {foreach range(1, 8) as $i}
+                    <li class="js-placeholder-item masonry-brick" itemscope="">
+                        <a itemprop="url" class="img_bg" href="javascript:void(0);" data-t="trend" data-id="" data-total="4986" data-index="0" data-col="90">
+                            <img alt="pic" itemprop="thumbnail" src="{STATIC_URL2}/global/images/loading/inspiration.gif">
+                            <p itemscope="" class="sm_icon">
+                                <span itemprop="release time">
+                                    <img itemprop="thumbnail" src="{STATIC_URL2}/global/images/zzjd_2.png">
+                                </span>
+                                <strong><img itemprop="thumbnail" src="{STATIC_URL2}/global/images/zzjd_3.png"></strong>
+                            </p>
+                        </a>
+                        <div itemscope="" class="des_title"><p itemprop="name" class="title"><a itemprop="url" href="javascript:void(0);" data-t="trend" data-id="" data-total="4986" data-index="0" data-col="90"></a></p><p itemprop="description" class="sm_cont js-img-description"></p></div>
+                    </li>
+                    {/foreach}
+                </ul>
+            </div>
+            {elseif $columnId==116}
+            <div class="rightc_main js-inspiration-list-box">
+                <ul class="inspiration clearfix">
+                    {foreach $lists as $key=>$val}
+                    <li itemscope  {if $key>3}class="lazyload"{/if}>
+                        <a itemprop="url" class="img_bg" href="/details/report/t_{$val.tableName}-id_{$val.list.id}-col_{$val.columnId}/" target="_blank" data-t="{$val.tableName}" data-id="{$val.list.id}" data-total="{$totalCount}" data-index="{$val.offset}" data-col="{$val.columnId}">
+                            {if strlen($val.list.cover) > 30}
+                                {if $key>3}
+                                    <img alt="{$val.list.title}" itemprop="thumbnail" src="{STATIC_URL2}/global/images/loading/inspiration.gif" data-original="{$val.list.cover}">
+                                {else}
+                                    <img alt="{$val.list.title}" itemprop="thumbnail" src="{$val.list.cover}" data-original="{$val.list.cover}">
+                                {/if}
+                            {else}
+                            <img itemprop="thumbnail" src="{STATIC_URL1}/global/images/loading/inspritionMR.jpg" alt="{$val.list.title}">
+                            {/if}
+                            <p itemscope class="sm_icon">
+                                <span itemprop="release time"><img itemprop="thumbnail" src="{STATIC_URL1}/global/images/zzjd_2.png"/>{date('Y-m-d',strtotime($val.list.create_time))}</span>
+                                <strong><img itemprop="thumbnail" src="{STATIC_URL1}/global/images/zzjd_3.png"/>浏览（{$val.list.view_count}）</strong>
+                            </p>
+                        </a>
+                        <div itemscope class="des_title">
+                            <p itemprop="name" class="title"  title="{$val.list.title}"><a itemprop="url" href="/details/report/t_{$val.tableName}-id_{$val.list.id}-col_{$val.columnId}/" target="_blank" data-t="{$val.tableName}" data-id="{$val.list.id}" data-total="{$totalCount}" data-index="{$val.offset}" data-col="{$val.columnId}">{$val.list.title}</a></p>
+                            <p itemprop="description" class="sm_cont js-img-description">{$val.list.abstract}</p>                            
+                        </div>
+                        {if empty($type) && !empty($val.list.inspirationTypeName)}
+                        <span itemscope class="Thover"></span>
+                        <span itemprop="art" class="Ttxt">{$val.list.inspirationTypeName}</span>
+                        {/if}
+                    </li>
+                    {/foreach}
+                </ul>
+            </div>
+            {else}
+            <!--灵感图库-->
+            {if $powers['P_UserType'] == 4}
+            <div class="rightc_wraning">
+                <div class="wran">
+                    <p class="neiyeList fl">您目前为【普通用户】，仅可免费浏览列表缩略图。想浏览并下载高清大图，并使用完整功能？请开通本站
+                        <a rel="nofollow" target="_blank" href="/service/joinmember/" class="yellow">VIP会员</a>。</p>
+                    <div class="neiyelistRight fr">
+                        <span class="apply_try"><i></i>申请试用：</span>
+                        <a rel="nofollow" class="neiyeList qq js-contact-qq-btn" href="javascript:void(0);">QQ咨询</a>
+                        或
+                        <span class="wran_tel"><em>4008-210-500</em> </span>
+                    </div>
+                </div>
+            </div>
+            {elseif $powers['P_UserType'] == 5}
+            <div class="rightc_wraning">
+                <div class="wran">
+                    <p class="neiyeList fl">您目前为【游客】，仅可在受限情况下浏览部分列表缩略图。想浏览更多设计资料？请 <a href="javascript:void(0);" class="yellow loginLayer">登录</a> 或 <a rel="nofollow" target="_blank" href="/member/register/" class="yellow">注册</a> 成为POP会员。</p>
+                    <div class="neiyelistRight fr">
+                        <span class="apply_try"><i></i>申请试用：</span>
+                        <a rel="nofollow" class="neiyeList qq js-contact-qq-btn" href="javascript:void(0);">QQ咨询</a>
+                        或
+                        <span class="wran_tel"><em>4008-210-500</em> </span>
+                    </div>
+                </div>
+            </div>
+            {/if}
+            <div class="rightc_main js-inspiration-list-box">
+                <ul class="inspiration clearfix">
+                    {foreach range(1, 12) as $i}
+                    <li class="js-placeholder-item">
+                        <div itemscope="" class="pic_box">
+                            <a class="pic-item-area" href="javascript:void(0);" title="查看详情">
+                                <img alt="pic" itemprop="thumbnail" src="{STATIC_URL2}/global/images/loading/reference150-150.gif">
+                                <div class="color-time-box"><p class="time"><em></em>2015-02-12</p></div>
+                            </a>
+                        </div>
+                        <div class="titleBox"><div class="patter-label-position"></div></div>
+                    </li>
+                    {/foreach}
+                    
+                </ul>
+            </div>
+            {/if}
+
+            <!-- 搜索无数据 -->
+            <div class="rightc_main hide js-error-section">
+                {include file="lists/lists-common/search_null.html"}
+            </div>
+            
+            <!-- 翻页 -->
+            {if $columnId == 116}
+            <div class="rightc_bottom">
+                {$pageHtml}
+            </div>
+            {else}
+            <div class="scroll-load js-scroll-load"><img src="{STATIC_URL1}/global/images/alertloading.gif"></div>
+            <div class="rightc_bottom js-page-section"></div>
+            {/if}
+        </div>
+	</div>
+</div>
+{if $P_UserType eq 5}
+<!-- 留资 -->
+{include file="common/sem_trends.html"}
+{/if}
+{/block}
+{block name="self"}
+<script>
+	$(function(){
+        oPopStyles.loadSelectItems({$columnId});
+	});
+</script>
+<script src="{STATIC_URL3}/global/js/fashion/styles.js?{STATIC_CHANGE_TIME}"></script>
+<script src="{STATIC_URL2}/global/js/fashion/index.js?{STATIC_CHANGE_TIME}"></script>
+<script src="{STATIC_URL3}/global/js/fashion/global.js?{STATIC_CHANGE_TIME}"></script>
+<script src="{STATIC_URL3}/global/js/fashion/inspiration.js?{STATIC_CHANGE_TIME}"></script>
+<script src="{STATIC_URL3}/global/js/common/template.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/util.collect.js?{STATIC_CHANGE_TIME}"></script>
+<script src="{STATIC_URL3}/global/js/common/banner-slide.js?{STATIC_CHANGE_TIME}"></script>
+<script src="{STATIC_URL3}/global/js/lists/list-common.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/lib/laypage/laypage.js?{STATIC_CHANGE_TIME}"></script>
+{if $columnId == 90}
+<script src="{STATIC_URL3}/global/js/lists/inspirations-list.js?{STATIC_CHANGE_TIME}"></script>
+{/if}
+{if $isReport}
+<script src="{STATIC_URL3}/global/js/fashion/jquery.lightbox-0.5.js?{STATIC_CHANGE_TIME}"></script>
+<script src="{STATIC_URL3}/global/js/fashion/util.pop2.js?{STATIC_CHANGE_TIME}"></script>
+{else}
+<script src="{STATIC_URL3}/global/js/fashion/util.pop3.js?{STATIC_CHANGE_TIME}"></script>
+{/if}
+<script type="text/javascript" src="{STATIC_URL3}/global/js/sem_phone/sem_phone.js?{STATIC_CHANGE_TIME}"></script>
+{/block}

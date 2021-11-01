@@ -1,0 +1,92 @@
+<div class="search_cont_top clearfix">
+    <input type="hidden" id="have_column" value="{$lists.have_column_show}">
+    <div class="search_cont_l fl">
+        <a href="/"><img src="{STATIC_URL2}/global/images/lists/nav_logo.png?{STATIC_CHANGE_TIME}"></a>
+    </div>
+    <div class="search_cont_r">
+        <input id="search_box2" class="js-search-ipt" value="{$keyword}" data-staut="1" growing-track="true" placeholder="搜索你想要的" type="text" οnfοcus="this.placeholder=''" οnblur="this.placeholder='搜索你想要的'" autocomplete='off'/>
+        <div class="search_listDown search_page_listDown">
+            <div class="menu"></div>
+            <div class="hot-menu">
+                <div class="menu-hot-list">
+                    <div class="label js-history-label">历史记录<div class="fr"><span class="operat js-clear-operat">清除记录</span></div></div>
+                    <ul class="history-list"></ul>
+                    <div class="label">热门搜索</div>
+                    <ul class="hot-list"></ul>
+                </div>
+            </div>
+        </div>
+        <!-- 上传图片 -->
+        <a href="/Colorsearch/" class="sea-color"></a>
+        <div class="files js-figure-btn"></div>
+        <input type="hidden" id="cropData1"/>
+        <input type="file" id="uploadImg1" style="display: none;"/>
+        <!-- 上传图片end -->
+        <input id="params" name="params" type="hidden" value="{$params}">
+        <i class="search js-search-btn"></i>
+        <div class="search-filesImg" style="display: none;">
+            <img src=""/>
+        </div>
+        <div class="sea-col js-sea-color" style="display: none;">
+            
+        </div>
+        {if $account eq '' && $accountShow neq 'true'}
+        <!-- 未登录 -->
+        <div class="heae-user">
+            <a class="loginLayer">登录</a>
+            <i></i>
+            <a href="/member/register/" target="_blank">注册</a>
+        </div>
+        {else}
+        <!-- 已登录 -->
+        <div class="heae-user">
+            <!--<span>消息<i></i></span>-->
+            <a class="infor_a" href='/member/message/' title="消息">消息{if $issetNewMessage}<span class="ix"></span>{/if}</a>
+            <i></i>
+            <div class="userName action">
+                <a href="/member/myHistory/4/">{$account|truncate:9:"...":true}</a>
+                <i></i>
+                <div class="forUl js-forUl" style="width: 138px;display: none;">
+                    {if $canChangLoginAccount}
+                        {if $P_AccountType=="main"}
+                        <div class="forLi switch js-switch" data-type="1">
+                            <em class=""></em>
+                            <span>切换成设计师账号</span>
+                        </div>
+                        <label style="top:-27px;">(管理员账号)</label>
+                        {else}
+                        <div class="forLi switch js-switch" data-type="2">
+                            <em class=""></em>
+                            <span>切换成管理员账号</span>
+                        </div>
+                        <label style="top:-27px;">(设计师账号)</label>
+                        {/if}
+                    {/if}
+                    <div class="forLi myStudio js-myStudio">
+                        <a href="/member/workbench/" title="我的工作室">
+                            <em class=""></em>
+                            <span>我的工作室</span>
+                        </a>
+                    </div>
+                    <div class="forLi myFavorites js-myFavorites">
+                        <a href="/member/mycollect/" title="我的收藏">
+                            <em class=""></em>
+                            <span>我的收藏</span>
+                        </a>
+                    </div>
+                    <div class="forLi myHistory js-myHistory">
+                        <a href="/member/myHistory/4/" title="浏览历史">
+                            <em></em>
+                            <span>浏览历史</span>
+                        </a>
+                    </div>
+                    <div class="forLi signOut js-signOut">
+                        <em class=""></em>
+                        <span>退出登录</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {/if}
+    </div>
+</div>

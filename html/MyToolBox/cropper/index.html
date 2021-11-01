@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>cropper</title>
+  <link rel="stylesheet" href="./cropper.min.css">
+  <style>
+    .cropper-point.point-se {
+      width: 5px;
+      height: 5px;
+    }
+
+    #jcrop-box {
+      display: inline-block;
+      width: 500px;
+      height: 500px;
+      line-height: 500px;
+      border: 1px solid #999;
+    }
+
+    #jcrop-box>img {
+      max-width: 100%;
+    }
+
+    .preview {
+      display: inline-block;
+      width: 100px;
+      height: 100px;
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body>
+  <input type="file" id="jcrop-ipt" name="jcrop-ipt" accept=".jpg, .jpeg, .png" />
+  <button id="rotate">旋转</button>
+  <button id="scale">翻转</button>
+  <button id="screenshot">截图</button>
+  <button id="save">保存</button>
+  <div>
+    x: <span class="x"></span><br>
+    y: <span class="y"></span><br>
+    w: <span class="w"></span><br>
+    h: <span class="h"></span>
+  </div>
+  <hr>
+  <div id="jcrop-box">
+    <img src="" id="jcrop-img">
+  </div>
+  <span>预览</span>
+  <div class="preview"></div>
+  <hr>
+  <canvas id="getcolor"></canvas>
+</body>
+<script src="./bluebird.min.js"></script>
+<script src="./jquery-1.12.4.min.js"></script>
+<script src="./cropper.js"></script>
+<script src="./html2canvas.min.js"></script>
+<script src="./canvas2image.js"></script>
+<script src="./canvas-toBlob.js"></script>
+<script>
+  $(function () {
+    var jcropIpt = $('#jcrop-ipt'),
+      jcropBox = $('#jcrop-box'),
+      jcropImg = $('#jcrop-img'),
+      rotateBtn = $('#rotate'),
+      scaleBtn = $('#scale'),
+      screenshotBtn = $('#screenshot'),
+      saveBtn = $('#save'),
+      files = [], // 选中的图片列表
+      selectSrc = ''; // 展示的图片地址
+    var cropperCol;
+    var winUrl = window.URL || window.webkitURL; // 获取window的 URL工具
+
+    // 吸色
+    var getcolorEl = document.getElementById('getcolor');
+    var getcolorCtx = getcolorEl.getContext('2d');
+    var imgBgRgba = '';
+
+    // cropper初始化
+    function cropperInit(src) {
+      if (!cropperCol) {
+        cropperCol = new Cropper(jcropImg[0], {
+          viewMode: 1,
+          dragMode: 'move',
+          aspectRatio: 4 / 3,
+          autoCropArea: 1,
+          autoCrop: false,
+          preview: '.preview',
+          ready: function () {
+            // console.log(this.cropper.getContainerData())
+            // console.log(this.cropper.getCanvasData().top)
+            this.cropper.setCanvasData({
+              width: 200,
+              left: (this.cropper.getContainerData().width - 200) / 2
+            });
+            this.cropper.moveTo(this.cropper.getCanvasData().left, 100);
+            this.cropper.crop();
+
+            // 吸色
+            // getcolorEl.setAttribute('width', this.cropper.getContainerData().width);
+            // getcolorEl.setAttribute('height', this.cropper.getContainerData().height);
+            getcolorCtx.drawImage(this, 0, 0);
+            var pixel = getcolorCtx.getImageData(0, 0, 1, 1);
+            var data = pixel.data;
+            imgBgRgba = 'rgba(' + data[0] + ',' + data[1] + ',' + data[2] + ',' + (data[3] / 255) + ')';
+            $('body').css('background', imgBgRgba);
+          },
+          crop: function (event) {
+            // console.log(event.detail.x);
+            // console.log(event.detail.y);
+            // console.log(event.detail.width);
+            // console.log(event.detail.height);
+            // console.log(event.detail.rotate);
+            // console.log(event.detail.scaleX);
+            // console.log(event.detail.scaleY);
+          }
+        });
+      } else {
+        cropperCol.replace(src);
+        // getcolorCtx.drawImage(src, 0, 0);
+      }
+    }
+
+    // 选择图片
+    jcropIpt.change(function () {
+      files = this.files;
+
+      selectSrc = winUrl.createObjectURL(files[0]);
+      jcropImg.attr("src", selectSrc);
+      cropperInit(selectSrc);
+    });
+
+    // 旋转
+    rotateBtn.click(function () {
+      cropperCol.rotate(90);
+    })
+
+    var flipH = 1, flipV = 1;
+    // 水平翻转
+    scaleBtn.click(function () {
+      if (cropperCol.getData().rotate / 90 % 2) {
+        flipV *= -1;
+      } else {
+        flipH *= -1;
+      }
+      cropperCol.scale(flipH, flipV);
+    })
+
+    var preCanvas;
+    // 截图
+    screenshotBtn.click(function () {
+      preCanvas = cropperCol.getCroppedCanvas({
+        width: cropperCol.getCropBoxData().width,
+        height: cropperCol.getCropBoxData().height,
+        // minWidth: 256,
+        // minHeight: 256,
+        // maxWidth: 4096,
+        // maxHeight: 4096,
+        fillColor: imgBgRgba || '#fff',
+        imageSmoothingEnabled: false,
+        imageSmoothingQuality: 'high'
+      })
+      $('body').append(preCanvas);
+
+      // 上传
+      // preCanvas.toBlob(function (blob) {
+      //   const formData = new FormData();
+      //   formData.append('croppedImage', blob);
+      //   console.log(formData, blob)
+      //   // Use `jQuery.ajax` method
+      //   // $.ajax('/path/to/upload', {
+      //   //   method: "POST",
+      //   //   data: formData,
+      //   //   processData: false,
+      //   //   contentType: false,
+      //   //   success() {
+      //   //     console.log('Upload success');
+      //   //   },
+      //   //   error() {
+      //   //     console.log('Upload error');
+      //   //   },
+      //   // });
+      // });
+
+      // 其他
+      // var preBox = $(".preview");
+      // var width = preBox.width();
+      // var height = preBox.height();
+
+      // html2canvas(preBox[0], {
+      //   scale: 2,
+      //   width: width,
+      //   height: height,
+      //   useCORS: true,
+      //   backgroundColor: imgBgRgba || null
+      // }).then(function (canvas) {
+      //   preCanvas = canvas;
+      //   $('body').append(canvas);
+      // });
+    })
+
+    // 保存
+    saveBtn.click(function () {
+      var imgURL = preCanvas.toDataURL("image/png"); // 获取生成的图片的url
+      $('body').append('<img src="' + imgURL + '" style="width: ' + $(".preview").width() + 'px;">');
+      // Canvas2Image.saveAsPNG(preCanvas, $(preCanvas).width(), $(preCanvas).height(), 'slc');
+      downloadimg(imgURL);
+    })
+
+    // 下载图片
+    function downloadimg(imgURL) {
+      var alink = document.createElement("a");
+      alink.href = imgURL;
+      alink.download = "slc";
+      alink.target = '_blank';
+      alink.click();
+    }
+
+    // var reader = new FileReader();
+    // reader.readAsDataURL(files[0]);
+    // reader.onload = function (event) {
+    //   console.log(event.target.result)
+    //   // var image = new Image();
+    //   // image.src = event.target.result;
+    //   // image.onload = function () {
+    //   //   var canvas = document.getElementById("canvas");
+    //   //   var imageCanvas = canvas.getContext("2d");
+    //   //   imageCanvas.drawImage(image, 0, 0, 300, 300);
+    //   //   canvasToImage(canvas);
+    //   // }
+    // }
+  })
+</script>
+
+</html>

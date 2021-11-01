@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html2canvas</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./html2canvas-1rc7.js"></script>
+    <!-- <script src="./html2canvas-1rc5.js"></script> -->
+    <style>
+        html,body{margin: 0;padding: 0;width: 100%;height: 100%;}
+        #html2canvas{width: 500px;padding: 50px;}
+        #html2canvas>img{box-shadow: 0 0 20px #666;}
+        img{width: 100%;display: block;}
+        .img{position: relative;z-index: 999;width: 500px;}
+        .text{height: 200px;}
+        .fillH{height: 100%;overflow: auto;}
+
+        .top{position: absolute;top: 0;left: 0;right: 0;height: 40px;background-color: bisque;}
+        .left{position: absolute;top: 40px;left: 0;bottom: 0;width: 300px;background-color: #eee;}
+        .right{position: absolute;top: 40px;left: 300px;right: 0;bottom: 0;background-color: #ccc;}
+    </style>
+</head>
+<body>
+    <div class="top">top</div>
+    <div class="left">left</div>
+    <div class="right fillH">
+        <div id="html2canvas">
+            <img src="./bg.jpg" alt="">
+        </div>
+        <div class="text">占位</div>
+        <div class="text">占位</div>
+        <div class="text">占位</div>
+        <div class="text">占位</div>
+        <div class="text">占位</div>
+        <div class="text">占位</div>
+        <div class="text">占位</div>
+        <div class="text">占位</div>
+        <div class="text">占位</div>
+        <div class="text">占位</div>
+        <div class="text">占位</div>
+        <div class="text">占位</div>
+        <div class="text">占位</div>
+        <div class="text">占位</div>
+        <div class="text">占位</div>
+        <div class="text">占位</div>
+    </div>
+</body>
+<script>
+    function hasDbScrollbar() {
+        return document.documentElement.scrollHeight > (window.innerHeight || document.documentElement.clientHeight) &&
+            document.documentElement.scrollWidth > (window.innerWidth || document.documentElement.clientWidth)
+    }
+    function getScrollbarWidth() {
+        var scrollDiv = document.createElement("div");
+        scrollDiv.style.cssText = 'width: 99px; height: 99px; overflow: scroll; position: absolute; top: -9999px;';
+        document.body.appendChild(scrollDiv);
+        var scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth;
+        document.body.removeChild(scrollDiv);
+        return scrollbarWidth;
+    }
+</script>
+<script>
+    window.onload = function() {
+        var box = $('#html2canvas'),
+            canvas = document.createElement('canvas'),
+            w = box.width(),
+            h = box.height(),
+            offsetL = box.offset().left,
+            offsetT = box.offset().top,
+            scrollT = $(window).scrollTop();
+        canvas.width = w;
+        canvas.height = h;
+        html2canvas(box[0], {
+            // canvas: canvas,
+            scale: 1,
+            logging: false,
+            taintTest: true,
+            allowTaint: false,
+            useCORS: true,
+            // windowWidth: w,
+            // windowHeight: h,
+            // x: offsetL,
+            // y: scrollT < offsetT ? offsetT : scrollT,
+        }).then(function (cvs) {
+            var ctx = cvs.getContext('2d');
+            // 关闭抗锯齿形
+            ctx.mozImageSmoothingEnabled = false;
+            ctx.webkitImageSmoothingEnabled = false;
+            ctx.msImageSmoothingEnabled = false;
+            ctx.imageSmoothingEnabled = false;
+            // 生成图片
+            var baseurl = cvs.toDataURL('image/png', 1);
+            var img = new Image;
+            img.src = baseurl;
+            $(img).addClass('img');
+            document.body.appendChild(img);
+            // document.body.appendChild(cvs);
+        }).catch(function (err) {
+            console.log('加载失败:', err);
+        })
+    }
+</script>
+<!-- <script>
+    window.onload = function() {
+        var box = $('body'),
+            canvas = document.createElement('canvas'),
+            w = box.width(),
+            h = $('.fillH')[0].scrollHeight,
+            offsetL = box.offset().left,
+            offsetT = box.offset().top,
+            scrollT = $(window).scrollTop();
+        canvas.width = w;
+        canvas.height = h;
+        console.log(w, h)
+        html2canvas(box[0], {
+            canvas: canvas,
+            scale: 1,
+            logging: false,
+            taintTest: true,
+            allowTaint: false,
+            useCORS: true,
+            windowWidth: w,
+            windowHeight: h,
+            x: offsetL,
+            y: scrollT < offsetT ? offsetT : scrollT,
+        }).then(function (cvs) {
+            var ctx = cvs.getContext('2d');
+            // 关闭抗锯齿形
+            ctx.mozImageSmoothingEnabled = false;
+            ctx.webkitImageSmoothingEnabled = false;
+            ctx.msImageSmoothingEnabled = false;
+            ctx.imageSmoothingEnabled = false;
+            // 生成图片
+            var baseurl = cvs.toDataURL('image/png', 1);
+            var img = new Image;
+            img.src = baseurl;
+            $(img).addClass('img');
+            document.body.appendChild(img);
+            // document.body.appendChild(cvs);
+        }).catch(function (err) {
+            console.log('加载失败:', err);
+        })
+    }
+</script> -->
+</html>

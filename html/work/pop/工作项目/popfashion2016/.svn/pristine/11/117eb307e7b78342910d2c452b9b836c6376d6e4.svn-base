@@ -1,0 +1,500 @@
+<div class="list-nav-screen-section">    
+    <div class="screen-selected-box">
+        <div class="contentW clearfix">
+            <div class="s-crumbs-nav fl">
+                {if $columnPid==8 && $columnId==90}
+                    <a href="/references/details/">素材</a>
+                    <span>&gt;</span>
+                    <a href="{$columns[8]['rootUrl']}">{$columns[8]['sName']}</a>
+                {elseif $columnPid==7}
+                    <a href="/references/details/">素材</a>
+                    <span>&gt;</span>
+                    <a href="{$columns[$columnId]['rootUrl']}">{$columns[$columnId]['sName']}</a>
+                {elseif $columnPid==9}
+                    <a href="/patterns/graphics/">图案</a>
+                    <span>&gt;</span>
+                    <a href="{$columns[$columnId]['rootUrl']}">{$columns[$columnId]['sName']}</a>
+                {elseif $columnPid==6}
+                    <a href="/books/lookbook/">读物</a>
+                    <span>&gt;</span>
+                    <a href="{$columns[$columnId]['rootUrl']}">{$columns[$columnId]['sName']}</a>
+                {elseif $columnPid==3}
+                    <a href="/runways/">{$columns[$columnPid]['sName']}</a>
+                    <span>&gt;</span>
+                    {if $region}
+                        <a href="{$regions[$region]['rootUrl']}">{$regions[$region]['sName']}</a>
+                    {else}
+                        <a href="/runways/">全部栏目</a>
+                    {/if}
+                {else}
+                    <a href="{$columns[$columnPid]['rootUrl']}">{$columns[$columnPid]['sName']}</a>
+                    <span>&gt;</span>
+                    {if $columnId==$columnPid}
+                    <a href="{$columns[$columnId]['rootUrl']}">全部栏目</a>
+                    {else}
+                    <a href="{$columns[$columnId]['rootUrl']}">{$columns[$columnId]['sName']}</a>
+                    {/if}
+                {/if}
+            </div>
+            {if $tips}
+            <div class="s-selected-nav fl">
+                {foreach $tips as $key => $tip}
+                {if $key === 0 || !in_array($key,['gen','ind'])}
+                    <div class="selected-keyword">
+                        <a href="{$tip.link}" title='{$tip.value}'>{$tip.name}: <span>{$tip.value}{$tip.em}</span><i class="clear-keyword nav-icon"></i></a>
+                    </div>
+                {/if}                
+                {/foreach}
+                {if $columnPid==3}
+                    {if count($tips) > 1}
+                    <a class="clear-all-selected" href="{$clearAll}"><i class="nav-icon"></i>清空筛选</a>
+                    {/if}
+                {elseif $columnIdTrends == 1 && count($tips) > 1}
+                    <a class="clear-all-selected" href="{$clearAll}"><i class="nav-icon"></i>清空筛选</a>
+                {elseif $columnId == 90 || $columnId == 130}
+                    <a class="clear-all-selected" href="{$clearAll}"><i class="nav-icon"></i>清空筛选</a>
+                {else}
+                    {if ($columnId == 121 || $columnId == 124) && count($tips) > 0}
+                        <a class="clear-all-selected" href="{$clearAll}"><i class="nav-icon"></i>清空筛选</a>
+                    {else}
+                        {if count($tips) > 2 || (in_array($columnId, array(82, 120)) && count($tips) > 1)}
+                        <a class="clear-all-selected" href="{$clearAll}"><i class="nav-icon"></i>清空筛选</a>
+                        {/if}
+                    {/if}
+                {/if}       
+            </div>
+            {/if}
+            {if $columnPid ==  4}
+            <div class="save-search-btn js-save-search-btn fr">
+                <a><i class="nav-icon"></i>保存搜索</a>
+            </div>
+            {/if}
+        </div>
+    </div>
+    <div class="screen-list-box screen-list-box1500">
+        <div class="contentW clearfix">
+            <div class="all-column-select fl js-all-column-select">
+                {if $columnPid == 3}
+                    {if isset($regions)}
+                    <a href="javascript:void(0);">{if $regions[$region]['sName']}{$regions[$region]['sName']}{else}全部栏目{/if}<span><i class="nav-icon"></i></span></a>
+                    <div class="all-column-downlist js-all-column-downlist">                    
+                        {foreach $regions as $key => $val}
+                        <a href="{$val.sLink}">{$val.sName}</a>
+                        {/foreach}
+                    </div>
+                    {/if}
+                {elseif $columnPid == 8}
+                    <a href="javascript:void(0);">{if $columns[$columnId]['sName']}{$columns[$columnId]['sName']}{else}灵感源{/if}<span><i class="nav-icon"></i></span></a>
+                    <div class="all-column-downlist js-all-column-downlist">                    
+                        {foreach $columns as $key=>$column}
+                        {if $key != $columnId}
+                            <a href="{$column.sLink}">{$column.sName}</a>
+                        {/if}
+                        {/foreach}
+                    </div>
+                {else}
+                {foreach $columns as $key=>$column}
+                {if $key == $columnId}
+                    {if $key == $columnPid}
+                    <a href="javascript:void(0);" title="全部">全部栏目<span><i class="nav-icon"></i></span></a>
+                    {else}
+                    <a href="javascript:void(0);" title="{$column.sName}">{$column.sName}<span><i class="nav-icon"></i></span></a>
+                    {/if}
+                {/if}
+                {/foreach}
+                <div class="all-column-downlist js-all-column-downlist">
+                    {foreach $columns as $key=>$column}
+                    {if $key != $columnId}
+                        {if $key == $columnPid}
+                        <a href="{$column.sLink}" title="全部">全部栏目</a>
+                        {else}
+                        <a href="{$column.sLink}" title="{$column.sName}">{$column.sName}</a>
+                        {/if}
+                    {/if}
+                    {/foreach}
+                </div>
+                {/if}
+            </div>
+            {if $columnPid ==  4}
+            <div class="category-style-select fl">
+                <a class="book-select {if $group}cur{/if}" href="{$sLinkGroup}"><em class="nav-icon"></em>成册</a>
+                <a class="page-select {if !$group}cur{/if}" href="{$sLinkSingle}"><em class="nav-icon"></em>单张</a>
+            </div>
+            {/if}
+            {if $columnId eq 52}
+            <div class="ordermeeting-screen-box fl">
+                <a href="/books/ordermeeting/" target="_blank"><i class="nav-icon"></i>订货会合辑</a>
+            </div>
+            {/if}
+            <div class="screen-category-box fl">
+                <div class="screen-category-list js-screen-category-list clearfix {if $columnId == 130}screen-magazine-list{/if}">
+                    <ul class="clearfix js-screen-category">                        
+                        {if $columnId == 130}
+                        {if empty($paramsArr.reg)}
+                        <li class="pli{if empty($seasons)} no_click {/if}">
+                            <span class="aspan">{$defaultParams['reg']|default:"地区"}<i class="nav-icon"></i></span>
+                            <div class="showbox short-sum">
+                                <div class="dateHeight contentHolder">
+                                    <div class="content">
+                                        <!--a class="clickme" href="{$allSingle.reg}">全部地区</a-->
+                                        {foreach $regions as $region}
+                                        <a href="javascript:void(0);" class="clickme" data-key="reg" data-val="{$region.ename}" title="{$region.cname}">{$region.cname}</a>
+                                        {/foreach}
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        {/if}
+                        {if isset($seasons) && empty($paramsArr.sea)}
+                        <li class="pli{if empty($seasons)} no_click {/if}">
+                            <span class="aspan">{$defaultParams['sea']|default:"流行时间"}<i class="nav-icon"></i></span>
+                            <div class="showbox short-sum">
+                                <div class="dateHeight contentHolder">
+                                    <div class="content">
+                                        {foreach $seasons as $key=>$season}
+                                        <a href="javascript:void(0);" class="clickme {if $key != 0}borderTop{/if}" data-key="sea" data-val="{$season.ename}" title="{$season.cname}">{$season.cname}</a>
+                                        {/foreach}
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        {/if}
+                        {if isset($categorys) && empty($paramsArr.cat)}
+                        <li class="pli {if empty($categorys)} no_click {/if}">
+                            <span class="aspan">{if $columnId==130}风格系列{else}类型{/if}<i class="nav-icon"></i></span>
+                            <div class="showbox short-sum">
+                                <div class="dateHeight contentHolder">
+                                    <div class="content">
+                                        <!--a class="clickme" href="{$allSingle.cat}">全部类型</a-->
+                                        {foreach $categorys as $key=>$category}
+                                        <a href="javascript:void(0);" class="clickme {if $key != 0}borderTop{/if}" data-key="cat" data-val="{$category.ename}" title="{$category.cname}">{$category.cname}</a>
+                                        {/foreach}
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        {/if}
+                        {if isset($books) && !empty($books) && empty($paramsArr.boo)}
+                        <li class="pli bookname" >
+                            <span class="aspan">书名<i class="nav-icon"></i></span>
+                            <div class="showPro showbox">
+                                <div class="inputBox"><input type="text" class="searInputbox fl" value="搜索{$val}开头的书名" name="{$val}" style="color: rgb(148, 147, 147);"><span class="fr neiyeList"></span>
+                                </div>
+                                <div class="brands_ca">
+                                    <!--书名开始-->
+                                    {foreach $books as $val}
+                                    <div class="items">
+                                        <div class="letter" name="{$val}">{$val}</div>
+                                    </div>
+                                    {/foreach}
+                                        <div class="brandslist">
+                                            <div class="brand_result contentHolder">
+                                                <div class="content">
+                                                    <ul class="clearfix" id="popBrand_{$val}"></ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <!--书名结束-->
+                                </div>
+                            </div>
+                        </li>
+                        {/if}
+                        {else}
+                        {foreach $tips as $key => $tip}
+                        {if in_array($key,['gen','ind'])}
+                            <li>
+                                <a href="{$tip.link}" title="{$tip.value}">{$tip.name}: <span>{$tip.value}{$tip.em}</span><i class="nav-icon"></i></a>
+                                <div class="downlist-ind-gen showbox">
+                                    {foreach $tip.sub as $sub}
+                                    <a href="javascript:void(0);" title="{$sub.value}" id="gi_{$sub.type}_{$sub.key}">{$sub.value}</a>
+                                    {/foreach}
+                                </div>
+                            </li>
+                        {/if}                
+                        {/foreach}
+                        {/if}
+                    </ul>
+                    {if $columnId eq 82 || $columnId eq 50}
+                    <div class="nav-function-div color-click-button js_analysis_show">
+                        <a><em class="nav-icon"></em>数据分析图表<i class="nav-icon"></i></a>
+                    </div>
+                    {/if}
+                    {if $columnId eq 50 || $columnId eq 125}
+                    <div class="nav-function-div color-data-button">
+                        <a href="/smarttrends/colordata/" target="_blank"><em class="nav-icon"></em>色彩分析</a>
+                    </div>
+                    {/if}
+                    {if $columnPid == 1 || $columnPid == 2}
+                    <div class="nav-function-div video-click-button js-live-video-select">
+                        <a class="{if isset($paramsArr['tlive']) && ($paramsArr['tlive'] == 1)}i_live_video{/if}"><em class="nav-icon"></em>视频解读</a>
+                    </div>
+                    {/if}
+                    {if $columnId != 121 &&  $columnId != 116 }                                   
+                    {if $columnId == 71}                    
+                    <div class="nav-function-div video-click-button js-only-video-select">
+                        <a class="{if $paramsArr['ver'] == 'video'}on{/if}"><em class="nav-icon"></em>有视频版</a>
+                    </div>
+                    {/if}
+                    {if $columnId == 3}
+                    <div class="nav-function-div video-click-button js-only-video-select">
+                        <a class="{if $paramsArr['ver'] == 'video' || $paramsArr['ver'] == 'tidbit'}on{/if}"><em class="nav-icon"></em>有视频版</a>
+                    </div>
+                    {/if}
+                    {/if}
+                </div>
+                {if $columnId != 130 && $columnId != 116}
+                <div class="aspan_load"><img src="/global/images/5-121204193934-50.gif"/>筛选项加载中，请稍等...</div>
+                {/if}
+            </div>
+            <div class="screen-labels-box fr">
+                <div class="s-only-labels fl">
+                    {if $columnId != 121 &&  $columnId != 116 && $columnId != 130}
+                    <a href="javascript:void(0);" class="only-collect collect {if isset($paramsArr['coll']) && $paramsArr['coll']}on{/if}" data-usertype="{$powers.P_UserType}"><i class="nav-icon"></i>收藏</a>
+                    {/if}
+                    {if $columnPid == 1 || $columnPid == 2 || $columnId == 'iSpecialTopicPatterns'}
+                    <a href="javascript:void(0);" class="only-hot {if isset($paramsArr['ihot']) && ($paramsArr['ihot'] == 1 || $paramsArr['ihot'] == 3)}on{/if} ihot" data-val="1"><i class="nav-icon"></i>最热门</a>
+                    {if $columnPid == 2}
+                    <a href="javascript:void(0);" class="{if isset($paramsArr['auth'])}on{/if} iIsAuthorized"><i class="nav-icon"></i>大数据</a>
+                    {/if}
+                    <a href="javascript:void(0);" class="only-fabric {if isset($paramsArr['uli'])}on{/if} iUliaobao"><i class="nav-icon"></i>配面料</a>
+                    {/if}
+                </div>
+                {if $columnId != 121 && $columnId != 130}
+                <div class="s-time-sort fl js-s-time-sort">
+                    <a><i class="nav-icon"></i>{if $paramsArr['sor'] == 2}浏览最高{elseif $paramsArr['sor'] == 3}收藏最多{else}时间最新{/if}</a>
+                    <div class="s-time-list cateNum_list">
+                        <a class="cat_update sort" href="javascript:void(0);" data-key="sor" data-val="1">时间最新</a>
+                        <a class="cat_liulan sort" href="javascript:void(0);" data-key="sor" data-val="2">浏览最高</a>
+                        <a class="cat_shoucang sort" href="javascript:void(0);" data-key="sor" data-val="3">收藏最多</a>
+                    </div>
+                </div>
+                {/if}
+                {if $columnPid == 4}
+                <div class="save-search js-save-search fl">                    
+                    <div class="save-search-look js-save-search-look fl">
+                        <a class="save-search-success">已存搜索(<span>0</span>)<em class="nav-icon"></em></a>
+                        <div class="guide-save js-guide-save">将您常用的筛选条件保存到此处，方便快速查看</div>
+                        <div class="save-search-list js-save-search-list">
+                            <ul></ul>
+                        </div>
+                    </div>
+                </div>
+                {/if}
+            </div>
+        </div>
+    </div>
+    <div class="screen-list-box screen-list-box1200">
+        <div class="contentW clearfix">
+            <div class="function-column-box clearfix">
+                <div class="all-column-select fl js-all-column-select">
+                    {if $columnPid == 3}
+                        {if isset($regions)}
+                        <a href="javascript:void(0);">{if $regions[$region]['sName']}{$regions[$region]['sName']}{else}全部栏目{/if}<span><i class="nav-icon"></i></span></a>
+                        <div class="all-column-downlist js-all-column-downlist">                    
+                            {foreach $regions as $key => $val}
+                            <a href="{$val.sLink}">{$val.sName}</a>
+                            {/foreach}
+                        </div>
+                        {/if}
+                    {elseif $columnPid == 8}
+                        <a href="javascript:void(0);">{if $columns[$columnId]['sName']}{$columns[$columnId]['sName']}{else}灵感源{/if}<span><i class="nav-icon"></i></span></a>
+                        <div class="all-column-downlist js-all-column-downlist">                    
+                            {foreach $columns as $key=>$column}
+                            {if $key != $columnId}
+                                <a href="{$column.sLink}">{$column.sName}</a>
+                            {/if}
+                            {/foreach}
+                        </div>
+                    {else}
+                    {foreach $columns as $key=>$column}
+                    {if $key == $columnId}
+                        {if $key == $columnPid}
+                        <a href="javascript:void(0);" title="全部">全部栏目<span><i class="nav-icon"></i></span></a>
+                        {else}
+                        <a href="javascript:void(0);" title="{$column.sName}">{$column.sName}<span><i class="nav-icon"></i></span></a>
+                        {/if}
+                    {/if}
+                    {/foreach}
+                    <div class="all-column-downlist js-all-column-downlist">
+                        {foreach $columns as $key=>$column}
+                        {if $key != $columnId}
+                            {if $key == $columnPid}
+                            <a href="{$column.sLink}" title="全部">全部栏目</a>
+                            {else}
+                            <a href="{$column.sLink}" title="{$column.sName}">{$column.sName}</a>
+                            {/if}
+                        {/if}
+                        {/foreach}
+                    </div>
+                    {/if}
+                </div>
+                {if $columnPid ==  4}
+                <div class="category-style-select fl">
+                    <a class="book-select {if $group}cur{/if}" href="{$sLinkGroup}"><em class="nav-icon"></em>成册</a>
+                    <a class="page-select {if !$group}cur{/if}" href="{$sLinkSingle}"><em class="nav-icon"></em>单张</a>
+                </div>
+                {/if}
+                {if $columnId eq 52}
+                <div class="ordermeeting-screen-box fl">
+                    <a href="/books/ordermeeting/" target="_blank"><i class="nav-icon"></i>订货会合辑</a>
+                </div>
+                {/if}
+                {if $columnId eq 50 ||  $columnId eq 125}
+                <div class="nav-function-div color-data-button">
+                    <a href="/smarttrends/colordata/" target="_blank"><em class="nav-icon"></em>色彩分析</a>
+                </div>
+                {/if}
+                {if $columnPid == 1 || $columnPid == 2}
+                <div class="nav-function-div video-click-button js-live-video-select">
+                    <a class="{if isset($paramsArr['tlive']) && ($paramsArr['tlive'] == 1)}i_live_video{/if}"><em class="nav-icon"></em>视频解读</a>
+                </div>
+                {/if}
+                {if $columnId != 121 &&  $columnId != 116 }                                   
+                {if $columnId == 71}                    
+                <div class="nav-function-div video-click-button js-only-video-select">
+                    <a class="{if $paramsArr['ver'] == 'video'}on{/if}"><em class="nav-icon"></em>有视频版</a>
+                </div>
+                {/if}
+                {if $columnId == 3}
+                <div class="nav-function-div video-click-button js-only-video-select">
+                    <a class="{if $paramsArr['ver'] == 'video' || $paramsArr['ver'] == 'tidbit'}on{/if}"><em class="nav-icon"></em>有视频版</a>
+                </div>
+                {/if}
+                {/if}
+            </div>
+            <div class="screen-category-box clearfix">
+                <div class="screen-category-list js-screen-category-list fl clearfix {if $columnId == 130}screen-magazine-list{/if}">
+                    <ul class="clearfix js-screen-category">                        
+                        {if $columnId == 130}
+                        {if empty($paramsArr.reg)}
+                        <li class="pli{if empty($seasons)} no_click {/if}">
+                            <span class="aspan">{$defaultParams['reg']|default:"地区"}<i class="nav-icon"></i></span>
+                            <div class="showbox short-sum">
+                                <div class="dateHeight contentHolder">
+                                    <div class="content">
+                                        <!--a class="clickme" href="{$allSingle.reg}">全部地区</a-->
+                                        {foreach $regions as $region}
+                                        <a href="javascript:void(0);" class="clickme" data-key="reg" data-val="{$region.ename}" title="{$region.cname}">{$region.cname}</a>
+                                        {/foreach}
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        {/if}
+                        {if isset($seasons) && empty($paramsArr.sea)}
+                        <li class="pli{if empty($seasons)} no_click {/if}">
+                            <span class="aspan">{$defaultParams['sea']|default:"流行时间"}<i class="nav-icon"></i></span>
+                            <div class="showbox short-sum">
+                                <div class="dateHeight contentHolder">
+                                    <div class="content">
+                                        {foreach $seasons as $key=>$season}
+                                        <a href="javascript:void(0);" class="clickme {if $key != 0}borderTop{/if}" data-key="sea" data-val="{$season.ename}" title="{$season.cname}">{$season.cname}</a>
+                                        {/foreach}
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        {/if}
+                        {if isset($categorys) && empty($paramsArr.cat)}
+                        <li class="pli {if empty($categorys)} no_click {/if}">
+                            <span class="aspan">{if $columnId==130}风格系列{else}类型{/if}<i class="nav-icon"></i></span>
+                            <div class="showbox short-sum">
+                                <div class="dateHeight contentHolder">
+                                    <div class="content">
+                                        <!--a class="clickme" href="{$allSingle.cat}">全部类型</a-->
+                                        {foreach $categorys as $key=>$category}
+                                        <a href="javascript:void(0);" class="clickme {if $key != 0}borderTop{/if}" data-key="cat" data-val="{$category.ename}" title="{$category.cname}">{$category.cname}</a>
+                                        {/foreach}
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        {/if}
+                        {if isset($books) && !empty($books) && empty($paramsArr.boo)}
+                        <li class="pli bookname" >
+                            <span class="aspan">书名<i class="nav-icon"></i></span>
+                            <div class="showPro showbox">
+                                <div class="inputBox"><input type="text" class="searInputbox fl" value="搜索{$val}开头的书名" name="{$val}" style="color: rgb(148, 147, 147);"><span class="fr neiyeList"></span>
+                                </div>
+                                <div class="brands_ca">
+                                    <!--书名开始-->
+                                    {foreach $books as $val}
+                                    <div class="items">
+                                        <div class="letter" name="{$val}">{$val}</div>
+                                    </div>
+                                    {/foreach}
+                                        <div class="brandslist">
+                                            <div class="brand_result contentHolder">
+                                                <div class="content">
+                                                    <ul class="clearfix" id="popBrand_{$val}"></ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <!--书名结束-->
+                                </div>
+                            </div>
+                        </li>
+                        {/if}
+                        {else}
+                        {foreach $tips as $key => $tip}
+                        {if in_array($key,['gen','ind'])}
+                            <li>
+                                <a href="{$tip.link}" title="{$tip.value}">{$tip.name}: <span>{$tip.value}{$tip.em}</span><i class="nav-icon"></i></a>
+                                <div class="downlist-ind-gen showbox">
+                                    {foreach $tip.sub as $sub}
+                                    <a href="javascript:void(0);" title="{$sub.value}" id="gi_{$sub.type}_{$sub.key}">{$sub.value}</a>
+                                    {/foreach}
+                                </div>
+                            </li>
+                        {/if}                
+                        {/foreach}
+                        {/if}
+                    </ul>                    
+                    {if $columnId eq 82 || $columnId eq 50}
+                    <div class="nav-function-div color-click-button js_analysis_show">
+                        <a><em class="nav-icon"></em>数据分析图表<i class="nav-icon"></i></a>
+                    </div>
+                    {/if}
+                </div>
+                {if $columnId != 130 && $columnId != 116}
+                <div class="aspan_load fl"><img src="/global/images/5-121204193934-50.gif"/>筛选项加载中，请稍等...</div>
+                {/if}              
+                <div class="screen-labels-box fr">
+                    <div class="s-only-labels fl">
+                        {if $columnId != 121 &&  $columnId != 116 && $columnId != 130}
+                        <a href="javascript:void(0);" class="only-collect collect {if isset($paramsArr['coll']) && $paramsArr['coll']}on{/if}" data-usertype="{$powers.P_UserType}"><i class="nav-icon"></i>收藏</a>
+                        {/if}
+                        {if $columnPid == 1 || $columnPid == 2 || $columnId == 'iSpecialTopicPatterns'}
+                        <a href="javascript:void(0);" class="only-hot {if isset($paramsArr['ihot']) && ($paramsArr['ihot'] == 1 || $paramsArr['ihot'] == 3)}on{/if} ihot" data-val="1"><i class="nav-icon"></i>最热门</a>
+                        {if $columnPid == 2}
+                        <a href="javascript:void(0);" class="{if isset($paramsArr['auth'])}on{/if} iIsAuthorized"><i class="nav-icon"></i>大数据</a>
+                        {/if}
+                        <a href="javascript:void(0);" class="only-fabric {if isset($paramsArr['uli'])}on{/if} iUliaobao"><i class="nav-icon"></i>配面料</a>
+                        {/if}
+                    </div>
+                    {if $columnId != 121 && $columnId != 130}
+                    <div class="s-time-sort fl js-s-time-sort">
+                        <a><i class="nav-icon"></i>{if $paramsArr['sor'] == 2}浏览最高{elseif $paramsArr['sor'] == 3}收藏最多{else}时间最新{/if}</a>
+                        <div class="s-time-list cateNum_list">
+                            <a class="cat_update sort" href="javascript:void(0);" data-key="sor" data-val="1">时间最新</a>
+                            <a class="cat_liulan sort" href="javascript:void(0);" data-key="sor" data-val="2">浏览最高</a>
+                            <a class="cat_shoucang sort" href="javascript:void(0);" data-key="sor" data-val="3">收藏最多</a>
+                        </div>
+                    </div>
+                    {/if}
+                    {if $columnPid == 4}
+                    <div class="save-search js-save-search fl">
+                        <div class="save-search-look js-save-search-look fl">
+                            <a class="save-search-success">已存搜索(<span>0</span>)<em class="nav-icon"></em></a>
+                            <div class="guide-save js-guide-save">将您常用的筛选条件保存到此处，方便快速查看</div>
+                            <div class="save-search-list js-save-search-list">
+                                <ul></ul>
+                            </div>
+                        </div>
+                    </div>
+                    {/if}
+                </div>
+            </div>
+        </div>
+    </div>  
+</div>

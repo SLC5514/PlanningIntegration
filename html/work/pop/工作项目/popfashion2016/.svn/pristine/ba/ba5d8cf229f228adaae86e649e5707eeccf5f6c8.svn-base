@@ -1,0 +1,156 @@
+
+<div class="web-common-foot">
+    <div class="contentW">
+        <div class="common-foot-top clearfix">
+            <div class="foot-top-left fl">
+                <h3>POP时尚服务矩阵</h3>
+                <p>POP时尚趋势获工信部认可并授予  工信部纺织服装创意设计试点平台</p>
+                <div>
+                    <a href="http://www.51shoushi.com" target="_blank">POP首饰趋势</a>
+                    <a href="http://www.pop-shoe.com" target="_blank">POP鞋子趋势</a>
+                    <a href="http://www.91jiafang.com" target="_blank">POP家纺趋势</a>
+                    <a href="http://www.pop-bags.com" target="_blank">POP箱包趋势</a><br/>
+                    <a href="http://www.uliaobao.com/" target="_blank">ULB优料宝-面料</a>
+                    <a href="/topic/trend_app/" target="_blank">APP-POP趋势</a>
+                    <a href="/topic/yuntu/" target="_blank">POP云图</a>
+                    <a href="http://www.pop136.com/" target="_blank">POP官网</a>
+                    <a href="/blog/" target="_blank">时尚博客</a>
+                </div>
+            </div>
+            <div class="foot-top-right fr">
+                <div class="fl contact-foot">
+                    <p>客服热线</p>
+                    <div>
+                        4008-210-500<span>（售前）</span><br/>                        
+                        4008-210-662<span>（售后）</span>
+                    </div>
+                </div>
+                <div class="fr qrcode-foot">
+                    <img src="{STATIC_URL1}/global/images/QRcode/erwm.png"/>
+                    <p>官方小秘书</p>
+                </div>
+            </div>
+        </div>
+        <div class="common-foot-bottom clearfix">
+            <div class="foot-bottom-left fl">
+                <div class="foot-nav-list">
+					<a href="/service/aboutus/" target="_blank" title="关于我们" rel="nofollow">关于我们</a>|
+					<a href="/service/joinmember/" target="_blank" title="加入会员" rel="nofollow">加入会员</a>|
+					<a href="/service/membernotice/" target="_blank" title="会员须知" rel="nofollow">会员须知</a>|
+					<a href="/service/tolllist/" target="_blank" title="收费一览" rel="nofollow">收费一览</a>|
+					<a href="/service/payment/" target="_blank" title="付款方式" rel="nofollow">付款方式</a>|
+					<a href="/service/declaration/" target="_blank" title="法律声明" rel="nofollow">法律声明</a>|
+					<a href="/service/contactus/" target="_blank" title="联系我们" rel="nofollow">联系我们</a>|
+					<a href="/service/friendlylink/" target="_blank" title="友情链接">友情链接</a>|
+					<a href="/service/sitemap/" target="_blank" title="网站地图">网站地图</a>|
+					<a href="/topic/" target="_blank" title="活动专题">活动专题</a>
+                </div>
+                <p>逸尚创展（上海）科技有限公司 | 上海逸尚云联信息技术股份有限公司 © 2004-2020法律顾问：北京中银（上海）律师事务所 <a href="http://www.beian.miit.gov.cn/" target="_blank" style="margin:0;vertical-align:initial;">沪ICP备06003020号-1</a></p>
+            </div>
+            <div class="foot-bottom-right fr">
+                <a target="_blank" href="http://wap.scjgj.sh.gov.cn/businessCheck/verifKey.do?showType=extShow&amp;serial=9031000020160526093630000000851495-SAIC_SHOW_310000-20120428141018720124&amp;signData=MEUCIQDZWDSUQE195cBFzEmHGyMfx92RgQ9hs6ZMwm3ePnH6kAIgMh9DQQ9W3S+fDej1PTh5x9PdFq9QKDSvtOGWbRJfWZU=">
+                    <img src="https://imgf1.pop-fashion.com/global/images/safty1.png" >
+                </a>
+                <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31010402000973">
+                    <img src="https://imgf1.pop-fashion.com/global/images/safty.png" alt="icon">
+                    <span>沪公网安备 31010402000973号</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{include  file="common/nav_fixed_box.html"}
+
+
+<!-- VIP登录增加弹窗 -->
+<div class="vip-add-layer js-vip-add-layer">
+	<div class="vip-add-layer-con">
+		<div class="layer-remind-title">欢迎回来，{$account}</div>
+		<div class="layer-remid-con">
+			<p class="vip-cus-name">您现在是管理员账号，可作为POP会员账号的管理操作</p>
+			<p class="vip-cus-remind">体验收藏、工作台、共享资料等更多操作，需创建设计师专属账号，你还没有创建设计师专属账号？</p>			
+			<div class="exclusive-account-fs">
+				<h3>立即创建账号，体验以下全部功能！</h3>
+				<ul class="clearfix">
+					<li>
+						<img src="{STATIC_URL1}/global/images/v_layer1.png" alt="icon">
+						<p>我的工作室</p>
+					</li>
+					<li>
+						<img src="{STATIC_URL1}/global/images/v_layer2.png" alt="icon">
+						<p>我的下载包</p>
+					</li>
+					<li>
+						<img src="{STATIC_URL1}/global/images/v_layer3.png" alt="icon">
+						<p>个人收藏</p>
+					</li>
+					<li>
+						<img src="{STATIC_URL1}/global/images/v_layer4.png" alt="icon">
+						<p> 共享资料</p>
+					</li>
+					<li>
+						<img src="{STATIC_URL1}/global/images/v_layer5.png" alt="icon">
+						<p>更多专属功能</p>
+					</li>
+				</ul>
+			</div>
+			<div class="vip-add-btn">
+				<a href="/member/associate/" target="_blank" class="im-create-a" title="立即创建设计师专属账号">立即创建设计师专属账号</a>
+				<a class="ignore-a js-vip-close" href="javascript:void(0);" title="忽略">忽略</a>
+			</div>
+		</div>
+		<a class="vip-add-close js-vip-close" href="javascript:void(0);"></a>
+	</div>
+</div>
+
+
+<!-- 申请试用弹出 -->
+<div class="feedback-section-box clear js-feedback-section-box">
+    <button></button>
+    <h3><span></span>联系我们</h3>
+    <div class="contact-div">
+        <span>直接联系客服</span>
+        <button class="js-contact-qq-btn" title="直接咨询">直接咨询</button>
+
+        <p>咨询热线：<span>4008-210-500</span></p>
+        <p>售后服务：<span>4008-210-662</span></p>
+    </div>
+    <div class="form-div js-form-div">
+        <h3>请留下简要的信息，我们将在两个工作日内与您联系!</h3>
+        <ul class="form-list js-form-list js-form-list1">
+            <li>
+                <label for="name">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名</label><input value="" autocomplete="off" class="js-input-area" name="name" type="text" maxlength="20" placeholder="方便我们称呼您">
+                <p>4-20位字符，一个汉字是两个字符</p>
+            </li>
+            <li>
+                <label for="tel">电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话</label><input value="" autocomplete="off" class="js-input-area js-mobile-area" id="tel" name="tel" type="text" placeholder="联系您需要">
+                <p>请输入手机号</p>
+            </li>
+            <li class="select-item">
+                <label>咨询类型</label>
+                <div class="select-div js-select-div">
+                    <span class="select-spn now-choice" value="5">申请试用</span>
+                    <ul class="option-list">
+                        {foreach $feedbackTypes as $val}
+                        <li value="{$val.id}">{$val.sName}</li>
+                        {/foreach}
+                    </ul>
+                </div>
+                <p>请选择咨询类型的内容</p>
+
+            </li>
+            <li class="txt-box">
+                <textarea class="js-input-area" name="content" placeholder="可在此处填写您想告知我们的其他信息" maxlength="100"></textarea>
+            </li>
+        </ul>
+        <button class="sub-btn js-sub-btn" data-type="1" title="马上联系我们">马上联系我们</button>
+    </div>
+</div>
+<div class="bg-div js-bg-div"></div>
+<div class="common-bg-div js-common-bg-div"></div>
+
+
+<!-- 最新推荐弹层 -->
+{include file="common/recommend-layer-box.html"}
+

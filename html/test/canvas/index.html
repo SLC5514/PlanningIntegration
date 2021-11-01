@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #myCanvas {
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="myCanvas"></canvas>
+</body>
+<script>
+  var width = 2000, height = 500, middleY = height / 2, num = 8, dx = width / num, dy = 100;
+  var c = document.getElementById("myCanvas");
+  c.width = width;
+  c.height = height;
+  var ctx = c.getContext("2d");
+  ctx.strokeStyle = "#000";
+  ctx.moveTo(0, middleY);
+  // for (var i = 0; i < num; i++) {
+  //   ctx.quadraticCurveTo(dx*i, dy, dx*i, dy);
+  // }
+  // ctx.quadraticCurveTo(100, 0, 200, middleY);
+  // ctx.quadraticCurveTo(300, height, 400, middleY);
+  // ctx.quadraticCurveTo(500, 0, 600, middleY);
+  // ctx.quadraticCurveTo(700, height, 800, middleY);
+  // ctx.quadraticCurveTo(900, 0, 1000, middleY);
+  // ctx.bezierCurveTo(100, 0, 200, middleY, 300, height);
+  // ctx.bezierCurveTo(400, middleY, 500, 0, 600, middleY);
+  // ctx.stroke();
+
+  var wave = {
+
+  }
+
+  var bezierCtrlNodesArr = [];
+
+  tick();
+
+  function tick() {
+    // draw(0, num);
+    ctx.moveTo(width, middleY);
+    draw(num, num*2);
+    ctx.globalCompositeOperation = "destination-atop";
+    // requestAnimationFrame(tick);
+  }
+
+  function draw(count, num) {
+    for (var i = count; i <= num; i++) {
+      !bezierCtrlNodesArr[i] ? bezierCtrlNodesArr[i] = {} : null;
+      bezierCtrlNodesArr[i].x = dx*i - 500;
+      if (i%2) {
+        if (i%4 == 3) {
+          bezierCtrlNodesArr[i].y = height;
+        } else {
+          bezierCtrlNodesArr[i].y = 0;
+        }
+      } else {
+        bezierCtrlNodesArr[i].y = middleY;
+      }
+    }
+    for (var i = 0; i < 1; i += 0.01) {
+      var o = bezier(i);
+      ctx.lineTo(o.x, o.y);
+    }
+    ctx.stroke();
+  }
+  function bezier(t) { //贝塞尔公式调用
+    var x = 0,
+      y = 0,
+      n = bezierCtrlNodesArr.length - 1;
+    bezierCtrlNodesArr.forEach(function (item, index) {
+      if (!index) {
+        x += item.x * Math.pow((1 - t), n - index) * Math.pow(t, index)
+        y += item.y * Math.pow((1 - t), n - index) * Math.pow(t, index)
+      } else {
+        x += factorial(n) / factorial(index) / factorial(n - index) * item.x * Math.pow((1 - t), n - index) * Math.pow(t, index)
+        y += factorial(n) / factorial(index) / factorial(n - index) * item.y * Math.pow((1 - t), n - index) * Math.pow(t, index)
+      }
+    })
+    return {
+      x: x,
+      y: y
+    }
+  }
+  function factorial(num) {
+    if (num < 0) {
+      return -1;
+    } else if (num === 0 || num === 1) {
+      return 1;
+    } else {
+      for (var i = num - 1; i >= 1; i--) {
+        num *= i;
+      }
+    }
+    return num;
+  }
+</script>
+
+</html>

@@ -1,0 +1,53 @@
+{extends file="layout.html"} 
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{$smarty.const.STATIC_URL1}/global/css/design/design-list.css?{$smarty.const.STATIC_CHANGE_TIME}">
+{/block} 
+ 
+{block name="main"}
+<div class="content">
+    <div class="list-section">
+        <div class="design-title">
+            <span></span>我的设计花型<span></span>
+        </div>
+        <div class="overdue-warming">请于2019年8月1日前，下载您需要保留的自主设计图案</div>
+        <!-- 列表 -->
+        <div class="design-list">
+            <h3>
+                <a class="go-back" href="/patternlibrary/" title="返回"><i></i>返回</a>
+                <button class="batch-deletion-btn js-batch-deletion-btn" title="批量删除">批量删除</button>
+                <button class="confirm-deletion-btn js-confirm-deletion-btn" title="确认删除">确认删除</button>
+                <button class="cancel-deletion-btn js-cancel-deletion-btn" title="取消">取消</button>
+            </h3>
+            <ul class="clear js-design-list">
+                <!-- <li data-id="401657" data-t="graphicitem" data-index="0">
+                    <a href="javascript:void(0);" title="">
+                        <img data-original="" src="/global/images/common/reference150-150.gif" alt="">
+                        <div class="dis-posion">
+                            <p><span class="icon"></span>2018-05-11</p>
+                        </div>
+                    </a>
+                </li> -->
+                
+            </ul>
+        </div>
+        
+        <!--分页-->
+        <div class="laypage-section js-laypage-section"></div>
+
+        
+    </div>
+
+</div>
+
+{/block}
+
+{block name="other"}
+	<!--引入详情页-->
+	<div class="detail-frame js-detail-frame">
+		<iframe src="" width="100%" height="100%" frameborder="no" border="0" scrolling="no" allowtransparency="yes"></iframe>
+	</div>
+{/block}
+
+{block name="self"}
+    <script src="{$smarty.const.STATIC_URL3}/global/js/design/design-list.js?{$smarty.const.STATIC_CHANGE_TIME}" type="text/javascript" charset="utf-8"></script>
+{/block}

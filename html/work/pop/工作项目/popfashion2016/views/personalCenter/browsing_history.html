@@ -1,0 +1,73 @@
+{extends file="layout.html"}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/personal.css?{STATIC_CHANGE_TIME}">
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/member/browse_history.css?{STATIC_CHANGE_TIME}">
+{/block}
+
+{block name="main"}
+<div class="main myWorkTable">
+	<div class="con_width">
+		<div class="section">
+			{$personalHeader}
+		</div>
+		<div class="history-section js-history-section">
+            <div class="history-tab-box">
+                <div class="con_width clearfix">
+                    <div class="column-tab-box js-column-tab-box fl">
+                        <a class="{if $col==4}on{/if}" href="/member/myHistory/4/" data-col="4">款式</a>
+                        <a class="{if $col==9}on{/if}" href="/member/myHistory/9/" data-col="9">图案</a>
+                        <a class="{if $col==1}on{/if}" href="/member/myHistory/1/" data-col="1">报告</a>
+                    </div>
+                    <div class="screen-date js-screen-date fl">
+                        <a href="javascript:void(0);">筛选<i></i></a>
+                        <div class="screen-date-downlist">
+                            <i></i>
+                            <div class="date-calendar">
+                                <div class="week-date js-week-date">
+                                    <a>一</a>
+                                    <a>二</a>
+                                    <a>三</a>
+                                    <a>四</a>
+                                    <a>五</a>
+                                    <a>六</a>
+                                    <a>日</a>
+                                </div>
+                                <div class="day-date js-day-date"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clear-condition js-clear-condition fr">
+                        <a href="javascript:void(0);"><i></i>清除全部</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="browse-history-contain">
+            <div class="empty-history-box js-empty-history-box">
+                <img src="{STATIC_URL1}/global/images/member/per_center/n_icon.png"/>
+                <p>抱歉，你当前账号为普通用户，无法查看浏览历史</p>
+            </div>
+            <div class="browse-history-img js-browse-history-img">
+            </div>
+            <div class="history-loading">
+                <img src="{STATIC_URL1}/global/images/alertloading_m.gif"/>
+            </div>
+        </div>
+    </div>
+    <!-- 清楚弹框 -->
+    <div class="clear-history-layer js-clear-history-layer">
+        <p>确认清除所有浏览记录吗？</p>
+        <div>
+            <a class="cancel-clear js-cancel-clear">取消</a>
+            <a class="confirm-clear js-confirm-clear">确认</a>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="self"}
+<script type="text/javascript" src="{STATIC_URL2}/global/js/member/browse_history.js?{STATIC_CHANGE_TIME}"></script>
+<script>
+    var obj_col = {$col};
+</script>
+{/block}

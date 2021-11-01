@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>客户端登录</title>
+</head>
+<body>
+<div style="text-align: center;">
+    <h2 id="message">Loading...</h2>
+    <p>点击 <a href="/">前往首页</a></p>
+</div>
+<script src="{STATIC_URL2}/global/js/common/jquery-1.9.1.min.js?{STATIC_CHANGE_TIME}"></script>
+<script src="{STATIC_URL2}/global/js/common/jquery.cookie.js?t={STATIC_CHANGE_TIME}"></script>
+<script>
+    $.ajax({
+        url:"//member.pop136.com/login",
+        xhrFields: { withCredentials: true },
+        type:"get",
+        data:{
+            account:"{$smarty.get.account|urldecode}",password:"{$smarty.get.password|urldecode}",
+            clientLoginToken:"{$smarty.get.clientLoginToken|urldecode}",type:1,website:1
+        },
+        dataType:"jsonp",
+        success:function (data) {
+            if(data.code==0){
+                $.cookie("POP_USER",data.data.jwt,{ path:"/",domain:"pop-fashion.com" } );
+                location.href="/";
+            }else{
+                $("#message").text(data.msg);
+            }
+        }
+    });
+</script>
+</body>
+</html>

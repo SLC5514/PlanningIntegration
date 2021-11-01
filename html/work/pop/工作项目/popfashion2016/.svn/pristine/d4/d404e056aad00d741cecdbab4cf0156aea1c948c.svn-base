@@ -1,0 +1,623 @@
+{extends file="layout.html"}
+
+{block name="title"}设界-POP服装趋势网{/block}
+{block name=keywords}趋势资讯,趋势书籍,趋势面料,花型定制,找面料,样衣打样{/block}
+{block name=description}“设界”整合了POP海量迅速的时尚资讯，优料宝供应链资源，权威师资团队与贴心的物业管理团队，助力服饰产业高速发展。咨询热线：4008-210-500。{/block}
+
+{block name="selfcss"}
+	<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/topic/20171129/css/index.css?{STATIC_CHANGE_TIME}">
+<!--[if lte IE 9]>
+	<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/topic/20171129/css/ie-9.css?{STATIC_CHANGE_TIME}">
+<![endif]-->
+
+{/block}
+{block name="main"}
+<div class="season-section js-season-section">
+	<div class="p1" data-sec="0">
+		<div class="p1-t js-animate1">
+			<div class="ani1"></div>
+			<div class="ani2"></div>
+		</div>
+
+		<div class="clear p1-txt">
+			<p class="txt1"></p>
+			<p class="txt2"></p>
+			<p class="txt3"></p>
+			<p class="txt4"></p>
+			<p class="txt5"></p>
+			<p class="txt6"></p>
+			<p class="txt7"></p>
+			<p class="txt8"></p>
+			<p class="txt9"></p>
+			<p class="txt10"></p>
+		</div>
+
+		<div class="top-m">
+			<div class="m-msg">
+				“设界”整合了POP海量迅速的时尚资讯<br />优料宝的供应链资源<br />权威师资团队与贴心的物业管理团队<br />助力服饰产业高速发展
+			</div>
+			<div class="m-link clear">
+				<img src="{STATIC_URL2}/global/topic/20171129/images/t3.png"/>
+				<div>
+					<span>咨询热线：</span>
+					<p>4008-210-500</p>
+					<a class="js-contact-qq-btn" href="javascript:void(0);" title="在线客服"><i></i>在线客服</a>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="p2" data-sec="0">
+		<h2></h2>
+		<ul class="p2-list clear">
+			<li class="list-1">
+				<div class="list-hv list-hv1">
+					<i></i>
+				</div>
+				<div class="list-index list-index1"></div>
+				<p>推动当地城市服饰产业发展，打<br />造良好产业生态环境</p>
+			</li>
+			<li class="list-2">
+				<div class="list-hv list-hv2">
+					<i></i>
+				</div>
+				<div class="list-index list-index2"></div>
+				<p>加速当地服饰上、中、下游企业<br />之间的资源融合，提升企业价值</p>
+			</li>
+			<li class="list-3">
+				<div class="list-hv list-hv3">
+					<i></i>
+				</div>
+				<div class="list-index list-index3"></div>
+				<p>通过解决“设计”创意拉动整个<br />设计效能提高，为设计赋能</p>
+			</li>
+		</ul>
+	</div>
+
+	<div class="p3" data-sec="0">
+		<h2></h2>
+
+		<div class="isions-contain">
+			<div class="isions-cont">
+				<ul class="clear isions-list js-isions-list">
+					<li class="item1">
+						<div class="item-msg">
+							<div class="msg-t"></div>
+							<h3>共享研发中心</h3>
+							<p>前沿潮流趋势资讯+高科技智能，<br />激发灵感、提升效率！</p>
+							<ul>
+								<li>
+									<h4>趋势灵感区</h4>
+									<p>趋势资讯查询中心、趋势技术类书籍阅览室</p>
+								</li>
+								<li>
+									<h4>创新智造站</h4>
+								<p>POP数码云打印、专属花型定制、花型虚拟样衣工具、3D制版</p>
+								</li>
+							</ul>
+						</div>
+						<div class="imgs">
+							<div class="img-i1 img-hv marg1"><p></p></div>
+							<div class="img-i2 img-hv marg2"><p></p></div>
+							<div class="img-i3 img-hv marg3"><p></p></div>
+							<div class="img-i4 img-hv"><p></p></div>
+						</div>
+					</li>
+					<li class="item2">
+						<div class="item-msg">
+							<div class="msg-t"></div>
+							<h3>共享供应链中心</h3>
+							<p>海量优质面料展示及代采购，更有智能<br />技术辅助，便捷生产开发。</p>
+							<ul>
+								<li>
+									<h4>面料资源馆</h4>
+									<p>趋势资讯查询中心、趋势技术</p>
+								</li>
+								<li>
+									<h4>全国代采</h4>
+									<p>找料帮服务、面辅料耗材集中代采购</p>
+								</li>
+								<li>
+									<h4>生产服务</h4>
+									<p>样衣打样、优质工厂推介</p>
+								</li>
+							</ul>
+						</div>
+						<div class="imgs">
+							<div class="img-i5 img-hv marg1"><p></p></div>
+							<div class="img-i6 img-hv marg2"><p></p></div>
+							<div class="img-i7 img-hv marg3"><p></p></div>
+							<div class="img-i8 img-hv"><p></p></div>
+						</div>
+					</li>
+					<li class="item3">
+						<div class="item-msg">
+							<div class="msg-t"></div>
+							<h3>共享营销中心</h3>
+							<p>提供场地、引进优质资源，助您输出和<br />营销产品</p>
+							<ul>
+								<li>
+									<h4>发布展示</h4>
+									<p>新产品、品牌推介会、路演场地使用</p>
+								</li>
+								<li>
+									<h4>营销端对接</h4>
+									<p>当地商贸营销对接、外地巡联展营销对接</p>
+								</li>
+								<li>
+									<h4>视觉摄影基地</h4>
+									<p>在线直播间、摄影场地使用、摄影服务</p>
+								</li>
+							</ul>
+						</div>
+						<div class="imgs">
+							<div class="img-i9 img-hv marg1"><p></p></div>
+							<div class="img-i10 img-hv marg2"><p></p></div>
+							<div class="img-i11 img-hv marg3"><p></p></div>
+							<div class="img-i12 img-hv"><p></p></div>
+						</div>
+					</li>
+					<li class="item4">
+						<div class="item-msg">
+							<div class="msg-t"></div>
+							<h3>共享智慧中心</h3>
+							<p>释放人才价值，丰富教育体系</p>
+							<ul>
+								<li>
+									<h4>人才服务</h4>
+									<p>行业人才对接，人才信息查询发布、本地/外部人才能力共享</p>
+								</li>
+								<li>
+									<h4>赋能教学点</h4>
+									<p>固定赋能趋势课程（活动）、专业赋能游学、企业深度咨询（产品/营销）</p>
+								</li>
+							</ul>
+						</div>
+						<div class="imgs">
+							<div class="img-i13 img-hv marg1"><p></p></div>
+							<div class="img-i14 img-hv marg2"><p></p></div>
+							<div class="img-i15 img-hv marg4"><p></p></div>
+						</div>
+					</li>
+					<li class="item5">
+						<div class="item-msg">
+							<div class="msg-t"></div>
+							<h3>共享数据中心</h3>
+							<p>整合大数据分析成果，并将其应用分<br />享，为服饰开发助力</p>
+							<ul>
+								<li>
+									<h4>天气数据</h4>
+									<p>气象数据查询，为新一季设计提供充足保障</p>
+								</li>
+								<li>
+									<h4>消费者数据</h4>
+									<p>引入TD等国内消费者大数据，准确把握消费者行为习惯</p>
+								</li>
+								<li>
+									<h4>时尚指数考</h4>
+									<p>当地服装流行指数，让您更了解本地市场</p>
+								</li>
+							</ul>
+						</div>
+						<div class="imgs">
+							<div class="img-i16 img-hv marg1"><p></p></div>
+							<div class="img-i17 img-hv marg2"><p></p></div>
+							<div class="img-i18 img-hv marg3"><p></p></div>
+							<div class="img-i22 img-hv "><p></p></div>
+						</div>
+					</li>
+					<li class="item6">
+						<div class="item-msg">
+							<div class="msg-t"></div>
+							<h3>共享办公中心</h3>
+							<p>更人性化的空间共享、更贴心的服务</p>
+							<ul>
+								<li>
+									<h4>共享办公间服务</h4>
+									<p>共享办公位、独立办公空间、面试洽谈间、会议洽谈室、培训教室、交流区配套设施</p>
+								</li>
+								<li>
+									<h4>办公保障服务</h4>
+									<p>24小时安保、24小时wifi、电脑租借、自动储物空间、前台服务快递代收、社区活动、打印复印、综合文具等</p>
+								</li>
+							</ul>
+						</div>
+						<div class="imgs">
+							<div class="img-i19 img-hv marg1"><p></p></div>
+							<div class="img-i20 img-hv marg2"><p></p></div>
+							<div class="img-i21 img-hv marg4"><p></p></div>
+						</div>
+					</li>
+					<li class="item1">
+						<div class="item-msg">
+							<div class="msg-t"></div>
+							<h3>共享研发中心</h3>
+							<p>前沿潮流趋势资讯+高科技智能，<br />激发灵感、提升效率！</p>
+							<ul>
+								<li>
+									<h4>趋势灵感区</h4>
+									<p>趋势资讯查询中心、趋势技术类书籍阅览室</p>
+								</li>
+								<li>
+									<h4>创新智造站</h4>
+								<p>POP数码云打印、专属花型定制、花型虚拟样衣工具、3D制版</p>
+								</li>
+							</ul>
+						</div>
+						<div class="imgs">
+							<div class="img-i1 img-hv marg1"><p></p></div>
+							<div class="img-i2 img-hv marg2"><p></p></div>
+							<div class="img-i3 img-hv marg3"><p></p></div>
+							<div class="img-i4 img-hv"><p></p></div>
+						</div>
+					</li>
+					<li class="item2">
+						<div class="item-msg">
+							<div class="msg-t"></div>
+							<h3>共享供应链中心</h3>
+							<p>海量优质面料展示及代采购，更有智能<br />技术辅助，便捷生产开发。</p>
+							<ul>
+								<li>
+									<h4>面料资源馆</h4>
+									<p>趋势资讯查询中心、趋势技术</p>
+								</li>
+								<li>
+									<h4>全国代采</h4>
+									<p>找料帮服务、面辅料耗材集中代采购</p>
+								</li>
+								<li>
+									<h4>生产服务</h4>
+									<p>样衣打样、优质工厂推介</p>
+								</li>
+							</ul>
+						</div>
+						<div class="imgs">
+							<div class="img-i5 img-hv marg1"><p></p></div>
+							<div class="img-i6 img-hv marg2"><p></p></div>
+							<div class="img-i7 img-hv marg3"><p></p></div>
+							<div class="img-i8 img-hv"><p></p></div>
+						</div>
+					</li>
+					<li class="item3">
+						<div class="item-msg">
+							<div class="msg-t"></div>
+							<h3>共享营销中心</h3>
+							<p>提供场地、引进优质资源，助您输出和<br />营销产品</p>
+							<ul>
+								<li>
+									<h4>发布展示</h4>
+									<p>新产品、品牌推介会、路演场地使用</p>
+								</li>
+								<li>
+									<h4>营销端对接</h4>
+									<p>当地商贸营销对接、外地巡联展营销对接</p>
+								</li>
+								<li>
+									<h4>视觉摄影基地</h4>
+									<p>在线直播间、摄影场地使用、摄影服务</p>
+								</li>
+							</ul>
+						</div>
+						<div class="imgs">
+							<div class="img-i9 img-hv marg1"><p></p></div>
+							<div class="img-i10 img-hv marg2"><p></p></div>
+							<div class="img-i11 img-hv marg3"><p></p></div>
+							<div class="img-i12 img-hv"><p></p></div>
+						</div>
+					</li>
+					<li class="item4">
+						<div class="item-msg">
+							<div class="msg-t"></div>
+							<h3>共享智慧中心</h3>
+							<p>释放人才价值，丰富教育体系</p>
+							<ul>
+								<li>
+									<h4>人才服务</h4>
+									<p>行业人才对接，人才信息查询发布、本地/外部人才能力共享</p>
+								</li>
+								<li>
+									<h4>赋能教学点</h4>
+									<p>固定赋能趋势课程（活动）、专业赋能游学、企业深度咨询（产品/营销）</p>
+								</li>
+							</ul>
+						</div>
+						<div class="imgs">
+							<div class="img-i13 img-hv marg1"><p></p></div>
+							<div class="img-i14 img-hv marg2"><p></p></div>
+							<div class="img-i15 img-hv marg4"><p></p></div>
+						</div>
+					</li>
+					<li class="item5">
+						<div class="item-msg">
+							<div class="msg-t"></div>
+							<h3>共享供应链中心</h3>
+							<p>整合大数据分析成果，并将其应用分<br />享，为服饰开发助力</p>
+							<ul>
+								<li>
+									<h4>天气数据</h4>
+									<p>气象数据查询，为新一季设计提供充足保障</p>
+								</li>
+								<li>
+									<h4>消费者数据</h4>
+									<p>引入TD等国内消费者大数据，准确把握消费者行为习惯</p>
+								</li>
+								<li>
+									<h4>时尚指数考</h4>
+									<p>当地服装流行指数，让您更了解本地市场</p>
+								</li>
+							</ul>
+						</div>
+						<div class="imgs">
+							<div class="img-i16 img-hv marg1"><p></p></div>
+							<div class="img-i17 img-hv marg2"><p></p></div>
+							<div class="img-i18 img-hv marg3"><p></p></div>
+							<div class="img-i22 img-hv "><p></p></div>
+						</div>
+					</li>
+					<li class="item6">
+						<div class="item-msg">
+							<div class="msg-t"></div>
+							<h3>共享办公中心</h3>
+							<p>更人性化的空间共享、更贴心的服务</p>
+							<ul>
+								<li>
+									<h4>共享办公间服务</h4>
+									<p>共享办公位、独立办公空间、面试洽谈间、会议洽谈室、培训教室、交流区配套设施</p>
+								</li>
+								<li>
+									<h4>办公保障服务</h4>
+									<p>24小时安保、24小时wifi、电脑租借、自动储物空间、前台服务快递代收、社区活动、打印复印、综合文具等</p>
+								</li>
+							</ul>
+						</div>
+						<div class="imgs">
+							<div class="img-i19 img-hv marg1"><p></p></div>
+							<div class="img-i20 img-hv marg2"><p></p></div>
+							<div class="img-i21 img-hv marg4"><p></p></div>
+						</div>
+					</li>
+
+				</ul>
+				<div class="list-c">
+					<div class="list-l js-left-btn"></div>
+					<div class="list-r js-right-btn"></div>
+					<ul class="list-nv js-list-nv clear">
+						<li class="item-sec"></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+
+	<div class="p4" data-sec="0">
+		<h2></h2>
+		<div class="bott-msg">
+			<div class="bott-txt">
+				<!-- <p><i></i><span>常熟设界地址：</span>江苏省常熟市海虞北路45号A座</p> -->
+				<p><i></i><span>上海双联路设界地址：</span>上海市青浦区双联路158号东隆大厦3楼</p>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+<div class="nav-right">
+	<ul>
+		<li class="nav-r1" style="margin-top: 0;">
+			<i></i>
+			<p>咨<br />询<br />热<br />线</p>
+			<div class="nav-detail">
+				4008-210-500
+			</div>
+		</li>
+		<li class="nav-r2 js-contact-qq-btn">
+			<i></i>
+			<p>在<br />线<br />客<br />服</p>
+		</li>
+		<li class="nav-r3">
+			<i></i>
+			<p>二<br />维<br />码</p>
+			<div class="nav-detail">
+				扫描二维码，备注<br />“设界咨询”第一<br />时间了解设界动态
+			</div>
+		</li>
+		<li class="nav-r4 js-scrollt">
+			<i></i>
+			<p>TOP</p>
+		</li>
+	</ul>
+</div>
+
+{include file="topic/topic_layer.html"}
+{/block}
+
+
+{block name="self"}
+{literal}
+<script>
+	$(function(){
+		var _index=0,lun_timer=null, is_lun=false,review_ul=$('.js-isions-list'),_len=$('.js-isions-list>li').length/2,list_w=$('.js-isions-list>li').eq(0).outerWidth(true)||500;
+
+    	//自动轮播启动
+    	function lunSetInt(){
+    		clearInterval(lun_timer);
+    		lun_timer = setInterval(function(){
+    			is_lun=true;
+	    		_index++;
+	    		if(_index>_len){
+	    			_index=1;
+	    			review_ul.stop().css({
+		    			"margin-left":"0px"
+		    		});
+	    		}
+
+	    		if(_index == _len){
+	    			$('.js-list-nv>li').eq(0).addClass('item-sec').siblings().removeClass('item-sec');
+	    		}else{
+	    			$('.js-list-nv>li').eq(_index).addClass('item-sec').siblings().removeClass('item-sec');
+	    		}
+	    		review_ul.stop().animate({
+	    			"margin-left":_index*-1*list_w+"px"
+	    		},500,function(){
+	    			is_lun=false;
+	    		});
+    		},5000);
+    	}
+
+    	//移入轮播区域
+    	$('.js-isions-list>li').hover(function(){
+    		clearInterval(lun_timer);
+    	},function(){
+    		lunSetInt();
+    	});
+
+
+    	$('.js-left-btn').on('click',function(){
+    		if(is_lun==true){
+    			return;
+    		}
+    		clearInterval(lun_timer);
+    		is_lun=true;		//正在轮播
+    		_index--;
+    		if(_index<0){
+    			_index=_len-1;
+    			review_ul.stop().css({
+	    			"margin-left":_len*-1*list_w+"px"
+	    		});
+    		}
+
+    		$('.js-list-nv>li').eq(_index).addClass('item-sec').siblings().removeClass('item-sec');
+    		review_ul.stop().animate({
+    			"margin-left":_index*-1*list_w+"px"
+    		},500,function(){
+    			is_lun=false;
+    			lunSetInt();
+    		});
+    	});
+
+    	$('.js-right-btn').on('click',function(){
+    		if(is_lun==true){
+    			return;
+    		}
+    		clearInterval(lun_timer);
+    		is_lun=true;
+    		_index++;
+    		if(_index>_len){
+    			_index=1;
+    			review_ul.stop().css({
+	    			"margin-left":"0px"
+	    		});
+    		}
+
+    		if(_index == _len){
+    			$('.js-list-nv>li').eq(0).addClass('item-sec').siblings().removeClass('item-sec');
+    		}else{
+    			$('.js-list-nv>li').eq(_index).addClass('item-sec').siblings().removeClass('item-sec');
+    		}
+    		review_ul.stop().animate({
+    			"margin-left":_index*-1*list_w+"px"
+    		},500,function(){
+    			is_lun=false;
+    			lunSetInt();
+    		});
+    	});
+
+    	$('.js-list-nv>li').on('click',function(){
+    		var i_index = $(this).index();
+    		if(is_lun==true || $(this).hasClass('item-sec')){
+    			return;
+    		}
+    		clearInterval(lun_timer);
+    		is_lun=true;
+    		if(_index>=_len){
+    			review_ul.stop().css({
+	    			"margin-left":"0px"
+	    		})
+    		}else if(_index<0){
+    			review_ul.stop().css({
+	    			"margin-left":_len*-1*list_w+"px"
+	    		})
+    		}
+
+    		_index = i_index;
+    		$('.js-list-nv>li').eq(_index).addClass('item-sec').siblings().removeClass('item-sec');
+    		review_ul.stop().animate({
+    			"margin-left":_index*-1*list_w+"px"
+    		},500,function(){
+    			is_lun=false;
+    			lunSetInt();
+    		});
+
+    	});
+
+
+    	//返回顶部
+    	$('.js-scrollt').on('click',function(){
+    		$('html,body').animate({
+    			'scrollTop':'0px'
+    		},400);
+    	});
+
+
+    	var scroll_timer = null;
+    	//根据页面滚动高度执行动画
+    	setTimeout(function(){
+    		scrollAni();
+    	},1200);
+
+    	function scrollAni(){
+
+    		var w_t = $(window).scrollTop(), _i=0;
+	    	if(w_t > 200){
+				$('.js-scrollt').fadeIn(50);
+			}else{
+				$('.js-scrollt').fadeOut(50);
+			}
+			clearTimeout(scroll_timer);
+			scroll_timer = setTimeout(function(){
+				if(w_t < 550){
+					_i = 0;
+				}else if(w_t >= 550 && w_t < 1320){
+					_i = 1;
+				}else if(w_t >= 1320 && w_t < 2300){
+					_i = 2;
+				}else{
+					_i = 3;
+				}
+				aniSet(_i);
+
+			},240);
+
+    	}
+
+    	//执行动画
+    	function aniSet(i){
+    		i = i||0;
+    		var _ele = $('.js-season-section>div').eq(i);
+    		_ele.data('sec', 1);
+    		var ani_class = 'set'+(i+1);
+    		_ele.addClass(ani_class);
+
+    		if(ani_class == 'set3'){
+    			lunSetInt();
+    		}
+
+    		clearTimeout(scroll_timer);
+    	}
+    	//页面滚动
+    	$(window).on('scroll',function(){
+    		scrollAni();
+    	});
+    })
+</script>
+{/literal}
+{/block}

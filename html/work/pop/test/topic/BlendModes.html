@@ -1,0 +1,182 @@
+<html lang="zn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+
+    <style>
+      .text {
+        margin: 20px 0;
+        padding: 10px;
+        background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+        color: #fff;
+      }
+
+      #Renderer {
+        border: none;
+        margin: 20px 0;
+        padding: 10px;
+        background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+        color: #fff;
+      }
+
+      #blendMode {
+        border: none;
+        margin: 20px 0;
+        padding: 10px;
+        background-image: linear-gradient(to right, #fa709a 0%, #fee140 100%);
+        color: #fff;
+      }
+
+      option {
+        color: #000;
+        padding: 10px;
+      }
+    </style>
+  </head>
+
+  <body data-gsap='{"haveGSAP":false,"GSAPVersion":null}'>
+    <div>
+      <p class="text">
+        注意：WebGL 渲染器仅支持 NORMAL，ADD，MULTIPLY 和 SCREEN
+        混合模式。任何其他模式都会像 NORMAL 一样。
+      </p>
+    </div>
+    <div>
+      <select id="Renderer">
+        <option value="canvas">Canvas 渲染</option>
+        <option value="webgl">WebGL 渲染</option>
+      </select>
+
+      <select id="blendMode">
+        <option value="NORMAL">NORMAL（正常）</option>
+        <option value="SOFT_LIGHT">SOFT_LIGHT（柔光）</option>
+        <option value="HARD_LIGHT">HARD_LIGHT（强光）</option>
+        <option value="OVERLAY">OVERLAY（叠加）</option>
+        <option value="LIGHTEN">LIGHTEN（变亮）</option>
+        <option value="COLOR_DODGE">COLOR_DODGE（颜色减淡）</option>
+        <option value="SCREEN">SCREEN（滤色）</option>
+        <option value="ADD">ADD（线性减淡，添加）</option>
+        <option value="DARKEN">DARKEN（变暗）</option>
+        <option value="COLOR_BURN">COLOR_BURN（颜色加深）</option>
+        <option value="MULTIPLY">MULTIPLY（正片叠底）</option>
+        <option value="DIFFERENCE">DIFFERENCE（差值）</option>
+        <option value="EXCLUSION">EXCLUSION（排除）</option>
+        <option value="HUE">HUE（色相）</option>
+        <option value="SATURATION">SATURATION（饱和度）</option>
+        <option value="COLOR">COLOR（颜色）</option>
+        <option value="LUMINOSITY">LUMINOSITY（明度）</option>
+      </select>
+    </div>
+    <div id="px-render">
+      <canvas
+        width="400"
+        height="300"
+        style="touch-action: none; cursor: inherit;"
+      ></canvas>
+    </div>
+
+    <script src="https://www.kkkk1000.com/js/pixi4.8.2.js"></script>
+    <script>
+      //创建一个 Pixi应用 需要的一些参数
+      let option = {
+        width: 400,
+        height: 300,
+        transparent: true
+      };
+      //渲染器
+      let renderer;
+      //舞台
+      let stage;
+      //图片地址
+      let imgURL;
+      let imgURL1;
+      //#px-render 元素
+      let playground;
+      //下层精灵
+      let lower;
+      //上层精灵
+      let up;
+
+      function init(rendererParam) {
+        //创建一个 Pixi应用
+        let app = new PIXI.Application(option);
+        //获取舞台
+        stage = app.stage;
+        //获取渲染器
+        app.renderer = rendererParam;
+        renderer = app.renderer;
+
+        playground = document.getElementById("px-render");
+        //把 Pixi 创建的 canvas 添加到页面上
+        playground.appendChild(renderer.view);
+
+        //需要加载的图片的地址
+        imgURL =
+          "https://kkkk1000.com/images/learnPixiJS-VisualEffects/brick.jpg";
+        imgURL1 =
+          "https://kkkk1000.com/images/learnPixiJS-VisualEffects/Pikachu.jpg";
+
+        //加载图像，加载完成后执行setup函数
+        PIXI.loader.add([imgURL, imgURL1]).load(setup);
+      }
+
+      function setup() {
+        let resources = PIXI.loader.resources;
+        lower = new PIXI.Sprite(resources[imgURL].texture);
+        lower.alpha = 1;
+        lower.x = 0;
+        lower.y = 0;
+
+        up = new PIXI.Sprite(resources[imgURL1].texture);
+        up.alpha = 1;
+        up.x = 50;
+        up.y = 50;
+
+        stage.addChild(lower);
+        stage.addChild(up);
+      }
+      //初始化
+      init(new PIXI.CanvasRenderer(option));
+
+      let Renderer = document.getElementById("Renderer");
+      let blendMode = document.getElementById("blendMode");
+
+      //监听渲染器类型
+      Renderer.addEventListener("change", function() {
+        PIXI.loader.reset();
+        playground.removeChild(renderer.view);
+        blendMode.value = "NORMAL";
+
+        //使用 Canvas 渲染
+        if (Renderer.value == "canvas") {
+          init(new PIXI.CanvasRenderer(option));
+        }
+
+        //使用 WebGL 渲染，不支持 WebGL ，回退到 Canvas
+        if (Renderer.value == "webgl") {
+          if (PIXI.utils.isWebGLSupported()) {
+            init(new PIXI.WebGLRenderer(option));
+          } else {
+            Renderer.value = "canvas";
+            init(new PIXI.CanvasRenderer(option));
+            alert("您的浏览器不支持 WebGL 渲染，回退到 Canvas 渲染");
+          }
+        }
+      });
+
+      //监听混合模式
+      blendMode.addEventListener("change", function() {
+        up.blendMode = PIXI.BLEND_MODES[blendMode.value];
+      });
+    </script>
+
+    <script
+      type="text/javascript"
+      id="s-gsapchecker"
+      src="chrome-extension://ohjmhldioopcachmenfnhlbgmkaohgbb/checker.js"
+    ></script>
+  </body>
+</html>

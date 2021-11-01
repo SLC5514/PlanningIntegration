@@ -1,0 +1,17 @@
+{
+  "description": "2016年服装和高端趋势网合并",
+  "name": "pop/fashion2016",
+  "license": "",
+  "type": "project",
+  "homepage": "https://www.pop-fashion.com",
+  "require": {
+    "php": ">=5.4",
+    "firebase/php-jwt": "^5.0",
+    "solarium/solarium": "^3.0",
+    "ext-json": "*"
+  },
+  "require-dev": {
+    "roave/security-advisories": "dev-master",
+    "phpunit/phpunit": "4.* || 5.*"
+  }
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="http://img1.fm.pop-fashion.com/global/js/common/jquery-1.9.1.min.js?20190226"></script>
+  <style>
+    .box {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #eee;
+      overflow: hidden;
+    }
+    .block {
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-left: -50px;
+      margin-top: -50px;
+      border-radius: 50%;
+      border: 1px solid #ccc;
+      cursor: pointer;
+    }
+    .bg {
+      width: 400px;
+      height: 400px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-left: -200px;
+      margin-top: -200px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+    .bg img {
+      width: 1000px;
+      height: 1000px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-left: -500px;
+      margin-top: -500px;
+    }
+  </style>
+</head>
+<body>
+<div class="box">
+  <div class="bg">
+    <img src="http://img2.fm.pop-fashion.com/global/topic/20190301/images/t-bg3.jpg" alt="">
+  </div>
+  <div class="block"></div>
+</div>
+</body>
+<script>
+  $(function() {
+    $('.block').hover(function() {
+      // $('.bg').addClass('anit')
+      $('.bg').animate({
+        'width': '1000px',
+        'height': '1000px',
+        'margin-left': '-500px',
+        'margin-top': '-500px',
+      })
+    }, function() {
+      // $('.bg').removeClass('anit')
+      $('.bg').animate({
+        'width': '400px',
+        'height': '400px',
+        'margin-left': '-200px',
+        'margin-top': '-200px',
+      })
+    })
+  })
+</script>
+</html>

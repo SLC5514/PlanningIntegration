@@ -1,0 +1,37 @@
+{extends file="layout.html"}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/per.css?{STATIC_CHANGE_TIME}">
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/personal.css?{STATIC_CHANGE_TIME}">
+{/block}
+
+{block name="main"}
+<div class="main">
+    <div class="con_width">
+    <!--个人中心 头部开始-->
+    {$personalHeader}
+    <!--个人中心 头部结束-->
+
+    <div class="col-main clearfix">
+        <!--个人中心 左侧菜单开始-->
+        {$personalLeftMenu}
+        <!--个人中心 左侧菜单结束-->
+
+        <div class="col-con  fl">
+            <!-- item-manage -->
+            <div class="item-manage shared">
+                <div class="hd"><span><i></i>共享资料管理</span></div>
+                <div class="mainall">
+                    <a href="{$urlMagazine}" class="fuz" target="_blank"><span class="fl">杂志资料</span></a>
+                    <a href="{$urlTrendsManu}" class="shougao" target="_blank"><span class="fl">趋势资料</span></a>
+                    <a href="{$urlCollect}" class="shougao" target="_blank"><span class="fl">单品资料</span></a>
+                    <!--<a href="{$urlRunway}" class="shougao" target="_blank"><span class="fl">T台系列</span></a>-->
+                    <!--<a href="{$urlVectorManu}" class="shugao" target="_blank"><span class="fl">矢量文件</span></a>-->
+                </div>
+            </div>
+            <!-- /item-manage -->
+        </div>
+    </div>
+</div>
+</div>
+{/block}

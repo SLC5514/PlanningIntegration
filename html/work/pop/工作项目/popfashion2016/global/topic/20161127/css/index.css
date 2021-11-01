@@ -1,0 +1,26 @@
+.container{width: 100%;padding-bottom:195px;background: #fff;}
+.container .w1000{width: 1000px;margin:0 auto;}
+.content1{width: 100%;height:auto;}
+.container p{text-align:center;width: 100%;}
+.content1 p.img1{margin-bottom:60px;}
+.content1 p.img2{width: 1002px;height:151px;background: url(../images/con1.jpg) no-repeat 0 0;}
+.content2{width: 100%;background: #fbcd0f;}
+.content2 .img3{width: 1002px;height: 366px;background: url(../images/con11.jpg) no-repeat 0 0;}
+.content3{width: 100%;}
+.content3 .img4{width: 1002px;height: 562px;background: url(../images/con3.jpg) no-repeat 0 0;}
+.content3 .line{width: 827px;height: 3px;background: #727272;margin:40px auto 0;}
+.content3 .img5{width: 527px;height:184px;background: url(../images/con4.jpg) no-repeat 0 0;margin:55px auto 45px;text-align: center; }
+.content4{width: 100%;background: #e8186c;}
+.content4 .img6{width: 1002px;height: 387px;background: url(../images/con12.jpg) no-repeat 0 0;}
+.content5 .img4{width: 1002px;height: 535px;background: url(../images/con13.jpg) no-repeat 0 0;}
+.content5 .line{width: 827px;border-top:3px dashed #231815;margin:50px auto 0;}
+.content5 .img5{width: 524px;height: 111px;margin:58px auto 40px;background: url(../images/con14.jpg) no-repeat 0 0;}
+.content6{width: 100%;background: #529ed7;}.content8{width: 100%;background: #5f4f9d;}
+.content6 .img6{height: 387px;width: 1002px;background: url(../images/con5.jpg) no-repeat 0 0;}
+.content7 .img4{width: 1002px;height: 529px;background: url(../images/con6.jpg) no-repeat  0 0;}
+.content7 .line{width: 827px;border-top:3px dashed #231815;margin:50px auto 0;}
+.content7 .img5{width: 530px;height: 114px;margin:65px auto 50px;background: url(../images/con7.jpg) no-repeat 0 0;}
+.content8 .img6{height: 387px;width: 1002px;background: url(../images/con8.jpg) no-repeat 0 0;}
+.content9 .img4{width: 1002px;height: 546px;background: url(../images/con9.jpg) no-repeat  0 0;}
+.content9 .line{width: 820px;height: 3px;background:#231815; margin:70px auto 70px;}
+.content9 .img5{height: 445px;width:650px;background: url(../images/con10.jpg) no-repeat 0 0;margin:0 auto;}

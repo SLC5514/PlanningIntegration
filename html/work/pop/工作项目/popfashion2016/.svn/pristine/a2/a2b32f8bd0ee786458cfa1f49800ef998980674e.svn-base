@@ -1,0 +1,16 @@
+<script type="text/javascript" src="{STATIC_URL3}/global/js/lib/require.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL1}/global/js/blog/common/main.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL1}/global/js/blog/common/blog.js?{STATIC_CHANGE_TIME}"></script>
+<script>
+    // 统计参数token
+    var statistics_token = "{$statistics_token}";
+
+    var P_UserId = '{$P_UserId}';
+    var P_UserType = '{$P_UserType}';
+    var P_AccountType = '{$P_AccountType}';
+    var P_AccountId = '{$P_AccountId}';
+    var P_Collect = parseInt('{$P_Collect}');
+    var pid = '{$smarty.get.pid}' || '{$smarty.cookies.pidtt}';// 渠道代码
+
+</script>
+{include file="common/common_script.html"}

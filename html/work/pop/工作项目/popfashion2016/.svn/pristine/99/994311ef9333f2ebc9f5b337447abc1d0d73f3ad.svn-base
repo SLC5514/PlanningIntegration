@@ -1,0 +1,12 @@
+
+.season-section>.p1>.p1-t>.ani1{opacity: 1;top: 60px;}
+.season-section>.p1>.p1-t>.ani2{opacity: 1;top: 158px;}
+
+.season-section>.p1>.p1-txt{opacity: 1;left: 0;}
+.season-section>.p1>.p1-txt>p{opacity: 1;top: 0;}
+.season-section>.p1>.top-m{opacity: 1;}
+
+.season-section>div>h2{opacity: 1;top: 0;}
+.season-section>.p2>.p2-list>li{opacity: 1;top: 0;}
+.season-section>.p3 .isions-cont{opacity: 1;top: 0;}
+.season-section>.p4 .bott-msg{opacity: 1;}

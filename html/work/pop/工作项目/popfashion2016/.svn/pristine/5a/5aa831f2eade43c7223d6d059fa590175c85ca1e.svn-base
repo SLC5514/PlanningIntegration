@@ -1,0 +1,21 @@
+{extends file="layout.html"}
+
+{block name="self"}
+<script type="text/javascript" src="{STATIC_URL2}/global/js/fashion/index.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/global.js?{STATIC_CHANGE_TIME}"></script>
+{/block}
+
+{block name="main"}
+<div class="rightc_main">
+    <div class="no_sear key_search_null">
+        <h4>您要找的“<em>{$keyword}</em>”资料不存在或输入的关键词不精准。</h4>
+        <div class="sear-box clearfix">
+            <div>VIP客户查询相关关键词，请联系您的专属资讯小秘书为您服务：</div>
+            <p>
+                <a class="neiyeList fl js-contact-qq-btn" href="javascript:void(0);" title="QQ咨询">QQ咨询</a>
+                <span class="neiyeList fr">小秘书热线：<em>4008-210-662</em></span>
+            </p>
+        </div>
+    </div>
+</div>
+{/block}

@@ -1,0 +1,162 @@
+<div class="list-nav-screen-section">    
+    <div class="screen-selected-box">
+        <div class="contentW clearfix">
+            <div class="s-crumbs-nav fl">
+                <a href="">趋势解读</a>
+                <span>&gt;</span>
+                <a href="">全部栏目</a>
+            </div>
+            <div class="s-selected-nav fl">
+                <div class="selected-keyword">
+                    <a href="" title="">季节:<span>2020春夏</span><i class="clear-keyword nav-icon"></i></a>
+                </div>
+                <a class="clear-all-selected"><i class="nav-icon"></i>清空筛选</a>
+            </div>
+            <div class="save-search-btn js-save-search-btn fr">
+                <a><i class="nav-icon"></i>保存搜索</a>
+            </div>
+        </div>
+    </div>
+    <div class="screen-list-box screen-list-box1500">
+        <div class="contentW clearfix">
+            <div class="all-column-select fl">
+                <a>秀场提炼<span><i class="nav-icon"></i></span></a>
+                <div class="all-column-downlist">
+                    {foreach $columns as $key=>$column}
+                        {if $key == $columnPid}
+                        <a href="{$column.sLink}">全部</a>
+                        {else}
+                        <a href="{$column.sLink}">{$column.sName}</a>
+                        {/if}
+                    {/foreach}
+                </div>
+            </div>
+            <div class="category-style-select fl">
+                <a class="book-select {if $group}cur{/if}" href="{$sLinkGroup}"><em class="nav-icon"></em>成册</a>
+                <a class="page-select {if !$group}cur{/if}" href="{$sLinkSingle}"><em class="nav-icon"></em>单张</a>
+            </div>
+            <div class="screen-category-box fl">
+                <div class="screen-category-list clearfix">
+                    <ul class="clearfix">
+                        <li>
+                            <span>季节<i class="nav-icon"></i></span>
+                        </li>
+                        <li>
+                            <span>季节<i class="nav-icon"></i></span>
+                        </li>
+                    </ul>
+                    <div class="nav-function-div color-click-button js_is_show">
+                        <a><em class="nav-icon"></em>数据分析图表<i class="nav-icon"></i></a>
+                    </div>
+                    <div class="nav-function-div video-click-button js-live-video-select">
+                        <a><em class="nav-icon"></em>视频解读</a>
+                    </div>
+                    <div class="nav-function-div video-click-button js-only-video-select">
+                        <a><em class="nav-icon"></em>有视频版</a>
+                    </div>
+                    <div class="nav-function-div color-data-button">
+                        <a href="/smarttrends/colordata/" target="_blank"><em class="nav-icon"></em>色彩分析</a>
+                    </div>
+                </div>
+            </div>
+            <div class="screen-labels-box fr">
+                <div class="s-only-labels fl">
+                    <a class="only-collect"><i class="nav-icon"></i>收藏</a>
+                    <a class="only-hot {if isset($paramsArr['ihot']) && ($paramsArr['ihot'] == 1 || $paramsArr['ihot'] == 3)}on{/if} ihot" data-val="1"><i class="nav-icon"></i>最热门</a>
+                    <a class="only-fabric {if isset($paramsArr['uli'])}on{/if} iUliaobao"><i class="nav-icon"></i>配面料</a>
+                </div>
+                <div class="s-time-sort fl js-s-time-sort">
+                    <a><i class="nav-icon"></i>{if $paramsArr['sor'] == 2}按浏览最高{elseif $paramsArr['sor'] == 3}按收藏最多{else}按时间最新{/if}</a>
+                    <div class="s-time-list cateNum_list">
+                        <a class="cat_update sort" href="javascript:void(0);" data-key="sor" data-val="1">按时间最新</a>
+                        <a class="cat_liulan sort" href="javascript:void(0);" data-key="sor" data-val="2">按浏览最高</a>
+                        <a class="cat_shoucang sort" href="javascript:void(0);" data-key="sor" data-val="3">按收藏最多</a>
+                    </div>
+                </div>
+                <div class="save-search js-save-search fl">                    
+                    <div class="save-search-look js-save-search-look fl">
+                        <a class="save-search-success">已保存搜索(<span>0</span>)<em class="nav-icon"></em></a>
+                        <div class="guide-save js-guide-save">将您常用的筛选条件保存到此处，方便快速查看</div>
+                        <div class="save-search-list js-save-search-list">
+                            <span class="span-hor"></span>
+                            <span class="span-ver"></span>
+                            <ul></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="screen-list-box screen-list-box1200">
+        <div class="contentW clearfix">
+            <div class="function-column-box clearfix">
+                <div class="all-column-select fl">
+                    <a>秀场提炼<span><i class="nav-icon"></i></span></a>
+                    <div class="all-column-downlist">
+                        {foreach $columns as $key=>$column}
+                            {if $key == $columnPid}
+                            <a href="{$column.sLink}">全部</a>
+                            {else}
+                            <a href="{$column.sLink}">{$column.sName}</a>
+                            {/if}
+                        {/foreach}
+                    </div>
+                </div>
+                <div class="category-style-select fl">
+                    <a class="book-select {if $group}cur{/if}" href="{$sLinkGroup}"><em class="nav-icon"></em>成册</a>
+                    <a class="page-select {if !$group}cur{/if}" href="{$sLinkSingle}"><em class="nav-icon"></em>单张</a>
+                </div>
+                <div class="nav-function-div video-click-button js-live-video-select">
+                    <a><em class="nav-icon"></em>视频解读</a>
+                </div>
+                <div class="nav-function-div video-click-button js-only-video-select">
+                    <a><em class="nav-icon"></em>有视频版</a>
+                </div>
+                <div class="nav-function-div color-data-button">
+                    <a href="/smarttrends/colordata/" target="_blank"><em class="nav-icon"></em>色彩分析</a>
+                </div>
+            </div>
+            <div class="screen-category-box clearfix">
+                <div class="screen-category-list fl">
+                    <ul class="clearfix">
+                        <li>
+                            <span>季节<i class="nav-icon"></i></span>
+                        </li>
+                        <li>
+                            <span>季节<i class="nav-icon"></i></span>
+                        </li>
+                    </ul>
+                    <div class="nav-function-div color-click-button js_is_show">
+                        <a><em class="nav-icon"></em>数据分析图表<i class="nav-icon"></i></a>
+                    </div>                    
+                </div>
+                <div class="screen-labels-box fr">
+                    <div class="s-only-labels fl">
+                        <a class="only-collect"><i class="nav-icon"></i>收藏</a>
+                        <a class="only-hot"><i class="nav-icon"></i>最热门</a>
+                        <a class="only-fabric"><i class="nav-icon"></i>配面料</a>
+                    </div>
+                    <div class="s-time-sort fl js-s-time-sort">
+                        <a><i class="nav-icon"></i>{if $paramsArr['sor'] == 2}按浏览最高{elseif $paramsArr['sor'] == 3}按收藏最多{else}按时间最新{/if}</a>
+                        <div class="s-time-list cateNum_list">
+                            <a class="cat_update sort" href="javascript:void(0);" data-key="sor" data-val="1">按时间最新</a>
+                            <a class="cat_liulan sort" href="javascript:void(0);" data-key="sor" data-val="2">按浏览最高</a>
+                            <a class="cat_shoucang sort" href="javascript:void(0);" data-key="sor" data-val="3">按收藏最多</a>
+                        </div>
+                    </div>
+                    <div class="save-search js-save-search fl">
+                        <div class="save-search-look js-save-search-look fl">
+                            <a class="save-search-success">已保存搜索(<span>0</span>)<em class="nav-icon"></em></a>
+                            <div class="guide-save js-guide-save">将您常用的筛选条件保存到此处，方便快速查看</div>
+                            <div class="save-search-list js-save-search-list">
+                                <span class="span-hor"></span>
+                                <span class="span-ver"></span>
+                                <ul></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  
+</div>

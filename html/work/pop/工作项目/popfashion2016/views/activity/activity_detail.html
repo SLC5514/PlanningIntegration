@@ -1,0 +1,105 @@
+{extends file="layout.html"}
+{block name="selfcss"}
+	<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/industry.css?{STATIC_CHANGE_TIME}">
+{/block}
+
+{block name="main"}
+<div class="activity_detail">
+	<div class="activity_header">
+		<div class="con_widthx1200">
+			<div class="activity_nav">
+				<a href="/">首页</a><b>></b><a href="/activity/lists/">时尚商学院</a><b>></b>
+                <a href="{$info.crumbsNavigation.link}">{$info.crumbsNavigation.name}</a><b>></b>{$info['sTheme']}
+			</div>
+			<div class="header_infor">
+				<div class="acty_img fl">
+					<a href="javascript:void(0);"><img src="{$info['sPosterUrl']}"/></a>
+				</div>
+				<div class="acty_info fl">
+					<h2>{$info['sTheme']}</h2>
+					{if $info['iActivityChildTypeName']}
+					<p class="p1"><i></i>类　型：<span>{$info['iActivityChildTypeName']}</span></p>
+					{/if}
+					<p class="p3"><i></i>主办方：<span>{$info['sSponsor']}</span></p>
+					<p class="p2"><i></i>时　间：<span>{$info['dStartTime']}起 {$info['dEndTime']}止</span></p>
+					{if $info['iActivityType'] == 17}
+					<p class="p4 high_light"><i></i>网　址：<a href="{$info['sWebsiteURL']}" target="_blank">{$info['sActivityURL']}</a></p>
+					{else}
+					<a {if !empty($info['regionLink'])}href="/activity/redirectditu/?ditu={$info['regionLink']}"{/if} target="_blank">
+                        <p class="p5 high_light"><i></i>地　点：<span>{$info['region']}</span></p>
+                    </a>
+					{/if}
+					<div class="contact_share">
+						<p class="contact_ac fl"><span><i></i>联系人：{$info['sContactsName']}</span><span class="hotline"><i></i>咨询热线：{$info['sContactsPhone']}</span></p>
+						<div class="share_a bdsharebuttonbox fr">
+							<span><i></i>分享到：</span>
+							<a class="bds_sqq" data-cmd="sqq" title="分享给QQ好友"></a>
+							<a class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+							<a class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+							<a class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+							<a class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+							<a class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="article_box clearfix">
+		<div class="con_widthx1200">
+			<div class="article_main fl">
+				{$info['sActivityContent']}
+			</div>
+			<div class="article_ad fr">
+				{if $info['iActivityType'] == 18 && !empty($info['sMapAddress'])}
+				<div class="activity_map">
+					<h1>活动地点</h1>
+					<div class="ad_map">
+						<a href="/activity/redirectditu/?ditu={$info['regionLink']}" target="_blank">
+						<img style="-webkit-user-select: none" src="{$info['regionImg']}">
+						</a>
+					</div>
+				</div>
+				{/if}
+				{if $recLists}
+				<div class="ac_recommend">
+					<h1>活动推荐</h1>
+					{foreach $recLists as $val}
+					<div class="recommend_cont">
+						<a class="re_img fl" href="/activity/detail/?id={$val['id']}" target="_blank"><img src="{$val['sPosterUrl']}"/></a>
+						<div class="re_text fl">
+							<h3>{$val['sTheme']}</h3>
+							<p class="p1" title="{$info['dStartTime']}开始 至 {$info['dEndTime']}结束"><i></i>{$val['dStartTime']}至{$val['dEndTime']}</p>
+							{if $val['iActivityType'] == 17}
+							<a href="{$val['sWebsiteURL']}" target="_blank"><p class="p3"><i></i>{$val['sActivityURL']}</p></a>
+							{else}
+							<a {if !empty($val['regionLink'])}href="/activity/redirectditu/?ditu={$val['regionLink']}"{/if} target="_blank">
+                                <p class="p2"><i></i>{$val['region']}</p>
+                            </a>
+							{/if}
+						</div>
+					</div>
+					{/foreach}
+				</div>
+				{/if}
+				{foreach $leftAds as $val}
+				<div class="ad_banner">
+				<a href="{$val['sLink']}" {if $val['sNewWindow'] == 1}target="_blank"{/if}><img src="{$val['sImagePath']}"/></a>
+				</div>
+				{/foreach}
+			</div>
+		</div>
+	</div>
+</div> 
+{/block}
+
+{block name="self"}
+{literal}
+<script type="text/javascript">
+    // 百度分享 https://www.hrwhisper.me/baidu-share-not-support-https-solution/
+    window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+{/literal}
+{/block}
+
+

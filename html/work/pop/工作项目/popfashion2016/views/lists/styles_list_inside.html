@@ -1,0 +1,644 @@
+{extends file="layout.html"}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/lists/styles-list/style_list_inside.css?{STATIC_CHANGE_TIME}">
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/pop_layer.css?{STATIC_CHANGE_TIME}">
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/new-detail/style-detail.css?{STATIC_CHANGE_TIME}">
+{/block}
+
+{block name="header"}
+<div class="styles-inside-header {if $P_UserType eq 5}general-user-status{/if}">
+	<div class="first-level-nav clearfix">
+		<div class="style-nav-left fl">
+			{if $P_UserType eq 5}
+			<div class="style-brand"><a href="javascript:void(0);">{$sSeason}&nbsp;&nbsp;{$sGender}&nbsp;&nbsp;{$pageTitle}</a></div>
+			{else}
+			<div class="style-season js-style-hover">
+				{foreach $aSeason as $sea}
+				{if $sea.selected}
+				<a href="javascript:void(0);" title="{$sea.name}">{$sea.name}<em></em></a>
+				{/if}
+				{/foreach}
+				<div class="nav-downlist js-nav-downlist">
+					{foreach $aSeason as $sea}
+					{if !$sea.selected}
+					<a href="{$sea.link}" title="{$sea.name}">{$sea.name}</a>
+					{/if}
+					{/foreach}
+				</div>
+			</div>
+			<div class="style-gender js-style-hover">
+				{foreach $aGender as $gen}
+				{if $gen.selected}
+				<a title="{$gen.id}">{$gen.name}<em></em></a>
+				{/if}
+				{/foreach}
+				<div class="nav-downlist js-nav-downlist">
+					{foreach $aGender as $gen}
+					{if !$gen.selected}
+					<a href="{$gen.link}" title="{$gen.name}">{$gen.name}</a>
+					{/if}
+					{/foreach}
+				</div>
+			</div>
+			<div class="style-brand"><a href="javascript:void(0);" title="{$pageTitle}">{$pageTitle} </a></div>
+			{/if}
+		</div>
+		<div class="style-nav-right fr">
+			<div class="user-contain fr">
+                {if $account eq '' && $accountShow neq 'true'}
+                <div class="user-box fl">
+                    <a href='javascript:void(0);' class='loginLayer' rel="nofollow" title="登录"><span class="lg"></span>登录</a>
+                    <i></i>
+                    <a class="reg-btn" href="/member/register/" rel="nofollow" title="注册"><span class="rg"></span>注册</a>
+                </div>
+                {else}
+                {if $pwd_tip}
+                <div class="login-password-info js-login-password-info">您已很久没修改密码，为了您的账号安全，请前往<a href="/member/pwd/">修改密码</a><i onclick="$('.js-login-password-info').hide()"></i></div>
+                {/if}
+                <div class="login-user-box fl js-returnLi">
+                    <a><em></em><span>{$account}</span></a>
+                    <div class="login-success-section js-forUl {if $P_UserType eq 1 || $P_UserType eq 2}login-success-vip{/if}">
+                        <div class="login-suc-head">
+                            <div class="login-suc-head-t clearfix">
+                                {if $P_UserType eq 1}
+                                <p class="fl"><em>{$account}</em><span><i class="common-icon"></i>管理员账号</span></p>                                
+                                {else if $P_UserType eq 2}
+                                <p class="fl"><em>{$account}</em><span><i class="common-icon"></i>设计师账号</span></p>
+                                {else if $P_UserType eq 3}
+                                <p class="fl"><em>{$account}</em><span>试用账号</span></p>
+                                {else}
+                                <p class="fl"><em>{$account}</em><span>普通用户</span></p>
+                                {/if}
+                                {if $issetNewMessage}
+                                <a class="fl infor-account common-icon" href='/member/message/'><span class="ix"></span></a>
+                                {/if}
+                                <a class="fr signout-account js-signOut">退出</a>
+                                {if $canChangLoginAccount}
+                                    {if $P_AccountType=="main"}
+                                    <a class="fr switch-account js-switch" data-type="1"><i class="common-icon"></i>切换</a>                                    
+                                    {else}
+                                    <a class="fr switch-account js-switch" data-type="2"><i class="common-icon"></i>切换</a>
+                                    {/if}
+                                {/if}                                
+                            </div>
+                            {if $P_UserType eq 1}
+                            <p>用VIP主账号，可管理多个子账号哦~<a href="/member/associate/" target="_blank">管理子账号</a></p>
+                            {else if $P_UserType eq 2}
+                            <p>设计师账号，可探索个性化推荐内容</p>
+                            {else if $P_UserType eq 3}
+                            <p>了解潮流趋势 / 服饰研发必备平台</p>
+                            {else}
+                            <p>升级成VIP之后，才能查看网站全部内容</p>
+                            {/if}                            
+                        </div>
+                        <div class="login-suc-content">
+                            <div class="login-suc-link">
+                                <a class="collect-link" href="/member/mycollect/" target="_blank"><span><i></i></span>我的收藏</a>
+                                <a class="history-link" href="/member/myHistory/4/" target="_blank"><span><i></i></span>浏览历史</a>
+                                <a class="workbench-link" href="/member/workbench/" target="_blank"><span><i></i></span>工作室</a>
+                                <a class="color-link" href="/smarttrends/colordata/" target="_blank"><span><i></i></span>色彩分析</a>
+                                <a class="top-link" href="/smarttrends/topstyles/" target="_blank"><span><i></i></span>TOP榜单</a>
+                                <a class="recommend-link" href="/patterns/patternRecommend/" target="_blank"><span><i></i></span>个性推荐</a>
+                            </div>
+                            {if $P_UserType == 4}
+                            <a href="javascript:void(0);" class="js-contact-qq-btn open-account-vip">开通VIP</a>
+                            {/if}
+                        </div>
+                    </div>
+                </div>
+                <!-- 切换账号验证弹层 -->
+                <div class="switch-box js-switch-box" style="display: none;">
+                    <div class="loginClose js-loginClose"></div>
+                    <div class="login-title">
+                        <span>请先进行身份验证</span>
+                    </div>
+                    <div class="login-main">
+                        <p class="errorbox errorbox3" style="top:0px;"></p>
+                        <ul>
+                            <li><input class="js-account" type="text" placeholder="请输入手机号"/></li>
+                            <li>
+                                <input class="js-switch-code" type="text" placeholder="请输入验证码"/>
+                                <span class="code-btn js-code-btn1">获取验证码</span>
+                            </li>
+                            <li class="l_drag border-none" style="padding-top: 15px;border: none;position: relative;">
+                                <div class="code_btn js-click-btn" data-cla=".js-puzzle-drag-content5">点击按钮完成图形验证</div>
+                                <div class="puzzle-drag-wraper js-drag-show" style="display: none;">
+                                    <s class="drag-s"></s>
+                                    <t class="drag-t"></t>
+                                    <div class="puzzle-drag-content js-puzzle-drag-content5">
+                                        <div class="drag-title clearfix">
+                                            <span>为保证你的账户安全，请先完成图形验证</span>
+                                            <span class="close js-close"></span>
+                                            <span class="change js-change"><i></i>换一换</span>
+                                        </div>
+                                        <div class="puzzle-img-box">
+                                            <div class="puzzle-img js-puzzle-img">
+                                                <img>
+                                            </div>
+                                            <div class="puzzle-lost js-puzzle-lost">
+                                                <img>
+                                            </div>
+                                        </div>
+                                        <div class="drag-slide-nav">
+                                            <div class="drag-slide-text">
+                                                <div class="drag-slide-left"></div>
+                                                <div class="drag-slide-center">向右滑动完成拼图</div>
+                                                <div class="drag-slide-right"></div>
+                                            </div>
+                                            <div class="drag-slide-bar js-drag-slide-bar">
+                                                <div class="drag-slide-bar-left"></div>
+                                                <div class="drag-slide-bar-center"></div>
+                                                <div class="drag-slide-bar-right"></div>
+                                            </div>
+                                            <div class="drag-slide-btn js-drag-slide-btn"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="switch-btn js-changeUser">提交</div>
+                    </div>
+                </div>
+                <!-- 弹层背景 -->
+                <div class="switch-bg js-switch-bg" style="display: none;"></div>
+                {/if}
+            </div>
+		</div>
+	</div>
+	<div class="dp-level-nav clearfix">
+		<div class="category-content">
+			<div class="category-width js-category-width clearfix">
+				{foreach $aCategory as $category}
+				<div class="dp-category js-dp-category">
+					<a href="{$category.link}" class="{if $category.selected}selected{/if}">{$category.name}</a>
+					{if $category.aSubCategory}
+					<div class="dp-category-doenlist js-dp-category-doenlist">
+						{foreach $category.aSubCategory as $subCategory}
+						<a href="{$subCategory.link}" class="{if $subCategory.selected}selected{/if}">{$subCategory.name}</a>
+						{/foreach}
+					</div>
+					{/if}
+				</div>
+				{/foreach}
+			</div>
+		</div>
+		<div class="category-more-btn category-more-prev-btn js-more-prev-btn">&lt;</div>
+		<div class="category-more-btn js-category-more-btn">&gt;</div>
+	</div>
+	{include file="common/header_nav_down.html"}
+</div>
+{/block}
+
+{block name="main"}
+<input id="encrypt" type="hidden" data-sign="{$sign}" data-timestamp="{$timeStamp}" data-token="{$token}">
+{if $P_UserType eq 5}
+<div class="style-inside-imglist {if $P_UserType eq 5}general-user-status{/if}">
+	<div class="contentW">
+		<ul class="general-user-status-list">
+			{foreach $list as $key=>$val}
+			{if $key lt 8}
+			<li><img src="{$val.cover}" alt="pic"><div></div></li>
+			{/if}
+			{/foreach}
+		</ul>
+		<div class="login-info">
+			<h3>登录后可查看全部图片</h3>
+			<a class="loginLayer login-link" href="javascript:void(0);" title="登录">登录</a>
+            <a href="/member/register/" title="注册">注册</a>
+            <div>
+                想直接体验网站全部内容？拨打<span>4008-210-500</span> 或 直接联系 <a class="js-contact-qq-btn" href="javascript:void(0);" title="在线客服">在线客服</a>
+            </div>
+		</div>
+	</div>
+</div>
+{else}
+<div class="style-inside-imglist js-style-inside-imglist">
+	<input type="hidden"
+			id="link"
+			data-ds="2"
+			data-col="{$columnId}"
+			data-urlprefix="/details/style/"
+			data-sor=""
+			data-url="{$rootUrl}"
+			data-param="{$params}"
+			data-search=""
+			data-pow="{$memberFlag}"
+			data-page="{$page}"
+			data-pagesize="{$pageSize}">
+	<div class="style-width">
+        <div class="rightc-wraning style-width">
+            {if $P_UserType == 4}
+            <div class="wran">
+                <p class="neiyeList fl">高清内容的浏览下载等需有更高权限，升级普通会员为
+                    <a rel="nofollow" target="_blank" href="/service/joinmember/" class="yellow">VIP会员</a>，一网打尽服装趋势。</p>
+                <div class="neiyelistRight fr">
+                    <span class="apply_try"><i></i>想体验全站？立即联系客服申请试用：</span>
+                    <a rel="nofollow" class="neiyeList qq js-contact-qq-btn" href="javascript:void(0);">QQ咨询</a>
+                    或
+                    <span class="wran_tel"><em>4008-210-500</em> </span>
+                </div>
+            </div>
+            {elseif $P_UserType == 5}
+            <div class="wran">
+                <p class="neiyeList fl">图片有水印看不清？ <a href="javascript:void(0);" class="yellow loginLayer">登录</a> 或 <a rel="nofollow" target="_blank" href="/member/register/" class="yellow">注册</a> 后可清晰浏览哦。</p>
+                <div class="neiyelistRight fr">
+                    <span class="apply_try"><i></i>想体验全站？立即联系客服申请试用：</span>
+                    <a rel="nofollow" class="neiyeList qq js-contact-qq-btn" href="javascript:void(0);">QQ咨询</a>
+                    或
+                    <span class="wran_tel"><em>4008-210-500</em> </span>
+                </div>
+            </div>
+            {/if}
+        </div>
+		<ul class="clearfix js-list-parent">
+			{foreach $list as $key=>$val}
+			<li>
+				<div class="img-div">
+					<a class="img_click js-data-collect" href="/details/style/t_{$val.table}-id_{$val.id}-col_{$val.col}/"
+							data-col="{$val.col}"
+							data-t="{$val.table}"
+							data-id="{$val.id}"
+							data-total="{$val.total}"
+							data-index="{$val.offset}" ondragstart="return false;" oncontextmenu="return false;">
+							<div itemscope class="{if $showWatermark}shuiy{/if}"></div>
+						{if strlen($val.cover) > 30}
+							{if $key>23}
+							<img itemprop="thumbnail" src="{STATIC_URL2}/global/images/loading/styleMR.jpg" data-original="{$val.cover}">
+							{else}
+							<img itemprop="thumbnail" src="{$val.cover}">
+							{/if}
+						{else}
+							<img src="{STATIC_URL1}/{$val.cover}">
+						{/if}
+						<p class="Dtime"><em></em>{$val.date}</p>
+					</a>
+					<div class="collect-download">
+						{if $powers.P_Collect}
+						<a href="javascript:void(0);" class="collect-btn js-collect-btn {if $val.iCollectStatus}cur{/if}"></a>
+						{/if}
+						{if $powers.P_UserType!=4 && $powers.P_UserType!=5}
+						<a href="javascript:void(0);" class="download-btn js-style-download-btn" data-download="/ajax/downloadstylesingle/?id={$val.id}&col={$val.col}&table={$val.table}"></a>
+						{/if}
+					</div>
+					<div class="style-inside-position js-style-inside-position">
+						{foreach $val.labels as $label}
+						<a href="{$label.lLink}" target="_blank">{$label.name}</a>
+						{/foreach}
+					</div>
+				</div>
+			</li>
+			{/foreach}
+		</ul>
+		{if count($list) == 0}
+		<!-- 无搜索内容 -->
+		<div class="stylelist-search-null">
+			<img src="{STATIC_URL1}/global/images/lists/styles-list/search_no.png">
+			<p>/(ㄒoㄒ)/~~没有发现您要找的内容<br/>切换其他感兴趣的类型看看</p>
+		</div>
+		<!-- 无搜索内容 -->
+		{/if}
+		{if $showScrollLoad}
+		<div class="scroll-load js-scroll-load"><img src="{STATIC_URL1}/global/images/alertloading.gif"></div>
+		{/if}
+		<div class="rightc_bottom style-width">
+            {$pageHtml}
+        </div>
+    </div>
+    
+    {if $account eq '' && $accountShow neq 'true'}
+    <div class="login-box js-login-box clearfix">
+        <p>图片有水印看不清？登录或注册后可清晰浏览哦！</p>
+        <a class="loginLayer login-link" href="javascript:void(0);">登录</a>
+        <a class="red-rg" href="/member/register/" target="_blank">注册</a>
+    </div>
+    {/if}
+</div>
+{/if}
+
+{/block}
+{block name="other"}
+<div id="loadingBg"><div class="noPic"></div></div>
+<div class="pop_layer_page pop_layer_page1" id="pop_layer">
+{include file="detail_layer_template.html"}
+</div>
+{/block}
+
+{block name="self"}
+<script type="text/javascript" src="{STATIC_URL3}/global/js/secret/crypto-js/crypto-js.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/secret/jsencrypt.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/global.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/common/template.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/common/echarts.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/util_pop3_pic.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/util.collect.js?{STATIC_CHANGE_TIME}"></script>
+<script src="{STATIC_URL3}/global/js/lists/list-common.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript">
+	var styles_list_inside_obj={
+		user_type:'{$P_UserType}'
+	};
+</script>
+{literal}
+<script>         
+    eval(function(p,a,c,k,e,d){e=function(c){return(c<a?"":e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)d[e(c)]=k[c]||e(c);k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1;};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p;}('8 B(2,b){D(C 2==\'x\'){2=w.n(2)}3 a=1.o.7(2,1.4.5.c(b),{r:1.4.5.c(\'e\')});9 1.4.s.n(a.y)};8 z(2,b){3 q=1.o.6(2,1.4.5.c(b),{r:1.4.5.c(\'e\')});9 q.A(1.4.5)};8 u(a){3 6=h d();6.t(v());p=6.6(R(a));9 p};8 T(m){3 7=h d();7.U(0());3 k=7.7(m);i=S(k).Q(/\\+/g,\'%X\');9 i};8 0(){3 0=\'-----Y l j-----\';0+=\'V+f+W\';0+=\'P\';0+=\'H+I\';0+=\'G\';0+=\'E/F/J\';0+=\'N/O+M\';0+=\'K\';0+=\'-----L l j-----\';9 0};',61,61,'pub_key|CryptoJS|plainText|var|enc|Utf8|decrypt|encrypt|function|return|encrypted|AES_KEY|parse|JSEncrypt|1234567887654301|||new|data_str|KEY|res|PUBLIC|str|stringify|AES|data_decrypted|decrypted|iv|Base64|setPrivateKey|rsa_decrypt|pri_key|JSON|object|ciphertext|aes_decrypt|toString|aes_encrypt|typeof|if|Avw5eS3UkIPixj4B0mZkhn9VZ9mOgBRgs9Lo|Ihc|GHGXr73iXRhLgqfQhC5dlMisbr3GqnGtPNVOBDYGtGgKS4mpaYzpO60kunooKmdH|3PSU5jrzuzDUEqZvEQaOHfKcUXRx3C61iR9iTnA6YCZLlIX3CnRJzYWCJNRjV|qp|hJXAk3kZvzQjIpzKrYAqHYp|hwIDAQAB|END|EfjuWjJxz02MuWsi|4cKyAfWCegA0G0fGo2aJWqpFrAg25FTDXFf0DRDz|AIEvJu|rcEaJOO94OSQsWzIQSGWM4yoVOVg85YKhW5JlwAHH53Zd8sASLk0ypQv5ze68zeS|replace|decodeURIComponent|encodeURI|rsa_encrypt|setPublicKey|MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1053Mcqn6WH|liJid6|2B|BEGIN'.split('|'),0,{}))
+</script>
+<script type="text/javascript">
+    $(function(){
+        if(styles_list_inside_obj.user_type==5){return false;}
+        $(document).on('contextmenu', function(){   //去除右键默认事件
+            return false;
+        });
+
+    	// 左右切换单品
+        var _dp=$(".js-category-width .dp-category")
+        var dp_width=1;
+        _dp.each(function(){
+            dp_width+=$(this).outerWidth(true);
+        });
+        $(".js-category-width").width(dp_width);
+        var nav_width=$(".category-content").width();
+        if(dp_width<=nav_width){
+            $(".js-category-more-btn").hide();
+            $(".js-more-prev-btn").hide();
+        }else{
+            $(".js-category-more-btn").show();
+            $(".js-more-prev-btn").show();
+        }
+        var left_width=0;
+        $(".js-category-more-btn").click(function(){
+            left_width=left_width-nav_width;
+            if(dp_width-Math.abs(left_width)<nav_width){
+                left_width=nav_width-dp_width;
+            }
+            $(".js-category-width").stop().animate({'margin-left':left_width-50+'px'},500)
+        });
+        $(".js-more-prev-btn").on("click",function(){        
+            left_width=left_width+nav_width;
+            if(left_width>=0){
+                left_width=0;
+            }
+            $(".js-category-width").stop().animate({'margin-left':left_width+'px'},500)
+        });
+
+        // 单品
+        $(".js-dp-category").on('mouseenter mouseleave', function(e){
+            if(e.type=='mouseenter'){
+                $(this).find(".js-dp-category-doenlist").stop(true,true).slideDown(100);
+            }else{
+                $(this).find(".js-dp-category-doenlist").stop(true,true).slideUp(50);
+            }
+        });
+        // 季节 性别
+        $(".js-style-hover").on('mouseenter mouseleave', function(e){
+            if(e.type=='mouseenter'){
+                $(this).find(".nav-downlist").stop(true,true).slideDown(100);
+            }else{
+                $(this).find(".nav-downlist").stop(true,true).slideUp(50);
+            }
+        });
+
+        // 追加DOM
+        def={
+            list_num:1,
+            list_scroll:false,
+            list_more:true,
+            is_list_data:true,
+            linkpage:$("#link").data('page')
+        };
+        var lenList = $(".js-list-parent>li").length;
+        if(lenList == 0){
+            def.is_list_data = false;
+        }
+        if (def.linkpage > 1 && lenList < 24) {
+            // 显示分页
+            $(".rightc_bottom").show();
+        }
+        // 预先加载一页
+        def.list_num+=1;
+        scrollLoad();
+        function scrollLoad(){
+            def.list_scroll=true;
+            pop_fashion_global.fn.subAjax({
+                url:window.location.href,
+                data:{time:def.list_num},
+                ctp:'application/x-www-form-urlencoded; charset=UTF-8',
+                successFunc:function(data){
+                    setScrollData(data)
+                }
+            });
+        }
+
+        function setScrollData(data){
+            var arr=data.data||[];
+            var list_box=$(".js-style-inside-imglist").find('ul');
+            var _html="";        		
+            var pageSize = data.info.pageSize;
+            var P_Shade = data.info.showWatermark;
+            var P_Collect = data.info.powers['P_Collect'];
+            var shade = data.info.powers['shade'] ||"";
+            var total_page=Math.ceil(data.info.totalCount/96);
+            if(arr.length>0){
+                def.list_scroll=true;
+                for(var i=0;i<arr.length;i++){
+                    var cover=arr[i]["cover"]?arr[i]["cover"]:"";
+                    var create_time=arr[i]["create_time"]?arr[i]["create_time"]:"";
+                    create_time=create_time.substr(0,10);
+                    var tableName= arr[i]["table"]?arr[i]["table"]:"";
+                    var id=arr[i]["id"]?arr[i]["id"]:"";
+                    var columnId=arr[i]["col"]?arr[i]["col"]:"";
+                    var total=arr[i]["total"]?arr[i]["total"]:"";
+                    var offset=arr[i]["offset"]?arr[i]["offset"]:0;
+                    var labels=arr[i]["labels"]?arr[i]["labels"]:[];
+                    var iCollectStatus =arr[i]["iCollectStatus"]?arr[i]["iCollectStatus"]:"";
+                    _html+='<li>';
+                    _html+='<div class="img-div">';
+                    _html+='<a itemprop="url" href="/details/style/t_'+tableName+'-id_'+id+'-col_'+columnId+'/" class="img_a img_click js-data-collect" href="javascript:void(0);" data-col="'+columnId+'" data-t="'+tableName+'" data-id="'+id+'" data-total="'+total+'" data-index="'+offset+'" ondragstart="return false;" oncontextmenu="return false;">';
+                    if(P_Shade){
+                        _html+='<div itemscope class="shuiy"></div>';
+                    }
+                    if(i<24){
+                        _html+='<img itemprop="thumbnail" src="'+cover+'">';
+                    }else{
+                        _html+='<img  itemprop="thumbnail" src="/global/images/loading/styleMR.jpg" data-original="'+cover+'">';
+                    }
+                    _html+='<p class="Dtime"><em></em>'+create_time+'</p>';
+                    _html+='</a>';                    
+                    _html+='<div class="collect-download">';
+                        if(P_Collect == true){
+                            if(iCollectStatus ==1){
+                                _html+='<a class="collect-btn js-collect-btn cur"></a>';
+                            }else{
+                                _html+='<a class="collect-btn js-collect-btn"></a>';
+                            }
+                        }
+                    if(P_UserType !=4 && P_UserType !=5){
+                        _html+='<a class="download-btn js-style-download-btn"></a>';
+                    }
+                    _html+='</div>';
+                    _html+='<div class="style-inside-position js-style-inside-position">';
+                    for(var a=0;a<labels.length;a++){
+                        _html+='<a href="'+labels[a].lLink+'" target="_blank">'+labels[a].name+'</a>';
+                    }
+                    _html+='</div>';
+                    _html+='</div>';
+                    _html+='</li>';
+                }
+                if(def.list_num==0){
+                    list_box.html(_html); 
+                }else{
+                    list_box.append(_html);
+                }
+                $('.style-inside-imglist img').lazyload({effect: "show"});                
+                def.list_scroll=false;     //跳出列表循环
+
+                if(total_page>1){
+                    if(arr.length<pageSize){                	
+                        def.list_more=false;   //阻止继续请求
+                        $(".rightc_bottom").show();
+                        $(".js-scroll-load").hide();
+                    }
+                }
+                
+            }else{
+                $(".js-scroll-load").hide();
+                def.is_list_data = false
+                if(total_page>1){
+                    $(".rightc_bottom").show();
+                }
+            }
+            
+        }
+        
+
+        $(window).scroll(function(){
+            if(def.is_list_data == false){
+                $(".js-scroll-load").hide();
+                return;
+            }
+            var srcollTop=($(window).scrollTop())
+            var content_h=($(document).height()-1050)
+            var w_h = document.documentElement.clientHeight || document.body.clientHeight;
+            if (content_h-srcollTop<=w_h && def.list_scroll==false && def.list_more==true) {
+                $(".js-scroll-load").show();
+                def.list_num++;
+                if(def.list_num>4 ){
+                    $(".rightc_bottom").show();
+                    $(".js-scroll-load").hide();
+                    return;
+                }
+                scrollLoad()
+            }
+        });
+
+        // hover显示标签
+        $(".js-style-inside-imglist").on('mouseenter mouseleave','li',function(e){
+            if(e.type=="mouseenter"){
+                $(this).find(".js-style-inside-position").stop(true,true).slideDown(100);
+            }else{
+                $(this).find(".js-style-inside-position").stop(true,true).slideUp(100);
+            }
+        });
+
+        // 下载统计
+        var P_UserType_action = '4';
+        if(P_UserType=='1'||P_UserType=='2'){
+            P_UserType_action = '1';
+        }else if(P_UserType=='3'){
+            P_UserType_action = '2';
+        }else if(P_UserType=='4'){
+            P_UserType_action = '3';
+        }else if(P_UserType=='5'){
+            P_UserType_action = '4';
+        }
+        var action = {		//统计数据
+            token: statistics_action_token,
+            iUserType: P_UserType_action,		//用户类型
+            
+            iUserId: P_AccountId,  			//用户ID
+            sChildUserId: '', 		//子账号id
+            sTableName: '', 		//假表名
+            iPrid: '',				//当前详情ID
+            
+            iColumnId: '',			//主栏目ID
+            iSubColumnId: '',  		//子栏目ID
+            sSelfUrl: location.href, 			//当前URL
+            sRefererUrl: document.referrer||'',		//上个页面URL
+            iSite: 1, 				//站点
+            sLang: 'cn',			//语言
+            
+            iVisit: 1    		//是否能访问 0-无访问权限 1-有访问权限
+        }
+        var action_down = true, action_timer = null;
+        if(P_UserType=='2'){
+            action.sChildUserId = P_UserId;	//子账号  
+        }
+        // 下载
+        $(".js-style-inside-imglist").on('click','.js-style-download-btn', function(){
+            setAction($(this));
+            actionFunc(action.sTableName,action.iPrid,"download")
+            if (!oCommon.downloadPrivilege()) {
+                return;
+            }
+            actionDown();
+            downloadFun($(this))
+        });
+        function setAction(obj){  // 配置统计数据
+            var param_el = obj.parents("li").find("a.js-data-collect");
+            action.sTableName = param_el.data('t')||'';
+            action.iPrid = param_el.data('id')||'';
+            action.iSubColumnId = param_el.data('col')||'';
+        }
+        function actionDown(){
+            if( action_down ){     // 在能够下载统计时， 排除书籍的
+                action_down = false;
+                $.ajax({
+                    "url": "//api.pop136.com/internal/statistics.php?action=down&" + Math.random(),
+                    "data": action,
+                    "type": 'get',
+                    'dataType': "jsonp",
+                    'jsonp': "callback"
+                });
+                
+                clearTimeout(action_timer);
+                action_timer = setTimeout(function(){
+                    action_down = true;
+                }, 3000);
+            }
+        }
+        function downloadFun(obj){
+            var down_data=obj.parents("li").find("a.js-data-collect");
+            var id = down_data.data('id')||"";
+            var col = down_data.data('col')||"";
+            var table = down_data.data('t')||"";
+            pop_fashion_global.fn.subAjax({
+                url:'/ajax/downloadstylesingle/?id='+id+'&col='+col+'&table='+table+'',
+                ctp:'application/x-www-form-urlencoded; charset=UTF-8',
+                successFunc:function(data){
+                    var link = data.data || "";
+                    window.location.href = '/download/dlsingle/?dl_link=' + encodeURIComponent(link) + '&' + Math.random();
+                },
+                errorFunc:function(data){
+                    oCommon.showTips(data.message);
+                }
+            });
+        }
+
+
+        //未登录提示框
+        var o = $(".wran"),i = 0,c = "tour_cus",times = 6;
+        var t = setInterval(function(){
+            i++;
+            if (i%2) {
+                o.addClass(c);
+            } else {
+                o.removeClass(c);
+            }
+            if(i==times){
+                clearInterval(t);
+            }
+        },300); 
+    });
+
+</script>
+{/literal}
+{/block}

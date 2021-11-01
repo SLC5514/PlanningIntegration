@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas</title>
+    <script src="../lib/jquery-3.5.1/jquery.min.js"></script>
+    <script src="../lib/tween-18.6.4/tween.umd.js"></script>
+    <style>
+        canvas{box-shadow: 0 0 5px #999;}
+    </style>
+</head>
+<body>
+    <h3>Canvas 效果演练</h3>
+    <h4>滚动圆圈圈</h4>
+    <canvas id="circle"></canvas>
+    <h4>进阶</h4>
+    <canvas id="circle-up"></canvas>
+</body>
+<script>
+    // requestAnimationFrame的向下兼容处理
+    if (!window.requestAnimationFrame) {
+        window.requestAnimationFrame = function(fn) {
+            setTimeout(fn, 17);
+        };
+    }
+</script>
+<!-- 滚动圆圈圈 -->
+<script>
+    $(function() {
+        var config = {
+            cw: 500,
+            ch: 100,
+            len: 10
+        };
+        var canvas = $('#circle');
+        var context = canvas[0].getContext('2d');
+        canvas[0].width = config.cw;
+        canvas[0].height = config.ch;
+
+        // 存储器
+        var store = {};
+
+        // 圆圈圈
+        var Start = function() {
+            this.x = Math.random() * config.cw;
+            this.moveX = Math.random();
+            this.r = 5 + 5 * Math.random();
+
+            this.draw = function() {
+                context.beginPath();
+                context.fillStyle = '#369';
+                context.arc(this.x, config.ch / 2, this.r, 0, Math.PI * 2);
+                context.closePath();
+                context.fill();
+            };
+        };
+
+        // 实例化
+        for (var i = 0; i < config.len; i++) {
+            store[i] = new Start();
+        }
+
+        // 绘制
+        var draw = function() {
+            for (var i in store) {
+                store[i].x += store[i].moveX;
+                if (store[i].x - store[i].r > config.cw) {
+                    store[i].x = -store[i].r;
+                }
+                store[i].draw();
+            }
+        };
+
+        // 绘制
+        var render = function() {
+            context.clearRect(0, 0, config.cw, config.ch);
+            draw();
+            requestAnimationFrame(render);
+        }
+
+        render();
+    })
+</script>
+<!-- 进阶 -->
+<script>
+    $(function() {
+        var config = {
+            cw: 500,
+            ch: 100,
+            len: 10
+        };
+        var canvas = $('#circle-up');
+        var context = canvas[0].getContext('2d');
+        canvas[0].width = config.cw;
+        canvas[0].height = config.ch;
+
+        // 存储器
+        var store = {};
+
+        // 圆圈圈
+        var Start = function() {
+            this.r = 5 + 5 * Math.random();
+            this.x = Math.random() * config.cw;
+            this.moveX = Math.random() + 0.1;
+            this.y = 0;
+            this.moveY = Math.random() + 0.1;
+
+            this.draw = function() {
+                context.beginPath();
+                context.fillStyle = '#369';
+                context.arc(this.x, config.ch / 2 - this.y, this.r, 0, Math.PI * 2);
+                context.closePath();
+                context.fill();
+            };
+        };
+
+        // 实例化
+        for (var i = 0; i < config.len; i++) {
+            store[i] = new Start();
+        }
+
+        // 绘制
+        var draw = function() {
+            for (var i in store) {
+                store[i].x += store[i].moveX;
+                if (store[i].x - store[i].r > config.cw) {
+                    store[i].x = -store[i].r;
+                }
+                store[i].y += store[i].moveY;
+                if (store[i].y >= config.ch / 2 - store[i].r) {
+                    store[i].moveY = -Math.abs(store[i].moveY);
+                } else if (store[i].y <= store[i].r - config.ch / 2) {
+                    store[i].moveY = Math.abs(store[i].moveY);
+                }
+                store[i].draw();
+            }
+        };
+
+        // 绘制
+        var render = function() {
+            context.clearRect(0, 0, config.cw, config.ch);
+            draw();
+            requestAnimationFrame(render);
+        }
+
+        render();
+    })
+</script>
+</html>

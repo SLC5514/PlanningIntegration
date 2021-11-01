@@ -1,0 +1,97 @@
+.report-book-list-box{width: 1228px;height: 628px;margin: 12px auto 8px;overflow: hidden;background: url(../../images/report/report-book-bg.png) no-repeat center;background-size: contain;user-select: none;-moz-user-select: none;-webkit-user-select: none;}
+.report-book-list-box>div{width: 50%;height: 100%;}
+.report-book-list-box>.fl>img{width: 300px;height: 442px;border-radius:0px 20px 0px 20px;margin-top: 68px;margin-left: 54px;}
+.report-book-list-box>.fl>.info-box{width:280px;height:366px;background:#fff;margin-left: -60px;margin-top: 103px;padding: 30px 20px;box-sizing: border-box;overflow: hidden;}
+.report-book-list-box>.fl>.info-box>.title-box{max-height: 70px;overflow: hidden;}
+.report-book-list-box>.fl>.info-box>.title-box>.title{font-size:26px;font-weight:bold;color:#1c232b;line-height:35px;display: inline;background: url(../../images/report/report-book-text-bg.png);background-position: 0 33px;}
+.report-book-list-box>.fl>.info-box>.label-box{margin: 20px 0 20px -5px;font-size: 0;}
+.report-book-list-box>.fl>.info-box>.label-box>li{display: inline-block;margin: 0 5px;font-size:14px;color:#333;line-height:19px;position: relative;}
+.report-book-list-box>.fl>.info-box>.label-box>li:after{content:'';position: absolute;top: 3px;right: -5.5px;width: 1px;height: 14px;background: #D8D8D8;}
+.report-book-list-box>.fl>.info-box>.label-box>li:last-child:after{display: none;}
+.report-book-list-box>.fl>.info-box>.info-msg>p{font-size:12px;color:#666;line-height:26px;max-height: 158px;overflow: hidden;}
+.report-book-list-box>.fr{overflow: hidden;padding: 66px 0 20px 48px;box-sizing: border-box;}
+.report-book-list-box>.fr .title{position: relative;}
+.report-book-list-box>.fr .title>i{font-size:40px;font-weight:bold;color:rgba(51, 51, 51, 0.1);line-height:52px;font-style: normal;display: inline-block;margin-top: 7px;}
+.report-book-list-box>.fr .title>span{position: absolute;font-size:28px;font-weight:bold;color:#ff7960;line-height:37px;letter-spacing:22px;left: 0;top: 0;}
+.report-book-list-box>.fr .book-list{width: 530px;height: 430px;overflow: hidden;position: relative;}
+.report-book-list-box>.fr .book-list>li{margin-top: 20px;}
+.report-book-list-box>.fr .book-list>li>.pager{font-size:36px;color:#333;height: 100%;line-height:36px;padding-right: 20px;}
+.report-book-list-box>.fr .book-list>li>.item-ls{border-left: 1px solid #D8D8D8;padding-left: 20px;width: 450px;box-sizing: border-box;white-space: nowrap;overflow: hidden;}
+.report-book-list-box>.fr .book-list>li>.item-ls>.title{font-size:16px;font-weight:bold;color:#333;line-height:21px;text-overflow: ellipsis;overflow: hidden;}
+.report-book-list-box>.fr .book-list>li>.item-ls>ul>li{margin-top: 12px;}
+.report-book-list-box>.fr .book-list>li>.item-ls>ul>li>a{font-size:14px;color:#666;line-height:19px;display: block;text-overflow: ellipsis;overflow: hidden;}
+.report-book-list-box>.fr .book-list>li>.item-ls>ul>li>a>i{display: inline-block;width: 6px;height: 6px;margin-right: 5px;background: #999;border-radius: 50%;vertical-align: middle;}
+.report-book-list-box>.fr .book-list>li>.item-ls>ul>li:hover>a,
+.report-book-list-box>.fr .book-list>li>.item-ls>ul>li.on>a{color: #D8B056;}
+.report-book-list-box>.fr .book-list>li>.item-ls>ul>li:hover>a>i,
+.report-book-list-box>.fr .book-list>li>.item-ls>ul>li.on>a>i{background: #D8B056;}
+
+.ps-container .ps-scrollbar-y-rail{width: 3px;}
+.ps-container .ps-scrollbar-y{width: 3px;background: #eee;}
+.ps-container1 .ps-scrollbar-y-rail:hover, .ps-container .ps-scrollbar-y-rail{background: #fff;}
+
+@media screen and (min-width:1500px){
+    .report-book-list-box{width: 1527px;height: 828px;margin: 52px auto 80px;background: url(../../images/report/report-book-bg-1500.png) no-repeat center;background-size: contain;}
+    .report-book-list-box>.fl>img{width: 340px;height: 500px;margin-top: 108px;margin-left: 74px;}
+    .report-book-list-box>.fl>.info-box{width: 350px;height: 390px;margin-top: 168px;padding: 60px 30px 23px;}
+    .report-book-list-box>.fl>.info-box>.label-box{margin-top: 25px;margin-bottom: 25px;}
+    .report-book-list-box>.fr{padding: 96px 0 40px 88px;}
+    .report-book-list-box>.fr .book-list{width: 630px;height: 575px;}
+    .report-book-list-box>.fr .book-list>li{margin-top: 40px;}
+}
+
+.h5-header-box{display:none;}
+.h5-footer{display:none;}
+.h2-h5{display:none;}
+.section-pc-common{display:none;}
+.myself .h5-footer>p.h5-law{line-height: 1.2rem;}
+.h5show{display: none;}
+@media screen and (max-width: 750px){
+    html,body{min-width:auto;max-width:750px;}
+    .new_header{display:none;}
+    .footer{display:none;}
+    .nav_fixed{display:none;}
+    .footerFixed{display:none;}
+    .w1200{width:100%;}
+    .h2-h5{display:block;}
+    .h2-pc{display:none;}
+    /* section-pc-common */
+    .section-pc-common{display:block;width:94%;margin:0 auto;text-align: center;padding-bottom:0.65rem;color: #17203B;}
+    .section-pc-common>div{background-color:#fff;border:0.25rem solid rgba(71,97,166,0.2);margin:0 1.125rem;}
+    .section-pc-common>div>h2{font-size:1.05rem;margin-top:1.75rem;font-weight:500;}
+    .section-pc-common>div>p{font-size:1rem;margin-top:0.5rem;}
+    .section-pc-common>div>div>em{width:1.5rem;height:1.5rem;margin-top:1rem;display:inline-block;}
+    .section-pc-common>div>div>em>img{width:100%;height:100%;}
+    .section-pc-common>div>span{font-size:0.75rem;margin-top:0.3rem;display:block;}
+    .section-pc-common>div>strong{font-size:1.6rem;display:block;font-family:"Arial";font-weight:bold;margin-bottom:1.75rem;}
+
+    body{background: #fff;}
+    .h5show{display: block;}
+    .report-book-list-box{margin: 2.5rem auto 3rem;background: none;width: 100%;height: auto;}
+    .report-book-list-box.on{opacity: 1;}
+    .report-book-list-box>div{width: 100%;height: auto;}
+    .report-book-list-box>.fl>img{width:8.5rem;height:12.5rem;margin-top: 1rem;margin-left: 0.75rem;border-radius: 0px 0.5rem 0px 0.5rem;}
+    .report-book-list-box>.fl>img.h5show{width:auto;height:1.8rem;margin-top: 3.3rem;margin-left: 0.2rem;border-radius: 0;}
+    .report-book-list-box>.fl>.info-box{width:15.75rem;height:auto;background:#ffffff;box-shadow:0 0 0.43rem 0 rgba(0,0,0,0.05);margin-left: 3rem;margin-top: -8rem;padding: 1rem 1rem 0.88rem;}
+    .report-book-list-box>.fl>.info-box>.title-box{max-height: 3.2rem;}
+    .report-book-list-box>.fl>.info-box>.title-box>.title{font-size:1.2rem;line-height:1.6rem;}
+    .report-book-list-box>.fl>.info-box>.label-box{margin: 1rem 0 0.75rem -0.5rem;}
+    .report-book-list-box>.fl>.info-box>.label-box>li{font-size:0.7rem;line-height:0.93rem;margin: 0 0.5rem;}
+    .report-book-list-box>.fl>.info-box>.label-box>li:after{height:0.5rem;top: 0.2rem;right: -0.5rem;background:#000;}
+    .report-book-list-box>.fl>.info-box>.info-msg>p{font-size:0.6rem;line-height:1.15rem;max-height: 6.9rem;}
+    .report-book-list-box>.fl>.info-box>.info-msg>span{display: none;margin-left: 5.9rem;font-size:0.6rem;color:#666666;line-height:0.78rem;margin-top: 0.88rem;}
+    .report-book-list-box>.fl>.info-box>.info-msg>span>i{display: inline-block;width: 0.45rem;height: 0.43rem;margin-left: 0.18rem;background: url(../../images/report/icon-unfold.png) no-repeat center;background-size: cover;}
+    .report-book-list-box>.fl>.info-box>.info-msg>span.in{display: inline-block;}
+    .report-book-list-box>.fl>.info-box>.info-msg>span.on>i{transform: rotate(180deg);}
+    .report-book-list-box>.fr{padding: 2rem 0 0 0.75rem;}
+    .report-book-list-box>.fr .title>i{font-size:1.5rem;line-height:1.98rem;margin-top: 0.6rem;}
+    .report-book-list-box>.fr .title>span{font-size:1.5rem;line-height:1.98rem;letter-spacing:1.15rem;}
+    .report-book-list-box>.fr .book-list{padding-left: 0.25rem;box-sizing: border-box;width: 17.75rem;height: auto;}
+    .report-book-list-box>.fr .book-list>li{margin-top: 3rem;}
+    .report-book-list-box>.fr .book-list>li:first-child{margin-top: 1rem;}
+    .report-book-list-box>.fr .book-list>li>.pager{font-size:1.2rem;line-height:0.9rem;padding-right:0.5rem;width: 1.43rem;text-align: justify;}
+    .report-book-list-box>.fr .book-list>li>.item-ls{width: 14.05rem;padding-left: 0.75rem;}
+    .report-book-list-box>.fr .book-list>li>.item-ls>.title{font-size:0.75rem;line-height:1rem;}
+    .report-book-list-box>.fr .book-list>li>.item-ls>ul>li{margin-top: 0.75rem;}
+    .report-book-list-box>.fr .book-list>li>.item-ls>ul>li>a{font-size:0.7rem;line-height:0.93rem;}
+}

@@ -1,0 +1,726 @@
+{extends file="layout.html"}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/home/fashion-home.css?{STATIC_CHANGE_TIME}">
+<style>
+    .ui-helper-hidden-accessible{
+        display: none;
+    }
+</style>
+{/block}
+{block name="main"}
+<div class="content">
+    <!-- 首页banner -->
+    {if !empty($banner)}
+    <div class="fashion-home-banner">
+        <div class="con_width">
+            <div class="swiper-container-banner">
+                <ul class="roundabout-holder js-swiper-wrapper-banner">
+                    {foreach $banner as $value}
+                    <li class="roundabout-moveable-item">
+                        <a href="{$value.sUrl}" target="_blank" title="{$value.sTitle}" data-growing-title="{$value.sTitle}">
+                            <img src="{STATIC_URL1}{$value.sImagePath}"/>
+                        </a>
+                    </li>
+                    {/foreach}
+                    {if count($banner)==1}
+                    <li class="roundabout-moveable-item">
+                        <a href="/styles/" target="_blank" data-growing-title="海量款式" title="海量款式">
+                            <img src="{STATIC_URL1}/global/images/fashion_home/banner1.jpg"/>
+                        </a>
+                    </li>
+                    <li class="roundabout-moveable-item">
+                        <a href="/trends/" target="_blank" data-growing-title="趋势流行报告" title="趋势流行报告">
+                            <img src="{STATIC_URL1}/global/images/fashion_home/banner2.jpg"/>
+                        </a>
+                    </li>
+                    {/if}
+                    {if count($banner)==2}
+                    <li class="roundabout-moveable-item">
+                        <a href="/styles/" target="_blank" data-growing-title="海量款式" title="海量款式">
+                            <img src="{STATIC_URL1}/global/images/fashion_home/banner1.jpg"/>
+                        </a>
+                    </li>
+                    {/if}
+                </ul>
+                <a class="swiper-btn-switch swiper-prev js-swiper-prev"></a>
+                <a class="swiper-btn-switch swiper-next js-swiper-next"></a>
+            </div>
+        </div>
+    </div>
+    {/if}
+    <!-- 个性化标签 -->
+    <div class="interest-tags-contain">
+        <div class="con_width">
+            <div class="interest-tags-selected">
+                <p>{if $like_name}你已选择偏好：{$like_name}{else}选择偏好，定制我的专属推荐页{/if}</p>
+                <a class="set-preference js-myRecommend">偏好设置</a>
+                {if $P_UserType eq 1}
+                <a class="open-sub-account" href="/member/associate/">开通子账号，看专属内容</a>
+                {/if}
+            </div>
+            <div class="interest-tags-box clearfix">
+                <div class="my-exclusive-box fl">
+                    <h2>我的</h2>
+                    <div class="my-exclusive-link">
+                        <a class="is-recommend" href="/patterns/patternRecommend/"><i></i>为我推荐</a>
+                        <a class="is-history" href="/member/myHistory/4/"><i></i>浏览历史</a>
+                        <a class="is-collect" href="/member/mycollect/"><i></i>收藏</a>
+                        <a class="is-workbench" href="/member/workbench/"><i></i>工作室</a>
+                        <a class="is-information" href="/member/message/"><i></i>消息</a>
+                    </div>
+                </div>
+                <div class="special-area-box fl">
+                    <h2>专区</h2>
+                    <ul class="special-area-link js-area-box">
+                        <li><a href="javascript:void(0);" data-id="2" data-key="gen"><span>女　装</span><i></i></a></li>
+                        <li><a href="javascript:void(0);" data-id="6" data-key="ind" title="毛衫"><span>毛　衫</span><i></i></a></li>
+                        <li><a href="javascript:void(0);" data-id="1" data-key="reg"><span>日韩专区</span><i></i></a></li>
+                        <li><a href="javascript:void(0);" data-id="1" data-key="gen"><span>男　装</span><i></i></a></li>
+                        <li><a href="javascript:void(0);" data-id="7" data-key="ind"><span>牛　仔</span><i></i></a></li>
+                        <li><a href="javascript:void(0);" data-id="8" data-key="ind"><span>皮革/皮草</span><i></i></a></li>
+                        <li><a href="javascript:void(0);" data-id="5" data-key="gen"><span>童　装</span><i></i></a></li>
+                        <li><a href="/fabriczone/"><span>面　料</span><i></i></a></li>
+                        <li><a href="javascript:void(0);" data-id="9" data-key="ind"><span>内衣/泳衣</span><i></i></a></li>
+                        <li><a href="javascript:void(0);" data-id="11" data-key="ind"><span>运　动</span><i></i></a></li>
+                        <li><a href="/brands/"><span>品牌库</span><i></i></a></li>
+                        <li><a href="javascript:void(0);" data-id="10" data-key="ind"><span>婚纱/礼服</span><i></i></a></li>
+                    </ul>
+                </div>
+                <div class="follow-box fl">
+                    <h2>关注<a class="follow-editor js-follow-editor fr">编辑</a></h2>                    
+                    <div class="follow-link js-tags-show-box">
+                        <span style="{if $user_label>=14}display:none;{/if}">+</span>
+                        <div class="follow-tags-list js-tags-list-box">
+                            {foreach $recommend_label as $key=>$value}
+                            <div>
+                                <a href="{$value.link}" data-id="{$value.id}" data-type="{$value.label_type}" title="{$value.name}"><span>{$value.name}</span></a>
+                                {if !$value.num_sort}<em class="js-remove-tag"></em>{/if}
+                            </div>
+                            {/foreach}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 款式流行排行榜 -->
+    {if $module.top_show}
+    <div class="top-ranking-style-contain">
+        <div class="con_width">
+            <div class="ranking-title">
+                <h3 class="js-intro-title">热门排行榜<i></i>
+                    <div class="ranking-all-intro js-intro-content">
+                        <i></i>
+                        分析近期的热门款式和图案，发现最受欢迎的色彩、品牌与图案内容
+                    </div>
+                </h3>
+            </div>
+            <p class="ranking-eng">TOP RANKING STYLE</p>
+            <div class="top-ranking-box js-top-ranking-box clearfix">
+                <div class="color-ranking-content">
+                    <div class="intro-title clearfix">
+                        <h4 class="js-intro-title fl">
+                            色彩排行榜<i></i>
+                            <div class="ranking-per-intro ranking-per-intro-color js-intro-content">
+                                <i></i>
+                                分析最新秀场款式使用的颜色，发现热门色彩，可以通过筛选季节与色系，查看更详细的色彩排名
+                            </div>
+                        </h4>
+                        <div class="label-filter season-filter js-labels-filter js-season-label-filter fl">
+                            <span data-id="{$color_sea[0]['id']}">{$color_sea[0]['name']}<i></i></span>
+                            <div class="label-filter-downlist js-season-label-downlist">
+                                <div class="label-filter-content contentHolder">
+                                    {foreach $color_sea as $val}
+                                    <a data-id="{$val.id}">{$val.name}</a>
+                                    {/foreach}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="more-ranking-color fr"><i></i>更多色彩数据分析，请点<a href="/smarttrends/colordata/" target="_blank">查看更多<i></i></a></div>                
+                    </div>
+                    <div class="color-ranking-data-box clearfix">
+                        <div class="ranking-all-box">
+                            <div class="ranking-all-color js-ranking-all-color">
+                                
+                            </div>
+                            <p>点击色块切换色系</p>
+                        </div>
+                        <div class="ranking-top-color js-ranking-top-color">
+                            <ul>
+                            </ul>
+                        </div>
+                        <div class="top-data-null js-top-data-color">
+                            <img src="{STATIC_URL1}/global/images/fashion_home/null.png">
+                            <div>该选项下暂无数据，试试其他筛选项吧</div>
+                        </div>
+                        <div class="loading-top-data js-loading-color-data">
+                            <img src="{STATIC_URL1}/global/images/styles_page/loading.gif"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="brand-pattern-ranking-content">
+                    <div class="ranking-content js-ranking-content-iBrand">
+                        <div class="intro-title clearfix">
+                            <h4 class="js-intro-title fl">品牌排行榜（近一个月）<i></i>
+                                <div class="ranking-per-intro js-intro-content">
+                                    <i></i>
+                                    品牌热度与款式下载量相关，通过品牌热度可以发现近期最受设计师欢迎的品牌；通过筛选，可以查看对应性别的品牌排名
+                                </div>
+                            </h4>
+                            <div class="label-filter js-labels-filter js-brand-label-filter fr">
+                                <span data-id="{$selected_sex}">{$all_sex[$selected_sex]}<i></i></span>
+                                <div class="label-filter-downlist js-label-filter-downlist">
+                                    <div class="label-filter-content contentHolder">
+                                        {foreach $all_sex as $id=>$val}
+                                        <a data-id="{$id}">{$val}</a>
+                                        {/foreach}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ranking-data-box brand-ranking-data-box">
+                            <ul class="js-brand-ranking-data">
+                            </ul>
+                            <div class="top-data-null js-top-data-brand">
+                                <img src="{STATIC_URL1}/global/images/fashion_home/null.png">
+                                <div>该选项下暂无数据，试试其他筛选项吧</div>
+                            </div>
+                            <div class="loading-top-data js-loading-brand-data">
+                                <img src="{STATIC_URL1}/global/images/styles_page/loading.gif"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ranking-content js-ranking-content-sPattern">
+                        <div class="intro-title clearfix">
+                            <h4 class="js-intro-title fl">图案排行榜（近一个月）<i></i>
+                                <div class="ranking-per-intro js-intro-content">
+                                    <i></i>
+                                    图案热度与图案下载量相关，通过图案热度可以发现近期最受设计师喜欢的图案内容；通过筛选，可以查看对应类型的图案排名
+                                </div>
+                            </h4>
+                            <div class="label-filter js-labels-filter js-pattern-label-filter fr">
+                                <span data-id="{$first_pattern[0]['id']}">{$first_pattern[0]['name']}<i></i></span>
+                                <div class="label-filter-downlist js-pattern-label-downlist">
+                                    <div class="label-filter-content contentHolder">
+                                        {foreach $first_pattern as $val}
+                                        <a data-id="{$val.id}">{$val.name}</a>
+                                        {/foreach}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ranking-data-box pattern-ranking-data-box">
+                            <ul class="js-pattern-ranking-data">
+                            </ul>
+                            <div class="top-data-null js-top-data-sPattern">
+                                <img src="{STATIC_URL1}/global/images/fashion_home/null.png">
+                                <div>该选项下暂无数据，试试其他筛选项吧</div>
+                            </div>
+                            <div class="loading-top-data js-loading-pattern-data">
+                                <img src="{STATIC_URL1}/global/images/styles_page/loading.gif"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {/if}
+    <!-- 报告 -->
+    <div class="reports-infor-contain">
+        <div class="con_width clearfix">
+            <!--  -->
+            <div class="latest-report-box fl">
+                <div class="latest-report-top">
+                    <div class="latest-report-title">
+                        <h3>最新报告</h3>
+                        <p>LATEST REPORTS</p>
+                    </div>
+                    <div class="latest-report-jump">
+                        <a class="left-jump js-left-jump"></a>
+                        <span><em class="js-jump-num">1</em>/3</span>
+                        <a class="right-jump js-right-jump"></a>
+                    </div>
+                </div>
+                <div class="report-list-box js-report-list-box">
+                    <ul class="clearfix">                        
+                    </ul>
+                    <ul class="clearfix">                        
+                    </ul>
+                    <ul class="clearfix">                       
+                    </ul>
+
+
+                </div>
+            </div>
+            <!-- 最热报告 -->
+            <div class="hot-reports-box fr">
+                <h3>热门报告</h3>
+                <p>HOT REPORTS</p>
+                <div class="hot-reports-content">
+                    <em class="line-top"></em>
+                    <ul class="js-hot-reports-list">
+                        
+                    </ul>
+                    <em class="line-top line-bottom"></em>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 款式推荐 -->
+    <div class="style-recommend-contain">
+        <div class="con_width">
+            <div class="style-r-top clearfix">
+                <div class="style-r-title fl">
+                    <div class="recommend-title">
+                        <h3 class="js-intro-title">款式推荐<i></i>
+                            <div class="recommend-all-intro js-intro-content">
+                                <i></i>
+                                根据你账号的历史行为推荐合适的款式，为了提高推荐的准确率，建议每个账号只由一个人使用（偷偷告诉你，每个人都可以开通属于自己的设计师账号哦）
+                            </div>
+                        </h3>
+                        {if $P_UserType eq 1}
+                        <a class="open-sub-account" href="/member/associate/">开通子账号，看专属内容</a>
+                        {/if}
+                    </div> 
+                    <p>RECOMMEND</p>
+                </div>
+                <div class="style-r-more fr">
+                    <a href="/patterns/patternRecommend/?col=4" target="_blank"><i></i>查看更多</a>
+                </div>
+            </div>
+            <div class="style-lists-contain js-style-lists-contain js-datagrand-click">
+                <ul class="clearfix lazyload">                    
+                </ul>
+                <a href="/patterns/patternRecommend/?col=4" class="style-more-bottom" target="_blank"><span>查看更多<i></i></span><em></em></a>
+            </div>
+        </div>        
+    </div>
+    <!-- 图案推荐 -->
+    <div class="pattern-recommend-contain">
+        <div class="con_width">
+            <div class="pattern-r-top clearfix">
+                <div class="pattern-r-title fl">
+                    <div class="recommend-title">
+                        <h3 class="js-intro-title">图案推荐<i></i>
+                            <div class="recommend-all-intro js-intro-content">
+                                <i></i>
+                                根据你账号的历史行为推荐合适的图案，为了提高推荐的准确率，建议每个账号只由一个人使用（偷偷告诉你，每个人都可以开通属于自己的设计师账号哦）
+                            </div>
+                        </h3>
+                        {if $P_UserType eq 1}
+                        <a class="open-sub-account" href="/member/associate/">开通子账号，看专属内容</a>
+                        {/if}
+                    </div>                    
+                    <p>PATTERN RECOMMEND</p>
+                </div>
+                <div class="pattern-r-more fr">
+                    <a href="/patterns/patternRecommend/?col=82" target="_blank"><i></i>查看更多</a>
+                </div>
+            </div>
+            <div class="pattern-lists-contain js-pattern-lists-contain js-datagrand-click">
+                <ul class="clearfix lazyload">                    
+                </ul>
+                <a href="/patterns/patternRecommend/?col=82" class="pattern-more-bottom" target="_blank"><span>查看更多<i></i></span><em></em></a>
+            </div>
+        </div>        
+    </div>
+
+    <!-- 最新T台 -->
+    {if $module.t_show_relate}
+    <div class="runway-recommend-contain">
+        <div class="con_width">
+            <div class="runway-r-top clearfix">
+                <div class="runway-r-title fl">
+                    <h3>最新T台</h3>
+                    <p>CATWALK</p>
+                </div>
+                <div class="runway-r-more fr">
+                    <a href="/runways/" target="_blank"><i></i>查看更多</a>
+                </div>
+            </div>
+            <div class="runway-lists-contain">
+                <ul class="clearfix js-runway-lists lazyload">
+                </ul>
+            </div>
+        </div>
+    </div>
+    {/if}
+
+    <!-- 广告大片 -->
+    {if $module.advert_relate}
+    <div class="lookbook-recommend-contain">
+        <div class="con_width">
+            <div class="lookbook-r-top clearfix">
+                <div class="lookbook-r-title fl">
+                    <h3>广告大片</h3>
+                    <p>LOOKBOOK</p>
+                </div>
+                <div class="lookbook-r-more fr">
+                    <a href="/books/lookbook/" target="_blank"><i></i>查看更多</a>
+                </div>
+            </div>
+            <div class="lookbook-lists-contain">
+                <ul class="clearfix js-lookbook-lists">
+                </ul>
+            </div>
+        </div>
+    </div>
+    {/if}
+
+    <!-- 专属看板 -->
+    {if $module.look_show}
+    <div class="my-board-contain">
+        <div class="con_width">
+            <div class="board-content">
+                <div class="my-board-title">
+                    <h3 class="js-intro-title">专属看板<i></i>
+                        <div class="board-all-intro js-intro-content">
+                            <i></i>
+                            在浏览款式时，可以保存喜欢的品牌、色彩等搜索条件，下次就能直接从专属看板进入对应的款式页面了哦
+                        </div>
+                    </h3>                    
+                </div>
+                <p class="my-board-eng">MY BOARD</p>
+                <div class="borad-search-box">
+                    <div class="borad-search-list js-borad-search-list">
+                    </div>
+                    <span class="js-save-search-null"><img src="{STATIC_URL3}/global/images/fashion_home/board_add1.png"/></span>
+                </div>                
+            </div>
+        </div>
+    </div>
+    {/if}
+
+    <!-- 偏好选择弹窗 -->
+    <div class="preference-select-bg js-preference-select-bg"></div>
+    <div class="preference-select-bg js-myboard-bg"></div>
+    <div class="preference-select-bg js-del-label-bg"></div>
+    <div class="preference-select-contain js-preference-select-contain">
+        <div class="preference-select-close js-preference-select-close"></div>
+        <h2><i></i><span>偏好选择</span><i></i></h2>
+        <p>选择的类型将影响排行榜和报告模块</p>
+        <div class="labels-select-box js-labels-select-box">
+            <ul class="gender-label-ul">
+                <li data-id="1">
+                    <div class="preference-select-label select-label-gender">
+                        <img src="{STATIC_URL1}/global/images/fashion_home/man_img.png"/>
+                        <div class="layer-labels-bg js-layer-labels-bg"><span>男装</span></div>
+                        <div class="selected-label-state js-selected-label-state">
+                            <div>
+                                <i></i>
+                                <span>男装</span>
+                            </div>                            
+                        </div>
+                    </div>
+                </li>
+                <li data-id="2">
+                    <div class="preference-select-label select-label-gender">
+                        <img src="{STATIC_URL1}/global/images/fashion_home/w_img.png"/>
+                        <div class="layer-labels-bg js-layer-labels-bg"><span>女装</span></div>
+                        <div class="selected-label-state js-selected-label-state">
+                            <div>
+                                <i></i>
+                                <span>女装</span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li data-id="5">
+                    <div class="preference-select-label select-label-gender">
+                        <img src="{STATIC_URL1}/global/images/fashion_home/child_img.png"/>
+                        <div class="layer-labels-bg js-layer-labels-bg"><span>童装</span></div>
+                        <div class="selected-label-state js-selected-label-state">
+                            <div>
+                                <i></i>
+                                <span>童装</span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ul class="industry-labels-ul1">
+                <li data-id="7">
+                    <div class="preference-select-label">
+                        <img src="{STATIC_URL1}/global/images/fashion_home/miuzai_img.png"/>
+                        <div class="layer-labels-bg js-layer-labels-bg"><span>牛仔</span></div>
+                        <div class="selected-label-state js-selected-label-state">
+                            <div>
+                                <i></i>
+                                <span>牛仔</span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li data-id="8">
+                    <div class="preference-select-label">
+                        <img src="{STATIC_URL1}/global/images/fashion_home/picao_img.png"/>
+                        <div class="layer-labels-bg js-layer-labels-bg"><span>皮革/皮草</span></div>
+                        <div class="selected-label-state js-selected-label-state">
+                            <div>
+                                <i></i>
+                                <span>皮革/皮草</span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li data-id="11">
+                    <div class="preference-select-label">
+                        <img src="{STATIC_URL1}/global/images/fashion_home/yundong_img.png"/>
+                        <div class="layer-labels-bg js-layer-labels-bg"><span>运动</span></div>
+                        <div class="selected-label-state js-selected-label-state">
+                            <div>
+                                <i></i>
+                                <span>运动</span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ul class="industry-labels-ul2">
+                <li data-id="159">
+                    <div class="preference-select-label">
+                        <img src="{STATIC_URL1}/global/images/fashion_home/chengyi_img.png"/>
+                        <div class="layer-labels-bg js-layer-labels-bg"><span>成衣</span></div>
+                        <div class="selected-label-state js-selected-label-state">
+                            <div>
+                                <i></i>
+                                <span>成衣</span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li data-id="11116">
+                    <div class="preference-select-label">
+                        <img src="{STATIC_URL1}/global/images/fashion_home/qunku_img.png"/>
+                        <div class="layer-labels-bg js-layer-labels-bg"><span>裙/裤</span></div>
+                        <div class="selected-label-state js-selected-label-state">
+                            <div>
+                                <i></i>
+                                <span>裙/裤</span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li data-id="10">
+                    <div class="preference-select-label">
+                        <img src="{STATIC_URL1}/global/images/fashion_home/hunsha_img.png"/>
+                        <div class="layer-labels-bg js-layer-labels-bg"><span>婚纱/礼服</span></div>
+                        <div class="selected-label-state js-selected-label-state">
+                            <div>
+                                <i></i>
+                                <span>婚纱/礼服</span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ul class="industry-labels-ul3"> 
+                <li data-id="6">
+                    <div class="preference-select-label">
+                        <img src="{STATIC_URL1}/global/images/fashion_home/maoshan_img.png"/>
+                        <div class="layer-labels-bg js-layer-labels-bg"><span>毛衫</span></div>
+                        <div class="selected-label-state js-selected-label-state">
+                            <div>
+                                <i></i>
+                                <span>毛衫</span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li data-id="9">
+                    <div class="preference-select-label">
+                        <img src="{STATIC_URL1}/global/images/fashion_home/jiaju_img.png"/>
+                        <div class="layer-labels-bg js-layer-labels-bg"><span>内衣/泳装/<br/>家居服</span></div>
+                        <div class="selected-label-state js-selected-label-state">
+                            <div>
+                                <i></i>
+                                <span>内衣/泳装/<br/>家居服</span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li data-id="12">
+                    <div class="preference-select-label">
+                        <img src="{STATIC_URL1}/global/images/fashion_home/peishi_img.png"/>
+                        <div class="layer-labels-bg js-layer-labels-bg"><span>服饰配件</span></div>
+                        <div class="selected-label-state js-selected-label-state">
+                            <div>
+                                <i></i>
+                                <span>服饰配件</span>
+                            </div>                            
+                        </div>
+                    </div>
+                </li>            
+            </ul>
+        </div>
+    </div>
+    <!-- 个性化标签 -->
+    <div class="preference-select-bg js-interested-select-bg"></div>
+    <div class="interested-select-contain js-interested-select-contain">
+        <div class="interested-select-close js-interested-select-close"></div>
+        <p>选择你关注的标签</p>
+        <div class="interested-select-box js-interested-select-box">
+            <ul>
+                <li>
+                    <div class="clearfix">
+                        <label class="fl">品牌</label>
+                        <i></i>
+                        <div class="fl brand-input">
+                            <input type="type" placeholder="选择关注的品牌" class="js-search-brand-labels" />
+                            <div class="brand-labels-searchlist js-brand-labels-searchlist"></div>
+                        </div>
+                    </div>
+                    <div class="interested-select-brand"></div>
+                </li>
+            </ul>
+        </div>
+        <div class="save-interested-select">
+            <a class="cancel-interested-select js-cancel-interested-select">取消</a>
+            <a class="confirm-interested-select js-confirm-interested-select">确定</a>
+        </div>
+        <div class="prompt-layer js-prompt-layer">最多能自主添加14个标签，可删除已选标签再重试</div>
+    </div>
+    <!-- 是否确认删除个性化标签 -->
+    <div class="delete-relate-labels-contain js-delete-relate-contain">
+        <p>确认删除该关注吗？</p>
+        <div>
+            <a class="delete-labels js-delete-labels">删除</a>
+            <a class="cancel-delete js-cancel-delete">取消</a>
+        </div>
+    </div>
+    <!-- 添加专属看板 -->
+    <div class="add-my-borads js-add-my-borads">
+        <div class="close-my-borads js-close-my-borads"></div>
+        <p>新增专属看板</p>
+        <div class="my-borads-steps clearfix">
+            <a>
+                <img src="{STATIC_URL2}/global/images/fashion_home/board1.png?20200526"/>
+                <p>1.在查看款式时选择喜欢的搜索条件</p>
+            </a>
+            <span></span>
+            <a>
+                <img src="{STATIC_URL2}/global/images/fashion_home/board2.png?20200526"/>
+                <p>2.点击保存搜索</p>
+            </a>
+            <span></span>
+            <a>
+                <img src="{STATIC_URL2}/global/images/fashion_home/board3.png?20200526"/>
+                <p>3.通过专属看板查看</p>
+            </a>
+        </div>
+        <div class="jump-search-labels">
+            <a class="cancel-labels js-cancel-delete">取消</a>
+            <a class="confirm-labels js-find-news">发现款式</a>
+        </div>
+    </div>
+    <!-- 个性化推荐页设置 -->
+	<div class="my-recommend-nav js-my-recommend-nav">
+		<div class="my-recommend-close js-my-recommend-close"></div>
+		<div class="recommend-nav-tab js-recommend-nav-tab">
+			<div class="wid_900">
+				<a class="s-on">偏好选择<span></span></a>
+				<a>模块展示<span></span></a>
+				<a>个性化设置<span></span></a>
+			</div>			
+		</div>
+		<div class="wid_900">
+            <div class="modular-show-box">
+                <div>
+                    <p>（选择的偏好将影响数据和报告模块，但款式，图案的推荐跟偏好无关）</p>
+                </div>
+                <div class="modular-labels-box js-modular-labels-box clearfix">
+                    <a data-id="1">男装<i></i></a>
+                    <a data-id="7">牛仔<i></i></a>
+                    <a data-id="159">成衣<i></i></a>
+                    <a data-id="6">毛衫<i></i></a>
+                    <a data-id="2">女装<i></i></a>
+                    <a data-id="8">皮革/皮草<i></i></a>
+                    <a data-id="11116">裤/裙<i></i></a>
+                    <a data-id="9">内衣/泳装/家居服<i></i></a>
+                    <a data-id="5">童装<i></i></a>
+                    <a data-id="11">运动<i></i></a>
+                    <a data-id="10">婚纱/礼服<i></i></a>
+                    <a data-id="12">服饰配件<i></i></a>
+                </div>
+                <a class="save-set-btn js-labels-save-set">保存设置</a>
+            </div>
+            <div class="modular-show-box" style="display: none;">
+                <div class="modular-raking-box clearfix">
+                    <p class="fl">热门排行榜：是否希望在今日推荐中展示热门排行榜</p>
+                    <div class="fr modular-show-btn top-modular-box">
+                        <span class="top-show-span"><input type="radio" name="top_show" value="1" checked>展示</span>
+                        <span class="top-hide-span"><input type="radio" name="top_show" value="0">隐藏</span>
+                    </div>
+                </div>
+                <div class="modular-runway-box clearfix">
+                    <p class="fl">T台：是否希望在今日推荐中展示T台</p>
+                    <div class="fr modular-show-btn runway-modular-box">
+                        <span class="runway-show-span"><input type="radio" name="t_show" value="1">展示</span>
+                        <span class="runway-hide-span"><input type="radio" name="t_show" value="0" checked>隐藏</span>
+                    </div>
+                </div>
+                <div class="modular-advert-box clearfix">
+                    <p class="fl">广告大片：是否希望在今日推荐中展示广告大片</p>
+                    <div class="fr modular-show-btn advert-modular-box">
+                        <span class="advert-show-span"><input type="radio" name="advert_show" value="1">展示</span>
+                        <span class="advert-hide-span"><input type="radio" name="advert_show" value="0" checked>隐藏</span>
+                    </div>
+                </div>
+				<div class="modular-board-box clearfix">
+					<p class="fl">专属看板：是否希望在今日推荐中展示专属看板</p>
+					<div class="fr modular-show-btn look-modular-box">
+						<span class="mo-show-span"><input type="radio" name="look_show" value="1">展示</span>
+						<span class="mo-hide-span"><input type="radio" name="look_show" value="0" checked>隐藏</span>
+					</div>
+				</div>				
+				<a class="save-set-btn js-modular-save-set">保存设置</a>
+			</div>
+			<div class="modular-show-box" style="display: none;">
+				<div>
+					<p>（若开启个性化选项，数据来源将与选择的偏好相关；若关闭个性化选项，数据来源将与选择的偏好无关）</p>
+				</div>
+				<div class="modular-board-box clearfix">
+					<p class="fl">热门排行榜：是否开启热门排行榜的个性化选项</p>
+					<div class="fr modular-show-btn relate-modular-box">
+						<span class="relate-show-span"><input type="radio" name=" top_relate" value="1" checked>开启</span>
+						<span class="relate-hide-span"><input type="radio" name=" top_relate" value="0" >关闭</span>
+					</div>
+				</div>
+				<div class="modular-raking-box clearfix">
+					<p class="fl">最新报告：是否开启最新报告的个性化选项</p>
+					<div class="fr modular-show-btn new-modular-box">
+						<span class="new-show-span"><input type="radio" name="new_report_relate" value="1" checked>开启</span>
+						<span class="new-hide-span"><input type="radio" name="new_report_relate" value="0">关闭</span>
+					</div>
+				</div>
+				<div class="modular-raking-box clearfix">
+					<p class="fl">热门报告：是否开启热门报告的个性化选项</p>
+					<div class="fr modular-show-btn hot-modular-box">
+						<span class="hot-show-span"><input type="radio" name="hot_report_relate" value="1" checked>开启</span>
+						<span class="hot-hide-span"><input type="radio" name="hot_report_relate" value="0">关闭</span>
+					</div>
+				</div>
+				<a class="save-set-btn js-relate-save-set">保存设置</a>
+			</div>
+		</div>
+	</div>
+</div>
+{/block}
+
+
+{block name="other"}
+
+{/block}
+{block name="self"}
+<script type="text/javascript" src="{STATIC_URL2}/global/js/lib/swiper/jquery.roundabout.min.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL2}/global/js/lib/swiper/jquery.easing.1.3.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/lib/require.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/home/fashion_home.js?{STATIC_CHANGE_TIME}"></script>
+<script>
+var modules = {$power_modules};
+</script>
+{/block}

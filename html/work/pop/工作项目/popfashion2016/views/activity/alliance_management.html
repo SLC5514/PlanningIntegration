@@ -1,0 +1,140 @@
+{extends file="layout.html"}
+{block name="selfcss"}
+	<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/industry.css?{STATIC_CHANGE_TIME}">
+{/block}
+
+{block name="main"}
+<div class="activity_management">
+	<div class="con_widthx1200">
+		<div class="ac_management_box alliance_select_box clearfix">
+			<h3>
+                <a class="ac_ma" href="/activity/manage/msgtyp_1/"><i></i>时尚教育<span></span></a>
+                <a class="ag_ma"  href="/activity/manage/msgtyp_2/"><i></i>商贸对接<span></span></a>
+                <a class="ae_ma click" href="/activity/alliancemanage/"><i></i>精英联盟<span></span></a>
+            </h3>
+			<div class="ac_select_box clearfix manage_search">
+				<ul>
+					<li class="long_li">
+						<label>公司名称：</label>
+						<div class="mg_box">
+							<div class="a_theme">
+								<input type="text" name="companyName" value="{$sTheme}">
+							</div>
+						</div>
+					</li>
+					<li class="long_li">
+						<label>公司地区：</label>
+						<div class="mg_box">
+							<div class="common_div cp_region">
+								<input type="hidden" name="companyArea" value="{$iActivityArea}">
+                                <span>{if $iActivityArea}{$activityArea.$iActivityArea.sName}{else}请选择{/if}</span>
+								<ul class="act_area">
+									<li style="display: none;" data-id='0'>请选择</li>
+                                    {foreach $activityArea as $val}
+                                    <li data-id="{$val.id}" data-type="1">{$val.sName}</li>
+                                    {/foreach}
+                                </ul>
+                                <i class="a_down_ic"></i>
+							</div>
+							<div class="common_div cp_region">
+								<input type="hidden" name="companyCity" value="{$iActivityCity}">
+                                <span id="city">请选择</span>
+                                <ul class="act_child"></ul>
+                                <i class="a_down_ic"></i>
+							</div>
+						</div>
+					</li>
+					<li class="long_li">
+						<label>公司类型：</label>
+						<div class="mg_box">
+							<div class="common_div cp_type">
+								<input type="hidden" name="companyType" value="{$iCompanyType}">
+                                <span>{if $iCompanyType}{$companyTypes.$iCompanyType.sName}{else}请选择{/if}</span>
+								<ul class="act_main_type">
+									<li style="display: none;" data-id='0'>请选择</li>
+                                    {foreach $companyTypes as $key=>$val}
+                                    <li data-id="{$val.id}" data-type="3">{$val.sName}</li>
+                                    {/foreach}
+                                </ul>
+                                <i class="a_down_ic"></i>
+							</div>
+						</div>
+					</li>
+					<li class="long_li">
+						<label>联系人：</label>
+						<div class="mg_box">
+							<div class="common_div a_contact">
+								<input type="text" name="contactName" value="{$sContactsName}">
+							</div>
+						</div>
+					</li>
+					<li class="long_li">
+						<label>联系电话：</label>
+						<div class="mg_box">
+							<div class="common_div a_contact">
+								<input type="text" name="contactPhone" value="{$sContactsPhone}">
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="manage_btn">
+				<a href="javascript:void(0)" class="button">搜索</a>
+				<a href="/activity/allianceadd/" target="_blank"><i></i>添加企业</a>
+			</div>
+			<table width="100%">
+				<tbody>
+					<tr>
+						<th width="11%">公司名称</th>
+						<th width="11%">公司地址</th>
+						<th width="11%">公司类型</th>
+						<th width="11%">联系人</th>
+						<th width="11%">联系方式</th>
+						<th width="12%">发布时间 / 审核时间</th>
+						<th width="11%">发布状态</th>
+						<th width="11%">审核状态</th>
+						<th width="11%">操作</th>
+					</tr>
+                    {foreach $lists as $val}
+					<tr>
+						<td>{$val.sTheme}</td>
+						<td>{$val.sActivityDetailAddress}</td>
+						<td>{$val.sCompanyType}</td>
+						<td>{$val.sContactsName}</td>
+						<td>{$val.sContactsPhone}</td>
+						<td>{$val.dCheckDate} / {$val.dPublishDate}</td>
+						<td><div class="no_pass">{if $val.iPublishStatus eq 1}发布{else}未发布{/if}</div></td>
+						<td><div class="no_pass">{if $val.iCheckStatus eq 1}已审核{else}未审核{/if}</div></td>
+						<td>
+                            <!--{if $val.iPublishStatus eq 1}-->
+                            <!--<a class="editor_bl editor_gy">编辑</a>-->
+                            <!--{else}-->
+                            <!--<a class="editor_bl" href="/activity/allianceeditor/{$val['id']}/" target="_blank">编辑</a>-->
+                            <!--{/if}-->
+                            <a class="editor_bl" href="/activity/allianceeditor/{$val['id']}/" target="_blank">编辑</a>
+                            <a href="javascript:void(0)" data-id="{$val['id']}" class="delect_rd del_activity">删除</a>
+                        </td>
+					</tr>
+                    {/foreach}
+				</tbody>
+			</table>
+
+			<div class="rightc_bottom">
+				<div class="pages">
+					{$pageHtml}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{/block}
+
+{block name="other"}
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/alliance_management.js?{STATIC_CHANGE_TIME}"></script>
+
+{literal}
+<script>
+
+</script>
+{/literal}
+{/block}

@@ -1,0 +1,100 @@
+<div>
+	<div class="">
+		<ul class="select_items paixu fl">
+			{if isset($seasons) && !empty($seasons)}
+			<li class="pli">
+				<span class="aspan">季节<i class="nav-icon"></i></span>
+				<div class="showbox short-sum">
+					<div class="dateHeight contentHolder">
+						<div class="content">
+							{foreach $seasons as $key=>$season}
+							<a class="clickme {if $key != 0}borderTop{/if}" href="{$season.link}" title="{$season.name}">{$season.name}</a>
+							{/foreach}
+						</div>
+					</div>
+				</div>
+			</li>
+			{/if}
+			{if !isset($paramsArr['reg']) || $paramsArr['reg'] == 'other'}
+			<li class="pli">
+				<span class="aspan">地区<i class="nav-icon"></i></span>
+				<div class="showbox region_box category_box">
+                    <div class="search-area-box clearfix">
+                        <input class="fl searInput" type="text" value="请输入国家或城市的关键字">
+                        <input class="fr button neiyeList" type="button">
+                    </div>
+					<div class="allcc clearfix">
+						<div class="area_qh"><span>地区：</span><a href="javascript:void(0);" class="on"><span>按区域</span><i></i></a><a href="javascript:void(0);"><span>按大洲</span><i></i></a></div>
+					</div>
+					<div class="mingc">
+						<div class="fl">
+							<span>大洲名称：</span>
+							<a href="javascript:void(0);">美洲</a>
+                        </div>
+                        <div class="allred fl"><a href="javascript:void(0);" >全部亚洲国家>></a></div>						
+					</div>					
+					 <div class="category_div contentHolder ps-container">
+						<div class="content">
+						</div>
+					</div>
+				</div>
+			</li>
+			{/if}
+			{if isset($types) && !empty($types)}
+			<li class="pli">
+				<span class="aspan">类型<i class="nav-icon"></i></span>
+				<div class="showbox short-sum">
+					<div class="datecontent">
+						{foreach $types as $key=>$type}
+						<a class="clickme {if $key != 0}borderTop{/if}" href="{$type.link}" title="{$type.name}">{$type.name}</a>
+						{/foreach}
+					</div>
+				</div>
+			</li>
+			{/if}
+			{if isset($versions) && !empty($versions)}
+			<li class="pli">
+				<span class="aspan">版本<i class="nav-icon"></i></span>
+				<div class="showbox short-sum">
+					<div class="datecontent">
+						{foreach $versions as $key=>$version}
+						<a class="clickme {if $key != 0}borderTop{/if}" href="{$version.link}" title="{$version.name}">{$version.name}</a>
+						{/foreach}
+					</div>
+				</div>
+			</li>
+			{/if}
+			{if isset($brands) && !empty($brands) && !isset($paramsArr['bra'])}
+			<li class="pli">
+				<span class="aspan">品牌<i class="nav-icon"></i></span>
+				<div class="category_box showPro showbox">
+                    <div class="inputBox"><input type="text" class="searInputbox fl" value="搜索热门品牌名" name="HOT" style="color: rgb(148, 147, 147);"><span class="fr neiyeList"></span>
+                    </div>
+					<div class="brands_ca">
+						<div class="items">
+							<div class="letter" name="STAR"><i></i></div>
+						</div>
+						{foreach $brands as $val}
+						<div class="items">
+							<div class="letter" name="{$val}">{$val}</div>
+						</div>
+						{/foreach}	
+                        <div class="brandslist">
+                            <div class="brand_result contentHolder">
+                                <div class="content">
+                                    <ul class="clearfix" id="popBrand_0-9">
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>	
+					</div>
+				</div>
+			</li>
+			{/if}
+		</ul>
+	</div>
+	<div class="other">
+		<input type="hidden" name="hidd"/>
+		<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/select_items.js?{STATIC_CHANGE_TIME}"></script>
+	</div>
+</div>

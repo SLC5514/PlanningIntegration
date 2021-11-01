@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+</body>
+<script>
+  // function test(fruit, quantity) {
+  //   const redFruits = ['apple', 'strawberry', 'cherry', 'cranberries'];
+  //   // 条件 1: 尽早抛出错误
+  //   // if (!fruit) throw new Error('No fruit!');
+  //   if (!fruit) console.error('No fruit!');
+  //   // 条件 2: 必须是红色的
+  //   if (redFruits.includes(fruit)) {
+  //     console.log('red');
+  //     // 条件 3: 必须是大质量的
+  //     if (quantity > 10) {
+  //       console.log('big quantity');
+  //     }
+  //   }
+  // }
+  // test();
+  // test('apple');
+  /*  */
+  function test1(name, num) {
+    if (!name) return;
+    console.log(name, num || 1);
+  }
+  test1('banana');
+  test1('apple', 2);
+  /*  */
+  // function test2({name} = {name: 'unknown'}) {
+  //   console.log(name);
+  // }
+  // test2(undefined);
+  // test2({name: 'slc'});
+  /*  */
+  var obj = {
+    red: function () {
+      console.log('red');
+    },
+    yellow: function () {
+      console.log('yellow');
+    }
+  }
+  function test3(color) {
+    return obj[color] ? obj[color]() : console.log('err');
+  }
+  test3(undefined);
+  test3('red');
+  /*  */
+  // const fruitColor = new Map()
+  //   .set('red', ['apple', 'strawberry'])
+  //   .set('yellow', ['banana', 'pineapple'])
+  //   .set('purple', ['grape', 'plum']);
+
+  // function test4(color) {
+  //   return fruitColor.get(color) || [];
+  // }
+  // console.log(test4(undefined))
+  // console.log(test4('red'))
+  /*  */
+  const fruits = [
+    { name: 'apple', color: 'red' },
+    { name: 'strawberry', color: 'red' },
+    { name: 'banana', color: 'yellow' },
+    { name: 'pineapple', color: 'yellow' },
+    { name: 'grape', color: 'purple' },
+    { name: 'plum', color: 'purple' }
+  ];
+  function test5(color) {
+    return fruits.filter(f => f.color == color);
+  }
+  test5()
+</script>
+<script src="./common/js/jquery-1.11.3.min.js"></script>
+<script src="./common/js/require.js"></script>
+<script src="./common/js/common.js"></script>
+</html>

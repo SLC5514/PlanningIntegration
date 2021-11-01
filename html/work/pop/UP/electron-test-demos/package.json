@@ -1,0 +1,26 @@
+{
+  "name": "electron-test-demos",
+  "version": "1.0.0",
+  "description": "electron test demos",
+  "author": "slc",
+  "license": "ISC",
+  "keywords": [
+    "electron"
+  ],
+  "main": "main.js",
+  "build": {
+    "appId": "com.example.app",
+    "mac": {
+      "category": "public.app-category.developer-tools"
+    }
+  },
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "devDependencies": {
+    "electron": "^5.0.2",
+    "electron-builder": "^20.43.0"
+  }
+}

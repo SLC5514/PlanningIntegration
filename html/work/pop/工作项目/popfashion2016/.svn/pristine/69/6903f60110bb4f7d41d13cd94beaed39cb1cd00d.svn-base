@@ -1,0 +1,75 @@
+{extends file="layout.html"}
+
+{block name="main"}
+<div id="content" class="bigview">
+    <div class="wrap">
+        <div class="grid-s190m0 layout">
+            <div class="col-main">
+                <div class="main-wrap">
+                    <!-- item-manage -->
+                    <div class="item-manage box">
+                        <h3 class="hd"><strong>友情链接</strong></h3>
+                        <div class="bd">
+                            <table width="100%" class="info link">
+                                <tr>
+                                    <th>欢迎大家pop-fashion趋势资讯网合作及交换链接</th>
+                                </tr>
+                                <tr>
+                                    <td><p>互惠友情链接，将双方优势直接互补宣传，趋势资讯网期待与您共赢！<br />诚邀服装时尚综合类网站合作，首页要求PR&gt;=5，内页要求PR&gt;=4<br />有意合作者请先作好链接，再与我们联系Email：pop136#yeah.net(请将#替换为@) QQ：1976903415<br />我们将在2个工作日内给您答复或作好您的链接！</p></td>
+                                </tr>
+                            </table>
+
+                            <table width="100%" class="info link">
+                                <tr>
+                                    <th width="50%">本站图片logo （88px*31px）</th>
+                                    <th width="50%">本站文字logo</th>
+                                </tr>
+                                <tr>
+                                    <td align="center" height="50"><a href="https://www.pop-fashion.com/" target="_blank" title="趋势资讯网"><img src="{STATIC_URL1}/global/images/pop-fashion.gif" alt="趋势资讯网" /></a></td>
+                                    <td>文字：<em>趋势资讯网</em><br />网址：<em>https://www.pop-fashion.com</em></td>
+                                </tr>
+                            </table>
+
+                            <h5>友情链接 （排名不分先后）</h5>
+
+                            <div class="link-img clearfix">
+                                {foreach $picLinks as $val }
+                                <a href="{$val.url}" title="{$val.name}" target="_blank" title="{$val.name}"><img src="{STATIC_URL1}globals/{$val.image_url}" width="88" height="31"  alt="{$val.name}"></a>
+                                {/foreach}
+                            </div>
+
+                            <div class="link-text">
+                                {foreach $txtLinks as $val}
+                                <a href="{$val.url}" target="_blank" title="{$val.name}">{$val.name}</a>
+                                {/foreach}
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /item-manage -->
+                </div>
+            </div>
+
+            <div class="col-sub">
+                <!-- item-topic -->
+                <div class="menu item-topic box">
+                    <h3 class="hd"><strong>网站介绍</strong></h3>
+                    <div class="bd clearfix">
+                        <a href="/service/joinmember/" title="加入VIP会员" target="_blank">加入VIP会员</a>
+                        <a href="http://www.pop136.com/service.php" title="收费服务一览" target="_blank">收费服务一览</a>
+                        <a href="http://www.pop136.com/pay.php" title="付款方式" target="_blank">付款方式</a>
+                        <a href="http://www.pop136.com/contact_us.php" title="联系我们" target="_blank">联系我们</a>
+                        <a href="http://www.pop136.com/agent.php" title="服务网点" target="_blank">服务网点</a>
+                        <a href="http://www.pop136.com/help.php" title="帮助中心" target="_blank">帮助中心</a>
+                        <a href="http://www.pop136.com/join_us.php" title="诚聘英才" target="_blank">诚聘英才</a>
+                        <a href="http://www.pop136.com/declaration.php" title="法律声明" target="_blank">法律声明</a>
+                        <a href="http://www.pop136.com/member_law.php" title="会员须知" target="_blank">会员须知</a>
+                        <a href="http://www.pop136.com/about_us.php" title="关于我们" target="_blank">关于我们</a>
+                        <a href="/" title="网站地图" >网站地图</a>
+                    </div>
+                </div>
+                <!-- /item-topic -->
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

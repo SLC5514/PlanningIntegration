@@ -1,0 +1,16 @@
+{extends file="layout.html"}
+{block name="header"}{/block}
+{block name='main'}
+    <div class="ip-abnormal">
+        <a class="logo" href="/"><img src="{STATIC_URL2}/global/images/common/nav_logo.png" alt=""></a>
+        <div class="ctn">
+            <div class="title">安全中心检测到你的账号有异常行为</div>
+            <div class="info">为了防止您的信息被盗用风险，我们将暂停账号使用！<br>您可以联系客服，进行账号申诉</div>
+            <ul class="clearfix">
+                <li><a class="info-phone" href="javascript:void(0);">售后电话：<span>4008-210-662</span></a></li>
+                <li><a class="info-qq reloging js-contact-qq-btn" data-type='1'>联系客服</a></li>
+            </ul>
+        </div>
+    </div>
+{/block}
+{block name="footer"}{/block}

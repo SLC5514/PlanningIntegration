@@ -1,0 +1,90 @@
+<div class="list-nav-box">
+    <div class="list-nav clearfix contentW">
+        <div class="list-nav-left">
+        {if $columnPid == 1}
+        <h2>趋势解读</h2>
+        {elseif $columnPid == 2}
+        <h2>流行分析</h2>
+        {elseif $columnPid == 4}
+        <h2>款式</h2>        
+        {elseif $columnPid == 9}
+        <h2>图案</h2>
+        {elseif $columnPid == 3}
+        <h2>T台</h2>
+        {elseif $columnPid == 6}
+        <h2>读物</h2>
+        {elseif $columnPid == 7 || $columnPid == 8}
+        <h2>素材</h2>
+        {/if}
+        <div class="question-mark js-question-mark">
+            <img src="{STATIC_URL2}/global/images/lists/question-mark.png">
+        </div>
+        <div class="column-msg js-column-msg">{$presentation}<img src="{STATIC_URL2}/global/images/lists/column-msg-arrow.png" /></div>
+        <span class="list-nav-vline"></span>
+        <ul>
+            {if $columnPid == 3}
+            {if isset($regions)}
+            {foreach $regions as $key => $val}
+                {if empty($region) && $key == '3'}
+                <li class="char{mb_strlen($val.sName,'utf-8')} on">
+                <a href="{$val.sLink}">{$val.sName}</a>
+                </li>
+                {elseif $key != 'other'}
+                <li class="char{mb_strlen($val.sName,'utf-8')} {if $region == $key} on{/if}">
+                <a href="{$val.sLink}">{$val.sName}</a>
+                </li>
+                {else}
+                <li class="char{mb_strlen($val.sName,'utf-8')} {if (!empty($region) && !in_array($region,array_keys($regions))) || $region == 'other'} on{/if}">
+                <a href="{$val.sLink}">{$val.sName}</a>
+                </li>
+                {/if}
+            {/foreach}
+            {/if}
+            {elseif $columnPid == 8}
+            {foreach $columns as $key=>$column}
+                <li class="char{mb_strlen($column.sName,'utf-8')} {if $key == $columnId || ($key == 8 && ($columnId == 90 || $columnId == 91) )}on{/if}"><a href="{$column.sLink}">{$column.sName}</a></li>
+            {/foreach}
+            {else}
+            {foreach $columns as $key=>$column}
+                {if $key == $columnPid}
+                <li class="char2 {if $key == $columnId}on{/if}">
+                <a href="{$column.sLink}">全部</a>
+                </li>
+                {else}
+                <li class="char{mb_strlen($column.sName,'utf-8')} {if $key == $columnId}on{/if}">
+                <a href="{$column.sLink}">{$column.sName}</a>
+                </li>
+                {/if}
+            {/foreach}
+            {/if}            
+        </ul>
+        </div>
+        <div class="list-nav-right {if in_array($columnId,[82, 120, 124]) || $columnPid==4}isfigure{/if}">
+            <div class="nav-absolute-box">
+                {if isset($keys)}
+                <p>
+                <span>热门搜索：</span>
+                {foreach $keys as $key}
+                <a class="clickme" href="{$key.link}"  onclick="return oCommon.clickBeforeFlicker(this);" title="{$key.name}">{$key.name}</a>
+                {/foreach}
+                </p>
+                {/if}
+                <div class="report-search-box">
+                    {if $columnPid == 3}
+                    <input type="text" class="fl js-input-search" growing-track="true" placeholder="搜索你要的：设计师/品牌/地区">
+                    {else if $columnPid == 6}
+                    <input type="text" class="fl js-input-search" growing-track="true" placeholder="搜索你要的内容">
+                    {else}
+                    <input type="text" class="fl js-input-search" growing-track="true" placeholder="搜索你要的：季节/品牌/单品">
+                    {/if}
+                    <img src="{STATIC_URL2}/global/images/lists/search.png" class="sear fl js-sear">
+                </div>
+            </div>
+            {if in_array($columnId,[82, 120, 124]) || $columnPid==4}
+            <a class="figure-btn fr js-figure-btn" style="cursor: pointer;" target="_blank">
+                <img src="{STATIC_URL2}/global/images/lists/figure-icon.png" />以图搜图
+            </a>
+            {/if}
+        </div>
+    </div>
+</div>

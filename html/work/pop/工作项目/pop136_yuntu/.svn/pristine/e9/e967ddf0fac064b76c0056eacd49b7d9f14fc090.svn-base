@@ -1,0 +1,624 @@
+{extends file="layout.html"}
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css"
+	href="{$smarty.const.STATIC_URL1}/global/css/lib/perfect-scrollbar-og.css?{$smarty.const.STATIC_CHANGE_TIME}">
+<link rel="stylesheet" type="text/css"
+	href="{$smarty.const.STATIC_URL1}/global/css/user/center-view.css?{$smarty.const.STATIC_CHANGE_TIME}" />
+{/block}
+{block name="main"}
+<input class="params" type="hide" value="{$module_power['yuntu:virtualtry'][1]}">
+<div class="content js-content-section">
+	<div class="personal-section">
+		<div class="personal-work section js-section clear">
+			<div class="person-vav clear js-person-vav hide js-page"
+				page-name="userinfo userinfo-set masterroom-group masterroom-virtual">
+				<div class="person-pic">
+					<label for="upload-src">
+						<img class="js-fill-ele js-img-ele" data-key="photo"
+							src="{$smarty.const.STATIC_URL2}/global/images/common/header-default.png" alt="头像" />
+						<span>更换头像</span>
+					</label>
+					<!-- <p class="js-fill-ele" data-key="account"></p> -->
+					<form class="js-form hide" enctype="multipart/form-data">
+						<input class="js-upload-ele" id="upload-src" name="uploadAvatar" type="file">
+					</form>
+				</div>
+				<div class="fl">
+					<p class="account-name js-fill-ele" data-key="account"></p>
+					<div class="pages-list js-pages-list">
+						<a href="/user/usercenterview">制版间</a>
+						<a href="/user/usercenterview?page=userinfo">账号管理</a>
+					</div>
+				</div>
+				<div class="tab-list hide js-page" page-name="masterroom-group masterroom-virtual">
+					<!-- <a class="tab3d" href="javascript:;">3D模拟成品</a> -->
+					<a class="tab2d js-tab2d" href="/user/usercenterview">实景模拟</a>
+				</div>
+				<div class="tab-list hide js-page" page-name="userinfo userinfo-set">
+					<a class="tab-msg js-tab-msg" href="/user/usercenterview?page=userinfo">账号信息</a>
+					<a class="tab-set js-tab-set" href="/user/usercenterview?page=userinfo-set">账号设置</a>
+				</div>
+				<!-- <a class="service-link js-contact-qq-btn" data-type="1" href="javascript:void(0);">
+					<span class="icon"></span>
+					联系客服
+				</a> -->
+			</div>
+			<div class="lab-list js-lab-list hide js-page" page-name="masterroom-group masterroom-virtual">
+				<a href="/user/usercenterview/">分组</a>
+				<a href="/user/usercenterview/?page=masterroom-virtual">全部</a>
+				<a class="fr batch-manage js-batch-manage" href="javascript:;">批量管理</a>
+			</div>
+			<div class="check-col js-check-col clear hide js-page" page-name="masterroom-group">
+				<div class="section">
+					<a class="fl setall on" href="javascript:;">全选</a>
+					<a class="additem" href="javascript:;">添加</a>
+					<a class="delete on" href="javascript:;">删除</a>
+				</div>
+			</div>
+			<div class="check-col js-vircheck-col clear hide js-page" page-name="groupdetail">
+				<div class="section">
+					<a class="fl setall on" href="javascript:;">全选</a>
+					<a class="remove" href="javascript:;">移除</a>
+					<a class="moveto" href="javascript:;">移动至...</a>
+					<a class="delete on" href="javascript:;">删除</a>
+				</div>
+			</div>
+			<div class="person-right">
+				<!-- 实景模拟 分组 -->
+				<div class="master-right js-div-section js-lab-ctn hide js-page" page-name="masterroom-group">
+					<ul class="group-list js-water-fall1 js-group-list clear">
+						<li class="add">
+							<i></i>
+							<span>创建分组</span>
+						</li>
+						<!-- <li data-id="" data-name=""><img src="" alt=""><div class="edit">编辑</div><div class="title">test</div></li> -->
+					</ul>
+					<div class="nav-loading js-nav-loading"><i></i><span>加载中</span></div>
+				</div>
+				<!-- 实景模拟 全部 -->
+				<div class="master-right js-div-section js-lab-ctn hide js-page" page-name="masterroom-virtual">
+					<ul class="val-list js-water-fall2 js-vir-list">
+						<li class="add">
+							<i></i>
+							<span>添加效果图</span>
+						</li>
+						<!-- <li data-id=""><img src="" alt=""><div class="check-btn"></div></li> -->
+					</ul>
+					<div class="nav-loading js-nav-loading"><i></i><span>加载中</span></div>
+				</div>
+				<!-- 分组详情 -->
+				<div class="group-detail js-div-section js-lab-ctn hide js-page" page-name="groupdetail">
+					<div class="title-box clear">
+						<div class="fl name js-group-name"></div>
+						<div class="fr js-col-box">
+							<div class="btn edit">编辑</div>
+							<div class="btn batch-manage">批量管理</div>
+							<div class="text share">分享</div>
+						</div>
+					</div>
+					<ul class="val-list js-water-fall3 js-groupvir-list">
+						<li class="add">
+							<i></i>
+							<span>添加效果图</span>
+						</li>
+						<!-- <li data-id=""><img src="" alt=""><div class="check-btn"></div></li> -->
+					</ul>
+					<div class="nav-loading js-nav-loading"><i></i><span>加载中</span></div>
+				</div>
+				<!--账号信息-->
+				<div class="account-right js-div-section hide js-page" page-name="userinfo">
+					<ul class="msg-list">
+						<li class="clear">
+							<span>注册账户：</span>
+							<p class="js-fill-ele" data-key="account"></p>
+						</li>
+						<li class="clear">
+							<span>注册时间：</span>
+							<p class="js-fill-ele" data-key="register_time"></p>
+						</li>
+						<li class="clear">
+							<span>会员类型：</span>
+							<p class="js-vip-show-p"></span></p>
+						</li>
+					</ul>
+
+					<ul class="acount-list clear js-vip-list">
+						<li class="tu-an" data-id="3">
+							<div class="acount-icon">
+								<p>高清\矢量图下载、图案色彩分析、图案内容分析</p>
+							</div>
+							<p>图案库</p>
+							<span></span>
+							<div class="ktinfo">未开通</div>
+						</li>
+						<li class="sou-tu" data-id="2">
+							<div class="acount-icon">
+								<p>图像云计算、人工智能匹配</p>
+							</div>
+							<p>图搜图</p>
+							<span></span>
+							<div class="ktinfo">未开通</div>
+						</li>
+						<li class="shi-yi" data-id="1">
+							<div class="acount-icon">
+								<p>本地图案试衣、款式模板调色</p>
+							</div>
+							<p>实景模拟</p>
+							<span></span>
+							<div class="ktinfo">未开通</div>
+						</li>
+						<li class="fin-tu" data-id="5">
+							<div class="acount-icon">
+								<p>通过3D模型看图案花型面料在实物上的效果，支持更换主料辅料</p>
+							</div>
+							<p>3D模拟成品</p>
+							<span></span>
+							<div class="ktinfo">未开通</div>
+						</li>
+					</ul>
+					<div class="use-num clear js-use-num">
+						<span>会员使用情况：</span>
+						<p>
+							<span class="js-fill-ele" data-key="iLoginNumber"></span> 人（目前在线数量／最大限制数量）
+						</p>
+					</div>
+				</div>
+				<!--账号设置-->
+				<div class="account-right js-div-section hide js-page" page-name="userinfo-set">
+					<ul class="setuser-list js-setuser-list">
+						<li class="on">
+							<div class="title">修改绑定手机号</div>
+							<div class="ctn">
+								<ul class="form-list js-form-list1">
+									<li class="account clear">
+										<label for="account-ipt1">账户已绑定：</label>
+										<input id="account-ipt1 js-number-only" class="account-ipt js-account-ipt1 js-input-area" name="mobile"
+											type="mobile" placeholder="已绑定手机号" maxlength="11" readonly value="">
+									</li>
+									<li class="ptcode clear">
+										<label for="ptcode-ipt1">图形验证码：</label>
+										<input id="ptcode-ipt1" class=" js-input-area" name="img_code" type="text"
+											placeholder="请输入图形验证码" maxlength="4">
+										<img class="ptcode-code js-img-code-btn" src="/user/imgcaptcha/bind_imgcode1/"
+											data-src="/user/imgcaptcha/bind_imgcode1/" alt="img-code">
+										<div class="err">请输入图形验证码</div>
+									</li>
+									<li class="sms clear">
+										<label for="sms-ipt1">短信验证码：</label>
+										<input id="sms-ipt1" class=" js-input-area" name="msg_code" type="text"
+											placeholder="请输入短信验证码">
+										<div class="sms-code js-get-code" data-key="is_get_code1">获取验证码</div>
+										<div class="err">请输入短信验证码</div>
+									</li>
+									<li>
+										<div class="btn js-next-btn1">下一步</div>
+									</li>
+								</ul>
+								<ul class="form-list js-form-list2 hide">
+									<li class="account clear">
+										<label for="account-ipt2">新绑手机号：</label>
+										<input id="account-ipt2" class="js-number-only" name="newMobile" type="mobile" placeholder="请输入手机号"
+											maxlength="11">
+										<div class="err">请输入手机号</div>
+									</li>
+									<li class="ptcode clear">
+										<label for="ptcode-ipt2">图形验证码：</label>
+										<input id="ptcode-ipt2" name="img_code" type="text" placeholder="请输入图形验证码"
+											maxlength="4">
+										<img class="ptcode-code js-img-code-btn" src="/user/imgcaptcha/bind_imgcode2/"
+											data-src="/user/imgcaptcha/bind_imgcode2/" alt="img-code">
+										<div class="err">请输入图形验证码</div>
+									</li>
+									<li class="sms clear">
+										<label for="sms-ipt2">短信验证码：</label>
+										<input id="sms-ipt2" name="msg_code" type="text" placeholder="请输入短信验证码">
+										<div class="sms-code js-get-code" data-key="is_get_code2">获取验证码</div>
+										<div class="err">请输入短信验证码</div>
+									</li>
+									<li>
+										<div class="btn on js-next-btn2">提交</div>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<div class="title">修改密码</div>
+							<div class="ctn">
+								<ul class="form-list js-form-list3">
+									<li class="pswdog clear">
+										<label for="pswdog-ipt">原密码：</label>
+										<input id="pswdog-ipt" type="password" name="oldPassword" maxlength="20" placeholder="请输入原密码" autocomplete="new-password">
+										<div class="err">请输入原密码</div>
+									</li>
+									<li class="pswdnew clear">
+										<label for="pswdnew-ipt">新密码：</label>
+										<input id="pswdnew-ipt" class="js-new-password" type="password" name="newPassword" maxlength="20" placeholder="请输入新密码" autocomplete="new-password">
+										<ul class="level js-strength-list">
+											<li>低</li>
+											<li>中</li>
+											<li>高</li>
+										</ul>
+										<div class="err">请输入新密码</div>
+									</li>
+									<li class="pswdagn clear">
+										<label for="pswdagn-ipt">确认新密码：</label>
+										<input id="pswdagn-ipt" type="password" name="reNewPassword" maxlength="20" placeholder="请再次输入密码进行确认，注意区分大小写" autocomplete="new-password">
+										<div class="err">请再次输入密码进行确认，注意区分大小写</div>
+									</li>
+									<li>
+										<div class="btn on js-sub-change-password">提交</div>
+									</li>
+								</ul>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 提示tip -->
+	<div class="tip-box">提示</div>
+	<!-- 对话框 编辑分组 -->
+	<div class="dialog-box js-dialog-box" store="deit-group">
+		<i class="close"></i>
+		<div class="title" store="add-group">添加分组</div>
+		<div class="title" store="deit-group">编辑分组</div>
+		<div class="title" store="delete">确认要删除数据吗？</div>
+		<div class="title" store="delete-group">确认删除这个分组吗？</div>
+		<div class="ctn" store="deit-group add-group">
+			<input class="group-name" type="text" maxlength="20" placeholder="请输入分组名称">
+		</div>
+		<div class="btns clear">
+			<button class="delete" store="deit-group">删除分组</button>
+			<button class="cancel" store="delete">取消</button>
+			<button class="cancel" store="delete-group">取消</button>
+			<button class="confirm on">确定</button>
+		</div>
+	</div>
+	<!-- 对话框 添加至分组 -->
+	<div class="addmegroup-box js-addmegroup-box">
+		<i class="close"></i>
+		<div class="title">添加至我的分组</div>
+		<div class="ctn">
+			<label for="addMeGroupIpt">选择分组</label>
+			<input class="group-name" id="addMeGroupIpt" type="text" maxlength="20" placeholder="选择分组或创建新的分组">
+			<ul class="megroup-list js-megroup-list js-scroll-Sb">
+				<!-- <li data-id=""><span>女装图案</span><div class="btn">添加</div></li> -->
+			</ul>
+			<div class="empty">
+				<img src="{$smarty.const.STATIC_URL2}/global/images/user/prompt.png" alt="">
+				<span>立即创建分组</span>
+			</div>
+		</div>
+		<div class="btns clear">
+			<button class="confirm">+ 确认创建分组</button>
+		</div>
+	</div>
+	<!-- 对话框 移动至分组 -->
+	<div class="movegroup-box js-movegroup-box">
+		<i class="close"></i>
+		<div class="title">移动至我的分组</div>
+		<div class="ctn">
+			<label>选择分组</label>
+			<div class="select" id="moveGroupIpt">
+				<span>选择分组</span>
+				<ul class="movegroup-list js-movegroup-list js-scroll-Sb"></ul>
+			</div>
+		</div>
+		<div class="btns clear">
+			<button class="confirm">确定移动</button>
+		</div>
+	</div>
+	<!-- 对话框 分享 on -->
+	<div class="share-box js-share-box">
+		<i class="close"></i>
+		<div class="ctn">
+			<div class="no-copy">
+				<label>分享形式：</label>
+				<ul class="radio">
+					<li class="on" data-id="1">私密仅拥有分享码的用户可以查看</li>
+					<li data-id="0">公开 任何人都可查看</li>
+				</ul>
+			</div>
+			<div class="no-copy">
+				<label class="sel">有效期：</label>
+				<div class="select" id="shareIpt">
+					<span class="on" data-id="1">1天</span>
+					<ul class="share-list js-share-list">
+						<li data-id="1">1天</li>
+						<li data-id="7">7天</li>
+						<li data-id="30">一个月</li>
+						<li data-id="0">永久</li>
+					</ul>
+				</div>
+			</div>
+			<div class="copy-item yq-link">
+				<label class="sel" style="margin-right: 14px;">链接：</label>
+				<input type="text" placeholder="生成链接" readonly="readonly">
+			</div>
+			<div class="copy-item yq-code">
+				<label class="sel">邀请码：</label>
+				<input type="text" placeholder="邀请码" readonly="readonly">
+			</div>
+			<p class="copy-item yq-time"></p>
+		</div>
+		<div class="btns clear">
+			<button class="cancel no-copy">取消</button>
+			<button class="confirm on no-copy">确定</button>
+			<button class="confirm-copy on copy-item">复制链接及邀请码</button>
+		</div>
+	</div>
+	<!-- 对话框 分组上限 -->
+	<div class="limit-box js-group-limit-box">
+		<i class="close"></i>
+		<div class="title">创建分组数量已达上限<br>您可删除部分分组后继续创建</div>
+		<div class="btns">
+			<button class="cancel">取消</button>
+			<button class="confirm on">确定</button>
+		</div>
+	</div>
+</div>
+
+{/block}
+{block name="footer"}
+{/block}
+{block name="self"}
+<script type="text/javascript">
+	require.config({
+		paths: {
+			"master-room": ["user/master-room"],
+			"change-userinfo": ["user/change-userinfo"],
+			"ajaxform": ["lib/ajaxform/ajaxform"],
+			"perfectScrollbar": ["lib/perfect-scrollbar-1.2.min"],
+		},
+		shim: {
+			"ajaxform": {
+				deps: ["jquery"]
+			}
+		}
+	});
+	require(["jquery", "general", "msg", "ajaxform"], function (jquery, general, msg, ajaxform) {
+		$(function () {
+			var def = {
+				date: new Date(),
+				is_load: false,																						//是否上传的图
+				// content_def_height:0,
+				href_obj: general.fn.getLocationParameter() || {},
+				nav_ele: $(".js-person-list"),
+				section_ele: $(".js-div-section"),
+				fill_ele: $(".js-fill-ele"),
+				loading_ele: $(".js-loading-div"),                                                                   //加载等待
+				bg_ele: $(".js-bg-div")	                                                                            //加载等待
+			};
+			// def.content_def_height=$(".js-content-section").height();
+			// setSty(def.content_def_height);
+
+
+			// 拉取用户信息
+			general.fn.subAjax({
+				url: "/user/getuserinfo/?t=" + def.date.getTime(),
+				type: "get",
+				ctp: "application/x-www-form-urlencoded",
+				success: setUserInfo,
+				error: function (data) {
+					var ndata = data || {};
+					if (ndata.code == 1002) {
+						window.location.href = "/system/systemnotice/?type=4";
+					}
+					def.loading_ele.fadeOut(200);
+					def.bg_ele.fadeOut(400);
+				}
+			});
+
+			function setUserInfo(data) {
+				var ndata = data || {};
+				var is_yuntu = ndata.data.memo != undefined ? ndata.data.memo : false;
+				if (is_yuntu == false) {
+					var npage = def.href_obj["page"] != undefined ? def.href_obj["page"] : "masterroom-group";
+					$('.js-tab-set').remove();
+					if (npage === 'userinfo-set') {
+						window.location.replace('/user/usercenterview?page=userinfo');
+					}
+				}
+				$('.js-account-ipt1').val(ndata.data.bind_mobile);
+				def.fill_ele.each(function () {
+					var key = $(this).attr("data-key") || "";
+					if (key != "") {
+						var nval = ndata.data[key] || "";
+						if (key == "photo") {
+							$(this).attr("src", general.def.img_path + nval);
+							return;
+						}
+						if (key == "iLoginNumber") {
+							var online_num = ndata.data["Number"] != undefined ? ndata.data["Number"] : "";
+							nval = online_num + "/" + nval;
+						}
+						$(this).text(nval);
+					}
+				});
+
+				// 功能
+				var isvip = ndata.data.isvip != undefined ? ndata.data.isvip : false;
+				var narr = ndata.data.yuntu_power || [], tag = $(".js-vip-list");
+				tag.children('li').each(function () {
+					var iTplSite = ndata.data.iTplSite || '';
+					var nid = $(this).attr('data-id');
+					for (var i = 0, len = narr.length; i < len; i++) {
+						var s_column = narr[i]["sColumn"] || '';
+						var endtime = narr[i]["dEndTime"].substr(0, 10) || "";
+						endtime = endtime.replace(/-/g, "/");
+						if (nid == '5' && $.inArray('1', iTplSite) == -1) {
+							$(this).addClass("iTplSite");
+						} else if (nid == s_column) {
+							$(this).addClass("vip-item");
+							$(this).children("span").text("有效期至：" + endtime).siblings('.ktinfo').text('已开通');
+							break;
+						}
+					}
+				});
+
+				var show_txt = isvip == true ? "云图VIP会员<span>（已开通）</span>" : "普通会员";
+				$(".js-vip-show-p").html(show_txt);
+				if (isvip != true) {
+					$(".js-use-num").hide();
+				}
+				def.loading_ele.fadeOut(200);
+				def.bg_ele.fadeOut(400);
+			};
+
+			// $(window).on('resize',function(){
+			// 	general.fn.throttle(setSty,null,[def.content_def_height]);
+			// });
+			// function setSty(nh){
+			//     var wh=document.documentElement.clientHeight || document.body.clientHeight;
+			//     if(wh>nh+60){
+			//         $(".js-content-section").height(wh-60+"px");
+			//     }
+			// };
+
+
+			var npage = def.href_obj["page"] != undefined ? def.href_obj["page"] : "masterroom-group";
+			if (npage == "masterroom-group") {
+				$('.js-page[page-name~="masterroom-group"]').removeClass('hide');
+				$('.js-pages-list').children().eq(0).addClass('on').siblings().removeClass('on');
+				$('.js-lab-list').children().eq(0).addClass('on');
+				$('.js-tab2d').addClass('on');
+				require(["master-room"]);
+			} else if (npage == "masterroom-virtual") {
+				$('.js-page[page-name~="masterroom-virtual"]').removeClass('hide');
+				$('.js-pages-list').children().eq(0).addClass('on').siblings().removeClass('on');
+				$('.js-lab-list').children().eq(1).addClass('on').next().addClass('on');
+				$('.js-tab2d').addClass('on');
+				require(["master-room"]);
+			} else if (npage == "groupdetail") {
+				$('.js-page[page-name~="groupdetail"]').removeClass('hide');
+				require(["master-room"]);
+			} else if (npage == "userinfo") {
+				$('.js-page[page-name~="userinfo"]').removeClass('hide');
+				$('.js-pages-list').children().eq(1).addClass('on').siblings().removeClass('on');
+				$('.js-tab-msg').addClass('on');
+			} else if (npage == "userinfo-set") {
+				$('.js-page[page-name~="userinfo-set"]').removeClass('hide');
+				$('.js-pages-list').children().eq(1).addClass('on').siblings().removeClass('on');
+				$('.js-tab-set').addClass('on');
+				require(["change-userinfo"]);
+			}/* else if(npage=="changemobile"){
+				require(["change-mobile"]);
+				def.nav_ele.eq(1).addClass("nav-sec");
+				def.section_ele.eq(1).show().siblings(".js-div-section").hide();
+			}else if(npage=="changepassword"){
+				require(["change-password"]);
+				def.nav_ele.eq(2).addClass("nav-sec");
+				def.section_ele.eq(2).show().siblings(".js-div-section").hide();
+			} */
+
+
+
+			//上传头像
+			$(".js-upload-ele").on("change", function () {
+				$(".js-form").submit();
+			});
+
+			// 头像处理
+			$(".js-img-ele").on("load", function () {
+				// if(def.is_load==false){
+				var ow = this.width;
+				var oh = this.height;
+				var k = ow / oh;
+				var pw = $(this).parent().width();
+				var ph = $(this).parent().height();
+				var nw = 0, nh = 0;
+				if (ow >= oh) {
+					nw = ph * k;
+					$(this).css("height", ph + "px");
+					$(this).css("margin-left", (pw - nw) / 2 + "px");
+				} else {
+					nh = pw / k;
+					$(this).css("width", pw + "px");
+					$(this).css("margin-top", (ph - nh) / 2 + "px");
+				}
+				// }else{
+				// 	var src=$(this).attr("src");
+				// 	getImgSize(this,src);
+				// }
+
+			}).on("error", function () {
+				var times = $(this).attr("data-times") || 0;
+				if (times < 3) {
+					times++;
+					$(this).attr("src", general.def.img_path + "/global/images/common/" + general.def.img.header_default);
+					$(this).attr("data-times", times);
+				}
+			});
+
+			setAjaxForm();
+			// 模拟form表单提交
+			function setAjaxForm() {
+				var options = {
+					target: '#upload-src',   // target element(s) to be updated with server response 
+					beforeSubmit: function (arr, $from, options) {
+						def.loading_ele.fadeIn(200);
+						def.bg_ele.fadeIn(400);
+					},
+					dataType: "json",
+					success: function (data) {
+						if (data && data.data) {
+							var ndata = data.data || {};
+							var src = ndata.info || "";
+							def.is_load = true;
+							$(".js-img-ele").attr("src", general.def.img_path + src);
+							// $(".js-img-ele").attr("src",general.def.img_path+"/global/images/common/head-def.jpg");
+							$(".js-form")[0].reset();
+							def.loading_ele.fadeOut(200);
+							def.bg_ele.fadeOut(400);
+						}
+
+					},
+					error: function (data) {
+						// console.log("图片上传失败！");
+						def.loading_ele.fadeOut(200);
+						def.bg_ele.fadeOut(400);
+						$(".js-form")[0].reset();
+					},
+					clearForm: true,
+					url: "/user/uploadavatar/",
+					type: "post"
+					//timeout:   3000 
+				};
+
+				// bind to the form's submit event 
+				$('.js-form').submit(function () {
+					$(this).ajaxSubmit(options);
+					return false;
+				});
+				// $(".js-form").ajaxSubmit(options);
+
+			};
+
+			// 获取宽高属性
+			function getImgSize(obj, src) {
+				var img = new Image();
+				img.onload = function () {
+					var ow = this.width;
+					var oh = this.height;
+					var k = ow / oh;
+					var pw = obj.parentNode.offsetWidth - 8;
+					var ph = obj.parentNode.offsetHeight - 8;
+					var nw = 0, nh = 0;
+					if (ow >= oh) {
+						nw = ph * k;
+						obj.style.height = ph + "px";
+						obj.style.marginLeft = (pw - nw) / 2 + "px";
+					} else {
+						nh = pw / k;
+						obj.style.width = pw + "px";
+						obj.style.marginTop = (ph - nh) / 2 + "px";
+					}
+				}
+				img.src = src;
+			};
+
+		});
+	});
+</script>
+{/block}

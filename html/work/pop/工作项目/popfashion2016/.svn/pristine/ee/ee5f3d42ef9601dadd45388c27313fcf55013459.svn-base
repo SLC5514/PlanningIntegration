@@ -1,0 +1,133 @@
+{extends file="layout.html"}
+{block name="title"}{$title}{/block}
+{block name=keywords}{$keywords}{/block}
+{block name=description}{$description}{/block}
+{block name="selfcss"}
+	<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/color-analysis.css?{STATIC_CHANGE_TIME}"/>
+{/block}
+
+{block name="main"}
+
+{if !$isLogin}{* 未登录的情况 *}
+<div class="authority-color-bg">
+	<div class="authority-judge-tourist js-authority-tourist">
+		<p>为了你的图案安全请在登录后查看结果</p>
+		<div class="authority-contact">
+			<a href="javascript:void(0);" class="loginLayer login-btn" title="立即登录">立即登录</a>
+			<a href="/member/register/" target="_blank" class="reg-btn" title="注册">注册</a>
+		</div>
+	</div>
+</div>
+{elseif !$canUse}{* 普通用户次数用完的情况*}
+<div class="authority-color-bg">
+	<div class="authority-judge-ordinary js-authority-ordinary">
+		<div class="authority-text">您当前为普通用户账号，当前免费使用 <span>20</span> 次仅剩 <span>0</span> 次！</div>
+		<p>想体验更多次数欢迎拨打电话 或 直接联系在线客服</p>
+		<div class="authority-contact">
+			<a class="js-contact-qq-btn" href="javascript:void(0);" title="在线客服"><i></i>在线客服</a>
+			<span>电话咨询 <em>4008-210-500</em></span>
+		</div>
+	</div>
+</div>
+{else}{* 可以正常访问的情况 *}
+	{if $trialInfo}
+	<div class="w1200">
+		<div class="ordinary-try-time">
+			<p class="fl">您当前为普通用户，拥有 <span>{$trialInfo.max}</span> 次免费体验机会！还剩余 <span>{$trialInfo.free}</span> 次！</p>
+			<div class="fr">想体验更多内容拨打 <span>4008-210-500</span> 或 直接联系<a class="js-contact-qq-btn" href="javascript:void(0);" title="在线客服"><i></i>在线客服</a></div>
+		</div>
+	</div>
+	{/if}
+	<div class="analysis-contain">			
+		<div class="analysis-load js-analysis-load">
+			<div class="analysis-calculation">
+				<h2><span class="icon"></span>正在上传至“<span class="load-h">云服务</span>”进行计算</h2>
+				
+				<div class="load-list js-load-list">
+					<div class="list-pic js-list-pic">
+						<img alt="pic" />
+					</div>
+					
+					<div class="list-msg">
+						<div>
+							<ul class="js-status-list">
+								<li>正在识别图案颜色</li>
+								<li>正在识别图案花纹</li>
+								<li>正在识别图案类型</li>
+								<li>正在匹配图案颜色</li>
+								<li>正在匹配图案类型</li>
+								<li>正在匹配图案花纹</li>
+								<li>正在检索图案库中相同的颜色</li>
+								<li>正在识别图案颜色</li>
+								<li>正在识别图案花纹</li>
+								<li>正在识别图案类型</li>
+							</ul>
+						</div>
+						
+					</div>
+					
+				</div>
+
+				<p class="load-fail js-load-fail">识别失败？请<a href="javascript:location.reload();" title="刷新后重试">刷新</a>后重试</p>
+				
+			</div>
+			
+			<!-- <p>图像识别技术由码隆科技 <img src="{STATIC_URL3}/global/images/p_icon1.png" alt="icon"> 合作提供</p> -->
+			
+		</div>
+		
+		<div class="analysis-cont js-analysis-cont">
+			<div class="analysis-pie clearfix">
+				
+				<div class="pie-l">
+					<div class="pic-cont js-pic-cont">
+						<div>
+							<img alt="pic" />
+						</div>
+					</div>
+					
+					<p>如果没有找到合适的图案素<br />材，你可以调整截取区域或换<br />张图试试～</p>
+					<span class="js-end-t">搜索共耗时 0 秒</span>
+				</div>
+				
+				<div class="pie-r">
+					<h3>色彩分析</h3>
+					<div class="pie-box pie-start js-pie-box">
+						<div class="analysis-pic"></div>
+						<div class="analysis-pie" id="analysis-pie">
+							
+						</div>
+					</div>
+					<!-- <p>图像识别技术由码隆科技 <img src="{STATIC_URL3}/global/images/p_icon1.png" alt="icon"> 合作提供</p> -->
+				</div>
+				
+			</div>
+			
+			<div class="analysis-section">
+				<h2>色彩搭配款式推荐</h2>
+				
+				<div class="list-contain">
+					<ul class="sec-list js-sec-list clearfix">
+						
+					</ul>
+					
+					<ul class="analysis-list js-analysis-list clearfix">
+						
+					</ul>
+					
+					<div class="see-more js-list-more">查看更多</div>
+					
+				</div>
+				
+			</div>
+			
+		</div>		
+	</div>	
+{/if}
+{/block}
+{block name="self"}
+	<script type="text/javascript" src="{STATIC_URL3}/global/js/common/echarts.js"></script>
+	{if $canUse}
+	<script src="{STATIC_URL2}/global/js/fashion/color-analysis.js?{STATIC_CHANGE_TIME}" type="text/javascript" charset="utf-8"></script>
+	{/if}	
+{/block}

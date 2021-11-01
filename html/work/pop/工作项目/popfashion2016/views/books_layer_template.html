@@ -1,0 +1,84 @@
+<div class="pop_alert">
+    <div class="btn btn_1000" id="J_LeftRightBtn"></div>
+    <div class="pop_report clearfix">
+        <div class="pop_close pop_close_report"></div>
+        <div class="pop_report_top clearfix">
+            <div class="layerLeft shadow fl">
+                <div class="layerLeft_title"><h3 id="J_Title"></h3></div>
+                <div class="layerLeft_top">
+                    <div class="fl">
+                        <span id="J_Download"><a href="javascript:void(0);" class="top_bg grey downbtn {if isset($notDomn) && $notDomn == 1} display {/if}" id="J_DownNumContanier" data-path="" data-column="" data-id="" title="下载"><span id="downtxt">下载</span></a></span>
+                        <div href="javascript:void(0);" class="top_bg grey share_btn bdsharebuttonbox fl" style="left: 264px; width: 40px; background-color: rgb(204, 204, 204);">
+    					分享到：
+    						<a href="javascript:void(0);" class="bds_sqq" data-cmd="sqq" title="分享给QQ好友"></a>
+    						<a href="javascript:void(0);" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    						<a href="javascript:void(0);" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    						<a href="javascript:void(0);" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    						<a href="javascript:void(0);" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+    						<a href="javascript:void(0);" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="bigbox" id="J_DetailList"></div>
+            </div>
+        </div>
+        <div class="pop_report_bottom clearfix">
+            <div class="layerRight fr">
+                <div id="J_StyleInfo"></div>
+                <div id="J_Label"></div>
+                <!-- <div class="result shadow">
+                    <h3><i></i>共<span id="J_SeaNum"></span><span class="huace">搜索</span>结果</h3>
+                    <div class="resultBox" data-hook="ajaxChange">
+                        <ul id="J_MoreSeaLi" class="resultShowBox"></ul>
+                    </div>
+                </div> -->
+                <div id="J_StyleAd"></div>
+                <!--<div class="inf shadow" id="J_StyleInfo"></div>
+                <div class="keyword1 shadow" id="J_Label"></div>
+                <div class="result shadow">
+    				<h3><i></i>共<span id="J_SeaNum"></span><span class="huace">搜索</span>结果</h3>
+    				<div class="resultBox" data-hook="ajaxChange">
+    				<ul id="J_MoreSeaLi" class="resultShowBox"></ul>
+    				</div>
+    			</div>
+                <div class="add shadow" id="J_StyleAd"></div>-->
+            </div>
+        </div>
+    </div>
+	{if $t neq 'presscon'}
+    <div class="layer_down">
+        <div class="poplayer_close"></div>
+        <div class="poplayer_up"></div>
+        <div class="btnbox">
+            <a href="javascript:void(0);" class="moreRec_arrow fl"></a>
+            <a href="javascript:void(0);" class="moreRec fl" title="更多推荐">更多<br/>推荐</a>
+        </div>
+        <div class="layerblack" id="J_MoreRec"></div>
+    </div>
+	{/if}
+    <!-- 相关款式推荐图片列表 -->
+            <!-- 看大图弹层 -->
+    <div class="layer_bgBlack"></div>
+    <div class="bigImg">
+        <div class="bigpicTips">
+            <p>您可以拖拽图片到任意位置，滚动鼠标放大或缩小图片</p>
+            <p class="two_buttom">
+                <a href="javascript:void(0);" title="原图尺寸" class="original_size">原图尺寸</a>
+                <a href="javascript:void(0);" title="重置图片" class="reset_size">重置图片</a>
+                <a href="javascript:void(0);" title="直接下载" class="download_size">直接下载</a>
+            </p>
+        </div>
+        <img src="{STATIC_URL3}/global/images/layerClose.png" class="layerClose" alt="关闭">
+        <div class="layerBig ui-draggable ui-draggable-handle" id="draggable">
+            <img class="layerBigPic" id="bigImages" alt="pic">
+        </div>
+    </div>
+</div>
+<div class="shadow_black"></div>
+<div class="pop_download">
+    <div class="load_close_btn"></div>
+    <p class="title">下载文件格式</p>
+    <table width="100%" id="J_DownloadType"></table>
+</div>
+{include file="books_layer_t_template.html"}
+{include file="more_rec_template.html"}

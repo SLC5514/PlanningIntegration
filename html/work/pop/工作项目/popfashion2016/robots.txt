@@ -1,0 +1,5 @@
+User-agent:*
+Disallow:/#anchor
+Disallow:/#*
+
+Sitemap:https://www.pop-fashion.com/sitemap/sitemap.xml

@@ -1,0 +1,150 @@
+{extends file="layout.html"}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/global.css?{STATIC_CHANGE_TIME}">
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/perfect-scrollbar.css?{STATIC_CHANGE_TIME}">
+{/block}
+
+{block name="main"}
+<div class="tour_banner con_width">
+	{foreach $aTopAds as $_ad}
+    <a href="{$_ad.sLink}" {if $_ad.sNewWindow eq 1}target="_blank"{/if} title="{$_ad.sTitle}"><img src="{$_ad.sImagePath}" alt="pic"/></a>
+	{/foreach}
+    <!-- <a href="/member/register/?spid=2016080801" target="_blank"><img src="{STATIC_URL1}/global/images/banner/1500-100-2.gif?20160722"/></a> -->
+</div>
+<div class="main tour_login con_width">
+    <div class="{if $aBroadsideAd || $list}con_left{/if} fl">
+        <div class="cont_t">
+            <p class="cont_t_l"></p>
+            <div class="cont_t_r">
+                <p class="cont_p1">对不起，您正在浏览的是VIP内容...</p>
+                <p>您尚未<a class="all_login" href="/service/joinmember/" title="成为VIP会员">成为VIP会员</a>，暂时无权限查看详情，如需帮助请联系我们。</p>
+            </div>
+            <div class="clear"></div>
+            <div class="con_btn">
+                <a class="qq_btn js-contact-qq-btn" href="javascript:void(0);" title="QQ咨询"><span></span>QQ咨询</a>
+                <a href="javascript:void(0);" class="tel_btn" title="咨询电话"><span></span>咨询电话：4008 210 500</a>
+            </div>
+        </div>
+        <div class="cont_b">
+            <div class="cont_b_m">
+                <div itemscope class="cont_b_l lazyload">
+                    {if $threeImgFlag eq 1}
+                    {$data.cover}
+                    {else}
+                    <img itemprop="thumbnail" style="width:165px;height:220px" src="{$cover}" alt="pic">
+                    {/if}
+                </div>
+                <div class="cont_b_r">
+                    <div itemscope class="cont_b_r_rg">
+                        <p itemprop="name" class="theme">{$theme}</p>
+                        <div itemscope class="cont_b_cont cont_b_h">
+                            <p itemprop="description" class="cont_p">{$bookDescription}</p>
+                        </div>
+
+                        <div class="label_col">
+                            <label class="fl">标签：</label>
+                            {if $labelsOrigin == 'style'}
+                            <p class="fl">
+                                {foreach $labels as $label}
+                                <a href="{$label.dLink}" target="_blank" title="{$label.name}">{$label.name}</a>
+                                {/foreach}
+                            </p>
+                            {else}
+                            <p class="fl">
+                                {if $middlePageTags.brandName}
+                                {if $middlePageTags.brandLink && $middlePageTags.brandLink neq 'javascript:void(0);'}
+                                <a target="_blank" href="{$middlePageTags.brandLink}" title="{$middlePageTags.brandName}">{$middlePageTags.brandName}</a>
+                                {else}
+                                {$middlePageTags.brandName}
+                                {/if}
+                                {/if}
+                                <a target="_blank" href="{$middlePageTags.colLink}" title="{$middlePageTags.colName}">{$middlePageTags.colName}</a>
+                                {if $middlePageTags.regName}
+                                <a target="_blank" href="{$middlePageTags.regLink}" title="{$middlePageTags.regName}">{$middlePageTags.regName}</a>
+                                {/if}
+                                {if $middlePageTags.seaName}
+                                <a target="_blank" href="{$middlePageTags.seaLink}" title="{$middlePageTags.seaName}">{$middlePageTags.seaName}</a>
+                                {/if}
+                                {if $middlePageTags.genInfo}
+                                {foreach $middlePageTags.genInfo as $val}
+                                <a target="_blank" href="{$val.link}" title="{$val.sName}">{$val.sName}</a>
+                                {/foreach}
+                                {/if}
+                                {if $middlePageTags.indInfo}
+                                {foreach $middlePageTags.indInfo as $val}
+                                <a target="_blank" href="{$val.link}" title="{$val.sName}">{$val.sName}</a>
+                                {/foreach}
+                                {/if}
+                                {if $middlePageTags.catInfo}
+                                {foreach $middlePageTags.catInfo as $val}
+                                <a target="_blank" href="{$val.link}" title="{$val.sName}">{$val.sName}</a>
+                                {/foreach}
+                                {/if}
+                                {if $middlePageTags.scatInfo}
+                                {foreach $middlePageTags.scatInfo as $val}
+                                <a target="_blank" href="{$val.link}" title="{$val.sName}">{$val.sName}</a>
+                                {/foreach}
+                                {/if}
+                                {if $middlePageTags.fairsName}
+                                <a target="_blank" href="{$middlePageTags.fairsLink}" title="{$val.sName}">{$middlePageTags.fairsName}</a>
+                                {/if}
+                                {if $middlePageTags.marketName}
+                                <a target="_blank" href="{$middlePageTags.marketLink}" title="{$val.sName}">{$middlePageTags.marketName}</a>
+                                {/if}
+                            </p>
+                            {/if}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	{if $aBroadsideAd}
+    <div itemscope class="con_right con_right_style fr">
+        <ul>
+           {foreach $aBroadsideAd as $_ads}
+			<li>
+				<a href="{$_ads.sLink}" rel="nofollow" {if $_ads.sNewWindow}target="_blank"{/if} title="{$_ads.sTitle}">
+                   <img src="{$_ads.sImagePath}" alt="pic"/>
+				</a>
+			</li>
+			{/foreach}
+        </ul>
+    </div>
+	{else}
+    <div itemscope class="con_right fr">
+        <ul>
+            {foreach $list as $val}
+            <li>
+                <a itemprop="url" class="img_a" rel="nofollow" href="{$val.link}" target="_blank" title="{$val.title}">
+                    <img alt="{$val.title}" itemprop="thumbnail" src="{$val.smallPath}"/>
+                </a>
+                <p itemscope class="title"><a itemprop="url" rel="nofollow" href="javascript:void(0);" title="{$val.title}">{$val.title}</a></p>
+                <span itemprop="sign" class="try_read">免费</span>
+            </li>
+            {/foreach}
+        </ul>
+    </div>
+    {/if}
+
+    <div class="clear"></div>
+    <p class="cont_b_rp">
+        <img src="{STATIC_URL2}/global/images/login_txt.png" alt="pic"/>
+    </p>
+</div>
+{/block}
+
+{block name="self"}
+<script type="text/javascript" src="{STATIC_URL2}/global/js/fashion/work.js?{STATIC_CHANGE_TIME}"></script>
+{/block}
+
+{block name="other"}
+{literal}
+<script type="text/javascript">
+    $(function(){
+        $(".lazyload img").lazyload({effect : "fadeIn"});
+    });
+</script>
+{/literal}
+{/block}

@@ -1,0 +1,59 @@
+{extends file="layout.html"}
+{block name="main"}
+<div class="aboutUs">
+	<div class="ab_banner">
+		<p>
+			ABOUT US
+		</p>
+		<span>关于我们</span>
+	</div>
+	<div class="wid1200">
+		<div class="about_content">
+			<div class="content_left fl about_us_active">
+        <ul>
+          <li class="about_li cur"><a href="/service/aboutus/"><span></span><i></i>关于我们</a></li>
+          <li class="user_li on"><a href="/service/ouruser/"><span></span><i></i>我们的用户</a></li>
+          <li class="pro_li on"><a href="/service/ourproducts/"><span></span><i></i>我们的产品</a></li>
+        </ul>
+			</div>
+			<div class="content_right fl">
+				<h1 class="big_title">关于<span>我</span>们</h1>
+				<h3 class="small_title"><em></em><span>About us</span><em></em></h3>
+				<div class="web_intro_x884">
+					<p class="intro">
+						<i></i>POP服装趋势隶属于逸尚创展（上海）科技有限公司<a href="https://www.pop136.com/rename_notice.php" target="_blank" style="color: #d8b056;">[更名启事]</a>，是逸尚创展旗下高端服装趋势资讯项目，行业内实现资讯趋势O2O模式，通过<span>网站资讯（九大专区、四大板块）与书籍（五大系列）</span>提供准确的方向决策参考、全面深入的信息情报、丰富海量并可实现应用的素材资料，致力打造<span>趋势、款式、面料——所见即所得的“服饰研发必备平台</span>”。
+					</p>
+					<p class="intro_img">
+						<img src="{STATIC_URL1}/global/images/aboutus/intro_img.png">
+					</p>
+				</div>
+				<div class="web_intro_x850">
+					<div class="w850">
+						<img src="{STATIC_URL1}/global/images/aboutus/about_intro.png">
+						<div class="intro_ul1">
+							<p class="title">
+								POP团队各类产品的专家及合作的专业趋势机构，确保所预测的趋势内容和分析准确实用。无论您是专注专品类开发还是全品类企划，POP服装趋势都会给您全局方向和专业方案 。
+							</p>
+							<ul>
+								<li><i>1</i>遍布全球多方专业趋势机构的消费趋势、新兴潮流研究整合提炼；</li>
+								<li><i>2</i>囊括数以万计的T台秀场、展会订货会、零售市场、生活街拍时尚报告；</li>
+								<li><i>3</i>汇集超过4万的全球品牌，千万级款式及设计素材。</li>
+							</ul>
+						</div>
+						<div class="intro_ul2">
+							<ul>
+								<li><i>1</i><span>数据支持-</span>有数据的趋势，有报告的数据。</li>
+								<li><i>2</i><span>快反应-</span>两周一次，提前3个月的趋势快反应系列。</li>
+								<li><i>3</i><span>首创O2O-</span>首创趋势设计“O2O”，书籍与网站的链接，互补配套。</li>
+								<li><i>4</i><span>在线关联-</span>设计线索逐层聚焦，层层联想、智能推荐。</li>
+								<li><i>5</i><span>个人工作室-</span>个人工作室，个性化专属空间。</li>
+								<li><i>6</i><span>优料宝-</span>趋势款式面料即可落地实现——面料交易平台“优料宝”</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{/block}

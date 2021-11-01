@@ -1,0 +1,51 @@
+{extends file="layout.html"}"
+
+{block name="title"}东大门看款仅需5秒钟-POP服装趋势网{/block}
+{block name=keywords}POP独家推荐,韩国优质资源,东大门强力认证{/block}
+{block name=description}POP再次引入韩国优质资源，东大门每月15000+款式上新，国内直飞首尔太耗时，熬夜逛东大门太辛苦，在POP服装趋势网看东大门新款，仅需5秒钟。专人对接，专人服务，无需中韩来回奔跑，每日500+最新上市新款。{/block}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css"
+      href="{STATIC_URL2}/global/topic/20161122/css/index.css?{STATIC_CHANGE_TIME}">
+{/block}
+{block name="main"}
+<div itemscope  class="container">
+    <div itemscope  class="banner">
+        <div itemscope  class="w1000">
+            <div itemscope  class="banner_img">
+                <i></i>
+               <img src="{STATIC_URL2}/global/topic/20161122/images/banner.png"/>
+            </div>
+        </div>
+    </div>
+    <div itemscope  class="box1">
+        <div itemscope  class="w1000 clearfix">
+            <div itemscope  class="fl box1_fl">
+                <ul>
+                    <li><img itemprop="thumbnail"  src="{STATIC_URL2}/global/topic/20161122/images/g1.jpg" alt="东大门新款" title="东大门新款"/></li>
+                    <li><img itemprop="thumbnail"  src="{STATIC_URL2}/global/topic/20161122/images/g2.jpg" alt="东大门新款" title="东大门新款"/></li>
+                    <li><img itemprop="thumbnail"  src="{STATIC_URL2}/global/topic/20161122/images/g3.jpg" alt="东大门新款" title="东大门新款"/></li>
+                </ul>
+            </div>
+            <div itemscope  class="fl box1_fr">
+                <ul>
+                    <li><a href="javascript:void(0);"><i></i>专人对接，专人服务</a></li>
+                    <li><a href="javascript:void(0);"><i></i>无需中韩来回奔跑</a></li>
+                    <li><a href="javascript:void(0);"><i></i>每日 <span>500+ </span>最新上市新款</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div itemscope  class="box2">
+        <div itemscope  class="w1000">
+            <p itemprop="description" class="intake">POP再次引入 <span>韩国优质资源</span>，东大门每月 <span>15000+ </span>款式上新</p>
+            <p itemprop="description" class="save">省时 · 省力 · 省钱 就看POP</p>
+            <p itemprop="description" class="contact">咨询热线：<span>4008-210-500</span>（售前）<span>4008-210-662</span>（售后）</p>
+            <p itemprop="description" class="toLink"><a href="https://jinshuju.net/f/PnkiWU" target="_blank" itemprop="https://jinshuju.net/f/PnkiWU">点击获取最新款式 <i></i></a></p>
+        </div>
+    </div>
+</div>
+
+{include file="topic/topic_layer.html"}
+{/block}
+

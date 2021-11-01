@@ -1,0 +1,209 @@
+{extends file="layout.html"}
+{block name="selfcss"}
+	<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/industry.css?{STATIC_CHANGE_TIME}">
+    <link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/jquery-ui-datePicker.css?{STATIC_CHANGE_TIME}">
+{/block}
+
+{block name="main"}
+<div class="activity_management">
+	<div class="con_widthx1200">
+		<div class="ac_management_box clearfix">
+			<h3>
+                <a class="ac_ma {if $col == 1}click{/if}" href="/activity/manage/msgtyp_1/"><i></i>时尚教育<span></span></a>
+                <!--<a class="ag_ma no_click"><i></i>商贸对接<span></span></a>-->
+                <a class="ag_ma {if $col == 2}click{/if}" href="/activity/manage/msgtyp_2/"><i></i>商贸对接<span></span></a>
+                <a class="ae_ma" href="/activity/alliancemanage/"><i></i>精英联盟<span></span></a>
+            </h3>
+			<input type="hidden" id="col" value="{$col}">
+			<div class="ac_select_box clearfix manage_search">
+				<ul>
+					<li class="middle_li">
+						<label>活动主题：</label>
+						<div class="mg_box">
+							<div class="a_theme">
+								<input type="text" name="sTheme" value="{$sTheme}">
+							</div>
+						</div>
+					</li>
+					<li class="long_li">
+						<label>活动地区：</label>
+						<div class="mg_box">
+							<div class="common_div a_region a_activity_box">
+								<input type="hidden" name="activityArea" value="{$iActivityArea}">
+                                <span>请选择</span>
+								<ul class="act_area">
+									<li style="display: none;" data-id='0'>请选择</li>
+                                    {foreach $activityArea as $val}
+                                    <li data-id="{$val.id}" data-type="1">{$val.sName}</li>
+                                    {/foreach}
+                                </ul>
+                                <i class="a_down_ic"></i>
+							</div>
+							<div class="common_div a_region a_activity_box">
+								<input type="hidden" name="activityCity" value="{$iActivityCity}">
+                                <span id="city">请选择</span>
+                                <ul class="act_child">
+                                </ul>
+                                <i class="a_down_ic"></i>
+							</div>
+						</div>
+					</li>
+					<li class="small_li">
+						<label>审核状态筛选：</label>
+						<div class="mg_box">
+							<div class="common_div a_review a_activity_box">
+								<input type="hidden" name="iCheckStatus" value="{$iCheckStatus}">
+								<span>请选择</span>
+								<ul class="act_child">
+                                	<li style="display: none;" data-id='0'>请选择</li>
+                                    <li data-id="1">审核</li>
+                                    <li data-id="2">未审核</li>
+                                </ul>
+                                <i class="a_down_ic"></i>
+							</div>
+						</div>
+					</li>
+					<li class="middle_li">
+						<label>活动类型：</label>
+						<div class="mg_box">
+							<div class="common_div a_type a_activity_box">
+								<input type="hidden" name="activityType" value="{$iActivityType}">
+                                <span class="a_down_ic">请选择</span>
+								<ul class="act_main_type">
+									<li style="display: none;" data-id='0'>请选择</li>
+                                    {foreach $activityTypes as $key=>$val}
+                                    <li data-id="{$val.id}" data-type="3">{$val.sName}</li>
+                                    {/foreach}
+                                </ul>
+                                <i class="a_down_ic"></i>
+							</div>
+							<div class="common_div a_type2 a_activity_box">
+								<input type="hidden" name="activityChildType" value="{$iActivityChildType}">
+								<span class="a_down_ic">请选择</span>
+								<ul class="act_child">
+                                </ul>
+                                <i class="a_down_ic"></i>
+							</div>
+						</div>
+					</li>
+					<li class="long_li">
+						<label>发布时间：</label>
+						<div class="mg_box">
+							<div class="common_div a_s_time k_time_date">
+								<input type="text" name="activityBeginTime" readonly="readonly" id="datestart" value="{if $beginTime}{$beginTime}{else}请选择开始时间{/if}">
+								<i class="a_down_ic"></i>
+							</div>
+							<div class="a_s_ge">至</div>
+							<div class="common_div a_e_time">
+								<input type="text" name="activityEndTime" readonly="readonly" id="dateend" value="{if $endTime}{$endTime}{else}请选择结束时间{/if}">
+								<i class="a_down_ic"></i>
+							</div>
+						</div>
+					</li>
+					<li class="small_li">
+						<label>是否官方：</label>
+						<div class="mg_box">
+							<div class="common_div if_off a_activity_box">
+								<input type="hidden" name="iOfficial" value="{$iOfficial}">
+								<span>请选择</span>
+								<ul class="act_child">
+                                	<li style="display: none;" data-id='0'>请选择</li>
+                                    <li data-id="1">官方</li>
+                                    <li data-id="2">非官方</li>
+                                </ul>
+                                <i class="a_down_ic"></i>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="manage_btn">
+				<a href="javascript:void(0);" class="button">搜索</a>
+				<a href="/activity/publish/msgtyp_{$col}/" target="_blank"><i></i>活动发布</a>
+			</div>
+			<table width="100%">
+				<tbody>
+					<tr>
+						<th width="12%">主题</th>
+						<th width="12%">封面</th>
+						<th width="12%">活动类型</th>
+						<th width="12%">活动时间</th>
+						<th width="12%">活动地址</th>
+						<th width="12%">发布时间 / 审核时间</th>
+						<th width="12%">发布状态</th>
+						<th width="12%">审核状态</th>
+						<th width="12%">操作</th>
+					</tr>
+					{foreach $lists as $val}
+					<tr>
+						<td>{$val['sTheme']}</td>
+						<td><img src="{$val['sPosterUrl']}"></td>
+						<td>{$val['iActivityChildTypeName']}</td>
+						<td>{$val['dStartDate']} / {$val['dEndTDate']}</td>
+						{if $val['iActivityType'] == 17}
+						<td>{$val['sActivityURL']}</td>
+						{else}
+						<td>{$val['region']}</td>
+						{/if}
+						<td>{$val['dPublishDate']} / {$val['dCheckDate']}</td>
+						<td><div class="a_pass no_review no_pass">{if $val['iPublishStatus'] == 1}发布{else}未发布{/if}</div></td>
+						<td>
+                            <div class="a_pass no_review no_pass">
+                                {if $val['iCheckStatus'] == 1}审核{elseif $val['iCheckStatus'] == 2}未审核{/if}
+                                <!--<i></i><div class="a_prompt"><span>• 图片上传不清晰</span><span>• 工艺处理不匹配</span></div>-->
+                            </div>
+                        </td>
+						<td>
+                            <!--{if $val['iPublishStatus'] == 1}-->
+                            <!--<a class="editor_bl editor_gy">编辑</a>-->
+                            <!--{else}-->
+                            <!--<a href="/activity/editor/{$val['id']}/" target="_blank" class="editor_bl">编辑</a>-->
+                            <!--{/if}-->
+                            <a href="javascript:void(0)" data-id="{$val['id']}" target="_blank" class="editor_bl">编辑</a>
+                            <a href="javascript:void(0)" data-id="{$val['id']}" class="delect_rd del_activity">删除</a>
+                        </td>
+					</tr>
+					{/foreach}
+				</tbody>
+			</table>
+
+			<div class="rightc_bottom">
+				<div class="pages">
+					{$pageHtml}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{/block}
+
+{block name="self"}
+
+<script type="text/javascript" src="{STATIC_URL3}/global/js/common/jquery-ui.min.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/activity_management.js?{STATIC_CHANGE_TIME}"></script>
+
+
+{literal}
+<script>
+	$( "#datestart,#dateend" ).datepicker({
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: "yy-mm-dd",
+        monthNamesShort: ['一月','二月','三月','四月','五月','六月',
+        '七月','八月','九月','十月','十一月','十二月'],
+        dayNamesMin: ['日','一','二','三','四','五','六']
+    });
+	$(".editor_bl").click(function () {
+		var col = $("#col").val();
+		var id = $(this).attr('data-id');
+		if(col){
+		    var url = "/activity/editor/"+id+"-"+col+"/";
+		}else{
+		    var url = "/activity/editor/"+id+"/";
+		}
+
+		window.location.href=url;
+    });
+</script>
+{/literal}
+{/block}

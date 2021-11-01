@@ -1,0 +1,7 @@
+.modify{margin: 30px 50px}
+.modify span{display: block;font-size: 14px;color: #333333;margin-bottom: 25px;}
+.modify span i{width: 10px;height: 10px;display: inline-block;background: url(../../images/user/modifyLogin.png);background-position: -12px 0px;margin-right: 5px;cursor: pointer;}
+.modify span i.act{background-position: 0px 0px;}
+.modify .modify-btn{width: 225px;height: 40px;line-height: 40px;text-align: center;font-size: 16px;font-weight: bold;color: #fff;border-radius: 4px;background: #d8b056;cursor: pointer;}
+.modify .modify-btn:hover{background: #f4cb69;}
+

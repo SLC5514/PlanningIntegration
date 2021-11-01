@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="360-site-verification" content="5f7a09c76f4dbe80283ce1d9b27040e3" />
+    <meta name="pop-verification" content="{$header_token}">
+	<title>{block name="title"}{$title}{/block}</title>
+	<meta name="keywords" content="{block name=keywords}{$keywords}{/block}"/>
+	<meta name="description" content="{block name=description}{$description}{/block}"/>
+    <meta name="robots" content="all"/>
+	<meta http-equiv="pragma" name="" content="no-cache"/>
+	<meta http-equiv="cache-control" name="" content="no-cache"/>
+
+	{block name="othermeta"}{/block}
+    <link rel="canonical" href="//{$smarty.server.HTTP_HOST}{$smarty.server.REQUEST_URI}"/>
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+	<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/reset.css?{STATIC_CHANGE_TIME}">
+    <link rel="stylesheet" type="text/css" href="{STATIC_URL3}/global/css/common.css?{STATIC_CHANGE_TIME}">
+    <link rel="stylesheet" type="text/css" href="{STATIC_URL3}/global/css/common/new_common.css?{STATIC_CHANGE_TIME}">
+    <link rel="stylesheet" type="text/css" href="{STATIC_URL3}/global/css/lib/Jcrop/jquery.Jcrop.min.css?{STATIC_CHANGE_TIME}">
+	<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/global.css?{STATIC_CHANGE_TIME}">
+	<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/perfect-scrollbar.css?{STATIC_CHANGE_TIME}">
+    <link rel="stylesheet" type="text/css" href="{STATIC_URL3}/global/css/home.css?{STATIC_CHANGE_TIME}">
+    <link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/common/drag.css?{STATIC_CHANGE_TIME}">
+    <link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/user/sso_alert.css?{STATIC_CHANGE_TIME}">
+    <link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/jquery.mCustomScrollbar.css?{STATIC_CHANGE_TIME}">
+    {block name="selfcss"}{/block}
+</head>
+<body>
+
+<!-- 单点登陆弹窗 -->
+<div class="sso-box js-sso-box">
+    <div class="sso-bg"></div>
+    <div class="sso-block">
+        <div class="sso-close-parent">
+            <i class="sso-close js-sso-close"></i>
+        </div>
+        <div class="sso-con">
+            <div class="sso-header">
+                <div class="sso-h2 js-sso-h1">
+                    <div class="sso-t2">点击头像快速登录</div>
+                    <p>发现您已有账号在本地登录，可选择下面账号直接登录</p>
+                </div>
+            </div>
+            <div class="sso-content">
+                <div class="sso-c2 js-sso-c2">
+                    <ul class="sso-user-list js-sso-user-list">
+                        <!-- <li>
+                            <label><img src="" alt=""></label>
+                            <span>用户名：<span>17600747652</span></span>
+                        </li>-->
+                    </ul>
+                    <div class="sso-scrollbar js-sso-scrollbar">
+                        <div></div>
+                    </div>
+                    <div class="sso-other js-sso-other-login">
+                        其他方式登录
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sso-error">你的账号已退出，请重新登录！</div>
+</div>
+<!-- 切图弹层 -->
+<div class="file-layer js-file-layer">
+    <div class="layer-head">请框选图片主体</div>
+    <div class="layer-img js-layer-img">
+
+    </div>
+    <img src="" style="display: none;">
+    <div class="layer-bottom">
+        <span class="crop-cancel">取消</span>
+        <span class="crop-save">确定</span>
+    </div>
+</div>
+<!-- 切图蒙层 -->
+<div class="files-mongolia"></div>
+<input type="hidden" id="cropData"/>
+<input type="file" id="uploadImg"/>
+<!-- 上传图片end -->
+
+<!-- 登录弹层 -->
+<div class="pop_loginbg stu">
+    <input type="password" style="display: none;"/>
+    <div class="loginClose"></div>
+    <div class="login-title">
+        <span>欢迎登录POP趋势资讯网</span>
+    </div>
+    <div class="login-main">
+        <div class="loginClass js-loginClass" style="margin-bottom: 0px;">
+            <input type="hidden" id='login-type1'/>
+            <span class="action" data-type='1'><label><i></i>用户名登录</label><i></i></span>
+            <span data-type='2'><label><i></i>手机号登录</label></span>
+            <!-- <span data-type='3'>手机号验证码登录</span> -->
+        </div>
+        <ul style="position: relative;">
+            <p class="errorbox10" style="top:0;"></p>
+            <li>
+                <input type="text" id="account1" placeholder="请输入用户名"/>
+            </li>
+            <li style="position: relative;">
+                <input type="password" id="password1" placeholder="请输入登录密码"/>
+                <span class='code-btn js-code-btn'>获取验证码</span>
+                <!-- <em id="pwd-em1" class="pwd-display"></em> -->
+            </li>
+            <li class="l_drag js-slip-code" style="padding-top: 17px;border: none;position: relative;display: none;height: 50px;line-height: 50px;">
+                <div class="code_btn js-click-btn" data-cla=".js-puzzle-drag-content4" data-stu="1">点击按钮完成图形验证</div>
+                <div class="puzzle-drag-wraper js-drag-show" style="display: none;">
+                    <s class="drag-s"></s>
+                    <t class="drag-t"></t>
+                    <div class="puzzle-drag-content js-puzzle-drag-content4">
+                        <div class="drag-title clearfix">
+                            <span>为保证你的账户安全，请先完成图形验证</span>
+                            <span class="close js-close"></span>
+                            <span class="change js-change"><i></i>换一换</span>
+                        </div>
+                        <div class="puzzle-img-box">
+                            <div class="puzzle-img js-puzzle-img">
+                                <img>
+                            </div>
+                            <div class="puzzle-lost js-puzzle-lost">
+                                <img>
+                            </div>
+                        </div>
+                        <div class="drag-slide-nav">
+                            <div class="drag-slide-text">
+                                <div class="drag-slide-left"></div>
+                                <div class="drag-slide-center">向右滑动完成拼图</div>
+                                <div class="drag-slide-right"></div>
+                            </div>
+                            <div class="drag-slide-bar js-drag-slide-bar">
+                                <div class="drag-slide-bar-left"></div>
+                                <div class="drag-slide-bar-center"></div>
+                                <div class="drag-slide-bar-right"></div>
+                            </div>
+                            <div class="drag-slide-btn js-drag-slide-btn"></div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <label class="check-free-login stu">
+            <input type="checkbox" name="KeepPassword1" value="1" class="js-free-login1">
+            30天内免登录
+        </label>
+        <div class="login-btn js-login-btn">立即登录</div>
+        <div class="forget-pwd clearfix js-forget-pwd">
+            <div class="forget-left">
+                <a data-url="/member/findpassword/findpassword_2/" style="padding-left: 0px;">忘记密码？</a>
+                <a data-url="/member/findaccount/" style="border: none;">忘记用户名？</a>
+            </div>
+            <div class="forget-right">
+                没有账号？
+                <a data-url="/member/register/">立即注册</a>
+            </div>
+        </div>
+    </div>
+    <div class="login-bottom">
+        <span class="contact-login">如需帮助请联系：<i>4008-210-662</i></span>
+        <span>
+            <span class="js-contact-qq-btn" data-type='1' style="margin-right: 20px;cursor: pointer;"><em></em>在线客服</span>
+            <span class="js-message-on" style="cursor: pointer;"><em class="posi"></em>线上留言</span>
+        </span>
+    </div>
+    <div class="chooseUser">
+        <div class="chooseHead">
+            <span>当前手机号下有两个账号，必须勾选一个登录哦</span>
+            <s class="close js-user-close"></s>
+        </div>
+        <div class="userList clearfix">
+            <input type="hidden" id="userId1" value="" />
+            <input type="hidden" id="userDef1" value="false" />
+            <input type="hidden" id="jsJwt1" value="" />
+            <div class="userLi">
+                <div class="default" style="border-right:1px solid #f1f1f1;">
+                    <!-- <i class="js-userLi i-action"></i> -->
+                    <span>管理员账号:</span>
+                    <div class="account" style="margin-top: 10px;">
+                        <i class="js-default1"></i>
+                        <span class="js-userName1">1111137465</span>
+                    </div>
+                    <div class="js-default-action1" style="margin: 5px 0px 0px 20px;display: none;"><i style="margin-right: 5px;"></i><span>设为默认登录账号</span></div>
+                </div>
+            </div>
+            <div class="userLi">
+                <div class="default">
+                    <!-- <i class="js-userLi"></i> -->
+                    <span>设计师账号:</span>
+                    <div class="account" style="margin-top: 10px;">
+                        <i class="js-default1"></i>
+                        <span class="js-userName1">1111137465</span>
+                    </div>
+                    <div class="js-default-action1" style="margin: 5px 0px 0px 20px;display: none;"><i style="margin-right: 5px;"></i><span>设为默认登录账号</span></div>
+                </div>
+            </div>
+        </div>
+        <div style="width: 392px;" class="confirm-btn js-confirm-btn1">确认</div>
+    </div>
+</div>
+
+
+{if $title}
+ <h1 style="display: none;">{str_replace('-POP服装趋势网', '', $title)}</h1>
+{/if}
+    <!-- header start -->
+	{block name="header"}
+	    {include file="header.html"}
+	{/block}
+    <!-- header end -->
+
+    <!-- main start -->
+    {block name="main"}
+		{block name="topads"}{/block}
+		{block name="left"}{/block}
+		{block name="right"}{/block}
+	{/block}
+    <!-- main end -->
+
+    <!-- footer start -->
+	{block name="footer"}
+		{include file="footer.html"}
+	{/block}
+    <!-- footer end -->
+
+    <!-- other dom -->
+    {block name="other"}{/block}
+	<!-- popup start -->
+	{block name="popup"}{/block}
+    <!-- popup end -->
+
+    <!-- 意见反馈 -->
+    <input type="hidden" id="user-name" data-name="{$account}">
+    <div class="msg-feedback-box js-msg-feedback-box">
+        <div class="msg-feedback-con">
+            <div class="title">请帮助我们改进产品</div>
+            <p class="tips">朋友你好，你对网站有任何建议，都可以在本页面反馈，以帮助我们为你提供更好用的功能。</p>
+            <ul>
+                <li>
+                    <div class="topic">1*. 你有多大可能把<span class="appoint-word">我们这个产品</span>推荐给朋友或同事? 请从0-10分打分。</div>
+                    <div class="clearfix info">
+                        <div class="fl">极度不可能</div>
+                        <div class="fr">极度可能</div>
+                    </div>
+                    <ul class="clearfix radio-list js-msg-feedback-radio">
+                        <li>1</li>
+                        <li>2</li>
+                        <li>3</li>
+                        <li>4</li>
+                        <li>5</li>
+                        <li>6</li>
+                        <li>7</li>
+                        <li>8</li>
+                        <li>9</li>
+                        <li>10</li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="topic">2. 你觉得<span class="appoint-word">我们这个产品</span>有哪些打动你的地方?</div>
+                    <textarea class="js-msg-feedback-text1" placeholder="觉得好的地方，可以直接说出来哦！"></textarea>
+                </li>
+                <li>
+                    <div class="topic">3. 你觉得<span class="appoint-word">我们这个产品</span>还有哪些地方需要改进?</div>
+                    <textarea class="js-msg-feedback-text2" placeholder="觉得不好的地方，也请让我们知道吧！"></textarea>
+                </li>
+                <li class="btn-box js-msg-feedback-btn-box">
+                    <button data-type="0">取消</button>
+                    <button data-type="1" class="active">提交</button>
+                </li>
+            </ul>
+        </div>
+        <div class="msg-feedback-toast">感谢反馈，我们会努力为你提供更优质、更贴心的服务!</div>
+    </div>
+
+    <!-- 共用js -->
+    {block name="common"}
+    <script type="text/javascript" src="{STATIC_URL1}/global/js/common/jquery-1.9.1.min.js?{STATIC_CHANGE_TIME}"></script>
+    <script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/perfect-scrollbar.js?{STATIC_CHANGE_TIME}"></script>
+	<!--[if lte IE 8]>
+	<script type="text/javascript">
+		var is_lte_ie8=true;
+	</script>
+    <![endif]-->
+
+    <script type="text/javascript" src="{STATIC_URL2}/global/js/common/jquery.cookie.js"></script>
+    <script type="text/javascript" src="{STATIC_URL2}/global/js/common/pop-msg-1.2.js?{STATIC_CHANGE_TIME}"></script>
+    <script type="text/javascript" src="{STATIC_URL2}/global/js/common/general-1.0.js?{STATIC_CHANGE_TIME}"></script>
+    <script type="text/javascript" src="{STATIC_URL2}/global/js/common/select-1.0.js?{STATIC_CHANGE_TIME}"></script>
+    <script type="text/javascript" src="{STATIC_URL2}/global/js/fashion/jquery.inputSearch.js"></script>
+    <script type="text/javascript" src="{STATIC_URL2}/global/js/common/Lazyload.js"></script>
+    <script type="text/javascript" src="{STATIC_URL2}/global/js/common/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="{STATIC_URL2}/global/js/common/jquery.form.min.js"></script>
+    <script type="text/javascript" src="{STATIC_URL1}/global/js/common/jquery.mousewheel.js"></script>
+    <script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/jquery.masonry.min.js"></script>
+    <script type="text/javascript" src="{STATIC_URL3}/global/js/layer/layer.js"></script>
+    <script type="text/javascript" src="{STATIC_URL2}/global/js/common/drag-slide.js?{STATIC_CHANGE_TIME}"></script>
+    <script type="text/javascript" src="{STATIC_URL2}/global/js/user/login.js?{STATIC_CHANGE_TIME}"></script>
+    <script type="text/javascript" src="{STATIC_URL2}/global/js/fashion/jquery.mCustomScrollbar.concat.min.js?{STATIC_CHANGE_TIME}"></script>
+    <script type="text/javascript" src="{STATIC_URL3}/global/js/lib/Jcrop/jquery.Jcrop.min.js?{STATIC_CHANGE_TIME}"></script>
+    {block name='global'}
+    <script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/feedback.js?{STATIC_CHANGE_TIME}"></script>
+    <script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/common.js?{STATIC_CHANGE_TIME}"></script>
+    <script type="text/javascript" src="{STATIC_URL3}/global/js/common/new_common.js?{STATIC_CHANGE_TIME}"></script>
+    {/block}
+    <script type="text/javascript" src="{$smarty.const.STATIC_URL3}/global/js/lib/gt.js?{$smarty.const.STATIC_CHANGE_TIME}"></script>
+    <script>
+		// 统计参数token
+		var statistics_token = "{$statistics_token}";
+
+        var P_UserId = '{$P_UserId}';//当前登录用户ID(PS:可能是主ID,也可能是子用户ID)
+        var P_UserType = '{$P_UserType}';//用户权限类型VIP、游客、还是试用
+        var P_AccountType = '{$P_AccountType}';//用户主、子类型
+        var P_AccountId = '{$P_AccountId}';//主账号ID
+        var P_Collect = parseInt('{$P_Collect}');
+        var pid = '{$smarty.get.pid}' || '{$smarty.cookies.pidtt}';// 渠道代码
+        var static_url = '{STATIC_URL2}';
+        var is_relate = '{$is_relate}';                  //是否是个性化页面
+        var columnId = '{$columns}';
+    </script>
+    
+    {/block}
+
+    {block name="qq_layer"}
+    {if in_array($P_UserType, [4,5])}
+    <!-- <script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/qq_layer.js?{STATIC_CHANGE_TIME}"></script> -->
+    {/if}
+    {/block}
+
+    {block name="self"}{/block}
+
+    {block name="all"}
+		<input id="brandAllInfo" type="hidden" data-time="{$brandAllStaticTime}" data-domain="{STATIC_URL1}">
+		
+		{block name="adver_layer"}{/block}
+		{block name="visitor_analysis"}{/block}
+
+		<!-- 注册送好礼 start -->
+		<!-- <div class="waikuang" id="qqpromotid" style='display:none;'>
+			<div class="waibg">
+				<a class="update_img" href="javascript:void(0);"><img alt="pic"></a>
+				<a class="close" href="javascript:void(0);"></a>
+				<a class="qq_btn js-contact-qq-btn" href="javascript:void(0);"></a>
+			</div>
+		</div> -->
+		<!-- 注册送好礼 end -->
+
+		{include file="common/common_script.html"}
+	{/block}
+</body>
+</html>

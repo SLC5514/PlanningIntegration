@@ -1,0 +1,54 @@
+{assign var=cntSubTopic value=count($res.subTopic)}
+{if $cntSubTopic > 1}
+<ul class="leftnavfix">
+    {foreach $res.subTopic as $key => $topic}
+    <li onclick="javascript:document.getElementById('index_{$key}').scrollIntoView()">
+        <i></i>
+        <span class="spanHover">{$key + 1}</span>
+        <span class="spanHoverTitle">{$topic.sTitle}</span>
+    </li>
+    {/foreach}
+</ul>
+{/if}
+{foreach $res.subTopic as $key => $topic}
+<div class="indexdiv clearfix" id="index_{$key}">
+    <h3><span>{$topic.sTitle}</span></h3>
+    <div class="xq">
+		{if $topic.sDesc}
+        <p class="fl">{$topic.sDesc}</p>
+		{/if}
+    </div>
+    <div class="ullist">
+        <div class="download_box">
+            <img src="{STATIC_URL3}/global/images/down_bg.jpg" alt="icon"/>
+            <div class="down_bg">
+                <p class="title">{$topic.sTitle}</p>
+                {if $topic.zipname}
+                <a class="download_img" {if $powerDetails.P_Collect}onclick="oCommon.download('{$topic.zipname}');" 
+                {else if $powerDetails.P_UserType==1}onclick="oCommon.noPower(-2);"
+                {else}onclick="oCommon.noPower(-5);"{/if} href="javascript:void(0);" title="打包下载"><i></i>打包下载</a>
+                {else}
+                <a class="download_img cur" href="javascript:void(0);" title="下载包生成中"><i></i>下载包生成中</a>
+                {/if}
+            </div>
+        </div>
+        <ul>
+            <li class="display_none"></li>
+            {foreach $topic.images as $image}
+            <li>
+                <a target="_blank" href="{$image.link}" class="lazyload" title="查看详情">
+                    <img src="{STATIC_URL3}/global/images/loading/search_loding.gif" data-original="{STATIC_URL3}{$image.imgurl}" alt="pic">
+                    <div class="divhover">
+                        <p class="hoverp1">{$image.colsName}</p>
+                        <p class="hoverp2">{$image.genderName}</p>
+                        <p class="hoverp3">{$image.brandName}</p>
+                        <p class="hoverp4">{$image.sCategoryName} {$image.sSubcategoryName}</p>
+                        <p class="hoverp5"><i></i></p>
+                    </div>
+                </a>
+            </li>
+            {/foreach}
+        </ul>
+    </div>
+</div>
+{/foreach}

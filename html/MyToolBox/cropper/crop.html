@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="./cropper.min.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .cropper-container {
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    .cropper-point.point-se {
+      width: 5px;
+      height: 5px;
+    }
+
+    .crop-content {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      min-width: 600px;
+      min-height: 600px;
+      display: flex;
+    }
+
+    #crop-box {
+      width: 100%;
+      height: 100%;
+      flex: 1;
+    }
+
+    #crop-img {
+      max-width: 100%;
+      display: none;
+    }
+
+    .side {
+      width: 300px;
+      height: 100%;
+      background: #e3e3e3;
+      position: relative;
+      padding: 0 20px;
+      box-sizing: border-box;
+    }
+    .side>h1{font-size: 18px;text-align: center;border-bottom: 1px solid;margin: 0;padding: 0;height: 50px;line-height: 50px;}
+    .side>.close{position: absolute;top: 0;right: 0;width: 50px;height: 49px;line-height: 49px;text-align: center;background: #fff;border: 1px solid;font-style: normal;cursor: pointer;}
+    .side>ul{list-style: none;margin: 20px 0 0;padding: 0;}
+    .side>ul>li{margin-bottom: 20px;}
+    .side>ul>li>button{width: 120px;height: 40px;margin: 0;padding: 0;outline: none;}
+    .side>ul>li>button+button{margin-left: 15px;}
+    .side>ul>li>select{width: 100%;height: 40px;}
+    .side>ul>li.item>label{display: inline-block;width: 50px;text-align: right;font-size: 14px;margin-right: 5px;}
+    .side>ul>li.item>button{width: 90px;height: 30px;}
+    .side>ul>li.item>button.on{background: #333;color: #fff;}
+    .side>.btns{position: absolute;bottom: 100px;}
+    .side>.btns>button{width: 120px;height: 40px;margin: 0;padding: 0;outline: none;}
+    .side>.btns>button+button{margin-left: 15px;}
+    .side>.btns>button.save{background: #169BD5;color: #fff;}
+  </style>
+</head>
+
+<body>
+  <div class="crop-content">
+    <div id="crop-box">
+      <img src="https://www.armaniexchange.com/12/12363774jg_10_b.jpg" id="crop-img">
+    </div>
+    <div class="side">
+      <i class="close">X</i>
+      <h1>裁剪和旋转</h1>
+      <ul>
+        <li>
+          <button>旋转</button>
+          <button>翻转</button>
+        </li>
+        <li>
+          <select name="aspect-ratio" id="aspect-ratio">
+            <option value="1">纵横比 4:3</option>
+            <option value="2">纵横比 1:1</option>
+          </select>
+        </li>
+        <li class="item js-tab" data-type="proportion">
+          <label>比例:</label>
+          <button class="on">固定</button>
+          <button>不固定</button>
+        </li>
+        <li class="item js-tab" data-type="quantity">
+          <label>数量:</label>
+          <button class="on">单图</button>
+          <button>多图</button>
+        </li>
+        <li class="item js-tab" data-type="cropbox">
+          <label>裁剪框:</label>
+          <button class="on">图内</button>
+          <button>全局</button>
+        </li>
+        <li class="item js-tab" data-type="save">
+          <label>保存:</label>
+          <button class="on">大图</button>
+          <button>缩略图</button>
+        </li>
+      </ul>
+      <div class="btns">
+        <button class="save">保存</button>
+        <button>取消</button>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="./jquery-1.12.4.min.js"></script>
+<script src="./cropper.min.js"></script>
+<script>
+  $(function () {
+    // 声明 ========================================
+    var cropperCol;
+    var cropBox = $('#crop-box')
+      , cropImg = $('#crop-img');
+    var orgImgW = 600
+      , imgTop = 100
+      , cropBoxW = cropBox.width();
+    var proportionNum = 4 / 3 // 比值
+      , proportionType = true // 固定
+      , quantityType = true // 单图
+      , cropboxType = true; // 图内
+    var viewMode = 1; // 视图模式（图内/全局）
+
+    // 执行 ========================================
+    cropperInit();
+
+    // 事件 ========================================
+    // 手动居中
+    window.addEventListener('resize', function () {
+      var count = cropBox.width() - cropBoxW;
+      cropBoxW = cropBox.width();
+      cropperCol.initContainer();
+      // 设置图片居中
+      cropperCol.setCanvasData({
+        left: cropperCol.getCanvasData().left + count / 2
+      });
+      // 设置裁剪框居中
+      cropperCol.setCropBoxData({
+        left: cropperCol.getCropBoxData().left + count / 2
+      })
+      cropperCol.initCropBox();
+    })
+
+    // tab切换事件
+    $('.js-tab').on('click', 'button', function() {
+      $(this).addClass('on').siblings().removeClass('on');
+      tabClick($(this).parent().data().type, $(this).index());
+    })
+
+    // 方法 ========================================
+    // tab方法判断
+    function tabClick(type, idx) {
+      console.log(cropperCol)
+      switch (type) {
+        // 比例
+        case 'proportion': 
+        backIfelse(idx <= 1, [tabProportion], [proportionNum, NaN]);
+        break;
+        // 数量
+        case 'quantity': 
+        backIfelse(idx <= 1, [tabQuantity], [true, false]);
+        break;
+        // 裁剪框
+        case 'cropbox': 
+        backIfelse(idx <= 1, [tabCropbox], [1, 0]);
+        break;
+        // 保存
+        case 'save': break;
+        default: break;
+      }
+    }
+
+    // tab切换判断
+    function backIfelse(bool, fn, parames) {
+      if (bool) {
+        fn[0] && fn[0](parames[0] && parames[0]);
+      } else {
+        fn.length > 1 ? fn[1] && fn[1](parames[1] && parames[1]) : fn[0] && fn[0](parames[1] && parames[1]);
+      }
+    }
+
+    // tab比例调整
+    function tabProportion(num) {
+      var oldCropBox = cropperCol.getCropBoxData();
+      cropperCol.setAspectRatio(num);
+      cropperCol.setCropBoxData(oldCropBox);
+    }
+
+    // tab数量调整
+    function tabQuantity(bool) {
+      quantityType = bool;
+    }
+
+    // tab裁剪框调整
+    function tabCropbox(val) {
+      var containerData = cropperCol.getContainerData();
+      var canvasData = cropperCol.getCanvasData();
+      viewMode = val;
+      cropperCol.options.viewMode = viewMode;
+      if (val == 0) { // 全局
+        cropperCol.limited = false;
+        cropperCol.canvasData.minWidth = 0;
+        cropperCol.canvasData.minHeight = 0;
+        cropperCol.cropBoxData.maxWidth = containerData.width;
+        cropperCol.cropBoxData.maxHeight = containerData.height;
+      } else { // 图内
+        cropperCol.limited = true;
+        if (cropperCol.canvasData.width < cropperCol.cropBoxData.width || cropperCol.canvasData.height < cropperCol.cropBoxData.height) {
+          var canvasbili = cropperCol.canvasData.width / cropperCol.canvasData.height;
+          var cropBoxbili = cropperCol.cropBoxData.width / cropperCol.cropBoxData.height;
+          if (canvasbili > cropBoxbili) { // 图宽
+            console.log(canvasData.height * proportionNum)
+            cropperCol.setCropBoxData({
+              height: canvasData.height,
+              left: canvasData.left + (canvasData.width - canvasData.height * proportionNum) / 2,
+              top: canvasData.top
+            })
+          } else { // 框宽
+            cropperCol.setCropBoxData({
+              width: canvasData.width,
+              left: canvasData.left,
+              top: canvasData.top
+            })
+          }
+          cropperCol.initCropBox();
+        }
+      }
+    }
+
+    // 裁剪初始化
+    function cropperInit() {
+      cropperCol = null;
+      cropperCol = new Cropper(cropImg[0], {
+        minContainerWidth: orgImgW, // 容器的最小宽度
+        // minCanvasWidth: orgImgW, // 画布的最小宽度（图像包装器）
+        viewMode: viewMode, // 定义裁剪器的视图模式
+        dragMode: 'move', // 定义裁剪器的拖动模式
+        aspectRatio: 4 / 3, // 设置裁剪框的宽高比
+        autoCropArea: 1, // 定义自动裁剪区域大小
+        autoCrop: false, // 在初始化时自动裁剪图像
+        responsive: false, // 调整窗口大小时，重新渲染裁剪器
+        // preview: '.preview', // 添加额外的元素（容器）进行预览
+        ready: function () {
+          var containerData = this.cropper.getContainerData();
+          // 设置图片默认展示宽度及顶部距离并居中
+          this.cropper.setCanvasData({
+            width: orgImgW,
+            left: (containerData.width - orgImgW) / 2,
+            top: imgTop
+          });
+          // 绘制裁剪框
+          this.cropper.crop();
+          // 设置裁剪框
+          if (viewMode == 1) {
+            this.cropper.setCropBoxData({
+              left: (containerData.width - this.cropper.getCropBoxData().width) / 2
+            });
+          } else {
+            var canvasData = this.cropper.getCanvasData();
+            this.cropper.setCropBoxData({
+              width: canvasData.width,
+              height: canvasData.height,
+              left: canvasData.left,
+              top: canvasData.top
+            });
+          }
+        },
+        crop: function (event) {
+          // console.log(event.detail.x);
+          // console.log(event.detail.y);
+          // console.log(event.detail.width);
+          // console.log(event.detail.height);
+          // console.log(event.detail.rotate);
+          // console.log(event.detail.scaleX);
+          // console.log(event.detail.scaleY);
+        },
+        // zoom: function (event) {
+        //   console.log(cropperCol.getImageData())
+        // }
+      });
+    }
+
+  })
+</script>
+
+</html>

@@ -1,0 +1,56 @@
+<!-- 底部弹层 -->
+<div class="col-footer-layer home-footer-layer js-col-footer-layer">
+    <div class="footer clearfix">
+        <div class="f-contact-box">
+            <div class="f-contact-icon"></div>
+            <div class="f-contact-txt">
+                <p>4008-210-500</p>
+                <div>限时免费领取POP服装趋势<i></i>使用</div>
+            </div>
+        </div>
+        <div class="f-input-box">
+            <div class="f-phone-input">
+                <span>请输入正确的手机号</span>
+                <input id="phone-area" type="text" maxlength="11" placeholder="输入您的手机号码免费领取"/>
+            </div>
+            <div class="f-type-input">
+                <span>请选择企业类型</span>
+                <input id="type-area" type="text" placeholder="请选择企业类型" readonly="readonly">
+                <i></i>
+                <div class="type-downlist">
+                    <a data-val="1">企业用户</a>
+                    <a data-val="2">个人设计师</a>
+                    <a data-val="3">学生</a>
+                </div>
+            </div>
+            <div class="f-sms-input">
+                <span class="js-msg-sms">请输入短信验证码</span>
+                <input id="sms-area" type="text" placeholder="请输入短信验证码"/>
+                <i></i>
+                <a class="get-sms js-get-sms">获取验证码</a>
+            </div>
+        </div>
+        <div class="foot-btn js-free-get">提交申请</div>
+    </div>
+</div>
+<!-- 蒙层 -->
+<div class="col-trials_layer js-col-trials"></div>
+<!-- 提交失败 -->
+<div class="col-sem-fail js-col-sem-layer">
+    <span>提交失败</span>
+    <label>再试着重新填写一次吧 </label>
+    <div class="fail-btn js-col-close" data-sta='1'>我知道啦</div>
+    <div class="close js-col-close" data-sta='1'></div>
+</div>
+<!-- 提交成功 -->
+<div class="col-sem-success js-col-sem-success">
+    <span class="success-txt">提交成功</span>
+    <label class="success-txt">免费试用名额有限<br/>可通过电话或在线咨询立即开通</label>
+    <div class="success-contact">
+        <a class="success-qq js-contact-qq-btn" href="javascript:void(0);">QQ咨询</a>
+        <a class="success-tel">4008-210-500</a>
+    </div>
+    <p class="success-infor">不急，先体验网站内容</p>
+    <a class="success-reg" href="/member/register/">注册</a>
+    <div class="close js-col-close" data-sta='1'></div>
+</div>

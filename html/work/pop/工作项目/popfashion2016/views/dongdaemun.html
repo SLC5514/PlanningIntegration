@@ -1,0 +1,116 @@
+{extends file="layout.html"}
+{block name="title"}{$title}{/block}
+{block name=keywords}{$keywords}{/block}
+{block name=description}{$description}{/block}
+{block name="selfcss"}
+	<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/per.css?{STATIC_CHANGE_TIME}">
+{/block}
+{block name="self"}
+	<script src="{STATIC_URL2}/global/js/common/DatePicker/WdatePicker.js"></script>
+{/block}
+
+{block name="main"}
+<input type="hidden" id="rootUrl" value="{$rootUrl}">
+<div class="package_banner"></div>
+<div class="package_contain">
+	{if $userType eq 5}
+	<div class="overdue_prompt">
+		<span class="sorry_ic fl"></span>
+		<div class="prompt_info fl">
+			<p class="im_p">对不起，韩国东大门新款数据包下载权限为会员服务！</p>
+			<p class="sg_p">如果你已购买本服务，请<a class="all_login loginLayer" href="javascript:void(0);" title="登录">登录</a>相关账号再进入本页面...</p>
+			<p class="contact_p">如果您想购买本服务，可联系<a class="qq_ic js-contact-qq-btn" href="javascript:void(0);" rel="nofollow" title="QQ咨询"><i></i>QQ咨询</a><a class="tel_ic" href="javascript:void(0);" title="登录"><i></i>咨询电话：4008 210 500</a></p>
+		</div>
+	</div>
+	{elseif $isOpen eq 1 && $isValidity eq 0}
+	<div class="overdue_prompt">
+		<span class="sorry_ic fl"></span>
+		<div class="prompt_info fl">
+			<p class="im_p">对不起，您购买的韩国东大门新款数据包下载权限已逾期！</p>
+			<p class="sg_p">您可以通过日期查询功能，下载之前购买的数据包</p>
+			<p class="contact_p">如果您想续约本服务，可联系<a class="qq_ic js-contact-qq-btn" href="javascript:void(0);" rel="nofollow" title="QQ咨询"><i></i>QQ咨询</a><a class="tel_ic" href="javascript:void(0);" title="咨询电话"><i></i>咨询电话：4008 210 500</a></p>
+		</div>
+	</div>
+	{elseif $isOpen eq 0}
+	<div class="overdue_prompt">
+		<span class="sorry_ic fl"></span>
+		<div class="prompt_info fl">
+			<p class="im_p">对不起，韩国东大门新款数据包下载权限为收费服务！</p>
+			<p class="contact_p">如果您想购买本服务，可联系<a class="qq_ic js-contact-qq-btn" href="javascript:void(0);" rel="nofollow" title="QQ咨询"><i></i>QQ咨询</a><a class="tel_ic" href="javascript:void(0);" title="咨询电话"><i></i>咨询电话：4008 210 500</a></p>
+		</div>
+	</div>
+	{/if}
+	<div class="time_box">
+		<ul>
+			<li class="date_start_li">
+				<label>开始日期：</label>
+				<div class="date_input">
+					<i></i>
+					<input type="text" name="startTime" value="{$aCondition.st}" readonly="true" {literal}onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" {/literal}>
+				</div>
+			</li>
+			<li class="date_end_li">
+				<label>结束日期：</label>
+				<div class="date_input"><i></i><input type="text" name="endTime" value="{$aCondition.et}" readonly="true" {literal}onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" {/literal}>
+				</div>
+			</li>
+			<li class="query_li submit">
+				<a href="javascript:void(0);" title="查询">查询</a>
+			</li>
+		</ul>
+	</div>
+	<div class="table_contain">
+		<table width="100%">
+			<tbody>
+				<tr>
+					<th width="20%">下载包描述</th>
+					<th width="30%">更新日期</th>
+					<th width="30%">下载链接</th>
+					<th width="20%">提取密码</th>
+				</tr>
+				{foreach $aList as $_key => $_list}
+				<tr class="{if $_key%2 == 0}bg_gray{/if}{if $_list.isPower neq 1} no_click{/if}">
+					<td>{$_list.sDescribe}</td>
+					<td>{$_list.dValidTime}</td>
+					<td><a href="{if $_list.isPower eq 1}{$_list.sLink}{else}javascript:void(0);{/if}" title="立即下载">立即下载</a></td>
+					<td>{if $_list.isPower eq 1}{$_list.sPassword}{else}*****{/if}</td>
+				</tr>
+				{/foreach}
+			</tbody>
+		</table>
+	</div>
+</div>
+<div class="rightc_bottom">
+	<div class="pages">
+		{$pageHtml}
+	</div>
+</div>
+{/block}
+
+{block name="other"}
+{literal}
+<script>
+var rootUrl = $("#rootUrl").val();
+ $(".submit").click(function(){
+	var url;
+	var st = $.trim($("input[name=startTime]").val());
+	var et = $.trim($("input[name=endTime]").val());
+	st = st.replace(/\-/ig,'');
+	et = et.replace(/\-/ig,'');
+	if( st && et ){
+		url = rootUrl+'st_'+st+'-'+'et_'+et+'/#anchor';
+	}
+	else if( st ){
+		url = rootUrl+'st_'+st+'/#anchor';
+	}
+	else if( et ){
+		url = rootUrl+'et_'+et+'/#anchor';
+	}else{
+		
+		url = rootUrl+'#anchor';
+	}
+	window.location.href=url;
+ })
+</script>
+{/literal}
+{/block}

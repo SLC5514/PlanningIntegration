@@ -1,0 +1,96 @@
+<!-- 侧边导航 -->
+{if !$isPopMall}
+<div class="nav_fixed">
+	<ul>
+		<li class="zixun-icon">
+			<a class="js-contact-qq-btn" href="javascript:void(0);" data-type="{if $P_UserType|in_array:[1,2]}after{/if}" title="咨询">咨询</a>
+		</li>
+		<li class="qq_icon lix1200">
+            <a class="js-contact-qq-btn" href="javascript:void(0);" data-type="{if $P_UserType|in_array:[1,2]}after{/if}" rel="nofollow" title="咨询"></a>
+            {if !empty($P_UserType) && $P_UserType|in_array:[1,2]}
+            <div class="qq_box show_left">售后小秘书</div>
+            {else}
+            <div class="qq_box show_left">在线咨询</div>
+            {/if}
+            <i></i>
+        </li>
+		<li class="tel_before_icon lix1200">
+			<div class="child show_left">
+				<span>售前客服</span>
+				<em>4008 210 500</em>
+			</div>
+			<i></i>
+		</li>
+		<li class="tel_after_icon lix1200">
+			<div class="child show_left">
+				<span>售后小秘书</span>
+				<em>4008 210 662</em>
+			</div>
+			<i></i>
+		</li>
+		<li class="pop-map-icon js-pop-map">
+			<div class="arrow-map-icon js-arrow-map"></div>
+			<div class="map-contain js-map-show">
+				<div class="map-img js-map-img">
+					<!--改为js动态添加-->
+					<!--<iframe src="" width="370" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>-->
+					<a href="/service/address/" target="_blank" title="查看大图"><img src="//api.map.baidu.com/mapCard/img/bigMapIcon.jpg" alt="icon">查看大图</a>
+				</div>
+				<div class="map-contact">
+					<h2>逸尚创展（上海）科技有限公司</h2>
+					<p>电话：4008-210-500</p>
+					<p>传真：021-64083123</p>
+					<p>E-mail：service@pop136.com</p>
+				</div>
+				<a href="http://www.pop136.com/" target="_blank" title="了解更多">了解更多</a>
+			</div>
+		</li>
+		<li class="qq_icon bj_icon lix1200">
+            <!-- data-type="{if $P_UserType|in_array:[1,2]}after{/if}" -->
+			<a class="" href="/member/leavemessage"  rel="nofollow" title="咨询"></a>
+		</li>
+		<li class="rqcode_icon">
+			<div class="rqcode_img show_left">
+        <div class="tab_box clearfix js_side_tab">
+            <div class="item fl on">微信小助手</div>
+            <div class="item fl">下载趋势APP</div>
+        </div>
+        <div class="tab_content js_side_tabcon">
+            <div class="item clearfix on">
+                <div class="fl">
+                <img src="{STATIC_URL1}/global/images/QRcode/weixin_code.jpg?{STATIC_CHANGE_TIME}" alt="微信小助手">
+                </div>
+                <div class="fl right">
+                <div class="hline"></div>
+                <span>添加官方小秘书</span>
+                <span>随时随地了解最新趋势</span>
+                </div>
+            </div>
+            <div class="item clearfix">
+                <div class="fl">
+                <img class="trend" src="{STATIC_URL1}/global/images/QRcode/app_code.png?{STATIC_CHANGE_TIME}" alt="趋势APP">
+                </div>
+                <div class="fl right">
+                <div class="hline"></div>
+                <span>下载趋势APP</span>
+                <span>让趋势预见流行</span>
+                </div>
+            </div>
+        </div>
+			</div>
+			<i></i>
+		</li>
+		<li class="new-icon lix1200 js-get-new-trend">
+			<div class="new-icon-box"></div>
+			<div class="new-box show_left">最新趋势</div>
+			<i></i>
+		</li>
+		<li class="backTop" id="backTop"></li>
+	</ul>
+	{if $P_UserType eq 5 || $P_UserType eq 4}
+	<div class="nav_trial js-new-trend-enter">
+		<span>免费试读</span>
+	</span>
+	{/if}
+</div>
+{/if}

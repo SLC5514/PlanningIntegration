@@ -1,0 +1,267 @@
+<!--灵感报告与灵感图库(暂无) 90与8同指灵感源-->
+{if $columnId|in_array:[90,91]}
+<div class="select-width-content js-selected-box">
+    {if $tips}
+    <div class="rightc_s_t clearfix">
+        <div class="keycho">
+            <span class="yixz">您已选择：</span>
+            <div class="key_allbox fl">
+                {$j = 0}
+                {foreach $tips as $key=>$tip}
+                {if $j == 0}
+                <!-- 灵感源栏目 -->
+                <div class="keyWord keyWord_downlist column-nav-downlist">
+                    {foreach $columns as $key=>$column}
+                    {if $key == 8 }
+                    {if $key == $columnPid}
+                    <a class="keyW fl clickme del" href="javascript:void(0);">栏目: 灵感源<em class="downlist_icon"></em></a>
+                    {else}
+                    <a class="keyW fl clickme del" href="javascript:void(0);">栏目: {$column.sName}<em class="downlist_icon"></em></a>
+                    {/if}
+                    {/if}
+                    {/foreach}
+                    <div class="downlist">
+                        {foreach $columns as $key=>$column}
+                        {if $key != 8}
+                        {if $key == $columnPid}
+                        <a href="{$column.sLink}">灵感源</a>
+                        {else}
+                        <a href="{$column.sLink}">{$column.sName}</a>
+                        {/if}
+                        {/if}
+                        {/foreach}
+                    </div>
+                </div>
+                {/if}
+                {$j = $j + 1}
+                <!--关键字-->
+                <div class="keyWord keyWord_downlist">
+                    <a class="keyW fl clickme del auto_sx" href="{$tip.link}" title="{$tip.value}">{$tip.name}:<span> {$tip.value}{$tip.em}</span></a>
+                    <!--性别行业的特殊处理-->
+                    {if $tip.sub}
+                    {else}
+                    <i class="fl del_self" data-url="{$tip.link}"></i>
+                    {/if}
+                    <div class="downlist">
+                        {foreach $tip.sub as $sub}
+                        <a href="javascript:void(0);" title="{$sub.value}" id="gi_{$sub.type}_{$sub.key}">{$sub.value}</a>
+                        {/foreach}
+                    </div>
+                </div>
+                {/foreach}
+                <a class="delefilter clickme click_gen_ind" href="{$clearAll}"><i></i>清空筛选</a>
+            </div>
+            <div class="fr search-key-scroll selected-key-scroll js-selected-key-scroll">
+                <div class="style-search-box">
+                    <input type="text" class="fl js-input-search" growing-track="true" placeholder="搜索你要的：季节/品牌/单品">
+                    <!-- <input type="button" class="fr js-sear"> -->
+                    <img src="{STATIC_URL2}/global/images/lists/search.png" class="sear fl js-sear">
+                    {if isset($keys)}
+                    <div class="search-downdrop js-search-downdrop">
+                        <span class="fl">热门搜索：</span>
+                        <div class="search-key fl">
+                            {foreach $keys as $key}
+                            <a class="clickme" href="{$key.link}">{$key.name}</a>
+                            {/foreach}
+                        </div>
+                    </div>                          
+                    {/if}
+                </div>
+            </div>
+        </div>    				
+    </div>
+    {else}
+    <div class="rightc_s_t clearfix">
+        <div class="keycho">
+            <span class="yixz">您已选择：</span>
+            <div class="key_allbox fl">
+                <!-- 灵感源 -->
+                <div class="keyWord keyWord_downlist column-nav-downlist">
+                    {foreach $columns as $key=>$column}
+                    {if $key == 8}
+                    {if $key == $columnPid}
+                    <a class="keyW fl clickme del" href="javascript:void(0);">栏目: 灵感源<em class="downlist_icon"></em></a>
+                    {else}
+                    <a class="keyW fl clickme del" href="javascript:void(0);">栏目: {$column.sName}<em class="downlist_icon"></em></a>
+                    {/if}
+                    {/if}
+                    {/foreach}
+                    <div class="downlist">
+                        {foreach $columns as $key=>$column}
+                        {if $key != 8}
+                        {if $key == $columnPid}
+                        <a href="{$column.sLink}">灵感源</a>
+                        {else}
+                        <a href="{$column.sLink}">{$column.sName}</a>
+                        {/if}
+                        {/if}
+                        {/foreach}
+                    </div>
+                </div>
+                <!-- /灵感源 -->
+            </div>
+            <div class="fr search-key-scroll selected-key-scroll js-selected-key-scroll">
+                <div class="style-search-box">
+                    <input type="text" class="fl js-input-search" growing-track="true" placeholder="搜索你要的：季节/品牌/单品">
+                    <img src="{STATIC_URL2}/global/images/lists/search.png" class="sear fl js-sear">
+                    {if isset($keys)}
+                    <div class="search-downdrop js-search-downdrop">
+                        <span class="fl">热门搜索：</span>
+                        <div class="search-key fl">
+                            {foreach $keys as $key}
+                            <a class="clickme" href="{$key.link}">{$key.name}</a>
+                            {/foreach}
+                        </div>
+                    </div>                          
+                    {/if}
+                </div>
+            </div>
+        </div>
+    </div>
+    {/if}
+    <div class="rightc_s js-rightc-s clearfix" >
+        <span class="aspan_load"><img src="/global/images/5-121204193934-50.gif" />&nbsp;筛选项加载中，请稍等...</span>
+        <div class="fr search-key-scroll js-search-key-scroll">
+            <div class="style-search-box">
+                <!-- ID重复  search改为search1-->
+                <input type="text" class="fl js-input-search" growing-track="true" placeholder="搜索你要的：季节/品牌/单品">
+                <img src="{STATIC_URL2}/global/images/lists/search.png" class="sear fl js-sear">
+                {if isset($keys)}
+                <div class="search-downdrop js-search-downdrop">
+                    <span class="fl">热门搜索：</span>
+                    <div class="search-key fl">
+                        {foreach $keys as $key}
+                        <a class="clickme" href="{$key.link}">{$key.name}</a>
+                        {/foreach}
+                    </div>
+                </div>                          
+                {/if}
+            </div>
+        </div>
+    </div>
+</div>
+{/if}
+<!--/灵感报告与灵感图库-->
+<!--灵感视频-->
+{if $columnId==116}
+<div class="select-width-content select-width-content2 js-selected-box">
+    {if $tips}
+    <div class="rightc_s_t clearfix">
+        <div class="keycho">
+            <span class="yixz">您已选择：</span>
+            <div class="key_allbox fl">
+                {$j = 0}
+                {foreach $tips as $key=>$tip}
+                <!--灵感视频-->
+                {if $j == 0}
+                <div class="keyWord keyWord_downlist column-nav-downlist">
+                    {foreach $columns as $key=>$column}
+                    {if $key == $columnId}
+                    {if $key == $columnPid}
+                    <a class="keyW fl clickme del" href="#">栏目: 灵感源<em class="downlist_icon"></em></a>
+                    {else}
+                    <a class="keyW fl clickme del" href="#">栏目: {$column.sName}<em class="downlist_icon"></em></a>
+                    {/if}
+                    {/if}
+                    {/foreach}
+                    <div class="downlist">
+                        {foreach $columns as $key=>$column}
+                        {if $key != $columnId}
+                        {if $key == $columnPid}
+                        <a href="{$column.sLink}">灵感源</a>
+                        {else}
+                        <a href="{$column.sLink}">{$column.sName}</a>
+                        {/if}
+                        {/if}
+                        {/foreach}
+                    </div>
+                </div>
+                {/if}
+                {$j = $j + 1}
+                <!--/灵感视频-->
+                <div class="keyWord keyWord_downlist">
+                    <a class="keyW fl clickme del auto_sx" href="{$tip.link}" title="{$tip.value}">{$tip.name}:<span> {$tip.value}{$tip.em}</span></a>
+                    <!--性别行业的特殊处理-->
+                    {if $tip.sub}
+                    {else}
+                    <i class="fl del_self" data-url="{$tip.link}"></i>
+                    {/if}
+                    <div class="downlist">
+                        {foreach $tip.sub as $sub}
+                        <a href="javascript:void(0);" title="{$sub.value}" id="gi_{$sub.type}_{$sub.key}">{$sub.value}</a>
+                        {/foreach}
+                    </div>
+                </div>
+                {/foreach}
+                <a class="delefilter clickme click_gen_ind" href="{$clearAll}"><i></i>清空筛选</a>
+            </div>
+            <div class="fr search-key-scroll selected-key-scroll js-selected-key-scroll">
+                <div class="style-search-box">
+                    <!-- ID重复  search改为search2-->
+                    <input type="text" class="fl js-input-search" growing-track="true" placeholder="搜索你要的：季节/品牌/单品">
+                    <img src="{STATIC_URL2}/global/images/lists/search.png" class="sear fl js-sear">
+                    {if isset($keys)}
+                    <div class="search-downdrop js-search-downdrop">
+                        <span class="fl">热门搜索：</span>
+                        <div class="search-key fl">
+                            {foreach $keys as $key}
+                            <a class="clickme" href="{$key.link}">{$key.name}</a>
+                            {/foreach}
+                        </div>
+                    </div>                          
+                    {/if}
+                </div>
+            </div>
+        </div>
+    </div>
+    {else}
+    <div class="rightc_s_t clearfix">
+        <div class="keycho">
+            <span class="yixz">您已选择：</span>
+            <div class="key_allbox fl">
+                <div class="keyWord keyWord_downlist column-nav-downlist">
+                    {foreach $columns as $key=>$column}
+                    {if $key == $columnId}
+                    {if $key == $columnPid}
+                    <a class="keyW fl clickme del" href="javascript:void(0);">栏目: 灵感源<em class="downlist_icon"></em></a>
+                    {else}
+                    <a class="keyW fl clickme del" href="javascript:void(0);">栏目: {$column.sName}<em class="downlist_icon"></em></a>
+                    {/if}
+                    {/if}
+                    {/foreach}
+                    <div class="downlist">
+                        {foreach $columns as $key=>$column}
+                        {if $key != $columnId}
+                        {if $key == $columnPid}
+                        <a href="{$column.sLink}">灵感源</a>
+                        {else}
+                        <a href="{$column.sLink}">{$column.sName}</a>
+                        {/if}
+                        {/if}
+                        {/foreach}
+                    </div>
+                </div>
+            </div>
+            <div class="fr search-key-scroll selected-key-scroll js-selected-key-scroll">
+                <div class="style-search-box">
+                    <!-- ID重复  search改为search2-->
+                    <input type="text" class="fl js-input-search" growing-track="true" placeholder="搜索你要的：季节/品牌/单品">
+                    <img src="{STATIC_URL2}/global/images/lists/search.png" class="sear fl js-sear">
+                    {if isset($keys)}
+                    <div class="search-downdrop js-search-downdrop">
+                        <span class="fl">热门搜索：</span>
+                        <div class="search-key fl">
+                            {foreach $keys as $key}
+                            <a class="clickme" href="{$key.link}">{$key.name}</a>
+                            {/foreach}
+                        </div>
+                    </div>                          
+                    {/if}
+                </div>
+            </div>
+        </div>
+    </div>
+    {/if}
+</div>
+{/if}
+<!--/灵感视频-->

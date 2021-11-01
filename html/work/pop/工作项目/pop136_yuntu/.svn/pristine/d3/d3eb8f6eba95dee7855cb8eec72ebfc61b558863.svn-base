@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>系统维护升级公告</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="applicable-device" content="pc">
+    <link type="text/css" rel="stylesheet" href="css/reset.css">
+    <link type="text/css" rel="stylesheet" href="css/maintain.css">
+	<style>
+	{literal}
+		/* CSS Document */
+		/*------------------------base------------------------*/
+		html, body, div, span, applet, object, iframe, h1, h2, h3,
+		h4, h5, h6, p, blockquote, pre, a, abbr, acronym,
+		address, big, cite, code, del, dfn, em, font, img, ins,
+		kbd, q, s, samp, small, strike, strong, sub, sup, tt,
+		var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend,
+		table, caption, tbody, tfoot, thead, tr, th, td {
+			margin: 0;
+			padding: 0;
+			border: 0;
+			outline: 0;
+			font-weight: inherit;
+			font-style: inherit;
+			font-size: 100%;
+			font-family: inherit;
+			vertical-align: baseline;
+		}
+		:focus { outline: 0;}
+		a, a:link, a:visited, a:hover, a:active{text-decoration:none;}
+		table { border-collapse: separate;border-spacing: 0;}
+		th, td {text-align: left; font-weight: normal;}
+		img, iframe {border: none; text-decoration:none;}
+		ol, ul {list-style: none;}
+		input, textarea, select, button {font-size: 100%;font-family: inherit;}
+		select {margin: inherit;}
+		hr {margin: 0;padding: 0;border: 0;color: #000;background-color: #000;height: 1px}
+		body{
+			font-family:"宋体",Verdana, Geneva, sans-serif;
+			font-size:12px;
+			color:#666;
+		}
+		div, h1, h2, h3, h4, p, form, label, input, textarea, img, span{
+			margin:0; padding:0; border:0;
+		}
+
+		ul{
+			margin:0;
+			padding:0;
+			list-style-type:none;
+		}
+		a,a:link{
+			color:#CCC;
+			text-decoration:none
+		}
+		a:hover{
+			color:#d20e18;
+			text-decoration:none
+		}
+		.clearfix:after{
+			content:" ";display: block;height: 0;clear: both;
+		}
+
+		.content{
+			width: 820px;
+			height: 400px;
+			border: 1px solid #cccccc;
+			margin-left: auto;
+			margin-right: auto;
+			color: #333333;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin-top: -200px;
+			margin-left: -410px;
+		}
+		.content .head{
+			font: bold 36px "微软雅黑";
+			text-align: center;
+			padding-top: 20px;
+			margin-bottom: 40px;
+			_margin-bottom:30px;
+		}
+		.content .font20{
+			margin-left: 200px;
+			font: bold 20px "微软雅黑";
+		}
+		.content .font20 .red{
+			color: red;
+		}
+		.content .btm{
+			margin-bottom: 120px;
+		}
+		.content .font18{
+			margin-right: 20px;
+			text-align: right;
+			font: bold 18px "微软雅黑";
+		}
+		.content .pic{
+			position: absolute;
+			top:217px;
+			left: 0;
+			background: url("https://imgyt1.pop-fashion.com/global/images/system/1.jpg") no-repeat 0 center;
+			width: 218px;
+			height: 183px;
+		}
+		{/literal}
+	</style>
+</head>
+<body>
+    <div class="content">
+        <div class="head">
+            系统维护升级公告
+        </div>
+        <p class="font20">尊敬的客户：</p>
+        <p class="font20">我们正在进行系统维护升级，给您带来的不便，敬请谅解。</p>
+        <p class="font20 btm">感谢您给与POP的理解和支持。</p>
+        <p class="font18">POP(全球)时尚网络机构</p>
+        <div class="pic"></div>
+    </div>
+</body>
+</html>

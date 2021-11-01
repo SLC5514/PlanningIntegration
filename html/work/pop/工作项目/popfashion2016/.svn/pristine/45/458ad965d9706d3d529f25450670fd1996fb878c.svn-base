@@ -1,0 +1,71 @@
+{extends file="layout.html"}"
+
+{block name="title"}12周年倾情回馈，首次旷世大促-POP服装趋势网{/block}
+{block name=keywords}12周年庆,设计全能,单项名星{/block}
+{block name=description}一、12周年倾情回馈，首次旷世大促，活动截止至2016年12月31日；服务组合包括全网系-设计全能和专区系-单项名星。POP十二年感恩陪伴、一路前行。{/block}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css"
+      href="{STATIC_URL2}/global/topic/20161127/css/index.css?{STATIC_CHANGE_TIME}">
+{/block}
+{block name="main"}
+<div itemscope  class="container">
+    <div itemscope  class="content1">
+        <div itemscope  class="w1000">
+            <p itemprop="description" class="img1"><img itemprop="thumbnail" src="{STATIC_URL2}/global/topic/20161127/images/banner.jpg" /></p>
+            <p itemprop="description" class="img2"></p>
+        </div>
+    </div>
+    <div itemscope  class="content2">
+        <div itemscope  class="w1000">
+            <p itemprop="description" class="img3"></p>
+        </div>
+    </div>
+    <div class="content3">
+        <div class="w1000">
+            <p itemprop="description" class="img4"></p>
+            <p itemprop="description" class="line"></p>
+            <p itemprop="description" class="img5"></p>
+        </div>
+    </div>
+    <div itemscope  class="content4">
+        <div itemscope  class="w1000">
+            <p itemprop="description" class="img6"></p>
+        </div>
+    </div>
+    <div itemscope  class="content5">
+        <div class="w1000">
+            <p itemprop="description" class="img4"></p>
+            <p itemprop="description" class="line"></p>
+            <p itemprop="description" class="img5"></p>
+        </div>
+    </div>
+    <div itemscope  class="content6">
+        <div itemscope  class="w1000">
+            <p itemprop="description" class="img6"></p>
+        </div>
+    </div>
+    <div itemscope  class="content7">
+        <div itemscope  class="w1000">
+            <p itemprop="description" class="img4"></p>
+            <p itemprop="description" class="line"></p>
+            <p itemprop="description" class="img5"></p>
+        </div>
+    </div>
+    <div itemscope  class="content8">
+        <div itemscope  class="w1000">
+            <p itemprop="description" class="img6"></p>
+        </div>
+    </div>
+    <div itemscope  class="content9">
+        <div itemscope  class="w1000">
+            <p itemprop="description" class="img4"></p>
+            <p itemprop="description" class="line"></p>
+            <p itemprop="description" class="img5"></p>
+        </div>
+    </div>
+</div>
+
+{include file="topic/topic_layer.html"}
+{/block}
+

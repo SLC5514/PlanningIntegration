@@ -1,0 +1,38 @@
+{extends file="layout.html"}
+
+{block name="self"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/personal.css?{STATIC_CHANGE_TIME}">
+<script type="text/javascript" src="{STATIC_URL2}/global/js/workbench/workbench.js?{STATIC_CHANGE_TIME}"></script>
+{/block}
+
+{block name="main"}
+<div class="con_width">
+	<div class="per_banner">
+		<img src="{STATIC_URL2}/global/images/per_banner.jpg" alt="pic">
+		<h3 class="tit">共收藏 {$total} 个品牌</h3>
+		<div class="per_bannerbg"></div>
+		<p class="pertext">				
+		<a href="/member/mycollect/" title="返回"><span><i></i>返回</span></a></p>
+	</div>
+	<div class="sect_ct">
+	  <table>
+			{$i=0}
+			{foreach $brandList as $key=>$val}
+			{$i = $i + 1}
+			<tr {if $i neq $nowcount}class="border_bottom"{else}{/if}>
+				<td class="table_hd"><span>{$val.info.name}</span></td>
+				<td class="table_td2"><!-- {$val.info.describe} -->{if $val.info.sLastUpdateTime != '1970-01-01'}<p class="old_information{$val.info.sNewUpdateClass}"><i></i><span>最近更新：</span>{$val.info.sLastUpdateTime}</p>{/if}</td>
+				<td class="table_td3"><a href="javascript:void(0);" class="td_a1 concelcollect" data-cid="{$val.iCollectId}" data-pid="{$val.info.id}" data-t="{$val.info.simpleName}"  data-type="{$type}" data-col="{$val.iColumnId}" title="取消收藏"><i></i><span>取消收藏</span></a><a class="td_a2"  href="/brands/detail/id_{$val.info.id}/" target="_blank" title="查看详情">查看详情</a></td>
+			</tr>
+			  {/foreach}
+	  </table>
+	</div>
+</div>
+{$pageHtml}
+<div class="shadow_black"></div>
+<div class="pop_shoucang">
+	<p class="content">是否确认取消收藏？</p>
+	<a href="javascript:void(0);" class="record" title="确定">确定</a>
+	<a href="javascript:void(0);" class="cancel" title="取消">取消</a>
+</div>
+{/block}

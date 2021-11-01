@@ -1,0 +1,59 @@
+
+    <div class="section">
+        <div class="person-header clearfix">
+            <div class="section-leftimg fl">
+                <form method="post" id='uploadAvatarForm' enctype="multipart/form-data">
+                    <img {if {$avatarUri} neq ''} src="{STATIC_URL2}{$avatarUri}" {else}
+                    src="{STATIC_URL2}/global/images/member/per_center/avatar.png" {/if} id='Avatar'/>
+                    <div class="input_tx">更换头像</div>
+                    <input type="file" name="uploadAvatar" id='uploadAvatar' onchange='ajaxFileUpload();'>
+                </form>
+            </div>
+            <div class="section-personinfo fl">
+                <div class="personinfo-absolute">
+                    <p>{$user.account}</p>
+                    <div><i></i>{$vip_type}</div>
+                    {if $show_btn}
+                    {if $show_btn=='renew'}
+                    <a class="js-contact-qq-btn" href="javascript:void(0);" data-type="after">续费</a>
+                    {else}
+                    <a class="js-contact-qq-btn" href="javascript:void(0);">开通</a>
+                    {/if}
+                    {/if}
+                </div>
+            </div>
+            <div class="section-tips-tab fl">
+                <ul class="clearfix">
+                    <li class="on"><a href="/member/myHistory/4/">浏览历史</a></li>
+                    <li><a href="/member/mycollect/">收藏</a></li>
+                    <li><a href="/member/workbench/">工作室</a></li>
+                    <li><a href="/member/mydownload/">下载包</a></li>
+                    <li><a href="/member/myorderzip/">资料包</a></li>
+                    <li class="message-li"><a href="/member/message/">消息{if $issetNewMessage !=0 }<i></i>{/if}</a></li>
+                    <li class="account-base"><a href="/member/base/"><i></i>账号设置</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        function ajaxFileUpload() {
+            var options = {
+                beforeSubmit: function() {
+                    return true;
+                },
+                type:'post',
+                url:'/member/uploadavatar/?'+Math.random(),
+                dataType:'json',
+                success: function(data) {
+                    if(data.status == 1) {
+                        $('img#Avatar').attr("src",'{STATIC_URL2}'+data.info);
+                        return true;
+                    } else {
+                        alert(data.info+'\n上传类型：jpg gif png jpeg\n 等比例大的\n图片大小最大：1M');return false;
+                    }
+                }
+            };
+            $('#uploadAvatarForm').ajaxSubmit(options);
+        }
+    </script>

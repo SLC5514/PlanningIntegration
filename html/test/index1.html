@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+
+    <body>
+        2
+    </body>
+
+</html>
+
+<script>
+    window.addEventListener("message", receiveMessage, false);
+
+    function receiveMessage(event) {
+        console.log(2, event)
+        // For Chrome, the origin property is in the event.originalEvent
+        // object. 
+        // 这里不准确，chrome没有这个属性
+        // var origin = event.origin || event.originalEvent.origin; 
+        // var origin = event.origin
+        // if (origin !== "http://example.org:8080")
+        //     return;
+
+        // ...
+    }
+</script>

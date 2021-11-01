@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link
+      href="//fonts.googleapis.com/css?family=Signika+Negative:300,400"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      /* Global styles come from external css https://codepen.io/GreenSock/pen/JGaKdQ*/
+      button {
+        margin: 0 6px 6px 0;
+        padding: 9px 18px;
+      }
+      .explanation {
+        font-weight: 300;
+      }
+
+      /*
+      * Derived from einaros's Sons of Obsidian theme at
+      * http://studiostyl.es/schemes/son-of-obsidian by
+      * Alex Ford of CodeTunnel:
+      * http://CodeTunnel.com/blog/post/71/google-code-prettify-obsidian-theme
+      */
+
+      .str {
+        color: #ec7600;
+      }
+      .kwd {
+        color: #93c763;
+      }
+      .com {
+        color: #66747b;
+      }
+      .typ {
+        color: #678cb1;
+      }
+      .lit {
+        color: #facd22;
+      }
+      .pun {
+        color: #f1f2f3;
+      }
+      .pln {
+        color: #9a8297;
+      }
+      .tag {
+        color: #8ac763;
+      }
+      .atn {
+        color: #e0e2e4;
+      }
+      .atv {
+        color: #ec7600;
+      }
+      .dec {
+        color: purple;
+      }
+      pre.prettyprint {
+        border: 0px solid #888;
+      }
+      ol.linenums {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+      .prettyprint {
+        background: #000;
+      }
+      li.L0,
+      li.L1,
+      li.L2,
+      li.L3,
+      li.L4,
+      li.L5,
+      li.L6,
+      li.L7,
+      li.L8,
+      li.L9 {
+        color: #555;
+        list-style-type: decimal;
+      }
+      li.L1,
+      li.L3,
+      li.L5,
+      li.L7,
+      li.L9 {
+        background: #111;
+      }
+      @media print {
+        .str {
+          color: #060;
+        }
+        .kwd {
+          color: #006;
+          font-weight: bold;
+        }
+        .com {
+          color: #600;
+          font-style: italic;
+        }
+        .typ {
+          color: #404;
+          font-weight: bold;
+        }
+        .lit {
+          color: #044;
+        }
+        .pun {
+          color: #440;
+        }
+        .pln {
+          color: #000;
+        }
+        .tag {
+          color: #006;
+          font-weight: bold;
+        }
+        .atn {
+          color: #404;
+        }
+        .atv {
+          color: #060;
+        }
+      }
+
+      pre.prettyprint.code {
+        padding: 10px;
+        margin-left: 0px;
+      }
+
+      button:hover {
+        background-color: #333;
+        background-image: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <h2>PixiPlugin Filter Effects</h2>
+      <div class="demo">
+        <img
+          src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/car-dashboard-blur.jpg"
+          width="300"
+          height="300"
+          cross-origin="anonymous"
+        />
+        <canvas id="PixiApp" width="300" height="300"></canvas>
+      </div>
+
+      <pre class="code prettyprint lang-js">//sample code</pre>
+      <div class="nav"></div>
+      <form>
+        <div>
+          <input
+            type="checkbox"
+            id="combineCMF"
+            name="combineCMF"
+            value="false"
+          />
+          <label for="combineCMF">combineCMF:true</label>
+        </div>
+        <p class="explanation">
+          When combineCMF is set to true, the newly applied ColorMatrixFilter
+          will preserve any previously-set "hue", "saturation", "brightness",
+          "contrast", and "colorize" values. So if you desaturate the image and
+          then increase brightness you will get a very bright grayscale image.
+          However, if you desaturate the image and then click "colorize red" or
+          "hue 180" you will not see any color change as the image will still
+          have saturation of 0. combineCMF is false by default.
+        </p>
+      </form>
+    </div>
+  </body>
+  <script src="../jquery.min.js"></script>
+  <script src="../greensock-js/src/minified/TweenMax.min.js"></script>
+  <script src="./PixiPlugin.min.js"></script>
+  <script src="../pixi.min.js"></script>
+  <script>
+    let type = "WebGL";
+    if (!PIXI.utils.isWebGLSupported()) {
+      type = "canvas";
+    }
+    PIXI.utils.sayHello(type);
+
+    // let app = new PIXI.Application({
+    //   width: window.innerWidth, // default: 800
+    //   height: window.innerHeight, // default: 600
+    //   antialias: true, // default: false
+    //   transparent: false, // default: false
+    //   resolution: 1 // default: 1
+    // });
+    // document.body.appendChild(app.view);
+    // app.renderer.view.style.position = "absolute";
+    // let stage = app.stage;
+
+    // let imgURL = "./reed_ginventory_cover.jpg";
+    // PIXI.Loader.shared.add(imgURL).load(setup);
+    // function setup() {
+    //   let Pikachu = new PIXI.Sprite(
+    //     PIXI.Loader.shared.resources[imgURL].texture
+    //   );
+    //   stage.addChild(Pikachu);
+    // }
+
+    /* var image = new PIXI.Sprite.from("./reed_ginventory_cover.jpg");
+    app.stage.addChild(image);
+    var tl = new TimelineMax();
+    //colorize fully red. Change colorAmount to 0.5 to make it only halfway colorized, for example:
+    tl.to(image, 2, { pixi: { colorize: "red", colorizeAmount: 1 } })
+      //change the hue 180 degrees (opposite)
+      .to(image, 2, { pixi: { hue: 180 } })
+      //completely desaturate
+      .to(image, 2, { pixi: { saturation: 0 } })
+      //blow out the brightness to double the normal amount
+      .to(image, 2, { pixi: { brightness: 2 } })
+      //increase the contrast
+      .to(image, 2, { pixi: { contrast: 1.5 } }); */
+
+    var image,
+      currentButton,
+      combineCMF = false;
+    var app = new PIXI.Application(300, 300, {
+      backgroundColor: 0x000000,
+      autoResize: true,
+      view: document.getElementById("PixiApp")
+    });
+
+    function createEffect(name, code, onVars, offVars) {
+      var button = $("<button/>")
+          .text(name)
+          .appendTo(".nav"),
+        style = button[0].style;
+      button[0]._enabled = false;
+      button.click(function() {
+        var isEnabled = !this._enabled;
+        if (!combineCMF || name === "reset") {
+          $(".nav button").each(function() {
+            this.style.removeProperty("background-image");
+            this.style.removeProperty("background-color");
+            this._enabled = false;
+          });
+        }
+        currentButton = this;
+        this._enabled = isEnabled;
+        var vars = isEnabled ? onVars : offVars;
+        vars.combineCMF = combineCMF;
+        TweenLite.to(image, 1, { pixi: vars });
+        if (isEnabled) {
+          style.backgroundImage = "none";
+          style.backgroundColor = "#4e9816";
+          $(".code")
+            .text(
+              "TweenLite.to(image, 1, {pixi:{" +
+                code +
+                (combineCMF && name.indexOf("blur") === -1 && name !== "reset"
+                  ? ", combineCMF:true"
+                  : "") +
+                "}});"
+            )
+            .removeClass("prettyprinted");
+        } else {
+          TweenLite.set(this, {
+            clearProps: "backgroundImage,backgroundColor"
+          });
+        }
+
+        // PR.prettyPrint();
+      });
+    }
+
+    // toggle combineCMF
+    $("#combineCMF").click(function() {
+      combineCMF = $(this).is(":checked");
+      if (currentButton) {
+        currentButton.click();
+      }
+    });
+
+    image = PIXI.Sprite.fromImage(
+      "http://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/car-dashboard-blur.jpg",
+      true
+    ); //previously used this, but ran into CORS issues: new PIXI.Sprite(resources.image.texture);
+    image.width = image.height = 300;
+    app.stage.addChild(image);
+    createEffect(
+      "colorize red",
+      'colorize:"red", colorizeAmount:1',
+      { colorize: "red", colorizeAmount: 1 },
+      { colorize: "red", colorizeAmount: 0 }
+    );
+    createEffect(
+      "desaturate",
+      "saturation:0",
+      { saturation: 0 },
+      { saturation: 1 }
+    );
+    createEffect("hue 180", "hue:180", { hue: 180 }, { hue: 0 });
+    createEffect(
+      "brightness",
+      "brightness:3",
+      { brightness: 3 },
+      { brightness: 1 }
+    );
+    createEffect("contrast", "contrast:3", { contrast: 3 }, { contrast: 1 });
+    createEffect("blur", "blur:20", { blur: 10 }, { blur: 0 });
+    createEffect(
+      "reset",
+      "colorMatrixFilter:null, blur:0",
+      { colorMatrixFilter: null, blur: 0 },
+      { colorMatrixFilter: null, blur: 0 }
+    );
+  </script>
+</html>

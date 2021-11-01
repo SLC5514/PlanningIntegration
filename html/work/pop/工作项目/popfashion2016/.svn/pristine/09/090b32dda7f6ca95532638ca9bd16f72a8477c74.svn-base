@@ -1,0 +1,49 @@
+{extends file="layout.html"}
+{block name="main"}
+  <div class="aboutUs toll_list">
+  	<div class="ab_banner"><p>TOLL LIST</p><span>收费一览</span></div>
+  	<div class="wid1200">
+  		<div class="about_content">
+  			<div class="content_left fl toll_list_active">
+				{include file="./left_nav.html"}
+  			</div>
+  			<div class="content_right fl">
+  				<h1 class="big_title">收费<span>一</span>览</h1>
+  				<h3 class="small_title"><em></em><span>Toll list</span><em></em></h3>
+  				<div class="content_x840">
+  					<table width="100%">
+  						<tbody>
+  							<tr>
+  								<th width="15%">会员类型</th>
+  								<th width="65%">会员享有的权限</th>
+  								<th width="20%">收费价格</th>
+  							</tr>
+  							<tr>
+  								<td>免费会员</td>
+  								<td class="wid_td"><p>在没有付费成为VIP会员前，您只可以浏览到网站里的个别小图，无权浏览和下载高清大图</p></td>
+  								<td>免费</td>
+  							</tr>
+  							<tr class="colred">
+  								<td>VIP会员</td>
+  								<td class="wid_td"><p>即：包年会员。在一年365天内可以无限制的浏览网站里所有的资料（因POP旗下每个站点提供的服务不同，具体某个网站包年会员以合同中标注享有的权限为准！）</p></td>
+  								<td>请咨询上海总部：<br/>4008-210-500</td>
+  							</tr>
+  						</tbody>
+  					</table>
+  					<p class="web_intro"><span></span>POP网站集群现有 <i>4300多万 </i>的流行类款式图片，并且每天(除周日和国定假)增加 <i>近万</i> 张最新款式图片。POP(全球)时尚网络机构旗下有五个网站，全方位为VIP会员提供优质及时的流行款式和资讯。</p>
+  					<p class="web_logo mospop"></p>
+  					<p class="web_txt mospop_txt">POP高端服装趋势<a href="/" target="_blank"> www.pop-fashion.com </a>图片总数<i> 1434余万 </i>,每天更新 <i>10000多个 </i>新款图片。(全部是最新的资料)</p>
+  					<p class="web_logo popshoe"></p>
+  					<p class="web_txt popshoe_txt">国际鞋子设计在线<a href="http://www.pop-shoe.com" target="_blank"> www.pop-shoe.com </a>图片总数<i> 731余万 </i>,每天更新<i> 5000多个 </i>新款图片。(全部是最新的资料)</p>
+  					<p class="web_logo popbag"></p>
+  					<p class="web_txt popbag_txt">国际箱包设计在线<a href="http://www.pop-bags.com" target="_blank"> www.pop-bags.com </a>图片总数<i> 751余万 </i>,每天更新 <i>5000多个 </i>新款图片。(全部是最新的资料)</p>
+  					<p class="web_logo popsh"></p>
+  					<p class="web_txt popsh_txt">首饰设计网<a href="http://www.51shoushi.com" target="_blank"> www.51shoushi.com </a>图片总数<i> 489余万 </i>,每天更新<i> 1000多个</i> 新款图片。(全部是最新的资料)</p>
+  					<p class="web_logo popjf"></p>
+  					<p class="web_txt popjf_txt">家纺设计网<a href="http://www.91jiafang.com" target="_blank"> www.91jiafang.com </a>图片总数<i> 329余万 </i>,每天更新<i> 1000多个</i> 新款图片。(全部是最新的资料)</p>
+  				</div> 			
+  			</div>
+  		</div>
+  	</div>
+  </div>
+{/block}

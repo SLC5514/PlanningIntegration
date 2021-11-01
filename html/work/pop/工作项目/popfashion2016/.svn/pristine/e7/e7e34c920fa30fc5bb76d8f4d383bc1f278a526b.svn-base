@@ -1,0 +1,43 @@
+{extends file="layout.html"}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/personal.css?{STATIC_CHANGE_TIME}">
+{/block}
+
+{block name="main"}
+<div class="main myWorkTable">
+	<div class="con_width">
+		<div class="section">
+			{$personalHeader}
+		</div>
+		 <div class="workList">
+			<div class="xiazai_table">
+				<div class="bgW"></div>
+				<table width="100%" border="0">
+					<tbody>
+						<tr>
+							<th width="18%">打包日期</th>
+							<th width="18%">工作台名称</th>
+							<th width="50%">下载包名称</th>
+							<th width="9%" style="text-align:center;">图片数量</th>
+							<th width="13%" style="text-align:center;">下载</th>
+						</tr>
+						{foreach $downZip as $key=>$val}
+						<tr>
+							<td>{$val.dCreateTime|date_format:"Y年m月d日"}</td>
+							<td>{$val.sWbenchName}</td>
+							<td>{$val.sWbenchDesc}</td>
+							<td class="middle">{$val.iImgNum}</td>
+							<td class="middle"><a href="{if $val.iStatus eq 1}/download/dlsingle/?dl_link={$val.sZippath|urlencode}&flag=1{else}javascript:void(0);{/if}" {if $val.iStatus eq 1}target="_blank"{/if} class="{if $val.iStatus neq 1}cur{/if}" title="立即下载"><i></i>立即下载</a></td>
+						</tr>
+						{/foreach}
+					</tbody>
+				</table>
+				<p class="beizhu"><i></i>我们最多帮您保留最新的<span>10</span>个下载包，点击下载，<span>2</span>秒保存到电脑！</p>
+			</div>
+		</div>
+
+		<!-- 我的资料包 -->
+	</div>
+</div>
+{/block}

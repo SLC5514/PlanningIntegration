@@ -1,0 +1,626 @@
+{extends file="layout.html"}
+
+{block name="title"}2020春夏流行趋势色彩发布专题 - POP Fashion{/block}
+{block name=keywords}{/block}
+{block name="description"}Mos色彩书集中给呈现2020流行色彩，其中包括四大流行色主题，主题灵感，代表品牌，代表IP，色彩流行方向，帮助企业和设计师更好的了解2020春夏的流行色彩方向。{/block}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css"
+    href="{STATIC_URL2}/global/topic/2020SS_color/css/2020SS_color.css?{STATIC_CHANGE_TIME}" />
+<link rel="stylesheet" type="text/css"
+    href="{STATIC_URL2}/global/topic/common/css/h5-common.css?{STATIC_CHANGE_TIME}" />
+{/block}
+
+{block name="main"}
+
+{include file="topic/common/h5-header.html"}
+<div class="pc-box">
+    <div class="banner js-banner tp-opacity anit-fade-in">
+        <div class="w1200 banner-box">
+            <div class="banner-st1 tp-transform td-1 anit-left-in"></div>
+            <div class="banner-st2 tp-transform td-2 anit-right-in"></div>
+        </div>
+    </div>
+    <div class="nav-section js-nav-section tp-opacity anit-fade-in">
+        <ul class="w1200">
+            <li class="fl active">
+                <a href="javascript:;">氢能动力</a>
+            </li>
+            <li class="fl">
+                <a href="javascript:;">无塑海岸</a>
+            </li>
+            <li class="fl">
+                <a href="javascript:;">MAKE KOL</a>
+            </li>
+            <li class="fl">
+                <a href="javascript:;">情绪工业</a>
+            </li>
+        </ul>
+    </div>
+    <div class="section1 js-section1 tp-opacity anit-fade-in">
+        <div class="w1200 section1-box">
+            <h1>氢能动力</h1>
+            <ul class="st-tab-btn st1-tab-btn tp-transform td-2 anit-left-in">
+                <li class="fl active"><a href="javascript:;">1</a></li>
+                <li class="fl"><a href="javascript:;">2</a></li>
+                <li class="fl"><a href="javascript:;">3</a></li>
+                <li class="fl"><a href="javascript:;">4</a></li>
+            </ul>
+            <div class="arrow-left tp-opacity td-1 anit-fade-in">
+                <div></div>
+            </div>
+            <div class="arrow-right tp-opacity td-1 anit-fade-in">
+                <div></div>
+            </div>
+            <div class="st-tab-box st1-tab-box">
+                <div class="tab1-box tab-box tp-opacity anit-fade-in">
+                    <div class="tab-person tp-opacity td-2 anit-fade-in"></div>
+                    <div class="tab-left tp-transform td-3 anit-left-in">
+                        <div class="tab-left-content">
+                            <ul class="js-tab-btn">
+                                <li class="active"><a href="javascript:;">主题灵感</a></li>
+                                <li><a href="javascript:;">代表IP</a></li>
+                                <li><a href="javascript:;">代表品牌</a></li>
+                                <li><a href="javascript:;">色彩方向</a></li>
+                            </ul>
+                            <p>循环经济备受瞩目，“氢能”将成为人类追求的新生活方式。<br>2020年的东京奥运会，会再一次将人们的目光聚焦在运动领域及运动传递出的生活态度。</p>
+                        </div>
+                        <div class="tab-left-bg"></div>
+                    </div>
+                    <div class="tab-right tp-transform td-4 anit-right-in">
+                        <div class="pic1"></div>
+                        <div class="pic2"></div>
+                    </div>
+                </div>
+                <div class="tab2-box tab-box tp-opacity anit-fade-in">
+                    <div class="tab-left tp-transform td-2 anit-left-in">
+                        <div class="tab-left-content">
+                            <ul class="js-tab-btn">
+                                <li><a href="javascript:;">主题灵感</a></li>
+                                <li class="active"><a href="javascript:;">代表IP</a></li>
+                                <li><a href="javascript:;">代表品牌</a></li>
+                                <li><a href="javascript:;">色彩方向</a></li>
+                            </ul>
+                            <p>模特，日常穿搭以运动混搭街头为主，作为高端设计师运动品牌Particle Fever的领闭模特，完美诠释了运动休闲的生活态度！</p>
+                        </div>
+                        <div class="tab-left-bg"></div>
+                    </div>
+                    <div class="tab-right tp-transform td-3 anit-right-in">
+                        <div class="pic1"></div>
+                        <div class="pic2"></div>
+                    </div>
+                </div>
+                <div class="tab3-box tab-box tp-opacity anit-fade-in">
+                    <div class="tab-left tp-transform td-2 anit-left-in">
+                        <div class="tab-left-content">
+                            <ul class="js-tab-btn">
+                                <li><a href="javascript:;">主题灵感</a></li>
+                                <li class="active"><a href="javascript:;">代表IP</a></li>
+                                <li><a href="javascript:;">代表品牌</a></li>
+                                <li><a href="javascript:;">色彩方向</a></li>
+                            </ul>
+                            <p>Hugo 2019春夏系列带领人们回到90年代锐舞派对，系列名称为“Mixmasters”，粉彩色系与霓虹色彩的碰撞给新一季带来了无限能量。</p>
+                        </div>
+                        <div class="tab-left-bg"></div>
+                    </div>
+                    <div class="tab-right tp-transform td-3 anit-right-in">
+                        <div class="pic1"></div>
+                        <div class="pic2"></div>
+                    </div>
+                </div>
+                <div class="tab4-box tab-box tp-opacity anit-fade-in">
+                    <div class="tab-left tp-transform td-2 anit-left-in">
+                        <div class="tab-left-content">
+                            <ul class="js-tab-btn">
+                                <li><a href="javascript:;">主题灵感</a></li>
+                                <li class="active"><a href="javascript:;">代表IP</a></li>
+                                <li><a href="javascript:;">代表品牌</a></li>
+                                <li><a href="javascript:;">色彩方向</a></li>
+                            </ul>
+                            <p>源自天空与海洋的蓝色，有着强大的包容性，搭配亮光白与植物绿，传递出清新自然的都市气息，静谧中洋溢着生命力，完美诠释出都市运动的律动感。</p>
+                        </div>
+                        <div class="tab-left-bg"></div>
+                    </div>
+                    <div class="tab-right tp-transform td-3 anit-right-in">
+                        <div class="pic1"></div>
+                        <div class="pic2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="st1-bg"></div>
+    </div>
+    <div class="section2 js-section2 tp-opacity anit-fade-in">
+        <div class="w1200 section2-box">
+            <h1 class="tp-opacity td-1 anit-fade-in">无塑海岸</h1>
+            <ul class="tab-btn js-tab-btn">
+                <li class="fl active"><a href="javascript:;">主题灵感</a></li>
+                <li class="fl"><a href="javascript:;">代表IP</a></li>
+                <li class="fl"><a href="javascript:;">代表品牌</a></li>
+                <li class="fl"><a href="javascript:;">色彩方向</a></li>
+            </ul>
+            <ul class="st-tab-btn st2-tab-btn">
+                <li class="fl active"><a href="javascript:;">1</a></li>
+                <li class="fl"><a href="javascript:;">2</a></li>
+                <li class="fl"><a href="javascript:;">3</a></li>
+                <li class="fl"><a href="javascript:;">4</a></li>
+            </ul>
+            <div class="arrow-left tp-opacity td-4 anit-fade-in">
+                <div></div>
+            </div>
+            <div class="arrow-right tp-opacity td-4 anit-fade-in">
+                <div></div>
+            </div>
+            <div class="st2-tab-box">
+                <div class="tab1-box tab-box tp-opacity anit-fade-in">
+                    <div class="section2-bg"></div>
+                    <div class="tab-content">
+                        <div class="tab-person tp-opacity td-3 anit-fade-in"></div>
+                        <p class="tp-opacity td-4 anit-fade-in">
+                            海洋给了我们生命，我们却给了它们塑料。<br>海洋生物惬意地游弋与它们在塑料中痛苦挣扎，形成鲜明的对比，刺痛人心。</p>
+                        <div class="tab-left tp-transform td-5 anit-left-in"></div>
+                    </div>
+                </div>
+                <div class="tab2-box tab-box tp-opacity anit-fade-in">
+                    <div class="section2-bg"></div>
+                    <div class="tab-content">
+                        <div class="tab-person tp-opacity td-3 anit-fade-in"></div>
+                        <p class="tp-opacity td-4 anit-fade-in">Elizabeth
+                            Farrell将一场高中艺术活动转化为平台，让大众更加关注全球变暖问题，她的Tumblr式DIY成功掀起一场新的视觉政治运动。</p>
+                        <div class="tab-left tp-transform td-5 anit-left-in"></div>
+                    </div>
+                </div>
+                <div class="tab3-box tab-box tp-opacity anit-fade-in">
+                    <div class="section2-bg"></div>
+                    <div class="tab-content">
+                        <div class="tab-person tp-opacity td-3 anit-fade-in"></div>
+                        <p class="tp-opacity td-4 anit-fade-in">CHENG PAI
+                            CHENG是台湾设计师个人品牌，擅用明亮的色彩组合，与柔美的满版印花共同诠释如梦般的服装形态和柔美氛围。</p>
+                        <div class="tab-left tp-transform td-5 anit-left-in"></div>
+                    </div>
+                </div>
+                <div class="tab4-box tab-box tp-opacity anit-fade-in">
+                    <div class="section2-bg"></div>
+                    <div class="tab-content">
+                        <div class="tab-person tp-opacity td-3 anit-fade-in"></div>
+                        <p class="tp-opacity td-4 anit-fade-in">
+                            带有污染侵蚀的海洋水底色搭配印象派绿色及清透呼吸感的粉紫清透感与阴郁感，以及亮色与暗色之间相互交糅，既对抗又共生，亦如人和海洋，我们都在试图寻找一个平衡点。</p>
+                        <div class="tab-left tp-transform td-5 anit-left-in"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section3 js-section3 tp-opacity anit-fade-in">
+        <div class="w1200 section3-box">
+            <h1 class="tp-opacity td-5 anit-fade-in"><span>MAKE KOL</span></h1>
+            <ul class="st-tab-btn st3-tab-btn tp-opacity td-5 anit-fade-in">
+                <li class="fl active"><a href="javascript:;">1</a></li>
+                <li class="fl"><a href="javascript:;">2</a></li>
+                <li class="fl"><a href="javascript:;">3</a></li>
+                <li class="fl"><a href="javascript:;">4</a></li>
+            </ul>
+            <div class="arrow-left tp-opacity td-5 anit-fade-in">
+                <div></div>
+            </div>
+            <div class="arrow-right tp-opacity td-5 anit-fade-in">
+                <div></div>
+            </div>
+            <div class="st-tab-box st3-tab-box">
+                <div class="tab1-box tab-box tp-opacity anit-fade-in">
+                    <div class="tab-left tp-opacity td-5 anit-fade-in">
+                        <div class="tab-left-content">
+                            <ul class="js-tab-btn">
+                                <li class="active"><a href="javascript:;">主题灵感</a></li>
+                                <li><a href="javascript:;">代表IP</a></li>
+                                <li><a href="javascript:;">代表品牌</a></li>
+                                <li><a href="javascript:;">色彩方向</a></li>
+                            </ul>
+                            <p>Z世代热衷虚拟化偶像，全新KOL将为网红经济带来新的话题和流量。<br>虚拟网红成为奢侈品牌热捧，DIOR美妆邀请了虚拟偶像Noonoouri拍摄宣传视频。</p>
+                        </div>
+                    </div>
+                    <div class="tab-right tp-transform td-1 anit-right-in">
+                        <div class="st-pic1"></div>
+                        <div class="st-content">
+                            <div class="st-pic2 tp-transform td-2 anit-right-in"></div>
+                            <div class="st-pic3 tp-transform td-3 anit-right-in"></div>
+                            <div class="st-pic4 tp-transform td-4 anit-right-in"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab2-box tab-box tp-opacity anit-fade-in">
+                    <div class="tab-left tp-opacity td-5 anit-fade-in">
+                        <div class="tab-left-content">
+                            <ul class="js-tab-btn">
+                                <li><a href="javascript:;">主题灵感</a></li>
+                                <li class="active"><a href="javascript:;">代表IP</a></li>
+                                <li><a href="javascript:;">代表品牌</a></li>
+                                <li><a href="javascript:;">色彩方向</a></li>
+                            </ul>
+                            <p>Noonoouri是一个虚拟的Ins网红兼时尚博主，一度在行业内引起一股现象级的讨论。<br>Blawko，一个拒绝露全脸的虚拟个性少年，潮牌傍身，活脱脱的叛逆男孩。</p>
+                        </div>
+                    </div>
+                    <div class="tab-right tp-transform td-1 anit-right-in">
+                        <div class="st-pic1"></div>
+                        <div class="st-content">
+                            <div class="st-pic2 tp-transform td-2 anit-right-in"></div>
+                            <div class="st-pic3 tp-transform td-3 anit-right-in"></div>
+                            <div class="st-pic4 tp-transform td-4 anit-right-in"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab3-box tab-box tp-opacity anit-fade-in">
+                    <div class="tab-left tp-opacity td-5 anit-fade-in">
+                        <div class="tab-left-content">
+                            <ul class="js-tab-btn">
+                                <li><a href="javascript:;">主题灵感</a></li>
+                                <li><a href="javascript:;">代表IP</a></li>
+                                <li class="active"><a href="javascript:;">代表品牌</a></li>
+                                <li><a href="javascript:;">色彩方向</a></li>
+                            </ul>
+                            <p>芭比娃娃粉色西装和拉链夹克小型化的裁剪上衣，光滑的乙烯基铅笔裙，抽象印花杉与创意牛仔裤。混合展示出“I can and I will”的乐观精神。</p>
+                        </div>
+                    </div>
+                    <div class="tab-right tp-transform td-1 anit-right-in">
+                        <div class="st-pic1"></div>
+                        <div class="st-content">
+                            <div class="st-pic2 tp-transform td-2 anit-right-in"></div>
+                            <div class="st-pic3 tp-transform td-3 anit-right-in"></div>
+                            <div class="st-pic4 tp-transform td-4 anit-right-in"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab4-box tab-box tp-opacity anit-fade-in">
+                    <div class="tab-left tp-opacity td-5 anit-fade-in">
+                        <div class="tab-left-content">
+                            <ul class="js-tab-btn">
+                                <li><a href="javascript:;">主题灵感</a></li>
+                                <li><a href="javascript:;">代表IP</a></li>
+                                <li><a href="javascript:;">代表品牌</a></li>
+                                <li class="active"><a href="javascript:;">色彩方向</a></li>
+                            </ul>
+                            <p>高饱和度的萤火虫绿仿佛在形容网红耀眼关注，但又稍纵即逝；超级粉色和金凤花黄打造最潮少女系；深色系的星光蓝在本季则引起到搭配渐变的作用。</p>
+                        </div>
+                    </div>
+                    <div class="tab-right tp-transform td-1 anit-right-in">
+                        <div class="st-pic1"></div>
+                        <div class="st-content">
+                            <div class="st-pic2 tp-transform td-2 anit-right-in"></div>
+                            <div class="st-pic3 tp-transform td-3 anit-right-in"></div>
+                            <div class="st-pic4 tp-transform td-4 anit-right-in"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="st3-bg">
+            <div></div>
+        </div>
+    </div>
+    <div class="section4 js-section4 tp-opacity anit-fade-in">
+        <div class="w1200 section4-box">
+            <h1 class="tp-opacity td-4 anit-fade-in"><span>情绪工业</span></h1>
+            <ul class="tab-btn js-tab-btn">
+                <li class="fl active"><a href="javascript:;">主题灵感</a></li>
+                <li class="fl"><a href="javascript:;">代表IP</a></li>
+                <li class="fl"><a href="javascript:;">代表品牌</a></li>
+                <li class="fl"><a href="javascript:;">色彩方向</a></li>
+            </ul>
+            <ul class="st-tab-btn st4-tab-btn">
+                <li class="fl active"><a href="javascript:;">1</a></li>
+                <li class="fl"><a href="javascript:;">2</a></li>
+                <li class="fl"><a href="javascript:;">3</a></li>
+                <li class="fl"><a href="javascript:;">4</a></li>
+            </ul>
+            <div class="arrow-left tp-opacity td-4 anit-fade-in">
+                <div></div>
+            </div>
+            <div class="arrow-right tp-opacity td-4 anit-fade-in">
+                <div></div>
+            </div>
+            <div class="st4-tab-box">
+                <div class="tab1-box tab-box tp-opacity anit-fade-in">
+                    <div class="st-pic1 tp-transform td-1 anit-left-in"></div>
+                    <div class="st-pic2 tp-transform td-2 anit-right-in">
+                        <div></div>
+                    </div>
+                    <div class="st-pic3 tp-transform td-3 anit-right-in"></div>
+                    <p class="tp-opacity td-4 anit-fade-in">
+                        情绪识别公司Affectiva发布了一款人工智能情绪监控软件，它是搭载到半自动驾驶汽车中，监控驾驶员的精神状态，当驾驶员情绪不稳时，它会及时接管汽车，保证行车安全。</p>
+                </div>
+                <div class="tab2-box tab-box tp-opacity anit-fade-in">
+                    <div class="st-pic1 tp-transform td-1 anit-left-in"></div>
+                    <div class="st-pic2 tp-transform td-2 anit-right-in">
+                        <div></div>
+                    </div>
+                    <div class="st-pic3 tp-transform td-3 anit-right-in"></div>
+                    <p class="tp-opacity td-4 anit-fade-in">超模Giedre Dukauskaite干练的妆容、柔冷神色，配上棕色发质，以优雅的肢体语言给我们传递果敢的生活状态。
+                    </p>
+                </div>
+                <div class="tab3-box tab-box tp-opacity anit-fade-in">
+                    <div class="st-pic1 tp-transform td-1 anit-left-in"></div>
+                    <div class="st-pic2 tp-transform td-2 anit-right-in">
+                        <div></div>
+                    </div>
+                    <div class="st-pic3 tp-transform td-3 anit-right-in"></div>
+                    <p class="tp-opacity td-4 anit-fade-in">来自东京独立设计师品牌，整体色调以黑白灰为基调加入一点偏亮色混入，更好的诠释了系列款式的高级创意感。</p>
+                </div>
+                <div class="tab4-box tab-box tp-opacity anit-fade-in">
+                    <div class="st-pic1 tp-transform td-1 anit-left-in"></div>
+                    <div class="st-pic2 tp-transform td-2 anit-right-in">
+                        <div></div>
+                    </div>
+                    <div class="st-pic3 tp-transform td-3 anit-right-in"></div>
+                    <p class="tp-opacity td-4 anit-fade-in">石青色与高级灰的碰撞展现现代感冷工业风，再加入一点铜红色给清冷的工业风带来了些许的温暖。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="book-bg js-book-bg tp-opacity anit-fade-in">
+        <div class="section5 js-section5">
+            <div class="w1200 section5-box">
+                <div class="title tp-transform td-1 anit-top-in">
+                    <h1>书籍特色</h1>
+                </div>
+                <div class="arrow-left tp-opacity td-8 anit-fade-in">
+                    <div></div>
+                </div>
+                <div class="arrow-right tp-opacity td-8 anit-fade-in">
+                    <div></div>
+                </div>
+                <ul class="st-tab-btn st5-tab-btn tp-opacity td-7 anit-fade-in">
+                    <li class="active"><a href="javascript:;">1</a></li>
+                    <li><a href="javascript:;">2</a></li>
+                    <li><a href="javascript:;">3</a></li>
+                    <li><a href="javascript:;">4</a></li>
+                </ul>
+                <div class="st5-tab-box tp-opacity td-2 anit-fade-in">
+                    <div class="tab1-box tab-box">
+                        <div class="st-pic1 tp-opacity td-3 anit-fade-in"></div>
+                        <div class="st-pic2 tp-opacity td-4 anit-fade-in"></div>
+                        <div class="st-pic3 tp-opacity td-5 anit-fade-in"></div>
+                        <div class="st-title tp-opacity td-6 anit-fade-in">实物纱线展色</div>
+                        <div class="st-txt tp-opacity td-8 anit-fade-in">在书籍的趋势运用部分，关键色组配比都采用实物纱线展色，颜色把控更精准！</div>
+                    </div>
+                    <div class="tab2-box tab-box">
+                        <div class="st-pic1 tp-opacity td-1 anit-fade-in"></div>
+                        <div class="st-pic2 tp-opacity td-2 anit-fade-in"></div>
+                        <div class="st-pic3 tp-opacity td-3 anit-fade-in"></div>
+                        <div class="st-title tp-opacity td-4 anit-fade-in">独家色卡</div>
+                        <div class="st-txt tp-opacity td-5 anit-fade-in">联合国际权威机构发布可拆卸实物纱线及针织/梭织面料色卡，便捷对色、可多次使用。</div>
+                    </div>
+                    <div class="tab3-box tab-box">
+                        <div class="st-pic1 tp-opacity td-1 anit-fade-in"></div>
+                        <div class="st-pic2 tp-opacity td-2 anit-fade-in"></div>
+                        <div class="st-title tp-opacity td-3 anit-fade-in">色彩矩阵</div>
+                        <div class="st-txt tp-opacity td-4 anit-fade-in">将本季流行色按照色彩矩阵和PCCS两种方式呈现，帮助分析色彩明度及纯度，分类清晰，一目了然。
+                        </div>
+                    </div>
+                    <div class="tab4-box tab-box">
+                        <div class="st-pic1 tp-opacity td-1 anit-fade-in"></div>
+                        <div class="st-pic2 tp-opacity td-2 anit-fade-in"></div>
+                        <div class="st-title tp-opacity td-3 anit-fade-in">色彩演变</div>
+                        <div class="st-txt tp-opacity td-4 anit-fade-in">
+                            通过对2020S/S色彩趋势的分析预测，总结出本季适应市场需求的关键色彩，并就关键色彩近三季演变进行针对性的探索与归纳，使我们能更加清晰的了解色彩演变，对色彩更加“心中有数”。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section6 js-section6">
+            <div class="w1200 section6-box">
+                <div class="title tp-transform anit-top-in">
+                    <h1>书籍内容结构</h1>
+                </div>
+                <div class="st-left tp-transform td-1 anit-left-in"></div>
+                <div class="st-right">
+                    <div class="st-item-h st-item1 fl tp-transform td-2 anit-top-in">
+                        <span>4</span>
+                        <div>大主题</div>
+                    </div>
+                    <div class="st-item-h st-item2 fl tp-transform td-2 anit-top-in">
+                        <span>8</span>
+                        <div>大关键色</div>
+                    </div>
+                    <div class="st-item-h st-item3 fl tp-transform td-2 anit-top-in">
+                        <span>16</span>
+                        <div>组色彩搭配</div>
+                    </div>
+                    <div class="st-item-v st-item4 clear tp-transform td-3 anit-right-in">
+                        <span>4</span>
+                        <div>个波段展示四组色彩比例</div>
+                    </div>
+                    <div class="st-item-v st-item5 tp-transform td-3 anit-right-in">
+                        <span>40</span>
+                        <div>块可拆卸纱线色卡</div>
+                    </div>
+                    <div class="st-item-v st-item6 tp-transform td-3 anit-right-in">
+                        <span>16</span>
+                        <div>块可拆卸专色布卡</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section7 js-section7">
+        <div class="w1200 section7-box">
+            <div class="st-left">
+                <div class="item tp-transform anit-left-in">
+                    <span>立即咨询:</span>
+                    <div class="qq-btn js-contact-qq-btn" href="javascript:;">
+                        <div class="icon"></div>
+                        <span>在线QQ</span>
+                    </div>
+                </div>
+                <div class="item tp-transform td-1 anit-left-in">
+                    <span>订购电话：</span>
+                    <div class="phone"></div>
+                </div>
+            </div>
+            <div class="st-right tp-transform td-2 anit-right-in">
+                <span>扫码咨询：</span>
+                <div class="code"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="h5-box">
+    <div class="h5-banner">
+        <img src="{STATIC_URL2}/global/topic/2020SS_color/images/h5/banner.jpg?{STATIC_CHANGE_TIME}" alt="banner">
+    </div>
+    <div class="nav-section js-h5-nav-section">
+        <ul class="w1200">
+            <li class="fl active">
+                <a href="javascript:;">氢能动力</a>
+            </li>
+            <li class="fl">
+                <a href="javascript:;">无塑海岸</a>
+            </li>
+            <li class="fl">
+                <a href="javascript:;">MAKE KOL</a>
+            </li>
+            <li class="fl">
+                <a href="javascript:;">情绪工业</a>
+            </li>
+        </ul>
+    </div>
+    <div class="s1-box h5-st-box js-s1-box">
+        <div class="nav-tab-box">
+            <ul class="h5-tab-btn js-h5-tab-btn">
+                <li class="fl active"><a href="javascript:;">主题灵感</a></li>
+                <li class="fl"><a href="javascript:;">代表IP</a></li>
+                <li class="fl"><a href="javascript:;">代表品牌</a></li>
+                <li class="fl"><a href="javascript:;">色彩方向</a></li>
+            </ul>
+        </div>
+        <div class="h5-tab-box js-h5-tab-box">
+            <img src="{STATIC_URL2}/global/topic/2020SS_color/images/h5/section1_tab1.jpg?{STATIC_CHANGE_TIME}"
+                alt="section1_tab1">
+            <img src="{STATIC_URL2}/global/topic/2020SS_color/images/h5/section1_tab2.jpg?{STATIC_CHANGE_TIME}"
+                alt="section1_tab2">
+            <img src="{STATIC_URL2}/global/topic/2020SS_color/images/h5/section1_tab3.jpg?{STATIC_CHANGE_TIME}"
+                alt="section1_tab3">
+            <img src="{STATIC_URL2}/global/topic/2020SS_color/images/h5/section1_tab4.jpg?{STATIC_CHANGE_TIME}"
+                alt="section1_tab4">
+        </div>
+    </div>
+    <div class="s2-box h5-st-box js-s2-box">
+        <div class="nav-tab-box tab-btn-black">
+            <ul class="h5-tab-btn js-h5-tab-btn">
+                <li class="fl active"><a href="javascript:;">主题灵感</a></li>
+                <li class="fl"><a href="javascript:;">代表IP</a></li>
+                <li class="fl"><a href="javascript:;">代表品牌</a></li>
+                <li class="fl"><a href="javascript:;">色彩方向</a></li>
+            </ul>
+        </div>
+        <div class="h5-tab-box js-h5-tab-box">
+            <img src="{STATIC_URL2}/global/topic/2020SS_color/images/h5/section2_tab1.jpg?{STATIC_CHANGE_TIME}"
+                alt="section2_tab1">
+            <img src="{STATIC_URL2}/global/topic/2020SS_color/images/h5/section2_tab2.jpg?{STATIC_CHANGE_TIME}"
+                alt="section2_tab2">
+            <img src="{STATIC_URL2}/global/topic/2020SS_color/images/h5/section2_tab3.jpg?{STATIC_CHANGE_TIME}"
+                alt="section2_tab3">
+            <img src="{STATIC_URL2}/global/topic/2020SS_color/images/h5/section2_tab4.jpg?{STATIC_CHANGE_TIME}"
+                alt="section2_tab4">
+        </div>
+    </div>
+    <div class="s3-box h5-st-box js-s3-box">
+        <div class="nav-tab-box tab-btn-black">
+            <ul class="h5-tab-btn js-h5-tab-btn">
+                <li class="fl active"><a href="javascript:;">主题灵感</a></li>
+                <li class="fl"><a href="javascript:;">代表IP</a></li>
+                <li class="fl"><a href="javascript:;">代表品牌</a></li>
+                <li class="fl"><a href="javascript:;">色彩方向</a></li>
+            </ul>
+        </div>
+        <div class="h5-tab-box js-h5-tab-box">
+            <img src="{STATIC_URL2}/global/topic/2020SS_color/images/h5/section3_tab1.jpg?{STATIC_CHANGE_TIME}"
+                alt="section3_tab1">
+            <img src="{STATIC_URL2}/global/topic/2020SS_color/images/h5/section3_tab2.jpg?{STATIC_CHANGE_TIME}"
+                alt="section3_tab2">
+            <img src="{STATIC_URL2}/global/topic/2020SS_color/images/h5/section3_tab3.jpg?{STATIC_CHANGE_TIME}"
+                alt="section3_tab3">
+            <img src="{STATIC_URL2}/global/topic/2020SS_color/images/h5/section3_tab4.jpg?{STATIC_CHANGE_TIME}"
+                alt="section3_tab4">
+        </div>
+    </div>
+    <div class="s4-box h5-st-box js-s4-box">
+        <div class="nav-tab-box tab-btn-black">
+            <ul class="h5-tab-btn js-h5-tab-btn">
+                <li class="fl active"><a href="javascript:;">主题灵感</a></li>
+                <li class="fl"><a href="javascript:;">代表IP</a></li>
+                <li class="fl"><a href="javascript:;">代表品牌</a></li>
+                <li class="fl"><a href="javascript:;">色彩方向</a></li>
+            </ul>
+        </div>
+        <div class="h5-tab-box js-h5-tab-box">
+            <img src="{STATIC_URL2}/global/topic/2020SS_color/images/h5/section4_tab1.jpg?{STATIC_CHANGE_TIME}"
+                alt="section4_tab1">
+            <img src="{STATIC_URL2}/global/topic/2020SS_color/images/h5/section4_tab2.jpg?{STATIC_CHANGE_TIME}"
+                alt="section4_tab2">
+            <img src="{STATIC_URL2}/global/topic/2020SS_color/images/h5/section4_tab3.jpg?{STATIC_CHANGE_TIME}"
+                alt="section4_tab3">
+            <img src="{STATIC_URL2}/global/topic/2020SS_color/images/h5/section4_tab4.jpg?{STATIC_CHANGE_TIME}"
+                alt="section4_tab4">
+        </div>
+    </div>
+    <div class="book-bg">
+        <div class="s5-box h5-st-box">
+            <div class="title">
+                <h1>书籍特色</h1>
+            </div>
+            <ul class="h5-tab-btn js-h5-tab-btn">
+                <li class="active"><a href="javascript:;">1</a></li>
+                <li><a href="javascript:;">2</a></li>
+                <li><a href="javascript:;">3</a></li>
+                <li><a href="javascript:;">4</a></li>
+            </ul>
+            <div class="h5-tab-box js-h5-tab-box">
+                <img src="{STATIC_URL2}/global/topic/2020SS_color/images/h5/section5_tab1.jpg?{STATIC_CHANGE_TIME}"
+                    alt="section5_tab1">
+                <img src="{STATIC_URL2}/global/topic/2020SS_color/images/h5/section5_tab2.jpg?{STATIC_CHANGE_TIME}"
+                    alt="section5_tab2">
+                <img src="{STATIC_URL2}/global/topic/2020SS_color/images/h5/section5_tab3.jpg?{STATIC_CHANGE_TIME}"
+                    alt="section5_tab3">
+                <img src="{STATIC_URL2}/global/topic/2020SS_color/images/h5/section5_tab4.jpg?{STATIC_CHANGE_TIME}"
+                    alt="section5_tab4">
+            </div>
+        </div>
+        <div class="s6-box h5-st-box">
+            <div class="title">
+                <h1>书籍内容结构</h1>
+            </div>
+            <div class="st-left"></div>
+            <div class="st-right">
+                <img src="{STATIC_URL2}/global/topic/2020SS_color/images/h5/section6_right.jpg?{STATIC_CHANGE_TIME}"
+                    alt="section6_right">
+            </div>
+        </div>
+    </div>
+    <div class="s7-box h5-st-box">
+        <div class="st-top">
+            <div class="item">
+                <span>订购电话：</span>
+                <div class="phone">
+                    <img src="{STATIC_URL2}/global/topic/2020SS_color/images/section6_pic1.png?{STATIC_CHANGE_TIME}"
+                        alt="section6_pic1">
+                </div>
+            </div>
+        </div>
+        <div class="st-btm">
+            <span>扫码咨询：</span>
+            <div class="code">
+                <img src="{STATIC_URL2}/global/topic/2020SS_color/images/section6_pic2.jpg?{STATIC_CHANGE_TIME}"
+                    alt="section6_pic2">
+            </div>
+        </div>
+    </div>
+</div>
+{include file="topic/common/h5-footer.html"}
+
+{/block}
+
+{block name="self"}
+<script type="text/javascript"
+    src="{STATIC_URL2}/global/topic/2020SS_color/js/2020SS_color.js?{STATIC_CHANGE_TIME}"></script>
+{/block}

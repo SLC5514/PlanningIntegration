@@ -1,0 +1,83 @@
+*{margin: 0;padding: 0;	font-family:"Microsoft YaHei";}
+.main{width:100%;height: 100%;background-color: #fff;}
+a{text-decoration: none;color: #fff;cursor: pointer;}
+ul{list-style-type: none;}
+.clear{display: block;content:'';clear: both;}
+.clear:after{display: block;content: "";clear: both;}
+/*head头部*/
+#header{width: 100%;/* height: 940px; */background: url(../../../images/topic/enterprise_service/h5-head-bg.jpg);background-size: 100% 100%;}
+.header-centen{width: 100%;margin: 0 auto;position: relative;}
+.header-title{width: 100%;padding-top: 15%;margin-bottom: 20px;color: #fff;}
+.header-title>img{margin: 0 auto;display: block;width: 87%;}
+.header-img>img{width: 100%;margin: 0 auto;display: block;padding-bottom: 20%;}
+/*vie特权比较*/
+.vip-introduce{position: absolute;left: 3%;top: 73%;width: 95%;}
+.vip-list{width: 95%;margin: 4% auto;}
+.vip-list>ul>li{float: left;margin-right: 6%;margin-left:0;margin-bottom: 20px;border-radius: 10px;overflow: hidden;box-shadow: 0 0 5px rgba(0,0,0,0.2);border: 1px solid #969696 \9;width: 47%;height: 45%;}
+.vip-list>ul>li:nth-child(2n){margin-right:0;}
+.vip-list>ul>li img{width: 100%;}
+.vip-title{text-align: center;margin: 0 auto;position: relative;}
+.vip-title>img{width: 30.5%;}
+.vip-title>span{width: 25%;border-top: 1px solid #b2b2b2;display: inline-block;position: absolute;top: 50%;}
+.vip-title .s-right{right: 3%;}
+.vip-title .s-left{left: 3%;}
+.dom-table{width: 100%;margin: 107% auto 0;}
+.vip-details{width: 100%;height: 5%;margin-bottom: 4%;/* font-size: 36px; */}
+.details-title{color: #d8b056;text-align: center;position: relative;}
+.details-title>img{width:22%;}
+.details-title>span{width: 28%;border-top: 1px solid #b2b2b2;display: inline-block;position: absolute;top: 50%;}
+.details-title .s-right{right: 5%;}
+.details-title .s-left{left: 5%;}
+.details-table{width: 90%;margin: 0 auto;margin-bottom: 30px;border-collapse: collapse;box-shadow: 0 0 5px rgba(0,0,0,0.2);border: 1px solid #969696 \9;font-size: 16px;}
+.font-table{font-weight:bold;font-size: 18px;}
+.font-td{color: #ab7b10;font-weight:bold;}
+.details-table td{height: 30px;padding: 10px 0; border:1px solid #dddddd;text-align: center;font-size: 14px;}
+.details-table img{width: 15px;}
+.privil{width: 20%;font-size: 16px;}
+.Rights{width: 26%;font-size: 16px;}
+.member{width: 21%;}
+.details-tr{background-color: #fef6e4;font-size: 16px;font-weight:bold; }
+.row-colour{background-color: #d8b056;color: #fff;}
+.odd-colour{background-color: #f9f9f9;}
+.even-colour{background-color: #fff;}
+/*底部*/
+.bottom-con{width: 100%;background: url("../../../images/topic/enterprise_service/H5-bottom-bg.jpg") no-repeat;background-size: 100%;font-size: 20px;color: #fff;text-align: center;padding: 10% 0 8.5%;;}
+.bottom-con .bottom-but{width: 80%;height: 40px;background-color: #d8b056;margin: 0 auto;margin-bottom: 20px;text-align: center;line-height: 40px;border-radius: 5px;display: block;font-size: 14px;}
+.bottom-con>span{font-weight: bold;}
+.bottom-pop{width: 100%;height: 60px;text-align: center;line-height: 60px;color: #f9f9f9;font-size: 14px;background: #1c232b;display:none;}
+
+
+
+@media only screen and (min-width:750px){
+    #header{background: url("../../../images/topic/enterprise_service/head-bg.jpg");background-size: 100% 100%;}
+/*     .header-centen{width: 1200px;} */
+    .header-img>img{width: 60%;padding-bottom: 9%;}
+    .header-title>img{width: 38.5%;}
+    .header-title{padding-top: 120px}
+    .vip-title{width: 60%;}
+    .vip-title>span{width: 17%;}
+    .vip-title .s-right{right: 21%;}
+    .vip-title .s-left{left: 21%;}
+    .details-title>span{width: 17%;}
+    .details-title .s-right{right: 24%;}
+    .details-title .s-left{left: 24%;}
+    .details-table td{font-size: 16px;}
+    .dom-table{width:60%;margin: 10% auto 0;}
+    .details-table{width: 100%;margin-bottom: 60px;}
+    .vip-introduce{width: 100%;left: 0;top: 66%;}
+    .vip-list{width: 60%;margin: 3% auto;}
+    .vip-list>ul>li{width: 23.5%;margin-left: 2%;margin-right:0;}
+    .vip-list>ul>li:first-child{margin-left:0;}
+    .vip-title>img{width: 18%;}
+    .details-title>img{width:12.5%;}
+    .details-table img{width: 30px;}
+    .privil{width: 16%;font-size: 18px;}
+    .Rights{width: 26%;font-size: 18px;}
+    .member{width: 25%;}
+    .font-table{font-size: 22px;}
+    .bottom-pop{display: block;}
+    .bottom-con{padding: 120px 0 100px 0;background: url("../../../images/topic/enterprise_service/bottom-bg.jpg") no-repeat;}
+    .bottom-con .bottom-but{width: 300px;height: 50px;line-height: 50px;font-size: 20px;}
+
+    
+}

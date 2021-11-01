@@ -1,0 +1,54 @@
+/* 
+    fanglinna
+    20191112
+    免登陆
+*/
+body,html{width: 100%;height: 100%;}
+.free-login-contain{background: url(../../images/free_login/bg.jpg) no-repeat center center;background-size: 100% 100%; width: 100%;height: 100%;overflow: hidden;}
+.free-login-contain>h1{margin-left: 54px;margin-top: 50px;}
+.free-login-contain>h1>img{max-width: 357px;}
+.free-login-contain>div.windx80{width: 82%;margin:0 auto;}
+.free-login-contain .free-login-web{text-align: center;margin-top: 8%;}
+.free-login-contain .free-login-web>li{display: inline-block;width: 17%;margin:1%;position: relative;font-size: 0;}
+.free-login-contain .free-login-web>li>a{width: 100%;height: 100%;display: inline-block;overflow: hidden;border-radius: 10px;}
+.free-login-contain .free-login-web>li>a>img{max-width: 100%;-webkit-transition: all 0.5s;-ms-transition: all 0.5s;transition: all 0.5s;}
+.free-login-contain .free-login-web>li>a>div{position: absolute;left:50%;top:50%;width: 50%;padding-bottom: 50%;height: 0;border-radius: 50%;text-align: center;display: inline-block;transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%);}
+.free-login-contain .free-login-web>li>a>div>span{position: absolute;left:50%;top: 50%;transform: translate(-50%,-50%);font-size: 1.5vw;color: #fff;font-weight: bold;}
+.free-login-contain .free-login-web>li.free-fashion-li>a>div{background-color: rgba(66, 132, 255,0.5);}
+.free-login-contain .free-login-web>li.free-shoe-li>a>div{background-color: rgba(255, 167, 100,0.5);}
+.free-login-contain .free-login-web>li.free-bag-li>a>div{background-color: rgba(115, 170, 142,0.5);}
+.free-login-contain .free-login-web>li.free-home-li>a>div{background-color: rgba(198, 201, 253,0.5);}
+.free-login-contain .free-login-web>li.free-decoration-li>a>div{background-color: rgba(67, 132, 255,0.5);}
+
+.free-login-contain .free-login-web>li:hover img{-webkit-transform: scale(1.1);-ms-transform: scale(1.1);transform: scale(1.1);}
+
+/* 弹层 */
+.free-login-bg{position: fixed;left: 0;top: 0;width: 100%;height: 100%;background: rgba(0,0,0,0.6);display: none;}
+.free-login-layer{position: fixed;left: 50%;top: 20%;margin-left: -275px;width: 550px;overflow: hidden;display: none;}
+.free-login-layer>h2{width: 100%;height: 90px;line-height: 90px;background-color: #232F3C;font-size: 30px;color: #fff;border-radius: 18px 18px 0 0;text-align: center;}
+.login-infor-box{background-color: #fff;border-radius: 0 0 18px 18px;text-align: center;overflow: hidden;display: none;}
+.login-infor-box>p{color: #232F3C;font-size: 18px;line-height: 25px;margin-top: 20px;letter-spacing: 1.12px;}
+.login-input-box>ul{width: 80%;margin:0 auto 60px;}
+.login-input-box>ul>li.input-li{width: 100%;border-bottom: 1px solid #ccc;position: relative;margin-top: 35px;}
+.login-input-box>ul>li.input-li>div>input{border: none;width: 100%;height: 32px;line-height: 32px;font-size: 16px;color: #232F3C;padding-bottom: 6px;}
+.login-input-box>ul>li.input-li>a{position: absolute;right: 0; bottom: 6px;width: 100px;height: 32px;background-color: #232F3C;border-radius: 2px;font-size: 14px;color: #fff;line-height: 32px;cursor: pointer;}
+.login-input-box>ul>li.input-li>i{width: 22px;height: 22px;position: absolute;right: 20px;top: 8px;background: url(../../images/free_login/psw.png) no-repeat;cursor: pointer;z-index: 10;}
+.login-input-box>ul>li.input-li>i.pwd-display{background: url(../../images/free_login/psw1.png) no-repeat;}
+.login-input-box>ul>li.input-li>span{position: absolute;font-size: 14px;color: #FF6633;left: 0;bottom: -25px;display: none;}
+.login-input-box>ul>li.button-li{width: 100%;height: 50px;margin-top: 50px;}
+.login-input-box>ul>li.button-li>a{width: 100%;height: 100%;background-color: #232F3C;font-size: 16px;color: #fff;border-radius: 4px;display: inline-block;line-height: 50px;}
+.login-input-box>ul>li.button-li>a.gray-status{background-color: #DBDDE0;}
+.phone-input-box>ul>li.input-li{margin-top: 60px;}
+.login-input-box>ul>li.forget-psw-li{text-align: right;margin-top: 6px;}
+.login-input-box>ul>li.forget-psw-li>a{font-size: 14px;color: #999;line-height: 20px;}
+.password-input-box>ul{margin-bottom: 35px;}
+.password-input-box>ul>li.input-li{margin-top: 60px;}
+/* 温馨提示 */
+.warming-tips-box{width: 500px;height: 250px;background-color: #fff;border-radius: 5px;position: absolute;top: 20%;left: 50%;margin-left: -250px;display: none;}
+.warming-tips-box>h2{font-size: 30px;color: #333;line-height: 42px;margin-top: 25px;text-align: center;}
+.warming-tips-box>p{font-size: 16px;color: #333;letter-spacing: 1px;text-align: center;width: 390px;margin: 25px auto 0;}
+.warming-tips-box>p>span{letter-spacing: 0;}
+.warming-tips-box>div{height: 40px;text-align: center;margin-top: 32px;}
+.warming-tips-box>div>a{width: 100px;height: 100%;font-size: 16px;border-radius: 3px;display: inline-block;line-height: 40px;cursor: pointer;}
+.warming-tips-box>div>a.remove-account{background-color: #D8D8D8;color: #333;margin-right: 10px;}
+.warming-tips-box>div>a.replace-phone{background-color: #232F3C;color: #fff;}

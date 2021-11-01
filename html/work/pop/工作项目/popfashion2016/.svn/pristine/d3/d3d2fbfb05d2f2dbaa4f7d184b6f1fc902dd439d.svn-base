@@ -1,0 +1,378 @@
+{extends file="layout.html"}
+
+{block name="selfcss"}
+	<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/pop_layer.css?{STATIC_CHANGE_TIME}">
+    <link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/new-detail/style-detail.css?{STATIC_CHANGE_TIME}">
+    <link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/lists/common/list-common.css?{STATIC_CHANGE_TIME}">
+    <link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/lists/patterns-list.css?{STATIC_CHANGE_TIME}">
+{/block}
+{block name="main"}
+<div class="contant conheight">
+    <input type="hidden" id="link"
+        data-sor="{$link['sortRandom']}"
+        data-col="{$columnId}"
+        data-url="{if isset($link['url'])}{$link['url']}{/if}"
+        data-param="{if isset($link['param'])}{$link['param']}{/if}"
+        data-search="{if isset($link['search'])}{$link['search']}{/if}"
+        data-pow="{$memberFlag}"
+        data-page="{$page}"
+        data-limitnum=""
+        data-pagesize="{$pageSize}"/>
+    <!--头部轮播-->
+    <div class="banner-top new-banner-top {if $columnId != 121}new-banner{/if}">
+        {block name="topads"}
+        
+        {include file="lists/lists-common/banner_ads.html"}
+        {/block}
+        <!-- 列表导航 -->
+		{include file="lists/lists-common/list_nav_box.html"}
+    </div>    
+    <div name='anchor' id='anchor' class="anchor"></div>
+    <div class="select-label-contain js-select-label-contain new-right-nav">
+        <div class="rightc_top contentW">
+            <!-- 筛选项 -->
+            <div>
+                {include file="lists/lists-common/patterns_select.html"}
+            </div>
+            <div class="js-fixed-select select-scroll-fixed" style="display: none;">
+                {include file="lists/lists-common/patterns_select.html"}
+            </div>
+
+            <!-- 色彩分析 -->
+            {if $columnId eq 82}
+            <div class="js_color_analysis"  style="display: none;">
+                <div class="color_analysis"></div>
+                <!--<div class="tech_support"><p>颜色识别技术由码隆科技 <img src="{STATIC_URL2}/global/images/p_icon1.png"> 合作提供</p></div>-->
+            </div>
+            {/if}
+
+            <!-- 筛选项 -->
+            {if $columnId != 121}
+            <div class="shaixuan-wid-box">
+                <div class="shaixuan_wid js-shaixuan-wid clearfix">
+                    {include file="lists/lists-common/screen_box.html"}
+                    <div class="fr clearfix js-total-info-section" id="s_result">
+                        <p class="findstyle">共 <a href="javascript:void(0);" title="0">0</a> 个</p>
+                        <div class='btn_page js-page-control'>
+                            <a class='leftBtn neiyeList js-prev-page-btn' href='javascript:void(0);'></a>
+                            <span class='pageN'>0</span>/<span class='totalN'>0</span>
+                            <a class='rightBtn neiyeList js-next-page-btn' href='javascript:void(0);'></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {/if}
+
+            <!-- 权限提示条开始 -->
+            {if !empty($memberFlag) && $columnId != 121}
+            <div class="rightc_wraning">
+                {include file="lists/lists-common/wraning_box.html"}
+            </div>
+            {/if}
+
+            <!-- 列表内容 -->
+            <div style="position: relative;">
+                <div class="rightc_main js-patterns-lists-box {if $columnId == 121}js-patterns-date-list{/if}">
+                    <ul class="patterns-ul js-list-parent clearfix {if $columnId == 82 || $columnId == 124 || $columnId == 120}new-patterns-ul{/if}">
+                        {if $columnId==121}
+                        {foreach range(1, 12) as $i}
+                        <li class="js-placeholder-item">
+                            <div itemscope="" class="pic_box">
+                                <a class="pic-item-area js-general-user-status" href="javascript:void(0)" ondragstart="return false;" oncontextmenu="return false;" title="查看详情">
+                                    <img alt="pic" itemprop="thumbnail" src="{STATIC_URL2}/global/images/loading/referenceMR150.jpg">
+                                    <div class="color-time-box">
+                                        <div class="color-darea clearfix"><p></p></div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="titleBox titleBox-left"><div class="patter-label-position patter-left-label-position"></div></div>
+                        </li>
+                        {/foreach}
+                        {else}
+                        {foreach range(1, 10) as $i}
+                        <li class="js-placeholder-item">
+                            <div itemscope="" class="pic_box">
+                                <a class="pic-item-area js-general-user-status" href="javascript:void(0)" ondragstart="return false;" oncontextmenu="return false;" title="查看详情">
+                                    <img alt="pic" itemprop="thumbnail" src="{STATIC_URL2}/global/images/loading/patterns270.jpg">
+                                    <div class="color-time-box">
+                                        <div class="color-darea clearfix"><p></p></div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="titleBox titleBox-left"><div class="patter-label-position patter-left-label-position"></div></div>
+                        </li>
+                        {/foreach}
+                        {/if}
+                    </ul>
+                </div>
+                <div class="scroll-load js-scroll-load"><img src="{STATIC_URL1}/global/images/alertloading.gif"></div>
+                <div class="rightc_bottom js-page-section"></div>
+                <!-- 游客弹层 -->
+                <input type="hidden" value="{$showMask}" id="showMask"/>
+                {include file='common/list-tourist-layer.html'}
+            </div>
+
+            <!-- 搜索空数据开始 -->
+            <div class="rightc_main hide js-error-section">
+                {include file="lists/lists-common/search_null.html"}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--详情上下页排序信息-->
+<input type="hidden" value='{$pageTurnList}' id="thisPageTurnList">
+<input type="hidden" value="" id="otherPageTurnList">
+<!--详情上下页排序信息-->
+<input id="encrypt" type="hidden" data-sign="{$sign}" data-timestamp="{$timeStamp}" data-token="{$token}">
+
+<!-- 权限弹出层 -->
+<div class="general-user-info-fixbox js-general-user-info-fixbox">
+    <div class="contentW">
+        <button title="关闭"></button>
+        {if $columnId == 82}
+            <h3>正在找图案素材么？</h3>
+            <p>这里有20万独家矢量图案任意浏览下载，让你的图案设计 快、好、省，立即加入POP吧</p>
+        {elseif $columnId == 120}
+            <h3>你发现了开发利器，</h3>
+            <p>快反时代，这里发现全球TOP品牌花型，立即加入POP吧</p>
+        {elseif $columnId == 124}
+            <h3>你很关注图案工艺？</h3>
+            <p>这里有最全的图案常用工艺图库，灵感在无声中拥有</p>
+        {/if}
+        <a class="js-contact-qq-btn" href="javascript:void(0);" title="在线客服">咨询了解VIP，会员体验畅通无阻</a>
+        <a href="/member/pagelogin/" title="立即登录">登录/注册 发现免费推荐</a>
+        <span>电话咨询 <span>4008-210-500</span></span>
+    </div>
+</div>
+
+{if $P_UserType eq 5}
+<!-- 留资 -->
+{include file="common/sem_trends.html"}
+{/if}
+{/block}
+{block name="other"}
+<div id="loadingBg"><div class="noPic"></div></div>
+<div class="pop_layer_page pop_layer_page1" id="pop_layer">
+{include file="detail_layer_template.html"}
+</div>
+{/block}
+{block name="self"}
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/styles.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL2}/global/js/fashion/index.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/global.js?{STATIC_CHANGE_TIME}"></script>
+{if $columnId == 120 || $columnId == 124}
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/Column{$columnId}_Brand.js?{$brandStaticTime}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/util_brand.js?{STATIC_CHANGE_TIME}"></script>
+{/if}
+<script type="text/javascript" src="{STATIC_URL3}/global/js/common/template.js?{STATIC_CHANGE_TIME}"></script>
+{if $columnId == 84 || $columnId == 85}
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/regionFromSolr.js?{$regionStaticTime}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/regionAction.js?{STATIC_CHANGE_TIME}"></script>
+{/if}
+
+{if $columnId != 121}
+<script type="text/javascript" src="{STATIC_URL3}/global/js/secret/crypto-js/crypto-js.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/secret/jsencrypt.js?{STATIC_CHANGE_TIME}"></script>
+{/if}
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/util_pop3_pic.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/util.collect.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/common/echarts.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/common/banner-slide.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/lists/list-common.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/lib/laypage/laypage.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/lists/patterns-list.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/sem_phone/sem_phone.js?{STATIC_CHANGE_TIME}"></script>
+{literal}
+<script type="text/javascript">
+$(function(){
+	// 异步加载筛选条件
+	oPopStyles.loadSelectItems({/literal}{$columnId}{literal});
+
+    $(".lazyload img").lazyload({effect : "fadeIn"});
+});
+</script>
+
+<script type="text/javascript">
+	var aco = "{/literal}{$paramsArr['aco']}{literal}";
+	var con = "{/literal}{$paramsArr['con']}{literal}";
+    $(function(){
+        /**
+         *
+         * @param main DOM对象
+         * @param data 饼图数据
+         * @param type 参数
+         */
+        var createPie = function (main, data, type) {
+
+            // 基于准备好的dom，初始化echarts实例
+            var myChart = echarts.init(main);
+			if( aco!="" && type=="aco"){
+                var formatter = function(e){
+                    return e.data.sColorNumber;
+                }
+			}else if(con !="" && type=="con"){
+                var formatter = "{c}";
+            }else{
+                var formatter=function(){
+                    return "";
+                }
+			}
+            var _data = data;
+            // 指定图表的配置项和数据
+            var option = {
+                tooltip: {
+                    trigger: 'item',
+                    formatter: formatter
+                },
+                series: [
+                    {
+                        name: '色彩分析',
+                        type: 'pie',
+                        radius: ['0%', '60%'],
+                        data: _data,
+                        label: {
+                            normal: {
+                                formatter: '{b} {d}%'
+                            }
+                        },
+                        labelLine: {
+                            normal: {
+                                length: 10,
+                                length2: 30
+                            }
+                        },
+                        itemStyle: {
+                            normal: {
+                                shadowBlur: 5,
+                                shadowOffsetX: 0,
+                                shadowColor: 'rgba(0, 0, 0, 0.2)'
+                            }
+                        }
+                    }
+                ]
+            };
+            // 使用刚指定的配置项和数据显示图表。
+            myChart.setOption(option);
+
+            myChart.on('click', function (d) {
+                var self = $(this);
+                var param = global_param;
+                if (!oCommon.clickBeforeFlicker(self)) {
+                    return ;
+                }
+
+                param = oPopStyles.dealParam(param, type, d.data.id);
+                param = global_search ? param.replace(/\/$/,'')+'/'+global_search : param+'/';
+                location.href = global_url+param.replace(/^\//,'')+'#anchor';
+            });
+        };
+
+        var getPiePic = function () {
+
+            var params = global_param;
+            var key = oPopStyles.GetQueryString('key');
+            var url = '/patterns/getPieData/' + '?' + Math.random();
+            var col = link.data('col');
+            if (col == 82) {
+                $.ajax({
+                    type: 'post',
+                    url: url,
+                    data: {col:col, params:params, key:key},
+                    dataType: 'json',
+                    beforeSend: function(){
+                        var html = '<img class="pie_loading" src="/global/images/loading_pie.gif"/>';
+                        $(".color_analysis").html(html);
+                        return true;
+                    },
+                    success: function(data) {
+                        var colorTag = data.colorBack ? '<a href="' + data.colorBack + '"><img src="/global/images/returnBack.png" alt="返回"></a>' : '<img alt="显示图表" src="/global/images/colorAnalysis.png"/>';
+                        var categoryTag = data.categoryBack ? '<a href="' + data.categoryBack + '"><img src="/global/images/returnBack.png" alt="返回"></a>' : '<img alt="显示图表" src="/global/images/patter-icon.png"/>';
+                        var html = '';
+                        html += '<div class="pie"><div class="analysis_pic js-analysis-pic1">' + colorTag + '</div><div class="color" id="main_color"></div></div>';
+                        html += '<div class="pie"><div class="analysis_pic js-analysis-pic2">' + categoryTag + '</div><div class="category" id="main_category"></div></div>';
+                        $(".color_analysis").html(html);
+
+                        createPie(document.getElementById('main_color'), $.parseJSON(data.analysis), 'aco'); //色彩分析
+                        createPie(document.getElementById('main_category'), $.parseJSON(data.category), 'con'); //
+                    }
+                });
+            }
+        };
+
+        var is_exsist = $.cookie("is_exsist") || '';
+        var is_down = true, is_click = false;
+        var picSrc = $(".js_analysis_show");
+        var select_box = $(".js-selected-box");
+        if (picSrc != undefined ) {
+            //如果cookie值中存在20，则页面再次刷新饼图不出来
+            if(is_exsist != ""){
+                is_down = true;
+                $('.js_color_analysis').show();
+                getPiePic();
+                picSrc.removeClass("show-up").find(".js_is_show>span").text('收起数据分析图表');
+                select_box.css({'padding-bottom':'0px'});
+            }
+            else {
+                is_down = false;                
+                picSrc.addClass("show-up").find(".js_is_show>span").text('展开数据分析图表');
+            }
+
+            $(".js_analysis_show").on('click',function(){
+                if (!is_click) {
+                    getPiePic();
+                }
+                is_click = true;
+                if(!is_down){
+                    picSrc.removeClass("show-up").find(".js_is_show>span").text('收起数据分析图表');                    
+                    select_box.animate({'padding-bottom':'0px'},500);                    
+                    $('.js_color_analysis').slideDown(500,function(){
+                        $.cookie("is_exsist", 20, {expires:365, path:'/', domain:'.pop-fashion.com'});
+                        is_down=true;
+                    });
+                }else{
+                    picSrc.addClass("show-up").find(".js_is_show>span").text('展开数据分析图表');
+                    $('.js_color_analysis').slideUp(500,function(){
+                        $.cookie("is_exsist", null, {path:'/', domain:'.pop-fashion.com'});
+                        is_down=false;
+                    });
+                }
+            });
+            
+        }
+        
+        var resize_first=false;		//记录是否操作过
+        
+        $(window).resize(function(){
+        	if($('.analysis_pic').length<=0||resize_first===true||$('.js_color_analysis canvas').length<=0){
+        		return;
+        	}
+        	resize_first=true;		//已经操作过
+        	var contain_w=$('.js_color_analysis canvas').innerWidth()/2;
+	    	var left1=contain_w;
+	    	var left2=contain_w;
+	    	$('.analysis_pic').eq(0).css({			//改为left定位
+	    		    left: (left1)+'px'
+	    	})
+	    	$('.analysis_pic').eq(1).css({
+	    		    left: (left2)+'px'
+	    	})
+        })
+
+        // 饼图显示按钮
+        $(".js_is_show").on('mouseenter mouseleave', function(e){
+            if(e.type=='mouseenter'){
+                $(this).parent().addClass("show-up-hover");
+            }else{
+                $(this).parent().removeClass("show-up-hover");
+            }
+        });
+
+    });
+</script>
+
+<script>         
+eval(function(p,a,c,k,e,d){e=function(c){return(c<a?"":e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)d[e(c)]=k[c]||e(c);k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1;};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p;}('8 B(2,b){D(C 2==\'x\'){2=w.n(2)}3 a=1.o.7(2,1.4.5.c(b),{r:1.4.5.c(\'e\')});9 1.4.s.n(a.y)};8 z(2,b){3 q=1.o.6(2,1.4.5.c(b),{r:1.4.5.c(\'e\')});9 q.A(1.4.5)};8 u(a){3 6=h d();6.t(v());p=6.6(R(a));9 p};8 T(m){3 7=h d();7.U(0());3 k=7.7(m);i=S(k).Q(/\\+/g,\'%X\');9 i};8 0(){3 0=\'-----Y l j-----\';0+=\'V+f+W\';0+=\'P\';0+=\'H+I\';0+=\'G\';0+=\'E/F/J\';0+=\'N/O+M\';0+=\'K\';0+=\'-----L l j-----\';9 0};',61,61,'pub_key|CryptoJS|plainText|var|enc|Utf8|decrypt|encrypt|function|return|encrypted|AES_KEY|parse|JSEncrypt|1234567887654301|||new|data_str|KEY|res|PUBLIC|str|stringify|AES|data_decrypted|decrypted|iv|Base64|setPrivateKey|rsa_decrypt|pri_key|JSON|object|ciphertext|aes_decrypt|toString|aes_encrypt|typeof|if|Avw5eS3UkIPixj4B0mZkhn9VZ9mOgBRgs9Lo|Ihc|GHGXr73iXRhLgqfQhC5dlMisbr3GqnGtPNVOBDYGtGgKS4mpaYzpO60kunooKmdH|3PSU5jrzuzDUEqZvEQaOHfKcUXRx3C61iR9iTnA6YCZLlIX3CnRJzYWCJNRjV|qp|hJXAk3kZvzQjIpzKrYAqHYp|hwIDAQAB|END|EfjuWjJxz02MuWsi|4cKyAfWCegA0G0fGo2aJWqpFrAg25FTDXFf0DRDz|AIEvJu|rcEaJOO94OSQsWzIQSGWM4yoVOVg85YKhW5JlwAHH53Zd8sASLk0ypQv5ze68zeS|replace|decodeURIComponent|encodeURI|rsa_encrypt|setPublicKey|MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1053Mcqn6WH|liJid6|2B|BEGIN'.split('|'),0,{}))
+</script>
+{/literal}
+{/block}

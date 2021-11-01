@@ -1,0 +1,44 @@
+.container{width: 100%;height: 100%;background: #fff;}
+.content{width: 100%;height: 1997px;background: url(../images/bg.jpg) no-repeat center center;position: relative;}
+.wrap2{width: 1200px;margin:0 auto;position: relative;}
+.banner_t ul li{float:left;}
+.banner_t ul li.logo1{margin-right:162px;}
+.banner_t {padding:100px 0 78px;margin-left:155px;}
+.container .banner_b{background: #fff;width: 842px;height: auto;padding:70px 180px 130px;;position: absolute;top:253px;left:0;}
+.container .public{font-family: "微软雅黑";font-size: 18px;color:#333;}
+.container .banner_b .t2{font-weight: bold;padding:10px 0 30px;}
+.container .banner_b .t3{font-size: 20px;font-weight: bold;padding-bottom:40px;}
+.container .banner_b .about .t4{font-weight: bold;font-size: 22px;padding-bottom:19px;border-bottom:1px solid #000;}
+.container .banner_b  .about .t5{margin:26px 0 27px;line-height: 33px;}
+.container .banner_b .about .t6{margin-bottom:37px;line-height: 33px;}
+.container .banner_b .about{margin-bottom:60px;}
+.container .banner_b .down{margin-bottom:76px;}
+.container .banner_b .down .t8{margin-bottom:87px;text-align: center;}
+.container .banner_b .down .t7{font-size: 22px;font-weight: bold;padding-bottom:19px;border-bottom:1px solid #000;margin-bottom:104px;}
+.container .banner_b .down ul li{float:left;}
+.container .banner_b .down ul {overflow: hidden;width: 553px;margin-left:190px;}
+.container .banner_b .down ul li{text-align: center;width: 192px;}
+.container .banner_b .down ul li.ma1{margin-right:116px;}
+.container .banner_b .down ul li p .ios{margin:13px 0 35px;}
+.container .banner_b .down ul li p.www{font-family: "微软雅黑";font-size: 20px;color:#030000;}
+.container .content2 .detail{margin-top:40px;margin-left:-31px;}
+.container .content2 .detail .chsVa a{display:inline-block;width: 907px;height: 136px;margin-top:30px;}
+.container .content2 .deitil1 a{background: url(../images/de.jpg) no-repeat center center;}
+.container .content2 .deitil2 a{background: url(../images/de2.jpg) no-repeat center center;}
+.container .content2 .deitil2 a:hover{background: url(../images/de2hover.jpg) no-repeat center center;}
+.container .content2 .deitil1 a:hover{background: url(../images/dehover.jpg) no-repeat center center;}
+.container .content2 .history{margin-top:112px;}
+.container .content2 .history .t9{font-weight: bold;font-size: 22px;padding-bottom: 19px;border-bottom: 1px solid #000;}
+.container .content2 .history ul{margin-top:90px;margin-bottom: 112px;}
+.container .content2 .history ul li{margin-bottom:12px;}
+.container .content2 .history ul p{font-family: "微软雅黑";font-size: 20px;color:#333;}
+.container .content2 .history ul p span{margin-right:18px;display: inline-block;}
+.container .content2 .history ul p span.span1{opacity: 0.2;filter:alpha(opacity=20);}
+.container .content2 .history ul p span.span2{opacity: 0.6;filter:alpha(opacity=60);}
+.container .content2 .history .county_list{overflow: hidden;}
+.container .content2 .history .county_list li{float:left;width: 158px;height: 132px;text-align: center;line-height: 132px;margin-right:7px;}
+.container .content2 .history .county_list li img.img1{margin-top:15px;}
+.container .content2 .history .county_list li img.img3{margin-top:51px;}
+.container .content2 .history .county_list li img.img4{margin-top:62px;}
+.container .content2 .history .county_list li img.img5{margin-top:64px;}
+.container .content2 .box{width: 842px;padding:75px 180px 1px;}

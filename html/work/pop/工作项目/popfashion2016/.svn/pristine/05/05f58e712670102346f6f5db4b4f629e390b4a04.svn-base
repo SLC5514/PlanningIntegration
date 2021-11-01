@@ -1,0 +1,175 @@
+{extends file="layout.html"}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/per.css?{STATIC_CHANGE_TIME}">
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/personal.css?{STATIC_CHANGE_TIME}">
+{/block}
+
+{block name="main"}
+<div class="main">
+    <div class="con_width">
+    <!--个人中心 头部开始-->
+    {$personalHeader}
+    <!--个人中心 头部结束-->
+
+    <div class="col-main clearfix">
+        <!--个人中心 左侧菜单开始-->
+        {$personalLeftMenu}
+        <!--个人中心 左侧菜单结束-->
+
+        <div class="col-con  fl">
+            <!-- item-manage -->
+            <div class="item-manage manage_password">
+                <div class="hd"><span><i></i>修改登录密码</span></div>
+                <div class="bd">
+                    <p class="note">尊敬的用户，POP为了提供更方便、优质的服务，已将旗下的 <a target="_blank" href="https://www.pop-fashion.com" title="POP-fashion">POP-fashion</a>、<a target="_blank" href="http://www.pop-bags.com" title="POP-bags">POP-bags</a>、<a target="_blank" href="http://www.pop-shoe.com" title="POP-shoe">POP-shoe</a>、<a target="_blank" href="http://www.51shoushi.com" title="51shoushi">51shoushi</a>、<a target="_blank" href="http://www.91jiafang.com" title="91jiafang">91jiafang</a> 五个网站用户数据的统一。<br><strong class="strong_top">您可以用同一个账号和密码登陆所有网站。</strong><br><strong>但是请注意，一旦您在此处修改了密码，那么其他网站也将使用此新密码。</strong></p>
+                    <table width="100%" class="modify">
+                        <form action="/member/modPwd/" method="POST" id="theForm">
+                        <tbody>
+                            <tr>
+                                <th>原密码：</th>
+                                <td><input type="password" autocomplete="off" size="30" name="oldPassword" class="input idleField"></td>
+                            </tr>
+                            <tr>
+                                <th>新密码：</th>
+                                <td><input type="password" onblur="pwStrength(this.value)" onkeyup="pwStrength(this.value)" autocomplete="off" size="30" name="newPassword" class="input idleField"></td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td class="jg"><span id="strength_L" style="background: rgb(201, 201, 201) none repeat scroll 0% 0%;">低</span><span id="strength_M" style="background: rgb(201, 201, 201) none repeat scroll 0% 0%;">中</span><span id="strength_H" style="background: rgb(201, 201, 201) none repeat scroll 0% 0%;">高</span></td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td class="sm">可以由6~20个字符字母、数字、特殊字符组成，请注意大小写</td>
+                            </tr>
+                            <tr>
+                                <th>确认新密码：</th>
+                                <td><input type="password" autocomplete="off" to="newPassword" size="30" name="reNewPassword" class="input idleField"></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td class="sm">请再次输入密码进行确认，请注意大小写</td>
+                            </tr>
+                            <tr>
+                                <th>&nbsp;</th>
+                                <td><input type="submit" value="提交修改" id="btn" class="btn-red"></td>
+                            </tr>
+                        </tbody>
+                        </form>
+                    </table>
+                    <s class="space"></s>
+                    <ul class="member  clearfix">
+                        <li>• 可以由6~20个字符字母、数字、特殊字符组成，注意区分大小写。</li>
+                        <li>• 注意区分全角、半角。 (举例：同样一个数字'3'，如果是'３'，那就是全角；如果是'3'，那就是半角。尽量以半角方式输入)</li>
+                        <!-- <li>• 关于全角半角问题，详情可参考 <a class="red" target="_blank" href="http://www.pop136.com/help_list_index.php">“常见问题解答”</a>。</li> -->
+                    </ul>
+                </div>
+            </div>
+            <!-- /item-manage -->
+        </div>
+    </div>
+    <div class="modified-Success js-modified-Success">
+        <span>您的密码已修改成功，请重新登录！</span>
+        <div>立即登录</div>
+    </div>
+</div>
+</div>
+{/block}
+
+{block name="self"}
+{literal}
+<script type="text/javascript">
+    //判断密码强度
+    //判断输入密码的类型
+    function CharMode(iN){
+        if (iN>=48 && iN <=57) //数字
+            return 1;
+        if (iN>=65 && iN <=90) //大写
+            return 2;
+        if (iN>=97 && iN <=122) //小写
+            return 4;
+        else
+            return 8;
+    }
+    //计算密码模式
+    function bitTotal(num){
+        modes=0;
+        for (i=0;i<4;i++){
+            if (num & 1) modes++;
+            num>>>=1;
+        }
+        return modes;
+    }
+    //返回强度级别
+    function checkStrong(sPW){
+        if (sPW.length<=4)
+            return 0; //密码太短
+        Modes=0;
+        for (i=0;i<sPW.length;i++) {
+            //密码模式
+            Modes|=CharMode(sPW.charCodeAt(i));
+        }
+        return bitTotal(Modes);
+    }
+    //显示颜色
+    function pwStrength(pwd){
+        O_color="#c9c9c9";
+        L_color="#f4523b";
+        if ( pwd == null || pwd=='' ) {
+            Lcolor=Mcolor=Hcolor=O_color;
+        }
+        else{
+            S_level=checkStrong(pwd);
+            switch(S_level) {
+                case 0:
+                    Lcolor=Mcolor=Hcolor=O_color;
+                case 1:
+                    Lcolor=L_color;
+                    Mcolor=Hcolor=O_color;
+                    break;
+                case 2:
+                    Mcolor=L_color;
+                    Lcolor=Hcolor =O_color;
+                    break;
+                default:
+                    Hcolor=L_color;
+                    Lcolor=Mcolor= O_color;
+            }
+        }
+        document.getElementById("strength_L").style.background=Lcolor;
+        document.getElementById("strength_M").style.background=Mcolor;
+        document.getElementById("strength_H").style.background=Hcolor;
+    }
+
+    $(function(){
+        $('#btn').click(function(){
+            $('#theForm').ajaxSubmit(function(data){
+                if (data == 'success') {
+                    // 提示成功
+                    /* layer.alert('您已修改成功！',{title:false,area:['550px','115px'],skin:'layui-layer-pwd',btn:[]},function(){window.location.reload();});
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 1000); */
+                    $('.js-bg-div').show();
+                    $('.js-modified-Success').show();
+                    $('.js-modified-Success div').on('click',function(){
+                        location.href = '/member/pagelogin/';
+                    })
+                }else {
+                    /* layer.open({title:false,area:['550px','115px'],content:data,btn:[],skin:'layui-layer-pwd'}); */
+                    $('.js-bg-div').show();
+                    $('.js-modified-Success span').text(data);
+                    $('.js-modified-Success div').text('关闭')
+                    $('.js-modified-Success div').on('click',function(){
+                        $('.js-bg-div').hide();
+                        $('.js-modified-Success').hide();
+                    })
+                    $('.js-modified-Success').show();
+                }
+            });
+            return false;
+        });
+    });
+</script>
+{/literal}
+{/block}

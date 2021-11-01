@@ -1,0 +1,23 @@
+{if $memberFlag eq 2}
+<div class="wran">
+    <p class="neiyeList fl">您目前为【普通用户】，仅可免费浏览列表缩略图。想浏览并下载高清大图，并使用完整功能？请开通本站
+        <a rel="nofollow" target="_blank" href="/service/joinmember/" class="yellow">VIP会员</a>。</p>
+    <div class="neiyelistRight fr">
+        <span class="apply_try"><i></i>申请试用：</span>
+        <a rel="nofollow" class="qq neiyeList js-contact-qq-btn" href="javascript:void(0);">QQ咨询</a>
+        或
+        <span class="wran_tel"><em>4008-210-500</em> </span>
+    </div>
+</div>
+{/if}
+{if $memberFlag eq 1}
+<div class="wran">
+    <p class="neiyeList fl">您目前为【游客】，仅可在受限情况下浏览部分列表缩略图。想浏览更多设计资料？请 <a href="javascript:void(0);" class="yellow loginLayer">登录</a> 或 <a rel="nofollow" target="_blank" href="/member/register/" class="yellow">注册</a> 成为POP会员。</p>
+    <div class="neiyelistRight fr">
+        <span class="apply_try"><i></i>申请试用：</span>
+        <a rel="nofollow" class="qq neiyeList js-contact-qq-btn" href="javascript:void(0);">QQ咨询</a>
+        或
+        <span class="wran_tel"><em>4008-210-500</em> </span>
+    </div>
+</div>
+{/if}

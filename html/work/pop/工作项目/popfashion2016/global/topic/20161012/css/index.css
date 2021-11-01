@@ -1,0 +1,15 @@
+.container{width: 100%;height:100%;background: #fff;}
+.container .header_ban{width: 100%;height: 600px;background: url(../images/banner.jpg) no-repeat center center;position: relative;z-index: 1;}
+.container .header_ban .banner_layer{width: 100%;height:600px;position: absolute;z-index: 3;background: #000;opacity: .7;filter:alpha(opacity=70);}
+.header_ban  .layer{width: 500px;height:auto;position: absolute;left:50%;top:30px;margin-left:-250px;z-index: 6;}
+.content1{width: 100%;height:500px;background: url(../images/bg2.jpg) no-repeat center center;}
+.content1 .con1_img{margin:0 auto;padding:67px 0;width: 900px;height: auto;}
+.content1 .con1_img .doctor{margin-right: 42px;}
+.content2{width: 100%;height:200px;background: url(../images/content3.jpg) no-repeat center center;}
+.content3,.content4,.content5,.content7,.content6{width: 100%;height:770px;}
+ .conten3_img{width: 1075px;height: 760px;margin:0 auto;}
+.content4{background: #eee;}
+.content4  .conten3_img{padding:56px 0 48px; width: 1000px;margin:0 auto;}
+.content7{background: #eee;}
+.content7 .conten3_img{position: relative;width: 1000px;}
+.content7 .conten3_img i{display: block;width: 91px;height: 10px;background: url(../images/icon.jpg) no-repeat center center;position:absolute;top:-10px;right:38px;}

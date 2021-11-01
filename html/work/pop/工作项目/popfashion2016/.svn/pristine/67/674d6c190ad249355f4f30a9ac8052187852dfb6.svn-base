@@ -1,0 +1,220 @@
+{extends file="layout.html"}
+{block name="title"}{$title}{/block}
+{block name=keywords}{$keywords}{/block}
+{block name=description}{$description}{/block}
+{block name="selfcss"}
+	<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/popmall.css?{STATIC_CHANGE_TIME}">
+{/block}
+{block name="main"}
+<div class="mall_content">
+	<div class="mall_banner">
+		<ul>
+            {foreach $loopPics as $val}
+			<li>
+				<a href="{$val.sLink}" {if $val.sNewWindow}target="_blank"{/if}>
+					<img src="{$val.sImagePath}">
+				</a>
+			</li>
+            {/foreach}
+		</ul>
+        {if count($loopPics)>1}
+		<div class="banner-nav">
+            {foreach $loopPics as $key => $val}
+			<span{if $key == 0} class="selected"{/if}></span>
+            {/foreach}
+		</div>
+        {/if}
+		<div class="mall_contact">
+			<div class="code_img"><img src="{STATIC_URL2}/global/images/popmall/code1.png"></div>
+			<div class="tel_box">咨询热线<br/><span>4008 210 500</span></div>
+			<a class="qq_box" href="//wpa.qq.com/msgrd?v=3&uin=2355396874&site=qq&menu=yes" target="_blank">在线客服</a>
+		</div>
+	</div>
+	<div class="middle_content">
+		<div class="contentW">
+			<div class="small_banner">
+				<ul>
+                    {foreach $recList as $key => $val}
+					<li class="libg_{$key}"><a target="_blank" href="{$val.sCommodityUrl}"><img src="{STATIC_URL2}{$val.sCoverUrl}" ></a></li>
+                    {/foreach}
+				</ul>
+			</div>
+			<div class="authority_search">
+				<div class="search_con fl">
+					<div class="search_div">
+						<div class="serch_rc">
+							<input type="text" value="请输入关键词" class="search_box mall_search">
+							<input type="button" class="search_btn mall_search_btn">
+						</div>
+					</div>
+					<div class="search_hot">
+						<span>热门搜索：</span>{foreach $hotLinks as $value}<a href="{$value.link}" title="{$value.word}">{$value.word}</a>{/foreach}
+					</div>
+				</div>
+				<div class="authority_con fl">
+					<ul>
+						<li class="li_1"><a class="js-contact-qq-btn" href="javascript:void(0);"><i></i>商城+微店同步上新</a></li>
+						<li class="li_2"><a class="js-contact-qq-btn" href="javascript:void(0);"><i></i>100%独家出品</a></li>
+						<li class="li_3"><a class="js-contact-qq-btn" href="javascript:void(0);"><i></i>24H咨询服务</a></li>
+						<li class="li_4"><a class="js-contact-qq-btn" href="javascript:void(0);"><i></i>免费快递送货</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="indexdiv professional_book clearfix">
+				<div class="title_top clearfix">
+					<div class="title_div fl"><img src="{STATIC_URL2}/global/images/popmall/book_t.png"></div>
+					<div class="title_column fl">
+                        {foreach $bookGroup as $val}
+						<a href="{$val.link}" title="{$val.txt}">{$val.txt}</a>
+                        {/foreach}
+					</div>
+					<a class="title_more_btn fr" href="/item/seclist/mct_3/">查看更多<i></i></a>
+				</div>
+				<div class="book_content clearfix">
+					<div class="book_con_l fl">
+						<a href="/item/seclist/mct_3/">
+							<img src="{STATIC_URL2}/global/images/popmall/new_c_l.jpg">
+						</a>
+					</div>
+					<div class="book_con_r fl">
+						<ul>
+                            {foreach $proBooks as $val}
+							<li>
+								<a href="/item/detail/id_{$val.id}/" target="_blank" title="{$val.sName}">
+									<div class="img_div">
+										<img src="{STATIC_URL2}{$val.firstImage}">
+										<div class="hover_layer">
+											<span></span>
+											<p>{$val.sDescription}</p>
+											<!-- <p>色彩趋势 │  色彩搭配 │ 灵感源款式应用</p> -->
+										</div>
+									</div>
+									<div class="t_p_div">
+										<p class="tit_p">{$val.sName}</p>
+										<p class="price_p"><span class="sell_price">￥{$val.sCurrentPrice}</span>{if $val.sOriginalPrice}<span class="ori_price"><em>￥{$val.sOriginalPrice}</em></span>{/if}</p>
+									</div>
+								</a>
+							</li>
+                            {/foreach}
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="indexdiv services_div clearfix">
+				<div class="title_top clearfix">
+					<div class="title_div fl"><img src="{STATIC_URL3}/global/images/popmall/server_t.png"></div>
+					<div class="title_column fl">
+                        {foreach $srvGroup as $val}
+						<a href="{$val.link}" title="{$val.txt}">{$val.txt}</a>
+                        {/foreach}
+					</div>
+					<a class="title_more_btn fr" href="/item/seclist/mct_4/">查看更多<i></i></a>
+				</div>
+				<div class="service_content clearfix">
+					<ul>
+                        {foreach $premiumServices as $val}
+						<li>
+							<a href="/item/detail/id_{$val.id}/" target="_blank" title="{$val.sName}">
+								<div class="img_div">
+									<img src="{STATIC_URL3}{$val.firstImage}">
+								</div>
+								<div class="intro_div fr">
+									<h1 title="{$val.sName}">{$val.sName}</h1>
+									<p class="intro_p" title="{$val.sDescription}">{$val.sDescription}</p>
+									<p class="price_p"><span class="sell_price">￥{$val.sCurrentPrice}</span>{if $val.sOriginalPrice}<span class="ori_price"><em>￥{$val.sOriginalPrice}</em></span>{/if}</p>
+								</div>
+							</a>
+						</li>
+                        {/foreach}
+					</ul>
+				</div>
+			</div>
+			<div class="indexdiv services_div sup_div clearfix">
+				<div class="title_top clearfix">
+					<div class="title_div fl"><img src="{STATIC_URL1}/global/images/popmall/sup_t.png"></div>
+					<div class="title_column fl">
+                        {foreach $retailGroup as $val}
+						<a href="{$val.link}" title="{$val.txt}">{$val.txt}</a>
+                        {/foreach}
+					</div>
+					<a class="title_more_btn fr" href="/item/seclist/mct_5/">查看更多<i></i></a>
+				</div>
+				<div class="service_content clearfix">
+					<ul>
+                        {foreach $peripheralRetails as $val}
+						<li>
+							<a href="/item/detail/id_{$val.id}/" target="_blank">
+								<div class="img_div">
+									<img src="{STATIC_URL1}{$val.firstImage}">
+								</div>
+								<div class="intro_div fr">
+									<h1 title="{$val.sName}">{$val.sName}</h1>
+									<p class="intro_p" title="{$val.sDescription}">{$val.sDescription}</p>
+									<p class="price_p"><span class="sell_price">￥{$val.sCurrentPrice}</span>{if $val.sOriginalPrice}<span class="ori_price"><em>￥{$val.sOriginalPrice}</em></span>{/if}</p>
+								</div>
+							</a>
+						</li>
+                        {/foreach}
+					</ul>
+				</div>
+			</div>
+			<div class="sidebar_nav">
+				<ul>
+					<li class="sidebar sidebar_1"><i></i>趋<br/>势<br/>指<br/>导</li>
+					<li class="sidebar sidebar_2"><i></i>超<br/>值<br/>服<br/>务</li>
+					<li class="sidebar sidebar_3"><i></i>周<br/>边<br/>零<br/>售</li>
+					<li class="sidebar_4"><i></i>TOP</li>
+				</ul>
+			</div>
+		</div>
+		<div class="mall_explain">
+			<div class="contentW">
+				<div class="explain_title">
+					<span class="xian xian_l fl"></span>
+					<span class="name_m"><i></i>商城说明</span>
+					<span class="xian xian_r fr"></span>
+				</div>
+				<div class="explain_con">
+					POP商城是POP（全球）时尚网络机构延伸产品的在线零售渠道，涵盖了POP按季度推出的专业书籍（实体）、线下活动产品、精选款式资料包（电子）等多维产品。除线下活动产品仅限指定区域外，POP实体产品商城配送覆盖全国各级区域。商城与POP官方微店保持一致，支持微信在线支付。
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{/block}
+{block name="self"}
+<script type="text/javascript" src="{STATIC_URL2}/global/js/fashion/popmall.js?{STATIC_CHANGE_TIME}"></script>
+{literal}
+<script>
+    $(function() {
+        function getMallSearchUrl(key) {
+            return  "/item/seclist/?key=" + encodeURIComponent(encodeURIComponent(key)).replace(/\'/g,'%27');
+        }
+
+        //搜索(enter)
+		$('.mall_search').on('keypress',function(event){
+			var key = $(this).val();
+            if(event.keyCode == "13"){
+				if ($.trim(key) === ''){
+					return false;
+				}
+				window.open(getMallSearchUrl(key));
+            }
+        });
+		//搜索(搜索按钮)
+		$('.mall_search_btn').on('click',function(){
+			var key = $(this).siblings('.mall_search').val();
+			if($.trim(key) === ''){
+				return false;
+			}
+			window.open(getMallSearchUrl(key));
+		});
+        //热门搜索埋点
+        $(".authority_search .search_hot").on("click", "a", function () {
+            var key = $(this).text();
+        });
+    })
+
+</script>
+{/literal}
+{/block}

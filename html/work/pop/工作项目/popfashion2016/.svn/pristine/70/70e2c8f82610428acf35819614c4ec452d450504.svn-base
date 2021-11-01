@@ -1,0 +1,26 @@
+{foreach $res.subTopic as $topic}
+<div class="indexdiv clearfix">
+    <h3><span>{$topic.sTitle}</span></h3>
+    <div class="xq">
+        <p class="fl">{$topic.sDesc}</p>
+    </div>
+    <div class="ullist">
+        <div class="download_box">
+            <img src="{STATIC_URL3}/global/images/down_bg.jpg" alt="icon"/>
+            <div class="down_bg">
+                <p class="title">{$topic.sTitle}</p>
+            </div>
+        </div>
+        <ul>
+            <li class="display_none"></li>
+            {foreach $topic.images as $image}
+            <li>
+                <a target="_blank" href="{$site}{$image.link}" title="查看详情">
+                    <img src="{STATIC_URL3}{$image.imgurl}" alt="pic">
+                </a>
+            </li>
+            {/foreach}
+        </ul>
+    </div>
+</div>
+{/foreach}

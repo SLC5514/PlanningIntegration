@@ -1,0 +1,218 @@
+{extends file="layout.html"}
+{block name="selfcss"}
+    <link rel="stylesheet" type="text/css" href="{STATIC_URL3}/global/css/industry.css?{STATIC_CHANGE_TIME}">
+{/block}
+
+{block name="main"}
+<div class="industry_box">
+    <div class="con_widthx1200">
+        <input type="hidden" id="link" data-url="{$rootUrl}" data-param="{$params}"/>
+        {if in_array($mesType,[1,2,3])}
+        <div class="industry_banner">
+            <a href="{$topAds[0]['sLink']}" {if $topAds[0]['sNewWindow'] == 1}target="_blank"{/if}>
+                <img src="{$topAds[0]['sImagePath']}"/>
+            </a>
+        </div>
+        {/if}
+        <div class="switch_box">
+            <ul>
+           		<li class="dock_li {if $mesType == 1}cur{/if}">
+                    <a href="javascript:void(0);" class="messageType" data-key="mes" data-val="1"><i></i>时尚教育</a>
+                </li>
+                <li class="adviser_li {if $mesType == 2}cur{/if}">
+                   <a href="javascript:void(0);" class="messageType" data-key="mes" data-val="2"><i></i>商贸对接</a>
+               </li>
+                <li class="union_li {if $mesType == 3}cur{/if}">
+                    <a href="javascript:void(0);" class="messageType" data-key="mes" data-val="3"><i></i>精英联盟</a>
+                </li>
+                <!-- <li class="adviser_li {if $mesType == 2}cur{/if}">
+                    <a class="messageType" data-key="mes" data-val="2"><i></i>顾问团</a>
+                </li> -->
+            </ul>
+        </div>
+        {if in_array($mesType,[1,2])}
+        <!-- 对接会 -->
+        <div class="switch_contain">
+            <div class="switch_content">
+                <div class="select_list">
+                    <ul>
+                        <li>
+                            <label class="fl"><i></i>类　型：</label>
+                            <div class="select_a fl">
+                                <a href="javascript:void(0);" class="{if !isset($paramsArr['chi'])}cur{/if} childType" data-key="chi" data-val="all">全部</a>
+                                {foreach $iActivityChildType as $val}
+                                <a href="javascript:void(0);" class="{if isset($paramsArr['chi']) && $paramsArr['chi'] == $val['id']}cur{/if} childType" data-key="chi" data-val="{$val['id']}">{$val['sName']}</a>
+                                {/foreach}
+                            </div>
+                        </li>
+                        <li>
+                            <label class="label_time fl"><i></i>时　间：</label>
+                            <div class="select_a fl">
+                                <a href="javascript:void(0);" class="{if !isset($paramsArr['tim'])}cur{/if} time_range" data-key="tim" data-val="all">全部</a>
+                                {foreach $timeRange as $val}
+                                <a href="javascript:void(0);" class="{if isset($paramsArr['tim']) && $paramsArr['tim'] == $val['id']}cur{/if} time_range" data-key="tim" data-val="{$val['id']}">{$val['sName']}</a>
+                                {/foreach}
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="activity_box">
+                <div class="only_look_sw">
+                    <ul class="fl">
+                        <li class="{if !isset($paramsArr['stat'])}cur{/if} activityState" data-key="stat" data-val="all">全部<span></span></li>
+                        <li class="{if isset($paramsArr['stat']) && $paramsArr['stat'] == 1}cur{/if} activityState" data-key="stat" data-val="1">即将开始<span></span></li>
+                        <li class="{if isset($paramsArr['stat']) && $paramsArr['stat'] == 2}cur{/if} activityState" data-key="stat" data-val="2">进行中<span></span></li>
+                        <li class="{if isset($paramsArr['stat']) && $paramsArr['stat'] == 3}cur{/if} activityState" data-key="stat" data-val="3">已结束<span></span></li>
+                    </ul>
+                    <div class="only_look_off fl official" data-key="off" data-val="1">
+                        <input type="checkBox" {if isset($paramsArr['off'])}checked="checked"{/if}/>
+                        <span>只看官方</span>
+                    </div>
+                </div>
+                {if $lists}
+                <div class="activity_list clearfix">
+                    <ul class="clearfix">
+                        {foreach $lists as $val}
+                        <li>
+                            {if $val['iActivityType'] == 17}
+                            <a href="{$val['sWebsiteURL']}" target="_blank" class="position_a">
+                                <p class="site_p4 high_light"><i></i>网　址： {$val['sActivityURL']}</p>
+                            </a>
+                            {else}
+                            <a {if !empty($val['regionLink'])}href="/activity/redirectditu/?ditu={$val['regionLink']}"{/if} target="_blank" class="position_a">
+                                <p class="site_p5 high_light"><i></i>地　点：<span>{$val['region']}</span></p>
+                            </a>
+                            {/if}
+                            <a class="outer_a" href="/activity/detail/?id={$val['id']}" target="_blank">
+                                <div class="img_a">
+                                    <img src="{$val['sPosterUrl']}"/>
+                                    {if $val['iOfficial'] == 1}
+                                    <span class="official_ic"></span>
+                                    {/if}
+                                    {if $val['dActivityEndTime'] <= date('Y-m-d H:i:s')}
+                                    <div class="activity_end">活动已结束</div>
+                                    {/if}
+                                </div>
+                                <div class="fl text_box">
+                                    <h2>{$val['sTheme']}</h2>
+                                    {if $val['iActivityChildTypeName']}
+                                    <p class="p1"><i></i>类　型：<span>{$val['iActivityChildTypeName']}</span></p>
+                                    {/if}
+                                    <p class="p3"><i></i>主办方：<span>{$val['sSponsor']}</span></p>
+									<p class="p2" title="{$val['dStartTime']}开始 至 {$val['dEndTime']}结束"><i></i>时　间：<span>{$val['dStartTime']}开始<br>至{$val['dEndTime']}结束</span></p>
+                                </div>
+                                {if $val['dActivityStartTime'] > date('Y-m-d H:i:s')}
+                                <span class="ac_status jj_start">即将开始</span>
+                                {elseif $val['dActivityStartTime'] <= date('Y-m-d H:i:s') && $val['dActivityEndTime'] > date('Y-m-d H:i:s')}
+                                <span class="ac_status ongoing">进行中</span>
+                                {elseif $val['dActivityEndTime'] <= date('Y-m-d H:i:s')}
+                                <span class="ac_status ended">已结束</span>
+                                {/if}
+                            </a>
+                        </li>
+                        {/foreach}
+                    </ul>
+                </div>
+                {else}
+                <div class="activity_no_result">
+                    <div class="ac_content_box">
+                        <p class="ac_p clearfix">
+                            <span class="a_icon"></span>
+                            <span class="a_cont">很抱歉，没有找到符合条件的内容！</span>
+                        </p>
+                        <div class="lianxi_box clearfix">
+                            <p>请联系您的专属资讯小秘书为您服务：</p>
+                            <div class="lianxi_way clearfix">
+                                <a class="qq_box fl js-contact-qq-btn" href="javascript:void(0);"><i></i>QQ咨询</a>
+                                <a class="tel_box fr" href="javascript:void(0);"><i></i>客服热线：<span>4008-210-500</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {/if}
+            </div>
+        </div>
+        <!-- /对接会 -->
+        {elseif $mesType == 3}
+        <!-- 联盟汇 -->
+        <div class="switch_contain">
+            <div class="switch_content">
+                <div class="select_list">
+                    <ul>
+                        <li>
+                            <label class="fl"><i></i>类　型：</label>
+                            <div class="select_a fl">
+                                <a href="javascript:void(0);" class="{if !isset($paramsArr['cpt'])}cur{/if} childType" data-key="cpt" data-val="all">全部</a>
+                                {foreach $iActivityChildType as $val}
+                                <a href="javascript:void(0);" class="{if isset($paramsArr['cpt']) && $paramsArr['cpt'] == $val['id']}cur{/if} childType" data-key="cpt" data-val="{$val['id']}">{$val['sName']}</a>
+                                {/foreach}
+                            </div>
+                        </li>
+                        <li>
+                            <label class="label_city fl"><i></i>城　市：</label>
+                            <div class="select_a fl">
+                                <a href="javascript:void(0);" class="{if !isset($paramsArr['cit'])}cur{/if} time_range" data-key="cit" data-val="all">全部</a>
+                                {foreach $activityCity as $val}
+                                <a href="javascript:void(0);" class="{if isset($paramsArr['cit']) && $paramsArr['cit'] == $val['id']}cur{/if} time_range" data-key="cit" data-val="{$val['id']}">{$val['sName']}</a>
+                                {/foreach}
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="activity_box alliance_box">
+                {if $lists}
+                <div class="activity_list clearfix">
+                    <ul>
+                        {foreach $lists as $val}
+                        <li>
+                            <a href="{$val.companyLink}" target="_blank">
+                                <img src="{$val.sImageFigure}">
+                                <div class="activity_layer">
+                                    <div class="border_layer">
+                                        <p class="com_name">{$val.sTheme}</p>
+                                        <p class="com_intro">{$val.sActivityContent}</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        {/foreach}
+                    </ul>
+                </div>
+                {else}
+                <div class="activity_no_result">
+                    <div class="ac_content_box">
+                        <p class="ac_p clearfix">
+                            <span class="a_icon"></span>
+                            <span class="a_cont">很抱歉，没有找到符合条件的内容！</span>
+                        </p>
+                        <div class="lianxi_box clearfix">
+                            <p>请联系您的专属资讯小秘书为您服务：</p>
+                            <div class="lianxi_way clearfix">
+                                <a class="qq_box fl" class="js-contact-qq-btn" href="javascript:void(0);"><i></i>QQ咨询</a>
+                                <a class="tel_box fr" href="javascript:void(0);"><i></i>客服热线：<span>4008-210-500</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {/if}
+            </div>
+        </div>
+        <!-- /联盟汇 -->
+        {else}
+        <div class="coming_soon_box">
+            <p><i></i>敬请期待……</p>
+        </div>
+        {/if}
+    </div>
+    <div class="rightc_bottom">
+        <div class="pages">
+            {$pageHtml}
+        </div>
+    </div>
+</div>
+{/block}
+{block name="self"}
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/styles.js?{STATIC_CHANGE_TIME}"></script>
+{/block}

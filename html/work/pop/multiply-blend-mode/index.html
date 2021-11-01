@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>正片叠底</title>
+        <link rel="stylesheet" href="./colorpicker.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script src="./colorpicker.js"></script>
+        <script src="https://cdn.bootcss.com/canvg/1.0/canvg.js"></script>
+        <script src="./html2canvas.min.js"></script>
+        <style>
+            .demo-list {
+                padding: 20px;
+            }
+
+            .mode {
+                display: inline-block;
+                position: relative;
+                overflow: hidden;
+            }
+
+            img {
+                display: block;
+                width: 100%;
+            }
+
+            .positioning {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+
+            .mask1 {
+                -webkit-mask: url(./mask1.png);
+                -webkit-mask-size: cover;
+            }
+
+            .mask1>div {
+                width: 100%;
+                height: 100%;
+                background: url(./bg1.jpg);
+                background-size: 114px;
+            }
+
+            .mask2 {
+                -webkit-mask: url(./mask2.png);
+                -webkit-mask-size: cover;
+            }
+
+            .mask2>div {
+                width: 100%;
+                height: 100%;
+                background: url(./bg2.jpg);
+                background-size: 133px;
+            }
+
+            /* svg版 */
+            svg {
+                /* background: url(./bg.png) no-repeat; */
+            }
+
+            .svg_mask {
+                cursor: pointer;
+                transition: all 0.5s ease;
+            }
+
+            .svg_mask:hover {
+                opacity: 0.6;
+            }
+
+            use {
+                /* mix-blend-mode: multiply; */
+            }
+        </style>
+    </head>
+
+    <body>
+        <!-- <div id="svg-wrap">
+            <svg width="200" height="200" xmlns='http://www.w3.org/2000/svg'>
+                <rect width="200" height="200" style="fill:#ddd"></rect>
+            </svg>
+        </div> -->
+        <div id="colorSelector"></div>
+        <div class="demo-list">
+            <div style="display: none;">
+                <div>CSS3:</div>
+                <div class="mode" style="width: 1132px;height: 886px;">
+                    <!-- 背景 -->
+                    <div class="positioning"><img src="./bg.png" /></div>
+                    <!-- 身子 -->
+                    <div class="positioning mask1" style="mix-blend-mode:multiply;">
+                        <div></div>
+                    </div>
+                    <!-- 裙子 -->
+                    <div class="positioning mask2" style="mix-blend-mode:multiply;">
+                        <div></div>
+                    </div>
+                </div>
+                <div>SVG:</div>
+            </div>
+            <!-- <div>
+                <img id="svg-wrap" src="./test1.jpg" alt="" crossOrigin="anonymous">
+            </div> -->
+            <div id="svg-wrap" class="mode">
+                <!-- 背景 -->
+                <svg id="SVG" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" width="1132" height="886">
+                    <defs>
+                        <!-- 身子 -->
+                        <mask id="mask1">
+                            <!-- <image xlink:href="./mask1.png" preserveAspectRatio="none" x="0" y="0" width="1132"
+                                height="886"></image> -->
+                            <!-- <path
+                                d="M461.72 205.16l-8.46 27.28 6.57 13.57-6.31 25.17-11.41 70.23.32 48.17 20.96 65.82.2 29.32 5.62 33.47 3.64 58.61 3.45 32.43 11.99 15.63L511 628.9l47.44-11.84 15.12-.1 88.55-.59 28.03-8.56 44.17-17.05 8.57-10.53-33.08-101.35-21.09-84.67-10-41.81-7.74-27.18-11.03-33.43-16.37-26.07-4.4-12.53 7.5-8.43-12.02-20.86-11.96-11.44-8.69-8.32-11.92-6.2-16.22-3.03-9.72.06-9.77-6.21-21.62-4.05-23.78-2.98-20.54-3-23.72 6.44-14.99 19.99z"
+                                /> -->
+                            <use xlink:href="#a" fill="#000" />
+                        </mask>
+                        <!-- objectBoundingBox -->
+                        <pattern id="svg_mask_bg1" width="114" height="114" x="0" y="0" patternUnits="userSpaceOnUse">
+                            <image x="0" y="0" width="114" height="114" xlink:href="./bg1.jpg" color="red" />
+                        </pattern>
+                        <pattern id="test" x="0" y="0" width="1000" height="1000" patternUnits="userSpaceOnUse">
+                            <image x="0" y="0" width="100" height="100" xlink:href="./img1.jpg" color="red" />
+                        </pattern>
+                        <path
+                            d="M461.72 205.16l-8.46 27.28 6.57 13.57-6.31 25.17-11.41 70.23.32 48.17 20.96 65.82.2 29.32 5.62 33.47 3.64 58.61 3.45 32.43 11.99 15.63L511 628.9l47.44-11.84 15.12-.1 88.55-.59 28.03-8.56 44.17-17.05 8.57-10.53-33.08-101.35-21.09-84.67-10-41.81-7.74-27.18-11.03-33.43-16.37-26.07-4.4-12.53 7.5-8.43-12.02-20.86-11.96-11.44-8.69-8.32-11.92-6.2-16.22-3.03-9.72.06-9.77-6.21-21.62-4.05-23.78-2.98-20.54-3-23.72 6.44-14.99 19.99z"
+                            id="a" />
+                        <!-- 裙子 -->
+                        <mask id="mask2">
+                            <image xlink:href="./mask2.png" preserveAspectRatio="none" x="0" y="0" width="1132"
+                                height="886"></image>
+                        </mask>
+                        <pattern id="svg_mask_bg2" width="133" height="133" x="0" y="0" patternUnits="userSpaceOnUse">
+                            <image width="133" height="133" xlink:href="./bg2.jpg" />
+                        </pattern>
+                        <path
+                            d="M485.85 627.43l25.12 2.98 43.94-10.93h107.78l32.43-7.95 6.28 7.95 12.56 49.7-18.84 10.93h-21.97v12.93l-3.14 18.88-24.07 2.98H631.3l-21.98 4.98-54.41-7.96-28.25-8.94-15.69-9.94-12.56-2.99-7.32-9.94-5.24-10.93-11.51 6.96-5.23-10.94-15.69-19.88 3.14-21.87 17.78-6.95 11.51 10.93z"
+                            id="b" />
+                        <!-- 滤镜 -->
+                        <filter id="filter" x="0" y="0" width="150" height="40">
+                            <feGaussianBlur in="SourceGraphic" stdDeviation="5" />
+                            <!-- <feImage xlink:href="./bg1.jpg"/> -->
+                        </filter>
+                        <!-- <g id="test2">
+                            <image xlink:href="./img1.jpg" preserveAspectRatio="none" x="400" y="400" width="120" height="120" transform="matrix(1,0,0,1,0,0)" id="test"></image>
+                        </g> -->
+                    </defs>
+                    <image xlink:href="./bg.png" preserveAspectRatio="none" x="0" y="0" width="1132" height="886">
+                    </image>
+                    <!-- 身子 -->
+                    <use xlink:href="#a" fill="transparent" style="mix-blend-mode: multiply;" />
+                    <!-- <use xlink:href="#a" fill="url(#test2)" style="mix-blend-mode: multiply;" /> -->
+                    <use xlink:href="#a" class="svg_mask" data-id="1" fill="url(#svg_mask_bg1)" style="mix-blend-mode: multiply;" />
+                    <rect x="0" y="0" width="1132" height="886" mask="url('#mask1')" fill="red"></rect>
+                    <!-- <rect class="svg_mask" data-id="1" x="0" y="0" width="1132" height="886" mask="url('#mask1')" fill="url(#svg_mask_bg1)"></rect> -->
+                    <!-- 裙子 -->
+                    <use xlink:href="#b" fill="skyblue" style="mix-blend-mode: multiply;" />
+                    <use xlink:href="#b" class="svg_mask" data-id="2" fill="url(#svg_mask_bg2)"
+                        style="mix-blend-mode: multiply;" />
+                    <!-- <rect x="0" y="0" width="1132" height="886" mask="url('#mask2')" fill="orange"></rect> -->
+                    <!-- <rect class="svg_mask" x="0" y="0" width="1132" height="886" mask="url('#mask2')" fill="url(#svg_mask_bg2)"></rect> -->
+                    <!-- 滤镜 -->
+                    <!-- <use xlink:href="#a" class="svg_mask" data-id="1" fill="url(#svg_mask_bg1)" filter="url(#filter)" /> -->
+                    <!-- <use xlink:href="#a" fill="url(#test)" style="mix-blend-mode: multiply;" /> -->
+                    <!-- <image xlink:href="./img1.jpg" preserveAspectRatio="none" x="400" y="300" width="120" height="120" transform="matrix(1,0,0,1,0,0)" id="test"></image> -->
+                </svg>
+            </div>
+        </div>
+    </body>
+    <script>
+        $(function () {
+            // $('#colorSelector').ColorPicker({
+            //     onChange: function (hsb, hex, rgb) {
+            //         $('#colorSelector').css('backgroundColor', '#' + hex);
+            //     }
+            // });
+
+            // setTimeout(() => {
+            //     const targetDom = document.querySelector("#svg-wrap");
+            //     // const copyDom = targetDom.cloneNode(true);
+            //     // copyDom.style.width = targetDom.scrollWidth + 'px';
+            //     // copyDom.style.height = targetDom.scrollHeight + 'px';
+            //     // document.body.appendChild(copyDom);
+            //     html2canvas(targetDom, {
+            //         // allowTaint: false,
+            //         useCORS: true,
+            //         // height: targetDom.scrollHeight,
+            //         // width: targetDom.scrollWidth
+            //     }).then(canvas => {
+            //         document.body.appendChild(canvas)
+            //         var imgBlob = canvas.toDataURL( 'image/jpeg', 1.0 );    //将图片转为base64
+            //         console.log(imgBlob)
+            //         $('#svg-wrap').attr('src', imgBlob);
+            //     });
+            // }, 3000);
+
+            // getImg();
+            function getImg() {
+                //获取svg内容
+                var svg = document.getElementById('svg-wrap').innerHTML.trim();
+
+                var canvas = document.createElement('canvas');
+                var c = canvas.getContext('2d');
+                canvg(canvas, svg);
+                document.body.appendChild(canvas);
+                return;
+                //新建Image对象
+                var img = new Image();
+
+                //svg内容
+                // img.src = 'data:image/svg+xml,' + unescape(encodeURIComponent(svg));//svg内容中可以有中文字符
+                // img.src = 'data:image/svg+xml,' + svg;//svg内容中不能有中文字符
+
+                //svg编码成base64
+                img.src = 'data:image/svg+xml;base64,' + window.btoa(unescape(encodeURIComponent(svg)));//svg内容中可以有中文字符
+                // img.src = 'data:image/svg+xml;base64,' + window.btoa(svg);//svg内容中不能有中文字符
+
+                //图片初始化完成后调用
+                img.onload = function () {
+                    console.log(img.src)
+                    //将canvas的宽高设置为图像的宽高
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+
+                    //canvas画图片
+                    c.drawImage(img, 0, 0);
+
+                    //将图片添加到body中
+                    document.body.appendChild(img)
+                }
+            }
+        });
+    </script>
+    <script>
+        // 拖动
+        var downStatus = false;
+        var hoverStatus = false;
+        var tId = '';
+        var tIdHover = '';
+        var x = 0;
+        var y = 0;
+        var ogX = 0;
+        var ogY = 0;
+        $(document).on('mousedown', function (e) {
+            var e = e || window.event;
+            var target = $(e.target);
+            if (!downStatus && e.button === 0 && target.hasClass('svg_mask')) {
+                tId = target.data('id');
+                downStatus = true;
+                x = e.pageX;
+                y = e.pageY;
+                ogX = parseInt($('#svg_mask_bg' + tId).attr('x'));
+                ogY = parseInt($('#svg_mask_bg' + tId).attr('y'));
+            }
+        }).on('mousemove', function (e) {
+            var e = e || window.event;
+            var target = $(e.target);
+            if (downStatus && tId) {
+                $('#svg_mask_bg' + tId).attr({
+                    'x': ogX + (e.pageX - x),
+                    'y': ogY + (e.pageY - y)
+                });
+            }
+            if (target.hasClass('svg_mask')) {
+                tIdHover = target.data('id');
+                hoverStatus = true;
+            } else {
+                hoverStatus = false;
+            }
+        }).on('mouseup', function () {
+            downStatus = false;
+            tId = '';
+        })
+
+        // 缩放
+        var eventHandle = {
+            getEvent: function (event) {
+                return event || window.event;
+            },
+            addEvent: function (elementName, type, handler) {
+                document.querySelectorAll(elementName).forEach(function (element) {
+                    if (element.addEventListener) {
+                        element.addEventListener(type, handler, false);
+                    }
+                    else if (element.attachEvent) {
+                        element.attachEvent('on' + type, handler);
+                    } else {
+                        element['on' + type] = handler;
+                    }
+                })
+            },
+            getWheelDelta: function (event) {
+                return event.wheelDelta ? event.wheelDelta : (-event.detail) * 40;
+            }
+        }
+
+        function mouseHandle(event) {
+            if (hoverStatus) {
+                var e = event || window.event;
+                event.preventDefault();
+                event = eventHandle.getEvent(event);
+                var target = $(event.target);
+                var delta = eventHandle.getWheelDelta(event);
+                var maskEl = $('#svg_mask_bg' + tIdHover);
+                if (delta < 0) {delta = -5;}
+                else {delta = 5;}
+                var ogW = parseInt(maskEl.attr('width'));
+                var ogH = parseInt(maskEl.attr('height'));
+                var w = ogW + delta;
+                var h = ogH + delta;
+                if (w <= 0) {w = 5;}
+                if (h <= 0) {h = 5;}
+                maskEl.attr({
+                    'width': w,
+                    'height': h,
+                    // 'x': parseInt(maskEl.attr('x')) + (ogW - w),
+                    // 'y': parseInt(maskEl.attr('y')) + (ogH - h)
+                    'x': parseInt(maskEl.attr('x')) + (ogW - w) * 5,
+                    'y': parseInt(maskEl.attr('y')) + (ogH - h) * 5
+                }).find('image').attr({
+                    'width': w,
+                    'height': h
+                });
+            }
+        }
+
+        eventHandle.addEvent('.svg_mask', 'mousewheel', mouseHandle);
+        eventHandle.addEvent('.svg_mask', 'DOMMouseScroll', mouseHandle);
+    </script>
+
+</html>

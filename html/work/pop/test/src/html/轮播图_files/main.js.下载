@@ -1,0 +1,2 @@
+jQuery.noConflict();jQuery('.slide').zySlide({speed:3000,delay:2000}).css({})
+jQuery('#slide').zySlide({speed:1000}).css({'border':'1px solid #606060',});

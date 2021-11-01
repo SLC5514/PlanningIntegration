@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>categoryTop</title>
+        <link rel="stylesheet" href="./reset.css">
+        <link rel="stylesheet" href="./common.css">
+        <!-- photoswipe op -->
+        <link rel="stylesheet" href="./photoswipe.css">
+        <link rel="stylesheet" href="./default-skin/default-skin.css">
+        <script src="./lib/photoswipe/photoswipe.js"></script>
+        <script src="./lib/photoswipe/photoswipe-ui-default.js"></script>
+        <!-- photoswipe ed -->
+        <link rel="stylesheet" href="./category.css">
+    </head>
+
+    <body>
+
+        <div class="view">
+            <input type="hidden" class="js-token-hidden" data-token="{$token}" data-filter_id="{$filter_id}" data-hash="{$hash}">
+            <div class="content init">
+                <div class="top-banner js-top-banner">
+                    <div class="top-content">
+                        <div>POP数字热榜</div>
+                        <h1><span class="js-h1-type">款式</span>TOP热榜</h1>
+                        <h2>最受设计师欢迎的<span class="js-h2-title"></span><span class="js-h1-type">款式</span></h2>
+                        <p class="top-time js-top-time"></p>
+                        <p class="top-tips"><i></i>POP-Fashion<span class="js-site-name">服装</span>网TOP数字热榜<br />基于用户下载互动数据综合评选出大家都在看的时尚趋势</p>
+                        <span class="js-Lately-month"></span>
+                    </div>
+                </div>
+
+                <div class="top-lists js-lists-box">
+                    <ul class="js-top-lists clearfix"></ul>
+                    <div class="load-img js-load-img">
+                        <img src="./app_top/loading.gif" />
+                    </div>
+                    <div class="null-data-box js-null-data-box">
+                        <img src="./app_top/null.png" />
+                        <p>POPFASHION <span class="js-site-name">服装</span>趋势网</p>
+                        <span>啊哦，你要查看的这张TOP榜单已经过期失效啦</span>
+                    </div>
+                </div>
+
+                <div class="top-footer">
+                    <h3>加入POP畅游时尚前沿<br />即享<span class="js-site-name">服装</span>设计最新潮流资讯</h3>
+                    <p class="website-p">官方网站：<span class="js-site-url">www.pop-fashion.com</span></p>
+                    <p class="tel-p"><img src="./app_top/tel.png">4008-210-500<span>（联系方式）</span></p>
+                    <img class="js-code-img" src="./app_top/fashion_code.png">
+                    <p class="qr-code-p"><span>POP官方小秘书</span><br />请扫描微信二维码</p>
+                </div>
+
+                <!-- 弹层 -->
+                <div class="layer-top js-layer-top">
+                    <p></p>
+                    <div class="look-tips"></div>
+                    <div class="user-btn user-tourist">
+                        <a class="a-btn1 js-tourist-novip" href="javascript:void(0);">非VIP用户</a>
+                        <a class="a-btn2" href="/member/login/">VIP用户</a>
+                    </div>
+                    <div class="user-btn user-novip">
+                        <a class="a-btn1 js-close-layer" href="javascript:void(0);">取消</a>
+                        <a class="a-btn2 js-close-layer" href="tel:4008-210-500">确认</a>
+                    </div>
+                    <div class="user-btn user-general-btn">
+                        <a class="js-close-layer" href="tel:4008-210-500">电话咨询</a>
+                    </div>
+                    <div class="user-btn user-download-btn">
+                        <a class="js-close-layer" href="javascript:void(0);">我知道啦</a>
+                    </div>
+                    <div class="close-layer js-close-layer"><img src="./app_top/b_close.png"></div>
+                </div>
+            </div>
+
+            <!-- Root element of PhotoSwipe. Must have class pswp. -->
+            <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+                <!-- Background of PhotoSwipe. 
+                It's a separate element as animating opacity is faster than rgba(). -->
+                <div class="pswp__bg"></div>
+
+                <!-- Slides wrapper with overflow:hidden. -->
+                <div class="pswp__scroll-wrap">
+
+                    <!-- Container that holds slides. 
+                    PhotoSwipe keeps only 3 of them in the DOM to save memory.
+                    Don't modify these 3 pswp__item elements, data is added later on. -->
+                    <div class="pswp__container">
+                        <div class="pswp__item"></div>
+                        <div class="pswp__item"></div>
+                        <div class="pswp__item"></div>
+                    </div>
+
+                    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+                    <div class="pswp__ui pswp__ui--hidden">
+
+                        <div class="pswp__top-bar">
+
+                            <!--  Controls are self-explanatory. Order can be changed. -->
+
+                            <div class="pswp__counter"></div>
+
+                            <button class="pswp__button pswp__button--download" title="Download"></button>
+
+                            <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                            <!-- <button class="pswp__button pswp__button--share" title="Share"></button> -->
+
+                            <!-- <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button> -->
+
+                            <!-- <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button> -->
+
+                            <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                            <!-- element will get class pswp__preloader--active when preloader is running -->
+                            <div class="pswp__preloader">
+                                <div class="pswp__preloader__icn">
+                                    <div class="pswp__preloader__cut">
+                                        <div class="pswp__preloader__donut"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                        <div class="pswp__share-tooltip"></div>
+                    </div> -->
+
+                        <!-- <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+                    </button> -->
+
+                        <!-- <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+                    </button> -->
+
+                        <div class="pswp__caption">
+                            <div class="pswp__caption__center">test</div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <!-- 公用弹层 -->
+        <div class="bg-layer js-bg-layer"></div>
+    </body>
+    <script>
+        // 全局变量
+        var global_backstage_obj = {
+            static_change_time: "{STATIC_CHANGE_TIME}", // {* 静态文件时间戳 *}
+            static_img: "{STATIC_IMG}",
+            user_type: '{$power.user_type}',
+            user_id: '{getUserId()}',
+            pidtt: '{$smarty.get.pid}' || '{$smarty.cookies.pidtt}',
+            P_AccountType: '{$P_AccountType}',
+            P_AccountId: '{$P_AccountId}',
+            backUrl: '{$sBackUrl}'
+        };
+    </script>
+    <script src="./lib/require/require.js"></script>
+    <script src="./common/common.js"></script>
+    <!-- <script src="./category.js"></script> -->
+    <script>
+        require(["jquery", "msg", "general"], function (jquery, msg, general) {
+            var initPhotoSwipeFromDOM = function (gallerySelector) {
+
+                // parse slide data (url, title, size ...) from DOM elements 
+                // (children of gallerySelector)
+                var parseThumbnailElements = function (el) {
+                    var thumbElements = el.childNodes,
+                        numNodes = thumbElements.length,
+                        items = [],
+                        figureEl,
+                        linkEl,
+                        size,
+                        item;
+
+                    for (var i = 0; i < numNodes; i++) {
+
+                        figureEl = thumbElements[i]; // <figure> element
+
+                        // include only element nodes 
+                        if (figureEl.nodeType !== 1) {
+                            continue;
+                        }
+
+                        linkEl = figureEl.children[0]; // <a> element
+
+                        size = linkEl.getAttribute('data-size').split('x');
+
+                        // create slide object
+                        item = {
+                            src: linkEl.getAttribute('href'),
+                            w:  parseInt(size[0], 10),
+                            h:  parseInt(size[1], 10)
+                        };
+
+
+
+                        if (figureEl.children.length > 1) {
+                            // <figcaption> content
+                            item.title = figureEl.children[1].innerHTML;
+                        }
+
+                        if (linkEl.children.length > 0) {
+                            // <img> thumbnail element, retrieving thumbnail url
+                            item.msrc = linkEl.children[0].getAttribute('src');
+                        }
+
+                        item.el = figureEl; // save link to element for getThumbBoundsFn
+                        items.push(item);
+                    }
+                    return items;
+                };
+
+                // find nearest parent element
+                var closest = function closest(el, fn) {
+                    return el && (fn(el) ? el : closest(el.parentNode, fn));
+                };
+
+                // triggers when user clicks on thumbnail
+                var onThumbnailsClick = function (e) {
+                    e = e || window.event;
+                    e.preventDefault ? e.preventDefault() : e.returnValue = false;
+
+                    var eTarget = e.target || e.srcElement;
+
+                    // find root element of slide
+                    var clickedListItem = closest(eTarget, function (el) {
+                        return (el.getAttribute && el.getAttribute('data-item'));
+                    });
+
+                    if (!clickedListItem) {
+                        return;
+                    }
+
+                    // find index of clicked item by looping through all child nodes
+                    // alternatively, you may define index via data- attribute
+                    var clickedGallery = clickedListItem.parentNode,
+                        childNodes = clickedListItem.parentNode.childNodes,
+                        numChildNodes = childNodes.length,
+                        nodeIndex = 0,
+                        index;
+
+                    for (var i = 0; i < numChildNodes; i++) {
+                        if (childNodes[i].nodeType !== 1) {
+                            continue;
+                        }
+
+                        if (childNodes[i] === clickedListItem) {
+                            index = nodeIndex;
+                            break;
+                        }
+                        nodeIndex++;
+                    }
+
+
+
+                    if (index >= 0) {
+                        // open PhotoSwipe if valid index found
+                        openPhotoSwipe(index, clickedGallery);
+                    }
+                    return false;
+                };
+
+                // parse picture index and gallery index from URL (#&pid=1&gid=2)
+                var photoswipeParseHash = function () {
+                    var hash = window.location.hash.substring(1),
+                        params = {};
+
+                    if (hash.length < 5) {
+                        return params;
+                    }
+
+                    var vars = hash.split('&');
+                    for (var i = 0; i < vars.length; i++) {
+                        if (!vars[i]) {
+                            continue;
+                        }
+                        var pair = vars[i].split('=');
+                        if (pair.length < 2) {
+                            continue;
+                        }
+                        params[pair[0]] = pair[1];
+                    }
+
+                    if (params.gid) {
+                        params.gid = parseInt(params.gid, 10);
+                    }
+
+                    return params;
+                };
+
+                var openPhotoSwipe = function (index, galleryElement, disableAnimation, fromURL) {
+                    var pswpElement = document.querySelectorAll('.pswp')[0],
+                        gallery,
+                        options,
+                        items;
+
+                    items = parseThumbnailElements(galleryElement);
+
+                    // define options (if needed)
+                    options = {
+                        showHideOpacity: true,
+                        maxSpreadZoom: 3,
+                        // history: false,
+
+                        // define gallery index (for URL)
+                        galleryUID: galleryElement.getAttribute('data-pswp-uid'),
+
+                        getThumbBoundsFn: function (index) {
+                            // See Options -> getThumbBoundsFn section of documentation for more info
+                            var thumbnail = items[index].el.getElementsByTagName('img')[0], // find thumbnail
+                                pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
+                                rect = thumbnail.getBoundingClientRect();
+
+                            return {x: rect.left, y: rect.top + pageYScroll, w: rect.width};
+                        },
+
+                        // 下载
+                        downloadEl: true,
+                        selfDownload: function (self) {
+                            console.log(self.currItem)
+                            var a = document.createElement('a');
+                            var url = self.currItem.src;
+                            var filename = self.currItem.title;
+                            a.href = url;
+                            a.download = filename;
+                            a.click();
+                        }
+                    };
+
+                    // PhotoSwipe opened from URL
+                    if (fromURL) {
+                        if (options.galleryPIDs) {
+                            // parse real index when custom PIDs are used 
+                            // http://photoswipe.com/documentation/faq.html#custom-pid-in-url
+                            for (var j = 0; j < items.length; j++) {
+                                if (items[j].pid == index) {
+                                    options.index = j;
+                                    break;
+                                }
+                            }
+                        } else {
+                            // in URL indexes start from 1
+                            options.index = parseInt(index, 10) - 1;
+                        }
+                    } else {
+                        options.index = parseInt(index, 10);
+                    }
+
+                    // exit if index not found
+                    if (isNaN(options.index)) {
+                        return;
+                    }
+
+                    if (disableAnimation) {
+                        options.showAnimationDuration = 0;
+                    }
+
+                    // Pass data to PhotoSwipe and initialize it
+                    gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+                    gallery.init();
+                };
+
+                // loop through all gallery elements and bind events
+                var galleryElements = document.querySelectorAll(gallerySelector);
+
+                for (var i = 0, l = galleryElements.length; i < l; i++) {
+                    galleryElements[i].setAttribute('data-pswp-uid', i + 1);
+                    galleryElements[i].onclick = onThumbnailsClick;
+                }
+
+                // Parse URL and open gallery if it contains #&pid=3&gid=1
+                var hashData = photoswipeParseHash();
+                if (hashData.pid && hashData.gid) {
+                    openPhotoSwipe(hashData.pid, galleryElements[hashData.gid - 1], true, true);
+                }
+
+            };
+
+            $(function () {
+                var def = {
+                    static: './app_top/', // 静态路径
+                    is_loading: true,
+                    has_down_power: 0, // 没有下载权限
+                    layer_opacity:$(".js-bg-layer"),
+                    layer_top:$(".js-layer-top"),
+                };
+                // 初始动效
+                $('.js-top-banner').css('transition', 'all 0.2s ease 0.1s');
+                $('.js-lists-box').css('transition', 'all 0.2s ease');
+
+                // 区分类别
+                var typeId = 0;
+                var categoryId = 0;
+                var typeData = ['款式', '图案素材', '大牌花型'];
+                var categoryData = [
+                    {
+                        key: 'bags',
+                        name: '箱包',
+                        url: 'www.pop-bags.com',
+                        size: '750x1000'
+                    },
+                    {
+                        key: 'shoe',
+                        name: '鞋子',
+                        url: 'www.pop-shoe.com',
+                        size: '750x1000'
+                    },
+                    {
+                        key: 'decoration',
+                        name: '首饰',
+                        url: 'www.51shoushi.com',
+                        size: '750x1000'
+                    },
+                    {
+                        key: 'hometextile',
+                        name: '家纺',
+                        url: 'www.91jiafang.com',
+                        size: '750x750'
+                    }
+                ]
+                $('.js-top-banner').addClass(categoryData[categoryId].key + '-top-banner');
+                $('.js-site-name').text(categoryData[categoryId].name);
+                $('.js-site-url').text(categoryData[categoryId].url);
+                $('.js-code-img').attr('src', def.static + categoryData[categoryId].key + '_code.png');
+                $('.js-h1-type').text(typeData[typeId]);
+
+                // 游客点击非vip
+                $('.js-tourist-novip').on('click', function() {
+                    def.layer_opacity.show();
+                    def.layer_top.show();
+                    $(".js-layer-top>p").html("温馨提示");
+                    $(".js-layer-top>.look-tips").html("确定拨打电话：4008-210-500 吗？");
+                    $(".user-novip").show();
+                    $(".user-tourist").hide();
+                })
+
+                // 关闭权限提示弹框
+                $(".js-close-layer").on("click", function() {
+                    def.layer_opacity.hide();
+                    def.layer_top.hide();
+                });
+
+                // 获取数据
+                setTimeout(() => {
+                    // 请求成功
+                    // --头部信息
+                    $('.js-h2-title').text('男包公文包');
+                    $('.js-top-time').text('2019/08/22 - 2019/09/22'); // 时间
+                    $('.js-Lately-month').text('近2个月'); // 时间侧边
+                    // --列表信息
+                    var _html = '';
+                    for (var i = 0; i < 3; i++) {
+                        // _html += `<li data-item='true'>
+                        //     <a href="./slc.jpg" data-size="${categoryData[categoryId].size}">
+                        //         <img src="./slc.jpg" alt="">
+                        //     </a>
+                        //     <div>图片说明${i+1}</div>
+                        // </li>`;
+                        _html += '<li data-item="true">';
+                        _html += '<a href="./slc.jpg" data-size="' + categoryData[categoryId].size + '">';
+                        _html += '<img src="./slc.jpg" alt="">';
+                        _html += '</a><div>图片说明' + (i+1) + '</div></li>';
+                    }
+                    $(".js-top-lists").append(_html);
+                    initPhotoSwipeFromDOM('.js-top-lists');
+
+                    // --游客点击
+                    // def.layer_opacity.show();
+                    // def.layer_top.show();
+                    // $(".js-layer-top>p").html("想要查看该款全部细节吗？");
+                    // $(".js-layer-top>.look-tips").html("VIP用户可免费查看<br/>非VIP用户请联系咨询<br/>让款式开发更得心应手");
+                    // $(".user-tourist").show();
+                    // --非vip点击
+                    // def.layer_opacity.show();
+                    // def.layer_top.show();
+                    // $(".js-layer-top>p").html("浏览需要VIP权限");
+                    // $(".js-layer-top>.look-tips").html("开通VIP可浏览全站趋势图片及行业<br/>深度报告书籍<br/>您现在是普通用户，可联系客服开通<br/>试用账号体验全站");
+                    // $(".user-general-btn").show();
+                    // --无保存权限
+                    // def.layer_opacity.show();
+                    // def.layer_top.show();
+                    // $(".js-layer-top>p").html("保存需要VIP权限");
+                    // $(".js-layer-top>.look-tips").html("需要正式解锁VIP后才可保存图片！");
+                    // $(".user-download-btn").show();
+
+                    // 请求失败
+                    // $(".js-null-data-box").show();
+
+                    // 请求完成
+                    $('.content').removeClass('init'); // 初始
+                    $(".js-load-img").hide(); // 取消加载
+                    def.is_loading = false;
+                }, 2000);
+            })
+        })
+
+    </script>
+
+</html>

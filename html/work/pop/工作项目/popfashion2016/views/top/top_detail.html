@@ -1,0 +1,40 @@
+{extends file="layout.html"}
+
+{block name="title"}{$tdk.t}{/block}
+{block name=keywords}{$tdk.k}{/block}
+{block name=description}{$tdk.d}{/block}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/top/top_detail.css?{STATIC_CHANGE_TIME}">
+{/block}
+
+{block name="main"}
+<div class="top-main">
+    <div class="top-head">
+        <div class="head">
+            <div class="head-tit">POP数字 热榜款式TOP热榜</div>
+            <div class="head-tit1">最受设计师<br/>欢迎的{$title}</div>
+            <div class="head-list clearfix">
+                <span>{$date_range}</span>
+                <label>pop-时尚服装网TOP数字热榜<br/>基于用户下载互动数据综合评选出大家都在看的时尚趋势</label>
+            </div>
+        </div>
+    </div>
+    <div class="detail-list js-detail-list clearfix">
+
+    </div>
+     <!-- 加载load -->
+     <div class="top-load js-top-load" style="display: none;">
+        <img src="{STATIC_URL2}/global/images/styles_page/loading.gif"/>
+        <span>正在加载中…</span>
+    </div>
+    <div class="head-layer">
+        <span>{$title_glue}</span>
+        <label>{$date_range}</label>
+    </div>
+</div>
+{/block}
+
+{block name="self"}
+<script type="text/javascript" src="{STATIC_URL2}/global/js/top/top_detail.js?{STATIC_CHANGE_TIME}"></script>
+{/block}

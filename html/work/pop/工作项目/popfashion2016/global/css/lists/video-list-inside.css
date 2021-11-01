@@ -1,0 +1,212 @@
+/* fanglinna
+    20191216
+*/
+
+/* 详情头部 */
+.video-detail-header{background: #1C222A;width: 100%;height: 63px;position: fixed;left: 0;top: 0;z-index: 20;min-width: 1200px;}
+.video-detail-header .web-logo{height: 100%;width: 167px;margin-left: 20px;position: relative;}
+.video-detail-header .web-logo>a{display: inline-block;width: 155px;height: 100%;line-height: 63px;padding-left: 12px;}
+.video-detail-header .web-logo>a.web-on{background-color: #13181D;}
+.video-detail-header .web-logo>a>img{vertical-align: middle;}
+.video-detail-header .web-logo>a>i{background: url(../../images/lists/video_list/icon.png) no-repeat -78px -101px;display: inline-block;width: 7px;height: 4px;}
+.web-all-link{position: absolute;left:0;top:63px;background-color: #13181D;width: 100%;padding:10px 0;display: none;z-index: 20;}
+.web-all-link>a{height: 30px;line-height: 30px;display: block;padding-left: 12px;color: #fff;font-size: 12px;}
+.web-all-link>a>em{background:url(../../images/icons.png) no-repeat;display:inline-block;width:12px;height:12px;vertical-align:middle;margin-right:12px;}
+.web-all-link>a>em.web-fashion{background-position:-58px -417px;width:13px;height:14px;}
+.web-all-link>a>em.web-bags{background-position:0 -205px;}
+.web-all-link>a>em.web-shoe{background-position:-17px -205px;height:8px;}
+.web-all-link>a>em.web-shoushi{background-position:-35px -205px;height:13px;}
+.web-all-link>a>em.web-jiafang{background-position:-54px -205px;width:13px;}
+.web-all-link>a>em.web-yuntu{background-position:-72px -205px;width:13px;height:13px;}
+.web-all-link>a>em.web-gw{background-position:-88px -205px;height:13px;}
+.web-all-link>a>em.web-qushi{background-position:-59px -400px;}
+.web-all-link>a:hover{color: #d8b056;}
+.web-all-link>a:hover em.web-fashion{background-position:-79px -417px;}
+.web-all-link>a:hover em.web-bags{background-position:0 -221px;}
+.web-all-link>a:hover em.web-shoe{background-position:-17px -221px;}
+.web-all-link>a:hover em.web-shoushi{background-position:-35px -221px;}
+.web-all-link>a:hover em.web-jiafang{background-position:-54px -221px;}
+.web-all-link>a:hover em.web-yuntu{background-position:-72px -221px;}
+.web-all-link>a:hover em.web-gw{background-position:-88px -221px;}
+.web-all-link>a:hover em.web-qushi{background-position:-81px -400px;}
+
+/* 头部品牌季节筛选 */
+.video-seleted-labels-section{margin-left: 30px;}
+.video-seleted-labels-section .brand-selected-labels{font-size: 20px;color: #fff;line-height: 63px;float: left;max-width: 193px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.video-seleted-labels-section .split-line{width: 1px;height: 16px;background-color: #a6a6a6;margin:26px 22px 0;float: left;}
+.video-seleted-labels-section .season-seleted-labels-box{float: left;width: 722px;position: relative;overflow: hidden;}
+.season-seleted-labels-content{font-size: 0;position: relative;height: 63px;transition: all 0.5s;}
+.season-seleted-labels-content>a{color: #fff;font-size: 16px;margin-right: 32px;cursor: pointer;line-height: 63px;border-bottom: 3px solid #1C222A;display: inline-block;height: 60px;width: 80px;overflow: hidden;text-align: center;}
+.season-seleted-labels-content>a:hover{color: #d8b056;}
+.season-seleted-labels-content>a.select-on{border-color: #d8b056;color: #d8b056;}
+.labels-switch{position: absolute;background: url(../../images/lists/video_list/icon.png) no-repeat 0 0;display: inline-block;width: 12px;height: 12px;top: 50%;margin-top: -6px;right: 0;cursor: pointer;z-index: 10;display: none;}
+.labels-switch-prev{background-position: -111px -101px;right:28px}
+.labels-switch-prev.data-on{background-position: -166px -101px;}
+.labels-switch-prev.data-on:hover{background-position: -138px -101px;}
+.labels-switch-next{background-position: -125px -101px;}
+.labels-switch-next.data-on{background-position: -180px -101px;}
+.labels-switch-next.data-on:hover{background-position: -152px -101px;}
+.b-nav-mask{background: #1C222A;position: absolute;right: 0;top: 0;width: 50px;height: 63px;}
+
+/* 详情信息 */
+.video-detail-infor{background:url(../../images/lists/video_list/list_bg.png) no-repeat center top;overflow: hidden;height: 407px;margin-top: 63px;}
+.video-detail-infor-blank{height: 280px;}
+.video-detail-infor-lf{position: relative;height: 407px;width: 615px;}
+.video-detail-infor-blank .video-detail-infor-lf{height: 280px;}
+.video-detail-infor-main{position: absolute;left: 0;top: 50%;transform: translateY(-50%);}
+.video-trend-lists-blank .video-detail-infor-main{transform: none;position: static;top: 0;margin-top: 45px;}
+.video-detail-infor-main>h1{font-size: 24px;color: #fff;line-height: 32px;width: 613px;overflow: hidden;height: 64px;}
+.video-detail-infor-main>p.video-labels{color: #a6a6a6;font-size: 14px;margin-top: 12px;width: 587px;}
+.video-detail-infor-main>p.video-labels>a{color: #a6a6a6;font-size: 14px;line-height: 22px;}
+.video-detail-infor-main>p.video-labels em{width: 3px;height: 3px;background: #a6a6a6;border-radius: 50%;display: inline-block;margin:0 12px;vertical-align: middle;}
+.video-detail-infor-main>a.collect-status{width: 65px;height: 32px;line-height: 32px;text-align: center;background-color: #5E6166;border-radius: 5px;cursor: pointer;margin-top: 16px;display: inline-block;}
+.video-detail-infor-main>a.nzt{background-color: #d8b056;}
+.video-detail-infor-main>a.nzt>i{background: url(../../images/lists/video_list/icon.png?2020011401) no-repeat -157px -188px;display: inline-block;width: 12px;height: 12px;vertical-align: middle;margin-right: 4px;margin-top: -2px;}
+.video-detail-infor-main>a.collect-status>span{color: #fff;font-size: 12px;}
+.video-detail-infor-main>a.nzt:hover{background-color: #F4CB69;}
+.video-detail-infor-main .insprition-intro{width: 560px;color: #96999C;font-size:16px;height: 108px;overflow: hidden;margin-top: 24px;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 5;-webkit-box-orient: vertical;}
+.video-detail-infor-main .insprition-intro-special{color: #fff;}
+.runway-more-contain{width: 517px;height: 157px;margin-top: 25px;position: relative;}
+.runway-more-contain .runway-more-lists{overflow: hidden;}
+.runway-more-lists>ul{height: 157px;}
+.runway-more-lists>ul>li{width: 517px;height: 157px;float: left;font-size: 0;border-radius: 5px;}
+.runway-more-lists>ul>li>a{display: inline-block;width: 100%;height: 100%;}
+.runway-more-lists>ul>li>a .pic-detail-box{width: 100%;height: 100%;}
+.runway-more-lists>ul>li .pic-detail-box>img{width: 208px;height: 157px;border-radius:5px 0 0 5px}
+.runway-more-lists>ul>li .pic-detail-box>div{width: 261px;height: 157px;background:#2D3339;padding:0 24px;border-radius: 0 5px 5px 0;}
+.runway-more-lists>ul>li .pic-detail-box>div>h3{font-size: 16px;color: #fff;font-weight: normal;margin-top: 14px;line-height: 27px;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}
+.runway-more-lists>ul>li .pic-detail-box>div>p{font-size: 12px;color: #fff;font-weight: normal;margin-top: 8px;line-height: 22px;color: #96999C;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;}
+.runway-more-contain .mask-layer{background: url(../../images/lists/video_list/post_mask.png) no-repeat;width: 226px;height: 190px;position: absolute;right: 0;top:0;}
+.switch-btn-video{position: absolute;background: url(../../images/lists/video_list/icon.png) no-repeat 0 0;width: 24px;height: 24px;display: inline-block;top: 50%;margin-top: -12px;z-index: 10;cursor: pointer;}
+.switch-btn-prev{background-position: -120px -122px;left:-30px;}
+.switch-btn-next{background-position: -141px -122px;right:24px;}
+.switch-btn-prev:hover{background-position: -161px -122px;}
+.switch-btn-next:hover{background-position: -181px -122px;}
+/* 花絮发布会*/
+.video-detail-infor-rg{width: 448px;position: relative;height: 407px;}
+.video-detail-switch-main{position: absolute;left: 0;top: 50%;transform: translateY(-50%);}
+.video-trend-lists-blank .video-detail-switch-main{transform: none;position: static;top: 0;margin-top: 70px;}
+.video-detail-infor-rg .switch-video-btn{padding:0 0 20px;}
+.switch-video-btn>a{height: 32px;color: #82888D;font-size: 16px;display: inline-block;padding:0 12px;cursor: pointer;line-height: 32px;text-align: center;}
+.switch-video-btn>a>i{background: url(../../images/lists/video_list/icon.png) no-repeat -84px -79px;display: inline-block;width: 16px;height: 12px;margin-right: 6px;}
+.switch-video-btn>a:hover{color: #fff;}
+.switch-video-btn>a.v-on{background: rgba(255,255,255,0.10);border-radius: 5px;color: #fff;}
+.play-video-box{width: 448px;height: 251px;}
+.play-video-box .runway-video-img{position: relative;width: 552px;height: 310px;}
+.play-video-box .position-video{position: fixed;right: 0;bottom: 0;z-index:110;}
+.close-video-positiion{background: url(../../images/lists/video_list/icon.png) no-repeat -151px -152px;width: 24px;height: 24px;display: none;position: absolute;left: 11px;top: 11px;cursor: pointer;z-index: 111;}
+.play-video-box .position-video:hover .close-video-positiion{display: block;}
+#runwayPlayer{width: 448px;height: 251px;}
+/* 灵感视频 */
+.insprition-video-box{width: 440px;height: 320px;}
+.insprition-video-box .runway-video-img{width: 440px;height: 320px;text-align: center;overflow: hidden;border-radius: 5px;}
+.insprition-video-box .runway-video-img>img{height:388px}
+
+/* 更多发布会tab */
+.video-detail-more-section{background-color: #1A1F26;width: 100%;height: 51px;}
+.video-detail-more-box{position: relative;overflow: hidden;height: 51px;}
+.video-detail-more-box .video-detail-lists-box{font-size: 0;position: relative;transition: all 0.5s;}
+.video-detail-more-box .nav-mask{background: url(../../images/lists/video_list/nav_mask.png) no-repeat;position: absolute;right: 0;top: 0;width: 144px;height: 51px;}
+.video-detail-more-box .video-detail-lists-box>a{font-size: 14px;color: #8C8F92;display: inline-block;line-height: 51px;width: 100%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;margin-right: 100px;width: 280px;}
+.video-detail-more-box .video-detail-lists-box>a:hover{color: #C3C5C6;}
+.video-detail-more-box .video-detail-lists-box>a.select-on{color: #fff;}
+.video-detail-more-box .detail-more-switch{position: absolute;background: url(../../images/lists/video_list/icon.png) no-repeat 0 0;display: inline-block;width: 12px;height: 12px;top: 50%;margin-top: -6px;right: 0;cursor: pointer;z-index:10;}
+.video-detail-more-box .detail-more-prev{background-position: -111px -101px;right:28px}
+.video-detail-more-box .detail-more-prev.data-on{background-position: -166px -101px;}
+.video-detail-more-box .detail-more-prev.data-on:hover{background-position: -138px -101px;}
+.video-detail-more-box .detail-more-next{background-position: -125px -101px;}
+.video-detail-more-box .detail-more-next.data-on{background-position: -180px -101px;}
+.video-detail-more-box .detail-more-next.data-on:hover{background-position: -152px -101px;}
+
+/* 列表信息 */
+.video-lists-section{margin-top: 35px;}
+.video-lists-section .neiye-infor-bottom{border-bottom: 1px solid #eee;}
+.video-lists-content{margin-top: 48px;}
+
+/* 空数据推荐 */
+.empty-data-recommend{padding-top: 125px;}
+.empty-data-recommend>p{color: #333;font-size: 40px;letter-spacing: 0.95px;line-height: 52px;}
+/* 广告大片推荐 */
+.lookbook-recommend-box{margin-top: 50px;margin-bottom: 160px;position: relative;}
+.lookbook-recommend-list{position: relative;overflow: hidden;width: 1170px;margin: 0 auto;height: 401px;}
+.lookbook-recommend-list>ul>li{width: 250px;float: left;margin:0 21px;}
+.lookbook-recommend-list>ul>li>div{position: relative;width: 250px;height: 335px;font-size: 0;}
+.lookbook-recommend-list>ul>li>div>a{width: 250px;height: 335px;overflow: hidden;display: inline-block;border-radius: 5px;}
+.lookbook-recommend-list>ul>li>div>a>img{height: 335px;border-radius: 5px;}
+.lookbook-recommend-list>ul>li .hover-link{width: 100%;height: 100%;background: rgba(0,0,0,0.6);position: absolute;left: 0;top: 0;display: none;border-radius: 5px;}
+.lookbook-recommend-list>ul>li .hover-link>div{position: absolute;left: 50%;margin-left: -81px;top: 50%;margin-top: -23px;}
+.lookbook-recommend-list>ul>li .hover-link>div>a{width: 162px;height: 46px;text-align: center;line-height: 45px;display: inline-block;color: #d8b056;background-color: #fff;border-radius: 30px;font-size: 14px;cursor: pointer;}
+.lookbook-recommend-list>ul>li .hover-link>div>a>i{background: url(../../images/neiyeList.png) no-repeat -157px -95px;width: 17px;height: 16px;display: inline-block;vertical-align: middle;margin-right: 5px;}
+.lookbook-recommend-list>ul>li .hover-link>div>a:hover{background-color:#d8b056;color:#fff;}
+.lookbook-recommend-list>ul>li .hover-link>div>a:hover i{background-position:0 -225px;}
+.lookbook-recommend-list>ul>li .update-time{position: absolute;bottom: 16px;left: 69px;color: #fff;font-size: 16px;line-height: 24px;}
+.lookbook-recommend-list>ul>li .update-time>i{background: url(../../images/lists/video_list/icon.png) no-repeat 0 -152px;width: 16px;height: 16px;display: inline-block;vertical-align: middle;margin-right: 4px;margin-top: -3px;}
+.lookbook-recommend-list>ul>li .image-title{color: #333;font-size: 18px;line-height: 24px;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;margin-top: 16px;height: 50px;}
+.lookbook-recommend-list>ul>li:hover .hover-link{display: block;}
+/* 发布会推荐 */
+.runway-recommend-box{margin-top: 50px;margin-bottom: 160px;position: relative;}
+.runway-recommend-list{position: relative;overflow: hidden;width: 1151px;margin: 0 auto;height: 240px;}
+.runway-recommend-list>ul>li{width: 320px;float: left;margin:0 32px;position: relative;font-size: 0;}
+.runway-recommend-list>ul>li>a{width: 320px;height: 240px;overflow: hidden;display: inline-block;border-radius: 5px;}
+.runway-recommend-list>ul>li>a>img{border-radius: 5px;height: 240px;min-width: 106px;}
+.runway-recommend-list>ul>li .image-title{background: url(../../images/lists/video_list/recommend_massk.png) no-repeat;width: 100%;height: 95px;position: absolute;bottom: 0;left: 0;}
+.runway-recommend-list>ul>li .image-title>span{color: #fff;font-size: 18px;line-height: 24px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;position: absolute;bottom: 16px;left: 16px;display: inline-block;width: 300px;}
+.runway-recommend-list>ul>li:hover .hover-link{display: block;}
+
+.recommend-switch>a{position: absolute;top: 50%;margin-top: -24px;background: url(../../images/lists/video_list/icon.png) no-repeat 0 0;width: 26px;height: 48px;cursor: pointer;}
+.recommend-switch>a.recommend-prev{background-position: -20px -152px;left:0}
+.recommend-switch>a.recommend-prev:hover{background-position: -49px -152px;}
+.recommend-switch>a.recommend-next{background-position: -84px -152px;right: 0}
+.recommend-switch>a.recommend-next:hover{background-position: -112px -152px;}
+
+/* 灵感视频详情 */
+.inspiration-video-box{padding: 61px 0 100px;}
+#inspirationPlayer{width: 896px;height: 504px;margin: 0 auto;}
+
+/* 覆盖列表导航样式 */
+.video-lists-section .listNav>a{margin: 0;}
+.video-lists-section .listNav>span{margin:0 20px;} 
+.video-lists-section .list-down-page>a{margin-right: 0;}
+
+
+
+@media screen and (min-width:1500px) {
+    /*  详细信息*/
+    .video-seleted-labels-section{margin-left: 60px;}
+    .video-seleted-labels-section .split-line{margin:26px 42px 0;}
+    .video-seleted-labels-section .season-seleted-labels-box{width: 946px;}
+    .video-detail-infor{height: 509px;}
+    .video-detail-infor-blank{height: 280px;}
+    .video-empty-box{height: 280px;}
+    .video-trend-lists-blank .video-detail-infor-main{transform: none;position: static;top: 0;margin-top: 45px;}
+    .video-detail-infor-main>h1{width: 798px;font-size: 30px;line-height: 38px;height: 77px;}
+    .video-detail-infor-main>p.video-labels{width: 662px;}
+    .video-detail-infor-main>a.collect-status{width: 95px;height: 40px;line-height: 40px;margin-top: 16px;}
+    .video-detail-infor-main>a.collect-status>span{font-size: 14px;}
+    .video-detail-infor-main>a.nzt>i{background: url(../../images/lists/video_list/icon.png?2020011401) no-repeat -69px -122px;display: inline-block;width: 16px;height: 16px;vertical-align: middle;margin-right: 4px;margin-top: -3px;}
+    .video-detail-infor-main .insprition-intro{width: 696px;}
+    .video-detail-infor-lf{position: relative;height: 509px;width: 796px;}
+    .video-detail-infor-blank .video-detail-infor-lf{height: 280px;}
+    .video-detail-infor-rg{width: 552px;height: 509px;}
+    .video-trend-lists-blank .video-detail-switch-main{transform: none;position: static;top: 0;margin-top: 73px;}
+    .runway-more-contain{width: 615px;height: 190px;margin-top: 36px;}
+    .runway-more-lists>ul{height: 190px;}
+    .runway-more-lists>ul>li{width: 615px;height: 190px;}
+    .runway-more-lists>ul>li .pic-detail-box>img{width: 254px;height: 190px;border-radius:5px 0 0 5px}
+    .runway-more-lists>ul>li .pic-detail-box>div{width: 297px;height: 190px;padding:0 32px;}
+    .runway-more-lists>ul>li .pic-detail-box>div>h3{margin-top: 27px;font-size: 18px;}
+    .runway-more-lists>ul>li .pic-detail-box>div>p{margin-top: 16px;font-size: 14px;}
+    .lookbook-recommend-list{width: 1400px;}
+    .lookbook-recommend-list>ul>li{margin:0 15px;}
+    .runway-recommend-list{width: 1400px;}
+    .runway-recommend-list>ul>li{margin:0 15px;}
+    .play-video-box{width: 552px;height: 310px;}
+    .insprition-video-box{width: 534px;height: 388px;}
+    .insprition-video-box .runway-video-img{width: 534px;height: 388px;}
+    #inspirationPlayer{width: 1100px;height: 620px;}
+    #runwayPlayer{width: 552px;height: 310px;}
+    .video-detail-more-section{height: 64px;}
+    .video-detail-more-box{height: 64px;}
+    .video-detail-more-box .nav-mask{height: 64px;}
+    .video-detail-more-box .video-detail-lists-box>a{line-height: 64px;}
+}

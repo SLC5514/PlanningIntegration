@@ -1,0 +1,116 @@
+{extends file="layout.html"}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/per.css?{STATIC_CHANGE_TIME}">
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/personal.css?{STATIC_CHANGE_TIME}">
+{/block}
+
+{block name="main"}
+<div class="main">
+    <div class="con_width">
+    <!--个人中心 头部开始-->
+    {$personalHeader}
+    <!--个人中心 头部结束-->
+
+        <div class="col-main clearfix">
+            <!--个人中心 左侧菜单开始-->
+            {$personalLeftMenu}
+            <!--个人中心 左侧菜单结束-->
+
+            <div class="col-con  fl">
+                <!-- item-manage -->
+                <div class="item-manage manage_per">
+                    <div class="hd"><span><i></i>修改基本资料</span></div>
+                    <div class="mainall">
+                        <table width="100%" class="modify">
+                            <form id="theForm" method="POST" action="/member/modInfo/">
+                            <input type="hidden" name="sChildID" value="{$sChildID}">
+                            <tbody>
+                            <tr>
+                                <th width="18%"><span>*</span> 用户名：</th>
+                                <td width="82%" class="no">{$childAccount}</td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td class="sm">用户名不可修改！</td>
+                            </tr>
+                            <tr>
+                                <th><span>*</span>姓名：</th>
+                                <td class="no"><input name="sName" id="sName" type="text" value="{$sName}"></td>
+                            </tr>
+                            <tr>
+                                <th><span>*</span>性别：</th>
+                                <td class="no">
+                                    <select name="sGender" id="sGender">
+                                        <option value="">请选择性别</option>
+                                        <option value="1" {if {$sGender} eq 1} selected {/if}>先生</option>
+                                        <option value="2" {if {$sGender} eq 2} selected {/if}>女士</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><span>*</span>E-Mail：</th>
+                                <td class="no"><input name="sEmail" id="sEmail" type="text" value="{$sEmail}"></td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td class="sm">请您填写常用的电子邮箱，如pop136@pop136.com</td>
+                            </tr>
+                            <tr>
+                                <th><span>*</span>公司名称：</th>
+                                <td class="no"><input name="sCompanyName" id="sCompanyName" type="text" value="{$sCompanyName}"></td>
+                            </tr>
+                            <tr>
+                                <th><span>*</span>公司职务：</th>
+                                <td>
+                                    <select  name="iPositionsID"  id="iPositionsID" dataType="Require" msg="未选择职业类型">
+                                        <option value="">请选择你的职业类型</option>
+                                        {foreach item=val key=key from=$position }
+                                        <option {if $iPositionsID eq $key}selected="true" {/if} value="{$key}">{$val}</option>
+                                        {/foreach}
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><s class="space"></s></td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td><input value="提交修改" type="button" class="btn-red"></td>
+                            </tr>
+                            </tbody>
+                            </form>
+                        </table>
+                    </div>
+                </div>
+                <!-- /item-manage -->
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+
+{block name="self"}
+<script type="text/javascript" src="{STATIC_URL2}/global/js/fashion/personalcenter.js?{STATIC_CHANGE_TIME}"></script>
+{literal}
+<script type="text/javascript">
+    $('.btn-red').click(function(){
+        var options = {
+            type: 'POST',
+            async: true,
+            success: function (e) {
+                if (e == 'success') {
+                    window.location.reload();
+                } else {
+                    layer.alert(e);
+                    return;
+                }
+            }
+        };
+        if (validator.validateChild() !== false) {
+            $('#theForm').ajaxSubmit(options);
+        }
+    });
+</script>
+{/literal}
+{/block}

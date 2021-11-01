@@ -1,0 +1,12 @@
+看了Node.js(v6.9.1) + express(4.X) + vue(2.0) + vuex + mysql(5.7.18) + （NUXT）SSR + nginx + redis + 无痕埋点的项目、
+vue+vuex+socket.io+express的简易聊天室项目
+搭建一个vue+vuex+vue-socket.io的简易聊天室，
+了解一些js、css框架的兼容性及解决方案，
+使用vue-meta-info+prerender-spa-plagin，
+看了一些Js代码段，整理了一些工具、知识页面，以及vs code比较常用的插件，
+用nuxt做一个项目放到服务器上、配置nginx代理、pm2管理进程、shell脚本发布，
+在nuxt中动态路由配置不同的SDK，使用站长搜索蜘蛛、机器人模拟抓取，
+【英文站】英文站Skype账号变更，原账号停用
+【其他】变更各网络平台公司地址信息
+【中文站】vip满意度调研
+【中文站】服装网新增联系我们页面

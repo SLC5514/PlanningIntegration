@@ -1,0 +1,112 @@
+<div>
+	<div class="select_items">
+		<span class="fl select-title">筛选项：</span>
+		<ul class="paixu fl clearfix">			
+			{if isset($seasons) && !empty($seasons)}
+			<li class="pli">
+				<span class="aspan">季节<em></em></span>
+				<div class="showbox sum">
+					<div class="dateHeight contentHolder">
+						<div class="content">
+							{foreach $seasons as $key=>$season}
+							<a class="clickme {if $key != 0}borderTop{/if}" href="{$season.link}" title="{$season.name}">{$season.name}</a>
+							{/foreach}
+						</div>
+					</div>
+				</div>
+			</li>
+			{/if}
+            {if !isset($paramsArr['reg'])}
+            <li class="pli">
+                <span class="aspan">地区<i class="nav-icon"></i></span>
+				<div class="showbox region_box category_box">
+                    <div class="search-area-box clearfix">
+                        <input class="fl searInput" type="text" value="请输入国家或城市的关键字">
+                        <input class="fr button neiyeList" type="button">
+                    </div>
+					<div class="allcc clearfix">
+						<div class="area_qh"><span>地区：</span><a href="javascript:void(0);" class="on"><span>按区域</span><i></i></a><a href="javascript:void(0);"><span>按大洲</span><i></i></a></div>
+					</div>
+					<div class="mingc">
+						<div class="fl">
+							<span>大洲名称：</span>
+							<a href="javascript:void(0);">美洲</a>
+                        </div>
+                        <div class="allred fl"><a href="javascript:void(0);" >全部亚洲国家>></a></div>						
+					</div>					
+					 <div class="category_div contentHolder ps-container">
+						<div class="content">
+                            <dl class="category_dl clearfix">
+		                        <dt><a href="javascript:void(0);" data-para="Outerwearpop95Jacket|0" data-pos="9"></a></dt>
+		                        <dd>
+		                            <a href="javascript:void(0);" data-para="Outerwearpop95Jacket|Cape" data-pos="9"></a>
+		                        </dd>
+		                    </dl>
+						</div>
+					</div>
+				</div>
+            </li>
+            {/if}
+            {if isset($sClass) && !empty($sClass)}
+			<li class="pli">
+				<span  class="aspan">类型<em></em></span>
+				<div class="showbox sum">
+					<div class="dateHeight contentHolder">
+						<div class="content">
+							{foreach $sClass as $val}
+							<a class="clickme borderTop" href="{$val.link}" title="{$val.name}">{$val.name}</a>
+							{/foreach}
+						</div>
+					</div> 
+				</div>
+			</li>
+			{/if}
+			{if !empty($books) && !isset($paramsArr['boo'])}
+			<li class="pli">
+				<span class="aspan">品牌名<em></em></span>
+				<div class="showPro showbox" style="height:500px;">
+                    <div class="inputBox">
+                        <input type="text" class="searInputbox fl" value="搜索A开头的品牌名" name="{$val}" style="color: rgb(148, 147, 147);"><span class="fr neiyeList"></span>
+                    </div>
+					<div class="brands_ca">
+                        <!--品牌名开始-->
+                        {foreach $books as $val}
+                        <div class="items">
+                            <div class="letter" name="{$val}">{$val}</div>
+                        </div>
+                        {/foreach}	
+                        <div class="brandslist">
+                            <div class="brand_result contentHolder">
+                                <div class="content">
+                                    <ul class="clearfix" id="popBrand_{$val}">
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!--品牌名结束-->
+					</div>
+				</div>
+			</li>
+			{/if}
+			{if isset($categorys) && !empty($categorys)}
+			<li class="pli">
+				<span class="aspan">单品<em></em></span>
+				<div class="showbox sum">
+					<div class="dateHeight contentHolder">
+						<div class="content">
+							{foreach $categorys as $key=>$category}
+							<a class="clickme {if $key != 0}borderTop{/if}" href="{$category.link}" title="{$category.name}">{$category.name}</a>
+							{/foreach}
+						</div>
+					</div>
+				</div>
+			</li>
+			{/if}
+		</ul>
+	</div>
+	<div class="other">
+		<input type="hidden" name="hidd" data-col="{$columnId}"/>
+		<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/select_items.js?{STATIC_CHANGE_TIME}"></script>
+	</div>
+</div>

@@ -1,0 +1,33 @@
+{extends file="layout.html"}
+{block name='main'}
+	<!-- <div class="account_logined">
+		<div class="content_acc">
+			<div class="cont_box">
+				<span class="icon fl"></span>
+				<p class="fl">对不起，您使用的账号被其他用户再次登录 {$Ip}; <br/><strong>您的登录状态已退出，请确认此账户是否出现异常或被盗，如有任何问题可联系：</strong></p>
+			</div>
+			<div class="clear"></div>
+			<div class="lianxi_style">
+				<a class="qq_style js-contact-qq-btn" href="javascript:void(0);" style="margin-left: 0px;"><i></i>在线客服</a>
+                <a class="tel_style">咨询电话：<span>4008 210 500</span></a>
+                <a class="reg_style" style="margin-left: 20px;" href="/member/pagelogin/">重新登陆</a>
+			</div>
+		</div>
+    </div> -->
+    <input type="hidden" id="ipInfo" value="true">
+    <div id="content" class="ip-information">
+        <div class="w1200">
+            <div class="hd">
+                <div class="cont">
+                    <div>对不起，您使用的账号被其他用户再次登录 {$Ip}</div>
+                    您的登录状态已退出 , 请确认此账户是否出现异常被盗 , 如有任何问题可联系 :
+                </div>
+            </div>
+            <ul class="clearfix">
+                <li><a class="info-qq js-contact-qq-btn" data-type='0'><i></i> 在线客服</a></li>
+                <li><a class="info-phone" href="javascript:void(0);">电话咨询 <span>4008-210-662</span></a></li>
+                <li><a class="reloging" href="/member/pagelogin/">重新登录</a></li>
+            </ul>
+        </div>
+    </div>
+{/block}

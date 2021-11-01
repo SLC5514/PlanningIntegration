@@ -1,0 +1,9 @@
+/*初始化特定样式*/
+p{margin:0;padding:0;}
+body{font-size:14px;line-height:2;font-family: "Microsoft YaHei","SimHei","Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;}
+h1{font-size: 36px;}
+h2{font-size: 30px;}
+h3{font-size: 24px;}
+h4{font-size: 18px;}
+h5{font-size: 16px;}
+h6{font-size: 14px;}

@@ -1,0 +1,161 @@
+{extends file="layout.html"}
+
+{block name="title"}POP大主题趋势预测发布新生|大数据流行色一秒掌握-POP服装趋势网{/block}
+{block name=keywords}四大主题,系列书箱,趋势报告,品牌推荐,色彩数据,单品数据,秀场提炼{/block}
+{block name=description}通过四大主题：优越危机、口袋未来、自由无聊、回到最初，来诠释1819的四块主流趋势走向，从复古传统美式少女的怀旧情怀；色彩，作为商品企划的重中之重，需要精密的分析思考，才能得出真正适合开发的思路！{/block}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/topic/20170516/css/index.css?20170607">
+{/block}
+
+{block name="main"}
+<div class="big-data">
+	<div class="data-contain js-data-contain">
+		<div class="data-l">
+			<div class="fix-box"></div>
+			<div class="txt-div">
+				<img src="{STATIC_URL2}/global/topic/20170516/images/title1.png" alt="pic"/>
+				<p>通过四大主题：优越危机，口袋未来，自由无疆，回到最初，来诠释1819的四块主流趋势走向，从复古传统美式少女的怀旧情怀、独立硬朗定制风到实现未来科技的生活“我们不只是在看,我们还在经历与感受”，以及大城市多元化文化融合的庞大底层人群，这种外域次文化下的“新兴国家”萌芽下，无阶级，崇尚自由新生，新人类 ，新科技，新文明;以及去“仪式感”的回归裸心状态，打破场所界限的新简朴奢侈，成为了1819秋冬的大趋势主题。</p>
+				<ul class="ul-list clear js-list-hover" data-n="0">
+					<li>
+						<a href="/trends/vision/sea_11735/" title="四大主题" target='_blank'>
+							<div>
+								<img src="{STATIC_URL2}/global/topic/20170516/images/mation-l.gif"/>
+								<p class="hover-msg">优越危机，口袋未来，自由无疆，回到最初</p>
+							</div>
+							<p>四大主题</p>
+						</a>
+					</li>
+					<li>
+						<a href="/item/seclist/mct_3-mst_9/" title="系列书籍" target='_blank'>
+							<div>
+								<img src="{STATIC_URL2}/global/topic/20170516/images/mation-l.gif" />
+								<p class="hover-msg">帮助解决设计方案</p>
+								
+							</div>
+							<p>系列书籍</p>
+						</a>
+					</li>
+					<li >
+						<a href="/trends/sea_11735/" title="趋势报告" target='_blank'>
+							<div>
+								<img src="{STATIC_URL2}/global/topic/20170516/images/mation-l.gif"/>
+								<p class="hover-msg">全视角获取主题趋势内容</p>
+								
+							</div>
+							<p>趋势报告</p>
+						</a>
+					</li>
+					<li style="margin-right: 0;">
+						<a href="/analysis/online" title="品牌推荐" target='_blank'>
+							<div>
+								<img src="{STATIC_URL2}/global/topic/20170516/images/mation-l.gif"/>
+								<p class="hover-msg">全品类品牌推荐，指导款式设计</p>
+								
+							</div>
+							<p>品牌推荐</p>
+						</a>
+					</li>
+				</ul>
+			</div>
+			
+		</div>
+		<div class="data-r">
+			<div class="fix-box"></div>
+			<div class="txt-div">
+				<img src="{STATIC_URL2}/global/topic/20170516/images/title2.png" alt="pic"/>
+				<p>色彩，作为商品企划的重中之重，需要精密的分析思考，才能得出真正适合开发的思路！POP资深趋势研究员通过精密的流行时尚大数据分析，得出的针对性精准结论，以AI人工智能图表帮您解决未来开发季系列化设计问题，精准色彩企划方向，解决商品企划问题，节约商品开发成本！</p>
+				<ul class="ul-list js-list-hover" data-n="1">
+					<li>
+						<a href="/trends/color/?key=%E6%95%B0%E6%8D%AE" title="色彩数据" target='_blank'>
+							<div>
+								<img src="{STATIC_URL2}/global/topic/20170516/images/mation-r.gif"/>
+								<p class="hover-msg">流行色智能分析，预测未来流行关键色</p>
+							</div>
+							<p>色彩数据</p>
+						</a>
+					</li>
+					<li>
+						<a href="/analysis/?key=%E6%95%B0%E6%8D%AE" title="单品数据" target='_blank'>
+							<div>
+								<img src="{STATIC_URL2}/global/topic/20170516/images/mation-r.gif"/>
+								<p class="hover-msg">单品色彩智能数据，提炼核心单品配色趋势</p>
+								
+							</div>
+							<p>单品数据</p>
+						</a>
+					</li>
+					<li>
+						<a href="/styles/runways/" title="秀场提炼" target='_blank'>
+							<div>
+								<img src="{STATIC_URL2}/global/topic/20170516/images/mation-r.gif"/>
+								<p class="hover-msg">及时提炼秀场设计点，从色彩和单品维度分析</p>
+								
+							</div>
+							<p>秀场提炼</p>
+						</a>
+					</li>
+					
+				</ul>
+			</div>			
+		</div>
+	</div>
+</div>
+
+{include file="topic/topic_layer.html"}
+{/block}
+
+
+{block name="self"}
+{literal}
+<script>
+	$(function(){
+		
+		/*列表动画*/
+    	$('.js-list-hover>li').hover(function(){
+    		
+    		$(this).stop().animate({
+    			'height':'130px'
+    		},300);
+    		
+    		$(this).find('div').stop().animate({
+    			'margin-top':'0'
+    		},300);
+    		
+    		$(this).find('.hover-msg').stop().animate({
+    			'height':'57px',
+    			'opacity':'1'
+    		},300);
+    	},function(){   		
+    		$(this).stop().animate({
+    			'height':'108px'
+    		},300);
+    		
+    		$(this).find('div').stop().animate({
+    			'margin-top':'42px'
+    		},300);
+    		
+    		$(this).find('.hover-msg').stop().animate({
+    			'height':'0px',
+    			'opacity':'0'
+    		},300);
+    	})
+    	
+    	//tab切换动画
+    	$('.js-data-contain>.data-r>.fix-box').hover(function(){
+    		$(this).fadeOut(500);
+    		$(this).parent('div').addClass('hover-cont').siblings('div').addClass('hover-l');
+    		$(this).parent('div').siblings('div').children('.fix-box').fadeIn(500);
+    		
+    	})
+    	$('.js-data-contain>.data-l>.fix-box').hover(function(){
+    		$(this).fadeOut(500);
+    		$(this).parent('div').removeClass('hover-l').siblings('div').removeClass('hover-cont');
+    		$(this).parent('div').siblings('div').children('.fix-box').fadeIn(500);
+    		
+    	})
+    	
+    })
+</script>
+{/literal}
+{/block}

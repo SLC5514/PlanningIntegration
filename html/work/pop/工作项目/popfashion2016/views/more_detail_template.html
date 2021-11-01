@@ -1,0 +1,48 @@
+{literal}
+<script id="T_MoreRecTemplate" type="text/html">
+    <ul class="see-list1 js-see-list1 clearfix">
+        {{each report as _val}}
+        <li>
+            <a href="{{_val.link}}" class="abox" target="_blank" title="查看详情">
+                <div class="see-pic1">
+                    <div>
+                        <img src="{{_val.smallPath}}" alt="pic">
+                    </div>
+                </div>
+                <div class="see-disc1">
+                    <div>{{_val.title}}</div>
+                    <p>{{_val.description}}</p>
+                </div>
+            </a>
+        </li>
+        {{/each}}
+    </ul>
+    <ul class="see-list2 js-see-list2 clearfix">
+        {{each style as _val}}
+        <li>
+            <a href="{{_val.link}}" class="abox" target="_blank" title="查看详情">
+                <div class="see-pic2">
+                    <div><img src="{{_val.smallPath}}" alt="pic"></div>
+                </div>
+                <div class="see-disc2">
+                    <div>{{_val.brandText}}</div>
+                    {{if _val.sPatternUseName || _val.sPatternContent}}
+                        <p>{{_val.sPatternContent}} {{_val.sPatternUseName}}</p>
+                    {{else}}
+                        <p>{{_val.title}}</p>
+                    {{/if}}
+                </div>
+            </a>
+        </li>
+        {{/each}}
+    </ul>
+</script>
+
+<script id="T_MoreRecLodingTemplate" type="text/html">
+    <div class="list-load js-list-load2">
+        <img src="{{STATIC_URL2}}/global/images/new-detail/report-load.png" alt="loading" /><br />
+        <img src="{{STATIC_URL2}}/global/images/loading/loading.gif" alt="loading" />
+        <p>正在探索喜欢该内容的其他人还会看什么...</p>
+    </div>
+</script>
+{/literal}

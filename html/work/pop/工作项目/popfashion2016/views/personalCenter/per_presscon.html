@@ -1,0 +1,55 @@
+{extends file="layout.html"}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/personal.css?{STATIC_CHANGE_TIME}">
+{/block}
+
+{block name="main"}
+<div class="con_width">
+	<div class="con_main">
+		<div class="per_banner">
+			<img src="{STATIC_URL2}/global/images/per_banner.jpg" alt="pic">
+			<h3 class="tit">共收藏 {$total} 个T台发布</h3>
+			<div class="per_bannerbg"></div>
+			<p class="pertext">
+				<a href="/member/mycollect/" title="返回"><span><i></i>返回</span></a></p>
+		</div>
+		<ul class="runways clearfix lazyload">
+			{foreach $pressconList as $key=>$val}
+			<li>
+				<a href="/runways/inside/id_{$val.info.id}/" class="fl" target="_blank" title="{$val.info.name}">
+					{$val.info.cover_image}          				          
+				</a>
+				<div class="text_down" class="fl">
+					<p class="title"><a href="/runways/inside/id_{$val.info.id}/" target="_blank" title="{$val.info.name}">{$val.info.name}</a></p>
+					<div class="leibie">
+						<p>设计师：{$val.info.designer}</p>
+						<p>时间：{$val.info.for_date_new}</p>
+						<p>地点：{$val.info.region_new}</p>
+					</div>
+					<p class="time">
+						<span class="fl"><img src="{STATIC_URL2}/global/images/zzjd_02.png" alt="pic">{$val.info.updateTime|date_format:'%Y-%m-%d'}</span>
+						<a href="javascript:void(0);" data-cid="{$val.iCollectId}" data-pid="{$val.info.id}" data-t="{$val.info.simpleName}" class="cancelbtn fr concelcollect" data-t="{$val.info.simpleName}"  data-type="{$type}" data-col="{$val.iColumnId}" title="取消收藏"><i></i><span>取消收藏</span></a>
+					</p>
+				</div>
+				{if $val.info.region_new neq ''}
+				<div class="topIcon">{$val.info.region_new}</div>
+				{/if}				
+			</li>
+			{/foreach}
+
+		</ul>
+	</div>
+	{$pageHtml}
+</div>
+<div class="shadow_black"></div>
+<div class="pop_shoucang">
+	<p class="content">是否确认取消收藏？</p>
+	<a href="javascript:void(0);" class="record" title="确定">确定</a>
+	<a href="javascript:void(0);" class="cancel" title="取消">取消</a>
+</div>
+{/block}
+
+{block name="self"}
+<script type="text/javascript" src="{STATIC_URL2}/global/js/workbench/workbench.js?{STATIC_CHANGE_TIME}"></script>
+{/block}

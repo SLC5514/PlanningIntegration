@@ -1,0 +1,24 @@
+/* 
+    author  fanglinna
+    date    20190731
+*/
+body{background-color: #323940;}
+.datagrand-wrap-all{position: relative;min-height: 500px;}
+.guess-like-list-box{padding-top: 53px;font-size: 0;}
+.guess-like-list-box>h1{font-size: 24px;color: #fff;font-weight: normal;text-align: center;}
+.guess-like-list-box>h1>span{width: 80px;height: 1px;background:rgba(255,255,255,0.3);display: inline-block;margin:0 20px;position: relative;top:-7px;}
+.datagrand-box{margin-top: 75px;}
+.patterns-recommend{margin-left: -29px;}
+.patterns-recommend>li{height: 270px;width: 270px;margin-left: 29px;float: left;margin-bottom: 30px;background-color: #fff;position: relative;border:3px solid #323940;}
+.patterns-recommend>li>div.pic_box{width: 270px;height: 270px;padding:0;border:none;}
+.patterns-recommend>li>div.pic_box>a{display: block;font-size: 0; width:100%;height:100%;text-align:center;position:relative;overflow: hidden;line-height: 270px;cursor: pointer;}
+.patterns-recommend>li>div.pic_box>a>img{width: 270px;vertical-align: middle;}
+.patterns-recommend>li>div.pic_box>span{position: absolute;right:10px;top:10px;background: rgba(0,0,0,0.6);border-radius: 3px;height: 30px;line-height: 30px;padding:0 15px;font-size: 12px;color: #fff;display: none;cursor: pointer;}
+.patterns-recommend>li:hover{border-color: #d8b056;}
+.patterns-recommend>li>div.pic_box:hover span{display: block;}
+
+.scroll-load{text-align: center;padding:30px 0;}
+.scroll-look-more{text-align: center;padding: 30px;display: none;}
+.scroll-look-more>a{width: 160px;height: 45px;border-radius: 20px;text-align: center;line-height: 45px;display: inline-block;color: #fff;font-size: 16px;cursor: pointer;background-color: #767a7f;}
+.scroll-look-more>a:hover{background-color: #d3ac54;color: #fff;}
+

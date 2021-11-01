@@ -1,0 +1,430 @@
+{extends file="layout.html"}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL3}/global/css/fabric-mutual.css?{STATIC_CHANGE_TIME}">
+{/block}
+{block name="main"}
+
+<div class="fabric_mutual">
+    <div class="fm_banner" style="display: none">
+        <h1>面料趋势专区</h1>
+        <ul class="bannerbox">
+            {if $topAds}
+            {foreach $topAds as $val}
+            <li>
+                <a title="{$val.sTitle}" href="{$val.sLink}" target="_blank">
+                    <img alt="{$val.sTitle}" src="{$val.sImagePath}">
+                </a>
+            </li>
+            {/foreach}
+            {else}
+            <li>
+                <a title="《18/19秋冬面料趋势》书籍，限量发行10套，速抢手慢无" href="https://mp.weixin.qq.com/s?__biz=MjM5NTQxMzc0MQ==&mid=2652825221&idx=2&sn=58bd5303c9738d124aaa645f645e694e&pass_ticket=9fIJtNm7FlZgh80InPMbgzZ++G/McTXeulX/Nw8/YKK7e3fETGxxU+BVjaldWCLM " target="_blank">
+                    <img alt="POP独家 面料趋势专栏上新" src="{STATIC_URL3}/global/images/fabric_mutual/banner/banner3.jpg">
+                </a>
+            </li>
+            <li>
+                <a title="18/19AW 针织面料图案趋势预测 口袋未来" href="/details/report/t_report-id_1775-col_22/" target="_blank">
+                    <img alt="18/19AW 针织面料图案趋势预测 口袋未来" src="{STATIC_URL3}/global/images/fabric_mutual/banner/banner1.jpg">
+                </a>
+            </li>
+            <li>
+                <a title="POP独家 面料趋势专栏上新" href="/details/report/t_report-id_1786-col_22/" target="_blank">
+                    <img alt="POP独家 面料趋势专栏上新" src="{STATIC_URL3}/global/images/fabric_mutual/banner/banner2.jpg">
+                </a>
+            </li>
+            {/if}
+        </ul>
+        <ol class="jiaobiao slider_indicator">
+            {if $topAds}
+            {foreach $topAds as $key=>$val}
+                <li {if $key=="0"} class="cur" {/if}></li>
+            {/foreach}
+            {else}
+                <li class="cur"></li>
+                <li></li>
+                <li></li>
+            {/if}
+        </ol>
+    </div>
+    <div class="forecast-section indexdiv" id="trend">
+        <div itemscope  class="con_width">
+            <div itemscope   class="ft_title clearfix">
+                <span class="ft_l fl"></span>
+                <h1 class="ft_m fl"><img alt="pic" itemprop="thumbnail" src="{STATIC_URL3}/global/images/fabric_mutual/title1.png"></h1>
+                <span class="ft_r fl"></span>
+            </div>
+            <div itemscope   class="forecast-box js-forecast-box">
+                <h2 class="com_title"><span></span><img alt="pic" itemprop="thumbnail"  src="{STATIC_URL3}/global/images/fabric_mutual/t1.png"></h2>
+                <div itemscope   class="fb-list">
+                    <ul class="clearfix">
+                        {foreach $allData.1.data as $key=>$val}
+                        <li>
+                            <a title="{$val.title}" itemprop="url"  href="{$val.detailLink}" target="_blank" class="fb_img_a">
+                                <img alt="{$val.title}" itemprop="thumbnail"  src="{$val.cover}">
+                            </a>
+                            <a title="{$val.title}"   itemprop="url" href="{$val.sLink}" target="_blank" class="pic_label">色彩</a>
+                            <div itemscope   class="fb_text clearfix">
+                                <p itemprop="name"  class="pic_tit fl"><a title="{$val.title}"  itemprop="url"  href="{$val.detailLink}" target="_blank">{$val.title}</a></p>
+                                <a  title="{$val.title}"  itemprop="url" class="fr" href="{$val.sLink}" target="_blank" title="更多">更多<i></i></a>
+                            </div>
+                        </li>
+                        {/foreach}
+                        {foreach $allData.2.data as $key=>$val}
+                        <li>
+                            <a title="{$val.title}"  itemprop="url"  href="{$val.detailLink}" target="_blank" class="fb_img_a">
+                                <img alt="{$val.title}"  itemprop="thumbnail"  src="{$val.cover}">
+                            </a>
+                            <a title="{$val.title}"  itemprop="url"  href="{$val.sLink}" target="_blank" class="pic_label">面料</a>
+                            <div itemscope   class="fb_text clearfix">
+                                <p itemprop="name"  class="pic_tit fl"><a title="{$val.title}"  itemprop="url"  href="{$val.detailLink}" target="_blank">{$val.title}</a></p>
+                                <a  title="{$val.title}"  itemprop="url" class="fr" href="{$val.sLink}" target="_blank" title="更多">更多<i></i></a>
+                            </div>
+                        </li>
+                        {/foreach}
+                        {foreach $allData.3.data as $key=>$val}
+                        <li>
+                            <a  title="{$val.title}"  itemprop="url" href="{$val.detailLink}" target="_blank" class="fb_img_a">
+                                <img alt="{$val.title}"  itemprop="thumbnail"  src="{$val.cover}">
+                            </a>
+                            <a title="{$val.title}"  itemprop="url"  href="{$val.sLink}" target="_blank" class="pic_label">图案</a>
+                            <div itemscope   class="fb_text clearfix">
+                                <p itemprop="name"  class="pic_tit fl"><a title="{$val.title}"  itemprop="url"  href="{$val.detailLink}" target="_blank">{$val.title}</a></p>
+                                <a title="{$val.title}"  itemprop="url"  class="fr" href="{$val.sLink}" target="_blank" title="更多">更多<i></i></a>
+                            </div>
+                        </li>
+                        {/foreach}
+                    </ul>
+                </div>
+            </div>
+            <div itemscope   class="forecast-box">
+                <h2 class="com_title"><span></span><img  itemprop="thumbnail" src="{STATIC_URL3}/global/images/fabric_mutual/t2.png" alt="pic"></h2>
+                <div itemscope   class="fb-list">
+                    <ul class="clearfix">
+                        {foreach $allData.4.data as $key=>$val}
+                        {if $key<=2}
+                        {foreach $val as $v}
+                        <li>
+                            <a title="{$v.title}"  itemprop="url"  href="{$v.detailLink}" target="_blank" class="fb_img_a">
+                                <img  alt="{$v.title}" itemprop="thumbnail"  src="{$v.cover}">
+                            </a>
+                            <a  title="{$v.title}"  itemprop="url" href="{$v.sLink}" target="_blank" class="pic_label">{if $key==0}T台面料{elseif $key==1}展会分析{elseif $key==2}订货会分析{/if}</a>
+                            <div itemscope   class="fb_text clearfix">
+                                <p itemprop="name"  class="pic_tit fl"><a title="{$v.title}"  itemprop="url"  href="{$v.detailLink}" target="_blank">{$v.title}</a></p>
+                                <a title="{$v.title}"  itemprop="url"  class="fr" href="{$v.sLink}" target="_blank" title="更多">更多<i></i></a>
+                            </div>
+                        </li>
+                        {/foreach}
+                        {/if}
+                        {/foreach}
+
+                    </ul>
+                </div>
+            </div>
+            <div itemscope   class="apm-street-box clearfix">
+            	<ul class="clearfix">
+                    <!--市场分析start-->
+                    {foreach $allData.4.data as $key=>$val}
+                        {if $key==4}
+                        {foreach $val as $k=>$v}
+                            <li class="bao-kuan">
+                                <h2 class="com-title">
+                                    <span></span>
+                                    <img itemprop="thumbnail" src="{STATIC_URL3}/global/images/fabric_mutual/com-t1.png" alt="pic">
+                                </h2>
+                                <a class="pic-main" title="{$v.title}" itemprop="url" href="{$v.detailLink}" target="_blank">
+                                    <img alt="{$v.title}" itemprop="thumbnail" src="{$v.cover}">
+                                    <div itemscope="" class="pic-layer">
+                                        <div itemscope="" class="layer-circle">
+                                            <span>查看报告</span>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a class="pic-label" title="{$v.title}" itemprop="url" href="{$v.sLink}" target="_blank">面料</a>
+                                <div itemscope="" class="fb-text clearfix">
+                                    <p itemprop="name" class="pic_tit fl"><a title="{$v.title}" itemprop="url" href="{$v.detailLink}" target="_blank">{$v.title}</a></p>
+                                    <a title="{$v.title}" itemprop="url" class="fr" href="{$v.sLink}" target="_blank" title="更多">更多<i></i></a>
+                                </div>
+                            </li>
+                        {/foreach}
+                        {/if}
+                    {/foreach}
+                    <!--市场分析end-->
+                    <!--快反应start-->
+                    {foreach $allData.5.data as $val}
+            		<li class="kuai-fan">
+            			<h2 class="com-title">
+            				<span></span>
+            				<img itemprop="thumbnail" src="{STATIC_URL3}/global/images/fabric_mutual/com-t2.png?{STATIC_CHANGE_TIME}" alt="pic">
+            			</h2>
+            			<a class="pic-main" title="{$val.title}" itemprop="url" href="{$val.detailLink}" target="_blank">
+                            <img alt="{$val.title}" itemprop="thumbnail" src="{$val.cover}">
+                        	<div itemscope="" class="pic-layer">
+                                <div itemscope="" class="layer-circle">
+                                    <span>查看报告</span>
+                                </div>
+                            </div>
+            			</a>
+                        <a class="pic-label" title="{$val.title}" itemprop="url" href="{$val.sLink}" target="_blank">面料</a>
+            			<div itemscope="" class="fb-text clearfix">
+                            <p itemprop="name" class="pic_tit fl"><a title="{$val.title}" itemprop="url" href="{$val.detailLink}" target="_blank">{$val.title}</a></p>
+                            <a title="{$val.title}" itemprop="url" class="fr" href="{$val.sLink}" target="_blank" title="更多">更多<i></i></a>
+                        </div>
+            		</li>
+                    {/foreach}
+                    <!--快反应end-->
+                    <!--街拍分析start-->
+                    {foreach $allData.4.data as $key=>$val}
+                    {if $key==3}
+                    {foreach $val as $k=>$v}
+            		<li class="jie-pai">
+            			<h2 class="com-title">
+            				<span></span>
+            				<img itemprop="thumbnail" src="{STATIC_URL3}/global/images/fabric_mutual/com-t3.png" alt="pic">
+            			</h2>
+            			<a class="pic-main" title="{$v.title}" itemprop="url" href="{$v.detailLink}" target="_blank">
+                            <img alt="{$v.title}" itemprop="thumbnail" src="{$v.cover}">
+                        	<div itemscope="" class="pic-layer">
+                                <div itemscope="" class="layer-circle">
+                                    <span>查看报告</span>
+                                </div>
+                            </div>
+            			</a>
+                        <a class="pic-label" title="{$v.title}" itemprop="url" href="{$v.sLink}" target="_blank">面料</a>
+            			<div itemscope="" class="fb-text clearfix">
+                            <p itemprop="name" class="pic_tit fl"><a title="{$v.title}" itemprop="url" href="{$v.detailLink}" target="_blank">{$v.title}</a></p>
+                            <a title="{$v.title}" itemprop="url" class="fr" href="{$v.sLink}" target="_blank" title="更多">更多<i></i></a>
+                        </div>
+            		</li>
+                    {/foreach}
+                    {/if}
+                    {/foreach}
+                    <!--街拍分析end-->
+            	</ul>
+            </div>
+        </div>
+    </div>
+    <div itemscope class="fabric-section indexdiv" id="gallery">
+        <div itemscope   class="con_width">
+            <div itemscope   class="ft_title clearfix">
+                <span class="ft_l fl"></span>
+                <h1 class="ft_m fl"><img alt="{$val.title}"  itemprop="thumbnail"  src="{STATIC_URL3}/global/images/fabric_mutual/title2.png"></h1>
+                <span class="ft_r fl"></span>
+            </div>
+            <div itemscope   class="fabric-box">
+                <div  itemscope  class="pattern-reference-box clearfix">
+                    <div itemscope   class="fr-common-box fl">
+                        <div  itemscope  class="fr-common-top clearfix">
+                            <h2 class="com_title fl"><span></span><img itemprop="thumbnail"  src="{STATIC_URL3}/global/images/fabric_mutual/t5.png" alt="pic"></h2>
+                            <a itemprop="url"  class="fr-more-a fr" href="/patterns/topbrands/" target="_blank" title="更多">更多<i></i></a>
+                        </div>
+                        <div itemscope   class="fr-com-list">
+                            <ul class="clearfix">
+
+                                {foreach $allData.7.data as $key=>$val}
+                                <li>
+                                    <a title="{$val.title}" itemprop="url"  href="{$val.detailLink}" target="_blank">
+                                        <img alt="{$val.title}"  itemprop="thumbnail"  src="{$val.cover}">
+                                        <div  itemscope  class="pic-layer">
+                                            <div itemscope   class="layer-circle">
+                                                <span>查看图片</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                {/foreach}
+                            </ul>
+                        </div>
+                    </div>
+                    <div itemscope   class="fr-common-box fr">
+                        <div itemscope   class="fr-common-top clearfix">
+                            <h2 class="com_title fl"><span></span><img  alt="{$val.title}" itemprop="thumbnail"  src="{STATIC_URL3}/global/images/fabric_mutual/t6.png"></h2>
+                            <a title="{$val.title}"  itemprop="url"  class="fr-more-a fr" target="_blank" href="/patterns/graphics/">更多<i></i></a>
+                        </div>
+                        <div itemscope   class="fr-com-list">
+                            <ul class="clearfix">
+                               {foreach $allData.8.data as $key=>$val}
+                                <li>
+                                    <a title="{$val.title}"  itemprop="url"  href="{$val.detailLink}" target="_blank">
+                                        <img alt="{$val.title}"  itemprop="thumbnail"  src="{$val.cover}">
+                                        <div itemscope   class="pic-layer">
+                                            <div itemscope   class="layer-circle">
+                                                <span>查看图片</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                {/foreach}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div  itemscope  class="trade-box">
+                    <div  itemscope  class="fr-common-top clearfix">
+                        <h2 class="com_title fl"><span></span><img itemprop="thumbnail"  src="{STATIC_URL3}/global/images/fabric_mutual/t7.png" alt="pic"></h2>
+                        <a itemprop="url"  href="/references/fabricgallery/" target="_blank" class="fr-more-a fr" title="更多">更多<i></i></a>
+                    </div>
+                    <div itemscope   class="fr-com-list tb-com-list">
+                        <ul class="clearfix">
+                            {foreach $allData.9.data as $key=>$val}
+                            <li>
+                                <a title="{$val.title}"  itemprop="url"  href="{$val.detailLink}" target="_blank">
+                                    <img alt="{$val.title}"  itemprop="thumbnail"  src="{$val.cover}">
+                                    <div itemscope   class="pic-layer">
+                                        <div itemscope   class="layer-circle">
+                                            <span>查看图片</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                           {/foreach}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {if in_array($power['P_UserType'], [1,2])}
+    <div itemscope class="magazine-section indexdiv" id="book">
+        <div  itemscope class="con_width">
+            <div itemscope class="ft_title clearfix">
+                <span class="ft_l fl"></span>
+                <h1 class="ft_m fl"><img alt="{$val.title}" itemprop="thumbnail" src="{STATIC_URL3}/global/images/fabric_mutual/title3.png"></h1>
+                <span class="ft_r fl"></span>
+            </div>
+            <div itemscope class="magazine-box">
+                <h2 class="com_title"><span></span><img alt="{$val.title}" itemprop="thumbnail" src="{STATIC_URL3}/global/images/fabric_mutual/t8.png"></h2>
+                <div itemscope class="magazine-list">
+                    <ul class="clearfix">
+                        {foreach $allData.10.data as $key=>$val}
+                        <li>
+                            <div itemscope class="mabg-div">
+                                <a title="{$val.title}" itemprop="url" href="{$val.detailLink}" target="_blank" class="mz-pic-a">
+                                    <img alt="{$val.title}" itemprop="thumbnail"  src="{$val.cover}">
+                                </a>
+                            </div>
+                            <a title="{$val.title}" itemprop="url"  class="mz-lable" href="{$val.sLink}" target="_blank">色彩</a>
+                            <div itemscope class="ma_text clearfix">
+                                <p itemprop="name"  class="ma-tit"><a itemprop="url" href="{$val.detailLink}" target="_blank" title="{$val.title}">{$val.title}</a></p>
+                                <a title="{$val.title}" itemprop="url" href="{$val.sLink}" target="_blank" class="ma-more-a">更多<i></i></a>
+                            </div>
+                        </li>
+                        {/foreach}
+                        {foreach $allData.11.data as $key=>$val}
+                        <li>
+                            <div itemscope class="mabg-div">
+                                <a title="{$val.title}" itemprop="url" href="{$val.detailLink}" target="_blank" class="mz-pic-a">
+                                    <img alt="{$val.title}"  itemprop="thumbnail"  src="{$val.cover}">
+                                </a>
+                            </div>
+                            <a title="{$val.title}" itemprop="url" class="mz-lable" href="{$val.sLink}" target="_blank">面料</a>
+                            <div itemscope class="ma_text clearfix">
+                                <p itemprop="name" class="ma-tit"><a itemprop="url"  href="{$val.detailLink}" target="_blank" title="{$val.title}">{$val.title}</a></p>
+                                <a title="{$val.title}"  itemprop="url"  href="{$val.sLink}" target="_blank" class="ma-more-a">更多<i></i></a>
+                            </div>
+                        </li>
+                        {/foreach}
+                        {foreach $allData.12.data as $key=>$val}
+                        <li>
+                            <div itemscope class="mabg-div">
+                                <a title="{$val.title}" itemprop="url" href="{$val.detailLink}" target="_blank" class="mz-pic-a">
+                                    <img alt="{$val.title}"  itemprop="thumbnail"  src="{$val.cover}">
+                                </a>
+                            </div>
+                            <a title="{$val.title}" itemprop="url" class="mz-lable" href="{$val.sLink}" target="_blank">图案</a>
+                            <div itemscope class="ma_text clearfix">
+                                <p itemprop="name" class="ma-tit"><a itemprop="url" href="{$val.detailLink}" target="_blank" title="{$val.title}">{$val.title}</a></p>
+                                <a title="{$val.title}" itemprop="url" href="{$val.sLink}" target="_blank" class="ma-more-a">更多<i></i></a>
+                            </div>
+                        </li>
+                        {/foreach}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    {/if}
+
+    <div class="sidebar_nav">
+        <ul>
+            <li class="sidebar sidebar_1"><i></i>面<br/>料<br/>趋<br/>势</li>
+            <li class="sidebar sidebar_2"><i></i>面<br/>料<br/>图<br/>库</li>
+
+            {if in_array($power['P_UserType'], [1,2])}
+            <li class="sidebar sidebar_3"><i></i>面<br/>料<br/>书<br/>籍</li>
+            {/if}
+
+            <li class="sidebar_4"><i></i>TOP</li>
+        </ul>
+    </div>
+</div>
+
+
+{/block}
+{block name="self"}
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/global.js?{STATIC_CHANGE_TIME}"></script>
+{literal}
+<script type="text/javascript">
+$(function(){
+    // 判断轮播banner只有一张的情况
+    if($(".bannerbox li").length ==1){
+        $(".slider_indicator").hide();
+    }
+    // 侧边导航滚动定位
+    function sideBarLeft(){
+        var sidebar_nav = $(".sidebar_nav");
+        var lis = sidebar_nav.find('li.sidebar');
+        var indexdiv = $(".indexdiv");
+        var fbox = $(".js-forecast-box");
+        var offsetTop = fbox.offset().top;
+        var offsetLeft = fbox.offset().left;
+        if($(".con_width").width()==1200){
+            sidebar_nav.css({'position':'absolute','top':offsetTop,'left':0});
+        }else{
+            sidebar_nav.css({'position':'absolute','top':offsetTop,'left':offsetLeft-68});
+        }        
+        $(window).scroll(function(){
+            var scrollTop = $(window).scrollTop();
+            if(scrollTop >=offsetTop-40){
+                if($(".con_width").width()==1200){
+                    sidebar_nav.css({'position':'fixed','top':'40px','left':0});
+                }else{
+                    sidebar_nav.css({'position':'fixed','top':'40px','left':offsetLeft-68});
+                } 
+            }else{
+                if($(".con_width").width()==1200){
+                    sidebar_nav.css({'position':'absolute','top':offsetTop,'left':0});
+                }else{
+                    sidebar_nav.css({'position':'absolute','top':offsetTop,'left':offsetLeft-68});
+                }    
+            }
+            for(var i=0;i<indexdiv.length;i++){
+                var divHei =indexdiv.eq(i).offset().top;
+                if(scrollTop > divHei-40){
+                    lis.eq(i).addClass('cur').siblings('li').removeClass('cur');
+                }else{
+                    lis.eq(i).removeClass('cur')
+                }
+            }
+        });
+        // 点击侧边导航
+        lis.on('click',function(){
+            var index = $(this).index();
+            var divHei = indexdiv.eq(index).offset().top;
+            $('html,body').animate({scrollTop:divHei},300);
+        });
+    }
+    sideBarLeft();    
+    $(window).resize(function(){
+        sideBarLeft();
+    });   
+
+    // 回到顶部
+    $(".sidebar_4").on('click',function(){
+        $("html,body").animate({scrollTop: 0}, 1000);
+    });
+});
+</script>
+{/literal}
+{/block}

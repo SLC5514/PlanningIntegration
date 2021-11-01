@@ -1,0 +1,899 @@
+<?php
+/**
+ * app首页类
+ * 图案详情类
+ * Class Graphicitem_model
+ */
+
+class Graphicitem_model extends POP_Model
+{
+    const T_FASHION_CATEGORY = '`fashion`.`category`';
+    const T_FASHION_DICT_ATTRIBUTE = '`fashion`.`t_dict_attribute`';
+    const POP_APP_MEMCACHE_PREF = "SEARCHCLASSIFY_APP";
+    // 云图的收藏表
+    const T_YUNTU_COLLECT = '`yuntu`.`t_collect`';
+
+    // 图案--条件简写与Solr字段对应关系 s 代表查询字段 g 代表 Group字段
+    public $condSolrArr = [
+        "patternContent" => ["name" => "图案内容", "s" => "aLabelIds", "g" => "sPatternContent"],// 图案内容
+        "gender" => ["name" => "性别", "s" => "aLabelIds", "g" => "sGender"],// 性别
+        "patternTechnology" => ["name" => "图案工艺", "s" => "aPatternTechnology", "g" => "sPatternTechnology"],// 图案工艺
+        "format" => ["name" => "图案格式", "s" => "aPatternFormat", "g" => "sPatternFormat"], // 矢量/位图
+        "application" => ["name" => "局部/满身", "s" => "aPatternUse", "g" => "sPatternUse"],// 局部/满身
+    ];
+
+    // 服装/趋势解读/图案趋势--条件简写与Solr字段对应关系 s 代表查询字段 g 代表 Group字段
+    public $condReportSolrArr = [
+        "gender" => ["name" => "性别", "s" => "sGender", "g" => "sGender"],// 性别
+        "season" => ["name" => "季节", "s" => "aLabelIds", "g" => "iSeason"],// 季节
+    ];
+
+    private $recommend = [];
+    private $recommend_recursive_times = null;
+
+    // 图案内容对应关系,字典表要维护好
+    public $patternImgArr = array(
+        11699 => 'icon_dongwu.png', // 动物
+        11700 => 'icon_renwu.png', // 人物
+        11701 => 'icon_zhiwu.png', // 植物
+        11707 => 'icon_huawen.png', // 花纹
+        11708 => 'icon_wenzi.png', // 文字
+        11709 => 'icon_tuxing.png', // 图形
+        11713 => 'icon_yishuxiaoguo.png', // 艺术效果
+        // 11714 => 'icon_shenghuoyuansu.png', // 生活元素，排除
+        12040 => 'icon_yundonyuansu.png',// 运动
+        //12041 => '', // 太空科技
+        //12044 =>  '', // 飞禽
+        //12045 => '', // 昆虫
+        //12046 =>  '', // 海洋
+        12047 => 'icon_fengjing.png', // 自然
+        //12262 =>  '', // 条纹
+        //12295 =>  '',// 素色
+    );
+
+    private $refresh;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->refresh = $this->input->get_post("refresh", true);
+    }
+
+    /**
+     * 获取首页列表
+     * product_fabricgallery_item  product_graphicitem
+     */
+    public function getList(&$list, $paramsArr, $offset, $limit)
+    {
+        $keyword = getKeyWord();
+        $result = [];
+        $conditions = $this->getCondition($paramsArr);
+
+        // 排序 -- 1-最新发布(时间倒序) 默认 2-最受欢迎（浏览量） 3-以图搜图匹配度最高
+        $sor = isset($paramsArr['newStorgreet']) && !empty($paramsArr['newStorgreet']) ? $paramsArr['newStorgreet'] : 1;
+        $arSort = $this->getSort((int)$sor);
+        // 查询数据
+        $totalCount = POPSearch::wrapQueryPopFashionMerger($keyword, $conditions, $result, $offset, $limit, $arSort);
+
+        foreach ($result as $key => $val) {
+            // popId
+            $row["popId"] = getProductTableName($val["tablename"]) . "_" . $val["pri_id"];
+            $row['t'] = getProductTableName($val["tablename"]);
+            $row['id'] = $val["pri_id"];
+
+            $_result = OpPopFashionMerger::getProductData($val["pri_id"], $val["tablename"]);
+            $res = $_result[$val["pri_id"]];
+
+            // 列表取中图，没有取大图
+            $imgPath = getImagePath($val["tablename"], $res);
+            $row["small"] = $row["imgPath"] = $imgPath['smallPath'];
+            $row["mbig"] = $this->getPath($imgPath['bigPath']);
+            $row["big"] = $imgPath['bigPath'];
+            $list[$key] = $row;
+        }
+        return $totalCount;
+    }
+
+    //获取solr查询的排序条件
+    public function getSort($sor = 0)
+    {
+        // 1-最新发布(时间倒序)  默认
+        $arSort = [];
+        if (!empty($sor) && isset($sor)) {
+            // 1=>更新时间(最新发布),2=>浏览量(最受欢迎)
+            switch ($sor) {
+                case "1":
+                    $arSort = ['dCreateTime' => 'DESC', 'pri_id' => 'DESC'];
+                    break;
+                case '2':
+                    $arSort = ['iViewCount' => 'DESC', 'pri_id' => 'DESC'];
+                    break;
+            }
+        }
+        return $arSort;
+    }
+
+    /**
+     * 拼接solr条件
+     */
+    public function getCondition($paramsArr)
+    {
+        $conditions = [];
+        if (isset($paramsArr['queryTime'])) {
+            // 热门数据，取近16天的数据
+            $day = intval($paramsArr['queryTime']);
+            $endTime = date("Y-m-d") . 'T' . date("H:i:s", strtotime("-2 hour")) . 'Z';
+            $conditions['dCreateTime'] = '[' . date('Y-m-d\T00:00:00\Z', strtotime("-{$day} days")) . ' TO ' . $endTime . ']';
+        } else {
+            $conditions['dCreateTime'] = '[* TO ' . date("Y-m-d\TH:i:s\Z", strtotime("-2 hour")) . ']'; //取两个小时前的数据
+        }
+        $conditions['iColumnId'] = [82, 120];
+
+        foreach ($paramsArr as $key => $value) {
+            if (isset($this->condSolrArr[$key])) {
+
+                $solrField = $this->condSolrArr[$key]["s"];
+                if ($solrField == "aLabelIds") {
+                    $v = is_array($value) ? implode(" OR ", $value) : $value;
+                    $conditions["other"][] = "{$solrField}:($v)";
+                } else {
+                    $conditions[$solrField] = $value;
+                }
+
+            }
+        }
+        return $conditions;
+    }
+
+    /**
+     * 获取图案详情
+     * @param $table
+     * @param $id
+     * @param int|string $userId 用户名id
+     * product_fabricgallery_item  product_graphicitem
+     */
+    public function getDetail($table, $id, $userId)
+    {
+        $_result = OpPopFashionMerger::getProductData($id, $table);
+        $result = $_result[$id];
+        $imgPath = getImagePath($table, $result);
+
+        //特别说明 : 原来中图400*auto 由于2019-06-20号起中图切图为 800*auto; 应用逻辑 ：详情加载速率问题 云图app详情，20号之前的取原大图，20号之后取800*auto中图;
+        $is_get_mbig = strtotime($result['create_time']) > strtotime('2019-06-20 00:00:00') ? true : false;
+
+        // 获取图片
+        if ($imgPath['detailImg']) {
+            // 新数据
+            foreach ($imgPath['detailImg'] as $key => $_detailpath) {
+
+                $__mbig = $this->getPath($_detailpath['bigPath']);
+
+                $rows["imgUrls"][$key]["mbig"] = $__mbig;
+                $rows["imgUrls"][$key]["small"] = $_detailpath['smallPath'];
+                $rows["imgUrls"][$key]["big"] = $is_get_mbig ? $__mbig : $_detailpath['bigPath'];
+            }
+        } else {
+            // 老数据
+            $__mbig = $this->getPath($imgPath['bigPath']);
+
+            $rows["imgUrls"][0]["small"] = $imgPath['smallPath'];
+            $rows["imgUrls"][0]["mbig"] = $__mbig;
+            $rows["imgUrls"][0]["big"] = $is_get_mbig ? $__mbig : $imgPath['bigPath'];
+        }
+
+        // 描述
+        $rows["memo"] = $result['memo'];
+
+        // TODO 收藏状态 0未收藏 1已收藏
+        $rows['iFavoriteType'] = $userId ? $this->getCollectStatus($table, $id, $userId) : 0;
+
+        // 时间
+        $rows["dCreateTime"] = date("Y-m-d", strtotime($result["create_time"]));
+
+        $colorObj = json_decode($result['sColorDetails']);
+        $rows["color"] = !empty($colorObj[0]->Color) ? $colorObj[0]->Color : '';
+
+        return $rows;
+    }
+
+    /**
+     * 图案库获取列表/详情的用户收藏状态
+     *
+     * @param string $table 假表名
+     * @param $id
+     * @param string $sDatabase
+     * @return mixed
+     */
+    public function getCollectStatus($table, $id, $userId, $sDatabase = 'fashion')
+    {
+        if (!$table || !$id || !$userId) {
+            return false;
+        }
+        $tablename = $table;// 真表名
+        $sql = "SELECT id,iStatus FROM " . self::T_YUNTU_COLLECT . "  WHERE sAccountId=? AND sTableName=? AND iPriId=? AND sDatabase=? ORDER BY dCreateTime DESC LIMIT 1";
+        $res = $this->query($sql, [$userId, $tablename, $id, $sDatabase]);
+
+        // 返回iStatus状态值
+        return $res[0]['iStatus'] == 1 ? 1 : 0;
+    }
+
+    /**
+     * 获取筛选项
+     */
+    public function getSearchClassify($col = 'pattern')
+    {
+        $this->load->driver('cache');
+        $memcacheKey = self::POP_APP_MEMCACHE_PREF . $col;
+        $fileds = $this->cache->memcached->get($memcacheKey);
+        if (empty($fileds) || $this->refresh == true) {
+            switch ($col) {
+                // pattern--图案
+                case 'pattern':
+                    // sAPP--局部/满身 sFor--图案格式 sGen--性别 sPat--图案内容 sTec--图案工艺
+                    $fileds = ["sGen" => [], "sApp" => [], "sFor" => [], "sPat" => [], "sTec" => []];
+
+                    // 性别
+                    $allGender = GetCategory::getGender();
+                    foreach ($allGender as $id => $name) {
+                        $fileds['sGen'][] = [
+                            'cId' => $id,
+                            'cName' => $name,
+                        ];
+                    }
+                    // 局部/满身
+                    $fileds['sApp'] = $this->getDictAttr(14101, 0, true);
+                    // 图案格式
+                    $fileds['sFor'] = $this->getDictAttr(10959, 0, true);
+                    // 图案内容
+                    $fileds['sPat'] = $this->getDictAttr(25, 11698);
+                    // 图案工艺 , 数据中没有该数据，隐藏，2019-05-17
+                    // $fileds['sTec'] = $this->getDictAttr(18, 11453);
+                    break;
+                // report--服装/趋势解读/图案趋势
+                case 'report':
+                    $fileds = ["sGen" => [], "sSea" => []];
+                    // 性别
+                    $allGender = GetCategory::getGender();
+                    if ($allGender) {
+                        foreach ($allGender as $id => $name) {
+                            // 排除 3--男童  4--女童
+                            if (!in_array($id, [3, 4])) {
+                                $fileds['sGen'][] = [
+                                    'cId' => $id,
+                                    'cName' => $name,
+                                ];
+                            }
+                        }
+                    }
+                    // 季节
+                    $allSeason = $this->getFilterSeason();
+                    if ($allSeason) {
+                        foreach ($allSeason as $id => $name) {
+                            $fileds["sSea"][] = [
+                                'cId' => $id,
+                                'cName' => $name,
+                            ];
+                        }
+                    }
+                    break;
+            }
+            $this->cache->memcached->save($memcacheKey, $fileds, 3600);
+        }
+
+        return $fileds;
+    }
+
+    // 获取报告栏目季节
+    public function getFilterSeason()
+    {
+        $this->load->driver('cache');
+        $memcacheKey = self::POP_APP_MEMCACHE_PREF . '_ISEASON';
+        $SeasonDict = $this->cache->memcached->get($memcacheKey);
+        if (empty($SeasonDict) || $this->refresh == true) {
+            $conditions = [];
+            $conditions['iColumnId'] = 126;
+            $conditions['iHot'] = 1;
+            $endTime = date("Y-m-d") . 'T' . date("H:i:s", strtotime("-2 hour")) . 'Z';
+            $conditions['dCreateTime'] = "[2019-05-01T00:00:00Z" . ' TO ' . $endTime . ']';
+            $params = [
+                'facet' => 'true',
+                'facet.field' => 'iSeason',
+                'facet.limit' => 100,
+                'raw' => true
+            ];
+            $arSort = array('dCreateTime' => 'DESC');
+            $temp = array();
+            $res = POPSearch::wrapQueryPopFashionMerger('', $conditions, $temp, 0, 0, $arSort, $params);
+            $result = [];
+            if (empty($res['facet_counts']['facet_fields'])) {
+                return [];
+            }
+            foreach ($res['facet_counts']['facet_fields'] as $field => $data) {
+                $data = array_filter($data);
+                $result[$field] = array_flip($data);
+            }
+            $allSeason = GetCategory::getSeason('', 'sName');
+            $existSeason = $result['iSeason'];
+            $SeasonDict = [];
+            if ($existSeason) {
+                foreach ($existSeason as $id) {
+                    if ($allSeason[$id]) {
+                        $SeasonDict[$id] = $allSeason[$id];
+                    }
+                }
+            }
+            $this->cache->memcached->save($memcacheKey, $SeasonDict, 3600);
+        }
+        return $SeasonDict;
+    }
+
+    /**
+     * 列表展示，中图没有获取大图
+     * @param $img
+     * @return mixed|string
+     */
+    public function getPath($img)
+    {
+        $rows = '';
+        if ($img) {
+            $string = str_replace('/big/', '/mbig/', $img);
+            $mbigPath = parse_url($string, PHP_URL_PATH);
+            $sApppath = rtrim(APPPATH, '/');
+            $fileUpper = $sApppath . $mbigPath;
+
+            $rows = api_file_exists($fileUpper) ? $string : $img;
+        }
+        return $rows;
+    }
+
+    /**
+     * 获取分类筛选--图案内容信息
+     * http://yuntu.pop136.com/global/images/app/pattern/icon_dongwu.png
+     *
+     * @param $iType
+     * @param $iAttributePid
+     * @return mixed
+     */
+    public function getPatternContentData($iType = 25, $iAttributePid = 11698)
+    {
+        $patternImgArr = $this->patternImgArr;
+
+        // 图案内容 `fashion`.`t_dict_attribute`
+        $data = $dataArr = array();
+        $sql = "SELECT iAttributeId, iType, sName FROM " . self::T_FASHION_DICT_ATTRIBUTE . " WHERE iType=? AND iStatus = 0 AND iAttributePid=?";
+        $rows = $this->query($sql, [$iType, $iAttributePid]);
+        foreach ($rows as $row) {
+            $data[] = array(
+                'cId' => $row['iAttributeId'],
+                'cName' => $row['sName'],
+                'imgPath' => $patternImgArr[$row['iAttributeId']] ? APP_PATTERN_IMAGE_ICON . $patternImgArr[$row['iAttributeId']] : ''
+            );
+        }
+        // 筛选
+        foreach ($data as $k => $v) {
+            if ($v['imgPath']) {
+                $dataArr[] = $v;
+            }
+        }
+        return $dataArr;
+    }
+
+    /**
+     * @详情--相关推荐（达观）--针对(服装_图案,家纺_图案)获取站点1/5,单个取值
+     * @param array $table like: ['product_graphicitem' => 'graphicitem', 'product_fabricgallery_item' => 'fabricgalleryitem']
+     * @param string $popId like: graphicitem_401655
+     * @return string
+     */
+    public function getSiteByPopId($table, $popId)
+    {
+        $site_pop_id = '';
+        if (!is_array($table) || empty($popId)) return $site_pop_id;
+
+        $t = substr($popId, 0, strrpos($popId, "_"));
+        $id = substr($popId, strripos($popId, "_") + 1);
+        $tableArr = array_flip($table);
+        $real_table = $tableArr[$t];
+
+        if ($real_table && $id) {
+            $table_name = 'fashion.' . $real_table; // 完整表名
+            $sql = "SELECT `id`,`channel` FROM {$table_name} WHERE `id`=? LIMIT 1";
+            $result = $this->query($sql, array($id));
+            if ($result) {
+                $channel = $result[0]['channel'];
+                if (strpos($channel, 'fashion') !== false) {
+                    $site_pop_id = "1_{$real_table}_{$id}"; // 1-服装
+                } elseif (strpos($channel, 'jiafang') !== false && strpos($channel, 'fashion') === false) {
+                    $site_pop_id = "5_{$real_table}_{$id}"; // 5-家纺
+                }
+            }
+        }
+        return $site_pop_id;
+    }
+
+    /************************************** 私有方法 *************************************************************/
+
+    // 查询筛选项
+    private function getDictAttr($iType, $iAttributePid = 0, $is_category = false)
+    {
+        $data = [];
+        if ($is_category) {
+            // 局部/满身  图案格式  `fashion`.`category`
+            $sql = "SELECT cat_id,cat_name FROM " . self::T_FASHION_CATEGORY . " WHERE parent_id =? AND is_show=1 ORDER BY orderby DESC";
+            $rows = $this->query($sql, [$iType]);
+            foreach ($rows as $row) {
+                $data[] = array(
+                    'cId' => $row['cat_id'],
+                    'cName' => $row['cat_name'],
+                );
+            }
+        } else {
+            // 图案内容  图案工艺  `fashion`.`t_dict_attribute`
+            $sql = "SELECT iAttributeId, iType, sName FROM " . self::T_FASHION_DICT_ATTRIBUTE . " WHERE iType=? AND iStatus = 0 AND iAttributePid=?";
+            $rows = $this->query($sql, [$iType, $iAttributePid]);
+            foreach ($rows as $row) {
+                if ($row['iAttributeId'] != 11714) { // 排除11714--生活元素
+                    $data[] = array(
+                        'cId' => $row['iAttributeId'],
+                        'cName' => $row['sName'],
+                    );
+                }
+            }
+        }
+        return $data;
+    }
+
+    /************************************ 报告相关 **************************************/
+    /**
+     * 获取首页报告栏目的数据
+     */
+    public function getReportShowList($paramsArr, $offset, $limit, $userId = '', $limit_count = '')
+    {
+        $keyword = getKeyWord();
+        if (!empty($limit_count)) {
+            $limit = $limit_count;
+        }
+
+        $result = [];
+        $conditions = $this->getReportCondition($paramsArr);
+
+        // 排序 -- 1-最新发布(时间倒序) 默认 2-最受欢迎（浏览量）
+        $sor = isset($paramsArr['newStorgreet']) && !empty($paramsArr['newStorgreet']) ? $paramsArr['newStorgreet'] : 1;
+        $arSort = $this->getSort((int)$sor);
+
+        // 查询数据
+        $totalCount = POPSearch::wrapQueryPopFashionMerger($keyword, $conditions, $result, $offset, $limit, $arSort);
+
+        $lists = [];
+        if (empty($result)) {
+            return [$lists, intval($totalCount)];
+        }
+        $lists = $this->dealReportData($result, $userId);
+        return [$lists, intval($totalCount)];
+    }
+
+    // 获取列表收藏状态 `iStatus` => '状态 0=>没有收藏  1=>收藏'
+    private function getAppCollectStatus($tablename, $id, $sDatabase = 'fashion', $userId = '')
+    {
+        if (empty($tablename) || empty($id) || empty($userId)) {
+            return 0;
+        }
+        $sql = "SELECT id,iStatus FROM " . self::T_YUNTU_COLLECT . " WHERE sAccountId=? AND sTableName=? AND iPriId=? AND sDatabase=? ORDER BY dCreateTime DESC LIMIT 1";
+        $res = $this->query($sql, [$userId, $tablename, $id, $sDatabase]);
+
+        // 图案 / 服装/趋势解读/图案趋势 的 收藏
+        return $res[0]['iStatus'] == 1 ? 1 : 0;
+    }
+
+    // 拼接 服装/趋势解读/图案趋势 solr条件
+    public function getReportCondition($paramsArr)
+    {
+        $conditions = [];
+        $conditions['iColumnId'] = 126;
+        $conditions['iHot'] = 1;
+
+        $endTime = date("Y-m-d") . 'T' . date("H:i:s", strtotime("-2 hour")) . 'Z';
+        $conditions['dCreateTime'] = "[2019-05-01T00:00:00Z" . ' TO ' . $endTime . ']';
+
+        foreach ($paramsArr as $key => $value) {
+            if (isset($this->condReportSolrArr[$key])) {
+                $solrField = $this->condReportSolrArr[$key]["s"];
+                if ($solrField == "aLabelIds") {
+                    $v = is_array($value) ? implode(" OR ", $value) : $value;
+                    $conditions["other"][] = "{$solrField}:($v)";
+                } elseif ($solrField == "sGender") {
+                    // TODO 男童與女童算童裝
+                    if (is_array($value)) {
+                        $v1 = is_array($value) ? implode(" OR ", $value) : $value;
+                        if (in_array(5, $value)) {
+                            $conditions['other'][] = "(aLabelIds:{$v1} OR 3 OR 4)";
+                        } else {
+                            $conditions["other"][] = "{$solrField}:($v1)";
+                        }
+                    } else {
+                        if ($value == 5) {
+                            $conditions['other'][] = "(aLabelIds:5 OR 3 OR 4)";
+                        } else {
+                            $conditions['other'][] = "(aLabelIds:{$value})";
+                        }
+
+                    }
+                } else {
+                    $conditions[$solrField] = $value;
+                }
+            }
+        }
+        return $conditions;
+    }
+
+    // 报告相关推荐
+    public function getReportRecommend($popId, $userId, $limit = 3)
+    {
+        if (empty($popId)) return array();
+
+        $detail_info = explode("_", $popId);
+        $table = getProductTableName($detail_info[0]);
+        $id = $detail_info[1];
+        $pop_id = $table . '_' . $id;
+
+        // 获取单个报告详情数据
+        $result = $this->getReportData($table, $id);
+
+        // 趋势专题
+        $conditions = [];
+        $iRelationTheme = $result['iRelatedTopics']; // 单选
+        if (isset($iRelationTheme)) {
+            $conditions['iRelationTheme'] = $iRelationTheme;
+        }
+        // 季节
+        $iSeason = $result['iSeason'];
+        if (isset($iSeason)) {
+            $conditions['iSeason'] = $iSeason;
+        }
+        // 单品
+        $_sCategory = $result['sCategory']; // 多选
+        if (isset($_sCategory)) {
+            if (strpos($_sCategory, ',')) {
+                $conditions["sCategory"] = explode(',', $_sCategory);
+            } else {
+                $conditions["sCategory"] = $_sCategory;
+            }
+        }
+        // 风格
+        $_sManner = $result['sManner']; // 多选
+        if (isset($_sManner)) {
+            if (strpos($_sManner, ',')) {
+                $conditions["sManner"] = explode(',', $_sManner);
+            } else {
+                $conditions["sManner"] = $_sManner;
+            }
+        }
+
+        $conditions = array_filter($conditions);
+        $rows = $this->recommendR($pop_id, $conditions);
+        if (empty($rows)) {
+            return [];
+        }
+        $lists = $this->dealReportData($rows, $userId);
+        return $lists;
+    }
+
+    // 推荐规则的递归方法
+    private function recommendR($pop_id, $conditions, $limit = 3)
+    {
+        if (is_null($this->recommend_recursive_times)) {
+            $this->recommend_recursive_times = count($conditions);
+        } else {
+            $this->recommend_recursive_times--;
+        }
+        // 条件
+        $_conditions = $conditions;
+        $_conditions['iColumnId'] = 126;
+        $_conditions['iHot'] = 1;
+        $_conditions['other'][] = "-(pop_id: {$pop_id})";
+        $endTime = date("Y-m-d") . 'T' . date("H:i:s", strtotime("-2 hour")) . 'Z';
+        $_conditions['dCreateTime'] = "[2019-05-01T00:00:00Z" . ' TO ' . $endTime . ']';
+
+        // 排序
+        $arSort = $this->getSort(1);
+        $result = [];
+        POPSearch::wrapQueryPopFashionMerger('', $_conditions, $result, 0, $limit, $arSort);
+        $this->recommend = array_merge($this->recommend, $result);
+        $total = count($this->recommend);
+        if ($total >= $limit || $this->recommend_recursive_times <= 0) {
+            return array_slice($this->recommend, 0, $limit);
+        } else {
+            $pop_ids = array_cloumn($this->recommend, 'pop_id');
+            if (isset($conditions['other'])) {
+                unset($conditions['other']);
+            }
+            array_pop($conditions);
+            if (!empty($pop_ids)) {
+                $pop_idstr = implode(' OR ', $pop_ids);
+                $conditions['other'] = array("-(pop_id: {$pop_idstr})");
+            }
+            return $this->recommendR($pop_id, $conditions, $limit);
+        }
+    }
+
+    // 获取单个报告详情数据
+    private function getReportData($table, $id)
+    {
+        if (empty($table) || empty($id)) {
+            return [];
+        }
+        $this->load->driver('cache');
+        $mem_key = OpPopFashionMerger::POP_FM_TEM_SOLR_MEMCACHE_KEY_PREFIX . '_20171218_' . $table . '_' . $id;
+        $result = $this->cache->memcached->get($mem_key);
+        if ($_GET['refresh'] == 1 || $result === false) {
+            $sql = "SELECT * FROM fashion.t_trend_report WHERE iTopicId=? AND iStatus!=1 limit 1";
+            $result = $this->query($sql, [$id]);
+            $result = $result[0];
+            $this->cache->memcached->save($mem_key, $result, 86400);
+        }
+        return $result;
+    }
+
+    // 处理数据
+    private function dealReportData($rows, $userId = '')
+    {
+        $lists = [];
+        foreach ($rows as $key => $val) {
+            $info = [];
+            // popId
+            $info["pop_id"] = getProductTableName($val["tablename"]) . "_" . $val["pri_id"];
+            $info['t'] = getProductTableName($val["tablename"]);
+            $info['id'] = $val["pri_id"];
+
+            $_result = OpPopFashionMerger::getProductData($val["pri_id"], $val["tablename"]);
+            $res = $_result[$val["pri_id"]];
+            $info['title'] = htmlspecialchars(stripcslashes($res['sTitle']));//标题
+            $info['release_time'] = $res['dPubTime'];// 发布时间
+            $info['intro'] = htmlspecialchars(trim(strip_tags($res['sDesc']))); // 描述
+            $info['view'] = $this->getViews($val["tablename"], $info['id'], $res);
+            // 图片路径
+            $imgPath = getImagePath($val["tablename"], $res);
+            $info["cover_pic"] = $imgPath['smallPath'];// 封面图/小图
+            // $info['bigImgPath'] = $res['sBigImgPath'];// 大图
+            // 收藏状态
+            if ($userId) {
+                $info["is_collect"] = $this->getAppCollectStatus($val["tablename"], $info['id'], 'fashion', $userId);
+            } else {
+                $info["is_collect"] = 0;
+            }
+            $lists[$key] = $info;
+        }
+        return $lists;
+    }
+
+    /**************************** 报告详情取值 **********************/
+    /**
+     * 获取 服装/趋势解读/图案趋势 详情数据
+     */
+    public function getReportDetail($table, $id, $userId)
+    {
+        $_result = OpPopFashionMerger::getProductData($id, $table);
+        $result = $_result[$id];
+
+        list($filed_main, $filed_sub, $filed_sub_page) = $this->getReportFields(1);
+
+        $main_data = $this->getMainReport($id, $filed_main);
+        $main_data = $main_data[0];
+        $sub_data = $this->getSubReport($id, $filed_sub);
+        $sub_page_data = $this->getSubPageReport($id, $filed_sub_page);
+
+        $author = $this->getAuthorName($main_data["iAuthor"]);// 作者
+        $pop_id = getProductTableName($table) . '_' . $id;
+        // 季节字典
+        $allSeason = GetCategory::getSeason('', 'sName');
+        $data = [
+            'pop_id' => $pop_id,
+            'share_url' => 'https://m.pop-fashion.com/report/share/?pop_id=' . $table . '_' . $id,
+            'title' => preg_replace('/(\(|（)矢量(\)|）)/', '', $main_data['sTitle']),
+            'author' => !empty($author) ? $author : '',
+            'season' => !empty($allSeason[$main_data['iSeason']]) ? $allSeason[$main_data['iSeason']] : '',
+            'intro' => strip_tags($main_data['sDescription']),
+            'big_cover_pic' => $this->dealReportImage($main_data["sCoverBigImgPath"]) . '!h840w1125',
+            'view' => $this->getViews($table, $id, $result),
+            'release_time' => $main_data['dPublishTime'],
+            'is_collect' => $userId && $this->getAppCollectStatus($table, $id, 'fashion', $userId) ? $this->getAppCollectStatus($table, $id, 'fashion', $userId) : 0,
+        ];
+        // 子报告数据
+        foreach ($sub_data as $key => $item) {
+            $child[$item["sub_id"]] = [
+                'sub_id' => $item['sub_id'],
+                'title' => $item['sTitle'],
+                'intro' => strip_tags($item['sDescription'])
+            ];
+        }
+        // 子报告页数据
+        foreach ($sub_page_data as $item) {
+            //不存在子标题跳过
+            if (!isset($child[$item["sub_id"]])) {
+                continue;
+            }
+            $images = [];
+            $_sContent = json_decode($item["content"], true);
+            if (!empty($_sContent["grids"]) && !empty($_sContent["layers"])) {
+                $_sContent = array_merge($_sContent["grids"], $_sContent["layers"]);
+            } elseif (!empty($_sContent["grids"])) {
+                $_sContent = $_sContent["grids"];
+            } else {
+                $_sContent = $_sContent["layers"];
+            }
+            foreach ($_sContent as $row) {
+                if (empty($row["photo"]["big"])) {
+                    continue;
+                }
+                $image_md5_key = get_image_md5_key($row["photo"]["big"]);
+                $image_md5_keys[] = $image_md5_key;
+                // 置换为服装站图片路径，方便下载
+                $image_url = $this->dealReportImage($row["photo"]["big"]);
+                $images[$image_md5_key] = [
+                    'url' => $image_url,
+                    'small_suffix' => '!h540wauto',
+                    'big_suffix' => '!hautow1125',
+                    'detail_suffix' => '!hautow1125',
+                    'width' => 300,//默认宽
+                    'height' => 400,//默认高
+                    // 'brand' => isset($row["photo"]["brand"]) && !empty($row["photo"]["brand"]) ?
+                    // $row["photo"]["brand"] : '',
+                ];
+            }
+            $child[$item["sub_id"]]["images"] = $images;
+        }
+        $image_infos = $this->getImageInfo($image_md5_keys);
+        //追加如图片宽高
+        foreach ($child as $sub_id => $value) {
+            if (empty($value['images'])) {
+                continue;
+            }
+            foreach ($value['images'] as $image_md5_key => $image) {
+                if (isset($image_infos[$image_md5_key]['width']) && $image_infos[$image_md5_key]['width'] > 0) {
+                    $image['width'] = $image_infos[$image_md5_key]['width'];
+                }
+                if (isset($image_infos[$image_md5_key]['height']) && $image_infos[$image_md5_key]['height'] > 0) {
+                    $image['height'] = $image_infos[$image_md5_key]['height'];
+                }
+                $value['images'][$image_md5_key] = $image;
+            }
+            $child[$sub_id]["images"] = array_values($value['images']);
+        }
+        $child = array_values($child);
+        $data['child'] = $child;
+        return $data;
+    }
+
+    /***************************报告私有方法****************************************/
+    private function getImageInfo(array $image_md5_key)
+    {
+        // 只有服装
+        if (empty($image_md5_key)) {
+            return array();
+        }
+        $sql = "select * from pop_app.app_image_info where site = 1 and image_key in ?";
+        $_result = $this->query($sql, [$image_md5_key]);
+        $result = array_fill_keys($image_md5_key, []);
+        foreach ($_result as $item) {
+            $result[$item['image_key']] = array_only($item, ['site', 'image_key', 'width', 'height', 'size']);
+        }
+        return $result;
+    }
+
+    private function getAuthorName($author_id)
+    {
+        if (empty($author_id)) return '';
+
+        $sql = 'SELECT sPenName FROM fashion.fashion_pop_login_name WHERE id=? LIMIT 1';
+        $result = $this->query($sql, [$author_id]);
+        return isset($result[0]['sPenName']) ? $result[0]['sPenName'] : '';
+    }
+
+    // 获取服装的数据
+    private function getReportFields($site = 1)
+    {
+        switch ($site) {
+            case 1:
+                $filed_main = 'iTopicId AS id,iPublisher AS iAuthor,iSeason,sTitle,sDesc AS sDescription,sBigImgPath AS sCoverBigImgPath,iViewCount,dPubTime AS dPublishTime';
+                $filed_sub = 'iSubTopicId AS sub_id,sTitle,sDesc AS sDescription';
+                $filed_sub_page = 'iSubTopicId AS sub_id,sContent AS content';
+                break;
+        }
+        return [$filed_main, $filed_sub, $filed_sub_page];
+    }
+
+    //获取主报告
+    private function getMainReport($report_id, $filed = '*')
+    {
+        $sql = 'SELECT ' . $filed . ' FROM fashion.t_trend_report  WHERE iTopicId=? LIMIT 1';
+        return $this->query($sql, [$report_id]);
+    }
+
+    //获取子报告
+    private function getSubReport($report_id, $filed)
+    {
+        $sql = 'SELECT ' . $filed . ' FROM fashion.t_trend_subreport  WHERE iTopicId=?  AND iStatus!=1 ORDER BY iSort DESC';
+        return $this->query($sql, [$report_id]);
+    }
+
+    //获取子报告页
+    private function getSubPageReport($report_id, $filed)
+    {
+        // 页类型(1-款式页、2-自定义页、3-HTML页、4-模板拼图页)
+        $sql = 'SELECT ' . $filed . ' FROM fashion.t_trend_subreport_page  WHERE iTopicId=?  AND iStatus!=1 AND iPageType=4 ORDER BY iSort DESC';
+        return $this->query($sql, [$report_id]);
+    }
+
+    private function dealReportImage($image_url)
+    {
+        $image_url = trim($image_url);
+        if (empty($image_url)) {
+            return '';
+        }
+        if (preg_match('#(http|https)://img(1|2|3).fm.pop-fashion.com#', $image_url)) {
+            $image_url = 'https://imgf1.pop-fashion.com' . clear_image_host($image_url);
+        } elseif (!preg_match('#(^http)#', $image_url)) {
+            $image_url = 'https://imgf1.pop-fashion.com' . $image_url;
+        }
+        return $image_url;
+    }
+
+    /**
+     * 获取浏览量 （服装/趋势解读/图案趋势）
+     *
+     * @param $_Tab // 表名
+     * @param $_Id
+     * @param $_Var // 当前记录
+     * @return int
+     */
+    protected function getViews($_Tab, $_Id, $_Var)
+    {
+        if (!$_Tab || !$_Id || !$_Var) {
+            return 0;
+        }
+        /*
+          + 特殊字段特殊库，查询源表记录总数
+        */
+        switch ($_Tab) {
+            case 'specialtopic':
+                $_Vfield = 'views';
+                break;
+            case 'mostrend_content':
+                $_Vfield = 'click_rate';
+                break;
+            case 't_trend_report':
+            case 'product_tideleader':
+            case 't_digital_quick_print':
+                $_Vfield = 'iViewCount';
+                break;
+            default:
+                $_Vfield = 'view_count';
+                break;
+        }
+
+        //前台显示增量		V
+        $_sV_keys = OpPopFashionMerger::POP_FM_TEM_VIEWS_INCR_MEMCACHE_KEY . $_Tab . '_' . $_Id;
+        $this->load->driver('cache');
+        //原浏览量+浏览增量
+        return intval($_Var[$_Vfield]) + intval($this->cache->memcached->get($_sV_keys));
+    }
+
+    // 获取服装网站图片信息
+    private function getFahionImageInfo($file)
+    {
+        // 判断远程图片存不存在
+        $image = array('width' => '', 'height' => '', 'type' => '');
+        if (api_file_exists($file)) {
+            $imageSize = api_getPicSize($file);
+            //获取图片大小
+            $info = $imageSize['size'];
+            if (!empty($info)) {
+                $all = explode('*', $info);
+                $image['width'] = $all[0];//原图片宽
+                $image['height'] = $all[1];//原图片高
+            }
+            //获取图片尺寸
+            $image['type'] = $imageSize['type'];
+        }
+        return $image;
+    }
+}

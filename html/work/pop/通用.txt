@@ -1,0 +1,24 @@
+通用：
+
+1、使用两个空格
+2、字符串统一使用单引号
+3、不要定义未使用的变量
+4、关键字后面加空格：if (condition) { ... }
+5、函数声明时括号与函数名间加空格：function name (arg) { ... }
+6、始终使用 === 替代 ==
+7、字符串拼接操作符 (Infix operators) 之间要留空格：var message = 'hello, ' + name + '!'
+8、逗号后面加空格：[1, 2, 3, 4]、function greet (name, options) { ... }
+9、不允许有连续多行空行
+10、单行代码块两边加空格：function foo () { return true }
+11、对于变量和函数名统一使用驼峰命名法：function myFunction () { }、var myVar = 'hello'
+12、不允许有多余的行末逗号：{ message: 'hello' }
+13、文件末尾留一空行
+14、键值对当中冒号与值之间要留空白：{ 'key': 'value' }
+15、构造函数要以大写字母开头：new Animal()
+16、同一模块有多个导入时一次性写完：import { myFunc1, myFunc2 } from 'module'
+17、不要混合使用空格与制表符作为缩进
+18、除了缩进，不要使用多个空格：const id = 1234
+19、行末不留空格
+20、遇到分号时空格要后留前不留：for (let i = 0; i < items.length; i++) {...}
+21、注释首尾留空格：// comment、/* comment */
+22、不要使用分号：window.alert('hi')

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    canvas {
+      border: 1px solid;
+    }
+    .js-img, .org-img {
+      width: 100px;
+      height: 100px;
+    }
+  </style>
+</head>
+
+<body>
+  <img class="org-img" src="./test1.png" alt="">
+  <hr>
+  <canvas id="js-canvas"></canvas>
+  <img class="js-img" src="" alt="">
+</body>
+<script src="./jquery-1.12.4.min.js"></script>
+<!-- <script src="./hidpi-canvas.min.js"></script> -->
+<script src="./html2canvas.min.js"></script>
+<script>
+  var c = document.getElementById("js-canvas");
+  var w = 100, h = 100, r = 5;
+
+  // c.width = w;
+  // c.height = h;
+  c.width = w * r;
+  c.height = h * r;
+
+  c.style.width = w + 'px';
+  c.style.height = h + 'px';
+  
+  var ctx = c.getContext("2d");
+
+  ctx.scale(r, r);
+
+  var img = new Image();
+  img.src = './test1.png';
+  img.onload = function () {
+    console.log(this.width, this.height)
+    ctx.drawImage(this, 0, 0, this.width, this.height, 0, 0, w, h);
+
+    var imgURL = c.toDataURL("image/png");
+    $('.js-img').attr('src', imgURL);
+    // var alink = document.createElement("a");
+    // alink.href = imgURL;
+    // alink.download = "test1";
+    // alink.target = '_blank';
+    // alink.click();
+
+
+    html2canvas($('.js-img')[0], {
+      scale: 2,
+      width: w,
+      height: h,
+      useCORS: true
+    }).then(function (canvas) {
+      $('body').append(canvas);
+
+      var imgSrc = canvas.toDataURL("image/png");
+      var img = $('<img>');
+      img.attr('src', imgSrc);
+      $('body').append(img);
+    });
+  }
+</script>
+
+</html>

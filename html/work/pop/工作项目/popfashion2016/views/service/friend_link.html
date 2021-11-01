@@ -1,0 +1,76 @@
+{extends file="layout.html"}
+{block name="main"}
+<div class="aboutUs friendLink">
+	<div class="ab_banner">
+		<p>
+			LINKS
+		</p>
+		<span>友情链接</span>
+	</div>
+	<div class="wid1200">
+		<div class="about_content friend_content">
+			<div class="content_left fl friend_link_active">
+        <ul>
+          <li class="about_li cur"><a href="javascript:;"><span></span><i></i>友情链接</a></li>
+        </ul>
+			</div>
+			<div class="content_right fl">
+				<h1 class="big_title">友情<span>链</span>接</h1>
+				<h3 class="small_title"><em></em><span>Links</span><em></em></h3>
+				<div class="web_intro_x884">
+					<p class="intro swop"><i></i>欢迎大家与POP服装趋势网合作及交换链接</p>
+                    <p class="intro welcom_contact">互惠友情链接，将双方优势直接互补宣传，POP服装趋势网期待与您共赢！<br/>诚邀服装时尚综合类网站合作，首页要求PR>=5，内页要求PR>=4 <br/>有意合作者请先做好链接，再与我们联系！</p>
+                    <p class="intro contact_way">联系方式：</p>
+                    <p class="intro tel">Tel : <span>4008-210-662</span></p>
+                    <p class="intro tel">E-mail ：<span>scfyxy@gmail.com</span></p>
+                    <p class="intro online"><a class="js-contact-qq-btn" href="javascript:void(0);"><em></em>在线咨询</a></p>
+				</div>
+                <div class="link_list">
+                    <p class="intro">以下链接排名不分先后：</p>
+                    <div class="link_list_w">
+                      <table>
+                        <thead>
+                        <tr>
+                            <td>网站名称</td>
+                            <td>网站LOGO</td>
+                            <td>网站名称</td>
+                            <td>网站LOGO</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+							{foreach $aFriendlyLink as $_link}
+                           <tr>
+                               <td>{$_link.0.sSiteName}</td>
+                               <td><a href="{$_link.0.sSiteLink}" target="_blank"><img src="{STATIC_URL1}{$_link.0.sSiteLogo}" /></a></td>
+							   {if $_link.1}
+                               <td>{$_link.1.sSiteName}</td>
+                               <td><a href="{$_link.1.sSiteLink}" target="_blank"><img src="{STATIC_URL1}{$_link.1.sSiteLogo}" /></a></td>
+							   {else}
+							   <td>--</td><td>--</td>
+							   {/if}
+                           </tr>
+						   {/foreach}
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+			</div>
+		</div>
+	</div>
+</div>
+{/block}
+{block name="self"}
+<script>
+    $(function(){
+        $(".friendLink .link_list td:even").addClass("bgcolor");
+        $(".friendLink .link_list tr:last td").addClass("bottomNone");
+        $(".friendLink .link_list tr:first td").addClass("topNone");
+
+        $(".friendLink .link_list tr").each(function() {
+            $(this).children('td:eq(0)').addClass("leftNone");
+            $(this).children('td:eq(3)').addClass("rightNone");
+        })
+
+    })
+</script>
+{/block}

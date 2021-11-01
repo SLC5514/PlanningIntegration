@@ -1,0 +1,229 @@
+{extends file="layout.html"}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/per.css?{STATIC_CHANGE_TIME}">
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/personal.css?{STATIC_CHANGE_TIME}">
+{/block}
+
+{block name="main"}
+<div class="main">
+    <div class="con_width">
+    <!--个人中心 头部开始-->
+    {$personalHeader}
+    <!--个人中心 头部结束-->
+
+        <div class="col-main clearfix">
+            <!--个人中心 左侧菜单开始-->
+            {$personalLeftMenu}
+            <!--个人中心 左侧菜单结束-->
+
+            <div class="col-con  fl">
+                <!-- item-manage -->
+                <div class="item-manage manage_per">
+                    <div class="hd"><span><i></i>修改基本资料</span></div>
+                    <div class="mainall">
+                        <table width="100%" class="modify">
+                            <form id="theForm" method="POST" action="/member/modInfo/">
+                            <input type="hidden" name="id" value="{$user.id}">
+                            <tbody><tr>
+                                <th width="18%"><span>*</span> 用户名：</th>
+                                <td width="82%" class="no">{$user.account}</td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td class="sm">用户名不可修改！</td>
+                            </tr>
+                            <tr>
+                                <th><span>*</span> 真实姓名：</th>
+                                <td class="no">{$user.nme}</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td class="sm">注册人的真实姓名不可修改！</td>
+                            </tr>
+
+                            <!--个人账号-->
+                            {if {$accountFlag} eq 0}
+                            <tr>
+                                <th>QQ或MSN：</th>
+                                <td class="no"><input name="qqmsn" type="text" value="{$user.qqmsn}"></td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td class="sm">方便我们在网上和您及时的沟通信息</td>
+                            </tr>
+                            {/if}
+
+
+                            <!--企业账号-->
+                            {if {$accountFlag} eq 1}
+                            <tr>
+                                <th> 企业名称：</th>
+                                <td class="no">{$user.com_name}</td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td class="sm">企业名称不可修改！</td>
+                            </tr>
+                            <tr>
+                                <th>企业网址：</th>
+                                <td class="no"><input name="com_web" type="text" value="{$user.com_web}"/></td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td class="sm">公司自己的企业网站地址</td>
+                            </tr>
+                            {/if}
+
+
+                            <tr>
+                                <th><span>*</span> E-Mail：</th>
+                                <td class="no"><!-- {$user.email} --><input name="sEmail" id="sEmail" type="text" value="{$user.email}"></td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td class="sm">请您填写常用的电子邮箱，如pop136@pop136.com</td>
+                            </tr>
+                            <tr>
+                                <th><span>*</span> 所属地区：</th>
+                                <td>
+                                    <select name="country" id="country" onchange="select_country(this.value);" style=" width:100px;">
+                                        <option value="">选择国家</option>
+                                        <option value="中国">中国</option>
+                                        <option value="外国">外国</option>
+                                    </select>
+                                    <select name="province" id="province" onchange="select_province(this.value);" style="width:100px;">
+                                        <option value="">选择省份</option>
+                                    </select>
+                                    <select name="city" id="city" style=" width:100px;">
+                                        <option value="">选择城市</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td class="sm">请选择正确的所在城市和地区</td>
+                            </tr>
+                            <tr>
+                                <th><span>*</span> 固定电话：</th>
+                                <td class="no"><input name="tel" id="telp" type="text" value="{$user.tel}"></td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td class="sm">请正确填写您的电话，格式如：021-54806988</td>
+                            </tr>
+                            <tr>
+                                <th>移动电话：</th>
+                                <td><input type="text" name="mobile" value="{$user.mobile}"></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td class="sm">请填写你的手机或小灵通号码，便于我们为你提供优质服务</td>
+                            </tr>
+                            <tr>
+                                <th>传真号码：</th>
+                                <td><input type="text" name="com_fax"  value="{$user.com_fax}"></td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td class="sm">请正确填写您的传真，格式如：021-54806988</td>
+                            </tr>
+                            <tr>
+                                <th><span>*</span> 联系地址：</th>
+                                <td><input name="address" id="address" class="input" type="text" value="{$user.address}"></td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td class="sm">请正确填写您现在的正确联系地址，以保证我们能准确联系到您</td>
+                            </tr>
+                            <tr>
+                                <th><span>*</span> 职业：</th>
+                                <td>
+                                    <select name="com_type" id="com_type">
+                                        <option value="">请选择你的职业类型</option>
+                                        {foreach $career as $val}
+                                        <option value="{$val}">{$val}</option>
+                                        {/foreach}
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><span>*</span> 涉及领域：</th>
+                                <td class="ck" id="domain">
+                                    {foreach $domain as $val}
+                                    <input type="checkbox" id="{$val['id']}" {$val['isChecked']} value="{$val['value']}" name="feld[]">
+                                    <label for="{$val['id']}">{$val['value']}</label>
+                                    {/foreach}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><s class="space"></s></td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td><input value="提交修改" type="button" class="btn-red"></td>
+                            </tr>
+                            </tbody>
+                            </form>
+                        </table>
+                    </div>
+                </div>
+                <!-- /item-manage -->
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+
+{block name="self"}
+<script type="text/javascript" src="{STATIC_URL2}/global/js/fashion/area.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL2}/global/js/fashion/personalcenter.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript">
+    $(setDefaultOption);
+    function setSelectOption(objId, targetValue){
+        var obj = document.getElementById(objId);
+        if(obj){
+            var optionsw = obj.options;
+            if(optionsw){
+                var len = optionsw.length;
+                for(var i=0;i<len;i++){
+                    if(optionsw[i].value == targetValue){
+                        optionsw[i].defaultselected = true;
+                        optionsw[i].selected = true;
+                        return true;
+                    }
+                }
+            }
+        }
+    }
+    function setDefaultOption(){
+        var country_value = '{$country}';
+        select_country(country_value);
+        var province_value = '{$province}';
+        select_province(province_value);
+
+        setSelectOption('country','{$country}');
+        setSelectOption('province','{$province}');
+        setSelectOption('city','{$city}');
+        setSelectOption('com_type','{$com_type}');
+    }
+
+    $('.btn-red').click(function(){
+        var options = {
+            type: 'POST',
+            async: true,
+            success: function (e) {
+                if (e == 'success') {
+                    window.location.reload();
+                } else {
+                    layer.alert(e);
+                    return;
+                }
+            }
+        };
+        if (validator.validateMain() !== false) {
+            $('#theForm').ajaxSubmit(options);
+        }
+    });
+</script>
+{/block}

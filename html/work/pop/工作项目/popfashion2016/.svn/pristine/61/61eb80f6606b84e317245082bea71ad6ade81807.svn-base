@@ -1,0 +1,109 @@
+{extends file="layout.html"}
+{block name='selfcss'}
+<link rel="stylesheet" type="text/css" href="{$smarty.const.STATIC_URL1}/global/css/user/register-complete.css?{$smarty.const.STATIC_CHANGE_TIME}">
+{/block}
+{block name="main"}
+<div class="content">
+	<div class="con_width">
+		<div class="reg-complete">
+			<h1><!-- <em></em> -->注册成功，欢迎体验</h1>
+			<div class="scene-links-box clearfix">
+				<div class="fl">
+					<a href="/topic/scene_home/" target="_blank">探索POPFASHION<i></i></a>
+					<p>我们汇聚时尚资源，让灵感触手可及</p>
+					<span>查阅以下试读内容</span>
+				</div>
+				<div class="fr">
+					<a href="/topic/theme_color/" target="_blank"><span style="margin-left: -36px;">主题色彩</span><img src="{STATIC_URL1}/global/images/user/item1.png"/><div class="bg"></div></a>
+					<a href="/topic/patterns/" target="_blank"><span>图案</span><img src="{STATIC_URL1}/global/images/user/item2.png"/><div class="bg"></div></a>
+					<a href="/topic/fabric/" target="_blank"><span>面料</span><img src="{STATIC_URL1}/global/images/user/item3.png"/><div class="bg"></div></a>
+					<a href="/topic/single/" target="_blank"><span>单品</span><img src="{STATIC_URL1}/global/images/user/item4.png"/><div class="bg"></div></a>
+					<a href="/topic/brand/" target="_blank"><span>品牌</span><img src="{STATIC_URL1}/global/images/user/item5.png"/><div class="bg"></div></a>
+				</div>
+			</div>
+			<div class="recommend-report">
+				<div class="title">最新流行趋势报告</div>
+				<div class="report-list">
+					<ul class="clearfix js-report-list">
+					</ul>
+				</div>
+			</div>
+			<div class="recommend-style clearfix">
+				<div class="title">时尚潮流款式大图</div>
+				<div class="style-list">
+					<ul class="clearfix js-register-style-list">
+					</ul>
+				</div>
+			</div>
+			<a href="javascript:void(0);" class="back-referrer js-back-referrer">返回</a>
+		</div>
+	</div>
+	<div class="reg-bottom js-reg-bottom">
+		<div class="reg-bottom-main">
+			<img class="code" src="{STATIC_URL1}/global/images/user/code.png"/>
+			<div class="tit">
+				<label>扫码进群</label>
+				<span>听在线趋势讲座<i></i></span>
+			</div>
+			<img class="bottom-icon" src="{STATIC_URL1}/global/images/user/bottom-icon.png">
+			<div class="close js-reg-close"></div>
+		</div>
+	</div>
+</div>
+{/block}
+{block name="self"}
+{$auotLoginHtml}
+<script>
+	{literal}
+	$(".js-back-referrer").on("click", function(){
+		var url =window.location.search;
+		var jump_url= url.split("url=")[1];
+		window.location.href=jump_url;
+	});
+	$('.js-reg-close').on('click',function(){
+		$('.js-reg-bottom').hide();
+	})
+	$(".lazyload img").lazyload({ effect:"show" });
+	function getGrsData(){
+		$.ajax({
+            url: '/ajax/grsData/?'+Math.random(),
+            type: 'post',
+            dataType: 'json',
+            data: {},
+            success:function(data){
+				console.log(data);
+				var report_html='',style_html='';
+				var free_report=data.data.free_report;
+				var free_style=data.data.free_style;
+            	if (data.code == 0) {
+					for(var i=0;i<free_report.length;i++){
+						report_html+='<li><a href="'+free_report[i].detail_link+'" target="_blank">'+
+							'<img src="'+free_report[i].cover+'"/>'+
+							'<span>'+free_report[i].title+'</span>'+
+							'<div class="trial">免费试读</div>'+
+							'</a></li>';
+					}
+					for(var i=0;i<free_style.length;i++){
+						style_html+='<li data-img="https://imgf3.pop-fashion.com/'+free_style[i].sSmallImg+'" data-id="'+i+'" data-tit="'+free_style[i].sTitle+'" data-sLink="'+free_style[i].sLink+'">'+
+							'<img src="https://imgf3.pop-fashion.com/'+free_style[i].sSmallImg+'"/>'+
+							'<span>'+free_style[i].sTitle+'</span>'+
+							'<div class="trial">免费试读</div>'+
+							'</li>';
+					}
+					$('.js-report-list').append(report_html);
+					$('.js-register-style-list').append(style_html);
+            	}else{
+
+            	}
+            },
+            error:function(){
+
+            }
+            
+        })
+	}
+	/* 免费试读数据获取 */
+	getGrsData();
+	{/literal}
+</script>
+{/block}

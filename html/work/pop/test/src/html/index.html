@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>flash子报告页</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="./bootstrap.min.css">
+    <link rel="stylesheet" href="./layer.css">
+    <style>
+        html, body, #vm {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #vm {
+            overflow: hidden;
+        }
+
+        #swfArea {
+            height: calc(100% - 42px);
+        }
+
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="vm" class="panel panel-default">
+    <div class="panel-heading">
+        子报告页
+        <button class="btn btn-success btn-xs pull-right" v-show="!fullScreen" @click="fullScreen = toggleFullScreen()" v-cloak>
+            <i class="glyphicon glyphicon-fullscreen"></i> 全屏
+        </button>
+        <button class="btn btn-success btn-xs pull-right" v-show="fullScreen" @click="fullScreen = toggleFullScreen()" v-cloak>
+            <i class="glyphicon glyphicon-resize-small"></i> 退出全屏
+        </button>
+    </div>
+    <div id="swfArea">
+        <object id="swf" name="swf" :data="flashSrc" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0" width="100%" height="100%">
+            <param name=movie value="" :value="flashSrc">
+            <param name="wmode" value="transparent">
+            <param name="Menu" value="-1">
+            <param name="AllowScriptAccess" value="always">
+            <embed name="swf" allowScriptAccess="always" wmode="transparent" :src="flashSrc" quality="high" pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="100%" height="100%"/>
+        </object>
+    </div>
+</div>
+
+<!-- jquery 1.9.1 -->
+<script src="./jquery.min.js"></script>
+<script src="./bootstrap.min.js"></script>
+
+<script src="./layer.js"></script>
+<script src="./vue.js"></script>
+<script>
+    var CODE_SUCCESS = 0;
+    var CODE_FAILURE = 1;
+    var mode_debug = true;
+    new Vue({
+        el: '#vm',
+        data: {
+            iTopicId: 0 // 主报告id
+            , iSubTopicId: 0 // 子报告id
+            , iPageId: 0 // 子报告页id
+            , fullScreen: false
+            , version: '20180829' // 版本号, 时间戳
+            , loadingIndex: -1 // loadingIndex
+            , is_full:false // 是否全屏
+        },
+        computed: {
+            flashSrc: function () {
+                return '/flashReport.swf?ver=' + this.version;
+            }
+        },
+        created: function () {
+            this.init();
+            // 显示图片选择弹层
+            window.showSource = this.showSource;
+            // 选择完图片回调
+            window.afterPicSelect = this.afterPicSelect;
+            // 提交
+            window.saveLayout = this.doSubmit;
+            // 保存并提交单个设计页
+            window.saveSingleLayout = this.saveSingleLayout;
+            // 删除单个设计页
+            window.deleteLayout = this.deleteLayout;
+            layer.msg('拖动弹层右下角可改变弹层大小<br>点击右上角“全屏”按钮可进入全屏', {offset: '50px'});
+        },
+        methods: {
+            init: function () {
+                // var loading = this.showLoading();
+                this.iTopicId = parseInt(this.getUrlKey('iTopicId')) || 0;
+                this.iSubTopicId = parseInt(this.getUrlKey('iSubTopicId')) || 0;
+                // 是否有iPageId参数, 有则为编辑, 否则为新增
+                this.iPageId = $.trim(this.getUrlKey('iPageId'));
+                if (this.iPageId.indexOf('tmp') < 0) {
+                    // 非临时数据
+                    this.iPageId = parseInt(this.iPageId);
+                    this.iPageId = isNaN(this.iPageId) ? 0 : this.iPageId;
+                }
+                var pageData = '';
+                if (this.iPageId) {
+                    pageData = localStorage.getItem('child_report_page_edit');
+                }
+                myLog('编辑内容：', this.iPageId, pageData);
+                // flash加载不好确定, 暂时用定时器判断
+                var timer = setInterval(function () {
+                    if (getFlash('swf').setLayout) {
+                        getFlash('swf').setLayout(pageData);
+                        clearInterval(timer);
+                        // layer.close(loading);
+                    }
+                }, 100);
+            },
+            // 提交版面
+            doSubmit: function (layoutData) {
+                layoutData = JSON.parse(layoutData);
+                var vm = this;
+                // 子报告页数量
+                var pageCnt = layoutData.length;
+                // 提交失败的子页面
+                var pagesFailed = [];
+                vm.showLoading();
+                layoutData.map(function (item, index) {
+                    $.ajax({
+                        url: 'http://www.pop-fashion.com/puzzle/savePuzzlePageSingle',
+                        type: 'post',
+                        data: {
+                            iTopicId: vm.iTopicId,
+                            iSubTopicId: vm.iSubTopicId,
+                            pageInfo: JSON.stringify(item)
+                        },
+                        dataType: 'json'
+                    }).done(function (resp) {
+                        // 新增或编辑成功返回子报告页id, 否则为0
+                        var pageId = resp.data || 0;
+                        if (!pageId) {
+                            pagesFailed.push(item);
+                        }
+                    }).always(function () {
+                        if (--pageCnt <= 0) {
+                            // 请求已发完
+                            vm.afterSubmit(pagesFailed);
+                            vm.refreshParent();
+                            layer.close(vm.loadingIndex);
+                        }
+                    });
+                });
+                myLog('提交全部子报告页：', pages);
+            },
+            afterSubmit: function (pagesFailed) {
+                var pages = [];
+                var start = new Date().getTime();
+                pagesFailed.map(function (item, index) {
+                    pages.push({
+                        iPageId: 'tmp_' + start + index, // 新增的子报告页id
+                        iPageType: 4, // 报告页类型:flash
+                        sTitle: item.title,
+                        sContent: item,
+                        iSort: 0, // 排序
+                        iStatus: 0 // 状态
+                    });
+                });
+                // 在iFrame中
+                if (self !== top && parent.layer) {
+                    if (parent.afterPageSavedCallback && typeof parent.afterPageSavedCallback === 'function') {
+                        parent.afterPageSavedCallback(pages);
+                    }
+                    parent.layer.alert('保存成功');
+                    //先得到当前iframe层的索引
+                    var layIndex = parent.layer.getFrameIndex(window.name);
+                    parent.layer.close(layIndex);
+                } else {
+                    layer.alert('提交成功！<br>当前窗口未自动关闭可能是如下原因：<br>1.不在iFrame中 <br>2.父窗口没有layer插件');
+                }
+            },
+            /**
+             * 保存并提交单个设计页
+             * @param jsonStr
+             */
+            saveSingleLayout: function (jsonStr) {
+                var vm = this;
+                var pageId = 0;
+                $.ajax({
+                    url: 'http://www.pop-fashion.com/puzzle/savePuzzlePageSingle',
+                    type: 'post',
+                    data: {
+                        iTopicId: vm.iTopicId,
+                        iSubTopicId: vm.iSubTopicId,
+                        pageInfo: jsonStr
+                    },
+                    dataType: 'json',
+                    async: false
+                }).done(function (resp) {
+                    pageId = resp.data || 0;
+                });
+                vm.refreshParent();
+                return pageId;
+            },
+            /**
+             * 删除单个设计页
+             * @param pageId
+             */
+            deleteLayout: function (pageId) {
+                var vm = this;
+                $.ajax({
+                    url: 'http://www.pop-fashion.com/puzzle/deletePuzzlePage',
+                    type: 'post',
+                    data: {
+                        iPageId: pageId
+                    },
+                    dataType: 'json',
+                    async: false
+                }).done(function (resp) {
+                    vm.refreshParent();
+                });
+                return true;
+            },
+            // 显示图片选择弹层
+            showSource: function (str) {
+                // 打开款式库图片选择页之前将flash中以选择的款式图片列表暂存到localStorage
+                localStorage.setItem('picListFlashSelected', str);
+                var oh=document.documentElement.clientHeight;
+                console.log(oh);
+                layer.open({
+                    type: 2, //Page层类型
+                    title: false,
+                    area: ['90%', oh-40+'px'],
+                    scrollbar: false,
+                    resize: false, // 不允许改变大小
+                    shade: 0.6, //遮罩透明度
+                    anim: 0,//0-6的动画形式，-1不开启
+                    content: '/editor/report.php?act=report_pic_select&autoClose=true'
+                });
+            },
+            refreshParent: function () {
+                parent.refreshList && parent.refreshList();
+            },
+            // 选择完图片回调
+            afterPicSelect: function (data) {
+                myLog(data);
+                var imgList = [];
+                if (data && data.map) {
+                    data.map(function (item) {
+                        imgList.push({
+                            "id": item.id,
+                            "small": item.small,
+                            "big": item.big,
+                            "brand": item.brand_name,
+                            "rank": 0
+                        });
+                    });
+                }
+                var str = JSON.stringify(imgList);
+                getFlash('swf').setSourceList(str);
+            },
+            toggleFullScreen: function () {
+                if(this.is_full==false){
+                    this.is_full=true;
+                    lanchFullscreen(document.documentElement);
+                }else{
+                    this.is_full=false;
+                    exitFullscreen()
+                }
+                
+                function lanchFullscreen(element){
+                    if(element.requestFullscreen){
+                        element.requestFullscreen();
+                    }else if(element.mozRequestFullScreen){
+                        element.mozRequestFullScreen();
+                    }else if(element.msRequestFullscreen){
+                        element.msRequestFullscreen();
+                    }else if(element.webkitRequestFullscreen){
+                        element.webkitRequestFullScreen();
+                    }
+                }
+                function exitFullscreen(){
+                    if(document.exitFullscreen){
+                        document.exitFullscreen();
+                    }else if(document.mozCancelFullScreen){
+                        document.mozCancelFullScreen();
+                    }else if(document.msExitFullscreen){
+                        document.msExiFullscreen();
+                    }else if(document.webkitCancelFullScreen){
+                        document.webkitCancelFullScreen();
+                    }
+                }
+            },
+            // 获取url中的参数
+            getUrlKey: function (name) {
+                return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.href) || [, ""])[1].replace(/\+/g, '%20')) || null;
+            },
+            // 显示loading, 返回loading层的id
+            showLoading: function () {
+                this.loadingIndex = layer.open({
+                    type: 1,
+                    closeBtn: false,
+                    area: ['200px', '90px'],
+                    title: false,
+                    // time: 2000,
+                    shade: 0.6, //遮罩透明度
+                    anim: 0, //0-6的动画形式，-1不开启
+                    content: '<div style="padding:32px;text-align: center;">加载中, 请稍后...</div>'
+                });
+                return this.loadingIndex;
+            }
+        }
+    });
+
+    function getFlash(movieName) {
+        if (window.document[movieName]) {
+            return window.document[movieName];
+        }
+        if (navigator.appName.indexOf("Microsoft Internet") == -1) {
+            if (document.embeds && document.embeds[movieName])
+                return document.embeds[movieName];
+        }
+        else // if (navigator.appName.indexOf("Microsoft Internet")!=-1)
+        {
+            return document.getElementById(movieName);
+        }
+    }
+
+    // 自定义console.log 调试状态输出, 否则不输出
+    function myLog() {
+        mode_debug && console.log.apply(console, arguments);
+    }
+</script>
+</body>
+</html>

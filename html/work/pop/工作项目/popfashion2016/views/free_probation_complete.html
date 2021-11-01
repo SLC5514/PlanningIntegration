@@ -1,0 +1,68 @@
+{extends file="layout.html"}
+
+{block name="main"}
+<div class="free-probation">
+	<div class="get-trial">
+		<img src="{STATIC_URL1}/global/images/register/smile.png" alt="icon"/>
+		<p>恭喜你获得<span> 30 </span>分钟免费试用！赶紧开启设计灵感之旅吧~</p>
+		<div class="trial-tilte">
+			<strong>我的试用栏目</strong>
+		</div>
+		
+		<div class="trial-links js-trial-links">
+			<div class="trial-style">
+				<a href="/styles/" target="_blank" title="进入试用栏目">
+					<img src="{STATIC_URL1}/global/images/register/trial-style.jpg" alt="icon"/>
+					<div>
+						<span>进入试用栏目</span>
+						<i></i>
+					</div>
+				</a>
+				
+			</div>
+			<div class="trial-patter">
+				<a href="/patterns/graphics/" target="_blank" title="进入试用栏目">
+					<img src="{STATIC_URL1}/global/images/register/trial-patter.jpg" alt="icon"/>
+					<div>
+						<span>进入试用栏目</span>
+						<i></i>
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+{/block}
+
+{block name="self"}
+<!--<script type="text/javascript" src="{STATIC_URL2}/global/js/common/echarts.js?{STATIC_CHANGE_TIME}"></script>-->
+
+{literal}
+<script type="text/javascript">
+	$(function(){
+		/*注册试用结果页效果*/
+		$('.js-trial-links>div>a>div').hover(function(){
+			$(this).children('span').stop().animate({
+				'margin-right':'45px'
+			},300);
+			
+			$(this).children('i').stop().animate({
+				'right':'65px'
+			},300);
+			
+		},function(){
+			$(this).children('span').stop().animate({
+				'margin-right':'0px'
+			},300);
+			
+			$(this).children('i').stop().animate({
+				'right':'-100px'
+			},300);
+		})
+	})
+	
+</script>
+{/literal}
+{/block}

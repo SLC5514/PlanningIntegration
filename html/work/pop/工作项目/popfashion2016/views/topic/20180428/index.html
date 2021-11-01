@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="author" content="pop-fashion.com"/>
+        <meta name="keywords" content="找面料,找面辅料,找布料,代找料,买手"/>
+        <meta name="description" content="找料服务免费送，解决您的找料难题！省心省力省钱，找面辅料就用找料帮。咨询热线：4008-210-500、13166247487"/>
+        <meta name="format-detection" content="telephone=no"/>
+        <meta name="viewport" content="initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+        <title>找料帮-POP服装趋势网</title>
+        {literal}
+        <style type="text/css">
+            @charset "utf-8";
+            *{margin: 0;padding: 0;word-break: break-all;}
+            body{font-family: 'Microsoft YaHei','PingFang SC','Lantinghei SC','HanHei SC','Helvetica Neue','Open Sans',Arial,'Hiragino Sans GB','微软雅黑',STHeiti,'WenQuanYi Micro Hei',SimSun,sans-serif;font-size: 20px;}
+            img{display: block;width: 100%;border:none}
+            a{text-decoration: none;}
+            li{list-style: none;}
+            #view-section{
+                max-width: 750px;
+                margin: auto;
+                background-color:#fff;
+            }
+            .tab-div{position: relative;margin: -1px 0;padding: 0.5em 0;background-image: url(../../global/topic/20180428/images/3.jpg);background-repeat: no-repeat;background-size: 100%;background-position: center;}
+            .top-div{position: relative;}
+            .contact-div{z-index: 10;position: absolute;left: 12.3%;top: 0px;width: 75.4%;padding-top: 0.5em}
+            .pic1{float: left;width: 74.5%;margin-top: 0.2em}
+            .pic2{float: right;width: 23.1%;}
+            .swiper-container{width: 80%;}
+            .tab-div .swiper-button-prev{width: 9%;height: 100px;margin-top: -55px;left: 1em;background-image: url(../../global/topic/20180428/images/prev-btn.png);background-position: center;background-size: 100%;}
+            .tab-div .swiper-button-next{width: 9%;height: 100px;margin-top: -55px;right: 1em;background-image: url(../../global/topic/20180428/images/next-btn.png);background-position: center;background-size: 100%;}
+            .tab-div .swiper-button-prev:hover{background-image: url(../../global/topic/20180428/images/prev-btn-hover.png);}
+            .tab-div .swiper-button-next:hover{background-image: url(../../global/topic/20180428/images/next-btn-hover.png);}
+            .swiper-container .swiper-pagination-bullet{background-color: #fff;opacity: 1;}
+            .swiper-container .swiper-pagination-bullet-active{background-color: #4c2e1c}
+
+            .hide{display: none;}
+        </style>
+        {/literal}
+    </head>
+    <body>
+        <!-- view -->
+        <section id="view-section">
+            <!-- seo -->
+            <h1 class="hide">找料帮</h1>
+            <b class="hide">找料帮</b>
+
+            <!-- header -->
+            <div class="header"></div>
+            <!-- content -->
+            <div class="content">
+
+                <img src="{STATIC_URL2}/global/topic/20180428/images/1.jpg">
+                <div class="top-div">
+                    <div class="contact-div">
+                        <img class="pic1" src="{STATIC_URL2}/global/topic/20180428/images/txt.png">
+                        <img class="pic2" src="{STATIC_URL2}/global/topic/20180428/images/code.png?{STATIC_CHANGE_TIME}">
+                    </div>
+                    <img src="{STATIC_URL2}/global/topic/20180428/images/2.jpg">
+                </div>
+                
+
+                <div class="tab-div">
+                    <div class="swiper-container js-swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><img src="{STATIC_URL2}/global/topic/20180428/images/tab1.jpg"></div>
+                            <div class="swiper-slide"><img src="{STATIC_URL2}/global/topic/20180428/images/tab2.jpg"></div>
+                            <div class="swiper-slide"><img src="{STATIC_URL2}/global/topic/20180428/images/tab3.jpg"></div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+
+                <img src="{STATIC_URL2}/global/topic/20180428/images/4.jpg?{STATIC_CHANGE_TIME}">
+
+                
+            </div>
+            <!-- footer -->
+            <div class="footer"></div>
+        </section>
+        <script type="text/javascript" src="{STATIC_URL3}/global/js/lib/require.js?{STATIC_CHANGE_TIME}"></script>
+        {literal}
+        <script type="text/javascript">
+            /*
+                #author     lut000
+                #date       2018/04/28
+            */
+            require.config({
+                baseUrl:"../global/js",
+                urlArgs:"r="+(new Date()).getTime(),
+                paths:{
+                    "jquery":["lib/jquery/jquery-2.1.4.min"],
+                    "swiper":["lib/swiper/swiper-3.4.2.jquery.min"],
+                },
+                map:{
+                    '*':{
+                        "css":"lib/css-min"
+                    }
+                },
+                waitSeconds:0,
+                shim:{
+
+                    "swiper":{
+                        deps:["jquery","css!lib/swiper/swiper3.08.min.css"]
+                    },
+                }
+                
+            });
+            require(["jquery","swiper","//wpa.b.qq.com/cgi/wpa.php"],function(jquery,swiper){
+                // 切换页面
+                var main_swiper=new swiper(".js-swiper-container",{
+                    direction :'horizontal',
+                    loop: true,
+                    effect : 'coverflow',
+                    slidesPerView: 1,
+                    centeredSlides: true,
+                    coverflow: {
+                        rotate: 50,
+                        stretch: 30,
+                        depth: 30,
+                        modifier: 2,
+                        slideShadows : true
+                    },
+                    spaceBetween: 0,
+                    pagination : '.swiper-pagination',
+                    prevButton:'.swiper-button-prev',
+                    nextButton:'.swiper-button-next',
+                    onSlideChangeEnd: function(iswiper){
+                        
+                    },
+                    onTransitionStart: function(swiper){
+                        
+                    }
+                });
+            });
+        </script>
+        {/literal}
+    </body>
+   
+</html>

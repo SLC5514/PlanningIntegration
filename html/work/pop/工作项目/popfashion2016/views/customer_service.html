@@ -1,0 +1,225 @@
+{extends file="layout.html"}
+{block name="title"}{$title}{/block}
+{block name=keywords}{$keywords}{/block}
+{block name=description}{$description}{/block}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL3}/global/css/industry.css?{STATIC_CHANGE_TIME}">
+{/block}
+
+{block name="main"}
+<div class="service_contain">
+	<div class="service_banner">
+		<div class="con_widthx1200">
+			<div class="s_h_contact">
+				<ul>
+					<li class="s_h_qq">
+						<a class="js-contact-qq-btn" href="javascript:void(0);" title="在线咨询"><span></span><p>在线咨询</p></a>
+					</li>
+					<li class="s_h_ge"></li>
+					<li>
+						<img src="{STATIC_URL3}/global/images/service/nv_rq.png" alt="icon">
+						<p>女装小秘书</p>
+					</li>
+					<li>
+						<img src="{STATIC_URL3}/global/images/service/nan_rq.png" alt="icon">
+						<p>男装小秘书</p>
+					</li>
+					<li>
+						<img src="{STATIC_URL3}/global/images/service/t_rq.png" alt="icon">
+						<p>童装小秘书</p>
+					</li>
+					<li>
+						<img src="{STATIC_URL3}/global/images/service/all_rq.png" alt="icon">
+						<p>全品类小秘书</p>
+					</li>
+				</ul>
+			</div>
+			<p class="s_h_info">买一个网站享一种特权，我是您的随行资料库，您的答疑小秘书。添加微信，专享一对一贴心服务。</p>
+		</div>
+	</div>
+	<div class="service_tab_box">
+		<div class="service_tab">
+			<ul>
+				<li class="client_sv_li  cur">会员心服务</li>
+				<li class="sv_auth_li">会员享特权</li>
+			</ul>
+		</div>
+	</div>
+	<div class="sv_tav_box">
+		<div class="tab_contain tab1">
+			<div class="article_detail">
+				<div class="contentW">
+					<div class="d_article01">
+						<div class="au_img fl effect_art1">
+							<img src="{STATIC_URL2}/global/images/service/m_img.jpg" alt="pic">
+						</div>
+						<div class="content_border effect_art2">
+							<div class="ar_content fr">
+								<div class="ar_title">
+									<h1>POP服务您每一天</h1>
+									<i></i>
+								</div>
+								<div class="ar_intro"><img src="{STATIC_URL2}/global/images/service/m_font.png" alt="pic">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="client_sv_contain">
+				<div class="contentW">
+					{if $totalCount}
+					<div class="client_sv_lists">
+						<ul>
+							{foreach $aLists as $_aLists}
+							<li>
+								<div class="effect_box">
+									<div class="image_box">
+										<img class="big_image" src="{STATIC_URL3}{$_aLists.sCoverImage}" alt="{$_aLists.sTitle}" title="{$_aLists.dPublishTime}{$_aLists.sTitle}" data-title="{$_aLists.sTitle}" data-time="{$_aLists.dPublishTime}" data-name="{$_aLists.sName}" data-position="{$_aLists.sPosition}" alt="pic">
+										<div class="images_infor">
+											<h2>{$_aLists.sTitle}</h2>
+											<span></span>
+											<p>{$_aLists.dPublishTime}</p>
+										</div>
+									</div>
+									<div class="text_desc">
+										<div class="fl">
+											<h1>{$_aLists.sTitle}</h1><span>{$_aLists.dPublishTime}</span>
+											<div class="ar_text">
+												{$_aLists.sContent}
+											</div>
+										</div>
+										<div class="fr">
+											<div class="small_img"></div>
+											<p class="c_name">{$_aLists.sPosition}：<i>{$_aLists.sName}</i></p>
+										</div>
+									</div>
+								</div>
+							</li>
+							{/foreach}
+						</ul>
+					</div>
+					{/if}
+					{if $totalCount gt 12}
+					<div class="get-more-line">
+						<a class="load_more" data-pagesize="{$pageSize}" data-page="{$page}" title="查看更多">查看更多</a>
+					</div>
+					{/if}
+				</div>
+			</div>
+		</div>
+		<div class="tab_contain tab2">
+			<div class="sv_c_welfare">
+				<div class="contentW">
+					<ul>
+						<li class="l_icon1">
+							<span><i></i></span>
+							<p class="sv_big">热门资讯每日推送</p>
+							<p class="sv_small">每日定时推送</p>
+						</li>
+						<li class="l_icon2">
+							<span><i></i></span>
+							<p class="sv_big">最IN资料定期推送</p>
+							<p class="sv_small">精选资料包定期推送</p>
+						</li>
+						<li class="l_icon3">
+							<span><i></i></span>
+							<p class="sv_big">VIP会员专属福利</p>
+							<p class="sv_small">最新POP趋势资讯、趋势书籍</p>
+						</li>
+						<li class="l_icon4">
+							<span><i></i></span>
+							<p class="sv_big">产品使用小窍门</p>
+							<p class="sv_small">分享POP网站、趋势资讯的独家使用小诀窍</p>
+						</li>
+						<li class="l_icon5">
+							<span><i></i></span>
+							<p class="sv_big">微信小秘书</p>
+							<p class="sv_small">带你玩转POP服装趋势</p>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="sv_welfare_fi">
+				<div class="contentW">
+					<div class="welfare_01 clearfix">
+						<div class="sv_img"></div>
+						<div class="sv_font"></div>
+					</div>
+					
+				</div>
+			</div>
+			<div class="sv_welfare_se">
+				<div class="contentW">
+					<div class="welfare_02 clearfix">
+						<div class="sv_font"></div>
+						<div class="sv_img"></div>					
+					</div>
+					
+				</div>
+			</div>
+			<div class="sv_welfare_th">
+				<div class="contentW">
+					<div class="welfare_03 clearfix">
+						<div class="sv_img"></div>
+						<div class="sv_font"></div>
+					</div>
+				</div>
+			</div>
+			<div class="sv_welfare_fo">
+				<div class="contentW">
+					<div class="welfare_04 clearfix">
+						<div class="sv_img"></div>
+						<div class="sv_font"></div>
+					</div>
+				</div>
+			</div>
+			<div class="sv_welfare_fv">
+				<div class="contentW">
+					<div class="welfare_05 clearfix">
+						<div class="sv_font"></div>
+						<div class="sv_img"></div>					
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{/block}
+
+{block name="self"}
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/activity.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript">
+$(function () {
+	var page = $(".get-more-line .load_more").data("page")+1;
+	$(".get-more-line .load_more").click(function(){
+		var pagesize = $(this).data("pagesize");
+		$.ajax({
+			type:'post',
+			url:'/ajax/getmorecustomercase/',
+			dataType:'json',
+			data:{ 'page': page, 'pageSize': pagesize },
+			success:function( data ){
+				page++;
+				var list = data.list;
+				var total = list.length;
+				var moreHtml='';
+				var listUl = $(".client_sv_lists ul");
+				if( total>0 ){
+					for( var i in list){
+						list[i]['sContent'] = list[i]['sContent']?list[i]['sContent']:'';
+						moreHtml +='<li><div class="effect_box"><div class="image_box"><img class="big_image" src="{STATIC_URL3}'+list[i]['sCoverImage']+'" alt="'+list[i]['sTitle']+'" title="'+list[i]['dPublishTime']+list[i]['sTitle']+'"><div class="images_infor"><h2>'+list[i]['sTitle']+'</h2><span></span><p>'+list[i]['dPublishTime']+'</p></div></div><div class="text_desc"><div class="fl"><h1>'+list[i]['sTitle']+'</h1><span>'+list[i]['dPublishTime']+'</span><div class="ar_text">'+list[i]['sContent']+'</div></div><div class="fr"><div class="small_img"></div><p class="c_name">'+list[i]['sPosition']+'：<i>'+list[i]['sName']+'</i></p></div></div></div></li>';
+					}
+					listUl.append(moreHtml);
+				}
+				if( data.isHide == 1 ){
+					$(".get-more-line").hide();
+				}
+				//alert(total);
+			}
+		});
+	});
+});
+</script>
+{/block}

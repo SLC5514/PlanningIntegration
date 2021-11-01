@@ -1,0 +1,81 @@
+{extends file="layout.html"}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/personal.css?{STATIC_CHANGE_TIME}">
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/pop_layer.css?{STATIC_CHANGE_TIME}">
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/new-detail/style-detail.css?{STATIC_CHANGE_TIME}">
+{/block}
+
+{block name="main"}
+<div class="con_width">
+	<div class="con_main con_main_sc">
+		<div class="per_banner">
+			<img src="{STATIC_URL2}/global/images/per_banner.jpg">
+			<h3 class="tit">共收藏 {$count.total} 个素材</h3>
+			<div class="per_bannerbg"></div>
+			<p class="pertext">
+				<a href="/member/mycollect/" title="返回"><span><i></i>返回</span></a></p>
+		</div>
+		<div class="listTitle">
+			<i></i>
+			<div class="listNav">
+				<a href="/member/collectlist/column_material-action_detail/" {if $action eq 'detail'}class="on"{/if}>款式细节(<em>{$count_detail.total}</em>)</a><span>|</span>
+				<a href="/member/collectlist/column_material-action_template/" {if $action eq 'template'}class="on"{/if}>款式手稿(<em>{$count_template.total}</em>)</a><span>|</span>
+				<a href="/member/collectlist/column_material-action_graphic/" {if $action eq 'graphic'}class="on"{/if}>图案素材(<em>{$count_graphic.total}</em>)</a><span>|</span>
+				<a href="/member/collectlist/column_material-action_accessories/" {if $action eq 'accessories'}class="on"{/if}>服饰品(<em>{$count_accessories.total}</em>)</a><span>|</span>
+				<a href="/member/collectlist/column_material-action_shopset/" {if $action eq 'shopset'}class="on"{/if}>店铺陈列(<em>{$count_shopset.total}</em>)</a>
+			</div>
+		</div>
+		<div class="rightc_main {if $action eq 'detail'}rightc_main_xijie{elseif $action eq 'shopset'}rightc_main_dp{/if}">
+			<ul class="references clearfix lazyload">
+				{foreach $materialList as $key=>$val}
+				<li data-id="{$val.iCollectId}" data-pid="{$val.iPriId}" >
+					<div class="pic_box">
+						<a class="img_a img_click" data-t="{$val.info.simpleName}" data-id="{$val.iPriId}" data-index="{$val.info.index}" data-total="{$curtotal}" data-isuc="1" data-type="{$type}" data-path="{$val.info.bigPath}" data-col="{$val.iColumnId}">
+							{if $val.info.smallPath}
+							<img src="{STATIC_URL2}/global/images/loading/{if $action eq 'detail'}reference165-220.gif{elseif $action eq 'shopset'}reference1.gif{else}reference150-150.gif{/if}" data-original="{$val.info.smallPath}"/>
+							{else}
+							<img src="{STATIC_URL2}/global/images/loading/{if $action eq 'detail'}referenceMR165.gif{elseif $action eq 'shopset'}referenceMR.gif{else}referenceMR150.gif{/if}"/>
+							{/if}
+							<div class="pic_zz"></div>
+							<p class="img_p">
+								<span class="pic_zz1"><i></i></span>
+								<span class="pic_zz2 concelcollect" data-cid="{$val.iCollectId}" data-pid="{$val.info.id}" data-t="{$val.info.simpleName}" data-type="{$type}" data-col="{$val.iColumnId}"><i></i></span>
+							</p>							
+						</a>
+					</div>
+					<div class="titleBox">
+						<p class="title">
+							<a href="javascript:void(0);">{$val.info.iGender_text}</a>
+							<a href="javascript:void(0);">{$val.info.iCategory_text}</a>
+						</p>
+						<p>{$val.info.updateTime}</p>
+					</div>
+				</li>
+				{/foreach}	
+			</ul>
+		</div>
+	</div>
+</div>
+{$pageHtml}
+<div class="shadow_black"></div>
+<div class="pop_shoucang">
+	<p class="content">是否确认取消收藏？</p>
+	<a href="javascript:void(0);" class="record" title="确定">确定</a>
+	<a href="javascript:void(0);" class="cancel" title="取消">取消</a>
+</div>
+{/block}
+
+{block name="other"}
+<div class="pop_layer_page pop_layer_page1" id="pop_layer">
+{include file="detail_layer_template.html"}
+</div>
+{/block}
+
+{block name="self"}
+<script type="text/javascript" src="{STATIC_URL2}/global/js/workbench/workbench.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/common/imagesloaded.pkgd.min.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/common/template.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/util_pop3_pic.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/util.collect.js?{STATIC_CHANGE_TIME}"></script>
+{/block}

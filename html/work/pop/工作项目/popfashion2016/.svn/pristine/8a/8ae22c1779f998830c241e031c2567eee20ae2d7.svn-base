@@ -1,0 +1,45 @@
+{extends file="layout.html"}
+
+{block name="title"}POP“六大”独家功能-POP服装趋势网{/block}
+{block name=keywords}数据支持,快反应,首创O2O,在线关联,个人工作室,优料宝{/block}
+{block name=description}从9月1日起，POP高端服装网全新发布！POP在原有基础上进行优势整合，栏目定位更为精准、明确，您可享有POP“六大”独家功能：数据支持,快反应,首创O2O,在线关联,个人工作室,优料宝。鉴于用户使用习惯等多方考虑，原老网站在一段时间内可并行使用。{/block}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/topic/20160831/css/index.css">
+{/block}
+
+
+{block name="main"}
+<div class="web_issue">
+    <div class="w1200">
+        <div class="top_box">
+            <h1>尊敬的<span>POP</span>会员,您好！</h1>
+            <p>从9月1日起，POP高端服装趋势网全新发布！<br/>POP在原有基础上进行优势整合，栏目定位更为精准、明确，您可享有<span>POP“六大”独家功能</span>：</p>
+            <span class="icon_span"></span>
+        </div>
+        <div class="middle_box">
+            <p class="img_p"><img src="{STATIC_URL2}/global/topic/20160831/images/img1.png" alt="POP“六大”独家功能" title="这些只在POP服装趋势"/></p>
+            <div class="dou_ul">
+            	<ul class="ul1">
+            		<li><i>1</i><span>数据支持</span>-有数据的趋势，有报告的数据。</li>
+            		<li><i>2</i><span>快反应</span>-两周一次，提前3个月的趋势快反应系列。</li>
+            		<li><i>3</i><span>首创O2O</span>-首创趋势设计“O2O”，书籍与网站的链接，互补配套。</li>
+            	</ul>
+            	<ul class="ul2">
+            		<li><i>4</i><span>在线关联</span>-设计线索逐层聚焦，层层联想、智能推荐。</li>
+            		<li><i>5</i><span>个人工作室</span>-个人工作室，个性化专属空间。</li>
+            		<li><i>6</i><span>优料宝</span>-趋势款式面料即可落地实现——面料交易平台“优料宝”</li>
+            	</ul>
+            </div>
+        </div>
+        <div class="bottom_box">
+        	<p class="prompt">鉴于用户使用习惯等多方考虑，原老网站在一段时间内可并行使用。<br/>原POP服饰流行前线：<a href="https://old.pop-fashion.com" target="_blank">old.pop-fashion.com</a><br/>原MOSTREND高端趋势网：<a href="http://old.mostrend.com" target="_blank">old.mostrend.com</a></p>
+            <p class="thanks">感谢新老用户一直以来的支持，如有疑问请咨询客服专线：</p>
+        	<p class="tel">售前：<span>4008-210-500</span>售后：<span>4008-210-662</span></p>
+        </div>
+    </div>
+</div>
+
+{include file="topic/topic_layer.html"}
+{/block}
+

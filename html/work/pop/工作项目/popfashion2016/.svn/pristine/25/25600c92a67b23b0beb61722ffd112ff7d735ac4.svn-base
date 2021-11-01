@@ -1,0 +1,256 @@
+{extends file="layout.html"}
+{block name="main"}
+<div class="aboutUs sitemap">
+    <div class="ab_banner"><p>SITEMAP</p><span>网站地图</span></div>
+    <div class="maplist">
+        <div class="wid1200">
+            <div class="map_box area">
+                <div class="map_img fl">
+                    <a href="/mutual/" target="_blank">
+                        <img src="{STATIC_URL1}/global/images/aboutus/web1.jpg"/>
+                        <p class="map_title"><i></i>专区通道</p>
+                        <div class="hover_layer"></div>
+                    </a>
+                </div>
+                <div class="map_li fl">
+                    <ul>
+                        <li class="li1"><a href="/mutual/gen_1/" target="_blank"><i></i>男装</a></li>
+                        <li class="li2"><a href="/mutual/gen_2/" target="_blank"><i></i>女装</a></li>
+                        <li class="li3"><a href="/mutual/gen_5/" target="_blank"><i></i>童装</a></li>
+                    </ul>
+                    <ul>
+                        <li class="li4"><a href="/mutual/ind_6/" target="_blank"><i></i>毛衫</a></li>
+                        <li class="li5"><a href="/mutual/ind_7/" target="_blank"><i></i>牛仔</a></li>
+                        <li class="li6"><a href="/mutual/ind_8/" target="_blank"><i></i>皮革/皮草</a></li>
+                        <li class="li7"><a href="/mutual/ind_9/" target="_blank"><i></i>内衣/泳装</a></li>
+                        <li class="li8"><a href="/mutual/ind_10/" target="_blank"><i></i>婚纱/礼服</a></li>
+                        <li class="li9"><a href="/mutual/ind_11/" target="_blank"><i></i>运动</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="map_box trend">
+                <div class="map_img fl">
+                    <a href="/trends/" target="_blank">
+                        <img src="{STATIC_URL1}/global/images/aboutus/web2.jpg"/>
+                        <p class="map_title"><i></i>趋势解读</p>
+                        <div class="hover_layer"></div>
+                    </a>
+                </div>
+                <div class="map_li fl">
+                    <ul>
+                        <li><a href="/trends/color/" target="_blank">主题色彩</a></li>
+                        <li><a href="/trends/pattern/" target="_blank">图案趋势</a></li>
+                        <li><a href="/trends/material/" target="_blank">面辅料趋势</a></li>
+                        <li><a href="/trends/craft/" target="_blank">工艺趋势</a></li>
+                        <li><a href="/trends/silhouette/" target="_blank">廓形趋势</a></li>
+                        <li><a href="/trends/design/" target="_blank">企划/组货</a></li>
+                        <li><a href="/trends/capsules/" target="_blank">快反应</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="map_box analysis">
+                <div class="map_img fl">
+                    <a href="/analysis/" target="_blank">
+                        <img src="{STATIC_URL1}/global/images/aboutus/web3.jpg"/>
+                        <p class="map_title"><i></i>流行分析</p>
+                        <div class="hover_layer"></div>
+                    </a>
+                </div>
+                <div class="map_li fl">
+                    <ul>
+                        <li><a href="/analysis/tops/" target="_blank">爆款数据</a></li>
+                        <li><a href="/analysis/runways/" target="_blank">T台分析</a></li>
+                        <li><a href="/analysis/shows/" target="_blank">订货会分析</a></li>
+                        <li><a href="/analysis/online/" target="_blank">设计师品牌分析</a></li>
+                        <li><a href="/analysis/retail/" target="_blank">标杆品牌分析</a></li>
+                        <li><a href="/analysis/market/" target="_blank">市场分析</a></li>
+                        <li><a href="/analysis/fairs/" target="_blank">展会分析</a></li>
+                        <li><a href="/analysis/trendsetters/" target="_blank">明星&街拍分析</a></li>
+                        <!-- <li><a href="/analysis/street/" target="_blank">街拍分析</a></li> -->
+                        <!-- <li><a href="/analysis/reports/" target="_blank">行业报道</a></li> -->
+                    </ul>
+                </div>
+            </div>
+            <div class="map_box style">
+                <div class="map_img fl">
+                    <a href="/styles/" target="_blank">
+                        <img src="{STATIC_URL1}/global/images/aboutus/web4.jpg"/>
+                        <p class="map_title"><i></i>款式</p>
+                        <div class="hover_layer"></div>
+                    </a>
+                </div>
+                <div class="map_li fl">
+                    <ul>
+                        <li><a href="/styles/runways/" target="_blank">秀场提炼</a></li>
+                        <li><a href="/styles/shows/" target="_blank">订货会精选</a></li>
+                        <li><a href="/styles/designerbrand/" target="_blank">设计师品牌</a></li>
+                        <li><a href="/styles/online/" target="_blank">名牌精选</a></li>
+                        <li><a href="/styles/popular/" target="_blank">款式流行</a></li>
+                        <li><a href="/styles/retail/" target="_blank">全球实拍</a></li>
+                        <li><a href="/styles/trendsetters/" target="_blank">明星/ins</a></li>
+                        <li><a href="/styles/streetsnaps/" target="_blank">街拍图库</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="map_box style img_map">
+                <div class="map_img fl">
+                    <a href="/patterns/graphics/" target="_blank">
+                        <img src="{STATIC_URL1}/global/images/aboutus/n-web1.jpg"/>
+                        <p class="map_title"><i></i>图案</p>
+                        <div class="hover_layer"></div>
+                    </a>
+                </div>
+                <div class="map_li fl">
+                    <ul>
+                        <li><a href="/patterns/graphics/" target="_blank">图案素材</a></li>
+                        <li><a href="/patterns/topbrands/" target="_blank">大牌花型</a></li>
+                        <li><a href="/patterns/specialtopicpatterns/" target="_blank">图案专题</a></li>
+                        <li><a href="/patterns/technics/"  target="_blank">图案工艺</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="map_box style runway">
+                <div class="map_img fl">
+                    <a href="/runways/" target="_blank">
+                        <img src="{STATIC_URL1}/global/images/aboutus/web6.jpg"/>
+                        <p class="map_title"><i></i>T台</p>
+                        <div class="hover_layer"></div>
+                    </a>
+                </div>
+                <div class="map_li fl">
+                    <ul>
+                        <li><a href="/runways/typ_tshowpic-reg_272/" target="_blank">巴黎时装周</a></li>
+                        <li><a href="/runways/typ_tshowpic-reg_341/" target="_blank">纽约时装周</a></li>
+                        <li><a href="/runways/typ_tshowpic-reg_335/" target="_blank">米兰时装周</a></li>
+                        <li><a href="/runways/typ_tshowpic-reg_323/" target="_blank">伦敦时装周</a></li>
+                        <li><a href="/runways/reg_other/" target="_blank">其他</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="map_box style brand">
+                <div class="map_img fl">
+                    <a href="/brands/" target="_blank">
+                        <img src="{STATIC_URL1}/global/images/aboutus/web5.jpg"/>
+                        <p class="map_title"><i></i>品牌</p>
+                        <div class="hover_layer"></div>
+                    </a>
+                </div>
+                <div class="map_li fl">
+                    <ul>
+                        <li><a href="/brands/" target="_blank">品牌搜索</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="map_box style book">
+                <div class="map_img fl">
+                    <a href="/books/lookbook/" target="_blank">
+                        <img src="{STATIC_URL1}/global/images/aboutus/web7.jpg"/>
+                        <p class="map_title"><i></i>读物</p>
+                        <div class="hover_layer"></div>
+                    </a>
+                </div>
+                <div class="map_li fl">
+                    <ul>
+                        <li><a href="/books/collections/" target="_blank">单品合辑</a></li>
+                        <!--<li><a href="/books/store/" target="_blank">趋势手稿</a></li>-->
+                        <li><a href="/books/fast/" target="_blank">快反应系列</a></li>
+                        <li><a href="/books/lookbook/" target="_blank">广告大片</a></li>
+                        <li><a href="/books/ordermeeting/" class="js-ordermeeting" target="_blank">订货会合辑</a></li>
+                        <li><a href='/books/magazine/' target="_blank">流行画册</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="map_box style reference">
+                <div class="map_img fl">
+                    <a href="/references/details/" target="_blank">
+                        <img src="{STATIC_URL1}/global/images/aboutus/web8.jpg"/>
+                        <p class="map_title"><i></i>素材</p>
+                        <div class="hover_layer"></div>
+                    </a>
+                </div>
+                <div class="map_li fl">
+                    <ul>
+                        <li><a href="/references/details/" target="_blank">款式细节</a></li>
+                        <li><a href="/references/design/" target="_blank">款式手稿</a></li>
+                        <li><a href="/references/visual/" target="_blank">店铺陈列</a></li>
+                        <li><a href="/references/fabricgallery/" target="_blank">展会面料</a></li>
+                        <li><a href="/references/accessories/" target="_blank">服饰品</a></li>
+                        <li><a href="/inspiration/" target="_blank">灵感源</a></li>
+                        <li><a href="/inspiration/video/" target="_blank">灵感视频</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="map_box style inspiration">
+                <div class="map_img fl">
+                    <a href="/item/" target="_blank">
+                        <img src="{STATIC_URL1}/global/images/aboutus/n-web3.jpg"/>
+                        <p class="map_title"><i></i>商城</p>
+                        <div class="hover_layer"></div>
+                    </a>
+                </div>
+                <div class="map_li fl">
+                    <ul>
+                        <li><a href="/item/" target="_blank">商城首页</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="map_box style ulb">
+                <div class="map_img fl">
+                    <a>
+                        <img src="{STATIC_URL1}/global/images/aboutus/web10.jpg"/>
+                        <p class="map_title"><i></i>研发资源</p>
+                        <div class="hover_layer"></div>
+                    </a>
+                </div>
+                <div class="map_li fl">
+                    <ul>
+                        <li><a href="/topic/20171129/" target="_blank"><i></i>设界</a></li>
+                        <li><a href="http://www.uliaobao.com/" target="_blank"><i></i>优料宝</a></li>
+                        <li><a href="/topic/20171208/" target="_blank"><i></i>找料帮</a></li>
+                        <li><a href="/activity/lists/" target="_blank"><i></i>时尚商学院</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="map_box style tools">
+                <div class="map_img fl">
+                    <a href="/topic/20171209/" target="_blank">
+                        <img src="{STATIC_URL1}/global/images/aboutus/web12.jpg"/>
+                        <p class="map_title"><i></i>设计工具</p>
+                        <div class="hover_layer"></div>
+                    </a>
+                </div>
+                <div class="map_li fl">
+                    <ul>
+                        <li><a href="/topic/20171209/" target="_blank"><i></i>工具简介</a></li>
+                        <li class="form-li"><a class="js-figure-btn" href="javascript:void(0)">智能识别</a></li>
+                        <li><a href="/topic/yuntu/" target="_blank"><i></i>云图</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="map_box other">
+                <div class="map_img fl">
+                    <a target="_blank">
+                        <img src="{STATIC_URL1}/global/images/aboutus/web11.jpg"/>
+                        <p class="map_title">其他</p>
+                        <div class="hover_layer"></div>
+                    </a>
+                </div>
+                <div class="map_li fl">
+                    <ul>
+                        <li><a href="/service/aboutus/" target="_blank">关于我们</a></li>
+                        <li><a href="/service/ouruser/" target="_blank">我们的用户</a></li>
+                        <li><a href="/service/ourproducts/" target="_blank">我们的产品</a></li>
+                        <li><a href="/service/joinmember/" target="_blank">加入会员</a></li>
+                        <li><a href="/service/membernotice/" target="_blank">会员须知</a></li>
+                        <li><a href="/service/tolllist/" target="_blank">收费一览</a></li>
+                        <li><a href="/service/payment/" target="_blank">付款方式</a></li>
+                        <li><a href="/service/declaration/" target="_blank">法律声明</a></li>
+                        <li><a href="/service/contactus/" target="_blank">联系我们</a></li>
+                        <li><a href="http://www.pop136.com/contactpop.php?sn=3" target="_blank">广告中心</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

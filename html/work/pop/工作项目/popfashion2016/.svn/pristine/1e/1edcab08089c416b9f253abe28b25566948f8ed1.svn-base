@@ -1,0 +1,15 @@
+{if $sales eq 'pre'}
+<script type="text/javascript">
+	var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+	document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fec1d5de03c39d652adb3b5432ece711d' type='text/javascript'%3E%3C/script%3E"));
+	</script>
+	<script>
+	window.location.href='//wpa.b.qq.com/cgi/wpa.php?ln=1&key=XzgwMDAzMDAzNl80MjE5NzZfODAwMDMwMDM2XzJf';
+</script>
+{else $sales eq 'after'}
+	<script>
+		window.location.href='//wpa.b.qq.com/cgi/wpa.php?ln=1&key=XzgwMDAyMDAxNl80MjE5NzlfODAwMDIwMDE2XzJf';
+	</script>
+{/if}
+
+

@@ -1,0 +1,74 @@
+{if $columnPid == 4}
+{if $paramsArr['dis']!=2 && $paramsArr['dis']!=3}
+<div class="category_num">
+    <span class="cateUp_time"><em>{if $paramsArr['sor'] == 2}按浏览最高{elseif $paramsArr['sor'] == 3}按收藏最多{else}按时间最新{/if}</em><i></i></span>
+    <div class="cateNum_list">
+    <span class="border-left"></span>
+    <span class="border-right"></span>
+    <a class="cat_update sort" href="javascript:void(0);" data-key="sor" data-val="1">按时间最新</a>
+    <a class="cat_liulan sort" data-key="sor" data-val="2">按浏览最高</a>
+    <a class="cat_shoucang sort" data-key="sor" data-val="3">按收藏最多</a>
+    </div>
+</div>
+{/if}
+{else}
+<div class="category_num">
+    <span class="cateUp_time"><em>{if $paramsArr['sor'] == 2}按浏览最高{elseif $paramsArr['sor'] == 3}按收藏最多{else}按时间最新{/if}</em><i></i></span>
+    <div class="cateNum_list">
+        <span class="border-left"></span>
+        <span class="border-right"></span>
+        <a class="cat_update sort" href="javascript:void(0);" data-key="sor" data-val="1">按时间最新</a>
+        <a class="cat_liulan sort" href="javascript:void(0);" data-key="sor" data-val="2">按浏览最高</a>
+        <a class="cat_shoucang sort" href="javascript:void(0);" data-key="sor" data-val="3">按收藏最多</a>
+    </div>
+</div>
+{/if}
+<div class="updateTime">
+    <a href="javascript:void(0);" class="updateTitle"><i>{$time_text}</i><span></span><em></em></a>
+    <div class="chotime">
+        <span class="border-left"></span>
+        <span class="border-right"></span>
+        <a href="javascript:void(0);" class="time_range" data-key="tim" data-val="1">近7日</a>
+        <a href="javascript:void(0);" class="time_range" data-key="tim" data-val="2">近30日</a>
+        <a href="javascript:void(0);" class="time_range" data-key="tim" data-val="3">近半年</a>
+        <a href="javascript:void(0);" class="time_range" data-key="tim" data-val="0">全部时段</a>
+    </div>
+</div>
+
+
+
+{if $columnId != 121 &&  $columnId != 116 }
+<span class="line-fg"></span>
+{if $columnId == 3}
+<div class="onlyall onlyall-select js-only-video-select">
+    <a href="javascript:void(0);" class="ia_4 {if $paramsArr['ver'] == 'video' || $paramsArr['ver'] == 'tidbit'}i_video{/if}" >
+        <span></span>
+        有视频版
+    </a>
+</div>
+{/if}
+{if $columnId == 71}
+<div class="onlyall onlyall-select js-only-video-select">
+    <a href="javascript:void(0);" class="ia_4 {if $paramsArr['ver'] == 'video'}i_video{/if}">
+        <span></span>
+        有视频版
+    </a>
+</div>
+{/if}
+<div class="onlyall">
+    <div class="onlyLook collect {if isset($paramsArr['coll']) && $paramsArr['coll']}cur{/if}" data-usertype="{$powers.P_UserType}">
+        <span><i></i>只看收藏</span>
+    </div>
+    {if $paramsArr['coll'] == 2}
+    <div class="only_info">
+        <p>您目前开启了只看收藏的功能，再次点击可关闭此功能!</p>
+        <i></i>
+    </div>
+    {/if}
+</div>
+{/if}
+{if $columnId == 50}
+<div class="color-data">
+    <a href="/smarttrends/colordata/" target="_blank"><i></i>色彩数据分析</a>
+</div>
+{/if}

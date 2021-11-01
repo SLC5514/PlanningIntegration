@@ -1,0 +1,55 @@
+{extends file="layout.html"}
+{block name="selfcss"}
+	{literal}
+    <style type="text/css">
+    	.loading-div{display: none;}
+    	.bg-div{display: none;}
+    	.img-div{color: #333;position: relative;text-align: center;}
+    	.img-div>img{display: block;width: 100%;}
+    	.img-div>div{z-index: 10;position: absolute;left: 0px;top: 50%;width: 100%;margin-top: -60px;}
+    	.img-div>div>p{font-size: 16px;font-weight: bold;margin-bottom: 48px;}
+    	.img-div>div>a{display: inline-block;font-size: 14px;width: 450px;height: 45px;line-height: 45px;color: #fff;background-color: #d8b056;border-radius: 3px;}
+    	.img-div>div>a:hover{background-color: #dba428}
+    </style>
+    {/literal}
+{/block}
+{block name="main"}
+<div class="content">
+	{if $type==1}
+	<div class="img-div">
+		<img src="{$smarty.const.STATIC_URL2}/global/images/system/premission-1-1.png" alt="pic">
+		<div>
+			<p>模拟成品体验次数已耗尽，升级为企业账号，从此打样0成本</p>
+			<a href="/topic/enterprise_service/" title="查看详情" target="_blank">了解企业VIP特权服务</a>
+		</div>
+	</div>
+	{elseif $type==2}
+	<div class="img-div">
+		<img src="{$smarty.const.STATIC_URL2}/global/images/system/premission-2.jpg" alt="pic">
+		<div>
+			<p>以图搜图体验次数已耗尽，升级为企业VIP账号，可随时随地畅享搜图体验</p>
+			<a href="/topic/enterprise_service/" title="查看详情" target="_blank">了解企业VIP特权服务</a>
+		</div>
+	</div>
+	{elseif $type==3}
+	<div class="img-div">
+		<img src="{$smarty.const.STATIC_URL2}/global/images/system/premission-3.jpg" alt="pic">
+		<div>
+			<p>当前账号权限不足，升级为企业VIP账号，查看高清大图，享受智能推荐特权</p>
+			<a href="/topic/enterprise_service/" title="查看详情" target="_blank">了解企业VIP特权服务</a>
+		</div>
+	</div>
+	{/if}
+</div>
+{/block}
+{block name="footer"}
+{/block}
+
+{block name="self"}
+	<script type="text/javascript">
+		var virtual_back_obj={
+			col_user_type:'{$col_user_type}',
+			try_times:'{$module_power["yuntu:virtualtry"][1]}'
+		};
+	</script>
+{/block}

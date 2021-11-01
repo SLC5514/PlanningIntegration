@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {include file="blog/common/head_meta.html"}
+	<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/blog/detail/blog-detail.css?{STATIC_CHANGE_TIME}">
+</head>
+
+<body>
+<div class="blog-view js-blog-view">
+	<!-- header -->
+	{include file="blog/common/header.html"}
+	<!-- header -->
+	<div class="blog-wid1200" style="position: relative;">
+		<div class="blog-detail">
+			<h1>{$detail["sTitle"]}</h1>
+			<div class="author-and-data">
+				<span class="author-span"><img src="{STATIC_URL2}/global/images/blog/common/author.png">作者：{$detail["sAuthor"]}</span>
+				<span class="data-span"><img src="{STATIC_URL2}/global/images/blog/common/data.png">{$detail["dPublishTime"]}</span>
+			</div>
+			<div class="blog-detail-infor">{$detail["sContent"]}</div>
+			<div class="blog-tags">
+				<span class="tags-cion"><img src="{STATIC_URL2}/global/images/blog/detail/tags.png"></span>
+				{foreach $detail["sLabel"] as $val}
+				<a href="{$val.link}" title="{$val['name']}" target="_blank">{$val.name}</a>
+				{/foreach}
+			</div>
+			<div class="prev-next-btn clearfix">
+				{if $pre_next['pre']}
+					<a class="fl prev-btn" href="{$pre_next['pre']}"><i></i>上一篇</a>
+				{/if}
+				{if $pre_next['next']}
+					<a class="fr next-btn" href="{$pre_next['next']}">下一篇<i></i></a>
+				{/if}
+			</div>
+    </div>
+    <div class="blog-hot-tags">
+      <div class="blog-hot-tags-title">热门标签</div>
+      <div class="hot-tags-ul-box js-hot-tags-ul-box">
+        <ul class="clearfix js-hot-tags-ul">
+            {foreach $hot_labels as $id=>$val}
+            <li class="fl"><a href="{$val.link}" target="_blank">{$val.name}</a></li>
+            {/foreach}
+        </ul>
+      </div>
+      <div class="tags-show-all">
+        <a class="js-show-all" href="javascript:void(0);">显示全部热门标签</a>
+      </div>
+    </div>
+	</div>
+	<!--footer  -->
+	{include file="blog/common/footer.html"}
+	<!-- footer -->
+</div>
+{include file="blog/common/foot_script.html"}
+<script type="text/javascript" src="{STATIC_URL1}/global/js/blog/blog.js?{STATIC_CHANGE_TIME}"></script>
+
+</body>
+</html>
+

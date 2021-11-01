@@ -1,0 +1,152 @@
+{extends file="layout.html"}
+
+{block name="selfcss"}
+    <link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/pop_layer.css?{STATIC_CHANGE_TIME}">
+    <link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/lists/common/list-common.css?{STATIC_CHANGE_TIME}">
+    <link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/lists/runway-list.css?{STATIC_CHANGE_TIME}">
+{/block}
+{block name="main"}
+<div class="contant conheight">
+    <input type="hidden" id="link"
+        data-sor="{$link['sortRandom']}"
+        data-col="{$columnId}"
+        data-url="{if isset($link['url'])}{$link['url']}{/if}"
+        data-param="{if isset($link['param'])}{$link['param']}{/if}"
+        data-search="{if isset($link['search'])}{$link['search']}{/if}"
+        data-other="{$region}"
+        data-limitnum=""/>
+    <!--头部轮播-->
+    <div class="banner-top new-banner-top new-banner">
+        {block name="topads"}
+            {include file="lists/lists-common/banner_ads.html"}
+        {/block}
+        <!-- 列表导航 -->
+		{include file="lists/lists-common/list_nav_box.html"}
+    </div>  
+    <div name='anchor' id='anchor' class="anchor"></div>    
+    <div class="right_nav new-right-nav">
+        <div class="rightc_top contentW">
+            <!-- 筛选项 -->
+            <div>
+                {include file="lists/lists-common/runways_select.html"}
+            </div>
+            <div class="js-fixed-select select-scroll-fixed" style="display: none;">
+                {include file="lists/lists-common/runways_select.html"}
+            </div>
+            <div class="shaixuan-wid-box">
+                <div class="shaixuan_wid js-shaixuan-wid clearfix">             
+                    {include file="lists/lists-common/screen_box.html"}
+                    <div class="fr clearfix js-total-info-section" id="s_result">
+                        <p class="findstyle">共 <a href="javascript:void(0);" title="0">0</a> 场</p>
+                        <div class='btn_page js-page-control'>
+                            <a class='leftBtn neiyeList js-prev-page-btn' href='javascript:void(0);'></a>
+                            <span class='pageN'>0</span>/<span class='totalN'>0</span>
+                            <a class='rightBtn neiyeList js-next-page-btn' href='javascript:void(0);'></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 品牌关联 -->
+            {if isset($paramsArr['bra']) && $paramsArr['bra'] && $aRelateBrandsInfo}
+            <div class="rightc_brand">
+                <div class="w_brand">
+                    <div class="brand_name clearfix">
+                        <span class="fl"><i></i>与该品牌关联的主/副线品牌：</span>
+                        <div class="fl">
+                            {foreach $aRelateBrandsInfo as $val}
+                            <a href="/brands/detail/id_{$val['id']}/" target="_blank">{$val['name']}</a>
+                            {/foreach}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {/if}
+
+            <!-- 列表内容 -->
+            <div class="rightc_main js-runway-lists-box">
+                <ul itemscope class="runways clearfix lazyload">
+                    {foreach range(1, 6) as $i}
+                    <li class="js-placeholder-item">
+                        <a href="javascript:void(0)" class="fl" title="查看详情">
+                            <img alt="6" itemprop="thumbnail" src="{STATIC_URL2}/global/images/loading/runway.gif">
+                            <img alt="6" itemprop="thumbnail" src="{STATIC_URL2}/global/images/loading/runway.gif">
+                            <img alt="6" itemprop="thumbnail" src="{STATIC_URL2}/global/images/loading/runway.gif">
+                        </a>
+                        <span class="fl line-middle"></span>
+                        <div itemscope="" class="text_down">                            
+                            <a href="javascript:void(0)" class="js-general-user-status" title="查看详情">
+                                <p itemprop="name" target="_blank" href="/runways/inside/id_83600/" class="title active_click"></p>
+                                <div itemscope="" class="leibie">
+                                    <p itemprop="Designer"></p><p itemprop="time"> </p><p itemprop="place"></p>
+                                </div>
+                                <p itemscope="" class="time clearfix"><span itemprop="release time" class="fl"></span>
+                                </p>
+                            </a>
+                        </div>
+                    </li>
+                    {/foreach}
+                </ul>
+            </div>
+
+            <!-- 搜索空数据 -->
+            <div class="rightc_main hide js-error-section">
+                {include file="lists/lists-common/search_null.html"}
+            </div>
+            <div class="scroll-load js-scroll-load"><img src="{STATIC_URL1}/global/images/alertloading.gif"></div>
+
+            <!-- 翻页 -->
+            <div class="rightc_bottom js-page-section">                
+            </div>
+        </div>
+    </div>
+</div>
+
+{if $P_UserType eq 5}
+<!-- 留资 -->
+{include file="common/sem_trends.html"}
+{/if}
+<!-- 权限弹出层 -->
+<div class="general-user-info-fixbox js-general-user-info-fixbox">
+    <div class="contentW">
+        <button title="关闭"></button>
+        <h3>想预览该场发布会图库？</h3>
+        <p>立即注册账号，您更能随时随地看全球发布会，全年各大时装周资讯及时上线</p>
+        <a href="/member/pagelogin/" title="立即登录">登录/注册 预览该场发布会</a>
+        <a class="js-contact-qq-btn" href="javascript:void(0);" title="在线客服">咨询了解VIP，会员体验畅通无阻</a>
+        <span>电话咨询 <span>4008-210-500</span></span>
+    </div>
+</div>
+{/block}
+{block name="other"}
+<div id="loadingBg"><div class="noPic"></div></div>
+{/block}
+{block name="self"}
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/styles.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL2}/global/js/fashion/index.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/global.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/Column{$columnId}_Brand.js?{$brandStaticTime}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/util_brand.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/common/template.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/regionFromSolr.js?{$regionStaticTime}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/regionAction.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/common/banner-slide.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/lists/list-common.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/lib/laypage/laypage.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/lists/runways-list.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/sem_phone/sem_phone.js?{STATIC_CHANGE_TIME}"></script>
+{literal}
+<script type="text/javascript">
+$(function(){
+    // 异步加载筛选条件
+    oPopStyles.loadSelectItems({/literal}{$columnId}{literal});
+
+    $(".lazyload img").lazyload({effect : "fadeIn"});
+
+    $('.active_click').on('click',function(e){
+        $(this).parent().prev('a').triggerHandler('click');
+    });
+}); 
+</script>
+{/literal}
+{/block}

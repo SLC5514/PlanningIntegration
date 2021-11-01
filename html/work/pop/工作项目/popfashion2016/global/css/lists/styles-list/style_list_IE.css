@@ -1,0 +1,16 @@
+/*
+    #author     fanglinna
+    #date       2018/01/15    
+*/
+
+.style-book-box>ul>li{height:192px;position:relative;}
+.style-book-box>ul>li>a>.img-div{border-bottom:1px solid #eee;}
+.style-book-box>ul>li>a .img-div .rotate-img-layer{background:url(../../images/lists/styles-list/opa_fff_95.png) repeat;width:135px;height:180px;position:absolute;right:5px;top:5px;}
+.style-book-box>ul>li .style-book-text{position:absolute;right:5px;top:5px;width:135px;height:180px;}
+.style-book-text .style-book-position{height:180px;min-height:180px;position:absolute;left:0;top:0;padding:0 10px;width:115px;border:none;overflow:hidden;background:none;}
+.style-book-position>p{word-break:break-all;line-height:20px;margin-top:7px;white-space:normal;overflow:hidden;width:115px;margin-bottom:5px;font-size:14px;color:#333;}
+.style-book-position>.new-icon{background:url(../../images//listsstyles-list/s_icon.png) no-repeat -139px -34px;display:inline-block;position:absolute;top:auto;bottom:22px;left:10px;width:25px;height:17px;padding-right:25px;border-bottom:1px solid #ccc;padding-bottom:10px;}
+.style-book-box>ul>li .Dtime{color:#666;display:none;width:auto;height:auto;line-height:20px;font-size:12px;background:none;text-align:left;position:absolute;left:145px;bottom:11px;z-index:10;}
+.style-book-box>ul>li .Dtime em{display:none;}
+.style-book-box>ul>li:hover .Dtime{display:block;}
+.style-book-box>ul>li:hover .new-icon{bottom:29px;}

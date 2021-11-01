@@ -1,0 +1,80 @@
+{extends file="layout.html"}
+
+{block name="self"}
+	<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/personal.css?{STATIC_CHANGE_TIME}">
+	<script type="text/javascript" src="{STATIC_URL2}/global/js/workbench/workbench.js?{STATIC_CHANGE_TIME}"></script>
+{/block}
+
+{block name="main"}
+<div class="con_width">
+	<div class="con_main">
+		<div class="per_banner">
+			<img src="{STATIC_URL2}/global/images/per_banner.jpg" alt="pic">
+			<h3 class="tit">共收藏 {$total} 个图册</h3>
+			<div class="per_bannerbg"></div>
+			<p class="pertext">
+			<a href="/member/mycollect/" title="返回"><span><i></i>返回</span></a></p>
+		</div>
+		<ul class="huace clearfix lazyload">
+			{foreach $picList as $key=>$val}
+			<li>
+				<a href="/books/seclist/id_{$val.info.id}-t_{$val.info.simpleName}-col_{$val.iColumnId}-yl_{$val.info.iPreviewMode}/" class="fl" target="_blank" title="{$val.info.name_text}">
+					{if $val.info.cover_image}
+					<img src="{STATIC_URL2}/global/images/loading/book.gif" alt="pic" data-original="{$val.info.cover_image}"/>
+					{else}
+					<img src="{STATIC_URL2}/global/images/loading/bookMR.jpg" />
+					{/if}
+				</a>
+				<div class="text_down" class="fl">
+				
+					<p class="title"><a href="/books/seclist/id_{$val.info.id}-t_{$val.info.simpleName}-col_{$val.iColumnId}-yl_{$val.info.iPreviewMode}/" target="_blank" title="{$val.info.name_text}">{$val.info.name_text}</a></p>
+					<div class="leibie">
+						{if $val.info.for_date_new}
+						<p>时间：<span>{$val.info.for_date_new}</span></p>	 
+						{/if}
+						{if $val.info.type_new}
+						<p>性别：<span>{$val.info.type_new}</span></p>
+						{/if}
+						{if $val.info.iCategory_text}
+						<p>类型：<span>{$val.info.iCategory_text}</span></p>
+						{/if}
+						{if $val.info.page_num}
+						<p>页数：<span>{$val.info.page_num}</span></p>
+						{/if}
+						{if $val.info.updateTime}
+						<p>更新日期：<span>{$val.info.updateTime}</span></p>
+						{/if}
+					</div>
+					<p class="time">
+						<a class="fl {if $val.info.iPreviewMode eq 1}yl{else}wz{/if}"  href="/books/seclist/id_{$val.info.id}-t_{$val.info.simpleName}-col_{$val.iColumnId}-yl_{$val.info.iPreviewMode}/" title="{if $val.info.iPreviewMode eq 1}快速预览{else}完整浏览{/if}">{if $val.info.iPreviewMode eq 1}快速预览{else}完整浏览{/if}</a>
+						{if $val.info.sBuyingLinks}
+						<a class="buy fl" href="{$val.info.sBuyingLinks}" target="_blank" title="购买">购买</a>
+						{/if}
+						<a href="javascript:void(0);" data-cid="{$val.iCollectId}" data-pid="{$val.info.id}" data-t="{$val.info.simpleName}" class="cancelbtn fr concelcollect" title="取消收藏"><i></i><span>取消收藏</span></a>
+					</p>
+				</div>
+				{if $val.info.columnName neq ''}
+				<div class="topIcon">{$val.info.columnName}</div>    
+				{/if}				
+			</li>
+			{/foreach}
+		</ul>
+	</div>
+	{$pageHtml}	
+</div>
+<div class="shadow_black"></div>
+<div class="pop_shoucang">
+	<p class="content">是否确认取消收藏？</p>
+	<a href="javascript:void(0);" class="record" title="确定">确定</a>
+	<a href="javascript:void(0);" class="cancel" title="取消">取消</a>
+</div>
+{/block}
+{block name="other"}
+{literal}
+<script>
+$(function(	
+	$(".lazyload img").lazyload({effect : "fadeIn"});
+});
+</script>
+{/literal}
+{/block}

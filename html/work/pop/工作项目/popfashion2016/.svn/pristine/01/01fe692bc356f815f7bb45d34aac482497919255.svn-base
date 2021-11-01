@@ -1,0 +1,108 @@
+<div class="select-width-content js-selected-box">
+    <div class="rightc_s_t clearfix">
+        {if $tips}
+        <div class="keycho fl">
+            <span class="yixz fl">您已选择：</span>
+            <div class="key_allbox key_allbox-width  fl">
+            {$i = 0}
+            {foreach $tips as $key=>$tip}
+            {if !$tip.sub && $i == 0}
+            <i class="fg_arrow"></i>
+            {/if}
+            <div class="keyWord keyWord_downlist {if $tip.name == '行业'}keyWord_industry{/if}">
+                <!--性别行业的特殊处理-->
+                {if $tip.sub}
+                <a class="keyW fl clickme del" href="{$tip.link}" title="{$tip.value}">{$tip.name}: {$tip.value}{$tip.em}</a>
+                {else}
+                {$i = $i+1}
+                <a class="keyW fl clickme del auto_sx" href="{$tip.link}" title="{if substr($tip.value,0,1)!= '<'}{$tip.value}{/if}">{$tip.name}: <span>{$tip.value}{$tip.em}</span></a>
+                <i class="fl del_self" data-url="{$tip.link}"></i>
+                {/if}
+                <div class="downlist">
+                {foreach $tip.sub as $sub}
+                <a href="javascript:void(0);" title="{$sub.value}" id="gi_{$sub.type}_{$sub.key}">{$sub.value}</a>
+                {/foreach}
+                </div>
+            </div>
+            {if $key == 'ind'}
+            <div class="keyWord keyWord_downlist column-nav-downlist">
+                {foreach $columns2 as $colId=>$column}
+                {if $column.selected}
+                <a class="keyW fl clickme del" href="javascript:void(0);" title="{$column.sName}">栏目: {$column.sName}<em class="downlist_icon"></em></a>
+                {/if}
+                {/foreach}
+                <div class="downlist">
+                {foreach $columns2 as $colId=>$column}
+                {if !$column.selected}
+                <a href="{$column.sLink}" title="{$column.sName}">{$column.sName}</a>
+                {/if}
+                {/foreach}
+                </div>
+            </div>
+            {/if}
+            {/foreach}
+
+            {if count($tips) > 2}
+            <a class="delefilter clickme click_gen_ind" href="{$clearAll}"><i></i>清空筛选</a>
+            {/if}
+            </div>
+        </div>
+        <div class="fr search-key-scroll styles-key-scroll js-selected-key-scroll">
+            <div class="style-search-box">
+            <input type="text" class="fl js-input-search" growing-track="true" placeholder="搜索你要的：季节/品牌/单品">
+            <!-- <input type="button" class="fr js-sear"> -->
+            <img src="{STATIC_URL2}/global/images/lists/search.png" class="sear fl js-sear">
+            {if isset($keys)}
+            <div class="search-downdrop js-search-downdrop">
+                <span class="fl">热门搜索：</span>
+                <div class="search-key fl">
+                {foreach $keys as $key}
+                <a class="clickme" href="{$key.link}" title="{$key.name}">{$key.name}</a>
+                {/foreach}
+                </div>
+            </div>
+            {/if}
+            </div>
+        </div>
+        {/if}
+        <div class="save-search js-save-search fr">
+            <a class="save-search-btn fl js-save-search-btn"><i></i>保存搜索</a>
+            <div class="save-search-look js-save-search-look fl">
+                <a class="save-search-success">已保存搜索(<span>0</span>)<em></em></a>
+                <div class="guide-save js-guide-save">将您常用的筛选条件保存到此处，方便快速查看</div>
+                <div class="save-search-list js-save-search-list">
+                    <span class="span-hor"></span>
+                    <span class="span-ver"></span>
+                    <ul></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="rightc_s js-rightc-s clearfix">
+        <span class="aspan_load"><img src="/global/images/5-121204193934-50.gif" />&nbsp;筛选项加载中，请稍等...</span>
+        <div class="fr search-key-scroll js-search-key-scroll">
+            <div class="style-search-box">
+                <!-- ID重复 search改为search1 -->
+                <input type="text" class="fl js-input-search" growing-track="true" placeholder="搜索你要的：季节/品牌/单品">
+                <img src="{STATIC_URL2}/global/images/lists/search.png" class="sear fl js-sear">
+                {if isset($keys)}
+                <div class="search-downdrop js-search-downdrop">
+                    <span class="fl">热门搜索：</span>
+                    <div class="search-key fl">
+                    {foreach $keys as $key}
+                    <a class="clickme" href="{$key.link}" title="{$key.name}">{$key.name}</a>
+                    {/foreach}
+                    </div>
+                </div>
+                {/if}
+            </div>
+        </div>
+        {if $columnId eq 50}
+        <div class="js_analysis_show analysis_show fr">
+            <div class="color-click-button js_is_show">
+                <i></i><span>展开数据分析图表</span><em></em>
+            </div>
+        </div>
+        {/if}
+    </div>
+</div>

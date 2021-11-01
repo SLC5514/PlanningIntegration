@@ -1,0 +1,15 @@
+{
+  "name": "nuxt-demo",
+  "version": "1.0.0",
+  "description": "A nuxt-demo",
+  "author": "slc",
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start"
+  },
+  "dependencies": {
+    "nuxt": "latest",
+    "@nuxtjs/axios": "^5.3.6"
+  }
+}

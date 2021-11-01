@@ -1,0 +1,23 @@
+线上vip账号
+popjsb_test   pop136_asdf	111111	pop_2019
+
+线下vip账号
+popjsb_test   123456
+
+线下普通账号
+admin 123456
+
+测试环境
+试用用户  01234567     
+普通用户  1234567
+vip
+15221142951  123456
+
+shiliuchuang7652@dingtalk.com
+
+服装
+1 主账号vip
+2 子账号vip
+3 试用用户
+4 普通用户
+5 游客

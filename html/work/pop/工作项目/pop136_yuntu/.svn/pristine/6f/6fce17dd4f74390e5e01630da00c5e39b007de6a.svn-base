@@ -1,0 +1,205 @@
+{extends file="layout.html"} 
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL1}/global/css/pattern/detail.css?{$smarty.const.STATIC_CHANGE_TIME}" />
+{/block} 
+
+{block name="main"}
+<div class="section detail-contant" id="pop_layer">
+	<!--内容-->
+	<div class="detail-content js-detail-content">
+		<div class="detail-close js-pop-close"></div>
+        <div class="pics-prev pics-item-control js-pic-prev">
+            <p></p>
+            <span>上一款</span>
+        </div>
+    
+        <div class="pics-next pics-item-control js-pic-next">
+            <p></p>
+            <span>下一款</span>
+        </div>
+	    
+		<div class="big-contain">
+			<div class="bp-load js-bp-load"></div>
+			<div class="img-contain ui-draggable ui-draggable-handle js-img-contain" id="draggable">
+		        <img class="bigbox js-bigbox" src="https://imgf2.pop-fashion.com/global/images/new_index/ds4.png"
+					 data-t="" data-id="" data-sp="" data-mp="" data-bp="" data-bpurlencode="" data-staticurl="" data-sign="" data-col="" data-shape="" data-size="" data-up="" data-rename="">
+		    </div>
+		</div>
+	</div>
+
+	<!--侧边导航-->
+	<div class="nav-right js-nav-right Scrollbar">
+		<div class="nav-control js-nav-control"></div>
+		<div class="right-cont ">
+			<div class="msg-list clear">
+				<span class="icon icon6"></span>
+				<ul class="clear js-msg-list"></ul>
+			</div>
+			<div class="img-detail">
+				<div class="img-title">
+					<span class="icon icon5"></span>细节图
+				</div>
+				<ul class="clear js-min-imgs"></ul>
+			</div>
+			<div class="guess-like-list">
+				<div>
+					<span class="icon icon9"></span>相关推荐
+				</div>
+				<ul class="clear js-guess-like">
+					<li>
+						<a>
+							<img src=""/>
+						</a>
+						<div class="js-dislike-btn">不喜欢</div>
+					</li>
+					<li></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	<!--底部-->
+	<div class="detail-footer js-detail-footer">
+		<div class="footer-cont">
+			<!--图片控制器-->
+			<div class="pic-control js-pic-control">
+				<div class="bp-set js-bp-set">
+					<div class="clear">
+						<div class="disc-icon">
+							<p style="padding: 8px 0 12px;margin-top: -2px;">
+								<span class="set-icon1 icon"></span>
+							</p>
+							<p class="esc-p">原图</p>
+							<p class="esc-p">复位</p>
+						</div>
+						<div class="dic-msg">
+							<p style="padding-top: 4px;">滚动鼠标中键或<span class="set-icon2 icon"></span>拖拽放大镜，<br />缩放图片</p>
+							<p style="padding-top: 14px;">点击原图，显示原始尺寸</p>
+							<p style="padding-top: 17px;">点击复位，恢复缩放图片为初始状<br />态</p>
+						</div>
+					</div>
+					<div class="dic-close">知道了</div>
+				</div>
+				<div class="control-l js-control-l">
+					<span class="icon"></span>
+				</div>
+				<p class="js-original">原图</p>
+				<p class="js-reset on-reset">复位</p>
+			</div>
+
+			<ul class="clear js-foot-list">
+				{if $showMiYin && $miHui_detail}
+				   <li class="js-edit-pattern-btn">
+                       <a class="bott-item" href="javascript:void(0);" title="重新编辑"><span class="icon icon7"></span>重新编辑</a>
+                   </li>
+				{/if}				
+				<li class="js-yun-vcloth">
+					<a  class="bott-item" href="javascript:void(0);" title="模拟成品"><span class="icon icon1"></span>模拟成品</a>
+				</li>
+				<li class="js-spatter-pic">
+					<a  class="bott-item" href="javascript:void(0);" title="相似图案"><span class="icon icon2"></span>相似图案</a>
+				</li>
+				<!-- 下载单张 -->
+				<li class="detail-down js-detail-down">
+					<div class="bott-item">
+						<div  class="bott-item"><span class="icon icon3"></span>下载素材</div>
+					</div>
+                    
+                    <div class="downimg-layer downimg-layer-data js-downimg-layer">
+                    	<div class="close-arrow js-close-arrow"></div>
+	                    <div class="down-main-top clear">
+	                        <h2>下载文件格式</h2>
+						</div>
+                        {if $miHui_detail}
+						  <div class="overdue-warming">若您喜欢这个图案，请于2019年8月1日前下载</div>
+                        {/if}
+	                    <table class="down-table js-down-table" width="100%">
+				        	<thead>
+								<tr>
+									<th width="25%">格式</th>
+									<th width="25%">尺寸</th>
+									<th width="25%">文件大小</th>
+									<th width="25%">点击下载</th>
+								</tr>
+							</thead>
+							<tbody data-downtype="">		
+								<tr>
+									<td>.jpg</td>
+									<td class="img-shape">尺寸</td>
+									<td class="img-size">文件大小</td>
+									<td><a class="download-btn js-download-btn" data-bp="">下载</a></td>
+								</tr>
+							</tbody>
+				        </table>
+	                    <div class="box-arrow"></div>
+	                </div>
+                </li>
+				<!-- 搜索列表 -->
+				<li class="js-detail-search detail-search detail-search2">
+					<div  class="bott-item"><span class="icon icon4"></span><span class="search-msg1">收起图案列表</span><span class="search-msg2">展开图案列表</span></div>
+				</li>
+				<li class="js-collect-btn collect-detail">
+					<a  class="bott-item" href="javascript:void(0);" title="加入收藏"><span class="icon icon8"></span>加入收藏</a>
+				</li>
+			</ul>
+
+			<!-- 图片列表 -->
+			<div class="patter-contain js-patter-contain">
+				<div class="list-prev js-list-prev icon"></div>
+				<div class="list-next js-list-next icon"></div>
+				
+				<div class="list-cont js-list-cont">
+					<ul class="clear js-detail-list"></ul>
+				</div>
+				
+			</div>
+			<!-- /图片列表 -->
+			
+		</div>
+	</div>
+	
+    <!-- 右键下载 -->
+    <div class="bg-layer js-bg-layer"></div>
+    <div class="rclick-layer downimg-layer-data js-downimg-right">
+    	<div class="close-arrow js-close-arrow icon"></div>
+        <div class="down-main-top clear">
+            <h2>下载文件格式</h2>
+		</div>
+        {if $miHui_detail}
+		  <div class="overdue-warming">若您喜欢这个图案，请于2019年8月1日前下载</div>
+        {/if}
+        <table class="down-table js-down-table " width="100%">
+        	<thead>
+				<tr>
+					<th width="25%">格式</th>
+					<th width="25%">尺寸</th>
+					<th width="25%">文件大小</th>
+					<th width="25%">点击下载</th>
+				</tr>
+			</thead>
+			<tbody data-downtype="">		
+				<tr>
+					<td>.jpg</td>
+					<td class="img-shape">尺寸</td>
+					<td class="img-size">文件大小</td>
+					<td><a class="download-btn js-download-btn" data-bp="">下载</a></td>
+				</tr>
+			</tbody>
+        </table>
+    </div>
+    
+</div>
+
+{/block}
+
+{block name="self"}
+<script type="text/javascript">
+	var pattern_detail_back_obj={
+		col_user_type:'{$col_user_type}'
+	};
+</script>
+<script src="{STATIC_URL3}/global/js/pattern/detail.js?{$smarty.const.STATIC_CHANGE_TIME}" type="text/javascript" charset="utf-8"></script>
+{/block} 
+
+
+

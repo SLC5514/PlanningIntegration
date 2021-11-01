@@ -1,0 +1,511 @@
+{extends file="layout.html"}
+{block name="title"}{$title}{/block}
+{block name=keywords}{$keywords}{/block}
+{block name=description}{$description}{/block}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/per.css"/>
+{/block}
+
+{block name="main"}
+<div class="cross_content">
+        {block name="topads"}
+        <div class="cross_cont_section1 bg_all {$allData.class}">
+            <div class="con_width">
+                <div class="cont_section_left fl">
+                    <div class="cont_title">
+                        <h1>{if $allData.sGenderName || $allData.sIndustryName}{$allData.sGenderName} {$allData.sIndustryName}{else}全部{/if}频道</h1>
+                        <div class="cont_smalltitle">
+                            <img src="{STATIC_URL3}/global/images/channel.png"/>
+                        </div>
+                    </div>
+                    <div class="cont_search" id="jiaocha_search">
+                        <input type="text" id ="jiaocha_text" value="时尚资讯，一网打尽！"/>
+                        <span class="search_icon" id="go_search11"></span>
+                    </div>
+                    <div class="hot_search">
+                        <ul>
+						{foreach $allData.hotWord as $key => $val}
+							<li class="{if $key eq 0}first_border{/if} {if empty($val.url)}key_search{/if}"><a href="{if !empty($val.url)}{$val.url}{else}javascript:void(0);{/if}" title="{$val.keyword}"  {if !empty($val.url)}target="_blank"{/if}><span>{$val.keyword}</span></a></li>
+						{/foreach}
+                        </ul>
+                    </div>
+                    <div class="cont_pic_num">
+                            <span><i></i>资料总数：<em>{$allData.count.all}</em></span>
+                    </div>
+                </div>
+                <div class="cont_section_right fl">
+                    <div class="contain fl">
+                        <a {if count($AdData_Nb) > 1}class="lunbbtn_left" {/if} href="javascript:void(0);"></a>
+                        <a {if count($AdData_Nb) > 1}class="lunbbtn_right" {/if} href="javascript:void(0);"></a>
+                        <ul>
+                            {if count($AdData_Nb)}
+                            {foreach $AdData_Nb as $val }
+                            <li><a href="{$val.sLink}" {if $val.sNewWindow} target="_blank" {/if} title="{$val.sTitle}"><img alt="{$val.sTitle}" src="{$val.sImagePath}" alt="pic"/></a></li>
+                            {/foreach}
+                            {else}
+                            <li><a href="javascript:void(0);"><img src="{STATIC_URL1}/fashion/fm/ad/20160409/057088a9f270f1.png" alt="pic"/></a></li>
+                            {/if}
+                        </ul>
+                        <div class="buttons_left">
+                            <div class="buttons_right">
+                                    {if count($AdData_Nb) > 1}
+                                    <div class="buttons">
+                                        {foreach $AdData_Nb as $val }
+                                            <span></span>
+                                        {/foreach}
+                                    </div>
+                                    {/if}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--<div class="search_cont_tishi cross_cont_section2">
+                <i></i>您已锁定 <span>性别：<em>{$allData.sGenderName}</em></span><span>行业：<em>{$allData.sIndustryName}</em></span>现在所呈现为女装毛衫下内容，如需查看所有内容请点击<a href="javascript:void(0);" target="_blank" title="这里">这里</a>
+            </div>-->
+        {/block}
+    <div class="con_width">
+        {block name="left"}
+        <div class="cross_cont_section3">
+            <div class="con_section cont_section3_left fl">
+                <div class="analyzeBox offset_analyze">
+                    <div class="cont_title">
+                        <h1><a href="/analysis/{$allData.genInd}" target="_blank" class="btn_more" title="查看详情">{$allData.sGenderName}{$allData.sIndustryName}分析</a></h1>
+                        <div class="cont_smalltitle">
+                            <span class="fl leftspan"></span>
+                            <p class="fl"><a href="/analysis/{$allData.genInd}" target="_blank" class="btn_more"><img src="{STATIC_URL3}/global/images/analysis.png" alt="pic"/></a></p>
+                            <span class="fl rightspan"></span>
+                        </div>
+                    </div>
+                    <div class="con_fanye">
+                        <span class="btn_left"></span><span class="btn_right {if $allData.2.count>1}cur{/if}"></span>
+                        <input type="hidden" class="info" data-page="1" data-col="2" data-tot="{$allData.2.count}"/>
+                        <a href="/analysis/{$allData.genInd}" target="_blank" class="btn_more" title="更多">更多</a>
+                    </div>
+                    <div class="cont_section3_list">
+                        <ul class="trend_list analyzeData_ul lazyload">
+                            {if !empty($allData.2.data)}
+                            {foreach $allData.2.data as $key => $val }
+							{if $key lt 2}
+                            <li>
+                                <a href="/details/report/t_{$val.tablename}-id_{$val.id}-col_{$val.iColumnId}/" class="img_a" target="_blank" title="查看详情">
+                                   {if strlen($val.smallPath) > 30}
+                                    <img alt="{$val.title}" src="{$val.smallPath}" alt="pic"/>
+                                    {else}
+                                    <img src="{STATIC_URL2}/global/images/loading/analysis.jpg" alt="pic">
+                                    {/if}
+                                    <div class="hoverBg1"></div>
+                                    <p class="txtTitle">{$val.title}</p>
+                                </a>
+								{if !empty($val.columnName)}
+								<a href="{$val.columnLink}" class="link_a" target="_blank" title="{$val.columnName}"><span class="arrow">{$val.columnName}</span></a>
+								{/if}
+                            </li>
+							{/if}
+                            {/foreach}
+                            {else}
+                            <li>
+                                <a href="javascript:void(0);"><img src="{STATIC_URL1}/global/images/loading/analysis.jpg" alt="pic" /></a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);"><img src="{STATIC_URL1}/global/images/loading/analysis.jpg" alt="pic" /></a>
+                            </li>
+                            {/if}
+                        </ul>
+                    </div>
+                </div>
+                <div class="trendBox offset_trend">
+                    <div class="cont_title ">
+                        <h1><a href="/trends/{$allData.genInd}" target="_blank" class="btn_more" title="查看详情">{$allData.sGenderName}{$allData.sIndustryName}趋势</a></h1>
+                        <div class="cont_smalltitle">
+                            <span class="fl leftspan"></span>
+                            <p class="fl"><a href="/trends/{$allData.genInd}" target="_blank" class="btn_more" title="查看详情"><img src="{STATIC_URL3}/global/images/trends.png"/ alt="pic"></a></p>
+                            <span class="fl rightspan"></span>
+                        </div>
+                    </div>
+                    <div class="con_fanye">
+                        <span class="btn_left"></span><span class="btn_right {if $allData.1.count>1}cur{/if}"></span>
+                        <input type="hidden" class="info" data-page="1" data-col="1" data-tot="{$allData.1.count}"/>
+                        <a href="/trends/{$allData.genInd}" target="_blank" class="btn_more" title="更多">更多</a>
+                    </div>
+                    <div class="cont_section3_list">
+                        <ul class="trend_list trendData_ul lazyload">
+                            {if !empty($allData.1.data)}
+                            {foreach $allData.1.data as $key => $val }
+							{if $key lt 2}
+                            <li>
+                                <a href="/details/report/t_{$val.tablename}-id_{$val.id}-col_{$val.iColumnId}/" class="img_a" target="_blank" title="查看详情">
+                                    <!--<img src="{STATIC_URL2}{$val.smallPath}">-->
+                                    {if strlen($val.smallPath) > 30}
+                                    <img alt="{$val.title}" src="{$val.smallPath}" alt="pic"/>
+                                    {else}
+                                    <img src="{STATIC_URL2}/global/images/loading/analysis.jpg" alt="pic">
+                                    {/if}
+                                    <div class="hoverBg1"></div>
+                                    <p class="txtTitle">{$val.title}</p>
+                                </a>
+								{if !empty($val.columnName)}
+								<a href="{$val.columnLink}" class="link_a" target="_blank" title="{$val.columnName}"><span class="arrow">{$val.columnName}</span></a>
+								{/if}
+                            </li>
+							{/if}
+                            {/foreach}
+                            {else}
+                            <li>
+                                <a href="javascript:void(0);"><img src="{STATIC_URL1}/global/images/loading/analysis.jpg" alt="pic" /></a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);"><img src="{STATIC_URL1}/global/images/loading/analysis.jpg" alt="pic" /></a>
+                            </li>
+                            {/if}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="con_section cont_section3_right fl offset_runways">
+                <div class="cont_title">
+                    <h1><a href="/runways/{$allData.gen}" target="_blank" class="btn_more" title="查看详情">{$allData.sGenderName}T台</a></h1>
+                    <div class="cont_smalltitle">
+                        <span class="fl leftspan"></span>
+                        <p class="fl"><a href="/runways/{$allData.gen}" target="_blank" class="btn_more"><img src="{STATIC_URL3}/global/images/runways.png" alt="pic"/></a></p>
+                        <span class="fl rightspan"></span>
+                    </div>
+                </div>
+                <div class="con_fanye">
+                    <span class="btn_left"></span><span class="btn_right {if $allData.3.count>1}cur{/if}"></span>
+                    <input type="hidden" class="info" data-page="1" data-col="3" data-tot="{$allData.3.count}"/>
+                    <a href="/runways/{$allData.tshowpic}" target="_blank" class="btn_more" title="更多">更多</a>
+                </div>
+                <div class="cont_section3_right_list  lazyload bgwhite">
+                    <ul class="runwaysData_ul">
+                        {if !empty($allData.3.data)}
+                            {foreach $allData.3.data as $key => $val}
+                                {if $key lt 3}
+                                <li class="clearfix">
+                                    <div class="left_pic fl">
+                                        <a href="/runways/inside/id_{$val.id}/" class="img_a" target="_blank" title="查看详情">
+                                            {$val.smallPath}
+                                            <span class="arrow">{$val.region_text}</span>
+                                            <div class="hoverBg1"></div>
+                                        </a>
+                                    </div>
+                                    <div class="right_cont fl">
+                                        <p class="title" title="{$val.nme}"><a href="/runways/inside/id_{$val.id}/" title="{$val.nme}" target="_blank">{$val.nme}</a></p>
+                                        <div class="cont_bd">
+                                            <span>设计师：<em>{$val.designer}</em></span>
+                                            <span>时间：<em>{$val.for_date_text}</em></span>
+                                            <span>地点：<em>{$val.region_text}</em></span>
+                                        </div>
+                                        <ul class="date_liulan">
+                                            <li class="dateLi"><span class="date"></span>{$val.create_time}</li>
+                                            <li class="liulanLi"><span class="liulan"></span>浏览（{$val.view_count}）</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                {/if}
+                            {/foreach}
+                        {else}
+                        <li class="clearfix">
+                            <a href="javascript:void(0);"><img src="{STATIC_URL1}/global/images/loading/runway180MR.jpg" alt="pic" /></a>
+                        </li>
+                        <li class="clearfix">
+                            <a href="javascript:void(0);"><img src="{STATIC_URL1}/global/images/loading/runway180MR.jpg" alt="pic" /></a>
+                        </li>
+                        {/if}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="cross_cont_section4">
+            <div class="con_section cont_section4 offset_style">
+                <div class="cont_title">
+                    <h1><a href="{$styleLink}" target="_blank" class="btn_more" alt="查看详情">{$allData.sGenderName}{$allData.sIndustryName}款式</a></h1>
+                    <div class="cont_smalltitle">
+                        <span class="fl leftspan"></span>
+                        <p class="fl"><a href="{$styleLink}" target="_blank" class="btn_more"><img src="{STATIC_URL3}/global/images/styles.png" alt="pic"/></a></p>
+                        <span class="fl rightspan"></span>
+                    </div>
+                </div>
+                <div class="con_fanye">
+                    <span class="btn_left"></span><span class="btn_right {if $allData.4.count>1}cur{/if}"></span>
+                    <input type="hidden" class="info" data-page="1" data-col="4" data-tot="{$allData.4.count}"/>
+                    <a href="{$styleLink}" target="_blank" class="btn_more" title="更多">更多</a>
+                </div>
+            </div>
+            <div class="cont_section4_lists">
+                <ul class="lazyload">
+                    {if $sGender && in_array($sGender, [1,2,5])}
+                	<li class="bomLi bom-nav">
+                		<a href="{$styleLink}" target="_blank" title="查看详情">
+                            {if $sGender eq 1}
+                			<img class="hover-pic" src="{STATIC_URL2}/global/images/man-content.jpg" alt="pic" />
+                            {elseif $sGender eq 2}
+                            <img class="hover-pic" src="{STATIC_URL2}/global/images/woman-content.jpg" alt="pic" />
+                            {else}
+                            <img class="hover-pic" src="{STATIC_URL2}/global/images/child-content.jpg" alt="pic" />
+                            {/if}
+                			<div class="bom-nav-cont">
+                				<img src="{STATIC_URL2}/global/images/content-nav-icon.png" alt="pic" />
+                				<h3>{if $sGender eq 1}男装{elseif $sGender eq 2}女装{else}童装{/if}款式</h3>
+                				<p>最新上线&品牌趋势</p>
+                				<div class="js-btn-hover"><span>查看全部</span><i></i></div>
+                			</div>
+                		</a>
+                	</li>
+                    {/if}
+                    {if !empty($allData.4.data)}
+                        {foreach $allData.4.data as $key => $val}
+                            {if $key lt 14 && (!$sGender || $key != 11)}
+                            <li class="bomLi clearfix">
+                                    <a href="/details/style/t_{$val.tablename}-id_{$val.id}-col_{$val.iColumnId}/" class="img_a" target="_blank" title="查看详情">
+                                        {if strlen($val.smallPath) > 30}
+                                        <img alt="{$val.title}" src="{STATIC_URL2}/global/images/loading/style.gif" data-original="{$val.smallPath}" alt="pic">
+                                        {else}
+                                        <img src="{STATIC_URL1}/global/images/loading/styleMR.jpg" alt="pic" />
+                                        {/if}
+                                        <div class="hovertime"></div>
+                                        <p class="Dtime"><em></em>
+                                            {$val.create_time}
+                                            <!--{if $val.update_time}{$val.update_time}{else}{$val.create_time}{/if}-->
+                                        </p>
+                                    </a>
+                                    <div class="picTxt">
+                                        <p><a href="{$val.link_season}" target="_blank" title="{$val.seasonName}">{$val.seasonName}</a></p>
+                                        <p>
+                                            {if count($val.aAttribute)>1}
+                                                {$val.iCategory_text}
+                                            {else}
+                                                <a target="_blank" href="{$val.link_category}" title="{$val.iCategory_text}">{$val.iCategory_text}</a>
+                                                <a target="_blank" href="{$val.link_subcategory}" title="{$val.iSubcategory_text}">{$val.iSubcategory_text}</a>
+                                            {/if}
+                                        </p>
+                                    </div>
+                                    <p class="Picpp">{if !empty($val.brand_text)}<a href="{$val.link_brand}" target="_blank" title="查看详情">{$val.brand_text}</a>{else}其它{/if}</p>
+                                    {if isset($val.columnName) && !empty($val.columnName)}
+                                    <div class="cate_hovertime"></div>
+                                    <p class="cate_hover"><a href="{$val.columnLink}" target="_blank" title="{$val.columnName}">{$val.columnName}</a></p>
+                                    {/if}
+                                </li>
+                            {/if}
+                        {/foreach}
+                    {else}
+                        {for $i=1; $i<= 14; $i++}
+                        <li class="bomLi clearfix">
+                            <a href="javascript:void(0);"><img src="{STATIC_URL1}/global/images/loading/styleMR.jpg" alt="pic" /></a>
+                        </li>
+                        {/for}
+                    {/if}
+                </ul>
+            </div>
+        </div>
+        {/block}
+        {block name="right"}
+        <div class="cross_cont_section5">
+            <div class="con_section cont_section5_left fl offset_books">
+                <div class="cont_title">
+                    <h1><a href="/books/lookbook/{$allData.genInd}" target="_blank" class="btn_more" title="查看详情">{$allData.sGenderName}{$allData.sIndustryName}广告大片</a></h1>
+                    <div class="cont_smalltitle">
+                        <span class="fl leftspan"></span>
+                        <p class="fl"><a href="/books/lookbook/{$allData.genInd}" target="_blank" class="btn_more"><img src="{STATIC_URL3}/global/images/lookbook.png" alt="pic"/></a></p>
+                        <span class="fl rightspan"></span>
+                    </div>
+                </div>
+                <div class="con_fanye">
+                    <span class="btn_left"></span><span class="btn_right {if $allData.6.count>1}cur{/if}"></span>
+                    <input type="hidden" class="info" data-page="1" data-col="6" data-tot="{$allData.6.count}"/>
+                    <a href="/books/lookbook/{$allData.genInd}" target="_blank" class="btn_more" title="更多">更多</a>
+                </div>
+                <div class="cont_section5_list bgwhite">
+                    <ul class="booksData_ul lazyload">
+                        {if !empty($allData.6.data)}
+                        {foreach $allData.6.data as $key => $val}
+						{if $key lt 5}
+                        <li>
+                            <a href="/books/seclist/t_{$val.tablename}-id_{$val.id}-col_{$val.iColumnId}-yl_{$val.iPreviewMode}/" class="img_a" target="_blank" title="查看详情">
+                                <!--<img src="{STATIC_URL2}{$val.smallPath}"/>-->
+                                {if strlen($val.smallPath) > 30}
+                                <img alt="{$val.name}" src="{STATIC_URL2}/global/images/loading/book.gif" data-original="{$val.smallPath}" alt="pic"/>
+                                {else}
+                                <img src="{STATIC_URL2}/global/images/loading/bookMR.jpg" alt="pic">
+                                {/if}
+                                <div class="hoverBg1"></div>
+                            </a>
+                            <p class="" title="{$val.name}"><a href="/books/seclist/t_{$val.tablename}-id_{$val.id}-col_{$val.iColumnId}-yl_{$val.iPreviewMode}/" target="_blank" title="{$val.name}">{$val.name}</a></p>
+                        </li>
+						{/if}
+                        {/foreach}
+                        {else}
+                        {for $i=1;$i<=5;$i++}
+                        <li>
+                            <a href="javascript:void(0);"><img src="{STATIC_URL2}/global/images/loading/bookMR.jpg" alt="pic"></a>
+                        </li>
+                        {/for}
+                        {/if}
+                    </ul>
+                </div>
+            </div>
+            <div class="con_section cont_section5_right fl offset_references">
+                <div class="cont_title">
+                    <h1><a href="/patterns/graphics/{$allData.genInd}" target="_blank" class="btn_more" title="查看详情">{$allData.sGenderName}{$allData.sIndustryName}图案</a></h1>
+                    <div class="cont_smalltitle">
+                        <span class="fl leftspan"></span>
+                        <p class="fl"><a href="/patterns/graphics/{$allData.genInd}" target="_blank" class="btn_more"><img src="{STATIC_URL3}/global/images/pattern.png" alt="pic"/></a></p>
+                        <span class="fl rightspan"></span>
+                    </div>
+                </div>
+                <div class="con_fanye">
+                    <!-- <span class="btn_left"></span>
+                    <span class="btn_right {if $allData.7.count>1}cur{/if}"></span> -->
+                    <input type="hidden" class="info" data-page="1" data-col="7" data-tot="{$allData.7.count}"/>
+                    <a href="/patterns/graphics/{$allData.genInd}" target="_blank" class="btn_more" title="更多">更多</a>
+                </div>
+                <div class="cont_section5_right_list cont_section5_right_listN bgwhite">
+                    <p class="cont_title">包含新闻热点、明星时尚、流行元素、专栏、时尚达人、购物指导、图库、文化艺术等内容，带来更多灵感启发。</p>
+                    <ul class="referencesData_ul lazyload">
+                        {if !empty($allData.9.data)}
+                            {foreach $allData.9.data as $key => $val}
+                                {if $key lt 3}
+                                    <li>
+                                        <a href="/details/style/t_{$val.tablename}-id_{$val.id}-col_{$val.iColumnId}/" class="img_a" target="_blank" title="查看详情">
+                                            {if strlen($val.smallPath) > 30}
+                                            <img alt="{$val.title}" src="{STATIC_URL2}/global/images/loading/reference150-150.gif" data-original="{$val.smallPath}" alt="pic"/>
+                                            {else}
+                                            <img src="{STATIC_URL1}/global/images/loading/referenceMR150.jpg" alt="pic">
+                                            {/if}
+                                            <div class="hoverBg1"></div>
+                                        </a>
+                                    </li>
+                                {/if}
+                            {/foreach}
+                        {else}
+                            <li>
+                                <a href="javascript:void(0);"><img src="{STATIC_URL1}/global/images/loading/referenceMR150.jpg" alt="pic"></a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);"><img src="{STATIC_URL1}/global/images/loading/referenceMR150.jpg" alt="pic"></a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);"><img src="{STATIC_URL1}/global/images/loading/referenceMR150.jpg" alt="pic"></a>
+                            </li>
+                        {/if}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="cross_cont_section6">
+            <div class="con_section cont_section5_left cont_section6_left fl offset_brands">
+                <div class="cont_title">
+                    <h1><a href="/brands/{$allData.gen}" target="_blank" class="btn_more" title="查看详情">{$allData.sGenderName}{$allData.sIndustryName}品牌</a></h1>
+                    <div class="cont_smalltitle">
+                        <span class="fl leftspan"></span>
+                        <p class="fl"><a href="/brands/{$allData.gen}" target="_blank" class="btn_more"><img src="{STATIC_URL3}/global/images/brands.png" alt="pic"/></a></p>
+                        <span class="fl rightspan"></span>
+                    </div>
+                </div>
+                <div class="con_fanye">
+                    <span class="btn_left"></span><span class="btn_right {if $allData.5.count>1}cur{/if}"></span>
+                    <input type="hidden" class="info" data-page="1" data-col="5" data-tot="{$allData.5.count}"/>
+                    <a href="/brands/{$allData.gen}" target="_blank" class="btn_more" alt="更多">更多</a>
+                </div>
+                <div class="cont_section6_list bgwhite">
+                    <ul class="brandsData_ul">
+                        {if !empty($allData.5.data)}
+                        {foreach $allData.5.data as $key => $val}
+						{if $key lt 5}
+                        <li>
+                            <a href="/brands/detail/id_{$val.id}/" class="img_a" target="_blank" alt="查看详情">
+                                <div class="showpp">
+                                    <p class="bt">{$val.name} <br>{$val.b_name}</p>
+                                    <span>&mdash;&mdash;</span>
+                                    <p class="gongyou">共更新：<em>{$val.count}</em>款</p>
+                                </div>
+                            </a>
+                        </li>
+						{/if}
+                        {/foreach}
+                        {/if}
+                    </ul>
+                </div>
+            </div>
+            <div class="con_section cont_section5_right cont_section6_right fl offset_inspiration">
+                <div class="cont_title">
+                    <h1><a href="/Inspiration/{$allData.genInd}" target="_blank" class="btn_more" title="查看详情">{$allData.sGenderName}{$allData.sIndustryName}素材</a></h1>
+                    <div class="cont_smalltitle">
+                        <span class="fl leftspan"></span>
+                        <p class="fl"><a href="/inspiration/{$allData.genInd}" target="_blank" class="btn_more"><img src="{STATIC_URL3}/global/images/reference.png" alt="pic"/></a></p>
+                        <span class="fl rightspan"></span>
+                    </div>
+                </div>
+                <div class="con_fanye">
+                    <input type="hidden" class="info" data-page="1" data-col="8" data-tot="{$allData.8.count}"/>
+                    <a href="/inspiration/{$allData.genInd}" target="_blank" class="btn_more" title="更多">更多</a>
+                </div>
+                <div class="cont_section5_right_list cont_section6_right_list bgwhite">                    
+                    <ul class="inspirationData_ul lazyload">
+                        <li>
+                            <a href="/references/details/{$allData.genInd}" target="_blank" title="款式细节"><img src="{STATIC_URL2}/global/images/jc_4.png" alt="icon"><span>款式细节</span><em></em></a>
+                        </li>
+                        <li>
+                            <a href="/references/design/{$allData.genInd}" target="_blank" title="款式手稿"><img src="{STATIC_URL2}/global/images/jc_3.png" alt="icon"><span>款式手稿</span><em></em></a>
+                        </li>
+                        <li>
+                            <a href="/references/visual/{$allData.genInd}" target="_blank" title="店铺陈列"><img src="{STATIC_URL2}/global/images/jc_5.png" alt="icon"><span>店铺陈列</span><em></em></a>
+                        </li>
+                        <li>
+                            <a href="/references/fabricgallery/{$allData.genInd}" target="_blank" title="展会面料"><img src="{STATIC_URL2}/global/images/jc_6.png" alt="icon"><span>展会面料</span><em></em></a>
+                        </li>
+                        <li>
+                            <a href="/references/accessories/{$allData.genInd}" target="_blank" title="服饰品"><img src="{STATIC_URL2}/global/images/jc_7.png" alt="icon"><span>服饰品</span><em></em></a>
+                        </li>
+                        <li>
+                            <a href="/inspiration/{$allData.genInd}" target="_blank" title="灵感源"><img src="{STATIC_URL2}/global/images/jc_1.png" alt="icon"><span>灵感源</span><em></em></a>
+                        </li>
+                        <li>
+                            <a href="/inspiration/video/{$allData.genInd}" target="_blank" title="灵感视频"><img src="{STATIC_URL2}/global/images/jc_2.png" alt="icon"><span>灵感视频</span><em></em></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {/block}
+    </div>
+</div>
+<div class="shadow_guide s_index shadow_index5"></div>
+<div class="mu_guide con_width">
+    <div class="muStep1"></div>
+    <div class="muStep2"></div>
+    <div class="muStep3"></div>
+    <div class="muKnow"></div>
+</div>
+{/block}
+
+{block name="self"}
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/work.js"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/index.js"></script>
+<script>
+    $('.active_click').on('click',function(){
+        $(this).children('a').triggerHandler('click');
+    });
+    
+	$('.js-btn-hover').hover(function(){
+		$(this).find('span').stop().animate({
+			'left':'-9px'
+		},300);
+		$(this).find('i').stop().animate({
+			'right':'12px'
+		},300);
+		
+	},function(){
+		$(this).find('span').stop().animate({
+			'left':'0px'
+		},300);
+		$(this).find('i').stop().animate({
+			'right':'-100px'
+		},300);
+	})
+    
+    
+</script>
+{/block}

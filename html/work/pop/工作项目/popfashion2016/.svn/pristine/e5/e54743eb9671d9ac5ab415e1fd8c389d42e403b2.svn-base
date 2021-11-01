@@ -1,0 +1,98 @@
+{extends file="layout.html"}
+
+{block name="title"}2020春夏服装流行趋势专题 - 衍化{/block}
+{block name=keywords}流行专题,服装专题,2020服装流行专题{/block}
+{block name=description}2020年或会成为技术与环境的交叉点，在最终彻底改变生活的变化到来之前，人们需要先思考未来的判断和选择，对于无边界社会和循环经济的趋同，对于物联网和只能技术的变革，对于多远价值观和意识形态的衍化。因此，衍化是2020年流行的服装主题趋势。{/block}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/topic/20190301/css/index.css?{STATIC_CHANGE_TIME}">
+{/block}
+
+
+{block name="main"}
+<h1 class="seo-title">2020春夏服装流行趋势专题 - 衍化</h1>
+<div class="season-section">
+	<div class="season-contain js-season-contain">
+		<div class="season-top js-season-top">
+			<div class="bg-set js-bg-set">
+        <img class="bg-set-img" src="{STATIC_URL2}/global/topic/20190301/images/t-bg2.jpg?{STATIC_CHANGE_TIME}" alt="衍化">
+			</div>
+			
+			<!--内容区-->
+			<div class="top-cont js-top-cont">
+				<div class="cont-msg js-cont-msg">
+					<a class="mode1" title="氢能动力" href="/trends/relt_143/#anchor" target="_blank" data-src="t-bg2.jpg" data-bg="top-tit1.png">
+						<img src="{STATIC_URL2}/global/topic/20190301/images/mode1.png?{STATIC_CHANGE_TIME}" alt="氢能动力" />
+						<div>
+							<h3>氢能动力</h3>
+							<p>HYDROGEN ENERGY</p>
+							<span><label>风格：</label>运动休闲 轻运动</span>
+							<span><label>市场：</label>运动风格品牌</span>
+						</div>
+					</a>
+					<a class="mode2" href="/trends/relt_144/#anchor" title="无塑海岸" target="_blank" data-src="t-bg3.jpg" data-bg="top-tit2.png">
+						<img src="{STATIC_URL2}/global/topic/20190301/images/mode2.png?{STATIC_CHANGE_TIME}" alt="无塑海岸" />
+						<div>
+							<h3>无塑海岸</h3>
+							<p>PLASTIC-FREE COAST</p>
+							<span><label>风格：</label>中少淑、商务时尚</span>
+              <span><label>市场：</label>年轻女装品牌、</span>
+              <span><label></label>年轻商务男装</span>
+              <span><label></label>品牌</span>
+						</div>
+					</a>
+					<a class="mode3" href="/trends/relt_145/#anchor" title="网红智造" target="_blank" data-src="t-bg4.jpg" data-bg="top-tit3.png">
+						<img src="{STATIC_URL2}/global/topic/20190301/images/mode3.png?{STATIC_CHANGE_TIME}" alt="网红智造" />
+						<div>
+							<h3>网红智造</h3>
+							<p>MAKE KOL</p>
+							<span><label>风格：</label>先锋街潮风</span>
+							<span><label>市场：</label>年轻男女装潮流品牌、</span>
+							<span><label></label>街潮批发、设计师</span>
+							<span><label></label>潮牌</span>
+						</div>
+					</a>
+					<a class="mode4" href="/trends/relt_146/#anchor" title="情绪工业" target="_blank" data-src="t-bg5.jpg" data-bg="top-tit4.png">
+						<img src="{STATIC_URL2}/global/topic/20190301/images/mode4.png?{STATIC_CHANGE_TIME}" alt="情绪工业" />
+						<div>
+							<h3>情绪工业</h3>
+							<p>MOOD INDUSTRY</p>
+							<span><label>风格：</label>新锐设计风、棉麻风</span>	
+              <span><label>市场：</label>独立设计师品牌、</span>
+              <span><label></label>棉麻品牌</span>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="review-contain">
+	  		<div class="review-msg">
+	  			<img src="{STATIC_URL2}/global/topic/20190301/images/prev-title.png?{STATIC_CHANGE_TIME}" alt="往期回顾" />
+	  			<div class="review-cont">
+	  				<div class="left-btn js-left-btn"></div>
+  					<div class="right-btn js-right-btn"></div>
+	  				<div class="review-list">
+	  					<ul class="js-review-list clear">
+	  						
+			  			</ul>
+	  				</div>
+	  			</div>
+	  		</div>
+	  	</div>
+	  
+	</div>
+  	
+</div>
+
+{include file="topic/topic_layer.html"}
+{/block}
+
+
+{block name="self"}
+<script type="text/javascript">
+	var page_img_path_str="{STATIC_URL2}";
+	var page_js_path_str="{STATIC_URL3}";
+
+</script>
+<script type="text/javascript" src="{STATIC_URL3}/global/topic/20190301/js/index.js?{STATIC_CHANGE_TIME}"></script>
+{/block}

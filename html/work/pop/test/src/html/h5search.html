@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      [v-cloak] {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="vm" v-cloak>
+      <form action="javascript:return true;">
+        <input @keyup.13="show()" type="search" ref="ipt" v-model="val" />
+        <div>
+          <label for="">val:</label><span>{{ val }}</span>
+        </div>
+      </form>
+    </div>
+  </body>
+  <script src="./vue.js"></script>
+  <script>
+    new Vue({
+      el: "#vm",
+      data: {
+        val: ""
+      },
+      methods: {
+        show() {
+          this.$refs.ipt.blur();
+        }
+      }
+    });
+  </script>
+</html>

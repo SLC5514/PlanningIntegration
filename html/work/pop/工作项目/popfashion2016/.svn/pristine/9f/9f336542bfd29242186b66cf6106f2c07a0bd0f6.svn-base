@@ -1,0 +1,29 @@
+
+<div class="footerFixed">
+    <div class="con_width clearfix">
+        <span class="toClose"></span>
+        <div class="fl">
+            <ul>
+                <li>
+                    {if $P_UserType|in_array:[1,2]}
+                    <a class="sellBefore js-contact-qq-btn" href="javascript:void(0);" data-type="after" title="QQ咨询">QQ咨询</a>
+                    {elseif $P_UserType|in_array:[3,4]}
+                    <a class="sellBefore js-contact-qq-btn" href="javascript:void(0);" title="QQ咨询">QQ咨询</a>
+                    <a href="/service/joinmember/" class="beVip" target="_blank" title="成为VIP">成为VIP</a>
+                    {elseif $P_UserType eq 5}
+                    <a class="sellBefore js-contact-qq-btn" href="javascript:void(0);" title="QQ咨询">QQ咨询</a>
+                    <a href="/member/register/" target="_blank" class="toLogin" title="免费注册">免费注册</a>
+                    <a href="javascript:viod(0);" class="toEnter loginLayer" title="立即登录">立即登录</a>
+                    {/if}
+                </li>
+                <li><span class="Yline"></span></li>
+                <li>
+                    <span class="telPhone"><i></i>{if $P_UserType|in_array:[1,2]}4008-210-662{else}4008-210-500{/if}</span>
+                </li>
+            </ul>
+        </div>
+        <div class="fr popLogo">
+            <img src="{STATIC_URL2}/global/images/popLogo.png" alt="pic"/>
+        </div>
+    </div>
+</div>

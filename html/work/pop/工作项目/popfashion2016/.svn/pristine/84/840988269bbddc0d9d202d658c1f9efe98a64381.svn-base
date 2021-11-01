@@ -1,0 +1,157 @@
+{extends file="layout.html"}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/personal.css?{STATIC_CHANGE_TIME}">
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/pop_layer.css?{STATIC_CHANGE_TIME}">
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/new-detail/style-detail.css?{STATIC_CHANGE_TIME}">
+{/block}
+
+{block name="main"}
+<input id="encrypt" type="hidden" data-sign="{$sign}" data-timestamp="{$timeStamp}" data-token="{$token}">
+<div class="con_width">
+	<div class="con_main">
+        <div class="crumbs-nav-box">
+            <a href="/member/workbench/">个人中心</a><i>></i>工作台
+        </div>
+        <div class="work-bench-detail-header clearfix">
+            <div class="fl work-bench-detail-title">
+                <div class="js-work-name">{$work.sWbenchName}<span class="per_edit" data-id="{$work.iWorkbenchId}" data-flag=1 data-name="{$work.sWbenchName}" data-describe="{$work.sWbenchDesc}"></span></div>
+                <p>{$total}/9999</p>
+            </div>
+            <div class="fr work-bench-detail-manage js-detail-manage">
+                <a href="javascript:void(0);" class="all-select js-all-select" title="全选本页">全选本页</a>
+                <a href="javascript:void(0);" class="all-download js-all-download" title="下载">下载</a>
+                <a href="javascript:void(0);" class="all-delete js-all-delete" title="删除"><i></i>删除</a>
+            </div>
+        </div>
+		<!-- <div class="per_banner">
+			<img src="{STATIC_URL2}/global/images/per_banner.jpg">
+			<h3 class="tit">{$work.sWbenchName}</h3>
+			<p class="num_show"><span>共有{$total}张图</span></p>
+			<div class="per_bannerbg"></div>
+			<p class="pertext">
+				<span class="per_edit" data-id="{$work.iWorkbenchId}" data-flag=1 data-name="{$work.sWbenchName}" data-describe="{$work.sWbenchDesc}"><i></i>编辑</span>
+				<a href="/member/workbench/" title="返回"><span><i></i>返回</span></a>
+			</p>			
+			<div class="select-btn js-select-btn">
+				<button class="more-delete fl js-more-delete"><span class="span-icon"></span><span class="span-text js-span-text">批量管理</span></button>
+				<div class="select-bg fl js-select-bg">
+					<a href="javascript:void(0);" class="all-select js-all-select" title="全选">全选</a>
+					<a href="javascript:void(0);" class="all-delete js-all-delete" title="批量删除">批量删除</a>
+				</div>
+			</div>
+		</div> -->
+		
+		<div class="rightc_main">
+			<ul class="styles clearfix lazyload" id="benchlist">
+				{foreach $imgList as $key => $val}
+				<li class="clearfix" data-id="{$val.iImgId}">
+					<a class="img_a img_click" href="javascript:void(0);" data-path="{$val.sBigPath}" data-t="{$val.info.simpleName}" data-id="{$val.iPriId}" data-index="{$val.info.index}" data-total="{$total}" data-isuc="1"   data-col="{$val.iColumnId}" data-wbid="{$val.iWorkbenchId}" data-rename="{$val.rename}">
+						{if $val.sSmallPath}
+						<img src="{STATIC_URL2}/global/images/loading/style.gif" data-original="{$val.sSmallPath}" />
+						{else}
+						<img src="{STATIC_URL2}/global/images/loading/styleMR.jpg"  />
+						{/if}
+						<div class="pic_zz"></div>
+						<p class="img_p">
+							<span class="pic_zz1"><i></i></span>
+							<span class="pic_zz2"><i></i></span>
+						</p>
+					</a>
+					<div class="picTxt">
+						<p><a href="javascript:void(0);">{$val.info.iSeason_text}</a></p>
+						<p><a href="javascript:void(0);" title=="{$val.info.iCategory_text}">{$val.info.iCategory_text} </a><a href="javascript:void(0);" title="{$val.info.iSubcategory_text}">{$val.info.iSubcategory_text}</a></p>
+					</div>
+					<p class="Picpp">{$val.info.brandname}</p>
+					<span class="select-checkbox js-select-checkbox"></span>
+				</li>
+				{/foreach}
+			</ul>
+		</div>		
+		<!-- 删除选中内容弹窗 -->
+		<div class="delete-layer js-delete-layer"></div>
+		<div class="delete-section js-delete-section">
+			<p>确定从工作台删除选中的内容？</p>
+			<a href="javascript:void(0);" class="select-cancel js-select-cancel" title="取消">取消</a>
+			<a href="javascript:void(0);" class="select-comfirm js-select-comfirm" title="确定">确定</a>
+		</div>
+		<!--分页--页码开始-->
+			{$pageHtml}
+		<!--分页--页码结束-->
+	</div>
+</div>
+
+<div class="shadow_black"></div>
+<div class="pop_work pop_work_e">
+	<h2>创建工作台</h2>
+	<span class="closebtn"></span>
+	<div class="errTip">工作台名称不能为空！</div>
+	<div class="center_alert">
+		<div class="cta_row cta_row1 clearfix">
+			<label class="tableName">工作台名称：</label>
+			<input type="text" id="tableName" name="tableName" class="nameBox"/>
+			<input id="workBenchId" type="hidden" name="workBenchId" value="">
+		</div>
+		<div class="cta_row">
+			<label class="tableStatus">工作台描述：</label>
+			<textarea id="tableStatus" name="tableStatus" class="statusBox"></textarea>
+		</div>
+		<a href="javascript:void(0);" class="saveBtn" title="创建工作台">创建工作台</a>
+	</div>
+</div>
+<!-- 删除弹层 -->
+<div class="delete_pop">
+	<h4>是否确认删除？</h4> 
+	<input type='hidden' name='DeleteWorkBenchId' id='DeleteId'>
+	<p><a href="javascript:void(0);" class="sure" id="picDelete" title="删除">删除</a><a href="javascript:void(0);" class="cancel closebtn" title="返回">返回</a></p>
+</div>
+<!-- 填写下载包名称弹层 -->
+<div class="input-packages-name js-input-packages-name">
+    <h3>下载包名称</h3>
+    <p>输入你的下载名称，便于识别</p>
+    <textarea placeholder="可输入数字、中文、英文" class="js-textarea-box"></textarea>
+    <div class="handle-btn">
+        <a class="cancel-btn js-cancel-btn">取消</a>
+        <a class="confirm-btn js-confirm-btn">确认</a>
+    </div>
+</div>
+<!-- 生成包弹层 -->
+<div class="xiazai_pop js-create-package">
+	<p class="con_pop">已经生成下载，请等待10分钟后到<a href="/member/mydownload/" target="_blank">我的下载包</a>中进行下载！</p>
+	<a class="confirmBtn" title="查看下载包" href="/member/mydownload/">查看下载包</a>
+	<a class="confirmBtn js-confirmBtn" title="确定" href="javascript:void(0);">确定</a>
+</div>
+{/block}
+
+{block name="other"}
+<div class="pop_layer_page pop_layer_page1 work-bench-layer" id="pop_layer">
+{include file="detail_layer_template.html"}
+</div>
+{/block}
+
+{block name="self"}
+<script type="text/javascript" src="{STATIC_URL3}/global/js/secret/crypto-js/crypto-js.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/secret/jsencrypt.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/common/echarts.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL2}/global/js/workbench/workbench.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/common/imagesloaded.pkgd.min.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/common/template.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/util_pop3_pic.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/util.collect.js?{STATIC_CHANGE_TIME}"></script>
+{literal}
+<script>         
+    eval(function(p,a,c,k,e,d){e=function(c){return(c<a?"":e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)d[e(c)]=k[c]||e(c);k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1;};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p;}('8 B(2,b){D(C 2==\'x\'){2=w.n(2)}3 a=1.o.7(2,1.4.5.c(b),{r:1.4.5.c(\'e\')});9 1.4.s.n(a.y)};8 z(2,b){3 q=1.o.6(2,1.4.5.c(b),{r:1.4.5.c(\'e\')});9 q.A(1.4.5)};8 u(a){3 6=h d();6.t(v());p=6.6(R(a));9 p};8 T(m){3 7=h d();7.U(0());3 k=7.7(m);i=S(k).Q(/\\+/g,\'%X\');9 i};8 0(){3 0=\'-----Y l j-----\';0+=\'V+f+W\';0+=\'P\';0+=\'H+I\';0+=\'G\';0+=\'E/F/J\';0+=\'N/O+M\';0+=\'K\';0+=\'-----L l j-----\';9 0};',61,61,'pub_key|CryptoJS|plainText|var|enc|Utf8|decrypt|encrypt|function|return|encrypted|AES_KEY|parse|JSEncrypt|1234567887654301|||new|data_str|KEY|res|PUBLIC|str|stringify|AES|data_decrypted|decrypted|iv|Base64|setPrivateKey|rsa_decrypt|pri_key|JSON|object|ciphertext|aes_decrypt|toString|aes_encrypt|typeof|if|Avw5eS3UkIPixj4B0mZkhn9VZ9mOgBRgs9Lo|Ihc|GHGXr73iXRhLgqfQhC5dlMisbr3GqnGtPNVOBDYGtGgKS4mpaYzpO60kunooKmdH|3PSU5jrzuzDUEqZvEQaOHfKcUXRx3C61iR9iTnA6YCZLlIX3CnRJzYWCJNRjV|qp|hJXAk3kZvzQjIpzKrYAqHYp|hwIDAQAB|END|EfjuWjJxz02MuWsi|4cKyAfWCegA0G0fGo2aJWqpFrAg25FTDXFf0DRDz|AIEvJu|rcEaJOO94OSQsWzIQSGWM4yoVOVg85YKhW5JlwAHH53Zd8sASLk0ypQv5ze68zeS|replace|decodeURIComponent|encodeURI|rsa_encrypt|setPublicKey|MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1053Mcqn6WH|liJid6|2B|BEGIN'.split('|'),0,{}))
+</script>
+{/literal}
+<script type="text/javascript">
+window.onbeforeunload = function(){
+	if(delete_def.delete_suc==true){
+		return;
+	}
+	// var display=$(".js-select-bg").css('display');
+	if(delete_def.admin_btn==false){
+		return "当前页正在管理中，确定离开吗？";
+	}
+ }
+</script>
+{/block}

@@ -1,0 +1,450 @@
+
+
+<div class="new_header">
+	<div class="head-top js-head-top">
+		<div class="conleft fl">
+			<ul class="leftT clearfix">
+				<li class="webIco">
+					<a href="https://www.pop-fashion.com/" rel="nofollow" title="POP服装趋势"><img src="{STATIC_URL2}/global/images/vi_logo.png" alt="POP服装趋势"><i></i></a>
+					<!-- <span class="new-year"></span> -->
+					<div class="allWeb">
+						<ul class="leftlists">
+							<li><a href="https://www.pop-fashion.com/" target="_blank" rel="nofollow" title="服装"><em class="fashion"></em>服装</a></li>
+							<li><a href="http://www.pop-bags.com/" target="_blank" rel="nofollow" title="箱包"><em class="bag"></em>箱包</a></li>
+							<li><a href="http://www.pop-shoe.com/" target="_blank" rel="nofollow" title="鞋子"><em class="shoe"></em>鞋子</a></li>
+							<li><a href="http://www.51shoushi.com/" target="_blank" rel="nofollow" title="首饰"><em class="dec"></em>首饰</a></li>
+                            <li><a href="http://www.91jiafang.com/" target="_blank" rel="nofollow" title="家纺"><em class="home"></em>家纺</a></li>
+                            <li><a href="http://yuntu.pop136.com/" target="_blank" rel="nofollow" title="云图"><em class="yuntu"></em>云图</a></li>
+							<li><a href="http://www.pop136.com/" target="_blank" rel="nofollow" title="官网"><em class="guanw"></em>官网</a></li>
+                            <!-- <li class="popli"><a href="http://www.pop136.com/lecture/" target="_blank" rel="nofollow" title="POP趋势讲堂"><em class="jiangt"></em>POP趋势讲堂</a></li> -->
+							<!--{if $randAuthKey && in_array($P_UserType,[1,2])}-->
+							<!--<li>-->
+								<!--<a href="http://www.mynfd.com/index.php?key={$randAuthKey}" target="_blank" title="趋势参考"><em class="qushi"></em>趋势参考</a>-->
+							<!--</li>-->
+                            <!--{/if}-->
+                            <!--<li><a href="https://fashiontrend.productai.cn/index" target="_blank" rel="nofollow" title="FASHIONTREND"><em class="fashi"></em>FASHIONTREND</a></li>-->
+						</ul>
+					</div>
+				</li>
+				<li class="fg-line"></li>
+				<li class="langU js-leftT">
+					<a class="ch-lang" title="中文"><em></em>中文<i></i></a>
+					<div class="lang-list js-lang-list">
+						<!-- <a class="korea-lang" href="http://k.pop-fashion.com" target="_blank"><em></em>한국어</a> -->
+						<a class="eng-lang" href="https://www.popfashioninfo.com/" target="_blank" title="English"><em></em>English</a>
+					</div>
+				</li>				
+				<li class="web_use_li">
+					<a href="http://yuntu.pop136.com/" rel="nofollow" target='_blank' title="云图"><em></em>云图</a>
+				</li>
+                <li class="trend_app_li">
+                <a href="https://www.pop-fashion.com/topic/trend_app/" rel="nofollow" target='_blank' title="趋势APP"><em></em>趋势APP</a>
+                </li>
+				<!-- <li class="kh_down_li">
+					<a href="http://www.pop136.com/pop_exe.php" target="_blank" rel="nofollow" title="客户端"><em></em>客户端</a>
+				</li> -->
+			</ul>			
+		</div>
+		<div class="conright fr" id="mybiy">
+			<ul class="head_li clearfix">
+				<li class="tel-and-qq js-tel-and-qq">
+					<a class="tel-icon" href="javascript:void(0);"><em></em></a>
+					<div class="tel-downlist js-tel-downlist">
+						<p class="shouqian-tel"><em></em><span>4008-210-500</span>（售前客服）</p>
+						<p class="shouhou-tel"><em></em><span>4008-210-662</span>（售后小秘书）</p>
+						<a class="qq-contact js-contact-qq-btn" href="javascript:void(0);" data-type="{if $P_UserType|in_array:[1,2]}after{/if}" title="QQ咨询"><em></em>QQ咨询</a>
+					</div>
+				</li>
+				<li class="total_search">
+					<div class="search-box js-search-box">
+						<input class="search-btn js-search-btn" type="button">
+						<input type="text" class="Itext js-Itext" placeholder="搜索" growing-track="true">
+						<div class="search_listDown">
+							<div class="menu"></div>
+                            <div class="hot-menu">
+                                <div class="menu-hot-list">
+                                    <div class="label js-history-label">历史记录<div class="fr"><span class="operat js-clear-operat">清除记录</span></div></div>
+                                    <ul class="history-list"></ul>
+                                    <div class="label">热门搜索</div>
+                                    <ul class="hot-list"></ul>
+                                </div>
+							</div>
+							<!-- <div class="look-brand-box">
+								<a class="look-all-brand js-look-all-brand" href="javascript:void(0)" title="查看所有品牌">查看所有品牌<em></em></a>
+							</div> -->
+						</div>
+						<!-- 上传图片 -->
+						<!-- <div class="upload-files js-figure-btn"></div> -->
+					</div>
+				</li>
+				<li class="find-color">
+                    <a href="/Colorsearch/" title="色彩搜图"><em></em>色彩搜图</a>
+                </li>
+                <li class="find-camera js-figure-btn">
+                    <a title="以图搜图"><em></em>以图搜图</a>
+                </li>
+				<li class="fg-line"></li>
+				{if $account eq '' && $accountShow neq 'true'}
+				<li class="login_li">
+					<a href='javascript:void(0);' class='loginLayer' rel="nofollow" title="登录"><span class="lg"></span>登录</a>
+				</li>
+				<li class="fg-line white-line"></li>
+				<li class="rgSearch">
+					<a class="redRg" href="/member/register/" rel="nofollow" title="注册"><span class="rg"></span>注册</a>
+				</li>
+				{else}
+				<li class="information_li">
+					<a class="infor_a" href='/member/message/' title="消息">消息{if $issetNewMessage}<span class="ix"></span>{/if}</a>
+				</li>
+				<li class="returnLi js-returnLi">
+                    <em></em>
+                    <span>{$account|truncate:9:"...":true}</span>
+                    <i></i>
+                    <!-- <a href="/member/logout/" id="loginout" class="lout" title="退出">退出</a> -->
+                    <div class="forUl js-forUl" style="display:none;width: 138px;">
+                        {if $canChangLoginAccount}
+							{if $P_AccountType=="main"}
+							<div class="forLi switch js-switch" data-type="1">
+								<em class=""></em>
+								<span>切换成设计师账号</span>
+							</div>
+							<label style="top:-20px;">(管理员账号)</label>
+							{else}
+							<div class="forLi switch js-switch" data-type="2">
+								<em class=""></em>
+								<span>切换成管理员账号</span>
+							</div>
+							<label style="top:-20px;">(设计师账号)</label>
+							{/if}
+						{/if}
+						<div class="forLi myStudio js-myStudio">
+							<a href="/member/workbench/" title="我的工作室">
+								<em class=""></em>
+								<span>我的工作室</span>
+							</a>
+						</div>
+						<div class="forLi myFavorites js-myFavorites">
+							<a href="/member/mycollect/" title="我的收藏">
+								<em class=""></em>
+								<span>我的收藏</span>
+							</a>
+                        </div>
+                        <div class="forLi myHistory">
+                            <a href="/member/myHistory/4/" title="浏览历史">
+								<em class=""></em>
+								<span>浏览历史</span>
+							</a>
+                        </div>
+                        <div class="forLi signOut js-signOut">
+                            <em class=""></em>
+                            <span>退出登录</span>
+                        </div>
+                    </div>
+				</li>
+                <!-- 切换账号验证弹层 -->
+                <div class="switch-box js-switch-box" style="display: none;">
+                    <div class="loginClose js-loginClose"></div>
+                    <div class="login-title">
+                        <span>请先进行身份验证</span>
+                    </div>
+                    <div class="login-main">
+                        <p class="errorbox errorbox3" style="top:0px;"></p>
+                        <ul>
+                            <li><input class="js-account" type="text" placeholder="请输入手机号"/></li>
+                            <li>
+                                <input class="js-switch-code" type="text" placeholder="请输入验证码"/>
+                                <span class="code-btn js-code-btn1">获取验证码</span>
+                            </li>
+                            <li class="l_drag border-none" style="padding-top: 15px;border: none;position: relative;">
+                                <div class="code_btn js-click-btn" data-cla=".js-puzzle-drag-content5">点击按钮完成图形验证</div>
+                                <div class="puzzle-drag-wraper js-drag-show" style="display: none;">
+                                    <s class="drag-s"></s>
+                                    <t class="drag-t"></t>
+                                    <div class="puzzle-drag-content js-puzzle-drag-content5">
+                                        <div class="drag-title clearfix">
+                                            <span>为保证你的账户安全，请先完成图形验证</span>
+                                            <span class="close js-close"></span>
+                                            <span class="change js-change"><i></i>换一换</span>
+                                        </div>
+                                        <div class="puzzle-img-box">
+                                            <div class="puzzle-img js-puzzle-img">
+                                                <img>
+                                            </div>
+                                            <div class="puzzle-lost js-puzzle-lost">
+                                                <img>
+                                            </div>
+                                        </div>
+                                        <div class="drag-slide-nav">
+                                            <div class="drag-slide-text">
+                                                <div class="drag-slide-left"></div>
+                                                <div class="drag-slide-center">向右滑动完成拼图</div>
+                                                <div class="drag-slide-right"></div>
+                                            </div>
+                                            <div class="drag-slide-bar js-drag-slide-bar">
+                                                <div class="drag-slide-bar-left"></div>
+                                                <div class="drag-slide-bar-center"></div>
+                                                <div class="drag-slide-bar-right"></div>
+                                            </div>
+                                            <div class="drag-slide-btn js-drag-slide-btn"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="switch-btn js-changeUser">提交</div>
+                    </div>
+                </div>
+                <!-- 弹层背景 -->
+                <div class="switch-bg js-switch-bg" style="display: none;"></div>
+				{/if}
+                {if $P_UserType eq 5 || $P_UserType eq 4}
+				<li class="apply-try js-contact-qq-btn">
+					<a href="javascript:void(0);" title="咨询VIP服务">咨询VIP服务</a>
+				</li>
+                {/if}
+				<li class="like">
+					<a class="" href="http://www.pop136.com/product_help.php">帮助中心</a>
+				</li>
+				<li class="all-nav-li js-all-nav-li">
+					<span></span>
+				</li>
+			</ul>
+		</div>
+    </div>
+    <input type="hidden" id="remind-time" value="{$vipTips}"/>
+    {if $vipTips<=90 && $vipTips>7}
+    <div class="remind-list">
+        <div class="interval"></div>
+        <span>
+            <img src="{STATIC_URL2}/global/images/remind.png?{STATIC_CHANGE_TIME}" alt="remind">
+            您的会员账号即将到期，提前续约更享<span>惊喜好礼</span> 立即联系 4008-210-662
+        </span>
+        <a href="javascript:void(0);" onclick="return false" title="关闭"><img class="js-remind-close" src="{STATIC_URL2}/global/images/remind-close.png?{STATIC_CHANGE_TIME}" alt="关闭"></a>
+    </div>
+    {elseif $vipTips<=7 && $vipTips>=1}
+    <div class="remind-list active">
+        <div class="interval"></div>
+        <span>
+            <img src="{STATIC_URL2}/global/images/remind.png?{STATIC_CHANGE_TIME}" alt="remind">
+            您的会员账号到期时间只剩<span>{$vipTips}</span>天，为了不影响您的正常使用 请立即联系 4008-210-662
+        </span>
+        <a href="javascript:void(0);" onclick="return false" title="关闭"><img class="js-remind-close" src="{STATIC_URL2}/global/images/remind-close.png?{STATIC_CHANGE_TIME}" alt="关闭"></a>
+    </div>
+    {elseif $vipTips=='today'}
+    <div class="remind-list active">
+        <div class="interval"></div>
+        <span>
+            <img src="{STATIC_URL2}/global/images/remind.png?{STATIC_CHANGE_TIME}" alt="remind">
+            您的会员账户今天即将到期，为不影响您的正常使用 请立即联系 4008-210-662
+        </span>
+        <a href="javascript:void(0);" onclick="return false" title="关闭"><img class="js-remind-close" src="{STATIC_URL2}/global/images/remind-close.png?{STATIC_CHANGE_TIME}" alt="关闭"></a>
+    </div>
+    {/if}
+	<div class="new_nav_box">
+		<div class="contentNew clearfix">
+			<div class="new_lanmu">
+				<ul class="clearfix">
+					<li class="nl_hover switch-area js-switch-area  {if $is_relate}selected{/if}">
+						{if $account eq '' && $accountShow neq 'true'}
+						<a href="/" class="nl_a" title="切换专区"><em></em>切换专区</a>
+						{else}
+						<a href="/" class="nl_a" title="今日推荐">今日推荐<span class="hover-bar"></span></a>
+						{/if}
+						<div class="navshaixuan-list">
+							<ul class="small-fenlei js-area-box">
+								<li class="clearfix"><a href="javascript:void(0);" data-id="2" data-key="gen" title="女装"><em>女装</em></a></li>
+								<li class="clearfix"><a href="javascript:void(0);" data-id="1" data-key="gen" title="男装"><em>男装</em></a></li>
+								<li class="clearfix"><a href="javascript:void(0);" data-id="5" data-key="gen" title="童装"><em>童装</em></a></li>
+								<li class="fenge-area-line"></li>
+								<li class="clearfix"><a href="javascript:void(0);" data-id="1" data-key="reg" title="日韩专区"><em>日韩专区</em></a></li>
+								<li class="clearfix"><a href="/fabriczone/" title="面料专区"><em>面料专区</em></a></li>
+								<li class="fenge-area-line"></li>
+								<li class="clearfix"><a href="javascript:void(0);" data-id="6" data-key="ind" title="毛衫"><em>毛衫</em></a></li>
+								<li class="clearfix"><a href="javascript:void(0);" data-id="7" data-key="ind" title="牛仔"><em>牛仔</em></a></li>
+								<li class="clearfix"><a href="javascript:void(0);" data-id="8" data-key="ind" title="皮革/皮草"><em>皮革/皮草</em></a></li>
+								<li class="clearfix"><a href="javascript:void(0);" data-id="9" data-key="ind" title="内衣/泳装"><em>内衣/泳装</em></a></li>
+								<li class="clearfix"><a href="javascript:void(0);" data-id="10" data-key="ind" title="婚纱/礼服"><em>婚纱/礼服</em></a></li>
+								<li class="clearfix"><a href="javascript:void(0);" data-id="11" data-key="ind" title="运动"><em>运动</em></a></li>
+							</ul>
+							{if $account eq '' && $accountShow neq 'true'}
+							<a class="back-index-page" href="/" title="切换专区"><em></em>切换专区</a>
+							{else}
+							<a class="back-index-page" href="/" title="今日推荐"><em></em>今日推荐</a>
+							{/if}
+						</div>
+					</li>
+					<li class="nl_hover fg-line"></li>
+					<li class="nl_hover has_down {if $columnPid == 1}selected{/if}">
+						<a class="nl_a" href="/trends/" title="趋势解读">趋势解读<span class="hover-bar"></span></a>						
+						<div class="downlist_box">
+							<span class="list-line"></span>
+							<ul>
+								<li><a href="/trends/" title="全部">全部</a></li>
+								<li><a href="/trends/color/" title="主题色彩">主题色彩</a></li>
+								<li><a href="/trends/pattern/" title="图案趋势">图案趋势</a></li>
+								<li><a href="/trends/material/" title="面辅料趋势">面辅料趋势</a></li>
+								<li><a href="/trends/craft/" title="工艺趋势">工艺趋势</a></li>
+								<li><a href="/trends/silhouette/" title="廓形趋势">廓形趋势</a></li>
+								<li><a href="/trends/design/" title="企划/组货">企划/组货</a></li>
+								<li><a href="/trends/capsules/" title="快反应">快反应</a></li>
+							</ul>								
+						</div>
+					</li>
+					<li class="nl_hover has_down {if $columnPid == 2}selected{/if}">
+						<a class="nl_a" href="/analysis/" title="流行分析">流行分析<span class="hover-bar"></span></a>						
+						<div class="downlist_box">
+							<span class="list-line"></span>
+							<ul>
+								<li><a href="/analysis/" title="全部">全部</a></li>
+                                <li><a href="/analysis/tops/" title="爆款数据">爆款数据</a></li>
+								<li><a href="/analysis/runways/" title="T台分析">T台分析</a></li>
+								<li><a href="/analysis/shows/" title="订货会分析">订货会分析</a></li>
+								<li><a href="/analysis/online/" title="设计师品牌分析">设计师品牌分析</a></li>
+								<li><a href="/analysis/retail/" title="标杆品牌分析">标杆品牌分析</a></li>
+								<li><a href="/analysis/market/" title="市场分析">市场分析</a></li>
+								<li><a href="/analysis/fairs/" title="展会分析">展会分析</a></li>
+								<li><a href="/analysis/trendsetters/" title="明星&街拍分析">明星&街拍分析</a></li>
+								<!-- <li><a href="/analysis/street/" title="街拍分析">街拍分析</a></li> -->
+								<!-- <li><a href="/analysis/reports/" title="行业报道">行业报道</a></li> -->
+							</ul>
+						</div>
+					</li>
+					<li class="nl_hover fg-line"></li>
+					<li class="nl_hover has_down {if $columnPid == 4}selected{/if}">
+						<a class="nl_a" href="/styles/" title="款式">款式<span class="hover-bar"></span></a>						
+						<div class="downlist_box">
+							<span class="list-line"></span>
+							<ul>
+								<li><a href="/styles/" title="全部">全部</a></li>
+								<li><a href="/styles/runways/" title="秀场提炼">秀场提炼</a></li>
+								<li><a href="/styles/shows/" title="订货会精选">订货会精选</a></li>
+								<li><a href="/styles/designerbrand/" title="设计师品牌">设计师品牌</a></li>
+								<li><a href="/styles/online/" title="名牌精选">名牌精选</a></li>
+								<li><a href="/styles/popular/" title="款式流行">款式流行</a></li>
+								<li><a href="/styles/retail/" title="全球实拍">全球实拍</a></li>
+								<li><a href="/styles/trendsetters/" title="明星/ins">明星/ins</a></li>
+								<li><a href="/styles/streetsnaps/" title="街拍图库">街拍图库</a></li>
+							</ul>
+						</div>
+					</li>
+					<li class="nl_hover has_down {if $columnPid == 9}selected{/if}">
+						<a class="nl_a" href="/patterns/graphics/" title="图案">图案<span class="hover-bar"></span></a>						
+						<div class="downlist_box">
+							<span class="list-line"></span>
+							<ul>
+								<li><a href="/patterns/graphics/" title="图案素材">图案素材</a></li>
+								<li><a href="/patterns/topbrands/" title="大牌花型">大牌花型</a></li>
+								<li><a href="/patterns/specialtopicpatterns/" title="图案专题">图案专题</a></li>
+								<li><a href="/patterns/technics/" title="图案工艺">图案工艺</a></li>
+								<li><a href="/patterns/digitalprint/" title="数码云打印">数码云打印</a></li>
+							</ul>
+						</div>
+					</li>
+					<li class="nl_hover has_down {if $columnPid == 3}selected{/if}">
+						<a class="nl_a" href="/runways/" title="T台">T台<span class="hover-bar"></span></a>						
+						<div class="downlist_box">
+							<span class="list-line"></span>
+							<ul>
+								<li><a href="/runways/" title="全部">全部</a></li>
+								<li><a href="/runways/reg_272/" title="巴黎时装周">巴黎时装周</a></li>
+								<li><a href="/runways/reg_341/" title="纽约时装周">纽约时装周</a></li>
+								<li><a href="/runways/reg_335/" title="米兰时装周">米兰时装周</a></li>
+								<li><a href="/runways/reg_323/" title="伦敦时装周">伦敦时装周</a></li>
+								<li><a href="/runways/reg_other/" title="其它">其它</a></li>
+							</ul>
+						</div>
+					</li>
+					<li class="nl_hover has_down {if $columnPid == 7 || $columnPid == 8}selected{/if}">
+						<a class="nl_a" href="/references/details/" title="素材">素材<span class="hover-bar"></span></a>
+						<div class="downlist_box downlist_box2 downlist_references">
+							<span class="list-line"></span>
+							<ul>
+								<li><a href="/references/details/" title="款式细节">款式细节</a></li>
+								<li><a href="/references/design/" title="款式手稿">款式手稿</a></li>
+								<li><a href="/references/visual/" title="店铺陈列">店铺陈列</a></li>
+								<li><a href="/references/fabricgallery/" title="展会面料">展会面料</a></li>
+								<li><a href="/references/accessories/" title="服饰品">服饰品</a></li>
+								<li><a href="/inspiration/" title="灵感源">灵感源</a></li>
+								<li><a href="/inspiration/video/" title="灵感视频">灵感视频</a></li>
+							</ul>
+						</div>
+                    </li>
+                    <li class="nl_hover has_down {if $columnPid == 6}selected{/if}">
+						<a class="nl_a" href="/books/lookbook/" title="读物">读物<span class="hover-bar"></span></a>
+						<div class="downlist_box">
+							<span class="list-line"></span>
+							<ul>
+								<li><a href="/books/lookbook/" title="广告大片">广告大片</a></li>
+								<li><a href="/books/ordermeeting/" class="js-ordermeeting" title="订货会合辑">订货会合辑</a></li>
+								<li><a href="/books/collections/" title="单品合辑">单品合辑</a></li>
+								{if $P_UserType|in_array:[1,2,3]}
+								<li><a href="/books/store/" title="趋势手稿">趋势手稿</a></li>
+								{/if}
+								<li><a href="/books/fast/" title="快反应系列">快反应系列</a></li>
+								<li><a href="/books/magazine/" title="流行画册">流行画册</a></li>
+							</ul>
+                        </div>
+                    </li>
+                    <li class="nl_hover {if $columnPid ==10}selected{/if}"><a class="nl_a" href="/video/" title="视频">视频<span class="hover-bar"></span></a></li>
+                    <li class="nl_hover fg-line"></li>
+                    <li class="nl_hover has_down design_tools">
+						<a class="nl_a" href="https://appmfz0ensy5593.pc.xiaoe-tech.com/page/800948" target="_blank" title="在线课堂"><em></em>在线课堂<i></i><span class="hover-bar"></span></a>
+						<div class="downlist_box">
+							<span class="list-line"></span>
+							<ul>
+								<!-- <li><a href="/runways/" title="智能色彩分析">智能色彩分析</a></li>
+								<li><a href="/runways/reg_272/" title="虚拟样衣">虚拟样衣</a></li>
+								<li><a href="/topic/20171209/" target="_blank" title="工具简介">工具简介</a></li>								
+								<li><a class="js-figure-btn" href="javascript:void(0)" title="智能识别">智能识别</a></li>
+								<li><a href="/topic/yuntu/" target="_blank" title="云图">云图</a></li> -->
+								<li><a href="https://appmfz0ensy5593.pc.xiaoe-tech.com/page/827920" target="_blank" title="行业课程">行业课程</a></li>								
+								<li><a href="https://appmfz0ensy5593.pc.xiaoe-tech.com/page/828792" target="_blank" title="趋势讲堂">趋势讲堂</a></li>
+							</ul>
+						</div>
+                    </li>
+                    <li class="nl_hover has_down service_resources">
+                        <a class="nl_a" href="/topic/resources/" title="研发资源"><em></em>研发资源<span class="hover-bar"></span></a>
+                        <div class="downlist_box">
+                            <span class="list-line"></span>
+                            <ul>
+                                <li><a href="/topic/20171129/" target="_blank" title="设界">设界</a></li>
+                                <li><a href="/item/" target="_blank" title="商城">商城</a></li>
+                                <li><a href="http://www.uliaobao.com/" target="_blank" title="优料宝">优料宝</a></li>
+                                <li><a href="/topic/20171208/" target="_blank" title="找料帮">找料帮</a></li>
+                                <li><a href="/activity/lists/" target="_blank" title="时尚商学院">时尚商学院</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nl_hover find-brand">
+                        <a class="nl_a" href="/brands/" target="_blank" title="发现品牌"><em></em>发现品牌<span class="hover-bar"></span></a>
+                    </li>
+                    <li class="nl_hover has_down intelligent">
+                        <a class="nl_a" href="/smarttrends/" title="智能+">
+                            <span class="js-intelligent-gif">
+                                <img class="png" src="{STATIC_URL2}/global/images/color_data/intelligent.png?{STATIC_CHANGE_TIME}" alt="">
+                                <img class="gif" src="{STATIC_URL2}/global/images/color_data/intelligent.gif?{STATIC_CHANGE_TIME}" alt="">
+                            </span>
+                        <span class="hover-bar"></span></a>
+                        <div class="downlist_box">
+                            <span class="list-line"></span>
+                            <ul>
+                                <li><a href="/smarttrends/colordata/" target="_blank" title="色彩数据">色彩数据</a></li>
+                                <li><a href="/smarttrends/topstyles/" target="_blank" title="款式热榜">款式热榜</a></li>
+                                <li><a href="https://yuntu.pop136.com/" target="_blank" title="2D&3D试衣">2D&3D试衣</a></li>
+                                <li><a href="/picmatch/similarpic/" target="_blank" title="以图搜图">以图搜图</a></li>
+                                <li><a href="/patterns/patternRecommend/" target="_blank" title="智能推荐">智能推荐</a></li>
+                                <li><a href="/Colorsearch/" target="_blank" title="色彩搜图">色彩搜图</a></li>
+                                <li><a href="/topic/yuntu/" target="_blank" title="云图">云图</a></li>
+                            </ul>
+                        </div>
+                    </li>
+				</ul>
+			</div>
+		</div>
+    </div>
+	{include file="common/header_nav_down.html"}
+</div>
+<!-- 侧边绑定手机号 -->
+<div class="bindPhone js-open-quick-login open-quick-login"></div>
+
+

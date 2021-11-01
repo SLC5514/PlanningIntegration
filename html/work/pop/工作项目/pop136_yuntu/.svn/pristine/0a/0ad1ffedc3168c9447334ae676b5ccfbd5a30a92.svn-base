@@ -1,0 +1,175 @@
+{extends file="layout.html"}
+{block name="selfcss"}
+	<link rel="stylesheet" type="text/css" href="{$smarty.const.STATIC_URL1}/global/css/login/login.css?{$smarty.const.STATIC_CHANGE_TIME}">
+{/block}
+
+{block name="header"}
+<div class="new-header clear">
+	<a class="home-btn" href="https://yuntu.pop136.com/home" title="云图"><img src="{$smarty.const.STATIC_URL2}/global/images/common/logo-init.png" alt="POP">云图</a>
+	
+	{if $google_select_show}
+    <div id="google_translate_element" style="top:0;"></div>
+    {/if}
+	<a class="btn btn1 btn-type2" href="/user/register/" title="去注册">注册，立即试用</a>
+	<a class="btn btn1 btn-type1" href="/user/login/" title="去登录">登录</a>
+	<div>
+		<span class="icon tel-icon1"></span>4008-210-500 <label>（售前）</label>
+		<span class="icon tel-icon2"></span>4008-210-662<label>（售后）</label>
+		
+	</div>
+	
+</div>
+{/block}
+
+{block name="main"}
+<!-- 登录框 -->
+<div class="login-section">
+	<div class="section clear">
+		<div class="product-div">
+			<img class="pic1" src="{$smarty.const.STATIC_URL2}/global/images/login/6.png?{$smarty.const.STATIC_CHANGE_TIME}" alt="icon">
+			<!-- <a class="item4" href="/topic/20180919/" title="智能设计" target="_blank">智能设计</a> -->
+			<span class="item1">模拟成品</span>
+			<span class="item2">图案库</span>
+			<span class="item3">图搜图</span>
+		</div>
+		<div class="login-div">
+			<h3 class="clear">
+				<span>账号登录</span>
+				<a class="btn-color1" href="/user/register/" title="注册试用">注册试用</a>
+			</h3>
+			<form class="js-form-ele" name="loginForm" action="" method="POST" target="_self" autocomplete="off">
+				<!--隐藏域-->
+				<input type="hidden" name="" value="">
+				<!-- 账户 -->
+				<input class="input-area js-input-area" name="account" type="text" id="username" placeholder="请输入账号">
+				<p class="error-p js-error-ele"><span class="icon"></span>请输入正确的用户名</p>
+				<!-- 密码 -->
+				<input class="input-area js-input-area" name="password" type="password" id="password" placeholder="请输入登录密码">
+                <p class="error-p js-error-ele"><span class="icon"></span>请输入正确的密码</p>
+				<!-- 图片验证码 -->
+				<span class="code-span clear">
+					<input class="input-area js-input-area js-code" id="code" name="verify_code" type="text" placeholder="请输入验证码" maxlength="4"/>
+					<img class="js-img-code-btn" src="/user/imgcaptcha/yuntu_login_code/" alt="img-code"/>
+				</span>
+                <p class="error-p js-error-ele"><span class="icon"></span>请输入正确的验证码</p>
+                <!-- 记住用户名 -->
+                <div style="float: left;">
+                    <input name="user" id="userBox" style="vertical-align: -2px;" type="checkbox" value="" />
+                    <span>记住用户名</span>
+                </div>
+				<!-- 密码相关 -->
+				<div class="pass-method clear not-selected">
+					<!-- <input id="check-area" class="hide" name="checkbox1" type="checkbox" value="">
+					<label class="js-check-area" for="check-area"><img src="<%$WEB_GLOBAL_IMG_URL_NEW%>/global/src/images/login/n-check.png" alt="icon">30天内免登陆</label> -->
+					<a href="/user/findpasswordview/" title="忘记密码">忘记密码？</a>
+				</div>
+				<!-- 提交按钮 -->
+				<input type="button" value="立即登录" class="login-btn js-login-btn">
+			</form>
+		</div>
+	</div>
+</div>
+<div class="introduction-section section clear">
+	<h3> “云图”是一套帮助服饰企业进行图案、面料等图像类设计开发的智能系统</h3>
+	<ul>
+		<!-- <li>
+			<img src="{$smarty.const.STATIC_URL2}/global/images/login/7.png?{$smarty.const.STATIC_CHANGE_TIME}" alt="icon">
+			<div>
+				<h3>一分钟在线制作原创花型</h3>
+				<p>智能设计提供了大量素材，让您在1分钟内快速实现想要的花型，<br/>从设计要验证效果在云图一步搞定</p>
+			</div>
+		</li> -->
+		<li>
+			<img src="{$smarty.const.STATIC_URL2}/global/images/login/2.png" alt="icon">
+			<div>
+				<h3>图像识别,节省成本</h3>
+				<p>将智能图像识别技术运用到资讯领域，<br/>帮助客户高效进行图案的可行性验证和延展，简化流程，节省成本</p>
+			</div>
+		</li>
+		<li>
+			<img src="{$smarty.const.STATIC_URL2}/global/images/login/3.png" alt="icon">
+			<div>
+				<h3>本地上传,样衣模拟演示</h3>
+				<p>客户可使用本地上传功能， <br/>不限次地上传自有素材到云图上进行样衣模拟演示</p>
+			</div>
+		</li>
+		<li>
+			<img src="{$smarty.const.STATIC_URL2}/global/images/login/4.png" alt="icon">
+			<div>
+				<h3>27万款图案库,查找相似图案</h3>
+				<p>客户自有图案可与数量27万以上的POP图案库关联，<br/>查找相似图案(含位图/矢量图)并下载</p>
+			</div>
+		</li>
+		<li>
+			<img src="{$smarty.const.STATIC_URL2}/global/images/login/5.png" alt="icon">
+			<div>
+				<h3>免费使用,提供定制模板服务</h3>
+				<p>提供不同品类的基础模板，免费给到客户使用，并提供定制模板服务</p>
+			</div>
+		</li>
+	</ul>
+	<img src="{$smarty.const.STATIC_URL2}/global/images/login/1.png?{$smarty.const.STATIC_CHANGE_TIME}" alt="pic">
+</div>
+<div class="define-pop-section">
+	<div class="section">
+		<h3>POP（全球）时尚网络机构<br/>国际时尚资讯服务平台</h3>
+		POP提供服装、箱包、鞋子、首饰、家纺等设计所需的流行资讯，<br/>
+		专业为设计师提供前沿趋势资讯，海量流行趋势分析报告、款式素材、设计手稿等十几个方面，是行业内服务较全面的时尚资讯平台。
+	</div>
+</div>
+<div class="company-info-section section clear">
+	<div class="tel-div">
+		<h3><span class="icon"></span>联系方式</h3>
+		业务咨询：<span>4008 210 500</span><br/>
+		客服热线：<span>4008 210 662</span><br/>
+		周一至周日：09:00-22:00
+	</div>
+	<div class="company-site">
+		<h3><span class="icon"></span>公司地址</h3>
+		公司总部：上海市虹桥商务区双联路158号东隆大厦3楼<br/>
+
+		广州分部： 广州市海珠区（新港西路82号）轻纺交易园D区时尚发布中心二楼设界2017-2044<br/>
+
+		浙江分部-杭州： 浙江省杭州市江干区德胜东路3333号东大门交易中心B区1027室<br/>
+
+		浙江分部-桐乡： 浙江省桐乡市濮院国际品牌中心B楼交易区320创意广场4F10<br/>
+
+		土耳其分部： Yenidogan mahallesi. 48 sok. No:156 zeytinburnu/Istanbul
+	</div>
+	<div class="weixin-div">
+		<h3>官服微信服务号</h3>
+		<img src="{$smarty.const.STATIC_URL2}/global/images/common/weixin-code.png" alt="weixin-code">
+	</div>
+</div>
+{/block}
+
+{block name="footer"}
+<!-- footer start -->
+<div class="footer">
+    <span>上海逸尚云联信息技术股份有限公司 © 2004-2020 法律顾问：北京中银（上海）律师事务所 <a href="http://www.beian.miit.gov.cn/" target="_blank">沪ICP备06003020号-1</a></span>
+</div>
+<!-- footer end -->
+<!-- 悬浮留资框 -->
+<div class="footwrap">
+    <div class="w1200">
+        <p class="txt1">限时免费领取POP云图<i></i>试用</p>
+        <div class="input-box">
+            <span id="msg" class="msg">请输入正确的手机号</span>
+            <input type="text" placeholder="输入您的手机号码免费领取" maxlength="11" id="val1">
+        </div>
+        <a class="free-get js-free-get" href="javascript:void(0);">免费领取</a>
+    </div>
+</div>
+<!-- 提交提示 -->
+<div class="sem-fail js-sem-layer">
+    <span class="fail-txt">提交失败</span>
+    <span class="success-txt">提交成功</span>
+    <label class="fail-txt">再试着重新填写一次吧 </label>
+    <label class="success-txt">您的专属顾问将会尽快与您联系 </label>
+    <div class="fail-btn js-sem-close" data-sta='1'>我知道啦</div>
+    <div class="sem-close js-sem-close" data-sta='1'></div>
+</div>
+{/block}
+{block name="self"}
+	<script type="text/javascript" src="{$smarty.const.STATIC_URL3}/global/js/login/login.js?{$smarty.const.STATIC_CHANGE_TIME}"></script>
+{/block}

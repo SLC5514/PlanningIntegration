@@ -1,0 +1,75 @@
+{extends file="layout.html"}
+{block name="selfcss"}
+<!--此区域引入本页需要的css-->
+<link rel="stylesheet" href="{STATIC_URL2}/global/css/report/report-book-list.css?{STATIC_CHANGE_TIME}">
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/topic/common/css/h5-common.css?{STATIC_CHANGE_TIME}">
+{/block}
+{block name="self"}
+<!--此区域引入本页需要的js文件-->
+<script type="text/javascript" src="{STATIC_URL3}/global/js/common/perfect-scrollbar.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/report/report-book-list.js?{STATIC_CHANGE_TIME}"></script>
+{/block}
+{block name="main"}
+{include file="topic/common/h5-header.html"}
+<div class="report-book-list-box clearfix js-report-book-list-box">
+    <div class="fl clearfix">
+        <img class="fl" src="{STATIC_URL3}{$reportBookCatalog['sCover']}?{STATIC_CHANGE_TIME}" alt="">
+        <img class="fl h5show" src="{STATIC_URL3}/global/images/report/report.png?{STATIC_CHANGE_TIME}" alt="">
+        <div class="fl info-box">
+            <div class="title-box">
+                <span class="title js-cut-title">{$reportBookCatalog['sTitle']}</span>
+            </div>
+            <ul class="label-box">
+                {foreach  $reportBookCatalog['subtitle'] as $name}
+                <li>{$name}</li>
+                {/foreach}
+            </ul>
+            <div class="info-msg">
+                <p class="js-cut-info">{$reportBookCatalog['sMemo']}</p>
+                <p class="hide">{$reportBookCatalog['sMemo']}</p>
+                <span class="h5show js-more">展开全文<i></i></span>
+            </div>
+        </div>
+    </div>
+    <div class="fr">
+        <div class="title">
+            <i>contents</i>
+            <span>目录</span>
+        </div>
+        <ul class="book-list js-book-list">
+            {foreach $reportBookCatalog['sCatalog'] as $key=>$item}
+            <li class="clearfix">
+                <div class="fl pager">{if $key<9}0{/if}{$key+1}</div>
+                <div class="fl item-ls">
+                    <div class="title">{$item['title']}</div>
+                    <ul>
+                        {foreach $item['reports'] as $row}
+                        <li data-id="{$row['id']}"><a href="{$row['link']}" target="_blank"><i></i>{$row['title']}</a></li>
+                        {/foreach}
+                    </ul>
+                </div>
+            </li>
+            {/foreach}
+        </ul>
+    </div>
+</div>
+<div class="section-pc-common">
+    <div class="contact-box">
+        <h2>电脑浏览，体验更佳！</h2>
+        <p>www.pop-fashion.com</p>
+        <div>
+            <em><img src="{STATIC_URL2}/global/topic/scene_home/images/tel.png"></em>
+        </div>
+        <span>售前客服</span>
+        <strong>4008 210 500</strong>
+    </div>
+</div>
+<div class="myself">
+    <div class="h5-footer">
+        <p class="h5-law">上海逸尚云联信息技术股份有限公司 © 2004-2020<br/>法律顾问：北京中银（上海）律师事务所 <a href="http://www.beian.miit.gov.cn/" target="_blank">沪ICP备06003020号-1</a></p>
+        <div class="safty-info">
+            <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31010402000973"><img src="{STATIC_URL2}/global/images/safty.png" class="fl"><p class="fl">沪公网安备 31010402000973号</p></a>
+        </div>
+    </div>
+</div>
+{/block}

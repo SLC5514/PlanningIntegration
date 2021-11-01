@@ -1,0 +1,17 @@
+/*
+    #author     lut000
+    #date       2017/12/06
+*/
+
+.logo-div{float: left;margin-left: 160px;margin-top: 10px;}
+.nav-div{padding: 0 160px}
+.wordcloud{text-align: center;}
+.wordcloud>div{padding: 0 100px}
+.wordcloud>div>a{display: inline-block;width: 10%;}
+
+.canvas-div{background-image: url(../../images/home/canvas-bg.png);background-position: center;}
+.show-section{background-image: url(../../images/home/bg5.png);}
+.nav-div>div{right: -160px}
+
+.home-nav-list>li>a{border: 1px solid #fff;}
+.home-nav-list>li>span{border: 1px solid #fff;}

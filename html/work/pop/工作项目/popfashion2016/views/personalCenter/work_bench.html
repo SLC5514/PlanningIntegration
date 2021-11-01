@@ -1,0 +1,104 @@
+{extends file="layout.html"}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/personal.css?{STATIC_CHANGE_TIME}">
+{/block}
+
+{block name="main"}
+<div class="main myWorkTable">
+	<div class="con_width">
+		<div class="section">
+			{$personalHeader}
+		</div>
+		<div class="workList work_tab">
+			<div class="creatTable_btn">
+				<div id="creatTab" class="dashed_box">
+					<span class="addBtn">创建工作台</span>
+					<p class="file-intro">以文件夹形式管理工作室中的<br/>款式图，方便浏览及打包下载</p>
+				</div>
+			</div>
+			<ul class="clearfix lazyload">
+				<li class="display-none"></li>
+				{foreach $WorkList as $key=>$val}
+				<li data-describe="{$val.sWbenchDesc}" data-name="{$val.sWbenchName}" data-id="{$val.iWorkbenchId}">
+					<a class="img_a" href="/member/workbenchdetail/workid_{$val.iWorkbenchId}/" title="{$val.sWbenchName}">
+						<div class="img_white_bg">
+							<div class="delete_btn fr">删除</div>
+							<div class="edit_btn fl">编辑</div>
+						</div>
+						<div class="img_txt">
+							<h3>{$val.sWbenchName}</h3>
+							<div class="date">{$val.dCreateTime|date_format:"%Y-%m-%d"}</div>
+						</div>	
+						{if $val.imgList.0.smallPath}
+							<img src="{STATIC_URL2}/global/images/loading/style.gif" data-original="{$val.imgList.0.smallPath}"/>
+						{else}
+							<img src="{STATIC_URL2}/global/images/loading/styleMR.jpg"/>
+						{/if}
+						<span>
+						{if $val.imgList.1.smallPath}
+							<img src="{STATIC_URL2}/global/images/loading/style.gif" data-original="{$val.imgList.1.smallPath}"/>
+						{else}
+							<img src="{STATIC_URL2}/global/images/loading/styleMR.jpg"/>
+						{/if}	
+						{if $val.imgList.2.smallPath}
+							<img src="{STATIC_URL2}/global/images/loading/style.gif" data-original="{$val.imgList.2.smallPath}"/>
+						{else}
+							<img src="{STATIC_URL2}/global/images/loading/styleMR.jpg"/>
+						{/if}
+						{if $val.imgList.3.smallPath}  							<img src="{STATIC_URL2}/global/images/loading/style.gif" data-original="{$val.imgList.3.smallPath}"/>
+						{else}
+							<img src="{STATIC_URL2}/global/images/loading/styleMR.jpg"/>
+						{/if}
+						</span>
+					</a>
+					{if $val.totalCount gt 0}
+					<a class="upload_btn upload_bag js-upload-btn" href="javascript:void(0);" title="生成下载包">生成下载包</a>
+					{/if}
+				</li>
+				{/foreach}
+			</ul>
+		</div>
+	</div>
+</div>
+<!-- 创建工作台弹层 -->
+<div class="shadow_black"></div>
+<div class="pop_work pop_work_e">
+	<h1>创建工作台</h1>
+	<span class="closebtn"></span>
+	<div class="errTip">工作台名称不能为空！</div>
+	<div class="center_alert">
+		<div class="cta_row cta_row1 clearfix">
+			<label class="tableName">工作台名称：</label>
+			<input type="text" id="tableName" name="tableName" />
+			<input id="workBenchId" type="hidden" name="workBenchId" value="">
+		</div>
+		<div class="cta_row">
+			<label class="tableStatus">工作台描述：</label>
+			<textarea id="tableStatus" name="tableStatus"></textarea>
+		</div>
+		<a class="saveBtn" href="javascript:void(0);" title="创建工作台">创建工作台</a>
+	</div>
+</div>
+<div class="pop_work pop_work_tips">
+	<h1 class='workBenchTips'>最多可添加20个工作台</h1>
+	<div class="content_alert">	
+		<a class="surebtn closebtn" href="javascript:void(0);" title="确定">确定</a>
+	</div>
+</div>
+<!-- 下载提示 -->
+<div class="xiazai_pop js-download-package">
+	<p class="con_pop">已加大工作文件夹容量，为避免图片过多造成下载失败，请进入详情，选择款式进行批量下载。</p>
+	<a class="confirmBtn" title="确定" href="javascript:void(0);">确定</a>
+</div>
+<!-- 删除弹层 -->
+<div class="delete_pop">
+	<h4>是否确认删除？</h4> 
+	<input type='hidden' name='DeleteWorkBenchId' id='DeleteId'>
+	<p><a class="sure" id="workBenchDel" href="javascript:void(0);" title="删除">删除</a><a class="cancel closebtn" href="javascript:void(0);" title="返回">返回</a></p>
+</div>
+{/block}
+
+{block name="self"}
+<script type="text/javascript" src="{STATIC_URL2}/global/js/workbench/workbench.js?{STATIC_CHANGE_TIME}"></script>
+{/block}

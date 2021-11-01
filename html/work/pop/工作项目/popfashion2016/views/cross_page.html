@@ -1,0 +1,366 @@
+{extends file="layout.html"}
+{block name="title"}{$title}{/block}
+{block name=keywords}{$keywords}{/block}
+{block name=description}{$description}{/block}
+{block name="self"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL1}/global/css/reset.css"/>
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/per.css"/>
+<link rel="stylesheet" type="text/css" href="{STATIC_URL3}/global/css/global.css"/>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/index.js"></script>
+{/block}
+{block name="main"}
+<div class="cross_content">
+    <div class="con_width">
+        {block name="topads"}
+        <div class="cross_cont_section1">
+            <div class="cont_section_left fl">
+                <div class="cont_title">
+                    <h1>{$sGenderName} {$sIndustryName}频道</h1>
+                    <div class="cont_smalltitle">
+                        <span class="fl"></span>
+                        <p class="fl">LADIES SWEATER CHANNEL</p>
+                        <span class="fl"></span>
+                    </div>
+                </div>
+                <div class="cont_search" id="jiaocha_search">
+                    <input class="fl" type="text" placeholder="时尚资讯一网打尽！"/>
+                    <input class="fl" id="go_search11" type="button" value="立即搜索"/>
+                </div>
+                <div class="cont_pic_num">
+                    <div class="pic_num_left fl">
+                        <p>站内图片总数：<span>{$zhanneiImgCount}</span>张</p>
+                    </div>
+                    <div class="pic_num_right fl">
+                        <p><em>{$sGenderName}{$sIndustryName}</em>今日更新：<span>{$updateImgCount}</span>张</p>
+                    </div>
+                </div>
+            </div>
+            <div class="cont_section_right fl">
+                <a href="javascript:void(0);" target="_blank" class="fl"><img src="{STATIC_URL1}{$AdData[0]['sImagePath']}" alt="pic"/></a>
+                <div class="contain fl">
+                    <ul>
+
+                        <li><a href="javascript:void(0);" {if $AdData[1]['sNewWindow']}target="_blank"{/if} ><img src="{STATIC_URL1}{$AdData[1]['sImagePath']}" alt="pic"/></a></li>
+                        <li><a href="javascript:void(0);" {if $AdData[2]['sNewWindow']}target="_blank"{/if}><img src="{STATIC_URL1}{$AdData[2]['sImagePath']}" alt="pic"/></a></li>
+                        <li><a href="javascript:void(0);" {if $AdData[3]['sNewWindow']}target="_blank"{/if}><img src="{STATIC_URL1}{$AdData[3]['sImagePath']}" alt="pic"/></a></li>
+                    </ul>
+                    <div class="buttons">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--       <div class="search_cont_tishi cross_cont_section2">
+                   <i></i>您已锁定 <span>性别：<em>{$sGenderName}</em></span><span>行业：<em>{$sIndustryName}</em></span>现在所呈现为女装毛衫下内容，如需查看所有内容请点击<a href="javascript:void(0);" target="_blank">这里</a>
+               </div>-->
+        {/block}
+        {block name="left"}
+        <div class="cross_cont_section3">
+            <div class="con_section cont_section3_left fl">
+                <div class="analyzeBox offset_analyze">
+                    <input type="hidden" value="{$offset_analyze}" />
+                    <div class="cont_title">
+                        <h1>{$sGenderName}{$sIndustryName}分析</h1>
+                        <div class="cont_smalltitle">
+                            <span class="fl"></span>
+                            <p class="fl">ANALYZE</p>
+                            <span class="fl"></span>
+                        </div>
+                    </div>
+                    <div class="con_fanye">
+                        <span class="btn_left"></span>
+                        <span class="btn_right cur"></span>
+                        <a href="/analysis/" class="btn_more" title="更多">更多</a>
+                    </div>
+                    <div class="cont_section3_list">
+                        <ul class="trend_list">
+                            {if !empty($analyzeData)}
+                            {foreach $analyzeData as $val }
+                            <li>
+                                <a href="javascript:void(0);" target="_blank">
+                                    <img src="{STATIC_URL2}globals/{$val.smallPath}" alt="pic"/>
+                                    <span class="red_arrow"></span>
+                                    <p class="whitejx whitebg">廓形&细节 {$val.sub_category}{$val.for_date_text}{$val.type_text}</p>
+                                    <div class="white_hover whitebg">
+                                        <div class="txtAll">
+                                            <p class="txtC">前瞻</p>
+                                            <p class="txtE">VISION</p>
+                                        </div>
+                                        <P class="txtTitle">廓形&细节 {$val.sub_category}{$val.for_date_text}{$val.type_text}</P>
+                                    </div>
+                                </a>
+                            </li>
+                            {/foreach}
+                            {/if}
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="trendBox offset_trend">
+                    <div class="cont_title ">
+                        <input type="hidden" value="{$offset_trend}" />
+                        <h1>{$sGenderName}{$sIndustryName}趋势</h1>
+                        <div class="cont_smalltitle">
+                            <span class="fl"></span>
+                            <p class="fl">TRAND</p>
+                            <span class="fl"></span>
+                        </div>
+                    </div>
+                    <div class="con_fanye">
+                        <span class="btn_left"></span>
+                        <span class="btn_right cur"></span>
+                        <a href="/trends/" class="btn_more" title="更多">更多</a>
+                    </div>
+                    <div class="cont_section3_list">
+                        <ul class="trend_list">
+                            {if !empty($trendData)}
+                            {foreach $trendData as $val }
+                            <li>
+                                <a href="javascript:void(0);" target="_blank">
+                                    <img src="{STATIC_URL2}globals/{$val.smallPath}" alt="pic"/>
+                                    <span class="blue_arrow"></span>
+                                    <p class="whitejx whitebg">>廓形&细节 {$val.sub_category}{$val.for_date_text}{$val.type_text}</p>
+                                    <div class="white_hover whitebg">
+                                        <div class="txtAll">
+                                            <p class="txtC">前瞻</p>
+                                            <p class="txtE">VISION</p>
+                                        </div>
+                                        <P class="txtTitle">廓形&细节 {$val.sub_category}{$val.for_date_text}{$val.type_text}</P>
+                                    </div>
+                                </a>
+                            </li>
+                            {/foreach}
+                            {/if}
+
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="con_section cont_section3_right fl offset_runways">
+                <input type="hidden" value="{$offset_runways}" />
+                <div class="cont_title">
+                    <h1>{$sGenderName}{$sIndustryName}发布会</h1>
+                    <div class="cont_smalltitle">
+                        <span class="fl"></span>
+                        <p class="fl">Runways</p>
+                        <span class="fl"></span>
+                    </div>
+                </div>
+                <div class="con_fanye">
+                    <span class="btn_left"></span>
+                    <span class="btn_right cur"></span>
+                    <a href="/runways/" class="btn_more" title="更多">更多</a>
+                </div>
+                <div class="cont_section3_right_list">
+                    <ul>
+
+                        {if !empty($runwaysData)}
+                        {foreach $runwaysData as $val}
+                        <li class="clearfix">
+                            <div class="active_click">
+                                <div class="left_pic fl">
+                                    <a href="javascript:void(0);" target="_blank" title="{$val.region}">
+                                        <img src="{STATIC_URL2}globals/{$val.smallPath}" alt="pic"/>
+                                        <span class="arrow">{$val.region}</span>
+                                    </a>
+                                </div>
+                                <div class="right_cont fl">
+                                    <p class="title">Coach-2016早秋纽约发布会品牌解析</p>
+                                    <div class="cont_bd">
+                                        <span>设计师：<em>Dries Van Noten</em></span>
+                                        <span>时间：<em>{$val.for_date_text}</em></span>
+                                        <span>地点：<em>{$val.region_text}</em></span>
+                                    </div>
+                                    <ul class="date_liulan">
+                                        <li class="dateLi"><span class="date"></span>{$val.create_time}</li>
+                                        <li class="liulanLi"><span class="liulan"></span>浏览（124）</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        {/foreach}
+                        {/if}
+
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="cross_cont_section4">
+            <div class="con_section cont_section4 offset_style">
+                <div class="cont_title">
+                    <input type="hidden" value="{$offset_style}" />
+                    <h1>{$sGenderName}{$sIndustryName}款式库</h1>
+                    <div class="cont_smalltitle">
+                        <span class="fl"></span>
+                        <p class="fl">Styles</p>
+                        <span class="fl"></span>
+                    </div>
+                </div>
+                <div class="con_fanye">
+                    <span class="btn_left"></span>
+                    <span class="btn_right cur"></span>
+                    <a href="/styles/" class="btn_more" title="更多">更多</a>
+                </div>
+            </div>
+            <div class="cont_section4_lists">
+                <ul>
+                    {if !empty($styleData)}
+                    {foreach $styleData as $val}
+                    <li class="bomLi clearfix">
+                        <a href="javascript:void(0);" class="img_a">
+                            <img src="{STATIC_URL2}globals/{$val.smallPath}" alt="pic">
+                            <div class="hovertime"></div>
+                            <p class="Dtime"><em></em>2016-01-26</p>
+                        </a>
+                        <div class="picTxt">
+                            <p><a href="javascript:void(0);" title="{$val.for_date_text}">{$val.for_date_text}</a></p>
+                            <p><a href="javascript:void(0);" title="大衣/风衣">大衣/风衣 </a><a href="javascript:void(0);" title="风衣（春秋）">风衣（春秋）</a></p>
+                        </div>
+                        <p class="Picpp"><a href="javascript:void(0);" target="_blank" title="PartspARTs">PartspARTs</a></p>
+                    </li>
+                    {/foreach}
+                    {/if}
+
+                </ul>
+            </div>
+        </div>
+        {/block}
+        {block name="right"}
+        <div class="cross_cont_section5">
+            <div class="con_section cont_section5_left fl offset_books">
+                <div class="cont_title">
+                    <input type="hidden" value="{$offset_books}" />
+                    <h1>{$sGenderName}{$sIndustryName}刊物</h1>
+                    <div class="cont_smalltitle">
+                        <span class="fl"></span>
+                        <p class="fl">Books</p>
+                        <span class="fl"></span>
+                    </div>
+                </div>
+                <div class="con_fanye">
+                    <span class="btn_left"></span>
+                    <span class="btn_right cur"></span>
+                    <a href="/books/" class="btn_more" title="更多">更多</a>
+                </div>
+                <div class="cont_section5_list">
+                    <ul>
+                        {if !empty($booksData)}
+                        {foreach $booksData as $val}
+                        <li>
+                            <a href="javascript:void(0);" target="_blank" title="TMASS">
+                                <img src="{STATIC_URL2}globals/{$val.smallPath}" alt="pic"/>
+                            </a>
+                            <p class="">TMASS</p>
+                        </li>
+                        {/foreach}
+                        {/if}
+                    </ul>
+                </div>
+            </div>
+            <div class="con_section cont_section5_right fl offset_references">
+                <div class="cont_title">
+                    <input type="hidden" value="{$offset_references}" />
+                    <h1>{$sGenderName}{$sIndustryName}素材</h1>
+                    <div class="cont_smalltitle">
+                        <span class="fl"></span>
+                        <p class="fl">Reference</p>
+                        <span class="fl"></span>
+                    </div>
+                </div>
+                <div class="con_fanye">
+                    <span class="btn_left"></span>
+                    <span class="btn_right cur"></span>
+                    <a href="/references/design" class="btn_more" title="更多">更多</a>
+                </div>
+                <div class="cont_section5_right_list cont_section5_right_listN">
+                    <p class="cont_title">包含新闻热点、明星时尚、流行元素、专栏、时尚达人、购物指导、图库、文化艺术等内容，带来更多灵感启发。</p>
+                    <ul>
+                        {if !empty($referencesData)}
+                        {foreach $referencesData as $val}
+                        <li>
+                            <a href="javascript:void(0);" target="_blank"><img src="{STATIC_URL2}globals/{$val.smallPath}" alt="pic"/></a>
+                        </li>
+                        {/foreach}
+                        {/if}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="cross_cont_section6">
+            <div class="con_section cont_section5_left cont_section6_left fl offset_brands">
+                <div class="cont_title">
+                    <input type="hidden" value="{$offset_brands}" />
+                    <h1>{$sGenderName}{$sIndustryName}品牌</h1>
+                    <div class="cont_smalltitle">
+                        <span class="fl"></span>
+                        <p class="fl">Brands</p>
+                        <span class="fl"></span>
+                    </div>
+                </div>
+                <div class="con_fanye">
+                    <span class="btn_left"></span>
+                    <span class="btn_right cur"></span>
+                    <a href="/brands/" class="btn_more" title="更多">更多</a>
+                </div>
+                <div class="cont_section6_list">
+                    <ul>
+                        {if !empty($brandsData)}
+                        {foreach $brandsData as $val}
+                        <li>
+                            <a href="javascript:void(0);" target="_blank">
+                                <div class="showpp">
+                                    <p class="bt">Latest update <br>路易威登</p>
+                                    <span>&mdash;&mdash;</span>
+                                    <p class="gongyou">共有：<em>25</em></p>
+                                </div>
+                            </a>
+                        </li>
+                        {/foreach}
+                        {/if}
+                    </ul>
+                </div>
+            </div>
+            <div class="con_section cont_section5_right cont_section6_right fl offset_inspiration">
+                <div class="cont_title">
+                    <input type="hidden" value="{$offset_inspiration}" />
+                    <h1>{$sGenderName}{$sIndustryName}灵感</h1>
+                    <div class="cont_smalltitle">
+                        <span class="fl"></span>
+                        <p class="fl">Inspirations</p>
+                        <span class="fl"></span>
+                    </div>
+                </div>
+                <div class="con_fanye">
+                    <span class="btn_left"></span>
+                    <span class="btn_right cur"></span>
+                    <a href="/inspiration" class="btn_more" title="更多">更多</a>
+                </div>
+                <div class="cont_section5_right_list cont_section6_right_list">
+                    <p class="cont_title">包含新闻热点、明星时尚、流行元素、专栏、时尚达人、购物指导、图库、文化艺术等内容，带来更多灵感启发。</p>
+                    <ul>
+                        {if !empty($inspirationData)}
+                        {foreach $inspirationData as $val}
+                        <li>
+                            <a href="javascript:void(0);" target="_blank"><img src="{STATIC_URL2}/global/images/10.jpg" alt="pic"/></a>
+                        </li>
+                        {/foreach}
+                        {/if}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {/block}
+    </div>
+</div>
+{/block}
+{block name="other"}
+<script>
+    $('.active_click').on('click',function(){
+        $(this).children('a').triggerHandler('click');
+    });
+</script>
+{/block}

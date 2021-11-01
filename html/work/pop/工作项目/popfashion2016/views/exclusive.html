@@ -1,0 +1,129 @@
+{extends file="layout.html"}"
+
+{block name="title"}POP独家系列“快反应”-POP服装趋势网{/block}
+{block name=keywords}快反应趋势,快实现设计,快速度供应{/block}
+{block name=description}POP独家系列“快反应”是助力快时代下设计开发的新模式，她包括快反应趋势(APM-快灵感，快反应栏目-快延展)、快实现设计(图像识别-快找图，3D试衣-快实现)和快速度供应(找料帮-快照料，优料宝-快买料)三部分。{/block}
+
+{block name="selfcss"}
+<!--[if !IE]><!-->
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/exclusive.css?{STATIC_CHANGE_TIME}">
+<!--<![endif]-->	
+<!--[if lte IE 9]> 
+<link rel="stylesheet" media="screen" href="{STATIC_URL2}/global/css/exclusive-ie.css?{STATIC_CHANGE_TIME}" type="text/css" />
+<![endif]-->
+{/block}
+
+{block name="main"}
+<div class="contentF">
+	<div class="wrapbox">
+		<div class="moveLogo movelayer">
+    		<img src="{STATIC_URL2}/global/images/fast/logo.png"/>
+    	</div>
+    	<div class="ul_list">
+    		<div class="left_ul layer" data-depth="4.00">
+    			<h1><img src="{STATIC_URL2}/global/images/fast/font1.png"/></h1>
+    			<ul>
+    				<li class="circle_img"> 
+    					<a href="/books/fast/" target="_blank" class="top_a" title="查看详情">
+    						<h3><img src="{STATIC_URL2}/global/images/fast/f_circle1.png" alt="pic"/></h3>
+	    					<i></i>
+    					</a>
+    					<a href="/books/fast/" target="_blank" class="bottom_a" title="查看详情"></a>
+    				</li>
+    				<li class="xian_li"><img src="{STATIC_URL2}/global/images/fast/xian.png" alt="pic"/></li>
+    				<li class="circle_img">
+    					<a href="/trends/capsules/" target="_blank" class="top_a" title="查看详情">
+    						<h3><img src="{STATIC_URL2}/global/images/fast/f_circle4.png" alt="pic"/></h3>
+	    					<i></i>
+    					</a>    					
+    					<a href="/trends/capsules/" target="_blank" class="bottom_a" title="查看详情"></a>
+    				</li>
+    			</ul>
+    		</div>
+    		<div class="middle_ul layer" data-depth="4.00">
+    			<h1><img src="{STATIC_URL2}/global/images/fast/font2.png" alt="pic"/></h1>
+    			<ul>
+    				<li class="circle_img">
+						<a class="top_a" href="/picmatch/piccutlist/" target="_blank" title="查看详情">
+							<h3><img src="{STATIC_URL2}/global/images/fast/f_circle2.png" alt="pic"/></h3>
+	    					<i></i>
+						</a>
+						<a class="bottom_a"></a>
+    				</li>
+    				<li class="xian_li"><img src="{STATIC_URL2}/global/images/fast/xian.png" alt="pic"/></li>
+    				<li class="circle_img">
+    					<a href="/patterns/graphics/" target="_blank" class="top_a" title="查看详情">
+    						<h3><img src="{STATIC_URL2}/global/images/fast/f_circle5.png" alt="pic"/></h3>
+	    					<i></i>
+    					</a>
+    					<a href="/references/graphics/" target="_blank" class="bottom_a" title="查看详情"></a>
+    				</li>
+    			</ul>
+    		</div>
+    		<div class="right_ul layer" data-depth="4.00">
+    			<h1><img src="{STATIC_URL2}/global/images/fast/font3.png"/></h1>
+    			<ul>
+    				<li class="circle_img">
+    					<a href="/topic/20171208/" target="_blank" class="top_a" title="查看详情">
+							<h3><img src="{STATIC_URL2}/global/images/fast/f_circle3.png" alt="pic"/></h3>
+	    					<i></i>
+    					</a>
+    					<a href="/topic/20171208/" target="_blank" class="bottom_a" title="查看详情"></a>
+    				</li>
+    				<li class="xian_li"><img src="{STATIC_URL2}/global/images/fast/xian.png" alt="pic"/></li>
+    				<li class="circle_img">
+    					<a href="http://www.uliaobao.com" target="_blank" class="top_a" title="查看详情">
+							<h3><img src="{STATIC_URL2}/global/images/fast/f_circle6.png" alt="pic"/></h3>
+	    					<i></i>
+    					</a>
+    					<a href="http://www.uliaobao.com" target="_blank" class="bottom_a" title="查看详情"></a>
+    				</li>
+    			</ul>
+    		</div>
+    	</div>
+	</div>    
+</div>
+
+{include file="topic/topic_layer.html"}
+{/block}
+
+{block name="self"}
+<!--[if !IE]><!-->
+    <script type="text/javascript" src="{STATIC_URL2}/global/js/fashion/jquery.parallax.js?{STATIC_CHANGE_TIME}"></script>
+<!--<![endif]-->
+	{literal}
+    <script type="text/javascript">
+        function moveTop(){
+            $(".ul_list .left_ul,.ul_list .right_ul,.ul_list .middle_ul").animate({'top': '100px'}, 1000);
+        }
+        // 鼠标经过抖动
+        var navigatorName = "Microsoft Internet Explorer";
+        if( navigator.appName == navigatorName ){
+
+        }else{
+            $('.ul_list').parallax({
+                calibrationThreshold: 100,
+                calibrationDelay: 500,
+                supportDelay: 500,
+                calibrateX: false,
+                calibrateY: false,
+                invertX: true,
+                invertY: false,
+                limitX: false,
+                limitY: false,
+                scalarX: 0.8,
+                scalarY: 0.1,
+                frictionX: 0.3,
+                frictionY: 0.1
+            });
+        }
+        
+        if($(".nomove").length){
+            moveTop();
+        }else{
+            setTimeout("moveTop()",5000);
+        }
+    </script>
+	{/literal}
+{/block}
+

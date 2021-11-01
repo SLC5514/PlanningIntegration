@@ -1,0 +1,144 @@
+{extends file="layout.html"}
+
+{block name="title"}2018新年特辑-POP服装趋势网{/block}
+{block name=keywords}2018度假系列,东京新浪潮,韩国春夏潮流,APM新年特刊{/block}
+{block name=description}POP服装趋势网2018新年特辑汇聚春夏流行趋势，包括2018度假系列、东京新浪潮、韩国春夏潮流和APM新年特刊。POP不仅汇集日韩流行风尚，而且将国际大牌潮流趋势跃然于纸上。{/block}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/topic/20180122/css/index.css?{STATIC_CHANGE_TIME}">
+{/block}
+
+{block name="main"}
+<!-- seo 需求 -->
+<div style="display:none">
+	<h1>2018新年特辑</h1>
+	<b>2018新年特辑</b>
+</div>
+<div class="season-section">
+	<div class="season-contain js-season-contain">
+		<div class="season-top js-season-top">
+
+			<!-- <div class="div1"></div> -->
+
+			<div class="birds-box js-birds-box" id="birds-canvas-holder"></div>
+			<div class="circular-box js-circular-box">
+				<div class="circular-div js-circular-div">
+					<div class="line-div js-line-div"></div>
+					<div class="type4">
+		                <span class="spn1"></span>
+		                <span class="spn2"></span>
+		            </div>
+					<div class="main-item js-main-item">
+						<img class="icon-pic1 js-translate-ele" src="{STATIC_URL2}/global/topic/20180122/images/1.png" alt="icon">
+						<img class="icon-pic2 js-translate-ele" src="{STATIC_URL2}/global/topic/20180122/images/2.png" alt="icon">
+
+						<img class="pic1 js-translate-ele" src="{STATIC_URL2}/global/topic/20180122/images/tit-pic1.png" alt="2018">
+						<img class="pic2 js-translate-ele" src="{STATIC_URL2}/global/topic/20180122/images/tit-pic2.png" alt="新年特辑">
+						<img class="pic3 js-translate-ele" src="{STATIC_URL2}/global/topic/20180122/images/tit-pic3.png" alt="汇聚春夏流行趋势">
+					</div>
+
+					<div class="item item1 js-item">
+						<img class="pic1 js-translate-ele" src="{STATIC_URL2}/global/topic/20180122/images/item1-1.png" alt="2018"><br/>
+						<img class="pic2 js-translate-ele" src="{STATIC_URL2}/global/topic/20180122/images/item1-2.png" alt="度假系列"><br/>
+						<img class="pic3 js-translate-ele" src="{STATIC_URL2}/global/topic/20180122/images/item1-3.png" alt="2018各大品牌及设计师最新系列款式合集，涵盖300+热度品牌，10000+新款，高清款式，包含细节设计。"><br/>
+
+						<button data-status="circular-box-status1" title="关闭"></button>
+					</div>
+					<div class="item item2 js-item">
+						<img class="pic1 js-translate-ele" src="{STATIC_URL2}/global/topic/20180122/images/item2-1.png" alt="APM"><br/>
+						<img class="pic2 js-translate-ele" src="{STATIC_URL2}/global/topic/20180122/images/item2-2.png" alt="新年特刊"><br/>
+						<img class="pic3 js-translate-ele" src="{STATIC_URL2}/global/topic/20180122/images/item2-3.png" alt="2018中国年，“戌”势街头！看品牌如何玩转生肖设计，新年款如何跟紧潮流。"><br/>
+						<button data-status="circular-box-status2" title="关闭"></button>
+					</div>
+					<div class="item item3 js-item">
+						<img class="pic1 js-translate-ele" src="{STATIC_URL2}/global/topic/20180122/images/item3-1.png" alt="韩国"><br/>
+						<img class="pic2 js-translate-ele" src="{STATIC_URL2}/global/topic/20180122/images/item3-2.png" alt="春夏潮流"><br/>
+						<img class="pic3 js-translate-ele" src="{STATIC_URL2}/global/topic/20180122/images/item3-3.png" alt="POP小编亲临韩国，为您带来一手的韩国春夏系列款式，助力单品开发。"><br/>
+						<button data-status="circular-box-status3" title="关闭"></button>
+					</div>
+					<div class="item item4 js-item">
+						<img class="pic1 js-translate-ele" src="{STATIC_URL2}/global/topic/20180122/images/item4-1.png" alt="东京"><br/>
+						<img class="pic2 js-translate-ele" src="{STATIC_URL2}/global/topic/20180122/images/item4-2.png" alt="新浪潮"><br/>
+						<img class="pic3 js-translate-ele" src="{STATIC_URL2}/global/topic/20180122/images/item4-3.png" alt="日本新起的原创独立设计师不断赢得年轻潮人的追捧，日系风开始成为亚洲品牌的风尚标。"><br/>
+						<button data-status="circular-box-status4" title="关闭"></button>
+					</div>
+
+					<button class="btn-type1" title="2018度假系列" data-status="circular-box-status1">2018<br/>度假系列</button>
+					<button class="btn-type2" title="APM新年特刊" data-status="circular-box-status2">APM<br/>新年特刊</button>
+					<button class="btn-type3" title="韩国春夏潮流" data-status="circular-box-status3">韩国<br/>春夏潮流</button>
+					<button class="btn-type4" title="东京新浪潮" data-status="circular-box-status4">东京<br/>新浪潮</button>
+				</div>
+			</div>
+			<ul class="line-list js-line-list">
+				<li class="odd"><div></div></li>
+				<li class="even"><div></div></li>
+				<li class="odd"><div></div></li>
+				<li class="even"><div></div></li>
+				
+				<li class="odd"><div></div></li>
+				<li class="even"><div></div></li>
+				<li class="odd"><div></div></li>
+				<li class="even"><div></div></li>
+
+				<li class="odd"><div></div></li>
+				<li class="even"><div></div></li>
+				<li class="odd"><div></div></li>
+			</ul>
+		</div>
+		<div class="review-contain">
+	  		<div class="review-msg">
+	  			<img src="{STATIC_URL2}/global/topic/20180122/images/prev-title.png" alt="title" />
+	  			<div class="review-cont">
+	  				<div class="left-btn js-left-btn"></div>
+  					<div class="right-btn js-right-btn"></div>
+	  				<div class="review-list">
+	  					<ul class="js-review-list clear">
+			  				<!-- <li>
+			  					<a href="/topic/20170516/" target="_blank" title="时尚也要玩大数据流行色一秒掌握！">
+			  						<div>
+			  							<div class="review-hover review-hover3"></div>
+			  							<div class="img-c"><img src="{STATIC_URL2}/global/topic/20171211/images/re2.jpg" alt="大数据" /></div>
+			  						</div>
+			  						<p>时尚也要玩大数据，流行色一秒掌握！</p>
+			  					</a>
+			  				</li> -->
+			  			</ul>
+	  				</div>
+	  			</div>
+	  		</div>
+	  	</div>
+	  
+	</div>
+  	
+</div>
+
+{include file="topic/topic_layer.html"}
+{/block}
+
+
+{block name="self"}
+<script type="text/javascript">
+	var page_img_path_str="{STATIC_URL2}";
+	var page_js_path_str="{STATIC_URL3}";
+
+	var is_ie=isIE();
+	function isIE() { //ie?
+		if (!!window.ActiveXObject || "ActiveXObject" in window){
+			return true;
+		}else{
+			return false;
+		}
+	};
+</script>
+<script type="text/javascript" src="{STATIC_URL3}/global/topic/20180122/js/three.min.js"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/topic/20180122/js/Projector.js"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/topic/20180122/js/CanvasRenderer.js"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/topic/20180122/js/Bird.js"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/topic/20180122/js/Boid.js"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/topic/20180122/js/TweenMax.min.js"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/topic/20180122/js/Birds.js"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/topic/20180122/js/index.js?20180528"></script>
+
+{literal}
+{/literal}
+{/block}

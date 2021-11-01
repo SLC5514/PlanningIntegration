@@ -1,0 +1,63 @@
+/* 单点登陆弹窗 */
+.sso-box{z-index: 101;display: none;}
+.sso-box .sso-bg{position: fixed;top: 0;left: 0;width: 100%;height: 100%;z-index: 104;background-color:#000;opacity:0.7;filter: alpha(opacity=70);}
+.sso-box .sso-block{width: 550px;min-height: 340px;position: fixed;left: 50%;top: 50%;margin-left: -275px;margin-top: -280px;z-index: 105;}
+.sso-box .sso-block .sso-close-parent{position: relative;}
+.sso-box .sso-block .sso-close-parent .sso-close{position: absolute;right: -40px;top: -18px;width: 30px;height: 30px;background: url(../../images/user/icon-close.png) no-repeat;cursor: pointer;}
+.sso-box .sso-block .sso-con{width: 100%;height: 100%;background: #fff;border-radius: 15px;overflow: hidden;}
+.sso-box .sso-block .sso-con .sso-header{height: 90px;text-align: center;background-color: #232F3C;color: #fff;}
+.sso-box .sso-block .sso-con .sso-header .sso-t1{font-size: 30px;line-height: 90px;}
+.sso-box .sso-block .sso-con .sso-header .sso-t2{font-size: 28px;padding-top: 17px;}
+.sso-box .sso-block .sso-con .sso-header .sso-h1{display: none;}
+/* .sso-box .sso-block .sso-con .sso-header .sso-h2{display: none;} */
+.sso-box .sso-block .sso-con .sso-header p{font-size: 12px;padding-top: 5px;color: #c0c3c7;}
+.sso-box .sso-block .sso-con .sso-content{padding: 0 10px;box-sizing: border-box;}
+.sso-box .sso-block .sso-con .sso-content .sso-user-list{max-height: 350px;margin-top: 40px;box-sizing: border-box;overflow-y: scroll;margin-bottom: 40px;}
+.sso-box .sso-block .sso-con .sso-content .sso-user-list>li{border: 1px solid transparent;border-radius: 15px;padding: 20px;box-sizing: border-box;margin-bottom: 10px;cursor: pointer;border: 1px solid #eee;border-radius: 10px;}
+.sso-box .sso-block .sso-con .sso-content .sso-user-list>li:hover{border-color: #232F3C;}
+.sso-box .sso-block .sso-con .sso-content .sso-user-list>li>label{display: inline-block;vertical-align: middle;width: 65px;height: 65px;border-radius: 50%;margin-right: 20px;overflow: hidden;border: 1px solid #ccc;}
+.sso-box .sso-block .sso-con .sso-content .sso-user-list>li>label>img{width: 100%;height: 100%;}
+.sso-box .sso-block .sso-con .sso-content .sso-user-list::-webkit-scrollbar{display: none;}
+.sso-box .sso-block .sso-con .sso-content .sso-scrollbar{position: absolute;width: 6px;height: 100%;max-height: 345px;top: 0;right: 50px;background-color: #eee;border-radius: 5px;display: none;}
+.sso-box .sso-block .sso-con .sso-content .sso-scrollbar>div{height: 50px;background-color: #e6e6e6;border-radius: 5px;}
+.sso-box .sso-block .sso-con .sso-other{text-align: center;font-size: 14px;height: 50px;line-height: 50px;border: 1px solid #eee;border-radius: 10px;color: #232f3c;margin-bottom: 55px;cursor: pointer;}
+.sso-box .sso-block .sso-con .sso-other:hover{border: 1px solid #232f3c;}
+.sso-box .sso-block .sso-con .sso-other>button{cursor: pointer;border: none;background: #fff;}
+.sso-box .sso-block .sso-con .sso-content .sso-c1,
+.sso-box .sso-block .sso-con .sso-content .sso-c2{padding: 0 50px;position: relative;}
+.sso-box .sso-block .sso-con .sso-content .sso-c1{display: none;}
+/* .sso-box .sso-block .sso-con .sso-content .sso-c2{display: none;} */
+.sso-box .sso-block .sso-con .sso-content .sso-tab-list{margin-top: 35px;margin-bottom: 40px;font-size: 17px;color: #999;box-sizing: border-box;white-space: nowrap;}
+.sso-box .sso-block .sso-con .sso-content .sso-tab-list>li{float: left;height: 45px;line-height: 45px;cursor: pointer;position: relative;}
+.sso-box .sso-block .sso-con .sso-content .sso-tab-list>li.cen{margin: 0 44px;}
+.sso-box .sso-block .sso-con .sso-content .sso-tab-list>li.active{color: #333;font-weight: bold;}
+.sso-box .sso-block .sso-con .sso-content .sso-tab-list>li.active span{position: absolute;bottom: 0;left: 0;width: 30px;height: 3px;background-color: #232F3C;}
+.sso-box .sso-block .sso-con .sso-content .sso-form-list{box-sizing: border-box;}
+.sso-box .sso-block .sso-con .sso-content .sso-form-list>li{height: 45px;margin-bottom: 30px;position: relative;}
+.sso-box .sso-block .sso-con .sso-content .sso-form-list>li input{width: 100%;height: 100%;border: none;border-bottom: 1px solid #ccc;}
+.sso-box .sso-block .sso-con .sso-content .sso-form-list>li input::placeholder{color: #999;}
+.sso-box .sso-block .sso-con .sso-content .sso-form-list>li.sso-l2,
+.sso-box .sso-block .sso-con .sso-content .sso-form-list>li.sso-l3{display: none;}
+.sso-box .sso-block .sso-con .sso-content .sso-form-list>li.sso-l1{display: block;}
+.sso-box .sso-block .sso-con .sso-content .sso-form-list>li.sso-imgcaptcha{margin: 0;height: 10px;display: none;}
+.sso-box .sso-block .sso-con .sso-content .sso-form-list>li.sso-imgcaptcha>.code_btn:hover{border:1px solid  #232F3C;color: #232F3C;}
+.sso-box .sso-block .sso-con .sso-content .sso-form-list>li.sso-imgcaptcha>.puzzle-drag-wraper{bottom: 20px;}
+.sso-box .sso-block .sso-con .sso-content .sso-form-list>li.sso-password>.sso-pwd-box{height: 100%;}
+.sso-box .sso-block .sso-con .sso-content .sso-form-list>li.sso-password>em{background:url(../../images/user/icon.png) no-repeat -86px 4px;display:inline-block;width:22px;height:15px;position: absolute;right:17px;bottom:7px;cursor: pointer;}
+.sso-box .sso-block .sso-con .sso-content .sso-form-list>li.sso-password>em.sso-pwd-display{background-position:-128px 0;}
+.sso-box .sso-block .sso-con .sso-content .sso-form-list>li.sso-captcha>.sso-get-captcha{width: 90px;height: 35px;line-height: 35px;text-align: center;cursor: pointer;position: absolute;right: 0;top: -10px;border-radius: 4px;background: #232F3C;color: #fff;padding: 0;margin: 0;}
+.sso-box .sso-block .sso-con .sso-content p.errorbox{position:absolute;box-sizing: border-box;height:20px;top:55px;left:50px;right: 50px;color:#333;line-height:20px;display:none;}
+.sso-box .sso-block .sso-con .sso-content .sso-login-btn{width: 430px;height: 50px;border-radius: 4px;background-color: #ccc;color: #fff;display: inherit;margin: 60px auto 20px;cursor: pointer;}
+.sso-box .sso-block .sso-con .sso-content .sso-login-btn:hover{background-color: #232F3C;}
+.sso-box .sso-block .sso-con .sso-content .sso-opt{margin-bottom: 65px;}
+.sso-box .sso-block .sso-con .sso-content .sso-opt a{font-size: 12px;color: #999;height: 18px;line-height: 18px;}
+.sso-box .sso-block .sso-con .sso-content .sso-opt i{display: inline-block;height: 13px;border-left: 1px solid #999;position: relative;top: 2px;}
+.sso-box .sso-block .sso-con .sso-content .sso-opt .sso-register{color: #333;}
+.sso-box .sso-block .sso-con .sso-content .sso-btn{font-size: 14px;color: #666;text-align: center;margin-bottom: 25px;white-space: nowrap;}
+.sso-box .sso-block .sso-con .sso-content .sso-btn>i{display: inline-block;height: 18px;border-left: 1px solid #ccc;margin-left: 7px;position: relative;top: 3px;}
+.sso-box .sso-block .sso-con .sso-content .sso-btn>strong{font-size: 18px;}
+.sso-box .sso-block .sso-con .sso-content .sso-btn>a{margin-left: 7px;color: #666;}
+.sso-box .sso-block .sso-con .sso-content .sso-btn>a:hover{color: #666;}
+.sso-box .sso-block .sso-con .sso-content .sso-btn>a.qq-btn>i{display: inline-block;width: 14px;height: 14px;background: url(../../images/user/qq.png) no-repeat;position: relative;top: 2px;}
+.sso-box .sso-block .sso-con .sso-content .sso-btn>a.note-btn>i{display: inline-block;width: 14px;height: 14px;background: url(../../images/user/note.png) no-repeat;position: relative;top: 2px;}
+.sso-box .sso-error{display: none;position: fixed;height: 60px;line-height: 60px;padding: 0 20px;text-align: center;font-size: 14px;box-shadow: 0 0 10px #b9b9b9;background: #fff;top: 50%;left: 50%;margin-left: -150px;margin-top: -25px;z-index: 105;border-radius: 5px;}

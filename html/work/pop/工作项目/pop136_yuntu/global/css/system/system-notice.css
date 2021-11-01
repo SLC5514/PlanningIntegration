@@ -1,0 +1,31 @@
+/*
+	#author		
+	#date 		2017/11/13
+*/
+@charset "utf-8";
+
+.header{border-bottom: 1px solid #494f55}
+.content{background-color: #323940}
+
+.nav-list{display: none;}
+
+.vip-null{padding-top: 116px;padding-bottom: 260px;}
+
+.vip-null>.null-pic{margin: 0 auto;height: 175px; background: url(../../images/common/vip-smile1.png) center no-repeat;}
+.vip-null>p{padding: 60px 0 45px;text-align: center;color: #fff;font-size: 16px;display: none;}
+.vip-null>p>span{color: #d8b056;}
+.vip-null>.msg-line{padding: 60px 0 50px;}
+.msg-line>a{color: #d8b056;text-decoration: underline;}
+.msg-line>a:hover{color: #dba428}
+
+.vip-null>.link-msg{text-align: center;font-size: 0;}
+.vip-null>.link-msg>a{font-size: 14px;margin-right: 10px; display: inline-block;*display: inline;*zoom: 1;color: #fff;width: 150px;height: 40px;line-height: 40px;background: #d8b056;border-radius: 3px;}
+.vip-null>.link-msg>a:hover{background: #dba428;}
+.vip-null>.link-msg>a>span{display: inline-block;*display: inline;*zoom: 1;width: 19px;height: 19px;vertical-align: middle;margin-right: 2px; background-position: -243px -130px;}
+.vip-null>.link-msg>div{font-size: 14px;display: inline-block;*display: inline;*zoom: 1;color: #fff;width: 240px;height: 40px;line-height: 40px;background: #d8b056;border-radius: 3px;}
+.vip-null>.link-msg>div>span{display: inline-block;*display: inline;*zoom: 1;width: 19px;height: 19px;vertical-align: middle;margin-right: 2px; background-position: -286px -130px;}
+
+.vip-null>a{font-size: 14px;color: #fff; display: block;text-align: center;margin: 30px auto 0; width: 400px;height: 40px;line-height: 40px;background: #787c81;border-radius: 3px;}
+.vip-null>a:hover{background: #d8b056;}
+
+.vip-null>.link-msg>a.upgrade-vip-btn{width: 450px;height: 45px;line-height: 45px;}

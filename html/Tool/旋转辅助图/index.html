@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>旋转辅助图</title>
+    <script src="../vue.global.js"></script>
+    <style>
+        html,body{margin: 0;padding: 0;width: 100%;height: 100%;overflow: hidden;}
+        .og{position: absolute;left: 50%;top: 50%;transform: translate(-50%, -50%);width: 5px;height: 5px;background-color: black;border-radius: 50%;}
+        .h-line{position: absolute;left: 50%;top: 50%;transform: translate(-50%, -50%);width:200%;height:1px;background-color: red;}
+        .v-line{position: absolute;left: 50%;top: 50%;transform: translate(-50%, -50%);width:1px;height:200%;background-color: red;}
+        .m-line{position: absolute;left: 50%;top: 50%;transform: translate(-50%, -50%);width:1px;height:1000%;background-color: black;}
+        .n-line{position: absolute;left: 50%;top: 50%;transform: translate(-50%, -50%);width:1000%;height:1px;background-color: black;}
+        .rt-h-line{position: absolute;left: 100%;top: 0;transform: translate(-50%, -50%);width:1px;height:1000%;background-color: blue;}
+        .rt-v-line{position: absolute;left: 100%;top: 0;transform: translate(-50%, -50%);width:1000%;height:1px;background-color: blue;}
+        .rt-q-line{position: absolute;left: 100%;top: 120px;transform: translate(-50%, -50%);width:1px;height:1000%;background-color: red;}
+        .rt-a{position: absolute;left: 100%;top: 120px;transform: translate(-50%, -50%);}
+        .rt-a:before{content: '';display: block;position: absolute;left: 50%;top: 50%;transform: translate(-50%, -50%);width:1px;height:1000px;background-color: black;}
+        .rt-a:after{content: '';display: block;position: absolute;left: 50%;top: 50%;transform: translate(-50%, -50%);width:1000px;height:1px;background-color: black;}
+        .rt-b{position: absolute;left: calc(100% - 100px);top: 0;transform: translate(-50%, -50%);}
+        .rt-b:before{content: '';display: block;position: absolute;left: 50%;top: 50%;transform: translate(-50%, -50%);width:1px;height:1000px;background-color: black;}
+        .rt-b:after{content: '';display: block;position: absolute;left: 50%;top: 50%;transform: translate(-50%, -50%);width:1000px;height:1px;background-color: black;}
+        .rect{border: 1px solid #999;box-sizing: border-box;position: absolute;background-color: #eee;opacity: 0.5;}
+        .rect-rotate{background-color: khaki;}
+        .rect-rotate-trans{background-color: skyblue;}
+        .rect-rotate-trans-right{background-color: gray;}
+    </style>
+</head>
+<body>
+    <div id="App">
+        <!-- 原型 -->
+        <div class="rect" :style="rectStyle">
+            <div class="og"></div>
+            <div class="h-line"></div>
+            <div class="v-line"></div>
+        </div>
+        <!-- 旋转后 -->
+        <div class="rect rect-rotate" :style="rectRotateStyle">
+            <div class="og"></div>
+            <!-- <div class="h-line"></div> -->
+            <!-- <div class="v-line"></div> -->
+            <!-- <div class="rt-h-line" :style="`transform: translate(-50%, -50%) rotate(${90 - rect.rotate}deg);`"></div> -->
+            <!-- <div class="rt-v-line" :style="`transform: translate(-50%, -50%) rotate(${90 - rect.rotate}deg);`"></div> -->
+        </div>
+        <!-- 旋转平移后 错误位置 -->
+        <div class="rect rect-rotate-trans" :style="rectRotateTransStyle">
+            <div class="og"></div>
+        </div>
+        <!-- 旋转平移后 正确位置 -->
+        <div class="rect rect-rotate-trans-right" :style="rectRotateTransRightStyle">
+            <div class="og"></div><!-- 原点 -->
+            <!-- <div class="h-line"></div> --><!-- 相对水平线 -->
+            <!-- <div class="v-line"></div> --><!-- 相对垂直线 -->
+            <div class="m-line" :style="`transform: translate(-50%, -50%) rotate(${90 - rect.rotate}deg);`"></div><!-- 绝对水平线 -->
+            <div class="n-line" :style="`transform: translate(-50%, -50%) rotate(${90 - rect.rotate}deg);`"></div><!-- 绝对垂直线 -->
+            <!-- <div class="rt-h-line" :style="`transform: translate(-50%, -50%) rotate(${90 - rect.rotate}deg);`"></div> --><!-- 右上角水平线 -->
+            <!-- <div class="rt-v-line" :style="`transform: translate(-50%, -50%) rotate(${90 - rect.rotate}deg);`"></div> --><!-- 右上角垂直线 -->
+            <div class="rt-q-line" :style="`transform: translate(-50%, -50%) rotate(${rect.rotate - 10}deg);`"></div><!-- 右上角切线 -->
+            <div class="rt-a" :style="`transform: translate(-50%, -50%) rotate(${-rect.rotate}deg);`"></div><!-- A点坐标线 -->
+            <div class="rt-b" :style="`transform: translate(-50%, -50%) rotate(${-rect.rotate}deg);`"></div><!-- B点坐标线 -->
+        </div>
+    </div>
+</body>
+<script>
+    Vue.createApp({
+        data() {
+            return {
+                rect: {
+                    w: 300,
+                    h: 200,
+                    x: 200,
+                    y: 200,
+                    rotate: -30,
+                    trans: 100, // 增加的宽度
+                }
+            }
+        },
+        computed: {
+            rectStyle() {
+                return {
+                    width: this.rect.w + 'px',
+                    height: this.rect.h + 'px',
+                    left: this.rect.x + 'px',
+                    top: this.rect.y + 'px',
+                }
+            },
+            rectRotateStyle() {
+                return {
+                    width: this.rect.w + 'px',
+                    height: this.rect.h + 'px',
+                    left: this.rect.x + 'px',
+                    top: this.rect.y + 'px',
+                    transform: `rotate(${this.rect.rotate}deg)`
+                }
+            },
+            rectRotateTransStyle() {
+                return {
+                    width: this.rect.w + this.rect.trans + 'px',
+                    height: this.rect.h + 'px',
+                    left: this.rect.x + 'px',
+                    top: this.rect.y + 'px',
+                    transform: `rotate(${this.rect.rotate}deg)`
+                }
+            },
+            rectRotateTransRightStyle() {
+                return {
+                    width: this.rect.w + this.rect.trans + 'px',
+                    height: this.rect.h + 'px',
+                    left: this.rect.x - 6 + 'px',
+                    top: this.rect.y - 25 + 'px',
+                    transform: `rotate(${this.rect.rotate}deg)`,
+                    // left: this.rect.x + 'px',
+                    // top: this.rect.y + 'px',
+                    // transform: `rotate(${this.rect.rotate}deg) translate(6px, -25px)`
+                }
+            },
+        },
+    }).mount('#App');
+</script>
+</html>

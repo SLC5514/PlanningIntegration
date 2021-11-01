@@ -1,0 +1,32 @@
+<div class="col-sub  fl">
+    <!-- item-topic -->
+    <div class="item-topic">
+        <h3 class="hd"><strong><i></i>账号管理</strong></h3>
+        <div class="bd clearfix">
+            <a {if {$LeftManageMenuHtml} eq 0} class="cur" {/if} title="修改账号资料" href="/member/base/"><i></i>基本信息<span></span></a>
+            <a {if {$LeftManageMenuHtml} eq 1} class="cur" {/if} title="修改密码" href="/member/pwd/"><i></i>修改密码<span></span></a>
+            {if {$accountType} eq 1}
+            <a {if {$LeftManageMenuHtml} eq 2} class="cur" {/if} title="绑定手机" href="/member/mobile/"><i></i>绑定手机号<span></span></a>
+            {/if}
+            {if $canChangLoginAccount}
+            <a {if {$LeftManageMenuHtml} eq 10} class="cur" {/if} title="修改登录账号" href="/member/moddefaultlogin/"><i></i>修改默认登录账号<span></span></a>
+            {/if}
+            {if {$vipflag} eq 1}
+            <a {if {$LeftManageMenuHtml} eq 3} class="cur" {/if} title="关联账号管理" href="/member/associate/"><i></i>关联账号管理<span></span></a>
+            {/if}
+            <!--a {if {$LeftManageMenuHtml} eq 4} class="cur" {/if} title="帐户积分明细" href="/member/integral/"><i></i>帐户积分<span></span></a-->
+            {if {$vipflag} eq 1}
+            <a {if {$LeftManageMenuHtml} eq 5} class="cur" {/if} title="索取发票" href="{$invoiceLink}" target="_blank"> <i></i>索取发票<span></span></a>
+            {/if}
+            <!--{if {$vipflagShare} eq 3}-->
+            <!--<a {if {$LeftManageMenuHtml} eq 6} class="cur" {/if} title="共享资料" href="/member/sharing/"><i></i>共享资料<span></span></a>-->
+            <!--{/if}-->
+            <a {if {$LeftManageMenuHtml} eq 8} class="cur" {/if} title="常用软件下载" href="/member/software/"><i></i>常用软件下载<span></span></a>
+            <a {if {$LeftManageMenuHtml} eq 7} class="cur" {/if} title="我要分享" href="/member/share/"><i></i>我要分享<span></span></a>
+			{if {$vipflag} eq 2}
+			<a {if {$LeftManageMenuHtml} eq 9} class="cur" {/if} title="解除绑定" href="/member/unbind/"><i></i>解除绑定<span></span></a>
+			{/if}
+        </div>
+    </div>
+    <!-- /item-topic -->
+</div>

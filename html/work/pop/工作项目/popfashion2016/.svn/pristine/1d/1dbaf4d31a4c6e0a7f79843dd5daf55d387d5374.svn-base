@@ -1,0 +1,507 @@
+{extends file="layout.html"}
+{block name="title"}服装色彩数据分析_服装流行色推荐_色彩流行趋势-POP服装趋势网{/block}
+{block name=keywords}服装色彩数据分析,服装流行色,服装色彩推荐,服装色彩流行趋势{/block}
+{block name=description}POP服装趋势网智能+色彩数据栏目为服装企业和设计师提供服装流行色彩全方位分析、色彩走势情况预测、未来色彩流行推荐等，从各个方向为设计师提供全面及时的色彩数据解读。{/block}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/color-data.css?{STATIC_CHANGE_TIME}">
+{/block}
+
+{block name="main"}
+<div class="viewport">
+    <input class="params" type="hidden" data-params="{$params}">
+    <!-- 头图 -->
+    <div class="banner">
+        <div></div>
+    </div>
+    <!-- 导航选项 -->
+    <div class="nav clearfix">
+        <div class="nav-content w1500">
+            <div class="fl">
+                <ul class="nav-sex clearfix js-nav-sex">
+                    {foreach $genders as $item}
+                    <li {if intval($paramsArr['gen'])==$item['id']}class="active"{/if}><i></i><a href="{$item.link}">{$item.name}</a></li>
+                    {/foreach}
+                </ul>
+            </div>
+            <div class="fr">
+                <div class="nav-week js-nav-week">
+                    <span class="js-nav-week-name">{$selected_region_name}</span><i></i>
+                    <ul class="nav-week-options">
+                        {foreach $regions as $item}
+                        <li {if intval($paramsArr['reg'])==$item['id']}class="active"{/if}><a href="{$item.link}">{$item.name}</a></li>
+                        {/foreach}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 主体内容 -->
+    <div class="viewport-content">
+        <!-- 引导 -->
+        <div class="guide-btn-box w1500">
+            <div class="guide js-guide">
+                <i></i>
+                <span>新手小课堂</span>
+            </div>
+        </div>
+        <!-- 数据分析 -->
+        <div class="section w1500 data-analysis js-analysis loading">
+            <!-- 头部 -->
+            <div class="section-header">
+                <div class="fl title">色彩单品组合占比分析</div>
+                <div class="fr">
+                    <div class="season season-box">
+                        <ul class="season clearfix js-analysis-season">
+                            {foreach $showYearSeason as $key=>$item}
+                            <li {if $key==0}class="active"{/if} data-key='season' data-id="{$item.season_id}">{$item.year}{$item.season}</li>
+                            {/foreach}
+                        </ul>
+                    </div>
+                    <div class="pager js-season-pager">
+                        <i class="l disabled"></i>
+                        <i class="r"></i>
+                    </div>
+                </div>
+            </div>
+            <!-- 图表 -->
+            <div class="section-chart">
+                <div class="crumbs">
+                    <div class="light-tips">
+                        <i class="light"></i>
+                        <div class="light-tips-content">
+                            <i class="arrow"></i>
+                            <ul>
+                                <li>展示当前季节下发布会整体的单品、颜色等数据情况；</li>
+                                <li>点击单品组装图可以查看单品下品类的数量；</li>
+                                <li>点击右边色环，可查看该色系下所有颜色，并可以查看单品在该颜色分布情况。</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="crumbs-content js-crumbs-analysis">
+                        <div><span>数据分析</span></div>
+                        <div><i></i><span>总览</span></div>
+                    </div>
+                    <div class="loading hide"></div>
+                </div>
+                <div class="section-chart-content clearfix">
+                    <div class="fl">
+                        <div class="chart-box js-chart-bar-analysis"></div>
+                    </div>
+                    <div class="fr">
+                        <div class="chart-box js-chart-pie-analysis"></div>
+                        <div class="color-title js-color-title">
+                            <div><i class="l"></i><span>0%</span>有色系</div>
+                            <div><i class="r"></i><span>0%</span>无色系</div>
+                            <span>色系</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 数据解读 -->
+            <div class="section-chart-interpreta">
+                <img class="title" src="{STATIC_URL1}/global/images/color_data/interpreta_title.png?{STATIC_CHANGE_TIME}" alt="数据解读">
+                <p></p>
+            </div>
+            <!-- 推荐 -->
+            <div class="section-chart-recommend js-section-recommend-analysis">
+                <div class="h-line"></div>
+                <div class="recommend-header">
+                    <div class="title fl">推荐款式图</div>
+                    <a class="more fr js-more-analysis" target="_blank" href="javascript:void(0);">
+                        <span>查看更多</span>
+                        <i></i>
+                    </a>
+                </div>
+                <div class="recommend-content">
+                    <ul class="recommend-list clearfix">
+                        <li>
+                            <ul class="recommend-item clearfix js-recommend-item"></ul>
+                        </li>
+                    </ul>
+                    <div class="pager js-recommend-pager">
+                        <i class="l disabled"></i>
+                        <i class="r"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 色彩走势 -->
+        <div class="section w1500 trend-color js-trend loading">
+            <!-- 头部 -->
+            <div class="section-header">
+                <div class="fl title">色彩走势</div>
+                <div class="info">统计最近3季色彩变化走势图，可以清晰知道每个颜色的走势情况，通过点击每个色系可查看该色系内所有颜色详情</div>
+                <div class="fr">
+                    <ul class="season clearfix js-trend-season">
+                        <li class="active">早春</li>
+                        <li>春夏</li>
+                        <li>早秋</li>
+                        <li>秋冬</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 图表 -->
+            <div class="section-chart">
+                <div class="crumbs">
+                    <div class="light-tips">
+                        <i class="light"></i>
+                        <div class="light-tips-content">
+                            <i class="arrow"></i>
+                            <ul>
+                                <li>色彩走势是统计所有色系在最近3个季度内走势情况；</li>
+                                <li>点击每个色系可以详细查看该颜色的详细情况。</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="crumbs-content js-crumbs-trend">
+                        <div><span>色彩走势</span></div>
+                        <div><i></i><span>一级色走势</span></div>
+                    </div>
+                    <div class="loading hide"></div>
+                </div>
+                <div class="section-chart-content clearfix">
+                    <div>
+                        <div class="chart-box js-chart-bar-trend"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- 数据解读 -->
+            <div class="section-chart-interpreta">
+                <img class="title" src="{STATIC_URL1}/global/images/color_data/interpreta_title.png?{STATIC_CHANGE_TIME}" alt="数据解读">
+                <p></p>
+            </div>
+            <!-- 蒙版 -->
+            <div class="section-mask">
+                <img src="{STATIC_URL1}/global/images/color_data/color_trend_mask_title.png?{STATIC_CHANGE_TIME}" alt="">
+                <div class="title">色彩走势分析</div>
+                <p>通过查看每个季度发布会的数据&nbsp;&nbsp;/&nbsp;&nbsp;可提升设计师对未来趋势走向的准确性</p>
+                <a class="js-contact-qq-btn" href="javascript:void(0);" title="申请试用">申请试用</a>
+            </div>
+        </div>
+        <!-- 上升下降色 -->
+        <div class="section w1500 upordown-color js-udcolor loading">
+            <!-- 头部 -->
+            <div class="section-header">
+                <div class="fl title">上升&下降色</div>
+                <div class="info js-udcolor-info">在符合条件下 <span></span> 对比 <span></span> 上升或下降分析</div>
+                <div class="fr">
+                    <ul class="season clearfix js-udcolor-season">
+                        <li class="active">早春</li>
+                        <li>春夏</li>
+                        <li>早秋</li>
+                        <li>秋冬</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 图表 -->
+            <div class="section-chart">
+                <div class="crumbs">
+                    <div class="light-tips">
+                        <i class="light"></i>
+                        <div class="light-tips-content">
+                            <i class="arrow"></i>
+                            <ul>
+                                <li>目前版本仅支持上升&下降前十名的颜色数据；</li>
+                                <li> 如果想关注其它颜色，请在”色彩走势“中查看；</li>
+                                <li>每个季度上升与下降色是与下一季服装研发存在紧密的联系。在未来版本中，将可以利用上升&下降与色彩趋势相结合。</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="crumbs-content js-crumbs-udcolor">
+                        <div><span>上升&下降色</span></div>
+                        <div><i></i><span>前10颜色排行榜</span></div>
+                    </div>
+                    <div class="loading hide"></div>
+                </div>
+                <div class="section-chart-content clearfix">
+                    <div class="chart-box js-chart-bar-lift"></div>
+                    <div class="fl" style="width: 50%;display: none;">
+                        <div class="chart-box js-chart-line-lift"></div>
+                    </div>
+                    <div class="fr" style="width: 50%;display: none;">
+                        <div class="chart-box js-chart-pie-lift"></div>
+                        <div class="color-title js-udcolor-color-title">
+                            <span>相关颜色推荐</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 数据解读 -->
+            <div class="section-chart-interpreta">
+                <img class="title" src="{STATIC_URL1}/global/images/color_data/interpreta_title.png?{STATIC_CHANGE_TIME}" alt="数据解读">
+                <p></p>
+            </div>
+            <!-- 蒙版 -->
+            <div class="section-mask">
+                <img src="{STATIC_URL1}/global/images/color_data/upordown_color_mask_title.png?{STATIC_CHANGE_TIME}" alt="">
+                <div class="title">上升&下降色分析</div>
+                <p>统计每个季度上升/下降最快的颜色&nbsp;&nbsp;/&nbsp;&nbsp;帮助设计师提高对颜色筛选的精准度</p>
+                <a class="js-contact-qq-btn" href="javascript:void(0);" title="申请试用">申请试用</a>
+            </div>
+        </div>
+        <!-- 推荐色 -->
+        <div class="section w1500 recommend-color js-remcolor loading">
+            <!-- 头部 -->
+            <div class="section-header">
+                <div class="fl title">{$recommend_color['season_name']}推荐色</div>
+            </div>
+            <!-- 图表 -->
+            <div class="section-chart">
+                <div class="section-chart-content clearfix">
+                    <div>
+                        <ul class="recommend-color-chart clearfix js-recommend-color-chart childhide">
+                            {if !empty($recommend_color['colors'])}
+                                {foreach $recommend_color['colors'] as $key=>$item}
+                                <li {if $key==0}class="active"{/if} style="background:{$item.color_number};" data-season="{$item.season_id}" data-color="{$item.color_id}">
+                                    <div class="border fl">
+                                        <div class="title">{$item.en_name}</div>
+                                        <div class="model">{$item.panton_color}</div>
+                                        <div class="pantone">PANTONE</div>
+                                    </div>
+                                    <div class="v-line fr"><span>{$item.cn_name}</span></div>
+                                    <div class="label">{$item.cn_name}</div>
+                                </li>
+                                {/foreach}
+                            {/if}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- 数据解读 -->
+            <div class="section-chart-interpreta">
+                <p><span>{$recommend_color['interpret']}</span></p>
+            </div>
+            <!-- 推荐 -->
+            <div class="section-chart-recommend">
+                <div class="recommend-content recommend-item-all">
+                    <ul class="recommend-item clearfix js-remcolor-list"></ul>
+                    <a class="more js-remcolor-more" target="_blank" href="javascript:void(0);">
+                        <span>查看更多</span><i></i>
+                    </a>
+                </div>
+            </div>
+            <!-- 蒙版 -->
+            <div class="section-mask">
+                <img src="{STATIC_URL1}/global/images/color_data/recommend_color_mask_title.png?{STATIC_CHANGE_TIME}" alt="">
+                <div class="title">每一季的重点色</div>
+                <p>POP趋势专家针对每年流行趋势&nbsp;&nbsp;/&nbsp;&nbsp;推荐重点色，协助设计师参考</p>
+                <a class="js-contact-qq-btn" href="javascript:void(0);" title="申请试用">申请试用</a>
+            </div>
+        </div>
+    </div>
+    <!-- 蒙层 -->
+    <div class="mask js-mask"></div>
+    <!-- 引导弹窗 -->
+    <div class="guide-content js-guide-content">
+        <div class="load-bar">
+            <div class="js-guide-bar"></div>
+        </div>
+        <div class="pager js-guide-pager">
+            <i class="l"></i>
+            <span>1/5</span>
+            <i class="r"></i>
+        </div>
+        <i class="close js-guide-close"></i>
+        <div class="page js-guide-page page1"></div>
+        <div class="btn js-guide-btn">确定</div>
+    </div>
+    <!-- 查看图片 -->
+    <div class="view-img" id="pop_layer">
+        <!-- 内容 -->
+        <div class="img-content">
+            <div id="draggable" class="ui-widget-content">
+                <img class="js-bigbox" src="" alt="">
+            </div>
+            <i class="loading"></i>
+        </div>
+        <!-- 内容蒙层 -->
+        <div class="content-mask">
+            <div class="col">
+                <div class="close js-close-verimg"></div>
+                <a class="download js-viewimg-download" href="javascript:void(0);"><i></i><span>下载图片</span></a>
+            </div>
+            <!--图片控制器-->
+            <div class="pic-control-box js-pic-control">
+                <div class="pic-control">
+                    <div class="control-l js-control-l">
+                        <i></i>
+                    </div>
+                    <p class="js-original">原图</p>
+                    <p class="js-reset on-reset">复位</p>
+                </div>
+            </div>
+            <div class="pager js-viewimg-pager">
+                <i class="l"></i>
+                <i class="r"></i>
+            </div>
+        </div>
+    </div>
+    <!-- 游客 -->
+    <div class="gradient-mask js-gradient-mask"></div>
+    <div class="tourist js-tourist">
+        <div class="title">需要登录后查看色彩数据</div>
+        <p>每年数据走势和专业文字解读可以更清晰的表达每一个数据的含义，协助设计师对数据趋势的理解</p>
+        <div class="btns">
+            <!-- loginLayer -->
+            <a class="login" href="/member/pagelogin/">登录</a>
+            <a class="register" href="/member/register/">注册</a>
+        </div>
+    </div>
+    <!-- 色彩走势二级 -->
+    <div class="color-trend js-color-trend loading">
+        <div class="left-content">
+            <!-- 头部 -->
+            <div class="section-header">
+                <div class="fl title">色彩走势</div>
+                <div class="fl">
+                    <ul class="season clearfix js-trend-season">
+                        <li class="active">早春</li>
+                        <li>春夏</li>
+                        <li>早秋</li>
+                        <li>秋冬</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 图表 -->
+            <div class="section-chart">
+                <div class="crumbs">
+                    <div class="light-tips">
+                        <i class="light"></i>
+                        <div class="light-tips-content">
+                            <i class="arrow"></i>
+                            <ul>
+                                <li>展示该色系下所有颜色在最近3个季度内走势情况；</li>
+                                <li>由于颜色较多，查看更多请拖动下方“滑块”可以看全所有颜色；</li>
+                                <li>点击右边色盘，可以快速选择自己中意的颜色。</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="crumbs-content js-crumbs-trend">
+                        <div><span>色彩走势</span></div>
+                        <div><i></i><span>一级色走势</span></div>
+                        <div><i></i><span>--系</span></div>
+                    </div>
+                    <div class="loading hide"></div>
+                </div>
+                <div class="section-chart-content clearfix">
+                    <div class="fl" style="width: 65%;">
+                        <div class="chart-box js-chart-bar-trendsub"></div>
+                    </div>
+                    <div class="fr nobor" style="width: 35%;">
+                        <div class="chart-box js-chart-pie-trendsub"></div>
+                        <div class="color-title js-trend-pie-title">
+                            <span>相关颜色分类</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 数据解读 -->
+            <div class="section-chart-interpreta">
+                <img class="title" src="{STATIC_URL1}/global/images/color_data/interpreta_title.png?{STATIC_CHANGE_TIME}" alt="数据解读">
+                <p></p>
+            </div>
+            <div class="h-line"></div>
+            <!-- 图表 -->
+            <div class="section-chart section-chart-detail">
+                <div class="crumbs">
+                    <div class="title js-trend-category-title">单品走势</div>
+                    <div class="light-tips">
+                        <i class="light"></i>
+                        <div class="light-tips-content">
+                            <i class="arrow"></i>
+                            <ul>
+                                <li>展示最近3年当前色系下每个单品走势；</li>
+                                <li>单品目前版本不支持查看详细品类，还处于建设中，请耐心等待；</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-chart-content clearfix">
+                    <div class="chart-box-category js-chart-bar-trendsub-item"></div>
+                    <p class="tips js-trend-category-tips"><i></i>品类详情还在建设中 ，敬请期待！</p>
+                </div>
+            </div>
+            <div class="right-content js-trend-aside loading">
+                <i class="expand js-expand"></i>
+                <div class="list-content">
+                    <i class="close js-trend-close"></i>
+                    <div class="inner">
+                        <div class="style-list js-style-list">
+                            <div class="recommend-header">
+                                <div class="title fl">款式图</div>
+                                <a class="more fr" target="_blank" href="javascript:void(0);">
+                                    <span>更多</span>
+                                    <i></i>
+                                </a>
+                            </div>
+                            <div class="recommend-content">
+                                <ul class="recommend-list clearfix">
+                                    <li>
+                                        <ul class="recommend-item clearfix"></ul>
+                                    </li>
+                                </ul>
+                                <div class="pager">
+                                    <i class="l disabled"></i>
+                                    <i class="r"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="style-list js-style-list">
+                            <div class="recommend-header">
+                                <div class="title fl">款式图</div>
+                                <a class="more fr" target="_blank" href="javascript:void(0);">
+                                    <span>更多</span>
+                                    <i></i>
+                                </a>
+                            </div>
+                            <div class="recommend-content">
+                                <ul class="recommend-list clearfix">
+                                    <li>
+                                        <ul class="recommend-item clearfix"></ul>
+                                    </li>
+                                </ul>
+                                <div class="pager">
+                                    <i class="l disabled"></i>
+                                    <i class="r"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="style-list rows js-style-list">
+                            <div class="recommend-header">
+                                <div class="title fl">款式图</div>
+                                <a class="more fr" target="_blank" href="javascript:void(0);">
+                                    <span>更多</span>
+                                    <i></i>
+                                </a>
+                            </div>
+                            <div class="recommend-content">
+                                <div class="recommend-list-box">
+                                    <ul class="recommend-list clearfix">
+                                        <li>
+                                            <ul class="recommend-item clearfix"></ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="pager">
+                                    <i class="l disabled"></i>
+                                    <i class="r"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="isHeight"></div>
+</div>
+{/block}
+
+{block name="self"}
+<script type="text/javascript">
+    var IMGURL = '{STATIC_URL1}';
+</script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/lib/echarts.min.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/color-data.js?{STATIC_CHANGE_TIME}"></script>
+{/block}

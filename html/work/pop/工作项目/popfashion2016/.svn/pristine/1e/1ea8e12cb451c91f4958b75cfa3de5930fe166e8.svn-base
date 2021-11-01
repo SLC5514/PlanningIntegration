@@ -1,0 +1,111 @@
+<div class="new-trends-fix js-new-trends-fix trends-fix-start">
+    <div class="new-trends-bg js-new-trends-bg"></div>
+    {if $P_UserType eq 5 || $P_UserType eq 4}
+    <!-- 旧版弹层 -->
+	<div class="explore-pop js-explore-pop">
+        <div class="trends-msg-close"></div>
+        <div class="new-explore-list">
+			<h3><a href="/topic/scene_home/" target="_blank"></a></h3>
+			<div class="scene-links">
+				<a href="/topic/theme_color/" target="_blank"><span>主题<br/>色彩</span></a>
+				<a href="/topic/patterns/" target="_blank"><span>图案</span></a>
+				<a href="/topic/fabric/" target="_blank"><span>面料</span></a>
+				<a href="/topic/single/" target="_blank"><span>单品</span></a>
+				<a href="/topic/brand/" target="_blank"><span>品牌</span></a>
+			</div>
+            <ul class="clearfix js-new-trends load-start"></ul>
+            <div class="trends-pics js-trends-pics">
+                <ul class="clearfix"></ul>
+            </div>
+        </div>
+        <div class="new-explore-bott clearfix">
+            <div class="report-new"></div>
+            <div class="is-user">
+                <p></p>
+                <a class="bott-a1 loginLayer" href="javascript:void(0);" rel="nofollow" title="查看大图">登录</a>
+                <a class="bott-a2" href="/member/register/" target="_blank" title="查看大图">注册</a>
+                <a class="bott-a3 js-contact-qq-btn" href="javascript:void(0);" title="查看大图">联系客服</a>
+            </div>
+        </div>
+    </div>
+    <!-- 弹层改版 -->
+    <div class="trials-box js-trials-box">
+        <div class="trials_close_count js-new-trends-bg"></div>
+        {if $P_UserType == 5}
+        <div class="trials-tit clearfix">
+            <div class="fl">
+                <h3>开始免费试读</h3>
+                <p>拨打 4008-210-500 咨询VIP服务</p>
+            </div>
+            <div class="fr">
+                <a class="trials-reg-btn" href="/member/register/" target="_blank">立即注册</a>
+                <a class="trials-contact-btn js-contact-qq-btn" href="javascript:void(0);">畅通无阻快速了解</a>
+            </div>
+        </div>
+        {/if}
+        {if $P_UserType == 4}
+        <div class="trials-tit clearfix">
+            <div class="fl">
+                <h3>免费精选内容</h3>
+                <p>拨打 4008-210-500 咨询VIP服务</p>
+            </div>
+            <div class="fr">
+                <a class="trials-reg-btn trials-reg-usertype-btn js-contact-qq-btn" href="javascript:void(0);">咨询会员服务</a>
+            </div>
+        </div>
+        {/if}
+        <div class="trials-itembox clearfix">
+            <div class="trials-trend-fl fl">
+                <!--免费报告-->
+                <div class="trials-item-title">报告免费试读</div>
+                <div class="trials-item-top js-trials-item-top clearfix">
+                    
+                </div>
+                <!--/免费报告-->
+            </div>
+            <div class="trials-style-fl fl">
+                <!--免费款式-->
+                <div class="trials-item-title">款式免费查看</div>
+                <div class="trials-item-btm js-trials-item-btm clear">
+                    
+                </div>
+                <!--/免费款式-->
+            </div>
+        </div>
+    </div>
+    {else}
+    <div class="trends-msg">
+        <!-- 侧边导航 -->
+        <div class="trends-nav">
+            <ul class="js-trends-navs"></ul>
+        </div>
+
+        <div class="trends-msg-close"></div>
+        <div class="new-trends-list load-start">
+            <h3></h3>
+            <ul class="clearfix js-new-trends"></ul>
+            <div class="trends-pics js-trends-pics">
+                <ul class="clearfix"></ul>
+            </div>
+        </div>
+	</div>
+    {/if}
+    <!-- 款式详情弹层弹层 -->
+    <div class="trends-bg js-style-close"></div>
+    <div class="style-list-content js-style-list-content">
+        <div class="style-close js-style-close"></div>
+        <div class="style-list-top">
+            <h2 class="list-title js-list-title">ces cesc ecs</h2>
+            <div class="style-btn">
+                <p>需要更多会员服务，请联系：<i></i><strong>4008-210-500</strong></p>
+                <a href="javascript:void(0);" class="js-contact-qq-btn">咨询会员服务</a>
+                <a class="js-more-url btn" title="查看更多" target="_blank">查看更多</a>
+            </div>
+        </div>
+        <div class="img-box js-img-box">
+            <div class="img-box-btn img-left js-img-left"></div>
+            <img src="">
+            <div class="img-box-btn img-right js-img-right"></div>
+        </div>
+    </div>
+</div>

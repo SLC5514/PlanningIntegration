@@ -1,0 +1,173 @@
+{extends file="layout.html"}
+{block name="header"}{/block}
+{block name="selfcss"}
+<!-- <link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/lib/laydate.css?{STATIC_CHANGE_TIME}"> -->
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/pattern-list/pattern-list.css?{STATIC_CHANGE_TIME}">
+{/block}
+{block name="main"}
+<!-- container -->
+<div class="view-box">
+    <!-- 图案库 -->
+    <div class="pattern-container js-pattern-container">
+        <button class="icon-ele js-close-top-window" title="关闭"></button>
+        <h3 class="nclear">
+            <ul class="js-nav">
+                <li class="now-choice">选择图片</li>
+                <!-- <li>选中的图片</li> -->
+            </ul>
+            <button class="check-condition js-check-condition" title="筛选条件"></button>
+            <button class="check-box js-check-box"><img src="{STATIC_URL2}/global/images/pattern-list/icon1.png" alt="icon">全选/全不选</button>
+        </h3>
+        <div class="pattern-div js-pattern-div">
+            <!-- 图案 -->
+            <ul class="pattern-list nclear js-pattern-list">
+                <!-- <li>
+                    <div class="pic-div js-check-ele" data-id="1">
+                        <img src="{STATIC_URL2}/global/images/pattern-list/test1.jpg" alt="pic">
+                        <img class="check-img js-check-img" src="{STATIC_URL2}/global/images/pattern-list/icon2.png" alt="check">
+                        <div>
+                            <span>标题</span>
+                            <div></div>
+                        </div>
+                    </div>
+                    <p>
+                        单品：裤子<br>
+                        品名：连衣裙 
+                    </p>
+                    <div class="show-big">
+                        <a href="#" title="查看大图"><img src="{STATIC_URL2}/global/images/pattern-list/icon4.png" alt="icon">点击查看大图</a>
+                    </div>
+                </li> -->
+            </ul>
+            <!-- 选中的图案 -->
+            <ul class="check-list nclear js-check-list">
+                
+            </ul>
+            <p class="js-at-p">没有搜索到图案。</p>
+            <p class="js-at-p">图案库为空。</p>
+        </div>
+        <div class="controll-div nclear js-controll-div">
+            <div class="page-controll js-page-controll">
+                <button class="prev-btn icon-ele js-prev-btn" title="上一页"></button>
+                <span class="now-page js-now-page">1</span>
+                <span class="total-page js-total-page">/ 100</span>
+                <button class="next-btn icon-ele js-next-btn" title="下一页"></button>
+                到第
+                <input class="js-page-area" type="text" holderplace="要跳转的页数">
+                页
+                <button class="go-btn js-go-btn" title="确定">确定</button>
+            </div>
+            <button class="confirm-btn js-return-data-btn" title="确定">确定</button>
+            <!-- <button class="cancel-btn js-cancel-btn" title="取消">取消</button> -->
+        </div>
+    </div>
+    <!-- 筛选条件 -->
+    <div class="condition-box js-condition-box">
+        <button class="icon-ele js-close-btn" title="关闭"></button>
+        <form>
+            <label>时间：</label>
+            <input class="time-area js-start-time" type="text" name="beginTime"> - <input class="time-area js-end-time" type="text" name="endTime"><br>
+            <label>行业：</label>
+            <select name="ind">
+                <option value="">请选择行业</option>
+                {foreach $industry as $key=>$val}
+                <option value="{$key}">{$val}</option>
+                {/foreach}
+            </select><br/>
+            <label>性别：</label>
+            <select name="gen">
+                <option value="">请选择性别</option>
+                {foreach $gender as $key=>$val}
+                <option value="{$key}">{$val}</option>
+                {/foreach}
+            </select><br/>
+            <label>季节：</label>
+            <select name="sea">
+                <option value="">请选择季节</option>
+                {foreach $sea as $key=>$val}
+                <option value="{$key}">{$val}</option>
+                {/foreach}
+            </select><br/>
+            <label>关键词：</label>
+            <input class="keyword-area" type="text" name="key"><br/>
+            <label>栏目：</label>
+            <select name="cols" class="js-select-ele" data-def="请选择栏目">
+                <option value="">请选择栏目</option>
+                {foreach $columns as $key=>$val}
+                <option value="{$val.iColumnId}">{$val.sName}</option>
+                {/foreach}
+            </select> --
+            <select name="subCols" class="js-select-ele" data-def="请选择子栏目">
+                <option value="">请选择子栏目</option>
+            </select><br/>
+            <label>单品/品名：</label>
+            <select name="cat" class="js-select-ele" data-def="请选择单品">
+                <option value="">请选择单品</option>
+                {foreach $aSingles as $key=>$val}
+                <option value="{$key}">{$val.sName}</option>
+                {/foreach}
+            </select> --
+            <select name="subCat" class="js-select-ele" data-def="请选择品名"><option value="">请选择品名</option></select><br/>
+            <label>地区：</label>
+            <select name="reg_1" class="js-select-ele js-contact-select" data-def="请选择">
+                <option value="">请选择</option>
+                {$reg_1}
+            </select> --
+            <select name="reg_2" class="js-select-ele js-contact-select" data-def="请选择">
+                <option value="">请选择</option>
+            </select> --
+            <select name="reg_3" class="js-select-ele js-contact-select" data-def="请选择">
+                <option value="">请选择</option>
+            </select> --
+            <select name="reg_4" class="js-select-ele js-contact-select" data-def="请选择">
+                <option value="">请选择</option>
+            </select>
+            <br/>
+            <label>风格：</label>
+            <select name="manner" class="js-select-ele" data-def="请选择风格">
+                <option value="">请选择风格</option>
+                {foreach $manner as $key=>$val}
+                <option value="{$val.iAttributeId}">{$val.sName}</option>
+                {/foreach}
+            </select><br/>
+            <label>元素：</label>
+            <select name="ele" class="js-select-ele" data-def="请选择">
+                <option value="">请选择</option>
+                {foreach $element as $key=>$val}
+                <option value="{$val.iAttributeId}">{$val.sName}</option>
+                {/foreach}
+            </select> --
+            <select name="subEle" class="js-select-ele" data-def="请选择"><option value="">请选择</option></select><br/>
+            <div class="js-content-select-div">
+                <label>图案内容：</label>
+                <select name="con" class="js-select-ele" data-def="请选择">
+                    <option value="">请选择</option>
+                    {foreach $patternContent as $key=>$val}
+                    <option value="{$key}">{$val.name}</option>
+                    {/foreach}
+                </select> --
+                <select name="subCon" class="js-select-ele" data-def="请选择"><option value="">请选择</option></select><br/>
+            </div>
+
+            <label></label><button class="confirm-btn js-confirm-search-btn" title="确认搜索">确认搜索</button>
+        </form>
+    </div>
+    <div class="bg-div"></div>
+    <div class="bg-div2 js-bg-div2"></div>
+
+    <div class="loading-div js-loading-div"></div>
+</div>
+
+{/block}
+
+{block name="footer"}{/block}
+
+{block name="self"}
+    <script type="text/javascript">
+        var nimg_href="{STATIC_URL2}";
+    </script>
+    <script type="text/javascript" src="{STATIC_URL2}/global/js/common/pop-msg-1.2.js?{STATIC_CHANGE_TIME}"></script>
+    <script type="text/javascript" src="{STATIC_URL2}/global/js/lib/laydate/laydate.js?{STATIC_CHANGE_TIME}"></script>
+    <script type="text/javascript" src="{STATIC_URL2}/global/js/pattern-list/pattern-list.js?{STATIC_CHANGE_TIME}"></script>
+{/block}
+{block name="all"}{/block}

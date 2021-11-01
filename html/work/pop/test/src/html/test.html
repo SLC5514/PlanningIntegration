@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #drag_box {
+      width: 100px;
+      height: 100px;
+      padding: 10px;
+      border: 1px solid #aaaaaa;
+    }
+    #drag_el {
+      width: 100px;
+    }
+    #canvas_box {
+      width: 200px;
+      height: 200px;
+    }
+  </style>
+  <script type="text/javascript">
+    function allowDrop(ev) {
+      ev.preventDefault();
+    }
+    function drag(ev) {
+      console.log(ev.target.id)
+      ev.dataTransfer.setData("Text", ev.target.id);
+    }
+    function drop(ev) {
+      ev.preventDefault();
+      var data=ev.dataTransfer.getData("Text");
+      console.log(data)
+      ev.target.appendChild(document.getElementById(data));
+    }
+  </script>
+</head>
+<body>
+  <div id="vm">
+    <button @click="toggleFullScreen">全屏</button>
+    <hr>
+    <div id="drag_box" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <br>
+    <img id="drag_el" src="./code.jpg" draggable="true" ondragstart="drag(event)"/>
+    <hr>
+    <div id="canvas_box">
+      <canvas id="my_canvas" width="200" height="200">
+        <p>您的系统不支持此程序!</p>
+      </canvas>
+    </div>
+  </div>
+</body>
+<script src="./vue.js"></script>
+<script>
+  new Vue({
+    el: '#vm',
+    data() {
+      return {
+        is_full: false
+      }
+    },
+    methods: {
+      toggleFullScreen: function () {
+        if(this.is_full==false){
+          this.is_full=true;
+          lanchFullscreen(document.documentElement);
+        }else{
+          this.is_full=false;
+          exitFullscreen()
+        }
+        
+        function lanchFullscreen(element){
+          console.log('进入全屏')
+          if(element.requestFullscreen){
+            element.requestFullscreen();
+          }else if(element.mozRequestFullScreen){
+            element.mozRequestFullScreen();
+          }else if(element.msRequestFullscreen){
+            element.msRequestFullscreen();
+          }else if(element.webkitRequestFullscreen){
+            element.webkitRequestFullScreen();
+          }
+        }
+        function exitFullscreen(){
+          console.log('退出全屏')
+          if(document.exitFullscreen){
+            document.exitFullscreen();
+          }else if(document.mozCancelFullScreen){
+            document.mozCancelFullScreen();
+          }else if(document.msExitFullscreen){
+            document.msExiFullscreen();
+          }else if(document.webkitCancelFullScreen){
+            document.webkitCancelFullScreen();
+          }
+        }
+      }
+    }
+  })
+</script>
+</html>

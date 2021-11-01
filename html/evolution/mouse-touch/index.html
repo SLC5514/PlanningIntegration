@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MouseTouch</title>
+    <script src="../lib/jquery-3.5.1/jquery.min.js"></script>
+    <style>
+        .box{height: 200px;box-shadow: 0 0 5px #999;position: relative;}
+        .ball{width: 50px;height: 50px;line-height: 50px;text-align: center;border-radius: 50%;color: #ccc;background-color: #369;box-shadow: 0 0 5px #369;position: absolute;left: 0;top: 0;z-index: 1;user-select: none;cursor: pointer;}
+        .ball:nth-child(2){left: 50px;top: 50px;}
+    </style>
+</head>
+<body>
+    <h3>浏览器事件 专研</h3>
+    <h4>mouse、touch</h4>
+    <div class="box">
+        <div class="ball" data-id="1">1</div>
+        <div class="ball" data-id="2">2</div>
+    </div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+</body>
+<script>
+    var ballEl = $('.ball');
+    var eventKeys = {
+        pc: ['mousedown', 'mousemove', 'mouseup'],
+        m: ['touchstart', 'touchmove', 'touchend']
+    };
+    var isPcState = isPc();
+    var eventKey = isPcState && eventKeys['pc'] || eventKeys['m'];
+    function isPc() {
+        return !/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent);
+    }
+    var down = function(ev) {
+        var e = isPcState ? ev : ev.targetTouches[0];
+        var matrix = $(this).css('transform').match(/(?<=matrix\().*?(?=\))/g);
+        matrix = matrix && matrix[0].split(/,\s/g) || [1, 0, 0, 1, 0, 0];
+        $(this).data({
+            sx: e.clientX,
+            sy: e.clientY,
+            matrix: matrix
+        });
+        this.addEventListener(eventKey[1], move, { passive: false });
+        this.addEventListener(eventKey[2], up, { passive: false });
+        ev.preventDefault();
+    };
+    var move = function(ev) {
+        var e = isPcState ? ev : ev.targetTouches[0];
+        var data = $(this).data();
+        var moveX = e.clientX - data.sx;
+        var moveY = e.clientY - data.sy;
+        $(this).css({
+            transform: `matrix(1, 0, 0, 1, ${data.matrix[4] * 1 + moveX}, ${data.matrix[5] * 1 + moveY})`
+        });
+        ev.preventDefault();
+    };
+    var up = function() {
+        console.log('up', $(this).data('id'));
+        this.removeEventListener(eventKey[1], move, { passive: false });
+        this.removeEventListener(eventKey[2], up, { passive: false });
+    };
+    for (var i = 0; i < ballEl.length; i++) {
+        ballEl[i].addEventListener(eventKey[0], down, { passive: false });
+    }
+</script>
+</html>

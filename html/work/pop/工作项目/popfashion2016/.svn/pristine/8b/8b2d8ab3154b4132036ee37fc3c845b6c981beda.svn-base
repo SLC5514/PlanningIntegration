@@ -1,0 +1,95 @@
+{extends file="layout.html"}
+{block name="selfcss"}
+	<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/pop_layer.css?{STATIC_CHANGE_TIME}">
+  <link rel="stylesheet" href="{STATIC_URL2}/global/css/nfd-min.css" />
+	<link rel="stylesheet" href="{STATIC_URL2}/global/css/jquery.lightbox-0.5.css" media="screen" charset="utf-8" />
+  <link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/lists/common/list-common.css?{STATIC_CHANGE_TIME}">
+  <link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/lists/patterns-list.css?{STATIC_CHANGE_TIME}">
+{/block}
+{block name="main"}
+<div class="contant conheight">
+	<input type="hidden" id="link"
+        data-sor="{$link['sortRandom']}"
+        data-col="{$columnId}"
+        data-url="{if isset($link['url'])}{$link['url']}{/if}"
+        data-param="{if isset($link['param'])}{$link['param']}{/if}"
+        data-search="{if isset($link['search'])}{$link['search']}{/if}"
+        data-pow="{$memberFlag}"/>
+    <div name='anchor' id='anchor' class="anchor"></div>
+    <!--头部轮播-->
+    <div class="banner-top new-banner-top new-banner">
+        {block name="topads"}
+        {include file="lists/lists-common/banner_ads.html"}
+        {/block}
+        <!-- 列表导航 -->
+		{include file="lists/lists-common/nav_common_select.html"}
+    </div>
+    <div class="select-common-fixed js-select-common-fixed">
+        <div class="contentW">
+            {include file="lists/lists-common/nav_common_select.html"}
+        </div>
+    </div>    
+    <div class="select-label-contain js-select-label-contain new-right-nav">
+        <div class="rightc_top contentW"> 
+            <!-- 列表内容 -->
+			<div class="rightc_main js-patterns-lists-box">
+				<ul itemscope class="patter-trend js-list-parent clearfix">
+                    {foreach range(1, 10) as $i}
+                    <li class="js-placeholder-item">
+                        <a class="trend-a" itemprop="url" href="javascript:void(0);" data-t="report" data-id="3282" data-total="200" data-index="36" data-col="126" data-mark="0" data-utype="" ondragstart="return false;" oncontextmenu="return false;">
+                            <img alt="pic" itemprop="thumbnail" src="{STATIC_URL2}/global/images/loading/analysis.jpg">
+                            <div class="img_arrow_icon"></div>
+                        </a>
+                        <div itemscope="" class="text-down">
+                            <p itemprop="name" class="title topic-title"></p>
+                            <p class="img-description topic-img-description js-topic-description"></p>
+                        </div>
+                    </li>
+                    {/foreach}
+                    
+				</ul>
+            </div>
+
+            <!-- 搜索空数据 -->
+			<div class="rightc_main hide js-error-section">
+                {include file="lists/lists-common/search_null.html"}
+			</div>
+            <div class="scroll-load js-scroll-load"><img src="{STATIC_URL1}/global/images/alertloading.gif"></div>
+
+            <!-- 翻页 -->
+            <div class="rightc_bottom js-page-section"></div>          
+            
+		</div>
+	</div>
+</div>
+{/block}
+
+{block name="other"}
+<div id="loadingBg"><div class="noPic"></div></div>
+{/block}
+{block name="self"}
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/styles.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL2}/global/js/fashion/index.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/global.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/common/template.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL2}/global/js/fashion/jquery.lightbox-0.5.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/util.pop2.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/common/banner-slide.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/lists/list-common.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/lib/laypage/laypage.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/lists/patterns-topic.js?{STATIC_CHANGE_TIME}"></script>
+{literal}
+<script>
+$(function(){
+	// 异步加载筛选条件
+	oPopStyles.loadSelectItems('{/literal}{$columnId}{literal}');
+
+	$(".lazyload img").lazyload({effect : "fadeIn"});
+
+	$('.trend').on('click', '.active_click', function() {
+		$(this).prev('a.trend_a').trigger('click');
+	});
+});
+</script>
+{/literal}
+{/block}

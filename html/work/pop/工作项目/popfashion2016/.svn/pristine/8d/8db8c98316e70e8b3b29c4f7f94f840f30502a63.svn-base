@@ -1,0 +1,139 @@
+{extends file="layout.html"}
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/topic/common/css/h5-common.css?{STATIC_CHANGE_TIME}" />
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/topic/20200213/css/index.css?{STATIC_CHANGE_TIME}">
+{/block}
+
+
+{block name="main"}
+{include file="topic/common/h5-header.html"}
+<div class="pc-section">
+    <div class="banner-contain">
+        <a href="javascript:void(0);"></a>
+    </div>
+    <div class="main-section">
+        <div class="w1200">
+            <div class="report-category-infor">
+                <div class="report-title">
+                    <span>八大视角</span><i></i><span>全面解析</span>
+                </div>
+                <div class="report-text">
+                    <em class="point1"></em>
+                    <em class="point2"></em>
+                    当下在经济结构因疫情受到挑战，致使传统的结构正在被颠覆。不安和焦虑也伴随而来。在这种影响下，库存与商品的积压不得不让业内人士重新思考接下来的运行模式。而服装的再设计以一种打破规则的模式唤醒商业模式的可持续循环法则，POP趋势为应对疫情之后的行业趋势和复苏做了专题内容准备
+                </div>
+                <ul class="report-category-list clearfix">
+                    <li>
+                        <img src="{STATIC_URL2}/global/topic/20200213/images/list1.png">
+                    </li>
+                    <li>
+                        <img src="{STATIC_URL2}/global/topic/20200213/images/list2.png">
+                    </li>
+                    <li>
+                        <img src="{STATIC_URL2}/global/topic/20200213/images/list3.png">
+                    </li>
+                    <li>
+                        <img src="{STATIC_URL2}/global/topic/20200213/images/list4.png">
+                    </li>
+                    <li>
+                        <img src="{STATIC_URL2}/global/topic/20200213/images/list5.png">
+                    </li>
+                    <li>
+                        <img src="{STATIC_URL2}/global/topic/20200213/images/list6.png">
+                    </li>
+                    <li>
+                        <img src="{STATIC_URL2}/global/topic/20200213/images/list7.png">
+                    </li>
+                    <li>
+                        <img src="{STATIC_URL2}/global/topic/20200213/images/list8.png">
+                    </li>
+                </ul>
+                <div class="report-live-box">
+                    <img src="{STATIC_URL2}/global/topic/20200213/images/report_live.jpg"/>
+                </div>
+                <div class="report-list-title">
+                    <span>报告抢先读</span><i></i><span>掌握最新鲜潮流向</span>
+                </div>
+                <div class="report-list-nav js-report-list-nav clearfix">                    
+                    <div class="report-tab-nav">
+                        <div class="nav-top"></div>
+                        <div class="nav-main js-nav-data">
+                        </div>
+                        <div class="nav-bottom"></div>
+                    </div>
+                    <div class="report-list-contain fr js-report-list-data">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="h5-section">
+    <div class="h5-banner-contain">
+        <a href="javascript:void(0);"></a>
+    </div>
+    <div class="h5-main-section">
+        <div class="w1200">
+            <div class="h5-report-category-infor">
+                <div class="report-title">
+                    <span>八大视角</span><i></i><span>全面解析</span>
+                </div>
+                <div class="report-text">
+                    <em class="point1"></em>
+                    <em class="point2"></em>
+                    当下在经济结构因疫情受到挑战，致使传统的结构正在被颠覆。不安和焦虑也伴随而来。在这种影响下，库存与商品的积压不得不让业内人士重新思考接下来的运行模式。而服装的再设计以一种打破规则的模式唤醒商业模式的可持续循环法则，POP趋势为应对疫情之后的行业趋势和复苏做了专题内容准备
+                </div>
+                <ul class="h5-report-category-list clearfix">
+                    <li>
+                        <img src="{STATIC_URL2}/global/topic/20200213/images/h5/h5_list1.png">
+                    </li>
+                    <li>
+                        <img src="{STATIC_URL2}/global/topic/20200213/images/h5/h5_list2.png">
+                    </li>
+                    <li>
+                        <img src="{STATIC_URL2}/global/topic/20200213/images/h5/h5_list3.png">
+                    </li>
+                    <li>
+                        <img src="{STATIC_URL2}/global/topic/20200213/images/h5/h5_list4.png">
+                    </li>
+                    <li>
+                        <img src="{STATIC_URL2}/global/topic/20200213/images/h5/h5_list5.png">
+                    </li>
+                    <li>
+                        <img src="{STATIC_URL2}/global/topic/20200213/images/h5/h5_list6.png">
+                    </li>
+                    <li>
+                        <img src="{STATIC_URL2}/global/topic/20200213/images/h5/h5_list7.png">
+                    </li>
+                    <li>
+                        <img src="{STATIC_URL2}/global/topic/20200213/images/h5/h5_list8.png">
+                    </li>
+                </ul>
+                <div class="h5-report-live-box">
+                    <img src="{STATIC_URL2}/global/topic/20200213/images/h5/h5_report_live.jpg"/>
+                </div>
+            </div>
+            <div class="h5-report-list-nav clearfix">
+                <div class="report-list-title">
+                    <em class="line-fl"></em>
+                    <em class="line-fr"></em>
+                    <span>报告抢先读</span><i></i><span>掌握最新鲜潮流向</span>
+                </div>
+                <div class="report-list-contain js-report-list-data">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="topic/common/h5-footer.html"}
+{/block}
+
+
+{block name="self"}
+<script type="text/javascript">
+	var page_img_path_str="{STATIC_URL2}";
+	var page_js_path_str="{STATIC_URL3}";
+</script>
+<script src="{STATIC_URL2}/global/topic/20200213/js/index.js?{STATIC_CHANGE_TIME}3"></script>
+{/block}

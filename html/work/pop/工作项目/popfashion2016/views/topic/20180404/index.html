@@ -1,0 +1,262 @@
+{extends file="layout.html"}
+
+{block name="title"}2018新年特辑-POP服装趋势网{/block}
+{block name=keywords}2018度假系列,东京新浪潮,韩国春夏潮流,APM新年特刊{/block}
+{block name=description}POP服装趋势网2018新年特辑汇聚春夏流行趋势，包括2018度假系列、东京新浪潮、韩国春夏潮流和APM新年特刊。POP不仅汇集日韩流行风尚，而且将国际大牌潮流趋势跃然于纸上。{/block}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL1}/global/topic/20180404/css/index.css?{STATIC_CHANGE_TIME}">
+{/block}
+
+
+{block name="main"}
+<!-- seo 需求 -->
+<div class="hide">
+	<h1>活动专题</h1>
+	<b>活动专题列表</b>
+</div>
+<div class="banner-section">
+	<img src="{STATIC_URL2}/global/topic/20180404/images/1.jpg" alt="活动专题">
+</div>
+<div class="pop-section topic-section">
+	<h3>
+		<span>专题名称</span>
+		<label>日期</label>
+	</h3>
+	<ul class="js-topic-list"></ul>
+</div>
+
+{include file="topic/topic_layer.html"}
+{/block}
+
+
+{block name="self"}
+	{literal}
+		<script type="text/javascript">
+			$(function(){
+				var def={
+					data:[
+						{
+							href:"https://www.pop-fashion.com/topic/20190401/",
+							title:"2019上半年重点资讯专题",
+							time:"2019年04月01日"
+						},
+						{
+							href:"https://www.pop-fashion.com/topic/20190301/",
+							title:"2020春夏服装流行趋势专题 - 衍化",
+							time:"2019年03月01日"
+						},
+						{
+							href:"https://www.pop-fashion.com/topic/2020SS_color/",
+							title:"2020春夏流行趋势色彩发布专题 - POP Fashion",
+							time:"2019年02月25日"
+						},
+						{
+							href:"https://www.pop-fashion.com/topic/20180704/",
+							title:"2019/20秋冬主题“原力”",
+							time:"2018年07月04日"
+						},
+						{
+							href:"https://www.pop-fashion.com/topic/20180612/",
+							title:"时创教育",
+							time:"2018年06月12日"
+						},
+						{
+							href:"https://www.pop-fashion.com/topic/20180531/",
+							title:"中国首家最权威最专业时尚资讯服务网站",
+							time:"2018年05月31日"
+						},
+						{
+							href:"https://www.pop-fashion.com/topic/20180515/",
+							title:"2019春夏主题企划",
+							time:"2018年05月15日"
+						},
+						{
+							href:"https://www.pop-fashion.com/topic/20180409/",
+							title:"三地联动-POP服装趋势网",
+							time:"2018年04月09日"
+						},
+						{
+							href:"https://www.pop-fashion.com/topic/20180122/",
+							title:"2018新年特辑--汇聚春夏流行趋势",
+							time:"2018年01月22日"
+						},
+						{
+							href:"https://www.pop-fashion.com/topic/20171211/",
+							title:"2019春夏大趋势预测发布：重置",
+							time:"2017年12月11日"
+						},
+						{
+							href:"https://www.pop-fashion.com/topic/20171209/",
+							title:"智能设计工具--基于智能设计和虚拟技术的设计工具，来帮助设计师提升效率，帮助企业节省开发成本",
+							time:"2017年12月09日"
+						},
+						{
+							href:"https://www.pop-fashion.com/topic/20171208/",
+							title:"找料帮--足不出户快速解决找面辅料难、累、贵问题",
+							time:"2017年12月08日"
+						},
+						{
+							href:"https://www.pop-fashion.com/topic/20171201/",
+							title:"POP13周年大促--感恩有你；一路同行！",
+							time:"2017年12月01日"
+						},
+						{
+							href:"https://www.pop-fashion.com/topic/20171129/",
+							title:"设界--联合众创；设界无界",
+							time:"2017年11月29日"
+						},
+						{
+							href:"https://www.pop-fashion.com/topic/20171101/",
+							title:"上海订货会SHOWROOM",
+							time:"2017年11月01日"
+						},
+						{
+							href:"https://www.pop-fashion.com/topic/20170930/",
+							title:"2018AW Premiere vision Paris--一键获取PV展矢量花型",
+							time:"2017年09月30日"
+						},
+
+						{
+							href:"https://www.pop-fashion.com/topic/20170920/",
+							title:"设界共享  趋势产业联盟",
+							time:"2017年09月20日"
+						},{
+							href:"https://www.pop-fashion.com/topic/20170915/",
+							title:"日式潮流实战情报",
+							time:"2017年09月15日"
+						},
+						{
+							href:"https://www.pop-fashion.com/topic/20170830/",
+							title:"联名玩转潮流",
+							time:"2017年08月30日"
+						},
+						{
+							href:"https://www.pop-fashion.com/topic/20170802/",
+							title:"独立设计师季",
+							time:"2017年08月02日"
+						},
+						{
+							href:"https://www.pop-fashion.com/topic/20170703/",
+							title:"pop独家 最权威色彩分析---新生",
+							time:"2017年07月03日"
+						},
+						{
+							href:"https://www.pop-fashion.com/topic/20170701/",
+							title:"18/19AW联合趋势周 先锋艺术家/独立设计师联袂领衔的艺术家概念展",
+							time:"2017年07月01日"
+						},
+						{
+							href:"https://www.pop-fashion.com/topic/20170602/",
+							title:"图案专栏 重磅来袭 POP带您玩转趋势",
+							time:"2017年06月02日"
+						},
+						{
+							href:"https://www.pop-fashion.com/topic/20170516/",
+							title:"18/19秋冬 POP大主题趋势预测发布--新生",
+							time:"2017年05月16日"
+						},
+						{
+							href:"https://www.pop-fashion.com/topic/20170330/",
+							title:"POP&优料宝“面料趋势周”五维·创见首发广州站强势来袭！",
+							time:"2017年03月30日"
+						},
+						{
+							href:"https://www.pop-fashion.com/topic/20170314/",
+							title:"POP&优料宝联合推出找料帮尊享服务",
+							time:"2017年03月14日"
+						},
+						{
+							href:"https://www.pop-fashion.com/topic/20170111/",
+							title:"法国面料趋势私享会",
+							time:"2017年01月11日"
+						},
+						{
+							href:"https://www.pop-fashion.com/topic/20161227/",
+							title:"共同融合 共同繁荣 四大趋势主题",
+							time:"2016年12月27日"
+						},
+						{
+							href:"https://www.pop-fashion.com/topic/20161222/",
+							title:"18POP与Jollychic达成战略合作，为您打造海外营销渠道",
+							time:"2016年12月22日"
+						},
+						{
+							href:"https://www.pop-fashion.com/topic/20161212/",
+							title:"风尚链接-探寻灵感之源 时尚产业解析",
+							time:"2016年12月12日"
+						},
+						{
+							href:"https://www.pop-fashion.com/topic/20161127/",
+							title:"POP12周年倾情回馈 旷世大促",
+							time:"2016年11月27日"
+						},
+						{
+							href:"https://www.pop-fashion.com/topic/20161122/",
+							title:"POP东大门看款 仅需5秒",
+							time:"2016年11月22日"
+						},
+						{
+							href:"https://www.pop-fashion.com/topic/20161103/",
+							title:"POP 11月重点内参 推荐新秀场 找到差异化",
+							time:"2016年11月03日"
+						},
+						{
+							href:"https://www.pop-fashion.com/topic/20161024/",
+							title:"热门图案趋势资料合集",
+							time:"2016年10月24日"
+						},
+						{
+							href:"https://www.pop-fashion.com/topic/20161020/",
+							title:"2017/18秋冬童装色彩图案主题合集",
+							time:"2016年10月20日"
+						},
+						{
+							href:"https://www.pop-fashion.com/topic/20161017/",
+							title:"2017/18秋冬四大主题合集",
+							time:"2016年10月17日"
+						},
+						{
+							href:"https://www.pop-fashion.com/topic/20161012/",
+							title:"POP时尚小怪兽 时尚快反指导书籍",
+							time:"2016年10月12日"
+						},
+						{
+							href:"https://www.pop-fashion.com/topic/20160929/",
+							title:"中国国际纺织面料及辅料博览会",
+							time:"2016年09月29日"
+						},
+						{
+							href:"https://www.pop-fashion.com/topic/20160920/",
+							title:"POP&优料宝联合推出找料帮尊享服务",
+							time:"2016年09月20日"
+						},
+						{
+							href:"https://www.pop-fashion.com/topic/20160831/",
+							title:"POP高端服装趋势网全新发布！",
+							time:"2016年08月31日"
+						}
+					]
+				}
+
+				var _html='';
+				for(var i=0,len=def.data.length;i<len;i++){
+					if(i==len-1){
+						
+						_html+='<li class="last">';
+					}else{
+						_html+='<li>';
+					}
+						_html+='<a href="'+def.data[i]["href"]+'" title="'+def.data[i]["title"]+'" target="_blank">'+
+							def.data[i]["title"]+
+							'<span>'+def.data[i]["time"]+'</span>'+
+							'</a>'+
+							'</li>';
+				}
+
+				$(".js-topic-list").html(_html);
+
+			});
+		</script>
+	{/literal}
+{/block}

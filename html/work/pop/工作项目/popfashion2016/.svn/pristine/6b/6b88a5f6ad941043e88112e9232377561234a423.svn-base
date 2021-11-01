@@ -1,0 +1,372 @@
+{extends file="layout.html"}
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/aggregation/index.css?{STATIC_CHANGE_TIME}">
+
+{/block}
+
+{block name="main"}
+<!--[if gte IE 8]>
+<style>
+    .ie-color{ color:#fff !important; }
+    .aggre-main .banner .switch-sex div.active a{ color: #d8b056 !important; }
+    .aggre-main .banner .switch-sex a:hover{ color: #d8b056 !important; }
+    .aggre-main .banner .switch-sex div.active a{ background: none !important; }
+</style>
+<![endif]-->
+<div class="aggre-main">
+    <div class="banner" style="background: url({STATIC_URL2}{$page_info.banner}) center no-repeat;background-size: 100% 100%;">
+        <span>{$page_info.title}</span>
+        <div class="switch-sex">
+            <div {if $page_info.link.select == 0}class="active"{/if}>
+                <a class="ie-color" href="{$page_info.link.gender.0}">全部</a>
+            </div>
+            <i></i>
+            <div {if $page_info.link.select == 1}class="active"{/if}>
+                <a class="ie-color" href="{$page_info.link.gender.1}">男装</a>
+            </div>
+            <i></i>
+            <div {if $page_info.link.select == 2}class="active"{/if}>
+                <a class="ie-color" href="{$page_info.link.gender.2}">女装</a>
+            </div>
+        </div>
+        <div class="topic-switch">
+            <i class="next js-next un-action"></i>
+            <div class="switch-div">
+                <div class="switch-aggre js-switch-aggre">
+                    {foreach $page_info.topics as $topic}
+                    <div class="switch-item {if $page_topic_id == $topic.related_topics_id}action{/if}">
+                        <a href="{$topic.link}">
+                            <img src="{STATIC_URL2}{$topic.cover_pic}">
+                            <div class="mongolia">
+                                <label>{$topic.title}</label>
+                                {if $topic.create_time && $topic.col_name}
+                                <span>{$topic.create_time|date_format:"%m月%d日"}<i></i>{$topic.col_name}</span>
+                                {/if}
+                            </div>
+                        </a>
+                        <span></span>
+                    </div>
+                    {/foreach}
+                </div>
+            </div>
+            <i class="prev js-prev"></i>
+        </div>
+    </div>
+    <div class="aggre-box">
+        <div class="aggre-box-main clearfix">
+            <div class="clearfix" style="position: relative;">
+                <div class="aggre-list js-aggre-list">
+                    {foreach $page_info.modules as $index => $module}
+                    <div class="aggre-item js-aggre-item" id="index_{$index}">
+                        <div class="title">
+                            <span class="title-H3">{$module.title}</span>
+                            <label></label>
+                            <span>{$module.gender}</span>
+                            {foreach $module.season as $season}
+                            <label></label>
+                            <span>{$season}</span>
+                            {/foreach}
+                        </div>
+
+                        {* 设置了到期时间且已到期且有报告 OR 未设置到期时间且有报告 *}
+                        {if ($module.is_stay_tuned && ($module.is_stay_tuned < time()) && $module.report_list) || (!$module.is_stay_tuned && $module.report_list)}
+                        <ul class="clearfix">
+                            {foreach $module.report_list as $report}
+                            <li>
+                                <a href="{$report.link}" target="_blank">
+                                    <div class="images">
+                                        <img src="{$report.cover}">
+                                    </div>
+                                    <div class="info">
+                                        <div class="head">{$report.title}</div>
+                                        <div class="label">
+                                            {foreach $report.labels as $label}
+                                            <span title="{$label.name}">{$label.name}</span>
+                                            <i></i>
+                                            {/foreach}
+                                        </div>
+                                        <div class="details">{$report.description}</div>
+                                        <div class="time">
+                                            <span>更新时间：{date('Y-m-d', strtotime($report.create_time))}</span>
+                                            <span><i></i>{$report.view_count}</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            {/foreach}
+                        </ul>
+                        {else}
+                            {if $module.is_stay_tuned}
+                            <div class="look">
+                                <div class="look-main">
+                                    <img src='{STATIC_URL2}/global/images/banner/un-banner.png'>
+                                    <span>静静地，请期待<br/>期待{date('m', $module.is_stay_tuned)}月，揭开神秘面纱</span>
+                                </div>
+                            </div>
+                            {else}
+                            <div>
+                                <img style="display: block;margin: 0 auto;" src="{STATIC_URL2}global/images/banner/empty.png">
+                            </div>
+                            {/if}
+                        {/if}
+                    </div>
+                    {/foreach}
+                    <div class="page clearfix js-page">
+                        {if !$page_info.pre_next.pre}
+                        <a class="page-next page-active"><  上一篇:没有了</a>
+                        {else}
+                        <a class="page-next" href="{$page_info.pre_next.pre.link}"><  上一篇:{$page_info.pre_next.pre.text}</a>
+                        {/if}
+        
+                        {if !$page_info.pre_next.next}
+                        <a class="page-prev page-active">下一篇:没有了  ></a>
+                        {else}
+                        <a class="page-prev" href="{$page_info.pre_next.next.link}">下一篇:{$page_info.pre_next.next.text}  ></a>
+                        {/if}
+                    </div>
+                </div>
+                {if $page_info.modules}
+                <div class="aggre-opt js-aggre-opt">
+                    {foreach $page_info.modules as $index => $module}
+                        <div class="option js-option {if $index == '0'}active{/if}" onclick="javascript:document.getElementById('index_{$index}').scrollIntoView()">{$module.title}</div>
+                    {/foreach}
+                </div>
+                {/if}
+            </div>
+            <div class="recommend">
+                <div class="titel">热门专题推荐</div>
+                <i class="topic-next js-topic-next un-action"></i>
+                <div class="topic-list">
+                    <div class="topic-div js-topic-div clearfix" style="height: 230px;">
+                        {foreach $page_list as $item}
+                        <div class="topic-box" style="background: url({STATIC_URL2}{$item.banner}) center no-repeat;background-size: cover;">
+                            <div class="topic-bg js-topic-bg">
+                                <span>{$item.title}</span>
+                                <div class="tit js-tit">
+                                    {foreach $item.topics as $topic}
+                                    <a href="{$topic.link}" onclick="unLink()" target="_blank">{$topic.title}</a>
+                                    {/foreach}
+                                </div>
+                            </div>
+                        </div>
+                        {/foreach}
+                    </div>
+                </div>
+                <i class="topic-prev js-topic-prev"></i>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+
+{block name="self"}
+{literal}
+<script>
+    //宽屏判断
+    var isWidth;
+    if (document.body.scrollWidth < 1500) {
+        isWidth = true;
+    } else {
+        isWidth = false;
+    }
+    
+    function legFun(obj,box,box1,i,j){
+        if(isWidth){
+            if(obj.ulLeg <= (j-1)){
+                box.addClass("un-action");
+                box1.addClass("un-action");
+                return 0;
+            }else if(i >= 1 && i < obj.ulLeg - (j-1)){
+                box.removeClass("un-action");
+                box1.removeClass("un-action");
+                return i;
+            }else if(i >= obj.ulLeg - (j-1)){
+                box.addClass("un-action");
+                box1.removeClass("un-action");
+                i=obj.ulLeg - (j-1);
+                return i;
+            }else if(i <= 0){
+                box.removeClass("un-action");
+                box1.addClass("un-action");
+                return 0;
+            }
+        }else{
+            if(obj.ulLeg <= j){
+                box.addClass("un-action");
+                box1.addClass("un-action");
+                return 0;
+            }else if(i >= 1 && i < obj.ulLeg - j){
+                box.removeClass("un-action");
+                box1.removeClass("un-action");
+                return i;
+            }else if(i >= obj.ulLeg - j){
+                box.addClass("un-action");
+                box1.removeClass("un-action");
+                i=obj.ulLeg - j;
+                return i;
+            }else if(i <= 0){
+                box.removeClass("un-action");
+                box1.addClass("un-action");
+                return 0;
+            }
+        }
+    }
+    $('.js-tit').each(function(){
+        $(this).find('a').each(function(index){
+            if(index==6){
+                $(this).parent().append('<span>...</span>');
+            }else if(index>=7){
+                $(this).hide();
+            }
+        })
+    });
+    $('.js-topic-bg').click(function(){
+        var url=$(this).find('a')[0].href;
+        //window.open(url);
+        var form = document.createElement('form');
+        form.action = url;
+        form.target = '_blank';
+        form.method = 'POST';
+        document.body.appendChild(form);
+        form.submit();
+    });
+
+    
+    function unLink(e){
+        var e = e || window.event;
+		// W3C阻止冒泡方法
+		if (e.stopPropagation) {
+			e.stopPropagation();
+		}
+		// IE中阻止冒泡方法
+		else {
+			e.cancelBubble = true;
+		}
+    }
+
+    var i = 0;
+    var customer = $(".switch-item");
+    var wid = domWidth(customer);
+    var prve = $(".js-prev");
+    var next = $(".js-next");
+    $(".js-switch-aggre").css("width", wid.moreW + 'px');
+
+    //计算DOM宽度
+    function domWidth(dom) {
+        var change_1W = parseInt(dom.css("width"));
+        var ulLeg = dom.length;
+        var ul_marR = parseInt(dom.css("marginRight")) || 0;
+        var ul_marL = parseInt(dom.css("marginLeft")) || 0;
+        var moreW = (change_1W * ulLeg) + (ulLeg * ul_marR) + (ulLeg * ul_marL);
+        return {"moreW": moreW, "change_1W": change_1W, "ul_marR": ul_marR, "ulLeg": ulLeg, "ul_marL": ul_marL};
+    }
+    legFun(wid,prve,next,i,4);
+    next.click(function () {
+        i--;
+        i=legFun(wid,prve,next,i,4);
+        ul_ML = (i * wid.change_1W) + i * wid.ul_marR + i * wid.ul_marL;
+        $(".js-switch-aggre").animate({"marginLeft": -ul_ML + 'px'});
+    });
+
+    prve.click(function () {
+        i++;
+        i=legFun(wid,prve,next,i,4);
+        ul_ML = (i * wid.change_1W) + i * wid.ul_marR + i * wid.ul_marL;
+        $(".js-switch-aggre").animate({"marginLeft": -ul_ML + 'px'});
+    });
+
+
+    var j = 0;
+    var t_customer = $(".topic-box");
+    var t_wid = domWidth(t_customer);
+    var t_next = $(".js-topic-next");
+    var t_prve = $(".js-topic-prev");
+    $(".js-topic-div").css("width", t_wid.moreW + 'px');
+    legFun(t_wid,t_prve,t_next,j,3);
+    t_next.click(function () {
+        j--;
+        j=legFun(t_wid,t_prve,t_next,j,3);
+        ul_ML = (j * t_wid.change_1W) + j * t_wid.ul_marR + i * wid.ul_marL;
+        $(".js-topic-div").animate({"marginLeft": -ul_ML + 'px'});
+    });
+
+    t_prve.click(function () {
+        j++;
+        j=legFun(t_wid,t_prve,t_next,j,3);
+        ul_ML = (j * t_wid.change_1W) + j * t_wid.ul_marR + i * wid.ul_marL;
+        $(".js-topic-div").animate({"marginLeft": -ul_ML + 'px'});
+    });
+    scrollFun();
+    $(window).scroll(function () {
+        scrollFun();
+    });
+    function scrollFun(){
+        var scroll_t = $(window).scrollTop() || 0;
+        var aggre_len = $(".js-aggre-list").offset().top + 50;
+        var page_len = $(".js-page").offset().top - ($('.js-aggre-opt').height()+96+60);
+        if (aggre_len < scroll_t) {
+            $('.js-aggre-opt').removeClass("action");
+            $('.js-aggre-opt').addClass("active");
+        } else {
+            $('.js-aggre-opt').removeClass("active");
+        }
+        if (page_len < scroll_t) {
+            $('.js-aggre-opt').removeClass("active");
+            $('.js-aggre-opt').addClass("action");
+        }else{
+            $('.js-aggre-opt').removeClass("action");
+        }
+        $('.js-aggre-item').each(function(i,n){
+            var this_t=$(this).offset().top-2;
+            if(scroll_t>this_t){
+                $('.js-option').eq(i).addClass('active').siblings('div').removeClass('active');
+            }
+        });
+    }
+    var topic_leng=$('.js-topic-bg').length;
+    var switch_leng=$('.switch-item').length;
+    if(isWidth){
+        if(topic_leng<=2){
+            t_next.hide();
+            t_prve.hide();
+        }
+        if(switch_leng<=3){
+            next.hide();
+            prve.hide();
+        }
+    }else{
+        if(topic_leng<=3){
+            t_next.hide();
+            t_prve.hide();
+        }
+        if(switch_leng<=4){
+            next.hide();
+            prve.hide();
+        }
+    }
+    //超出两行隐藏
+    var details=$(".details");
+    details.each(function () {
+        var _this = $(this);
+        var wid = _this[0].offsetWidth * 3 - 10;
+        var _str = _this[0].innerHTML;
+        var str = pop_fashion_global.fn.cutByWidth(_str, wid, 14);
+        _this.html(str);
+    });
+    var head=$(".head");
+    head.each(function () {
+        var _this = $(this);
+        var wid = _this[0].offsetWidth * 2 - 10;
+        var _str = _this[0].innerHTML;
+        var str = pop_fashion_global.fn.cutByWidth(_str, wid, 20);
+        _this.html(str);
+    });
+
+    $('.js-option').on('click',function(){
+        var i=$(this).index();
+        $('.js-option').eq(i).addClass('active').siblings('div').removeClass('active');
+    });
+
+</script>
+{/literal}
+{/block}

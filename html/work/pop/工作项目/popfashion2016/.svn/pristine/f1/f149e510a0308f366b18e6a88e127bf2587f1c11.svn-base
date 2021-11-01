@@ -1,0 +1,143 @@
+# 数据报告
+
+- 统计时间范围: `上一个自然月`
+- 统计用户范围：`有子账号的VIP`
+- 脚本执行前执行该指令，清除redis缓存数据: `/usr/local/redis/src/redis-cli -n 15 keys "data_report*" | xargs /usr/local/redis/src/redis-cli -n 15 del`
+
+## 统计维度
+
+**1. 主帐号概览(hash):**
+
+key:  `data_report:user:{user_id}:overview`
+
+type: `hash`
+
+|    hash_key     |                          hash_value                          |
+| :-------------: | :----------------------------------------------------------: |
+|   login_rate    |        {"value":"0.80", "rank": 8, "morethan": "0.30"}         |
+|   login_days    |          {"value":15, "rank": 5, "morethan": "0.80"}          |
+|    login_times    |         {"value":206, "rank": 1, "morethan": "0.99"}          |
+| login_days_top5 | [{"mobile":123456789,"value":12}, {"mobile":123456789,"value":8}] |
+| login_times_top5  | [{"mobile":123456789,"value":12}, {"mobile":123456789,"value":8}] |
+
+
+
+**2. 子账号详细信息(hash):**
+
+key: `data_report:user:{user_id}:child_info`
+
+type: `hash`
+
+|  hash_key  |                          hash_value                          |
+| :--------: | :----------------------------------------------------------: |
+| {child_id} | {"mobile": "13312365486", "login_days":16,"login_times":206, "last_login": "2018-08-08 15:00", "ip": "125.2.36.5", "report_view": 12, "style_view": 10, "download": 5} |
+| {child_id} | {"mobile": "13312365486", "login_days":16,"login_times":206, "last_login": "2018-08-08 15:00", "ip": "125.2.36.5", "report_view": 12, "style_view": 10, "download": 5} |
+| {child_id} | {"mobile": "13312365486", "login_days":0,"login_times":0, "last_login": "", "ip": "", "report_view": 0, "style_view": 0, "download": 0} |
+
+
+
+**3. 登录率排行(zset):**
+
+key: `data_report:login_rate`
+
+
+|   value   | score |
+| :-------: | :---: |
+| {user_id} | 0.12  |
+| {user_id} | 0.56  |
+| {user_id} | 0.83  |
+|    ...    |  ...  |
+
+
+
+**4. 连续登录天数排行(zset):**
+
+key: `data_report:login_days`
+
+|   value   | score |
+| :-------: | :---: |
+| {user_id} |  1.0  |
+| {user_id} |  8.0  |
+| {user_id} | 13.0  |
+|    ...    |  ...  |
+
+
+
+**5. 总登录次数排行(zset):**
+
+key: `data_report:login_times`
+
+|   value   | score |
+| :-------: | :---: |
+| {user_id} | 11.0  |
+| {user_id} | 26.0  |
+| {user_id} | 105.0 |
+|    ...    |  ...  |
+
+
+
+**SQL**
+
+```sql
+-- 全部的VIP主账号
+SELECT DISTINCT iAccountId FROM fashion.fm_privilege WHERE dStartTime < NOW() AND dEndTime > NOW();
+
+-- 对应主账号下的子账号的登录记录
+SELECT
+	sChildID,
+	COUNT( DISTINCT DATE( dLoginTime ) ) AS login_days,
+	COUNT( * ) AS login_times 
+FROM
+	`fashion_user_child_login_log` 
+WHERE
+	iParentID = 106645 
+	AND dLoginTime BETWEEN '2018-08-01' 
+	AND '2018-09-01' 
+GROUP BY
+	sChildID;
+	
+-- 各子账号登录天数
+SELECT DISTINCT
+	sChildID,
+	DAY(dLoginTime) as d
+FROM
+	`fashion_user_child_login_log` 
+WHERE
+	iParentID = 106645 
+	AND dLoginTime BETWEEN '2018-08-01' 
+	AND '2018-09-01' 
+	 ORDER BY sChildID DESC, d ASC;
+
+-- 各子账号登录次数
+SELECT DISTINCT
+	sChildID
+	COUNT(*) as cnt
+FROM
+	`fashion_user_child_login_log` 
+WHERE
+	iParentID = 106645 
+	AND dLoginTime BETWEEN '2018-08-01' 
+	AND '2018-09-01' 
+	GROUP BY sChildID
+	 ORDER BY cnt DESC;
+	
+-- 登录了的子账号个数
+SELECT
+	COUNT( DISTINCT sChildID ) AS login_child_count 
+FROM
+	`fashion_user_child_login_log` 
+WHERE
+	iParentID = 106645 
+	AND dLoginTime BETWEEN '2018-08-01' 
+	AND '2018-09-01';
+	
+-- 对应主账号下子账号个数
+SELECT
+	COUNT( * ) AS child_count 
+FROM
+	fashion.fashion_user_child 
+WHERE
+	iParentID = 106645 
+	AND iStatus = 1;
+
+```

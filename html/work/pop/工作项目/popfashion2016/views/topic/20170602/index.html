@@ -1,0 +1,200 @@
+{extends file="layout.html"}
+
+{block name="title"}图案专栏重磅来袭，POP带你玩转趋势-POP服装趋势网{/block}
+{block name=keywords}图案书籍,大牌花型,图案素材,POP快印{/block}
+{block name=description}设计师们还在为找不到心仪的图案，找不到大牌同图苦思冥想吗？现在POP从正式推出图案库专栏，将最新图案趋势、海量图案矢量图、同步大牌1:1花型、以图找图与虚拟试衣和POP快印无缝衔接，快速实现将平面花型转换为面料实物，为设计师提供最便利的花型一条龙服务！{/block}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/topic/20170602/css/index.css?{STATIC_CHANGE_TIME}">
+{/block}
+
+{block name="main"}
+<div class="sole-issue">
+	<div class="posi-contain js-posi-contain">
+		<div class="sole-contain">
+	  		<div class="sole-msg">
+	  			<div>
+	  				<img src="{STATIC_URL2}/global/topic/20170602/images/trend-title.png" alt="图案专栏重磅来袭" />
+	  			</div>
+	  			<ul class="clear ">
+	  				<li>
+	  					<a href="/books/cont_11446-page_1/#anchor" target="_blank" title="图案书籍">
+	  						<img src="{STATIC_URL2}/global/topic/20170602/images/icon1.png" alt="icon" />
+	  						<div class="btn-item btn-item1">
+	  							<i></i>
+	  							<div>高端图案趋势企划，最实用的设计工具书。</div>
+	  						</div>
+	  					</a>
+	  				</li>
+	  				<li>
+	  					<a href="/patterns/topbrands/" target="_blank" title="大牌花型">
+	  						<img src="{STATIC_URL2}/global/topic/20170602/images/icon2.png" alt="icon" />
+	  						<div class="btn-item btn-item2">
+	  							<i></i>
+	  							<div>对热门花型矢量处理，帮助客户对图案基型进行设计变化。</div>
+	  						</div>
+	  					</a>
+	  				</li>
+	  				<li>
+	  					<a href="/patterns/graphics/" target="_blank" title="图案素材">
+	  						<img src="{STATIC_URL2}/global/topic/20170602/images/icon3.png" alt="icon" />
+	  						<div class="btn-item btn-item3">
+	  							<i></i>
+	  							<div>原创图案矢量花型，为客户提供多方案图案设计。</div>
+	  						</div>
+	  					</a>
+	  				</li>
+	  				<li>
+	  					<a href="/patterns/digitalprint/gen_2/" target="_blank" title="POP快印">
+	  						<img src="{STATIC_URL2}/global/topic/20170602/images/icon4.png" alt="icon" />
+	  						<div class="btn-item btn-item4">
+	  							<i></i>
+	  							<div>一键印花云打印，所见即所得。</div>
+	  						</div>
+	  					</a>
+	  				</li>
+	  			</ul>
+	  			<p>设计师们还在为找不到心仪的图案，找不到大牌同图苦思冥想吗？现在POP从正式推出图案库专栏，将最新图案趋势、海量图案矢量图、同步大牌1:1花型、以图找图与虚拟试衣和POP快印无缝衔接，快速实现将平面花型转换为面料实物，为设计师提供最便利的花型一条龙服务！</p>
+	  			<img class="page-down js-page-down" src="{STATIC_URL2}/global/topic/20170602/images/btn-down.png" alt="icon" />
+	  		</div>
+	  	</div>
+	  	<div class="review-contain">
+	  		<div class="review-msg">
+	  			<img src="{STATIC_URL2}/global/topic/20170602/images/review-title.png" alt="title" />
+	  			<ul class="js-review-list">
+	  				<li>
+	  					<a href="/topic/20170516/" target="_blank" title="18/19秋冬POP大主题趋势预测发布——新生">
+	  						<div>
+	  							<div class="img-c"><img src="{STATIC_URL2}/global/topic/20170602/images/re1.jpg" alt="新生" /></div>
+	  							<div class="review-hover review-hover1"></div>
+	  						</div>
+	  						<p>18/19秋冬POP大主题趋势预测发布--新生</p>
+	  					</a>
+	  				</li>
+	  				<li>
+	  					<a href="/topic/20170516/" target="_blank" title="时尚也要玩大数据流行色一秒掌握！">
+	  						<div>
+	  							<div class="review-hover review-hover2"></div>
+	  							<div class="img-c"><img src="{STATIC_URL2}/global/topic/20170602/images/re2.jpg" alt="大数据" /></div>
+	  						</div>
+	  						<p>时尚也要玩大数据，流行色一秒掌握！</p>
+	  					</a>
+	  				</li>
+	  			</ul>
+	  		
+	  		</div>
+	  	</div>
+	  
+	</div>
+  	
+</div>
+
+<div class="nav-fix js-nav-fix">
+	<div class="nav-t js-nav-t" data-n="-1"></div>
+	<div class="nav-b nav-in js-nav-b" data-n="1"></div>
+</div>
+
+{include file="topic/topic_layer.html"}
+{/block}
+
+
+{block name="self"}
+{literal}
+<script>
+	$(function(){
+		var is_mouse=false,is_set_mousewheel=true;	//是否在滚动
+		
+		$('.js-page-down').on('click',function(){
+			is_mouse=true;
+			$('body,html').stop(true,true).animate({
+				scrollTop:900
+			},500,function(){
+				is_set_mousewheel=false;
+				$('.js-nav-t').addClass('nav-in').siblings('div').removeClass('nav-in');
+				is_mouse=false;
+			})
+		})
+		
+		//左边导航nav点击
+		$('.js-nav-fix').on('click','.nav-in',function(){
+			is_mouse=true;
+			var _n=$(this).data('n')||0,_t=0;
+			if(_n=='1'){
+				_t=900;
+			}else{
+				_t=0;
+			}
+			$('body,html').stop(true,true).animate({
+				scrollTop:_t
+			},500,function(){
+				if(_n=='1'){
+					is_set_mousewheel=false;
+					$('.js-nav-t').addClass('nav-in').siblings('div').removeClass('nav-in');
+				}else{
+					$('.js-nav-b').addClass('nav-in').siblings('div').removeClass('nav-in');
+				}
+				is_mouse=false;
+			})
+			
+		})
+		
+		function stopEvent(e) { 
+			e = e||event; 
+			if( e.preventDefault )e.preventDefault(); 
+			e.returnValue = false; 
+		} 
+
+		//滚轮效果
+		
+		$(window).on("scroll",function(e){
+			/*if(is_mouse==true){
+				stopEvent(e)
+			}*/
+			var scroll_num=$(this).scrollTop();
+			if(scroll_num<891){
+				is_set_mousewheel=true;
+				$('.js-nav-b').addClass('nav-in').siblings('div').removeClass('nav-in');
+				
+			}else{
+				$('.js-nav-t').addClass('nav-in').siblings('div').removeClass('nav-in');
+			}
+			
+		})
+    	//按钮hover效果
+    	$('.btn-item').hover(function(){
+    		$(this).find('i').stop().animate({
+    			'right':'5px'
+    		},400);
+    		
+    		$(this).children('div').stop().show().animate({
+    			'top':'50px',
+    			'opacity':1,
+    			'filter': 'alpha(opacity=100)'
+    		},400);
+    	},function(){
+    		$(this).find('i').stop().animate({
+    			'right':'15px'
+    		},400);
+    		
+    		$(this).children('div').stop().animate({
+    			'top':'80px',
+    			'opacity':0,
+    			'filter': 'alpha(opacity=0)'
+    		},400,function(){
+    			$(this).hide();
+    		});
+    	})
+    	
+    	//往期回顾hover效果
+    	$('.js-review-list>li').hover(function(){
+    		$(this).stop().siblings('li').find('img').fadeOut(400);
+    		$(this).stop().siblings('li').find('.review-hover').fadeIn(400);
+    	},function(){
+    		$(this).stop().siblings('li').find('img').fadeIn(400);
+    		$(this).stop().siblings('li').find('.review-hover').fadeOut(400);
+    	})
+    	
+    })
+</script>
+{/literal}
+{/block}

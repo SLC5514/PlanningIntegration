@@ -1,0 +1,87 @@
+{extends file="layout.html"}
+
+{block name="selfcss"}
+	<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/pop_layer.css?{STATIC_CHANGE_TIME}">
+    <link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/new-detail/style-detail.css?{STATIC_CHANGE_TIME}">
+    <link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/lists/patterns-list.css?{STATIC_CHANGE_TIME}">
+{/block}
+{block name="main"}
+<div class="contant conheight">
+    <input type="hidden" id="link"
+        data-sor="{$link['sortRandom']}"
+        data-col="{$columnId}"
+        data-url="{if isset($link['url'])}{$link['url']}{/if}"
+        data-param="{if isset($link['param'])}{$link['param']}{/if}"
+        data-search="{if isset($link['search'])}{$link['search']}{/if}"
+        data-pow="{$memberFlag}"
+        data-page="{$page}"
+        data-limitnum=""
+        data-pagesize="{$pageSize}"/>
+    <div class="select-label-contain js-select-label-contain">
+        <div class="guess-like-list-box contentW">
+            <h1>猜你喜欢</h1>
+            <div class="switch-lanmu-box clearfix">
+                <a class="switch-patterns js-load-data" data-col="82">图案</a>
+                <a class="switch-style js-load-data js-style-load-data" data-col="4">款式</a>
+                <i class="style-subcolumn js-style-subcolumn-click">&gt;</i>
+                <ul class="js-style-subcolumn-list">
+                    <li data-col="50" class="js-load-data">秀场提炼</li>
+                    <li data-col="52" class="js-load-data">订货会精选</li>
+                    <li data-col="122" class="js-load-data">设计师品牌</li>
+                    <li data-col="55" class="js-load-data">名牌精选</li>
+                    <li data-col="123" class="js-load-data">款式流行</li>
+                    <li data-col="54" class="js-load-data">全球实拍</li>
+                    <li data-col="57" class="js-load-data">明星/ins</li>
+                    <li data-col="56" class="js-load-data">街拍图库</li>
+                </ul>
+            </div>
+        </div>
+    	<div class="rightc_top contentW">            
+            <div style="position: relative;">
+                <div class="rightc_main js-patterns-lists-box">
+                    <ul class="js-list-parent clearfix patterns-recommend">
+                        {foreach range(1, 10) as $i}
+                        <li class="js-placeholder-item">
+                            <div itemscope="" class="pic_box">
+                                <a class="js-general-user-status" href="javascript:void(0)" ondragstart="return false;" oncontextmenu="return false;" title="查看详情">
+                                    <img alt="pic" itemprop="thumbnail" src="{STATIC_URL2}/global/images/loading/patterns270.jpg">
+                                </a>
+                                <span class="js-dislike-img">不喜欢</span>
+                            </div>
+                        </li>
+                        {/foreach}
+                    </ul>
+                </div>
+                <div class="opening-authority js-opening-authority">
+                    <div class="authority-infor">
+                        <p>开通VIP权限，查看更多个性化图片</p>
+                        <div>您现在是普通用户，拨打<span>4008-210-500</span>联系客服开通试用账号体验全站</div>
+                        <a href="javascript:void(0);" class="js-contact-qq-btn">联系客服  快速开通VIP试用账号</a>
+                    </div>
+                </div>
+                <div class="scroll-load js-scroll-load"><img src="{STATIC_URL1}/global/images/alertloading.gif"></div>
+                <div class="scroll-look-more js-scroll-look-more"><a>查看更多</a></div>
+            </div>
+            
+    	</div>
+    </div>
+</div>
+<!--详情上下页排序信息-->
+<input type="hidden" value='{$pageTurnList}' id="thisPageTurnList">
+<input type="hidden" value="" id="otherPageTurnList">
+<!--详情上下页排序信息-->
+
+{/block}
+{block name="other"}
+{/block}
+{block name="self"}
+<script type="text/javascript" src="{STATIC_URL3}/global/js/common/template.js?{STATIC_CHANGE_TIME}"></script>
+
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/util_pop3_pic.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/util.collect.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/lists/patterns-recommend.js?{STATIC_CHANGE_TIME}"></script>
+
+<script>
+    var recommend_usertype = "{$powers.user_type}";
+</script>
+{/block}

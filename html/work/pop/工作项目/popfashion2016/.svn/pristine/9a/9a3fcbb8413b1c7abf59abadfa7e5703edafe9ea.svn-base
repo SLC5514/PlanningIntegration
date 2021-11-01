@@ -1,0 +1,25 @@
+{if isset($userType) && $userType == 'vip'}
+<!-- 这是VIP身份 -->
+<div class="no_sear">
+    <h4>抱歉，没找到符合条件的内容，试试<a href="javascript:void(0);" class="clearAll">清除筛选条件</a> 吧！ </h4>
+    <div class="sear-box clearfix">
+        <div>请联系您的专属资讯小秘书为您服务：</div>
+        <p>
+            <a class="neiyeList fl js-contact-qq-btn" href="javascript:void(0);">QQ咨询</a>
+            <span class="neiyeList fr">客服热线：<em>4008-210-662</em></span>
+        </p>
+    </div>
+</div>
+{else}
+<!-- 这是游客身份-->
+<div class="no_sear">
+    <h4>抱歉，没找到符合条件的内容，试试<a href="javascript:void(0);" class="clearAll">清除筛选条件</a> 吧！</h4>
+    <div class="sear-box clearfix">
+        <div>请联系您的专业客服为您服务：</div>
+        <p>
+            <a class="neiyeList fl js-contact-qq-btn" href="javascript:void(0);">QQ咨询</a>
+            <span class="neiyeList fr">客服热线：<em>4008-210-500</em></span>
+        </p>
+    </div>
+</div>
+{/if}

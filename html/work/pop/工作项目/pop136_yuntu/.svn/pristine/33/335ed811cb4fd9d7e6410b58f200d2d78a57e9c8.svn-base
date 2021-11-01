@@ -1,0 +1,606 @@
+<?php
+/**
+ * 趋势解读/图案趋势model
+ * Created by PhpStorm.
+ * User: gcl
+ * Date: 2020/06/16 13:20
+ */
+
+class TrendsPattern_model extends POP_Model
+{
+    // 服装/趋势解读/图案趋势--条件简写与Solr字段对应关系 s 代表查询字段 g 代表 Group字段
+    public $condReportSolrArr = [
+        "gen" => ["name" => "性别", "s" => "sGender", "g" => "sGender"],// 性别
+        "sea" => ["name" => "季节", "s" => "aLabelIds", "g" => "iSeason"],// 季节
+    ];
+
+    public $solrCondArr = [
+        "sGender" => "gen",
+        "iSeason" => "sea",
+    ];
+
+    private $refresh;
+    private $memcachePref;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->refresh = $this->input->get_post("refresh", true);
+        $this->memcachePref = OpPopFashionMerger::POP_FM_TEM_SOLR_MEMCACHE_KEY_PREFIX . '_CategoryRealData_19112201_';
+    }
+
+    // 选中的筛选项
+    public function getSelected($paramsArr)
+    {
+        $selected = [];
+        $key = getKeyWord();
+        if (!empty($key)) {
+            $selected["key"] = ["name" => "关键字", "value" => htmlspecialchars($key), "link" => $this->getLink($paramsArr, "key", "")];
+        }
+        $this->load->model("Attr_model");
+        foreach ($paramsArr as $k => $val) {
+            // 性别和季节是具体的标签 其他标签为关键字
+            switch ($k) {
+                case 'sea':
+                case 'gen':
+                    $value = $this->Attr_model->Attribute[$val];
+                    break;
+            }
+
+            if (!empty($value) && $k != 'page') {
+                $selected[$k] = ["name" => $this->condReportSolrArr[$k]["name"], "value" => $value, "cancelLink" => $this->getLink($paramsArr, $k, "")];
+            }
+        }
+        return $selected;
+    }
+
+    /**
+     *  获取存在的筛选项
+     * @param $fields
+     * @param $paramsArr
+     * @return mixed
+     */
+    public function getSelectItems($fields, $paramsArr)
+    {
+        $items = $this->getFacetCategory($fields, $paramsArr);
+        foreach ($items as $key => $val) {
+            if (empty($val)) {
+                $selectItems[$key] = array();
+                continue;
+            }
+            switch ($key) {
+                // 季节
+                case 'iSeason':
+                    $selectItems[$key] = $this->getItems($paramsArr, $val, 'sea');
+                    break;
+                // 性别
+                case 'sGender':
+                    $val = array_intersect(array(1 => '男装', 2 => '女装', 5 => '童装'), $val);
+                    $selectItems[$key] = $this->getItems($paramsArr, $val, 'gen');
+                    break;
+            }
+        }
+        return $selectItems;
+    }
+
+    // 获取完整的url数据
+    private function getItems($paramsArr, $arr, $type)
+    {
+        if (empty($arr)) return [];
+        $ret = array();
+        foreach ($arr as $id => $name) {
+            $ret[] = array('name' => $name, 'link' => $this->getLink($paramsArr, $type, $id), 'id' => $id);
+        }
+        return $ret;
+    }
+
+    // 获取存在的筛选项
+    public function getFacetCategory($fields, $paramsArr)
+    {
+        $condition = $this->getCondition($paramsArr);
+        $keyWord = getKeyWord();
+        $_params = [
+            'facet' => 'true',
+            'facet.field' => $fields,
+            'facet.limit' => '-1',
+            'raw' => true
+        ];
+        $arSort = array('dCreateTime' => 'DESC');
+        $temp = array();
+        $res = POPSearch::wrapQueryPopFashionMerger($keyWord, $condition, $temp, 0, 0, $arSort, $_params);
+
+        $returns = [];
+        if (is_array($fields)) {
+            foreach ($fields as $key => $val) {
+                if (!array_key_exists($val, $temp)) {
+                    $returns[$val] = array();
+                }
+            }
+        }
+        $facet = $res['facet_counts']['facet_fields'];
+        if (empty($facet)) {
+            return [];
+        }
+        foreach ($facet as $field => $value) {
+            $groupValue = $return = array();
+            foreach ($facet[$field] as $key => $val) {
+                if ($val > 0) {
+                    if (strpos($key, ',')) {
+                        foreach (explode(',', $key) as $k => $v) {
+                            $groupValue[] = $v;
+                        }
+                    } else {
+                        $groupValue[] = $key;
+                    }
+                }
+            }
+            if (!empty($groupValue)) {
+                $all = $this->getAll($field);
+                $return = $this->getReturnData($all, $groupValue);
+                unset($all);
+            }
+            $returns[$field] = $return;
+        }
+        return $returns;
+    }
+
+    /**
+     * @ 获取列表数据
+     *
+     * @param array $paramsArr 搜索项
+     * @param int $offset 开始位置
+     * @param int $limit  结束位置
+     * @return array
+     */
+    public function getList($paramsArr = [], $offset = 0, $limit = 5)
+    {
+        $keyword = getKeyWord();
+
+        $conditions = $this->getCondition($paramsArr);
+        $arSort = $this->getSort($paramsArr);
+
+        $result = $lists = [];
+        $totalCount = POPSearch::wrapQueryPopFashionMerger($keyword, $conditions, $result, $offset, $limit, $arSort);
+        if (empty($result)) {
+            return [$lists, intval($totalCount)];
+        }
+
+        $lists = $this->dealData($result, $paramsArr);
+        return [$lists, intval($totalCount)];
+    }
+
+    // 处理数据
+    protected function dealData($data = [], $params = [])
+    {
+        if (empty($data)) return [];
+
+        $lists = [];
+        $this->load->model(["Graphicitem_model", "Collect_model"]);
+        foreach ($data as $key => $val) {
+            // $colPid = reset($val['iColumnId']);
+            $colId = $val['iColumnId'] ? end($val['iColumnId']) : 126;
+            $info = [];
+            $tableName = $val["tablename"];
+            $id = $info['id'] = $val["pri_id"];
+            $info['t'] = getProductTableName($val["tablename"]);
+            $info['col'] = $colId;
+
+            $_result = OpPopFashionMerger::getProductData($id, $tableName);
+            $res = $_result[$id];
+
+            $info['title'] = htmlspecialchars(stripcslashes($res['sTitle']));//标题
+            $info['publish_time'] = !empty($res['dPubTime']) ? date('Y-m-d', strtotime($res['dPubTime'])) : '';// 发布时间
+            $info['memo'] = htmlspecialchars(trim(strip_tags($res['sDesc']))); // 描述
+            $info['view'] = $this->Graphicitem_model->getViews($tableName, $id, $res);
+            $imgPath = getImagePath($val["tablename"], $res);
+            $info["cover"] = $imgPath['smallPath'];// 封面图/小图
+            $info["labels"] = $this->getLabelsInfo($colId, $tableName, $id, $params, 'list');// 获取标签
+            $info['detail_url'] = '/trendspattern/detail/t_' . $info['t'] . '-id_' . $id . '-col_' . $colId . '/';// 详情链接
+            if (!empty($info)) {
+                // 收藏
+                if ($tableName == 't_trend_report') {
+                    $info['collect_status'] = $this->Collect_model->getCollectStatus($info['t'], $id, 'fashion', true);
+                } else {
+                    $info['collect_status'] = 0;
+                }
+                $lists[$key] = $info;
+            }
+        }
+        return $lists;
+    }
+
+    /**
+     * @ 获取详情
+     */
+    public function getDetail(){
+
+    }
+
+    // 获取趋势解读/图案趋势标签
+    public function getLabelsInfo($colId, $tableName, $id, $params, $type = 'detail')
+    {
+        switch ($colId) {
+            // 126--趋势解读/图案趋势
+            case 126:
+                // 126--趋势解读详情: 季节sea, 品牌bra, 单品cat, 品名scat,  行业ind, 视角vis, 栏目col
+                $dKeys = ['sea', 'bra', 'cat', 'scat', 'label', 'ind', 'vis', 'col'];
+                // 126--趋势解读列表: 季节sea, 趋势专题relt,单品cat, 品名scat
+                $lKeys = ['sea', 'relt', 'cat', 'scat'];
+                break;
+            default:
+                $dKeys = $lKeys = [];
+                break;
+        }
+        $aLabel = $this->getLabelInfoOrigin($colId, $tableName, $id, $params);
+        if (!$aLabel) {
+            return false;
+        }
+        switch ($type) {
+            case 'list':
+                $keys = $lKeys;
+                break;
+            case 'detail':
+                $keys = $dKeys;
+                break;
+        }
+        $aResult = [];
+        if (!empty($keys)) {
+            foreach ($keys as $key) {
+                if (key_exists($key, $aLabel)) {
+                    $aResult = array_merge($aResult, $aLabel[$key]);
+                }
+            }
+        }
+        return $aResult;
+    }
+
+    // 获取标签来源
+    public function getLabelInfoOrigin($colId, $tableName, $id, $params = [])
+    {
+        if ($tableName != 't_trend_report') {
+            return [];
+        }
+        $productData = OpPopFashionMerger::getProductData($id, $tableName);
+        $res = $productData[$id];
+        $_colId = !empty($res['iOriginColumn']) ? trim($res['iOriginColumn']) : $colId;
+
+        // 栏目
+        $aLabel['col'][] = [
+            'id' => $_colId,
+            'name' => GetCategory::getOtherFromColId($_colId, 'sName'),
+            'dLink' => $this->getLink($params),
+            'lLink' => '', // 不取列表数据
+        ];
+
+        // 构建标签数组
+        $aLabel = [];
+
+        // 季节
+        $season_id = $res['iSeason'];
+        if (!empty($season_id)) {
+            $seasonArr = GetCategory::getOtherFromIds($season_id, ['sName'], 'array');
+            $sName = $seasonArr['sName'][0];
+            $sDLink = $this->getLink([], 'key', $sName);
+            $slLink = $this->getLink($params, 'sea', $season_id);
+            $aLabel['sea'][] = [
+                'id' => $season_id,
+                'name' => $sName,
+                'dLink' => $sDLink,
+                'lLink' => $slLink
+            ];
+        }
+
+        // 品牌
+        $brand_id = $res['iBrandTid'];
+        if (!empty($brand_id)) {
+            $sName = GetCategory::getBrandOtherFormId($brand_id, 'en_cn_brand');
+            $sDLink = $this->getLink([], 'key', $sName);
+            $slLink = $this->getLink($params, 'key', $sName); // 'bra'  $brand_id
+            $aLabel['bra'][] = [
+                'id' => $brand_id,
+                'name' => $sName,
+                'dLink' => $sDLink,
+                'lLink' => $slLink
+            ];
+        }
+
+        // 单品
+        $cat_id = $res['sCategory'];
+        if (!empty($cat_id)) {
+            $retArr = GetCategory::getOtherFromIds($cat_id, ['iAttributeId', 'sName'], 'array');
+            if (is_array($retArr)) {
+                $aLabel['cat'] = [];
+                foreach ($retArr['iAttributeId'] as $key => $labelId) {
+                    $sName = $retArr['sName'][$key];
+                    $sDLink = $this->getLink([], 'key', $sName);
+                    $slLink = $this->getLink($params, 'key', $sName);// 'cat' $labelId
+                    $aLabel['cat'][] = [
+                        'id' => $labelId,
+                        'name' => $sName,
+                        'dLink' => $sDLink,
+                        'lLink' => $slLink
+                    ];
+                }
+            }
+        }
+
+        // 品名
+        $scat_id = $res['sSubCategory'];
+        if (!empty($scat_id)) {
+            $retArr = GetCategory::getOtherFromIds($scat_id, ['iAttributeId', 'sName'], 'array');
+            if (is_array($retArr) && $retArr) {
+                foreach ($retArr['iAttributeId'] as $key => $labelId) {
+                    $sName = $retArr['sName'][$key];
+                    $sDLink = $this->getLink([], 'key', $sName);
+                    $slLink = $this->getLink($params, 'key', $sName);// scat $labelId
+                    $aLabel['scat'][] = [
+                        'id' => $labelId,
+                        'name' => $sName,
+                        'dLink' => $sDLink,
+                        'lLink' => $slLink
+                    ];
+                }
+            }
+        }
+
+        // 行业
+        $ind_id = $res['sIndustry'];
+        if (!empty($ind_id)) {
+            $retArr = GetCategory::getOtherFromIds($ind_id, ['iAttributeId', 'sName'], 'array');
+            if (is_array($retArr)) {
+                $aLabel['ind'] = [];
+                foreach ($retArr['iAttributeId'] as $key => $labelId) {
+                    $sName = $retArr['sName'][$key];
+                    $sDLink = $this->getLink([], 'key', $sName);
+                    $slLink = $this->getLink($params, 'key', $sName);// 'ind' $labelId
+                    $aLabel['ind'][$key] = [
+                        'id' => $labelId,
+                        'name' => $sName,
+                        'dLink' => $sDLink,
+                        'lLink' => $slLink
+                    ];
+                }
+            }
+        }
+
+        // 视角
+        $vis_id = $res['sVisualAngle'];
+        if (!empty($vis_id)) {
+            $retArr = GetCategory::getOtherFromIds($vis_id, ['iAttributeId', 'sName'], 'array');
+            if (is_array($retArr) && $retArr) {
+                $aLabel['vis'] = [];
+                foreach ($retArr['iAttributeId'] as $key => $labelId) {
+                    $sName = $retArr['sName'][$key];
+                    $sDLink = $this->getLink([], 'key', $sName);
+                    $slLink = $this->getLink($params, 'key', $sName);// 'vis' $labelId
+                    $aLabel['vis'][$key] = [
+                        'id' => $labelId,
+                        'name' => $sName,
+                        'dLink' => $sDLink,
+                        'lLink' => $slLink
+                    ];
+                }
+            }
+        }
+
+        // 趋势专题 relt
+        $iReltId = $res['iRelatedTopicsId'];
+        if (!empty($iReltId)) {
+            $_tmpArr = $this->getAll('iRelationTheme');
+            $aRelThemes = [];
+            foreach ($_tmpArr as $key => $value) {
+                if ($value && isset($value['attrs'])) {
+                    foreach ($value['attrs'] as $k => $v) {
+                        $aRelThemes[$k] = $v['sName'];
+                    }
+                }
+            }
+            if (key_exists($iReltId, $aRelThemes)) {
+                $aLabel['relt'] = [];
+                $sName = $aRelThemes[$iReltId];
+                $sDLink = $this->getLink([], 'key', $sName);
+                $slLink = $this->getLink($params, 'key', $sName);// 'relt' $iReltId
+                $aLabel['relt'][$key] = [
+                    'id' => $iReltId,
+                    'name' => $sName,
+                    'dLink' => $sDLink,
+                    'lLink' => $slLink
+                ];
+            }
+        }
+        // 关联标签 label
+        if ($res['sRelationLabels']) {
+            $sRelationLabels = $this->getLabelsByIds($res['sRelationLabels']);
+            $aLabel['label'] = [];
+            foreach ($sRelationLabels as $key => $item) {
+                $labelId = $item['iLabelsId'];
+                $sName = $item['sLabelName'];
+                $sDLink = $this->getLink([], 'key', $sName);
+                $slLink = ''; // 不取列表标签
+                $aLabel['label'][] = [
+                    'id' => $labelId,
+                    'name' => $sName,
+                    'dLink' => $sDLink,
+                    'lLink' => $slLink
+                ];
+            }
+        }
+
+        return $aLabel;
+    }
+
+    // 拼接链接
+    public function getLink($paramsArr = [], $type = '', $value = '')
+    {
+        $listRootLink = "/trendspattern/";
+        $get = getKeyWord() ? ["key" => getKeyWord()] : [];
+        if ($type == "key") {
+            //get中的参数 key
+            if (empty($value) && isset($get["key"])) {
+                unset($get["key"]);
+            } else {
+                $get["key"] = urlencode($value);
+            }
+        } else {
+            //url中的参数
+            if (isset($paramsArr['page'])) {
+                unset($paramsArr['page']);
+            }
+            if (!empty($type) && empty($value) && isset($paramsArr[$type])) {
+                unset($paramsArr[$type]);
+            } elseif (!empty($type) && !empty($value)) {
+                // 服装栏目 126 除 季节 与 性别  其他为 key
+                if (in_array($type, ['sea', 'gen'])) {
+                    $paramsArr[$type] = $value;
+                }
+            }
+        }
+        $params = empty($paramsArr) ? "" : (encodeParams($paramsArr) . "/");
+        $get = empty($get) ? "" : ("?" . http_build_query($get));
+        return $listRootLink . $params . $get;
+    }
+
+    // 拼接 服装/趋势解读/图案趋势 solr条件  不含关键字
+    public function getCondition($paramsArr = [])
+    {
+        $conditions = [];
+        $conditions['iColumnId'] = 126;
+        // $conditions['iHot'] = 1; // 热门标签
+
+        $endTime = date("Y-m-d") . 'T' . date("H:i:s", strtotime("-2 hour")) . 'Z';
+        $conditions['dCreateTime'] = "[2016-05-01T00:00:00Z" . ' TO ' . $endTime . ']'; // 2019
+
+        if (!empty($paramsArr) && is_array($paramsArr)) {
+            foreach ($paramsArr as $key => $value) {
+                if (isset($this->condReportSolrArr[$key])) {
+                    $solrField = $this->condReportSolrArr[$key]["s"];
+                    if ($solrField == "aLabelIds") {
+                        $v = is_array($value) ? implode(" OR ", $value) : $value;
+                        $conditions["other"][] = "{$solrField}:($v)";
+                    } elseif ($solrField == "sGender") {
+                        // TODO 男童与女童算童装
+                        if (is_array($value)) {
+                            $v1 = is_array($value) ? implode(" OR ", $value) : $value;
+                            if (in_array(5, $value)) {
+                                $conditions['other'][] = "(aLabelIds:{$v1} OR 3 OR 4)";
+                            } else {
+                                $conditions["other"][] = "{$solrField}:($v1)";
+                            }
+                        } else {
+                            if ($value == 5) {
+                                $conditions['other'][] = "(aLabelIds:5 OR 3 OR 4)";
+                            } else {
+                                $conditions['other'][] = "(aLabelIds:{$value})";
+                            }
+                        }
+                    } else {
+                        $conditions[$solrField] = $value;
+                    }
+                }
+            }
+        }
+        return $conditions;
+    }
+
+    /**
+     * 通过labelid 获取labelname(memcache)
+     * @param string $sRelationLabels
+     * @return mixed
+     */
+    public function getLabelsByIds($sRelationLabels = '')
+    {
+        $this->load->driver('cache');
+        $mem_key = OpPopFashionMerger::POP_FM_TEM_SOLR_MEMCACHE_KEY_PREFIX . '_' . 't_label_db_' . md5($sRelationLabels);
+        $result = $this->cache->memcached->get($mem_key);
+        if ($this->refresh || $result === false) {
+            if ($sRelationLabels) {
+                $labelSting = '(' . $sRelationLabels . ')';
+                $andSql = " AND iLabelsId IN $labelSting ";
+            } else {
+                $andSql = '';
+            }
+            $sql = "SELECT iLabelsId, sLabelName FROM fashion.t_label_db WHERE iStatus=0 {$andSql} ORDER BY iLabelsId DESC";
+            $result = $this->query($sql);
+            $this->cache->memcached->save($mem_key, $result, 3600);
+        }
+        return $result;
+    }
+
+    //获取solr查询的排序条件
+    public function getSort($params = array())
+    {
+        $arSort = ['dCreateTime' => 'DESC', 'pri_id' => 'DESC'];
+        if (!empty($params)) {
+            if (isset($params['sor'])) {
+                //1=>更新时间,2=>浏览量,3=>收藏量
+                switch ($params['sor']) {
+                    case '2':
+                        $arSort = ['iViewCount' => 'DESC', 'pri_id' => 'DESC'];
+                        break;
+                    case '3':
+                        $arSort = ['iCollectCount' => 'DESC', 'pri_id' => 'DESC'];
+                        break;
+                }
+            }
+        }
+        return $arSort;
+    }
+
+    public function getAll($field, $Refresh = false)
+    {
+        $ret = [];
+        $toCnName = 'sName';
+        switch ($field) {
+            case 'sGender':    // 性别
+                $ret = GetCategory::getGender('', $toCnName);
+                break;
+            case 'iSeason'://季节
+                $ret = GetCategory::getSeason('', $toCnName);
+                break;
+            //趋势专题（关联主题）
+            case 'iRelationTheme':
+                $this->load->driver('cache');
+                $memcacheKey = $this->memcachePref . 'iRelationTheme';
+                $ret = $this->cache->memcached->get($memcacheKey);
+                if ($ret && !$Refresh && !$this->refresh && !$this->input->post('refresh')) {
+                    return $ret;
+                } else {
+                    $ret = [];
+                    $sql = 'SELECT iRelatedTopicsId as id, iRelatedTopicsPid as pid,sRelatedTopicsName as sName FROM `fashion`.`t_related_topics_db` WHERE `iDisplay`=1 ORDER BY iSort DESC';
+                    $arr = $this->query($sql);
+                    if (!empty($arr)) {
+                        foreach ($arr as $val) {
+                            if ($val['pid'] == '0') {
+                                $ret["{$val['id']}"]["sName"] = $val['sName'];
+                                $ret["{$val['pid']}"]["attrs"] = [];
+                            }
+                        }
+                        foreach ($arr as $val) {
+                            if ($val['pid'] != '0') {
+                                $ret["{$val['pid']}"]["attrs"]["{$val['id']}"] = ['sName' => $val['sName']];
+                            }
+                        }
+                        $this->cache->memcached->save($memcacheKey, $ret, 3600);
+                        return $ret;
+                    }
+                }
+                break;
+        }
+        return $ret;
+    }
+
+    // 获取返回值，构建solr
+    private function getReturnData($all, $groupValue)
+    {
+        // 只有性别与季节
+        $return = [];
+        if (!empty($all) && !empty($groupValue)) {
+            foreach ($all as $key => $val) {
+                if (in_array($key, $groupValue) && !empty($val)) {
+                    $return[$key] = $val;
+                }
+            }
+        }
+        return $return;
+    }
+}

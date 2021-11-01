@@ -1,0 +1,11 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+//获取数据表正式表名，或真实表名对应简称(工作台)
+$popTableNameKeyValue = [
+	'graphicitem'			=> 'product_graphicitem',
+	'fabricgalleryitem'		=> 'product_fabricgallery_item',
+    'uploadpicmaterial'		=> 'fm_upload_pic_material',
+    'mihuidesignpic'=> 't_mihui_design_graphic',//智能设计花型表
+    'report' => 't_trend_report',
+];
+

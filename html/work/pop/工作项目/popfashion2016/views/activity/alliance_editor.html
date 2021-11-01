@@ -1,0 +1,185 @@
+{extends file="layout.html"}
+
+{block name="selfcss"}
+    <link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/industry.css?{STATIC_CHANGE_TIME}">
+{/block}
+
+{block name="main"}
+
+
+
+<div class="activity_personal_center">
+    <div class="con_widthx1200">
+        <div class="back_list"><a href="/activity/alliancemanage/"><i></i>返回列表</a></div>
+        <div class="post_main">
+            <!-- 形象展示图 -->
+            <div class="image_show">
+                <form name="poster_form">
+                    <div class="right_box post_cover">
+                        <div class="posterimg_outside fl">
+                            {if $sImageFigure}
+                            <img src="{$sImageFigure}"/>
+                            {else}
+                            <img src="{STATIC_URL2}/global/images/cover_img.jpg"/>
+                            {/if}
+                        </div>
+                        <div class="uoload_input fl">
+                            <div class="input_file">
+                                <a href="javascript:void(0)">添加展示图</a>
+                                <input type="file" name="poster" onchange="ajaxPosterUpload(this, 'figure');">
+                            </div>
+                            <p>图片尺寸建议为590 * 268</p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- /形象展示图 -->
+
+            <!-- 企业店招图 -->
+            <div class="company_banner">
+                <form name="poster_form">
+                    <div class="right_box post_cover">
+                        <div class="posterimg_outside fl">
+                            {if $sImageEnterprise}
+                            <img src="{$sImageEnterprise}"/>
+                            {else}
+                            <img src="{STATIC_URL2}/global/images/cover_img.jpg"/>
+                            {/if}
+                        </div>
+                        <div class="uoload_input fl">
+                            <div class="input_file">
+                                <a href="javascript:void(0)">添加店招图</a>
+                                <input type="file" name="poster" onchange="ajaxPosterUpload(this, 'enterprise');">
+                            </div>
+                            <p>图片尺寸建议为1920 x 400</p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- /企业店招图 -->
+            <h3><i></i>发布相关活动<span></span></h3>
+            <form method="post" name="alliance_form">
+                <div class="post_form clearfix">
+                    <input type="hidden" name="activityId" value="{$activityId}">
+                    <ul>
+                        <li class="post_main_li theme_li clearfix">
+                            <label><span>*</span>企业名称：</label>
+                            <div class="right_box">
+                                <input type="text" name="companyName" class="theme_box" placeholder="请输入企业名称" value="{$companyName}">
+                            </div>
+                        </li>
+
+                        <li class="post_main_li images_show_li clearfix">
+                            <label><span>*</span>形象展示图：</label>
+                            <input type="hidden" name="sImageFigure" id="sImageFigure" value="{$sImageFigure}">
+                        </li>
+
+                        <li class="post_main_li company_banner_li clearfix">
+                            <label><span>*</span>企业店招图：</label>
+                            <input type="hidden" name="sImageEnterprise" id="sImageEnterprise" value="{$sImageEnterprise}">
+                        </li>
+
+                        <li class="post_main_li clearfix act_type">
+                            <label><span>*</span>公司类型：</label>
+                            <div class="right_box">
+                                <div class="a_activity_box">
+                                    <input type="hidden" name="companyType" value="{$defaultCompanyType.id}">
+                                    <span>{$defaultCompanyType.sName}<i></i></span>
+                                    <ul class="company_type">
+                                        {foreach $companyTypes as $key=>$val}
+                                        <li data-id="{$val.id}">{$val.sName}</li>
+                                        {/foreach}
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="post_main_li act_addr clearfix">
+                            <label><span>*</span>公司地址：</label>
+                            <div class="right_box">
+                                <div class="clearfix">
+                                    <div class="a_activity_box">
+                                        <input type="hidden" name="companyArea" value="{$defaultActArea.id}">
+                                        <span>{$defaultActArea.sName}<i></i></span>
+                                        <ul class="act_area">
+                                            {foreach $activityArea as $val}
+                                            <li data-id="{$val.id}">{$val.sName}</li>
+                                            {/foreach}
+                                        </ul>
+                                    </div>
+                                    <div class="a_activity_box">
+                                        <input type="hidden" name="companyCity" value="{$defaultActCity.id}">
+                                        <span id="city">{$defaultActCity.sName}<i></i></span>
+                                        <ul class="act_city">
+                                            {foreach $activityCity as $val}
+                                            <li data-id="{$val.id}">{$val.sName}</li>
+                                            {/foreach}
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="search_input">
+                                    <div class="s_mark" id="mark"><i></i>已标记</div>
+                                    <input type="text" name="companyAddr" value="{$actAddrDetails}" placeholder="请输入公司详细地址" onkeyup="search_map(this);" onfocus="search_map(this);">
+                                    <input type="hidden" name="activityAddrMap" value="{$actMapAddr}">
+                                    <input type="hidden" name="fLng" id="fLng" value="{$fLongitude}">
+                                    <input type="hidden" name="fLat" id="fLat" value="{$fLatitude}">
+                                </div>
+                                <div class="post_place_box" {if $actArea == 2}style="display:none;"{/if} id="container"></div>
+                            </div>
+                        </li>
+
+                        <li class="post_main_li website_li clearfix">
+                            <label><span>*</span>联系人：</label>
+                            <div class="right_box">
+                                <input type="text" class="website_box" name="contactName" placeholder="请输入联系人" value="{$contactsName}">
+                            </div>
+                        </li>
+
+                        <li class="post_main_li main_contacts clearfix">
+                            <label><span>*</span>联系方式：</label>
+                            <div class="right_box">
+                                <input type="text" name="contactPhone" placeholder="请输入11位手机号码，座机请输入“区号-电话号码-分机号”" value="{$contactsPhone}">
+                            </div>
+                        </li>
+
+                        <li class="post_main_li conpany_intro_li clearfix">
+                            <label><span>*</span>公司简介：</label>
+                            <div class="right_box">
+                                <textarea name="companyAbstract" cols="130" rows="10" placeholder="请输入公司简介">{$activityContent}</textarea>
+                            </div>
+                        </li>
+
+                        <li class="post_main_li main_contacts clearfix">
+                            <label>企业官网：</label>
+                            <div class="right_box">
+                                <input type="text" name="officialWebUrl" placeholder="请输入企业网址，如：http://" value="{$activityWebUrl}">
+                                <div class="check_box">
+                                    <input type="checkbox" name="official" id="official" {if $isOfficial}checked{/if} value="1">是否链接到官网
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="post_button">
+                        <a href="javascript:void(0)" class="kept_post" id="saveNotRelease">保存不发布</a>
+                        <a href="javascript:void(0)" class="only_post" id="saveAndRelease">发布</a>
+                        <a href="javascript:void(0)" class="view_post" id="saveAndPreview">保存并预览</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{/block}
+
+{block name="self"}
+<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=a24d3cf0cc6b2e53bde20beb1e648144&plugin=AMap.Geocoder"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/common/jquery.validate.min.js"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/activity_map.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/alliance.js?{STATIC_CHANGE_TIME}"></script>
+
+{literal}
+<script>
+
+</script>
+{/literal}
+{/block}

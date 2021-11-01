@@ -1,0 +1,448 @@
+{extends file="layout.html"}
+
+{block name="title"}2019春夏POP大主题趋势预测发布-POP服装趋势网{/block}
+{block name=keywords}服装趋势,色彩趋势,趋势预测{/block}
+{block name=description}行业间的跨界使得很多规则被打破，商业规则被重新排列组合，衍生出更多可能性与可变性，人们也在这种重置中，寻求新的价值点。POP独家发布19SS四大主题：环球旅者、Y-生代行走力量、EMOTION&LOVE，来诠释重置焕发新生命的主流趋势走向。{/block}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/topic/20171211/css/index.css?{STATIC_CHANGE_TIME}">
+{/block}
+
+{block name="main"}
+<div class="season-section">
+	<div class="season-contain js-season-contain">
+		<div class="season-top js-season-top">
+			<div class="bg-set js-bg-set">
+				
+			</div>
+			
+			<!--内容区-->
+			<div class="top-cont js-top-cont">
+				<div class="cont-msg js-cont-msg">
+					<a class="mode1" title="EMOTION&LOVE" href="/trends/relt_132/" target="_blank" data-src="t-bg5.jpg" data-bg="top-tit4.png">
+						<img src="{STATIC_URL2}/global/topic/20171211/images/mode4.png" />
+						<div>
+							<h3>EMOTION<br/>&LOVE </h3>
+							<span>关注情绪的多样化，转化<br/>不良情绪，关爱自己。<br/>--棉麻风</span>
+						</div>
+					</a>
+					<a class="mode2" href="/trends/relt_134/" title="行走力量" target="_blank" data-src="t-bg4.jpg" data-bg="top-tit3.png">
+						<img src="{STATIC_URL2}/global/topic/20171211/images/mode3.png" />
+						<div>
+							<h3>行走力量</h3>
+							<p>POWER OF WALKING </p>
+							<span>追求精致运动体验，高技<br/>术性细节与潮流浑然<br/>一体。--户外风</span>
+						</div>
+					</a>
+					<a class="mode3" href="/trends/relt_133/" title="Y-生代" target="_blank" data-src="t-bg3.jpg" data-bg="top-tit2.png">
+						<img src="{STATIC_URL2}/global/topic/20171211/images/mode2.png"/>
+						<div>
+							<h3>Y-生代</h3>
+							<p>GENERATION Y</p>
+							<span>借由极具个性的服装，来<br/>定义与众不同的自己。<br/>--潮牌风</span>
+						</div>
+					</a>
+					<a class="mode4" href="/trends/relt_131/" title="环球旅者" target="_blank" data-src="t-bg2.jpg" data-bg="top-tit1.png">
+						<img src="{STATIC_URL2}/global/topic/20171211/images/mode1.png"/>
+						<div>
+							<h3>环球旅者</h3>
+							<p>GLOBAL TRAVELLER</p>
+							<span>注重身体与心灵上的享<br/>受，平衡享乐与品质。<br/>--度假风</span>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="review-contain">
+	  		<div class="review-msg">
+	  			<img src="{STATIC_URL2}/global/topic/20171211/images/prev-title.png" alt="title" />
+	  			<div class="review-cont">
+	  				<div class="left-btn js-left-btn"></div>
+  					<div class="right-btn js-right-btn"></div>
+	  				<div class="review-list">
+	  					<ul class="js-review-list clear">
+	  						<li>
+			  					<a href="/topic/20171101/" target="_blank" title="上海订货会">
+			  						<div>
+			  							<div class="img-c"><img src="{STATIC_URL2}/global/topic/20171211/images/re9.jpg" alt="图案专栏" /></div>
+			  							<div class="review-hover review-hover9"></div>
+			  						</div>
+			  						<p>上海订货会</p>
+			  					</a>
+			  				</li>
+	  						<li>
+			  					<a href="/topic/20170930/" target="_blank" title="一键获取PV展矢量花型">
+			  						<div>
+			  							<div class="img-c"><img src="{STATIC_URL2}/global/topic/20171211/images/re8.jpg" alt="图案专栏" /></div>
+			  							<div class="review-hover review-hover8"></div>
+			  						</div>
+			  						<p>一键获取PV展矢量花型</p>
+			  					</a>
+			  				</li>
+			  				<li>
+			  					<a href="/topic/20170915/" target="_blank" title="日本潮流实战情报">
+			  						<div>
+			  							<div class="img-c"><img src="{STATIC_URL2}/global/topic/20171211/images/re7.jpg" alt="图案专栏" /></div>
+			  							<div class="review-hover review-hover7"></div>
+			  						</div>
+			  						<p>日本潮流实战情报</p>
+			  					</a>
+			  				</li>
+	  						<li>
+			  					<a href="/topic/20170830/" target="_blank" title="联名玩转潮流">
+			  						<div>
+			  							<div class="img-c"><img src="{STATIC_URL2}/global/topic/20171211/images/re6.png" alt="图案专栏" /></div>
+			  							<div class="review-hover review-hover6"></div>
+			  						</div>
+			  						<p>联名玩转潮流</p>
+			  					</a>
+			  				</li>
+	  						<li>
+			  					<a href="/topic/20170802/" target="_blank" title="独立设计师季">
+			  						<div>
+			  							<div class="img-c"><img src="{STATIC_URL2}/global/topic/20171211/images/re5.png" alt="图案专栏" /></div>
+			  							<div class="review-hover review-hover5"></div>
+			  						</div>
+			  						<p>独立设计师季</p>
+			  					</a>
+			  				</li>
+			  				<li>
+			  					<a href="/topic/20170703/" target="_blank" title="POP独家带来，最权威的色彩趋势—新生">
+			  						<div>
+			  							<div class="img-c"><img src="{STATIC_URL2}/global/topic/20171211/images/re-4.jpg" alt="图案专栏" /></div>
+			  							<div class="review-hover review-hover0"></div>
+			  						</div>
+			  						<p>POP独家带来，最权威的色彩趋势--<br />新生</p>
+			  					</a>
+			  				</li>
+			  				<li>
+			  					<a href="/topic/20170602/" target="_blank" title="图案专栏重磅来袭，POP带你玩转趋势">
+			  						<div>
+			  							<div class="img-c"><img src="{STATIC_URL2}/global/topic/20171211/images/re0.jpg" alt="图案专栏" /></div>
+			  							<div class="review-hover review-hover1"><img src="{STATIC_URL2}/global/topic/20171211/images/hover-1.png" alt="新生" /></div>
+			  						</div>
+			  						<p>图案专栏重磅来袭，POP带你玩转趋势</p>
+			  					</a>
+			  				</li>
+			  				<li>
+			  					<a href="/topic/20170516/" target="_blank" title="18/19秋冬POP大主题趋势预测发布—新生">
+			  						<div>
+			  							<div class="img-c"><img src="{STATIC_URL2}/global/topic/20171211/images/re1.jpg" alt="新生" /></div>
+			  							<div class="review-hover review-hover2"></div>
+			  						</div>
+			  						<p>18/19秋冬POP大主题趋势预测发布--新生</p>
+			  					</a>
+			  				</li>
+			  				<li>
+			  					<a href="/topic/20170516/" target="_blank" title="时尚也要玩大数据流行色一秒掌握！">
+			  						<div>
+			  							<div class="review-hover review-hover3"></div>
+			  							<div class="img-c"><img src="{STATIC_URL2}/global/topic/20171211/images/re2.jpg" alt="大数据" /></div>
+			  						</div>
+			  						<p>时尚也要玩大数据，流行色一秒掌握！</p>
+			  					</a>
+			  				</li>
+			  				<li>
+			  					<a href="/topic/20171101/" target="_blank" title="上海订货会">
+			  						<div>
+			  							<div class="img-c"><img src="{STATIC_URL2}/global/topic/20171211/images/re9.jpg" alt="图案专栏" /></div>
+			  							<div class="review-hover review-hover9"></div>
+			  						</div>
+			  						<p>上海订货会</p>
+			  					</a>
+			  				</li>
+			  				<li>
+			  					<a href="/topic/20170930/" target="_blank" title="一键获取PV展矢量花型">
+			  						<div>
+			  							<div class="img-c"><img src="{STATIC_URL2}/global/topic/20171211/images/re8.jpg" alt="图案专栏" /></div>
+			  							<div class="review-hover review-hover8"></div>
+			  						</div>
+			  						<p>一键获取PV展矢量花型</p>
+			  					</a>
+			  				</li>
+			  				<li>
+			  					<a href="/topic/20170915/" target="_blank" title="日本潮流实战情报">
+			  						<div>
+			  							<div class="img-c"><img src="{STATIC_URL2}/global/topic/20171211/images/re7.jpg" alt="图案专栏" /></div>
+			  							<div class="review-hover review-hover7"></div>
+			  						</div>
+			  						<p>日本潮流实战情报</p>
+			  					</a>
+			  				</li>
+			  				<li>
+			  					<a href="/topic/20170830/" target="_blank" title="联名玩转潮流">
+			  						<div>
+			  							<div class="img-c"><img src="{STATIC_URL2}/global/topic/20171211/images/re6.png" alt="图案专栏" /></div>
+			  							<div class="review-hover review-hover6"></div>
+			  						</div>
+			  						<p>联名玩转潮流</p>
+			  					</a>
+			  				</li>
+	  						<li>
+			  					<a href="/topic/20170802/" target="_blank" title="独立设计师季">
+			  						<div>
+			  							<div class="img-c"><img src="{STATIC_URL2}/global/topic/20171211/images/re5.png" alt="图案专栏" /></div>
+			  							<div class="review-hover review-hover5"></div>
+			  						</div>
+			  						<p>独立设计师季</p>
+			  					</a>
+			  				</li>
+			  				<li>
+			  					<a href="/topic/20170703/" target="_blank" title="POP独家带来，最权威的色彩趋势—新生">
+			  						<div>
+			  							<div class="img-c"><img src="{STATIC_URL2}/global/topic/20171211/images/re-4.jpg" alt="图案专栏" /></div>
+			  							<div class="review-hover review-hover0"></div>
+			  						</div>
+			  						<p>POP独家带来，最权威的色彩趋势--<br />新生</p>
+			  					</a>
+			  				</li>
+			  				<li>
+			  					<a href="/topic/20170602/" target="_blank" title="图案专栏重磅来袭，POP带你玩转趋势">
+			  						<div>
+			  							<div class="img-c"><img src="{STATIC_URL2}/global/topic/20171211/images/re0.jpg" alt="图案专栏" /></div>
+			  							<div class="review-hover review-hover1"><img src="{STATIC_URL2}/global/topic/20171211/images/hover-1.png" alt="新生" /></div>
+			  						</div>
+			  						<p>图案专栏重磅来袭，POP带你玩转趋势</p>
+			  					</a>
+			  				</li>
+			  				<li>
+			  					<a href="/topic/20170516/" target="_blank" title="18/19秋冬POP大主题趋势预测发布—新生">
+			  						<div>
+			  							<div class="img-c"><img src="{STATIC_URL2}/global/topic/20171211/images/re1.jpg" alt="新生" /></div>
+			  							<div class="review-hover review-hover2"></div>
+			  						</div>
+			  						<p>18/19秋冬POP大主题趋势预测发布--新生</p>
+			  					</a>
+			  				</li>
+			  				<li>
+			  					<a href="/topic/20170516/" target="_blank" title="时尚也要玩大数据流行色一秒掌握！">
+			  						<div>
+			  							<div class="review-hover review-hover3"></div>
+			  							<div class="img-c"><img src="{STATIC_URL2}/global/topic/20171211/images/re2.jpg" alt="大数据" /></div>
+			  						</div>
+			  						<p>时尚也要玩大数据，流行色一秒掌握！</p>
+			  					</a>
+			  				</li>
+			  			</ul>
+	  				</div>
+	  			</div>
+	  		</div>
+	  	</div>
+	  
+	</div>
+
+	{include file="topic/topic_layer.html"}
+</div>
+{/block}
+
+
+{block name="self"}
+{literal}
+<script>
+	$(function(){
+		/*top内容效果*/
+		var rotat_timer=null,rotat_val=0,is_hover=false,back_timer=null;
+		rotat_timer = setInterval(function(){
+			rotat_val++;
+			if(rotat_val>=28800){
+				rotat_val=0;
+			}
+			$('.js-cont-msg').css({
+				'transform':'rotate('+rotat_val/80+'deg)',
+				'-webkit-transform':'rotate('+rotat_val/80+'deg)'
+			});
+			
+			$('.js-cont-msg a').css({
+				'transform':'rotate('+rotat_val/-80+'deg)',
+				'-webkit-transform':'rotate('+rotat_val/-80+'deg)'
+			});
+			
+		},4);
+		//js-season-top
+		$('.js-cont-msg a').hover(function(){
+			var d_w = $('.js-season-contain').width();
+			is_hover=true;
+			clearInterval(rotat_timer);		//hover停止转动
+			clearTimeout(back_timer);		//清楚out变化
+			
+			var _src=$(this).data('src'),img_link='';
+			var _bgsrc=$(this).data('bg'),bg_link='';
+			img_link='url(../../../global/topic/20171211/images/'+_src+')';
+			bg_link='url(../../../global/topic/20171211/images/'+_bgsrc+')';
+			$(".js-top-cont").css({
+				'background-image':bg_link
+			});
+			$('.js-bg-set').stop().hide().css({
+				"width": "400px",
+				'height': '400px',
+				'background-image': img_link,
+				'top': '50%',
+				'margin-left':'-200px',
+				'margin-top':'-200px',
+				'left': '50%',
+				'border-radius': '50%',
+				'opacity': '0.7'
+			});
+			
+			$('.js-bg-set').stop().show().animate({
+				"width": d_w+"px",
+				'height': d_w+"px",
+				'top': '0',
+				'margin-left':'0px',
+				'margin-top':(900-d_w)/2+'px',
+				'left': '0',
+				'opacity': '1'
+			},800,"linear",function(){
+				$('.js-season-top').css({
+					'background-image': img_link
+				});
+				$('.js-bg-set').hide();
+				is_hover=false;
+			});
+			
+		},function(){
+			rotat_timer = setInterval(function(){
+				rotat_val++;
+				if(rotat_val>=28800){
+					rotat_val=0;
+				}
+				$('.js-cont-msg').css({
+					'transform':'rotate('+rotat_val/80+'deg)',
+					'-webkit-transform':'rotate('+rotat_val/80+'deg)'
+				});
+				
+				$('.js-cont-msg a').css({
+					'transform':'rotate('+rotat_val/-80+'deg)',
+					'-webkit-transform':'rotate('+rotat_val/-80+'deg)'
+				});
+				
+			},4);
+			hvBack();
+		});
+		
+		function hvBack(){
+			clearTimeout(back_timer);
+			back_timer=setTimeout(function(){
+				var d_w = $('.js-season-contain').width();
+				var img_link1='url(../../../global/topic/20171211/images/t-bg1.jpg)';
+				var bg_link1='url(../../../global/topic/20171211/images/top-tit.png)';			
+
+				$('.js-bg-set').stop().show().css({
+					"width": d_w+"px",
+					'height': d_w+"px",
+					'top': '0',
+					'left': '0',
+					'margin-left':'0px',
+					'margin-top':(900-d_w)/2+'px',
+					'border-radius': '50%',
+					'opacity': '1'
+				});
+				
+				$('.js-season-top').css({
+					'background-image': img_link1
+				});
+				
+				$('.js-bg-set').stop().show().animate({
+					"width": "400px",
+					'height': '400px',
+					'top': '50%',
+					'left': '50%',
+					'margin-left':'-200px',
+					'margin-top':'-200px',
+					'opacity': '0.7'
+				},600,"linear", function(){
+					$(".js-top-cont").css({
+						'background-image':bg_link1
+					});
+					$('.js-bg-set').hide();
+				});
+			},420);
+		}
+		
+		
+		
+		
+		
+		
+		$('.js-page-down').on('click',function(){
+			$('body,html').stop(true,true).animate({
+				scrollTop:900
+			},400)
+		});
+		
+    	//往期回顾hover效果
+    	$('.js-review-list>li').hover(function(){
+    		$(this).siblings('li').find('.img-c>img').stop().animate({'opacity':0},400,function(){
+    			$(this).hide();
+    		});
+    		$(this).siblings('li').find('.review-hover').stop().show().animate({'opacity':1},400);
+    	},function(){
+    		$(this).siblings('li').find('.img-c>img').stop().show().animate({'opacity':1},100);
+    		$(this).siblings('li').find('.review-hover').stop().animate({'opacity':0},400,function(){
+    			$(this).hide();
+    		});
+    	});
+    	
+    	var _index=0,is_lun=false,review_ul=$('.js-review-list'),_len=$('.js-review-list li').length/2,list_w=$('.js-review-list li').eq(0).outerWidth(true);		//轮播当前i
+    	$(window).on('resize',function(){
+    		is_lun=true;		//正在轮播
+    		list_w=$('.js-review-list li').eq(0).outerWidth(true);
+    		review_ul.stop().css({
+    			"margin-left":_index*-1*list_w+"px"
+    		});
+    		
+    		setTimeout(function(){
+	    		list_w=$('.js-review-list li').eq(0).outerWidth(true);
+	    		review_ul.stop().css({
+	    			"margin-left":_index*-1*list_w+"px"
+	    		})
+	    		is_lun=false;		//正在轮播
+    		},300)
+    	})
+    	
+    	$('.js-left-btn').on('click',function(){
+    		if(is_lun==true){
+    			return;
+    		}
+    		is_lun=true;		//正在轮播
+    		_index--;
+    		if(_index<0){
+    			_index=_len-1;
+    			review_ul.stop().css({
+	    			"margin-left":_len*-1*list_w+"px"
+	    		})
+    		}
+    		
+    		review_ul.stop().animate({
+    			"margin-left":_index*-1*list_w+"px"
+    		},300,function(){
+    			is_lun=false;
+    		});
+    	});
+    	
+    	$('.js-right-btn').on('click',function(){
+    		if(is_lun==true){
+    			return;
+    		}
+    		is_lun=true;
+    		_index++;
+    		if(_index>_len){
+    			_index=1;
+    			review_ul.stop().css({
+	    			"margin-left":"0px"
+	    		})
+    		}
+    		
+    		review_ul.stop().animate({
+    			"margin-left":_index*-1*list_w+"px"
+    		},300,function(){
+    			is_lun=false;
+    		});
+    	});
+
+    	$(".pop_sole").addClass("selected");
+    	
+    })
+</script>
+{/literal}
+{/block}

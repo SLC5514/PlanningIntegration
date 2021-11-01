@@ -1,0 +1,870 @@
+{extends file="layout.html"}
+{block name="selfcss"}
+	<link rel="stylesheet" type="text/css" href="{STATIC_URL1}/global/css/common/base.css?{STATIC_CHANGE_TIME}">
+    <link rel="stylesheet" type="text/css" href="{STATIC_URL1}/global/css/home/home.css?{STATIC_CHANGE_TIME}">
+    <link rel="stylesheet" type="text/css" href="{STATIC_URL1}/global/css/lib/swp.css?{STATIC_CHANGE_TIME}">
+    <link rel="stylesheet" type="text/css" href="{STATIC_URL1}/global/js/lib/aos/aos.css?{STATIC_CHANGE_TIME}">
+	<!--[if lt IE 9]>
+	<link rel="stylesheet" type="text/css" href="{STATIC_URL1}/global/css/home/home-ie.css?{STATIC_CHANGE_TIME}">
+	<![endif]-->
+{/block}
+{block name="main"}
+<div class="content scroll-content" style="overflow: hidden;">
+    <div class="header_new">
+        <div class="header-left" aos="fade-up">
+            <div id="px-render"></div>
+            <div class="header-tit" aos="fade-up" aos-delay="400">
+                <div class="keyword-box" aos="fade-up" aos-delay="800">
+                    <span>你在找什么？</span>
+                    <div class="key-word clearfix">
+                        <div><a data-id="2" data-key="gen" target="_blank" title="女装"><span><label>女&nbsp;&nbsp;装</label><i></i></span></a></div>
+                        <div><a data-id="6" data-key="ind" target="_blank" title="毛衫"><span><label>毛&nbsp;&nbsp;衫</label><i></i></span></a></div>
+                        <div><a data-id="9" data-key="ind" target="_blank" title="内衣/泳衣"><span><label>内衣/泳衣</label><i></i></span></a></div>
+                        <div><a data-id="1" data-key="gen" target="_blank" title="男装"><span><label>男&nbsp;&nbsp;装</label><i></i></span></a></div>
+                        <div><a data-id="7" data-key="ind" target="_blank" title="牛仔"><span><label>牛&nbsp;&nbsp;仔</label><i></i></span></a></div>
+                        <div><a data-id="10" data-key="ind" target="_blank" title="婚纱/礼服"><span><label>婚纱/礼服</label><i></i></span></a></div>
+                        <div><a data-id="5" data-key="gen" target="_blank" title="童装"><span><label>童&nbsp;&nbsp;装</label><i></i></span></a></div>
+                        <div><a data-id="8" data-key="ind" target="_blank" title="皮革/皮草"><span><label>皮革/皮草</label><i></i></span></a></div>
+                        <div><a data-id="11" data-key="ind" target="_blank" title="运动"><span><label>运&nbsp;&nbsp;动</label><i class="esp"></i></span></a></div>
+                        <div><a data-id="1" data-key="reg" target="_blank" title="日韩专区"><span><label>日韩专区</label><i></i></span></a></div>
+                        <div><a data-url="/brands/" target="_blank" title="品牌库"><span><label>品牌库</label><i></i></span></a></div>
+                        <div><a data-url="/fabriczone/" target="_blank" title="面料"><span><label>面料</label><i></i></span></a></div>
+                    </div>
+                    <a class="home-reg-brn" href="/member/register/">立即注册 查看你的专属内容</a>
+                </div>
+            </div>
+        </div>
+        <div class="header-right" aos="fade-up" aos-delay="200">
+            <div class="swiper-container" id="js-swiper">
+                <div class="swiper-wrapper">
+                    {foreach $adsTopHome as $_val} 
+                    <div class="swiper-slide js-slide">
+                        <a href="{$_val.sLink}" target="{if $_val.sNewWindow}_blank{/if}">
+                            <!-- <img src="{$_val.sImagePath}"> -->
+                            <img class="img" src="{$_val.sImagePath}" alt="{$_val.sTitle}">
+                        </a>
+                    </div>
+                    {/foreach}
+                </div>
+            </div>
+            <div class="slide">
+                <span class="pagination"></span>
+                <div class="circleProgress_wrapper js-button-next" data-id='1'>
+                    <div class="img-wra"></div>
+                    <div class="wrapper right">
+                        <div class="circleProgress rightcircle"></div>
+                    </div>
+                    <div class="wrapper left">
+                        <div class="circleProgress leftcircle"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tag-box js-tagcloud" aos="fade-up" aos-delay="200">
+        {if $words}
+        {foreach $words as $val}
+            <a href="{$val.url}" target="_blank">{$val.word}</a>
+        {/foreach}
+        {/if}
+    </div>
+    <div class="expo">
+        <div class="icon-bg" id="expo"></div>
+        <div class="expo-pop">
+            <div class="icon-O" aos="fade-up" aos-delay="200"  aos-anchor="#expo"></div>
+            <div class="icon-P" aos="fade-up" aos-delay="400" aos-anchor="#expo"></div>
+            <div class="swiper-box" aos="fade-up" aos-delay="600" aos-anchor="#expo">
+                <div class="swiper-container" id="js-expoSwiper">
+                    <div class="swiper-wrapper">
+                        {if $adsHome}
+                        {foreach $adsHome as $_val}
+                        <input type="hidden" data-url="{$_val.sLink}" data-title="{$_val.sTitle}" data-subTitle="{$_val.subTitle}" data-memo="{$_val.sMemo}" class="expoSlide-data">
+                        <div class="swiper-slide js-expoSlide">
+                            <a href="{$_val.sLink}" title="{$_val.sTitle}" target="{if $_val.sNewWindow}_blank{/if}">
+                                <!-- <img src="{$_val.sImagePath}" alt="{$_val.sTitle}"> -->
+                                <img class="img" src="{$_val.sImagePath}" alt="{$_val.sTitle}">
+                            </a>
+                        </div>
+                        {/foreach}
+                        {/if}
+                    </div>
+                </div>
+                <div class="slide">
+                        <span class="pagination1"></span>
+                        <div class="circleProgress_wrapper js-button-next1" data-id='1'>
+                            <div class="img-wra" style="transform: rotate(90deg);"></div>
+                            <div class="wrapper right">
+                                <div class="circleProgress rightcircle_d"></div>
+                            </div>
+                            <div class="wrapper left">
+                                <div class="circleProgress leftcircle_d"></div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <div class="expo-title" aos="fade-up" aos-delay="800" aos-anchor="#expo">
+                <label class="js-title" aos="fade-up" aos-delay="1000" aos-anchor="#expo"></label>
+                <span class="time js-subTitle" aos="fade-up" aos-delay="1000" aos-anchor="#expo"></span>
+                <span class="details js-memo" aos="fade-up" aos-delay="1200" aos-anchor="#expo"></span>
+                <div aos="fade-up" aos-delay="1400" aos-anchor="#expo" style="position: absolute;bottom: 45px;">
+                    <a class="more-but js-url" target="_blank"><span>查看更多</span><i></i></a>
+                </div>
+            </div>
+            <div class="expo-list">
+                {if $adsFeatured}
+                {foreach $adsFeatured as $key => $_val}
+                    <div class="expo-li ani1" aos="fade-up" aos-delay="{$key*200+600}" aos-anchor="#expo">
+                        <a href="{$_val.sLink}" target="{if $_val.sNewWindow}_blank{/if}" title="{$_val.sTitle}">
+                            <img src="{$_val.sImagePath}" alt="{$_val.sTitle}">
+                            <div class="expo-bg js-expo-bg">
+                                <div class="bg"></div>
+                                <span>{$_val.sMemo}</span>
+                            </div>
+                        </a>
+                    </div>
+                {/foreach}
+                {/if}
+            </div>
+        </div>
+    </div>
+    <div class="new-hlist" id="hlist" aos="fade-up">
+        <div class="main-hlist clearfix">
+            <div class="hlist-img" aos="fade-up" aos-delay="600" aos-anchor="#hlist"></div>
+            <div class="hlist-title" aos="fade-up" aos-delay="800" aos-anchor="#hlist">
+                <span aos="fade-up" aos-delay="1000" aos-anchor="#hlist">智能助力设计<br/>趋势预见流行</span>
+                <label aos="fade-up" aos-delay="1200" aos-anchor="#hlist">流行变革时刻在发生，我们深入研究潮流趋势，细查色彩，面料，品牌等, 形成观点报告和千量图集。无论你想获取设计灵感，还是把握商业机会，都可通过POPFASHION轻松获得未来服装流行动向。</label>
+                <div aos="fade-up" aos-delay="1400" aos-anchor="#hlist" style="position: absolute;bottom: 88px;left: 45px;">
+                    <a href="/topic/scene_home/" target="_blank" class="more-but" ><span>查看更多</span><i></i></a>
+                </div>
+            </div>
+            <div class="bg-p" aos="fade-up" aos-delay="400" aos-anchor="#hlist"></div>
+        </div>
+    </div>
+    <div class="hlist-list clearfix">
+        <div class="hlist-left">
+            <div class="hlist-item">
+                <div style="position: relative;" id="sum01" aos="fade-up">
+                    <svg width="520" height="700">
+                        <defs>
+                            <filter id="f3"><feGaussianBlur stdDeviation="12"></feGaussianBlur></filter>
+                        </defs>
+                        <image xlink:href="{STATIC_URL2}/global/images/home/hlist-img01.jpg" x="0" y="0" height="700" width="520" filter="url(#f3)" />
+                    </svg>
+                    <img class="hlist-img" src="{STATIC_URL2}/global/images/home/hlist-img01.jpg">
+                </div>
+                <span class="sum01" aos="fade-up" aos-delay="400" aos-anchor="#sum01">01</span>
+                <span class="hlist-H1" style="margin-top: 97px;" aos="fade-up" aos-delay="600" aos-anchor="#sum01">主题色彩</span>
+                <span class="hlist-H2" aos="fade-up" aos-delay="600" aos-anchor="#sum01">我们观察海量色彩信息<br/>研究了不同社会动态，预测未来色彩</span>
+                <div aos="fade-up" aos-delay="800" aos-anchor="#sum01" style="position: absolute;margin-top: 40px;">
+                    <a href="/topic/theme_color/" target="_blank" class="more-but"><span>查看更多</span><i></i></a>
+                </div>
+            </div>
+            <div class="hlist-item js-sum03" style="margin-top: 160px;text-align: right;">
+                <div style="position: relative;" aos="fade-up" aos-delay="400" >
+                    <svg width="520" height="700">
+                        <defs>
+                            <filter id="f3"><feGaussianBlur stdDeviation="12"></feGaussianBlur></filter>
+                        </defs>
+                        <image xlink:href="{STATIC_URL2}/global/images/home/hlist-img03.jpg" x="0" y="0" height="700" width="520" filter="url(#f3)" />
+                    </svg>
+                    <img class="hlist-img" src="{STATIC_URL2}/global/images/home/hlist-img03.jpg">
+                </div>
+                <span class="sum03" aos="fade-up" aos-delay="600" aos-anchor="#sum03">03</span>
+                <span class="hlist-H1" style="margin-top: 30px;margin-right: 157px;" aos="fade-up" aos-delay="800" aos-anchor="#sum03">面&nbsp;&nbsp;料</span>
+                <span class="hlist-H2" style="margin-right: 157px;" aos="fade-up" aos-delay="800" aos-anchor="#sum03">将文化，面料与市场一同研究分析<br/>以图集合形式呈现</span>
+                <div aos="fade-up" aos-delay="1000" aos-anchor="#sum03" style="position: absolute;margin-top: 40px;right: 157px;">
+                    <a href="/topic/fabric/" target="_blank" class="more-but"><span>查看更多</span><i></i></a>
+                </div>
+            </div>
+            <div class="hlist-item js-sum05" style="margin-top: 230px;">
+                <div style="position: relative;" id="sum05" aos="fade-up">
+                    <svg width="520" height="700">
+                        <defs>
+                            <filter id="f3"><feGaussianBlur stdDeviation="12"></feGaussianBlur></filter>
+                        </defs>
+                        <image xlink:href="{STATIC_URL2}/global/images/home/hlist-img05.jpg" x="0" y="0" height="700" width="520" filter="url(#f3)" />
+                    </svg>
+                    <img class="hlist-img" src="{STATIC_URL2}/global/images/home/hlist-img05.jpg">
+                </div>
+                <span class="sum05" aos="fade-up" aos-delay="400" aos-anchor="#sum05">05</span>
+                <div class="item05">
+                    <span class="hlist-H1" aos="fade-up" aos-delay="600" aos-anchor="#sum05">品&nbsp;&nbsp;牌</span>
+                    <span class="hlist-H2" aos="fade-up" aos-delay="600" aos-anchor="#sum05">品牌赋予商业无限生机<br/>我们理解并分析品牌设计</span>
+                    <div aos="fade-up" aos-delay="800" aos-anchor="#sum05" style="position: absolute;right: 220px;bottom: -255px;">
+                        <a href="/topic/brand/" target="_blank" class="more-but"><span>查看更多</span><i></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hlist-right">
+            <div class="hlist-item" style="text-align: right;">
+                <span class="sum02" aos="fade-up" aos-delay="400" aos-anchor="#sum02">02</span>
+                <span class="hlist-H1" style="margin-top: 220px;" aos="fade-up" aos-delay="600" aos-anchor="#sum02">图&nbsp;&nbsp;案</span>
+                <span class="hlist-H2" aos="fade-up" aos-delay="600" aos-anchor="#sum02">以专业视角汇集国内外花型创意设计<br/>每周更新数千张高清图片</span>
+                <div aos="fade-up" aos-delay="800" aos-anchor="#sum02" style="position: absolute;top:410px;right: 0;">
+                    <a href="/topic/patterns/" target="_blank" class="more-but" ><span>查看更多</span><i></i></a>
+                </div>
+                <div style="position: relative;margin-top: 130px;" id="sum02" aos="fade-up">
+                    <svg width="520" height="700">
+                        <defs>
+                            <filter id="f3"><feGaussianBlur stdDeviation="12"></feGaussianBlur></filter>
+                        </defs>
+                        <image xlink:href="{STATIC_URL2}/global/images/home/hlist-img02.jpg" x="0" y="0" height="700" width="520" filter="url(#f3)" />
+                    </svg>
+                    <img class="hlist-img" src="{STATIC_URL2}/global/images/home/hlist-img02.jpg">
+                </div>
+            </div>
+            <div class="hlist-item" style="text-align: right;">
+                <span class="sum04" aos="fade-up" aos-delay="400" aos-anchor="#sum04">04</span>
+                <span class="hlist-H1" style="margin-top: 130px;margin-right: 175px;" aos="fade-up" aos-delay="600" aos-anchor="#sum04">单&nbsp;&nbsp;品</span>
+                <span class="hlist-H2" style="margin-right: 175px;" aos="fade-up" aos-delay="600" aos-anchor="#sum04">细致洞察消费者心态<br/>追踪风格热点及文化符号</span>
+                <div aos="fade-up" aos-delay="800" aos-anchor="#sum04" style="position: absolute;margin-top: 40px;right: 175px;">
+                    <a href="/topic/single/" target="_blank" class="more-but"><span>查看更多</span><i></i></a>
+                </div>
+                <div style="position: relative;margin-top: 130px;" id="sum04" aos="fade-up">
+                    <svg width="520" height="700">
+                        <defs>
+                            <filter id="f3"><feGaussianBlur stdDeviation="12"></feGaussianBlur></filter>
+                        </defs>
+                        <image xlink:href="{STATIC_URL2}/global/images/home/hlist-img04.jpg" x="0" y="0" height="700" width="520" filter="url(#f3)" />
+                    </svg>
+                    <img class="hlist-img" src="{STATIC_URL2}/global/images/home/hlist-img04.jpg">
+                </div>
+            </div>
+            <div class="hlist-item" style="text-align: right;">
+                <span class="sum04" aos="fade-up" aos-delay="400" aos-anchor="#sum06">06</span>
+                <span class="hlist-H1" style="margin-top: 130px;margin-right: 175px;" aos="fade-up" aos-delay="600" aos-anchor="#sum06">商拍展会</span>
+                <span class="hlist-H2" style="margin-right: 175px;" aos="fade-up" aos-delay="600" aos-anchor="#sum06">全球展会实时跟踪<br/>足不出户也能看展</span>
+                <div aos="fade-up" aos-delay="800" aos-anchor="#sum06" style="position: absolute;margin-top: 40px;right: 175px;">
+                    <a href="/topic/20200215" target="_blank" class="more-but"><span>查看更多</span><i></i></a>
+                </div>
+                <div style="position: relative;margin-top: 130px;z-index: 1;" id="sum06" aos="fade-up">
+                    <svg width="520" height="700">
+                        <defs>
+                            <filter id="f3"><feGaussianBlur stdDeviation="12"></feGaussianBlur></filter>
+                        </defs>
+                        <image xlink:href="{STATIC_URL2}/global/images/home/hlist-img06.png" x="0" y="0" height="700" width="520" filter="url(#f3)" />
+                    </svg>
+                    <img class="hlist-img" src="{STATIC_URL2}/global/images/home/hlist-img06.png">
+                </div>
+            </div>
+        </div>
+        <div class="btn-bg" id="btn-bg" aos="fade-up" aos-delay="200"></div>
+        <div class="hlist-p2" id="sum03" aos="fade-up"></div>
+    </div>
+    <div class="hlist-btn">
+        <div class="btn-list"  aos="fade-up" aos-delay="600" aos-anchor="#btn-bg">
+            {if $P_UserType eq 5 || $P_UserType eq 4}
+            <a href="/service/joinmember/" target="_blank" title="了解 VIP会员"><span>了解VIP会员</span><i></i></a>
+            {/if}
+            {if $account eq '' && $accountShow neq 'true'}
+            <a href="/member/register/" target="_blank" title="注册探索"><span>注册探索</span><i></i></a>
+            {/if}
+            {if $P_UserType eq 5 || $P_UserType eq 4}
+            <a class="trial js-contact-qq-btn"><span>开通试用</span><i></i></a>
+            {/if}
+        </div>
+    </div>
+    <div class="home-bottom" id="bottom">
+        <div class="bottom-title" aos="fade-up" aos-anchor="#bottom">POP时尚赋能</div>
+        <div class="describe" aos="fade-up" aos-delay="400"  aos-anchor="#bottom">
+            POP成立于2004年，创办了中国首家时尚资讯网络，率先建立为设计服务的面料交易平台，肩负着为设计师和时尚企业家赋能升级的使命<br/>
+            在各个产业集群设立了“设界”众创空间，致力于更贴切的设计服务和帮助企业转型升级<br/>
+            如今，POP不仅是资讯的优质服务商，更是集合了人工智能、互联网+、大数据等前沿科技的时尚科技服务商<br/>
+            为服装、鞋、包、家纺、首饰、面料等60万企业，100万+设计师服务，涵盖了90%的品牌。
+        </div>
+        <div class="relative grayPage" aos="fade-up" aos-delay="800"  aos-anchor="#bottom">
+            <svg class="editorial" viewBox="0 24 150 28" preserveAspectRatio="none">
+                <defs>
+                    <path id="gentle-wave" d="m -160,44.4 c 30,0 58,-18 87.7,-18 30.3,0 58.3,18 87.3,18 30,0 58,-18 88,-18 30,0 58,18 88,18 l 0,34.5 -351,0 z">
+                    </path>
+                </defs>
+                <g class="parallax">
+                    <use xlink:href="#gentle-wave" x="50" y="0" fill="rgba(255,255,255,0)" stroke="#d0d0d0" stroke-width=".1">
+                    </use>
+                    <use xlink:href="#gentle-wave" x="50" y="3" fill="rgba(255,255,255,0)" stroke="#d0d0d0" stroke-width=".1">
+                    </use>
+                    <use xlink:href="#gentle-wave" x="50" y="6" fill="rgba(255,255,255,0)" stroke="#d0d0d0" stroke-width=".1">
+                    </use>
+                </g>
+            </svg>
+            <div class="gentle">
+                <div class="gentle-box m1">
+                    <a href="https://www.pop-fashion.com/topic/20180531/" target="_blank">
+                        <div class="gentle-img"></div>
+                        <div class="s1">
+                            <div class="s2"></div>
+                            <div class="s3"></div>
+                        </div>
+                        <span>智能趋势</span>
+                        <div class="gentle-des">面向服装、鞋、包、家纺、首饰、<br>面料行业提供流行趋势</div>
+                    </a>
+                </div>
+                <div class="gentle-box m2">
+                    <a href="http://www.uliaobao.com" target="_blank">
+                        <div class="gentle-img"></div>
+                        <div class="s1">
+                            <div class="s2"></div>
+                            <div class="s3"></div>
+                        </div>
+                        <span>面料供应链</span>
+                        <div class="gentle-des">“优料宝”集合300家优质面料商提<br>供在线面料的B2B交易服务</div>
+                    </a>
+                </div>
+                <div class="gentle-box m3">
+                    <a href="https://www.pop-fashion.com/topic/20171129/" target="_blank">
+                        <div class="gentle-img"></div>
+                        <div class="s1">
+                            <div class="s2"></div>
+                            <div class="s3"></div>
+                        </div>
+                        <span>众创空间</span>
+                        <div class="gentle-des">以设计为中心集合各项有助于设计能力<br>提升的综合产业服务，实现众创办公</div>
+                    </a>
+                </div>
+                <div class="gentle-box m4">
+                    <a href="https://www.pop-fashion.com/activity/lists/" target="_blank">
+                        <div class="gentle-img"></div>
+                        <div class="s1">
+                            <div class="s2"></div>
+                            <div class="s3"></div>
+                        </div>
+                        <span>时尚培训</span>
+                        <div class="gentle-des">总裁班、短训课、海外游学等教育<br>产品为时尚行业发展注入新动能</div>
+                    </a>
+                </div>
+                <div class="gentle-box m5">
+                    <a href="https://www.pop-fashion.com/topic/20171208/" target="_blank">
+                        <div class="gentle-img"></div>
+                        <div class="s1">
+                            <div class="s2"></div>
+                            <div class="s3"></div>
+                        </div>
+                        <span>找料帮</span>
+                        <div class="gentle-des">提供高效、精准、透明的现货面辅料<br>匹配及交易服务让找料更轻松</div>
+                    </a>
+                </div>
+                <div class="gentle-box m6">
+                    <a href="http://yuntu.pop136.com/" target="_blank">
+                        <div class="gentle-img"></div>
+                        <div class="s1">
+                            <div class="s2"></div>
+                            <div class="s3"></div>
+                        </div>
+                        <span>云图</span>
+                        <div class="gentle-des">即看即用的智能设计系统，帮助服饰企<br>业提高图像类设计开发效率</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bottom-section" id="sec" aos="fade-up">
+        <h3 aos="fade-up" aos-anchor="#sec"><i></i><span>合作机构</span></h3>
+        <div class="cooperation-section pop-section clearfix" aos="fade-up" aos-delay="400" aos-anchor="#sec">
+            <ul>
+                <li>
+                    <div class="res1"></div>
+                    <span>韩国服装产业协会</span>
+                </li>
+                <li>
+                    <div class="res2"></div>
+                    <span>韩中时尚 人才开发院</span>
+                </li>
+                <li>
+                    <div class="res3"></div>
+                    <span>PID荷兰设计公会</span>
+                </li>
+                <li>
+                    <div class="res4"></div>
+                    <span>米兰展官方合作伙伴</span>
+                </li>
+                <li>
+                    <div class="res5"></div>
+                    <span>上海纺织协会战略合作伙伴</span>
+                </li>
+                <li>
+                    <div class="res6"></div>
+                    <span>上海服装设计协会上海时装周</span>
+                </li>
+                <li>
+                    <div class="res7"></div>
+                    <span>凤凰文化</span>
+                </li>
+                <li>
+                    <div class="res8"></div>
+                    <span>韩国世宗大学</span>
+                </li>
+                <li>
+                    <div class="res9"></div>
+                    <span>上海东华大学</span>
+                </li>
+                <li>
+                    <div class="res10"></div>
+                    <span>中国美院战略合作伙伴</span>
+                </li>
+                <li>
+                    <div class="res11"></div>
+                    <span>全球原创设计师圆梦台</span>
+                </li>
+                <li>
+                    <div class="res12"></div>
+                    <span>国际艺术教育</span>
+                </li>
+                <li>
+                    <div class="res13"></div>
+                    <span>上海国际时尚教育中心</span>
+                </li>
+                <li>
+                    <div class="res14"></div>
+                    <span>韩国弘益大学</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+{if $P_UserType eq 5}
+{include file="common/sem_trends.html"}
+{/if}
+{/block}
+{block name="footer"}
+<div class="footer" aos="fade-up" aos-delay="800" aos-anchor="#sec">
+    <div class="log-ico log-ico-safy">
+        <div class="widthx80 clearfix">
+
+            <div class="aboutPop">
+                <div class="footer-nav-list">
+                    <a href="/service/aboutus/" target="_blank" rel="nofollow" title="关于我们">关于我们</a>
+                    <a href="/service/joinmember/" target="_blank" rel="nofollow" title="加入会员">加入会员</a>
+                    <a href="/service/membernotice/" target="_blank" rel="nofollow" title="会员须知">会员须知</a>
+                    <a href="/service/tolllist/" target="_blank" rel="nofollow" title="收费一览">收费一览</a>
+                    <a href="/service/payment/" target="_blank" rel="nofollow" title="付款方式">付款方式</a>
+                    <a href="/service/declaration/" target="_blank" rel="nofollow" title="法律声明">法律声明</a>
+                    <a href="/service/contactus/" target="_blank" rel="nofollow" title="联系我们">联系我们</a>
+                    <a href="/service/friendlylink/" target="_blank">友情链接</a>
+                    <a href="http://www.pop136.com/aboutpop.php?sn=7" target="_blank" rel="nofollow" title="诚聘英才">诚聘英才</a>
+                    <a href="/service/sitemap/" target="_blank">网站地图</a>
+                    <a href="http://www.pop136.com/contactpop.php?sn=3" target="_blank" rel="nofollow" title="广告中心">广告中心</a>
+                    <a href="/topic/" target="_blank">活动专题</a>
+                    <a href="/blog/" target="_blank">博客</a>
+                </div>
+                <div class="safty" style="margin-top:10px;text-align: center;color:#bfbfbf;">逸尚创展（上海）科技有限公司 | 上海逸尚云联信息技术股份有限公司 &copy; 2004-2020<span>法律顾问：北京中银（上海）律师事务所 <a href="http://www.beian.miit.gov.cn/" target="_blank" style="margin:0;vertical-align:initial;">沪ICP备06003020号-1</a></span>
+                    <a target="_blank" href="http://wap.scjgj.sh.gov.cn/businessCheck/verifKey.do?showType=extShow&serial=9031000020160526093630000000851495-SAIC_SHOW_310000-20120428141018720124&signData=MEUCIQDZWDSUQE195cBFzEmHGyMfx92RgQ9hs6ZMwm3ePnH6kAIgMh9DQQ9W3S+fDej1PTh5x9PdFq9QKDSvtOGWbRJfWZU=" style="width:20px;height:24px;display:inline-block;"><img src="{STATIC_URL1}/global/images/safty1.png" class="fl" style="height:100%;margin-right:0;"></a>
+                    <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31010402000973" style="margin-left:10px;line-height:22px;">
+                        <img src="{STATIC_URL1}/global/images/safty.png" class="fl" alt="icon">
+                        <p class="fl">沪公网安备 31010402000973号</p>
+                    </a>
+                </div>
+                <div class="safty-info">			 		   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+<!-- fixed dom -->
+{block name="other"}
+<!-- 下拉层 -->
+{include file="common/header_nav_down.html"}
+<!-- 申请试用弹出 -->
+<div class="feedback-section-box clear js-feedback-section-box">
+    <button></button>
+    <h3><span></span>联系我们</h3>
+    <div class="contact-div">
+        <span>直接联系客服</span>
+        <button class="js-contact-qq-btn" title="直接咨询">直接咨询</button>
+
+        <p>咨询热线：<span>4008-210-500</span></p>
+        <p>售后服务：<span>4008-210-662</span></p>
+    </div>
+    <div class="form-div js-form-div">
+        <h3>请留下简要的信息，我们将在两个工作日内与您联系!</h3>
+        <ul class="form-list js-form-list js-form-list2">
+            <li>
+                <label for="name">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名</label><input value="" autocomplete="off" class="js-input-area" id="name" name="name" type="text" maxlength="20" placeholder="方便我们称呼您">
+                <p>4-20位字符，一个汉字是两个字符</p>
+            </li>
+            <li>
+                <label for="tel">电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话</label><input value="" autocomplete="off" class="js-input-area js-mobile-area" id="tel" name="tel" type="text" placeholder="联系您需要">
+                <p>请输入手机号</p>
+            </li>
+            <li class="select-itme">
+                <label>咨询类型</label>
+                <div class="select-div js-select-div">
+                    <span class="select-spn now-choice" value="5">申请试用</span>
+                    <ul class="option-list">
+                        {foreach $feedbackTypes as $val}
+                        <li value="{$val.id}">{$val.sName}</li>
+                        {/foreach}
+                    </ul>
+                </div>
+                <p>请选择咨询类型的内容</p>
+
+            </li>
+            <li class="txt-box">
+                <textarea class="js-input-area" name="content" placeholder="可在此处填写您想告知我们的其他信息" maxlength="100"></textarea>
+            </li>
+        </ul>
+        <button class="sub-btn js-sub-btn" data-type="2" title="马上联系我们">马上联系我们</button>
+    </div>
+</div>
+<div class="bg-div js-bg-div"></div>
+
+<!-- 最新推荐弹层按钮 -->
+<div class="new-trend-enter js-new-trend-enter" aos="fade-left"><p>免&nbsp;费<br/>试&nbsp;读</p></div>
+
+<!-- 侧边绑定手机号 -->
+<div class="bindPhone js-open-quick-login open-quick-login"></div>
+
+<!-- 最新推荐弹层 -->
+<div class="new-trends-fix js-new-trends-fix trends-fix-start">
+    <div class="new-trends-bg js-new-trends-bg"></div>
+	{if $P_UserType eq 5 || $P_UserType eq 4}
+    <div class="trials-box js-trials-box">
+        <div class="trials_close_count js-new-trends-bg"></div>
+        <div class="trials-tit clear">
+            <h3>立即注册即可免费查看以下内容</h3>
+            <div class="trials-tit-line">更多流行趋势报告和潮流款式等你来～</div>
+            <div class="trials-tit-itembox trials-out">
+                <a class="button" href="/member/register/" target="_blank">立即注册</a>
+                <a class="trials-tit-item-center js-contact-qq-btn" href="javascript:void(0);">畅通无阻快速了解</a>
+                <a>电话咨询 <span>4008-210-500</span></a>
+            </div>
+        </div>
+        <div class="trials-itembox">
+            <!--免费报告-->
+            <div class="trials-item-title">报告免费试读</div>
+            <div class="trials-item-top js-trials-item-top clear">
+               
+            </div>
+            <!--/免费报告-->
+            <!--免费款式-->
+            <div class="trials-item-title">款式免费查看</div>
+            <div class="trials-item-btm js-trials-item-btm clear">
+                
+            </div>
+            <!--/免费款式-->
+        </div>
+    </div>
+    <!-- 弹层 -->
+    <div class="trends-bg js-style-close"></div>
+    <div class="style-list-content js-style-list-content">
+        <div class="style-close js-style-close"></div>
+        <div class="style-list-top">
+            <h2 class="list-title js-list-title">ces cesc ecs</h2>
+            <div class="style-btn">
+                <p>需要更多会员服务，请联系：<i></i><strong>4008-210-500</strong></p>
+                <a href="javascript:void(0);" class="js-contact-qq-btn">咨询会员服务</a>
+                <a class="js-more-url btn" title="查看更多" target="_blank">查看更多</a>
+            </div>
+        </div>
+        <div class="img-box js-img-box">
+            <div class="img-box-btn img-left"></div>
+            <img src=""/>
+            <div class="img-box-btn img-right"></div>
+        </div>
+    </div>
+    {else}
+    <div class="trends-msg">
+        <!-- 侧边导航 -->
+        <div class="trends-nav">
+            <ul class="js-trends-navs"></ul>
+        </div>
+        <div class="trends-msg-close"></div>
+        <div class="new-trends-list load-start">
+            <h3></h3>
+            <ul class="clearfix js-new-trends"></ul>
+            <div class="trends-pics js-trends-pics">
+                <ul class="clearfix"></ul>
+            </div>
+        </div>
+	</div>
+    {/if}
+</div>
+{/block}
+<!-- script -->
+{block name="self"}
+	<script type="text/javascript">
+		/* var cloudWords = JSON.parse('{$words}'); */
+    </script>
+    <script type="text/javascript" src="{STATIC_URL3}/global/js/home/Pixi.js?{STATIC_CHANGE_TIME}"></script>
+    <script type="text/javascript" src="{STATIC_URL3}/global/js/lib/swiper/swiper.min.js?{STATIC_CHANGE_TIME}"></script>
+    <script type="text/javascript" src="{STATIC_URL3}/global/js/lib/tagcloud.js?{STATIC_CHANGE_TIME}"></script>
+    <script type="text/javascript" src="{STATIC_URL3}/global/js/lib/require.js?{STATIC_CHANGE_TIME}"></script>
+    <script type="text/javascript" src="{STATIC_URL3}/global/js/home/home.js?{STATIC_CHANGE_TIME}"></script>
+    <script type="text/javascript" src="{STATIC_URL3}/global/js/lib/aos/aos.js?{STATIC_CHANGE_TIME}"></script>
+    <script type="text/javascript" src="{STATIC_URL3}/global/js/sem_phone/sem_phone.js?{STATIC_CHANGE_TIME}"></script>
+    <script>
+        var resImg;
+        function resWidth(){
+            var cWidth = document.body.clientWidth
+            var option;
+            if (cWidth >= 1500) {
+                option={
+                    width: 1280,
+                    height: 860,
+                    transparent: true,
+                }
+                resImg='{STATIC_URL3}/global/images/home/title-bg.jpg';
+            }else{
+                option={
+                    width: 1020,
+                    height: 550,
+                    transparent: true,
+                }
+                resImg='{STATIC_URL3}/global/images/home/title-bg-1200.jpg';
+            }
+            return option;
+        }
+        // 创建一个 Pixi应用 需要的一些参数
+        var option = resWidth();
+        // 创建一个 Pixi应用
+        var app = new PIXI.Application(option);
+        // 获取渲染器
+        var renderer = app.renderer;
+        // 图片精灵
+        var preview;
+        // 置换图精灵
+        var displacementSprite;
+        // 滤镜
+        var displacementFilter;
+        // 舞台（一个容器），这里面包括了图片精灵、置换图精灵
+        var stage;
+        var playground = document.getElementById('px-render');
+
+        function setScene(url) {
+            // renderer.view 是 Pixi 创建的一个canvas
+            // 把 Pixi 创建的 canvas 添加到页面上
+            playground.appendChild(renderer.view);
+
+            // 创建一个容器
+            stage = new PIXI.Container();
+
+            // 根据图片的 url，创建图片精灵
+            preview = PIXI.Sprite.fromImage(url);
+
+            // 创建置换图精灵，在创建置换滤镜时会用到这个精灵 
+            displacementSprite = PIXI.Sprite.fromImage('{STATIC_URL3}/global/images/home/filter.jpg'); 
+
+            // 设置置换图精灵为平铺模式
+            displacementSprite.texture.baseTexture.wrapMode = PIXI.WRAP_MODES.REPEAT;
+
+            // 创建一个置换滤镜
+            displacementFilter = new PIXI.filters.DisplacementFilter(displacementSprite);
+
+            // 添加 图片精灵 到舞台
+            stage.addChild(preview);
+
+            // 添加 置换图精灵 到舞台 
+            stage.addChild(displacementSprite);
+
+            // 把 stage 添加到根容器上
+            app.stage.addChild(stage);
+        }
+        // 置换图精灵的移动速度
+        var velocity = 2;
+        // raf 是调用 requestAnimationFrame方法的返回值，停止动画效果时需要用到
+        var raf;
+        function animate() {
+            raf = requestAnimationFrame(animate);
+            // 改变置换图精灵的位置
+            displacementSprite.x += velocity;
+            displacementSprite.y += velocity;
+        }
+        setScene(resImg);
+        // 设置舞台的滤镜
+        stage.filters = [displacementFilter];
+        // 开始动画
+        animate();
+        /*$('.header-left').hover(function () {
+            start();
+            $('#px-render').css('transform','scale(1.2)');
+        }, function () {
+            stop();
+            $('#px-render').css('transform','scale(1)');
+        });
+        function start() {
+            // 设置舞台的滤镜
+            stage.filters = [displacementFilter];
+            // 开始动画
+            animate();
+        }
+        function stop() {
+            // 取消滤镜
+            stage.filters = [];
+            // 停止动画
+            cancelAnimationFrame(raf);
+        }  */
+        /* var start = document.querySelector('.start-btn');
+        var stop = document.querySelector('.stop-btn');
+        start.onclick = function () {
+            // 设置舞台的滤镜
+            stage.filters = [displacementFilter];
+            // 开始动画
+            animate();
+        }
+
+        stop.onclick = function () {
+            // 取消滤镜
+            stage.filters = [];
+            // 停止动画
+            cancelAnimationFrame(raf);
+        } */
+        var t,d;
+        function circle(){
+            var i=0;
+            function time(){
+                i++
+                if(i>100){
+                    clearTimeout(t);
+                    var index = $('.js-button-next').attr('data-id')-0;
+                    mySwiper.slideNext(1000, false);
+                    return;
+                }
+                if (i <= 50) {
+                    $('.rightcircle').css('transform', 'rotate(' + (225 + (i * 3.6)) + 'deg)');
+                } else {
+                    $('.leftcircle').css('transform', 'rotate(' + (225 + ((i - 50) * 3.6)) + 'deg)');
+                }
+                t = setTimeout(time, 70);
+            }
+            time();
+        }
+        function circle_d(){
+            var i=0;
+            function time(){
+                i++
+                if(i>100){
+                    clearTimeout(d);
+                    var index = $('.js-button-next1').attr('data-id')-0;
+                    mySwiper1.slideNext(1000, false);
+                    return;
+                }
+                if (i <= 50) {
+                    $('.rightcircle_d').css('transform', 'rotate(' + (225 + (i * 3.6)) + 'deg)');
+                } else {
+                    $('.leftcircle_d').css('transform', 'rotate(' + (225 + ((i - 50) * 3.6)) + 'deg)');
+                }
+                d = setTimeout(time, 70);
+            }
+            time();
+        }
+        /* swiper设置 */
+        var side=$('.js-slide').length;
+        var expoSlide=$('.js-expoSlide').length;
+        if(side>1){
+            var mySwiper = new Swiper('#js-swiper', {
+                direction: 'vertical', // 垂直切换选项
+                loop: true, // 循环模式选项
+                /* autoplay:{
+                    delay: 3000, // 自动切换的时间间隔
+                    disableOnInteraction: false // 操作swiper之后，是否禁止autoplay
+                }, */
+                // 如果需要分页器
+                pagination: {
+                    el: '.pagination',
+                    type: 'custom',
+                    renderCustom: function (swiper, current, total) {
+                        $('.rightcircle').css('transform','rotate(225deg)');
+                        $('.leftcircle').css('transform','rotate(225deg)');
+                        clearTimeout(t);
+                        circle();
+                        var customPaginationHtml = '0'+current+' / 0'+total;
+                        $('.js-button-next').attr('data-id',current);
+                        return customPaginationHtml;
+                    }
+                }
+            });
+            $('.js-button-next').on('click',function () {
+                clearTimeout(t);
+                mySwiper.slideNext(1000, false);
+            });
+        }else{
+            $('.js-button-next').hide();
+        }
+        if(expoSlide>1){
+            var mySwiper1 = new Swiper('#js-expoSwiper', {
+                direction: 'horizontal', // 垂直切换选项
+                loop: true, // 循环模式选项
+                autoHeight: true,
+                width:560,
+                height:480,
+                // 如果需要分页器
+                pagination: {
+                    el: '.pagination1',
+                    type: 'custom',
+                    renderCustom: function (swiper, current, total) {
+                        var customPaginationHtml = '0'+current+' / 0'+total;
+                        $('.js-button-next1').attr('data-id',current);
+                        var url = $($(".expoSlide-data")[(current-1)]).attr('data-url');
+                        var title = $($(".expoSlide-data")[(current-1)]).attr('data-title');
+                        var subTitle = $($(".expoSlide-data")[(current-1)]).attr('data-subTitle');
+                        var memo = $($(".expoSlide-data")[(current-1)]).attr('data-memo');
+                        var _subTitle=pop_fashion_global.fn.cutByWidth(subTitle,540,24);
+                        var _memo=pop_fashion_global.fn.cutByWidth(memo,1100,18);
+                        $('.js-subTitle').text(_subTitle);
+                        $('.js-memo').text(_memo);
+                        $('.js-url').attr("href",url);
+                        $('.js-title').text(title);
+                        $('.rightcircle_d').css('transform','rotate(225deg)');
+                        $('.leftcircle_d').css('transform','rotate(225deg)');
+                        clearTimeout(d);
+                        circle_d();
+                        return customPaginationHtml;
+                    }
+                }
+                /* autoplay:{
+                    delay: 3000, // 自动切换的时间间隔
+                    disableOnInteraction: false // 操作swiper之后，是否禁止autoplay
+                } */
+            });
+            $('.js-button-next1').on('click',function () {
+                clearTimeout(d);
+                mySwiper1.slideNext(1000, false);
+            });
+        }else{
+            var url = $($(".expoSlide-data")[0]).attr('data-url');
+            var title = $($(".expoSlide-data")[0]).attr('data-title');
+            var subTitle = $($(".expoSlide-data")[0]).attr('data-subTitle');
+            var memo = $($(".expoSlide-data")[0]).attr('data-memo');
+            var _subTitle=pop_fashion_global.fn.cutByWidth(subTitle,540,24);
+            var _memo=pop_fashion_global.fn.cutByWidth(memo,1100,18);
+            $('.js-button-next1').hide();
+            $('.js-subTitle').text(_subTitle);
+            $('.js-memo').text(_memo);
+            $('.js-url').attr("href",url);
+            $('.js-title').text(title);
+        }
+        /* 词云 */
+        tagcloud({
+            selector: ".js-tagcloud",  //元素选择器
+            fontsize: 14,       //基本字体大小, 单位px
+            radius: 50,         //滚动半径, 单位px
+            mspeed: "slow",   //滚动最大速度, 取值: slow, normal(默认), fast
+            ispeed: "normal",   //滚动初速度, 取值: slow, normal(默认), fast
+            direction: 135,     //初始滚动方向, 取值角度(顺时针360): 0对应top, 90对应left, 135对应right-bottom(默认)...
+            keep: false          //鼠标移出组件后是否继续随鼠标滚动, 取值: false, true(默认) 对应 减速至初速度滚动, 随鼠标滚动
+        });
+        //首页行业筛选
+        $('.key-word a').on('click',function(){
+            var _this = $(this);
+            var url = '/mutual/';
+            var id= _this.attr("data-id");
+            var key =_this.attr("data-key");
+            url += key+'_'+id+'/';
+            if ((!key || !id) && _this.attr("data-url")) {
+                url = _this.attr("data-url");
+            }
+            window.location.href = url;
+        })
+        $('.js-expo-bg span').each(function(){
+            var expo=$(this).text();
+            expo=pop_fashion_global.fn.cutByWidth(expo,600,16);
+            $(this).text(expo);
+        })
+        AOS.init({
+            easing: 'ease-out-back',
+            duration: 1000,
+            once:true
+        });
+    </script>
+{/block}

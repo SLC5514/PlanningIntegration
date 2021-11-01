@@ -1,0 +1,279 @@
+{extends file="layout.html"}"
+
+{block name="title"}灵感启发_设计实现_专业提升_双展联动-POP服装趋势网{/block}
+{block name=keywords}灵感启发,设计实现,专业提升,双展联动{/block}
+{block name=description}中国国际纺织面料及辅料(秋冬)博览会和中国国际针织(秋冬)博览会邀您开启设计新模式，趋势、面料、设计所见即所得，还等什么？快来面料展8.2馆-C79和针博展3号馆-E31吧！时间：2016.10.11-13，场馆：中国国家会展中心(上海)，地址：上海市崧泽大道333号，咨询热线：4008-210-500。{/block}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/topic/20160929/css/index.css">
+{/block}
+
+
+{block name="main"}
+<div class="container">
+    <div class="banner">
+        <div class="w1000">
+            <div class="container_banner">
+                <div class="con_b">
+                    <ul class="ul_logo">
+                        <li><a href="javascript:void(0);"><img
+                                src="{STATIC_URL2}/global/topic/20160929/images/popfashion.png" alt="邀您开启设计新模式" title="中国国际纺织面料及辅料(秋冬)博览会和中国国际针织(秋冬)博览会"/></a></li>
+                        <li><a href="javascript:void(0);"><img
+                                src="{STATIC_URL2}/global/topic/20160929/images/ulb.png" alt="邀您开启设计新模式" title="中国国际纺织面料及辅料(秋冬)博览会和中国国际针织(秋冬)博览会"/></a></li>
+                        <li class="linkage"><a href="javascript:void(0);">双展联动</a></li>
+                    </ul>
+                    <p class="fair">中国国际纺织面料及辅料（秋冬）博览会</p>
+                    <p class="fair fair2">中国国际针织（秋冬）博览会</p>
+                    <h1 class="open">邀 您 开 启 设 计 新 模 式</h1>
+
+                    <div class="box">
+                        <ul class="box-ul">
+                            <li class="trends"><a href="javascript:void(0);">趋&nbsp;&nbsp;&nbsp; 势&nbsp;&nbsp;&nbsp; /&nbsp;&nbsp;&nbsp; 面&nbsp;&nbsp;&nbsp;料&nbsp;&nbsp;&nbsp; /&nbsp;&nbsp;  设&nbsp;&nbsp;&nbsp; 计</a></li>
+                            <li class="watch"><a href="javascript:void(0);">所见即所得</a></li>
+                            <li class="what"><a href="javascript:void(0);"><img src="{STATIC_URL2}/global/topic/20160929/images/what.png"
+                                                 alt="邀您开启设计新模式" title="中国国际纺织面料及辅料(秋冬)博览会和中国国际针织(秋冬)博览会"/></a></li>
+                            <li class="fashion">
+                                <a href="javascript:void(0);">快&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 时&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 尚&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 易&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;设&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;计</a>
+                            </li>
+                            <li class="sao"><a>扫二维码预约观展，还可领神秘好礼！<i></i></a></li>
+                        </ul>
+                        <p class="erweima">
+                            <img src="{STATIC_URL2}/global/topic/20160929/images/erw.jpg" alt="邀您开启设计新模式" title="中国国际纺织面料及辅料(秋冬)博览会和中国国际针织(秋冬)博览会"/>
+                        </p>
+                    </div>
+                    <p class="contact">2016年10月11日-13日 <i></i> 中国国家会展中心（上海）<i class="addres"></i> 上海市崧泽大道333号</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content1">
+        <div class="w1000">
+            <div class="content_de">
+                <div class="content_top">
+                    <span class="line_lf"></span>
+                    <ul>
+                        <li class="trend"><a href="javascript:void(0);"><img src="{STATIC_URL2}/global/topic/20160929/images/trends.png" alt="灵感启发" title="灵感启发-HOW做设计"/></a></li>
+                        <li><b class="spir">灵感<span>启发</span></b></li>
+                        <li class="how">HOW 做设计</li>
+                    </ul>
+                    <span class="line_rg"></span>
+                </div>
+                <div class="content_bd">
+                    <div class="body_lf">
+                        <p><img src="{STATIC_URL2}/global/topic/20160929/images/people.png" alt="灵感启发" title="灵感启发-HOW做设计"/></p>
+                    </div>
+                    <div class="body_rg">
+                        <ul>
+                            <li><img src="{STATIC_URL2}/global/topic/20160929/images/popfashion2.png" alt="灵感启发" title="灵感启发-HOW做设计"/></li>
+                            <li class="pt"><p>服饰研发必备平台</p></li>
+                            <li class="san">
+                                <img src="{STATIC_URL2}/global/topic/20160929/images/deve.png" alt="灵感启发" title="灵感启发-HOW做设计"/>
+                                <p class="source">趋势 • 资源</p>
+                                <p class="quck">快反应 • 易设计</p>
+                            </li>
+                            <li class="detail">
+                               <dl class="stylel">
+                                   <i></i>
+                                   <dt>时尚广度 </dt>
+                                   <dd>零时差、无国界</dd>
+                               </dl>
+                                <dl class="num">
+                                    <i></i>
+                                    <dt>解析深度  </dt>
+                                    <dd>数字化、精提炼</dd>
+                                </dl>
+                                <dl class="tre">
+                                    <i></i>
+                                    <dt>趋势准度  </dt>
+                                    <dd>国际观本土化</dd>
+                                </dl>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="content_ft">
+                    <p class="tel"><i></i>详情咨询热线：<b class="tel_num">4008-210-500</b> <a class="qq js-contact-qq-btn" href="javascript:void(0);"><b></b>QQ咨询</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content2">
+        <div class="w1000">
+            <div class="content_de">
+                <div class="content_top">
+                    <span class="line_lf"></span>
+                    <ul>
+                        <li>
+                            <div>
+                                <p><b class="spir">设计<span>实现</span></b></p>
+                                <p class="how">WHAT 做设计</p>
+                            </div>
+                        </li>
+                        <li class="trend trend2"><a href="javascript:void(0);"><img src="{STATIC_URL2}/global/topic/20160929/images/frabicfont.png" alt="设计实现" title="设计实现-WHAT做设计"/></a></li>
+
+                    </ul>
+                    <span class="line_rg"></span>
+                </div>
+                <div class="content_bd">
+                    <div class="body_rg">
+                        <ul>
+                            <li><img src="{STATIC_URL2}/global/topic/20160929/images/ulb2.png" alt="设计实现" title="设计实现-WHAT做设计"/></li>
+                            <li class="pt con2_pt"><p>专业的现货面料交易平台</p></li>
+                            <li class="san">
+                                <img src="{STATIC_URL2}/global/topic/20160929/images/yellow.png" alt="设计实现" title="设计实现-WHAT做设计"/>
+                                <p class="source con2_source">面料 • 平台</p>
+                                <p class="quck con2_qick">全现货 • 帮找料</p>
+                            </li>
+                            <li class="detail">
+                                <dl class="stylel">
+                                    <i></i>
+                                    <dt>高效找料  </dt>
+                                    <dd>专人找、快反应</dd>
+                                </dl>
+                                <dl class="num">
+                                    <i></i>
+                                    <dt>精选好布  </dt>
+                                    <dd>全球料、严甄选</dd>
+                                </dl>
+                            </li>
+                        </ul>
+                        <div class="down">
+                            <ul class="down_lf">
+                                <li class="down_ulb down_ulb1"><a href="javascript:void(0);">下载优料宝 <i></i></a></li>
+                                <li class="down_ulb down_ulb2"><a href="javascript:void(0);">下载优料宝， 面料轻松找！</a></li>
+                            </ul>
+                            <p class="down_rg">
+                                <img src="{STATIC_URL2}/global/topic/20160929/images/uerwei.jpg" alt="设计实现" title="设计实现-WHAT做设计"/>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="body_lf  con2_lf">
+                        <p><img src="{STATIC_URL2}/global/topic/20160929/images/fabric.png" alt="设计实现" title="设计实现-WHAT做设计"/></p>
+                    </div>
+
+                </div>
+                <div class="content_ft con2_ft">
+                    <p class="tel"><i></i>详情咨询热线：<b class="tel_num">4008-233-090</b></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content3">
+        <div class="w1000">
+            <div class="content_de">
+                <div class="content_top">
+                    <span class="line_lf"></span>
+                    <ul>
+                        <li class="trend"><a href="javascript:void(0);"><img src="{STATIC_URL2}/global/topic/20160929/images/designfont.png" alt="专业提升" title="专业提升-UP做设计"/></a></li>
+                        <li><b class="spir">专业<span class="up">提升</span></b></li>
+                        <li class="how">UP 做设计</li>
+                    </ul>
+                    <span class="line_rg"></span>
+                </div>
+                <div class="content_bd">
+                    <div class="body_lf">
+                        <p><img src="{STATIC_URL2}/global/topic/20160929/images/design.png" alt="专业提升" title="专业提升-UP做设计"/></p>
+                    </div>
+                    <div class="body_rg">
+                        <ul>
+                            <li>
+                                <img class="img1" src="{STATIC_URL2}/global/topic/20160929/images/popfashion3.png" alt="专业提升" title="专业提升-UP做设计"/>
+                                <img src="{STATIC_URL2}/global/topic/20160929/images/ulb3.png" alt="专业提升"/>
+                            </li>
+                            <li class="pt"><p>趋势课堂</p></li>
+                            <li class="san">
+                                <p class="source">权威解读</p>
+                                <p class="quck">精华提炼</p>
+                                <p class="domain">专业讲解</p>
+                            </li>
+                        </ul>
+                        <div class="design">
+                            <div class="design_rg">
+                                <img src="{STATIC_URL2}/global/topic/20160929/images/derw.jpg" alt="专业提升" title="专业提升-UP做设计"/>
+                            </div>
+                            <div class="design_lf">
+                                <h3><i></i>预约报名</h3>
+                                <p>快消时代下 的趋势课堂</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content4">
+        <div class="w1000">
+            <div class="content_de">
+                <div class="content_top">
+                    <span class="line_lf"></span>
+                    <ul>
+                        <li>
+                            <div>
+                                <p><b class="spir">双展<span>联动</span></b></p>
+                                <p class="how">来 POP&ULB</p>
+                            </div>
+                        </li>
+                        <li class="trend trend2"><a href="javascript:void(0);"><img src="{STATIC_URL2}/global/topic/20160929/images/take.png" alt="领取您专属时尚礼包吧！"/></a></li>
+
+                    </ul>
+                    <span class="line_rg"></span>
+                </div>
+                <div class="con4_body">
+                    <div class="con4_lf">
+                        <div class="con4_lf_dl">
+                            <p class="want">想要一份比《秘密花园》</p>
+                            <p class="more"><b> 更 <span>POP</span>的礼物吗？</b></p>
+                            <p class="pop">POP & ULB送您一份 </p>
+                            <p class="hand">设计师HAND CARD！</p>
+                            <p class="erw">
+                                <img src="{STATIC_URL2}/global/topic/20160929/images/ctale.jpg" alt="扫码预约即可领取"/>
+                                <a class="callT" href="javascript:void(0);">扫码预约即可领取</a>
+                            </p>
+                        </div>
+                        <p class="populb"><img src="{STATIC_URL2}/global/topic/20160929/images/populb.png" alt="设计师HAND CARD！" /></p>
+                    </div>
+                    <div class="con4_middle"></div>
+                    <div class="con4_rg">
+                        <div class="con4_rg_dl">
+                            <p class="actity">还有超高概率抽取<b>价值200元</b>的 </p>
+                            <p class="apm">设计师必备快反胶囊APM！</p>
+                            <p class="phone">更有 <b>iPhone 7、iPad</b>等丰富奖品，</p>
+                            <p class="lay">抽！抽！抽！</p>
+                        </div>
+                        <p class="ipad"><img src="{STATIC_URL2}/global/topic/20160929/images/ipad.png" alt="设计师必备快反胶囊APM！"/></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content5">
+        <div class="w1000">
+            <div class="content_de">
+                <div class="content_top">
+                    <span class="line_lf"></span>
+                    <ul>
+                        <li class="trend trend2"><a href="javascript:void(0);"><img src="{STATIC_URL2}/global/topic/20160929/images/wait.png" alt="还等什么"/></a></li>
+                        <li>
+                            <div>
+                                <p class="zhanhui">2016年秋天，您不可错过的一场时尚盛宴，尽在POP展位！</p>
+                                <p class="how">快来面料展8.2馆-C79吧！</p>
+                            </div>
+                        </li>
+                    </ul>
+                    <span class="line_rg"></span>
+                </div>
+                <p class="sign"><i></i><b>展馆位置：</b>面料展8.2号馆-C79  针博展3号馆-E31</p>
+                <div class="con5_bd">
+                    <p class="con5_lf"><img src="{STATIC_URL2}/global/topic/20160929/images/mian.jpg" alt="面料展8.2馆-C79"/></p>
+                    <p class="con5_rg"><img src="{STATIC_URL2}/global/topic/20160929/images/zb.jpg" alt="针博展馆3号馆-E31"/></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{include file="topic/topic_layer.html"}
+{/block}
+

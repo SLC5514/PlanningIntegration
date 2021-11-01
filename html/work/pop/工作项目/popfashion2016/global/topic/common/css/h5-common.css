@@ -1,0 +1,22 @@
+@media screen and (max-width: 750px){
+    /* header */
+    .h5-header-box{display:block;}
+	.h5-header{width:100%;background-color:#000;height:2.5rem;position:fixed;top:0;left:0;display:block;z-index:10;}
+	.web-downlist{margin:0.925rem 0.825rem 0 1rem;}
+	.web-downlist1{display:none;}
+	.web-downlist>img{width:0.9rem;}
+    .h5-logo{margin-top:0.975rem;}
+    .h5-logo>a{width:4.125rem;height:0.55rem;display:inline-block;}
+	.h5-logo>a>img{width:100%;height:100%;}
+	.nav-show{position:fixed;width:70%;height:100%;top:0;bottom:0;background-color:#000;left:-70%;z-index:100;}
+	.nav-show>ul>li{display:block;width:100%;border-bottom:1px solid rgba(255,255,255,.2);}
+	.nav-show>ul>li>a{display: block;color: #fff;font-size: 0.65rem;	height: 2.05rem;line-height: 2.05rem;text-indent: 1rem;overflow: hidden;	position: relative;}
+	.nav-show>ul>li.home-nav a{height:2.5rem;line-height:2.5rem;}
+    /* footer */
+    .h5-footer{padding-top:1.75rem;width:100%;background-color:#000;text-align:center;display:block;}
+    .h5-footer>p.h5-law{font-size: 0.5rem;line-height:0.9rem;color:#ccc;}
+    .h5-footer>p.h5-law a{color:#ccc;}
+    .h5-footer>.safty-info>a{font-size: 0.5rem;color: #ccc;display: inline-block;padding: 0.875rem 0 2rem;line-height: 0.5rem;}
+    .h5-footer>.safty-info>a>img{width:0.5rem;margin-right:0.25rem;}
+    .web-common-foot{display: none;}
+}

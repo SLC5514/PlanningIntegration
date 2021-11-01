@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="keywords" content="{block name=keywords}{$keywords}{/block}"/>
+	<meta name="description" content="{block name=description}{$description}{/block}"/>
+	<meta http-equiv="pragma" name="" content="no-cache">
+	<meta http-equiv="cache-control" name="" content="no-cache">
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+	<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/reset.css?{STATIC_CHANGE_TIME}">
+	<link rel="stylesheet" type="text/css" href="{STATIC_URL3}/global/css/common.css?{STATIC_CHANGE_TIME}">
+	<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/global.css?{STATIC_CHANGE_TIME}">
+	<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/perfect-scrollbar.css">
+	<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/jquery-ui.min.css">
+	
+	
+	<script type="text/javascript" src="{STATIC_URL1}/global/js/common/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="{STATIC_URL1}/global/js/common/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="{STATIC_URL1}/global/js/fashion/jquery.regionselect.min.js"></script>
+    <script type="text/javascript" src="{STATIC_URL1}/global/js/Dynamic/areaArr.min.js"></script>
+    <script type="text/javascript" src="{STATIC_URL1}/global/js/laydate/laydate.js"></script>
+ 
+	<style>
+		{literal}
+			.content .table_top{text-align:center;font-size:20px;padding:10px 0 15px 0;margin-bottom:10px;border-bottom:1px solid #ccc;}
+			.content tr{height:35px;}
+			.content th{text-align:right;width:20%;padding-right:20px;}
+			.content td{text-align:left;width:80%}
+			.content .select{width:150px;}
+			.content input[type="text"]{width:200px;height:23px;border-radius:2px;border:1px solid #999;}
+			.content input[type="submit"]{background-color:#999;width:100px;height:30px;border:0;border-radius:5px;cursor:pointer;}
+		{/literal}
+	</style>
+</head>
+<body>
+	<div class="content">
+		<div class="table_top">
+			栏目补充信息
+		</div>
+		<form method="post" action="addData/" onsubmit="return obj.submit('{$column}')">
+		<table  width="100%" style="margin:0 auto; width:700px;">
+			<input type="hidden" name="EncodeID" value="{$EncodeID}">
+			{if $column == "marketphoto" }
+			<tr><th>来源:</th>
+				<td>
+					<select name="source_1" class="select">
+						<option value="0">请选择</option>
+						<option value="3486">批发市场</option>
+						<option value="3487">百货商场</option>
+						<option value="3488">展会跟踪</option>
+					</select>
+					<select name="source_2" class="select">
+						<option value="0">请选择</option>
+					</select>
+				</td>
+			</tr>
+			{/if}
+			<tr><th>文件名(DirName):</th><td><input name="sBatchName" type="text" value="{$sBatchName}" readonly="true" style="background:#ccc"/></td></tr>
+			{if in_array($column,array('perform','stylegraphic','street','tideleader','styledetail','marketphoto'))}
+			<tr><th>包文件名(ZipName):</th><td><input type="text" name="sZipName"/></td></tr>
+			{/if}
+			{if $column == "perform" }
+			<tr><th>时装周专题:</th>
+				<td>
+					<select name="sFashionWeek">
+					<option value="0">请选择</option>
+					{foreach $fashionWeeks as $key=>$val}
+					<option value="{$key}">{$val.sName}</option>
+					{/foreach}
+					</select>
+				</td>
+			</tr>
+			{/if}
+			{if $column == 'ordermeeting'}
+			<tr><th>地区:</th>
+				<td>
+				<div id="_region">
+					<select class="region" name="region"></select>
+					<select class="continent" name="continent" disabled="disabled" style="display:none;"></select>
+					<select class="country" name="country" disabled="disabled" style="display:none;"></select>
+					<select class="city" name="city" disabled="disabled" style="display:none;"></select>
+					<input class="inputText" style="width:140px;height:20px" type="text" id="J_Area">	
+				</div>
+				</td>
+			</tr>
+			<tr><th>showroom:</th>
+				<td>
+					<select class="select" name="showRoomPid">
+						<option value="0">请选择</option>
+						{foreach $showRoom as $key=>$val}
+						<option value="{$key}">{$val.sName}</option>
+						{/foreach}
+					</select>
+					<select class="select" name="showRoom">
+						<option value="0">请选择</option>
+					</select>
+				</td>
+			</tr>
+			{/if}
+			{if $column=="street"}
+			<tr><th>街拍类型:</th>
+				<td>
+				<select class="select" name="iStreetBeatType">
+						<option value="0">请选择</option>
+						{foreach $streetBeatTypes as $key=>$val}
+						<option value="{$key}">{$val}</option>
+						{/foreach}
+				</select>
+				</td>
+			</tr>
+			{/if}
+			{if $column!='tideleader'}
+			<tr><th>计划更新时间:</th><td>
+			<input name="dScheduleTime" placeholder="请输入日期" class="laydate-icon" onclick="{literal}laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'}){/literal}" value="{$nowDate}" id="date" readonly="true">
+			</td></tr>
+			{/if}
+			<tr><th></th><td><input type="submit" value="确认提交" /></td></tr>
+		</table>
+		</form>
+	</div>
+	
+	<script type="text/javascript">
+		var obj = {
+			sources:{$SourcesJson},
+			showRooms:{$showRoomJson},
+			init:function(){
+				var self = this;
+				//--------------------------------------------
+				//	相关Dom操作
+				//--------------------------------------------
+				//来源相关
+				$("select[name='source_1']").change(function(){
+					var key = $(this).val();
+					var SourcesHTML = self.getSources(key);
+					$("select[name='source_2']").html(SourcesHTML);
+				});
+				//地区操作
+				{literal}$("#_region").regionSelect({});{/literal}
+				//获取showroom
+				$("select[name='showRoomPid']").change(function(){
+					var key = $(this).val();
+					var showRoomHTML = self.getShowRoom(key);
+					$("select[name='showRoom']").html(showRoomHTML);
+				});	
+			},
+			//表单提交验证
+			submit:function($column){
+				if($column.trim()==""){
+					return false;
+				}
+				//1、验证包文件名
+				if($.inArray($column,["perform","stylegraphic","street","tideleader","styledetail","marketphoto"])!=-1){
+					var sZipName=$("input[name='sZipName']").val().trim();
+					if(sZipName==""){
+						alert("请填写包文件名！");
+						return false;
+					}		
+				}
+				//2、时装周专题
+				if($column=="perform" && $("select[name='sFashionWeek']").val()==0 ){
+					alert("请选择时装周专题！");
+					return false;
+				}
+				//3、来源
+				if($column=="marketphoto" && $("select[name='source_1']").val()==0){
+					alert("请选择来源！");
+					return false;
+				}
+				//4、地区
+				if( $column == "ordermeeting" && $("select[name='region']").val()==0){
+					alert("请选择地区！");
+					return false;
+				}
+			 	//5、showroom
+				if( $column == "ordermeeting" && $("select[name='showRoom']").val()==0){
+					alert("请选择showRoom！");
+					return false;
+				}
+			 	//6、街拍类型
+				if( $column == "street" && $("select[name='iStreetBeatType']").val()==0){
+					alert("街拍类型!");
+					return false;
+				}
+				return true;
+			},
+			//获取来源信息
+			getSources:function(key){
+				var SourcesHTML='<option value="0">请选择</option>';
+				if(this.sources[key] != undefined){
+					var sources = this.sources[key];
+					for(var i in sources){
+						SourcesHTML += '<option value="'+i+'">'+sources[i]+'</option>';
+					}
+				}
+				return SourcesHTML;
+			},
+			//获取showRoom
+			getShowRoom:function(key){
+				var showRoomHTML='<option value="0">请选择</option>';
+				if(this.showRooms[key] != undefined){
+					var showRooms = this.showRooms[key]['attrs'];
+					for(var i in showRooms){
+						showRoomHTML += '<option value="'+i+'">'+showRooms[i]['sName']+'</option>';
+					}
+				}
+				return showRoomHTML;
+			},
+		}
+		 {literal}
+		$(function() {
+			//-----------------------------
+			//	初始化当前页主要类
+			//-----------------------------
+			obj.init();	
+			//-----------------------------
+			//	地区联想
+			//-----------------------------
+		    var areaEle = $("#J_Area");
+		    areaEle.autocomplete({
+		        source: areaArr,
+		        minLength : 1,
+		        select: function(event, ui){
+		            // 必须阻止默认行为，因为autocomplete默认会把ui.item.value设为输入框的value值
+		            event.preventDefault();
+		            areaEle.val(ui.item.label);
+		            var areaid = ui.item.value;
+		            areaEle.data('areaid', ui.item.value);
+		            var url = '/classification/ajaxregion?action=getRegions&areaid=' + areaid + '&t=' + Math.random();
+		            $.getJSON(url, function(data) {
+		                $("#_region").regionSelect({region: data[0], continent: data[1], country: data[2], city: data[3], mod: 1 });
+		            });
+		        },
+		        focus: function( event, ui ) {
+		            event.preventDefault();
+		        }
+		    });
+		});
+		{/literal}	
+	</script>
+</body>
+</html>

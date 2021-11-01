@@ -1,0 +1,76 @@
+{extends file="layout.html"}
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/pop_layer.css?{STATIC_CHANGE_TIME}">
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/lists/video-list-inside.css?{STATIC_CHANGE_TIME}">
+{/block}
+{block name="header"}{/block}
+{block name="main"}
+<input id="encrypt" type="hidden" data-sign="{$sign}" data-timestamp="{$timeStamp}" data-token="{$token}">
+<input type="hidden" id="link" data-col="{$columnId}" data-sor="{$link['sortRandom']}" data-url="{if isset($link['url'])}{$link['url']}{/if}" data-param="{if isset($link['param'])}{$link['param']}{/if}" data-id="{$id}" data-t="presscon" data-search="{if isset($link['search'])}{$link['search']}{/if}"/>
+<div class="video-detail-section">
+    <div class="video-detail-header clearfix">
+        <div class="web-logo js-web-logo fl">
+            <a href="/" target="_blank">
+                <img src="{STATIC_URL2}/global/images/lists/video_list/pop_logo.png"/>
+            </a>
+        </div>
+    </div>
+    <div class="video-detail-infor video-insprition-box">
+        <div class="contentW clearfix">
+            <div class="video-detail-infor-lf fl">
+                <div class="video-detail-infor-main">
+                    <h1>{$res.title}</h1>
+                    <p class="video-labels">
+                        {if $res.aDetailLabels}
+                        {foreach from=$res.aDetailLabels key=key item=label name=loop}
+                        <a target="_blank" href="{$label.dLink}" title="{$label.name}">{$label.name}{if !$smarty.foreach.loop.last}<em></em>{/if}</a>
+                        {/foreach}
+                        {/if}
+                    </p>
+                    <div class="insprition-intro insprition-intro-special">
+                        {$res.description}
+                    </div>
+                </div>
+            </div>
+            {if $res.cover}
+            <div class="video-detail-infor-rg fr">
+                <div class="video-detail-switch-main">
+                    <div class="play-video-box insprition-video-box">
+                        <div class="runway-video-img">
+                            <img src="{$res.cover}"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {/if}
+        </div>
+    </div>    
+    <div class="video-lists-section">
+        <div class="con_width">
+            {foreach $res.subTopic as $key => $topic}
+            {foreach $topic.subPage as $subpage}
+            {if $subpage.pageType == 3}
+            <div class="inspiration-video-box">
+                <div id="inspirationPlayer" data-videoId="{$subpage.content}"></div>
+            </div>
+            {/if}
+            {/foreach}
+            {/foreach}
+        </div>
+    </div>
+</div>
+{/block}
+{block name="self"}
+<script type="text/javascript" src="//player.youku.com/jsapi"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/regionAction.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/waterFall.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/common/template.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL2}/global/js/common/imagesloaded.pkgd.min.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL2}/global/js/fashion/aggregation.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL2}/global/js/fashion/util.collect.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="https://player.youku.com/jsapi"></script>
+<script type="text/javascript" src="{STATIC_URL2}/global/js/lib/swiper/swiper.min.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/lists/video-list-inside.js?{STATIC_CHANGE_TIME}"></script>
+{/block}
+
+

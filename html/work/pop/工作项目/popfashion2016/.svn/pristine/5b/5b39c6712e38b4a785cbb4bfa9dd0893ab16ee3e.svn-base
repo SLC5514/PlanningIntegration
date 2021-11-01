@@ -1,0 +1,23 @@
+{extends file="layout.html"}
+
+{block name="self"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/global.css?{STATIC_CHANGE_TIME}">
+
+<script type="text/javascript" src="{STATIC_URL2}/global/js/fashion/index.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/global.js?{STATIC_CHANGE_TIME}"></script>
+{/block}
+
+{block name="main"}
+<div class="rightc_main">
+    <div class="no_sear search_null">
+        <h4>对不起,只有VIP用户才能使用此功能!</h4>
+        <div class="sear-box clearfix">
+            <div>请联系您的专业客服为您服务：</div>
+            <p>
+                <a class="neiyeList fl js-contact-qq-btn" href="javascript:void(0);" title="QQ咨询">QQ咨询</a>
+                <span class="neiyeList fr">客服热线：<em>4008-210-500</em></span>
+            </p>
+        </div>
+    </div>
+</div>
+{/block}

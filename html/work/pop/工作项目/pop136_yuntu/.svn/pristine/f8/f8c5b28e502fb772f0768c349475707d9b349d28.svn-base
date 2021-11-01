@@ -1,0 +1,16 @@
+{extends file="layout.html"}
+{block name='main'}
+	<div class="account_logined">
+		<div class="content_acc">
+			<div class="cont_box">
+				<span class="icon fl"></span>
+				<p class="fl">对不起，您使用的账号被其他用户再次登陆（<em>{$Ip}</em>）<br/><strong>您的登陆状态已退出，请确认此账户是否出现异常或被盗，如有任何问题可联系：</strong></p>
+			</div>
+			<div class="clear"></div>
+			<div class="lianxi_style">
+				<a class="qq_style" href="/service/aftersales/" target='_blank'><i></i>QQ咨询</a>
+				<a class="tel_style"><i></i>咨询电话：4008 210 500</a>
+			</div>
+		</div>
+	</div>
+{/block}

@@ -1,0 +1,100 @@
+{extends file="layout.html"}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/personal.css?{STATIC_CHANGE_TIME}">
+{/block}
+
+{block name="main"}
+<div class="main myWorkTable">
+	<div class="con_width">
+		<div class="section">
+			{$personalHeader}			
+		</div>
+
+
+		<!-- 我的资料包 -->
+		<!--如果是子账号或普通用户，资料包不为空-->
+		{if ($accountType == 4 || $accountType == 2) && $orderZipCount>0}
+		<div class="my-data-content">
+			<div class="down-prompt-box">
+				<div class="down_prompt-right">
+					<div class="prompt-infor">
+						{if $accountType == 4}
+						<p>
+							<i></i>对不起，您的设计师专属帐号已过期，将不会收到新的资料包推送！
+							<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;可联系：</span><a class="js-contact-qq-btn" href="javascript:void(0);" data-type="after"><em></em>QQ咨询</a>或<strong>4008-210-500</strong>
+						</p>
+						{else}
+						<p>
+							<i></i>推送资料包只保留近30天的资料内容下载，如您需要30天前的资料包在使用下载过程中如遇到其它问题，<span>可联系：</span>
+							<a class="js-contact-qq-btn" href="javascript:void(0);" data-type="after"><em></em>QQ咨询</a>或<strong>4008-210-662</strong>
+						</p>
+						{/if}
+					</div>
+				</div>
+			</div>
+			<div class="data-list-box">
+				<ul class="clearfix">
+					{foreach $dataZip as $key=>$val}
+					<li class="{if $val.dPushTime<$eDate}invalid-folder{/if}" >
+						<div class="data_bg">
+							<span class="folder-img"></span>
+							<span class="folder-date js-folder-date">{$val.dPushTime|date_format:'%Y-%m-%d'}</span>
+						</div>
+						<p class="folder-title js-folder-title">{$val.sOrderName}</p>
+						{if $val.dPushTime<$eDate}
+						<a href="javascript:void(0);"  class="click-down-img js-click-link" title="点击下载">点击下载</a>
+						{else}
+						<a  href="{$val.sOrderLink}"  target="_blank" class="click-down-img js-click-link" title="点击下载">点击下载</a>
+						<p class="link-code js-link-code">提取码：<span>{$val.sOrderPwd}</span></p>
+						{/if}
+					</li>
+					{/foreach}
+				</ul>
+			</div>
+			{if $orderZipCount>30}
+			<p class="srcoll-load">
+				<a href="javascript:void(0);" class="js-click-load" data-vaildTime="{$eDate}"><img src="{STATIC_URL2}/global/images/s_load.png"></a>
+			</p>
+			{/if}
+		</div>
+		{/if}
+
+		<!--如果是子账号，资料包为空-->
+		{if $accountType == 2 && $orderZipCount<=0}
+		<div class="my-data-content">
+			<div class="down-prompt-box">
+				<div class="down_prompt-right">
+					<div class="prompt-infor">
+						<p>
+							<i></i>推送资料包只保留近30天的资料内容下载，如您需要30天前的资料包在使用下载过程中如遇到其它问题，<span>可联系：</span>
+							<a class="js-contact-qq-btn" href="javascript:void(0);" data-type="after"><em></em>QQ咨询</a>或<strong>4008-210-662</strong>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		{/if}
+		<!--如果是普通用户，资料包为空-->
+		{if $accountType == 4 && $orderZipCount<=0}
+		<div class="col-con">
+			<!-- item-manage -->
+			<div class="root_error root_error_width">
+				<p class="clearfix">
+					<span class="icon"></span>
+					<span class="cont cont_less">您还没有收到任何推送资料包噢~</span>
+				</p>
+				<div class="lianxi_box clearfix">
+					<p>请联系您的专属资讯小秘书为您服务：</p>
+					<div class="lianxi_way clearfix">
+						<a class="qq_box fl js-contact-qq-btn" href="javascript:void(0);" data-type="after"><i></i>QQ咨询</a>
+						<a href="javascript:void(0);" class="tel_box fr"><i></i>客服热线：<span>4008-210-500</span></a>
+					</div>
+				</div>
+			</div>
+			<!-- /item-manage -->
+		</div>
+		{/if}
+	</div>
+</div>
+{/block}

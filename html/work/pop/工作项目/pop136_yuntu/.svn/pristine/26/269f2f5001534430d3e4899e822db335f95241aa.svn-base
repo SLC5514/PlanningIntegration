@@ -1,0 +1,48 @@
+/* fanglinna
+   20190426
+*/
+body{background-color: #323940;}
+.my-collect-box{min-height: 600px;}
+.my-collect-box>h1{font-size: 24px;color: #fff;font-weight: bold;text-align: center;width: 296px;margin:55px auto 0;position: relative;}
+.my-collect-box>h1::before{content: "";width: 80px;height: 1px;position: absolute;background: rgba(255,255,255,0.3);left:0;top:50%;}
+.my-collect-box>h1::after{content: "";width: 80px;height: 1px;position: absolute;background: rgba(255,255,255,0.3);right:0;top:50%;}
+.collect-list-box{width: 100%;overflow: hidden;margin-top: 60px;}
+.collect-list-box>ul{width: 1260px;*padding-bottom: 60px;}
+.collect-list-box>ul>li{position: relative; width: 200px;height: 200px;overflow: hidden; float: left;margin: 0 50px 60px 0px;}
+.collect-list-box>ul>li>a{display: table-cell;*display: block; vertical-align: middle; background: #fff; overflow: hidden; width: 200px;height: 200px;line-height: 200px; text-align: center;position: relative;}
+.collect-list-box>ul>li>a>img{display: block;vertical-align: middle;max-width: 200px;margin: auto;}
+.collect-list-box>ul>li>a>.dis-posion{display: none;opacity: 0.5; position: absolute;font-size: 12px;color: #fff;text-align: center; z-index: 2;width: 190px;bottom: 12px;background: #d8b056;padding: 5px 5px 0; overflow: hidden;}
+.collect-list-box .dis-posion>h3{overflow: hidden; text-overflow: ellipsis;white-space: nowrap;color: #fff; line-height: 26px;padding-top: 2px;font-weight: normal;}
+.collect-list-box .dis-posion>h3:hover{text-decoration:underline;}
+.collect-list-box .dis-posion>.list-words{text-align: center; height: 26px;line-height: 26px; overflow: hidden;}
+.collect-list-box .dis-posion>.list-words>p{display: inline-block;*display: inline;*zoom: 1;height: 26px;line-height: 26px;padding: 0 4px;}
+.collect-list-box .dis-posion>.list-words>p:hover{text-decoration:underline;}
+.collect-list-box .dis-posion>p{height: 22px;line-height: 22px;padding-bottom: 9px;}
+.collect-list-box .dis-posion>p>span{display: inline-block;*display: inline;*zoom: 1;width: 15px;height: 16px;margin-right: 2px;vertical-align: middle;background-position: -329px -129px;}
+
+.collect-list-box .color-bott{height: 12px;position: absolute;z-index: 2;width: 100%;bottom: 0;overflow: hidden;}
+.collect-list-box .color-bott>a{float: left;height: 100%;display: block;}
+
+.list-more{width:120px;text-align: center;cursor: pointer; margin: 0 auto;font-size: 14px;color: #fff;line-height: 20px;}
+.list-more>span{display:inline-block;*display: inline;*zoom: 1;margin-right: 6px;vertical-align: middle; width: 16px;height: 15px;background-position: -198px -130px;left: 0;top: 4px;}
+
+/* add收藏 */
+.collect-data{position: absolute;background: url(../../images/common/collect.png) no-repeat 0 0;width: 30px;height: 30px;right: 10px;top: 10px;display: none;z-index: 10;}
+.collect-data:hover,.collect-data.on{background-position: -50px 0;}
+
+
+
+/*无权限下拉弹出层*/
+.general-user-info-fixbox{display: none;z-index: 550;position: fixed;left: 0px;top: 0px;width: 100%;padding-bottom: 70px;padding-bottom: 70px;color: #fff;background-color:rgba(28,35,43,0.93);text-align: center;}
+.general-user-info-fixbox>div{position: relative;}
+.general-user-info-fixbox>div>button{display: inline-block;z-index: 10;position: absolute;right: 0px;top: -30px;width: 40px;height: 40px;background-color: transparent;border-style: none;background-image: url(../../images/pattern/icon1.png);background-repeat: no-repeat;background-position: center;}
+.general-user-info-fixbox>div>button:hover{background-image: url(../../images/pattern/icon1-active.png);}
+.general-user-info-fixbox>div>h3{font-size: 20px;margin-top: 50px;font-weight: bold;color: #fff;}
+.general-user-info-fixbox>div>p{margin: 20px auto 30px;font-size: 14px;line-height: 1.5em}
+.general-user-info-fixbox>div>a{display: inline-block;font-size: 16px;width: 220px;height: 50px;line-height: 50px;border-radius: 5px;text-align: center;background-color: #d8b056;color: #fff;}
+.general-user-info-fixbox>div>a:hover{background-color: #dba428;}
+
+@media only screen and (min-width: 1500px){ 
+	.collect-list-box>ul{width: 1570px;}
+	.collect-list-box>ul>li{margin: 0 60px 60px 0px;}
+}

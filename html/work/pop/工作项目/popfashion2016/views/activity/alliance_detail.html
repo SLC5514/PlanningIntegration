@@ -1,0 +1,48 @@
+{extends file="layout.html"}
+{block name="selfcss"}
+	<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/industry.css?{STATIC_CHANGE_TIME}">
+{/block}
+
+{block name="main"}
+	<div class="alliance_detail_box">
+		<div class="cp_name">
+			<div class="con_widthx1200">
+				<h1>{$info.sTheme}</h1>
+				<p>类型：{$info.sCompanyType}</p>
+			</div>
+		</div>
+		<div class="cp_banner_box">
+			<img src="{$info.sImageEnterprise}">
+		</div>
+		<div class="cp_information_box">
+			<div class="con_widthx1200">
+				<div class="intro_title">
+					<h2>企<i>|</i>业<i>|</i>介<i>|</i>绍</h2><span class="en_title">Enterprise introduction</span>
+				</div>
+				<div class="cp_infor_box">
+					{$info.sActivityContent}
+				</div>
+				<div class="intro_title">
+					<h2>联<i>|</i>系<i>|</i>方<i>|</i>式</h2><span class="en_title">Contact information</span>
+				</div>
+				<div class="contact_style_box clearfix">
+					<div class="a_contact_infor fl">
+						<ul>
+							<li class="p_li"><i></i>联系人：{$info.sContactsName}</li>
+							<li class="t_li"><i></i>手机号码：{$info.sContactsPhone}</li>
+							<li class="a_li"><i></i>详细地址：{$info.detailAddress}</li>
+						</ul>
+					</div>
+                    {if isset($info.regionImg) && !empty($info.regionImg)}
+					<div class="a_map_infor fr">
+						<a href="/activity/redirectditu/?ditu={$info.regionLink}" target="_blank"><img src="{$info.regionImg}"></a>
+					</div>
+                    {/if}
+				</div>
+			</div>
+		</div>
+	</div>
+{/block}
+
+
+

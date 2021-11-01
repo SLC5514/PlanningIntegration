@@ -1,0 +1,52 @@
+@charset 'utf-8';
+
+
+/* 注册完成页面 */
+body{background: #fff;}
+.reg-complete{margin:30px 0 60px;background-color:#fff;text-align:center;}
+.reg-complete>h1{font-size:40px;color:#333;text-align:center;padding-top:30px;}
+.reg-complete>h1>em{background:url(../../images/user/icon.png) no-repeat 0 -58px;width:36px;height:36px;display:inline-block;vertical-align:middle;margin-right:10px;}
+.recommend-report{margin-top: 20px;}
+.recommend-report .title{font-size:24px;color:#000000;line-height:31px;letter-spacing:1px;margin-bottom: 30px;}
+.recommend-report .report-list{width: 1200px;margin: 0 auto 40px;}
+.recommend-report .report-list ul li{width: 320px;height: 270px;padding: 20px 20px 0 20px;border:1px solid #F1F1F1;float: left;text-align: left;cursor: pointer;margin-right: 57px;position: relative;}
+.recommend-report .report-list ul li:nth-child(3n){margin-right: 0;}
+.recommend-report .report-list ul li:hover{box-shadow:2px 2px 8px 1px rgba(0,0,0,0.07);}
+.recommend-report .report-list ul li img{width: 320px;height: 220px;}
+.recommend-report .report-list ul li span{margin-top: 10px;font-size:16px;color:#000000;line-height:21px;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;display: block;}
+
+.recommend-style{margin-top: 20px;}
+.recommend-style .title{font-size:24px;color:#000000;line-height:31px;letter-spacing:1px;margin-bottom: 30px;}
+.recommend-style .style-list{width: 1200px;margin: 0 auto 10px;}
+.recommend-style .style-list ul li{width: 240px;height: 350px;padding: 20px 20px 0 20px;border:1px solid #F1F1F1;float: left;text-align: left;cursor: pointer;margin: 0 24px 30px 0;position: relative;}
+.recommend-style .style-list ul li:nth-child(4n){margin-right: 0;}
+.recommend-style .style-list ul li:hover{box-shadow:2px 2px 8px 1px rgba(0,0,0,0.07);}
+.recommend-style .style-list ul li img{width: 240px;height: 310px;}
+.recommend-style .style-list ul li span{margin-top: 5px;font-size:16px;color:#000000;line-height:21px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;display: block;}
+.reg-complete .back-referrer{width:160px;height:50px;background:#1C232B;border-radius:5px;text-align: center;font-size:16px;color:#fff;margin: 0 auto;line-height:50px;display: block;}
+.reg-complete .back-referrer:hover{background:#505863;}
+.trial{width:65px;height:25px;background:#F24A3C;border-radius:3px;position: absolute;right: 30px;top: 30px;font-size:12px;color:#fff;line-height:25px;text-align: center;}
+
+/* 场景页入口 */
+.scene-links-box{width:1200px;margin:80px auto 0;text-align: left;padding-bottom: 20px;}
+.scene-links-box>div.fl>a{font-size: 20px;color:#333;font-weight: bold;line-height: 30px;}
+.scene-links-box>div.fl>a>i{background: url(../../images/user/icon.png) no-repeat -124px -28px; display: inline-block; width: 38px;height: 8px; vertical-align: middle;margin-left: 12px;margin-top: -3px;}
+.scene-links-box>div.fl>p{font-size: 20px;color:#333;font-weight: bold; line-height: 30px; }
+.scene-links-box>div.fl>span{font-size: 14px;color:#333; line-height: 30px; margin-top: 7px;display: inline-block;}
+.scene-links-box>div.fr>a{width: 100px;height: 100px; display: inline-block;font-size: 18px;line-height: 97px; text-align: center; margin-left: 40px;position: relative;}
+.scene-links-box>div.fr>a>img{width: 100%;height: 100%;}
+.scene-links-box>div.fr>a .bg{width: 100%;height: 100%;position: absolute;top: 0;left: 0;background-color: #000000;opacity: 0.5;filter: alpha(opacity=50);border-radius: 50px;}
+.scene-links-box>div.fr>a:hover .bg{opacity: 0.25;filter: alpha(opacity=25);}
+.scene-links-box>div.fr>a>span{display:inline-block;line-height: 24px;color: #fff;vertical-align: middle;position: absolute;top: 38px;left: 50%;margin-left: -18px;}
+
+.reg-bottom{position: fixed;bottom: 0;left: 0;width: 100%;height: 80px;background: #fff;z-index: 1;box-shadow: 0px 0px 10px rgba(0,0,0,0.1);}
+.reg-bottom .reg-bottom-main{width: 1200px;height: 80px;margin: 0 auto;display: block;position: relative;}
+.reg-bottom .reg-bottom-main .code{margin: 9px 14px 0 146px;width: 63px;height: 63px;}
+.reg-bottom .reg-bottom-main .tit{display: inline-block;vertical-align: 12px;}
+.reg-bottom .reg-bottom-main .tit label{display: block;margin-top: 0px;font-size:16px;color:#333333;line-height:21px;letter-spacing:1px;}
+.reg-bottom .reg-bottom-main .tit span{display: block;margin-top: 2px;font-size:22px;font-weight:bold;color:#333333;line-height:29px;letter-spacing:1px;position: relative;}
+.reg-bottom .reg-bottom-main .tit span i{position: absolute;right: -60px;top: -26px;width: 60px;height: 32px;background: url(../../images/user/tit.png);}
+.reg-bottom .reg-bottom-main .bottom-icon{position: absolute;bottom: 0;right: 207px;}
+.reg-bottom .reg-bottom-main .close{width: 18px;height: 18px;position: absolute;right: 100px;top: 13px;background: url(../../images/user/close1.png);cursor: pointer;}
+
+

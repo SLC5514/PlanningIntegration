@@ -1,0 +1,19 @@
+{extends file="layout.html"}
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/software/browser.css?{STATIC_CHANGE_TIME}">
+{/block}
+{block name="main"}
+<div class="content">
+	<div class="w1200 download-div">
+		<div class="txt-div">
+			<h3><img src="{STATIC_URL2}/global/images/software/icon1.png" alt="icon">检测到史前时代的浏览器</h3>
+			<p>虚拟样衣暂不支持旧版本的浏览器，<br> 为了华丽丽的体验，来试一试这些更新更快更有爱的浏览器吧！</p>
+			
+		</div>
+		<a title="立即下载" href="http://download.skycn.com/hao123-soft-online-bcs/soft/C/2015-12-17_ChromeStandalone_47.0.2526.106_Setup.1450323126.exe" target="_blank"><img src="{STATIC_URL2}/global/images/software/chrome.png" alt="chrome"><br>Chrome（谷歌）下载</a>
+		<a title="立即下载" href="http://chrome.360.cn/" target="_blank"><img src="{STATIC_URL2}/global/images/software/360.png" alt="360"><br>360安全浏览器 下载</a>
+		<a title="立即下载" href="http://www.firefox.com.cn/" target="_blank"><img style="width:90px" src="{STATIC_URL2}/global/images/software/firefox.png" alt="firefox"><br>Firefox（火狐）下载</a>
+		<a title="立即下载" href="http://www.opera.com/zh-cn" target="_blank" style="margin-right:0"><img src="{STATIC_URL2}/global/images/software/opera.png" alt="opera"><br>Opera（欧朋）下载</a>
+	</div>
+</div>
+{/block}

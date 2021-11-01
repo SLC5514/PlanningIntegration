@@ -1,0 +1,124 @@
+{extends file="layout.html"}
+{block name="title"}14周年庆+双12狂欢趴-POP服装趋势网{/block}
+{block name=keywords}IphoneXSMAX(256G),MacbookPro13英寸,黄金铺位,精英提升课,企划书阅览卡{/block}
+{block name="description"}POP服装趋势网迎来14周年庆与双12狂欢趴，立即成为VIP，壕礼任你挑！我们有价值RMB￥10999的IphoneXSMAX(256G)手机，RMB￥10200的MacbookPro13英寸笔记本，还有约50平方米黄金铺位免租3年，1次精英提升短期培训课，以及不限次国内外高端趋势企划书阅览卡。{/block}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/topic/20181108/css/index.css?{STATIC_CHANGE_TIME}">
+{/block}
+
+
+{block name="main"}
+<h1 class="seo-title">14周年庆+双12狂欢趴</h1>
+<div class="register-vip">
+	<div class="vip-banner" title="立即成为VIP，壕礼任你挑！"></div>
+	<div class="section1">
+		<div class="w1200 clearfix">
+			<div class="phone-img fl" title="Iphone XS MAX">
+				<img src="{STATIC_URL2}/global/topic/20181108/images/phone.jpg" alt="Iphone XS MAX"/>
+			</div>
+			<div class="phone-infor fr">
+				<p class="p1"><i>壕礼</i><img src="{STATIC_URL2}/global/topic/20181108/images/one.jpg"/></p>
+				<p class="p2">Iphone XS MAX(256G)</p>
+				<p class="p3">RMB 10999<br/>官方标配</p>
+			</div>
+		</div>
+	</div>
+	<div class="section2">
+		<div class="w1200 clearfix">
+			<div class="mac-img fr" title="Macbook Pro 13英寸">
+				<img src="{STATIC_URL2}/global/topic/20181108/images/mac.jpg" alt="Macbook Pro 13英寸"/>
+			</div>
+			<div class="mac-infor fl">
+				<p class="p1"><i>壕礼</i><img src="{STATIC_URL2}/global/topic/20181108/images/two.jpg"/></p>
+				<p class="p2">Macbook Pro 13英寸</p>
+				<p class="p3">RMB 10200<br/>官方标配</p>
+			</div>
+		</div>
+	</div>
+	<div class="section3">
+		<div class="w1200 clearfix">
+			<div class="house-img fl" title="核心地段黄金铺位，免租3年">
+				<img src="{STATIC_URL2}/global/topic/20181108/images/house.jpg" alt="黄金铺位"/>
+			</div>
+			<div class="house-infor fr">
+				<p class="p1"><i>壕礼</i><img src="{STATIC_URL2}/global/topic/20181108/images/three.jpg"/></p>
+				<p class="p2">核心地段黄金铺位，免租3年</p>
+				<p class="p3">约50m²/户，可拆可合<br/>3年立省25万</p>
+			</div>
+		</div>
+	</div>
+	<div class="section4">
+		<div class="w1200 clearfix">
+			<div class="class-img fr" title="精英提升短期培训课1次">
+				<img src="{STATIC_URL2}/global/topic/20181108/images/class.jpg" alt="精英提升课"/>
+			</div>
+			<div class="class-infor fl">
+				<p class="p1"><i>壕礼</i><img src="{STATIC_URL2}/global/topic/20181108/images/four.jpg"/></p>
+				<p class="p2">精英提升短期培训课1次</p>
+				<p class="p3">紧跟行业趋势<br/>理论与实战并重<br/>助力时尚企业的创作与营销。</p>
+			</div>
+		</div>
+	</div>
+	<div class="section5">
+		<div class="w1200 clearfix">
+			<div class="card-infor fr" title="不限次国内外高端趋势企划书阅览卡">
+				<p class="p1"><i>壕礼</i><img src="{STATIC_URL2}/global/topic/20181108/images/five.png"/></p>
+				<p class="p2">不限次国内外高端趋势企划书阅览卡</p>
+				<p class="p3">可自由查看关于未来流行<br/>趋势预测企划、色彩、面料书等<br/>四大时装周总结提炼书籍<br/>快反应趋势胶囊书</p>
+			</div>
+		</div>
+	</div>
+	<div class="section6">
+		<div class="w1200">
+			<div class="vip-package clearfix">
+				<p class="fl">更多VIP长期尊享权益</p>
+				<div class="vip-box fl">
+					<div class="left-ul fl">
+						<p>
+							<img src="{STATIC_URL2}/global/topic/20181108/images/vip.png"/>
+							<span>会员专享权益</span>
+						</p>
+						<ul>
+							<li><i></i>全国统一标准化一对一售后小秘书答疑解惑</li>
+							<li><i></i>尊贵VIP会员身份标识</li>
+							<li><i></i>网站高清大图、趋势分析报告无限量下载</li>
+							<li><i></i>最新APM趋势胶囊书试读领取（限1本）</li>
+							<li><i></i>智能设计工具体验权</li>
+							<li><i></i>线下活动优先通知，名额预留</li>
+							<li><i></i>线上线上讲堂免费听</li>
+						</ul>
+					</div>
+					<div class="right-ul fl">
+						<p>
+							<img src="{STATIC_URL2}/global/topic/20181108/images/service.png"/>
+							<span>360°会员服务</span>
+						</p>
+						<ul>
+							<li>
+								<label>群服务：</label>
+								<div>个性化服务应对不同开发需求<br/>24小时官方服务热线：4008210662<br/>(人工服务：周一至周六9:00-18:00)</div>
+							</li>
+							<li><label>电话：</label>
+								<div>主动电话关怀，提供对应服务，<br/>协助解决使用问题</div>
+							</li>
+							<li><label>微信/QQ/短信：</label>
+								<div>内部优惠福利活动优先通知</div>
+							</li>
+							<li><label>邮件：</label>
+								<div>内部绝密资料及时邮件发送</div>
+							</li>							
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="contact-box">
+				<p>立即咨询如何成为VIP</p>
+				<a href="javascript:void(0);"><i></i>4008-210-500</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+{include file="topic/topic_layer.html"}
+{/block}

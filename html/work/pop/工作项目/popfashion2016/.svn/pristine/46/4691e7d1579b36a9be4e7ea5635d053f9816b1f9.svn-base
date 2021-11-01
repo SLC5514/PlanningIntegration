@@ -1,0 +1,24 @@
+{foreach $res.subTopic as $topic}
+<div class="indexdiv clearfix">
+    <h3><span>{$topic.sTitle}</span></h3>
+    <div class="xq">
+        <p class="fl">{$topic.sDesc}</p>
+    </div>
+    <div class="ullist ullist_150">
+        <ul>
+            {foreach $topic.images as $image}
+            <li>
+                <a target="_blank" href="{$site}{$image.link}" title="查看详情">
+                    <img src="{STATIC_URL3}{$image.imgurl}" alt="pic">
+                    <div class="divhover">
+                        <p class="hoverp1">{$image.colsName}</p>
+                        <p class="hoverp4">{$image.sCategoryName}</p>
+                        <p class="hoverp5"><i></i></p>
+                    </div>
+                </a>
+            </li>
+            {/foreach}
+        </ul>
+    </div>
+</div>
+{/foreach}

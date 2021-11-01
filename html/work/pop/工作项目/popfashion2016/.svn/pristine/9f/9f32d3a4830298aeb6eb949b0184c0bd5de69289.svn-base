@@ -1,0 +1,191 @@
+{extends file="layout.html"}"
+
+{block name="title"}风尚链接欧洲篇-POP服装趋势网{/block}
+{block name=keywords}解析时尚产业,探寻灵感之源{/block}
+{block name=description}风尚链接欧洲篇，独家策划欧洲时尚产业及灵感深度解读高端游学。VIP专属法国、比利时、荷兰、德国探寻之旅。{/block}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css"
+      href="{STATIC_URL2}/global/topic/20161212/css/index.css?{STATIC_CHANGE_TIME}">
+{/block}
+{block name="main"}
+
+<div class="container">
+    <div class="content1" id="Europe">
+        <div class="banner">
+
+        </div>
+        <div class="w1000">
+            <p class="price">
+                <a href="https://jinshuju.net/f/EuyIKf" target="_blank" class="apply"></a>
+                <img src="{STATIC_URL2}/global/topic/20161212/images/content1.jpg" alt="POP服装趋势网1年独家趋势内部资料1份" title="POP服装趋势网1年独家趋势内部资料1份"/>
+            </p>
+            <p class="title">VIP专属游学路线</p>
+            <p class="roadline">
+                <span class="list01">上海</span>
+                <span class="list02">法国</span>
+                <span class="list03">比利时</span>
+                <span class="list04">荷兰</span>
+                <span class="list05">德国</span>
+            </p>
+            <div class="roadlist clearfix">
+                <div class="fl tim">
+                    <dl>
+                        <dt><img src="{STATIC_URL2}/global/topic/20161212/images/xingc.jpg"/></dt>
+                        <dd class="timer"><i></i>时间：2月7日-16日</dd>
+                        <dd class="plane"><i></i>交通：飞机、大巴</dd>
+                        <dd class="zhu"><i></i>住宿：全程五星或四星</dd>
+                    </dl>
+                </div>
+                <div class="fl tim2">
+                    <dl>
+                        <dt><img src="{STATIC_URL2}/global/topic/20161212/images/people.jpg"/></dt>
+                        <dd>● 服装及面料企业负责人</dd>
+                        <dd>● 设计总监</dd>
+                        <dd>● 时尚买手</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content2" id="part1">
+        <div class="part1">
+            <p class="con3_img"></p>
+            <div class="w1000">
+                <div class="jie" id="unscramble">
+                    <p class="jiedu">趋势预测解读</p>
+                    <p class="pr">1.Première Vision （品锐至尚）巴黎展现场趋势解析</p>
+                    <p><img src="{STATIC_URL2}/global/topic/20161212/images/pr.jpg" alt="品锐至尚" title="品锐至尚巴黎展现场趋势解析"/></p>
+                    <p class="detail">POP专业时尚导师全程陪同，PV现场色彩及面料趋势解读，实际体会趋势主题与面料演绎。更有面料选购，专业订货环节，让服饰研发走在世界前端。</p>
+                    <p class="pr">2.专业时尚趋势解读：《18SS趋势预测/解读》</p>
+                    <p><img src="{STATIC_URL2}/global/topic/20161212/images/peo.jpg" alt="张巍Echo" title="课程讲师：张巍Echo"/></p>
+                </div>
+                <div class="jie" id="exchange">
+                    <p class="jiedu qihua">企划设计指导交流</p>
+                    <p class="pr pro">好友之约：趋势“新对话”TalkShow——“新品牌，新文化，新传播，新观点”</p>
+                    <p class="detail tan">欧洲趋势与中国三方对话，就品牌定位与文化建立、形象创意与新传播指导、欧洲趋势与企划设计进行专业头脑风暴，多维度深度互动交流探讨。</p>
+                    <p><img src="{STATIC_URL2}/global/topic/20161212/images/leo.jpg" alt="Leontine Wagenaar" title="课程讲师：Leontine Wagenaar"/></p>
+                    <p class="design"><img src="{STATIC_URL2}/global/topic/20161212/images/znn.jpg" alt="张娜" title="独立设计师：张娜"/></p>
+                    <p><img src="{STATIC_URL2}/global/topic/20161212/images/ak.jpg" alt="AK丁文姝" title="资深媒体人：AK丁文姝"/></p>
+                </div>
+                <div class="jie" id="programme">
+                    <p class="jiedu ouzhou">欧洲市场解析、商品运营规划</p>
+                    <p class="pr pro ouzhou2">1.欧洲知名百货零售业态学习</p>
+                    <p class="detail tan tan2">实地考察全球顶级时尚街区（巴黎春天、蒙田大道等），著名showroom及买手店（Merci、Bless、Surface to Air等）零售高定特邀参观，直面特色买手店铺，热卖款式一目了然。 </p>
+                    <p><img src="{STATIC_URL2}/global/topic/20161212/images/con4.jpg" alt="欧洲知名百货售业态学习" title="欧洲知名百货售业态学习"/></p>
+                    <p class="Graanmarkt">调研先锋买手店与时尚聚集处，“全球小众设计师的发现者”——F.R.E.D、“开在Museum隔壁的时装精品店”
+                        ——Renaissance、Graanmarkt 13等。
+                    </p>
+                    <p class="pr pro two">2.揭秘全球顶尖VIP高定运营模式</p>
+                    <p class="detail tan">由全球顶尖高端定制旗舰店创始人——Eka Iukuridze，分享终端零售运营课程：《买手店/集合店商品规划》、
+                        《VIP管理与经营——高定店铺运营》。深度了解真正买手模式与顶级奢侈品VIP客户经营。 </p>
+                    <p><img src="{STATIC_URL2}/global/topic/20161212/images/eka2.jpg" alt="Eka lukuridze" title="课程讲师：Eka lukuridze"/></p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="content3" id="part2">
+        <p class="con3_img"></p>
+        <div class="w1000">
+            <div class="jie" id="france">
+                <p class="jiedu"><i></i>探寻第一站：法国</p>
+                <p class="place_b">巴黎：时尚圣地的专业盛宴</p>
+                <p class="ask ask2">如果你年轻时在巴黎生活过，巴黎会一生都跟随你，因为巴黎是一场流动的盛宴。</p>
+                <p class="title1">探寻法兰西 ，了解时尚之源</p>
+                <p class="title2">前往巴黎时尚博物馆加列拉宫（Palais Galliera, the City of Paris Fashion Museum），深度观察学习时尚历史，把握设计精髓。</p>
+                <p><img src="{STATIC_URL2}/global/topic/20161212/images/con5.jpg" alt="探寻法兰西，了解时尚之源" title="巴黎：时尚圣地的专业盛宴"/></p>
+            </div>
+            <div class="jie" id="Belgium">
+                <p class="jiedu"><i></i>探寻第二站：比利时</p>
+                <p class="place_b">安特卫普——创意设计先锋之地</p>
+                <p class="ask ask2">“奇思异想先锋创意设计；最低调也最盛名的时装精品之城”。</p>
+                <p class="title1">悠久艺术，灵感碰撞                </p>
+                <p class="title2">探寻著名的MODE博物馆（Rik Wouters&The Private Utopia展），感受新奇的时装设计观念，挖掘先锋艺术魅力。</p>
+                <p><img src="{STATIC_URL2}/global/topic/20161212/images/con6.jpg" alt="安特卫普：追寻大师灵感" title="安特卫普——创意设计先锋之地"/></p>
+            </div>
+            <div class="jie" id="Holland">
+                <p class="jiedu"><i></i>探寻第三站：荷兰</p>
+                <p class="place_b">荷兰——自由不羁印象派城</p>
+                <p class="ask"><span>“这是一个自由宽容到挑战底线的城市，也正是这样的不羁造就艺术与天才的诞生，这是想象不可不去之城”。</span></p>
+                <p class="title1">探秘梵高：神秘印象主义 </p>
+                <p class="title2">梵高故地游,感受天才的诚恳与真挚艺术。梵高博物馆：馆藏梵高黄金时期最珍贵的200幅画作、 素描几百件，梵高的几乎全部书信，最知名的作品有“群鸦”与“向日葵”；水坝广场：阿姆斯特丹历史的发祥地。
+
+                </p>
+                <p><img src="{STATIC_URL2}/global/topic/20161212/images/con7.jpg" alt="探秘梵高：神秘印象主义" title="阿姆斯特丹——自由不羁印象派城"/></p>
+            </div>
+            <div class="jie" id="Germany">
+                <p class="jiedu"><i></i>探寻第四站：德国</p>
+                <p class="place_b">探索复古艺术灵感之源     </p>
+                <p class="ask ask2">科隆、吕德斯海姆、法兰克福，复古艺术灵感发源地</p>
+                <p class="title1">科隆大教堂：追溯哥特风</p>
+                <p class="title2">科隆大教堂：哥特式教堂建筑最完美典范,欧洲北部规模最大，世界第三高的教堂，集宏伟与细腻于一身。  </p>
+                <p><img src="{STATIC_URL2}/global/topic/20161212/images/con8.jpg" alt="科隆大教堂：追溯哥特风" title="探索复古艺术灵感之源"/></p>
+                <p class="title1 walk">漫步科隆步行街，回归“野生的艺术”         </p>
+                <p class="title1 tit1 huamei">画眉鸟巷——体验葡萄酒文化           </p>
+                <p class="title2 tit2">画眉鸟巷是吕德斯海姆最经典的小巷。充满了欢歌、劲舞、音乐、美酒和笑声。  </p>
+                <p><img src="{STATIC_URL2}/global/topic/20161212/images/con9.jpg" alt="画眉鸟巷：体验葡萄酒文化" title="吕德斯海姆画眉鸟巷：体验葡萄酒文化"/></p>
+                <p class="title1 tit1">法兰克福：感受自由时光                </p>
+                <p class="title2 tit3">把在法兰克福的回味时光留给您自己，提供特色德式晚餐欢送宴。  </p>
+                <p><img src="{STATIC_URL2}/global/topic/20161212/images/con10.jpg" alt="法兰克福：捕捉设计灵感" title="法兰克福的海德堡：捕捉设计灵感"/></p>
+            </div>
+        </div>
+    </div>
+    <div class="content4" id="route">
+       <div class="w1000">
+           <p class="title ten">10日行程安排</p>
+           <p><img src="{STATIC_URL2}/global/topic/20161212/images/pv.jpg"/></p>
+           <p class="btn"><a href="https://jinshuju.net/f/EuyIKf" target="_blank"><img src="{STATIC_URL2}/global/topic/20161212/images/btn.jpg"/></a></p>
+           <p class="tel"><i></i>咨询热线：4008-210-500</p>
+       </div>
+    </div>
+    <div class="fixed">
+        <div class="box">
+            <dl class="dl1">
+                <dt><a class="cur" href="#Europe"><span>●</span>风尚链接 欧洲篇</a></dt>
+            </dl>
+            <dl>
+                <dt><a href="#part1"><span>●</span>1. 解析时尚产业</a></dt>
+                <dd><a href="#unscramble">趋势预测解读</a><a class="marg" href="#exchange">企划设计指导交流</a><a href="#programme">欧洲市场解析</a></dd>
+            </dl>
+            <dl>
+                <dt><a href="#part2"><span>●</span>2. 探寻灵感之源</a></dt>
+                <dd><a href="#france">法国</a><a href="#Belgium" class="marg">比利时</a><a href="#Holland">荷兰</a><a href="#Germany" class="marg2">德国</a></dd>
+            </dl>
+            <dl class="dl3">
+                <dt><a href="#route"><span>●</span>行程安排</a></dt>
+            </dl>
+            <dl class="dl4">
+                <dt><a href="https://jinshuju.net/f/EuyIKf" target="_blank"><span>●</span>立即报名</a></dt>
+            </dl>
+        </div>
+    </div>
+</div>
+
+{include file="topic/topic_layer.html"}
+{/block}
+
+{block name="self"}
+<script>
+    $(function() {
+        var _dta = $(".container .fixed dl a");
+        _dta.click(function() {
+            _dta.each(function(){
+                if($(this).hasClass("cur")) {
+                    $(this).removeClass("cur");
+                }
+            });
+                $(this).addClass("cur");
+        });
+        $(window).resize(function(){
+            var winWidth = $(window).width();
+            if (winWidth<1000) {
+                $(".container .fixed").hide();
+            } else{
+                $(".container .fixed").show();
+            }
+        });
+    })
+</script>
+{/block}
+

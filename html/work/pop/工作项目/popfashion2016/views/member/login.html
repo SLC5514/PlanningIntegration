@@ -1,0 +1,132 @@
+{extends file="layout.html"}
+{block name="title"}{$title}{/block}
+{block name=keywords}{$keywords}{/block}
+{block name=description}{$description}{/block}
+{block name='selfcss'}
+<!-- <link rel="stylesheet" type="text/css" href="{$smarty.const.STATIC_URL1}/global/css/lib/drag/drag.css?{$smarty.const.STATIC_CHANGE_TIME}"> -->
+{/block}
+{block name="header"}{/block}
+{block name="main"}
+<div class="pop_loginbg stu">
+    <input type="password" style="display: none;"/>
+    <div class="loginClose"></div>
+	<div class="login-title">
+        <span>欢迎登录POP趋势资讯网</span>
+    </div>
+    <div class="login-main">
+        <div class="loginClass js-loginClass" style="margin-bottom: 0px;">
+            <input type="hidden" id='login-type1'/>
+            <span class="action" data-type='1'><label><i></i>用户名登录</label><i></i></span>
+            <span data-type='2'><label><i></i>手机号登录</label></span>
+            <!-- <span data-type='3'>手机号验证码登录</span> -->
+        </div>
+        <ul style="position: relative;">
+            <p class="errorbox10" style="top:0;"></p>
+            <li>
+                <input type="text" id="account1" placeholder="请输入用户名"/>
+            </li>
+            <li style="position: relative;">
+                <input type="password" id="password1" placeholder="请输入登录密码"/>
+                <span class='code-btn js-code-btn'>获取验证码</span>
+                <!-- <em id="pwd-em1" class="pwd-display"></em> -->
+            </li>
+            <li class="l_drag js-slip-code" style="padding-top: 17px;border: none;position: relative;display: none;">
+                <div class="code_btn js-click-btn" data-cla=".js-puzzle-drag-content4" data-stu="1">点击按钮完成图形验证</div>
+                <div class="puzzle-drag-wraper js-drag-show" style="display: none;">
+                    <s class="drag-s"></s>
+                    <t class="drag-t"></t>
+                    <div class="puzzle-drag-content js-puzzle-drag-content4">
+                        <div class="drag-title clearfix">
+                            <span>为保证你的账户安全，请先完成图形验证</span>
+                            <span class="close js-close"></span>
+                            <span class="change js-change"><i></i>换一换</span>
+                        </div>
+                        <div class="puzzle-img-box">
+                            <div class="puzzle-img js-puzzle-img">
+                                <img>
+                            </div>
+                            <div class="puzzle-lost js-puzzle-lost">
+                                <img>
+                            </div>
+                        </div>
+                        <div class="drag-slide-nav">
+                            <div class="drag-slide-text">
+                                <div class="drag-slide-left"></div>
+                                <div class="drag-slide-center">向右滑动完成拼图</div>
+                                <div class="drag-slide-right"></div>
+                            </div>
+                            <div class="drag-slide-bar js-drag-slide-bar">
+                                <div class="drag-slide-bar-left"></div>
+                                <div class="drag-slide-bar-center"></div>
+                                <div class="drag-slide-bar-right"></div>
+                            </div>
+                            <div class="drag-slide-btn js-drag-slide-btn"></div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <label class="check-free-login stu">
+            <input type="checkbox" name="KeepPassword1" value="1" class="js-free-login1">
+            30天内免登录
+        </label>
+        <div class="login-btn js-login-btn">立即登录</div>
+        <div class="forget-pwd clearfix js-forget-pwd">
+            <div class="forget-left">
+                <a data-url="/member/findpassword/findpassword_2/" style="padding-left: 0px;">忘记密码？</a>
+                <a data-url="/member/findaccount/" style="border: none;">忘记用户名？</a>
+            </div>
+            <div class="forget-right">
+                没有账号？
+                <a data-url="/member/register/">立即注册</a>
+            </div>
+        </div>
+    </div>
+    <div class="login-bottom">
+        <span class="contact-login">如需帮助请联系：<i>4008-210-662</i></span>
+        <span>
+            <span class="js-contact-qq-btn" data-type='1' style="margin-right: 20px;cursor: pointer;"><em></em>在线客服</span>
+            <span class="js-message-on" style="cursor: pointer;"><em class="posi"></em>线上留言</span>
+        </span>
+    </div>
+    <div class="chooseUser">
+        <div class="chooseHead">
+            <span>当前手机号下有两个账号，必须勾选一个登录哦</span>
+            <s class="close js-user-close"></s>
+        </div>
+        <div class="userList clearfix">
+            <input type="hidden" id="userId1" value="" />
+            <input type="hidden" id="userDef1" value="false" />
+            <input type="hidden" id="jsJwt1" value="" />
+            <div class="userLi">
+                    <div class="default" style="border-right:1px solid #f1f1f1;">
+                        <!-- <i class="js-userLi i-action"></i> -->
+                        <span>管理员账号:</span>
+                        <div class="account" style="margin-top: 10px;">
+                            <i class="js-default1"></i>
+                            <span class="js-userName1">1111137465</span>
+                        </div>
+                        <div class="js-default-action1" style="margin: 5px 0px 0px 20px;display: none;"><i style="margin-right: 5px;"></i><span>设为默认登录账号</span></div>
+                    </div>
+                </div>
+                <div class="userLi">
+                    <div class="default">
+                        <!-- <i class="js-userLi"></i> -->
+                        <span>设计师账号:</span>
+                        <div class="account" style="margin-top: 10px;">
+                            <i class="js-default1"></i>
+                            <span class="js-userName1">1111137465</span>
+                        </div>
+                        <div class="js-default-action1" style="margin: 5px 0px 0px 20px;display: none;"><i style="margin-right: 5px;"></i><span>设为默认登录账号</span></div>
+                    </div>
+                </div>
+            </div>
+            <div style="width: 392px;" class="confirm-btn js-confirm-btn1">确认</div>
+    </div>
+</div>
+{/block}
+{block name="footer"}{/block}
+{block name='self'}
+<script type="text/javascript" src="{$smarty.const.STATIC_URL2}/global/js/user/login.js?{$smarty.const.STATIC_CHANGE_TIME}"></script>
+<!-- <script type="text/javascript" src="{$smarty.const.STATIC_URL3}/global/js/lib/drag/drag.js?{$smarty.const.STATIC_CHANGE_TIME}"></script> -->
+{/block}

@@ -1,0 +1,214 @@
+<div class="select-width-content js-selected-box">
+    {if $tips}
+    <div class="{if count($tips) neq 4 || count($tips) neq 5}rightc_s_t{/if} clearfix">
+        <div class="keycho">
+            <span class="yixz">您已选择：</span>
+            <div class="key_allbox fl">
+                {$i = 0}
+                {$j = 0}
+                {foreach $tips as $key => $tip}
+                <!--前面没有行业与性别，栏目在最前面-->
+                {if $j == 0}
+                <div class="keyWord keyWord_downlist column-nav-downlist">
+                    {foreach $columns as $key=>$column}
+                    {if $key == $columnId}
+                    {if $key == $columnPid}
+                    <a class="keyW fl clickme del" href="javascript:void(0);" title="全部">栏目: 全部<em class="downlist_icon"></em></a>
+                    {else}
+                    <a class="keyW fl clickme del" href="javascript:void(0);" title="{$column.sName}">栏目: {$column.sName}<em class="downlist_icon"></em></a>
+                    {/if}
+                    {/if}
+                    {/foreach}
+                    <div class="downlist">
+                        {foreach $columns as $key=>$column}
+                        {if $key != $columnId}
+                        {if $key == $columnPid}
+                        <a href="{$column.sLink}" title="全部">全部</a>
+                        {else}
+                        <a href="{$column.sLink}" title="{$column.sName}">{$column.sName}</a>
+                        {/if}
+                        {/if}
+                        {/foreach}
+                    </div>
+                </div>
+                {/if}
+                <!--/前面没有行业与性别，栏目在最前面-->
+
+                {$j = $j + 1}
+                <div class="keyWord keyWord_downlist">
+                    <a class="keyW fl clickme del auto_sx" href="{$tip.link}" title="{$tip.value}">{$tip.name}: <span>{$tip.value}{$tip.em}</span></a>
+                    <i class="fl del_self" data-url="{$tip.link}"></i>
+
+                    {if $tip.sub}
+                    <div class="downlist">
+                        {foreach $tip.sub as $sub}
+                        <a href="javascript:void(0);" title="{$sub.value}" id="gi_{$sub.type}_{$sub.key}">{$sub.value}</a>
+                        {/foreach}
+                    </div>
+                    {/if}
+                </div>
+                {/foreach}
+
+                <a class="delefilter clickme click_gen_ind" href="{$clearAll}"><i></i>清空筛选</a>
+            </div>
+            <div class="fr search-key-scroll selected-key-scroll js-selected-key-scroll">
+                <div class="style-search-box">
+                    <input type="text" class="fl js-input-search" growing-track="true" placeholder="搜索你要的内容">
+                    <img src="{STATIC_URL2}/global/images/lists/search.png" class="sear fl js-sear">
+                    {if isset($keys)}
+                    <div class="search-downdrop js-search-downdrop">
+                        <span class="fl">热门搜索：</span>
+                        <div class="search-key fl">
+                            {foreach $keys as $key}
+                            <a class="clickme" href="{$key.link}" title="{$key.name}">{$key.name}</a>
+                            {/foreach}
+                        </div>
+                    </div>                          
+                    {/if}
+                </div>
+            </div>
+        </div>						
+    </div>
+    {else}
+    <div class="{if count($tips) neq 4 || count($tips) neq 5}rightc_s_t{/if} clearfix">
+        <div class="keycho">
+            <span class="yixz">您已选择：</span>
+            <div class="key_allbox fl">
+                <div class="keyWord keyWord_downlist column-nav-downlist">
+                    {foreach $columns as $key=>$column}
+                    {if $key == $columnId}
+                    {if $key == $columnPid}
+                    <a class="keyW fl clickme del" href="javascript:void(0);" title="全部">栏目: 全部<em class="downlist_icon"></em></a>
+                    {else}
+                    <a class="keyW fl clickme del" href="javascript:void(0);" title="{$column.sName}">栏目: {$column.sName}<em class="downlist_icon"></em></a>
+                    {/if}
+                    {/if}
+                    {/foreach}
+                    <div class="downlist">
+                        {foreach $columns as $key=>$column}
+                        {if $key != $columnId}
+                        {if $key == $columnPid}
+                        <a href="{$column.sLink}" title="全部">全部</a>
+                        {else}
+                        <a href="{$column.sLink}" title="{$column.sName}">{$column.sName}</a>
+                        {/if}
+                        {/if}
+                        {/foreach}
+                    </div>
+                </div>
+            </div>
+            <div class="fr search-key-scroll selected-key-scroll js-selected-key-scroll">
+                <div class="style-search-box">
+                    <input type="text" class="fl js-input-search" growing-track="true" placeholder="搜索你要的内容">
+                    <!-- <input type="button" class="fr js-sear"> -->
+                    <img src="{STATIC_URL2}/global/images/lists/search.png" class="sear fl js-sear">
+                    {if isset($keys)}
+                    <div class="search-downdrop js-search-downdrop">
+                        <span class="fl">热门搜索：</span>
+                        <div class="search-key fl">
+                            {foreach $keys as $key}
+                            <a class="clickme" href="{$key.link}" title="{$key.name}">{$key.name}</a>
+                            {/foreach}
+                        </div>
+                    </div>                          
+                    {/if}
+                </div>
+            </div>
+        </div>
+    </div>
+    {/if}
+    {if isset($lists) && !empty($lists) && count($paramsArr) lt 4}
+    <div class="rightc_s js-rightc-s clearfix">
+        <span class="fl select-title">筛选项：</span>
+        <ul class="paixu fl">
+            {if empty($paramsArr.reg)}
+            <li class="pli{if empty($seasons)} no_click {/if}">
+                <span class="aspan">{$defaultParams['reg']|default:"地区"}<em></em></span>
+                <div class="showbox sum">
+                    <div class="dateHeight contentHolder">
+                        <div class="content">
+                            <!--a class="clickme" href="{$allSingle.reg}">全部地区</a-->
+                            {foreach $regions as $region}
+                            <a href="javascript:void(0);" class="clickme" data-key="reg" data-val="{$region.ename}" title="{$region.cname}">{$region.cname}</a>
+                            {/foreach}
+                        </div>
+                    </div>
+                </div>
+            </li>
+            {/if}
+            {if isset($seasons) && empty($paramsArr.sea)}
+            <li class="pli{if empty($seasons)} no_click {/if}">
+                <span class="aspan">{$defaultParams['sea']|default:"流行时间"}<em></em></span>
+                <div class="showbox sum">
+                    <div class="dateHeight contentHolder">
+                        <div class="content">
+                            {foreach $seasons as $key=>$season}
+                            <a href="javascript:void(0);" class="clickme {if $key != 0}borderTop{/if}" data-key="sea" data-val="{$season.ename}" title="{$season.cname}">{$season.cname}</a>
+                            {/foreach}
+                        </div>
+                    </div>
+                </div>
+            </li>
+            {/if}
+            {if isset($categorys) && empty($paramsArr.cat)}
+            <li class="pli {if empty($categorys)} no_click {/if}">
+                <span class="aspan">{if $columnId==130}风格系列{else}类型{/if}<em></em></span>
+                <div class="showbox sum sum_leixing">
+                    <div class="dateHeight contentHolder">
+                        <div class="content">
+                            <!--a class="clickme" href="{$allSingle.cat}">全部类型</a-->
+                            {foreach $categorys as $key=>$category}
+                            <a href="javascript:void(0);" class="clickme {if $key != 0}borderTop{/if}" data-key="cat" data-val="{$category.ename}" title="{$category.cname}">{$category.cname}</a>
+                            {/foreach}
+                        </div>
+                    </div>
+                </div>
+            </li>
+            {/if}
+            {if isset($books) && !empty($books) && empty($paramsArr.boo)}
+            <li class="pli bookname" >
+                <span class="aspan">书名<em></em></span>
+                <div class="showPro showbox">
+                    <div class="inputBox"><input type="text" class="searInputbox fl" value="搜索{$val}开头的书名" name="{$val}" style="color: rgb(148, 147, 147);"><span class="fr neiyeList"></span>
+                    </div>
+                    <div class="brands_ca">
+                        <!--书名开始-->
+                        {foreach $books as $val}
+                        <div class="items">
+                            <div class="letter" name="{$val}">{$val}</div>
+                        </div>
+                        {/foreach}
+                            <div class="brandslist">
+                                <div class="brand_result contentHolder">
+                                    <div class="content">
+                                        <ul class="clearfix" id="popBrand_{$val}"></ul>
+                                    </div>
+                                </div>
+                            </div>
+                        <!--书名结束-->
+                    </div>
+                </div>
+            </li>
+            {/if}
+        </ul>
+        <div class="fr search-key-scroll js-search-key-scroll">
+            <div class="style-search-box">
+                <!-- ID重复  search改为search1-->
+                <input type="text" class="fl js-input-search" growing-track="true" placeholder="搜索你要的内容">
+                <!-- <input type="button" class="fr js-sear"> -->
+                <img src="{STATIC_URL2}/global/images/lists/search.png" class="sear fl js-sear">
+                {if isset($keys)}
+                <div class="search-downdrop js-search-downdrop">
+                    <span class="fl">热门搜索：</span>
+                    <div class="search-key fl">
+                        {foreach $keys as $key}
+                        <a class="clickme" href="{$key.link}" title="{$key.name}">{$key.name}</a>
+                        {/foreach}
+                    </div>
+                </div>                          
+                {/if}
+            </div>
+        </div>			
+    </div>	
+    {/if}
+</div>

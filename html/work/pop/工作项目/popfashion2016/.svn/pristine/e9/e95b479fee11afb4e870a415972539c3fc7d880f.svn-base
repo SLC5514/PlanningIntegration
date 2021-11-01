@@ -1,0 +1,210 @@
+{extends file="layout.html"}
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/pop_layer.css?{STATIC_CHANGE_TIME}">
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/lists/common/list-common.css?{STATIC_CHANGE_TIME}">
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/lists/report-list.css?{STATIC_CHANGE_TIME}">
+<link rel="stylesheet" href="{STATIC_URL2}/global/css/nfd-min.css" />
+<link rel="stylesheet" href="{STATIC_URL2}/global/css/jquery.lightbox-0.5.css" media="screen" charset="utf-8" />
+{/block}
+{block name="main"}
+<div class="contant conheight report-list">
+	<input type="hidden" id="link" data-col="{if $columnId == 112}2{else}{$columnId}{/if}" data-sor="{$link['sortRandom']}" data-url="{if isset($link['url'])}{$link['url']}{/if}" data-param="{if isset($link['param'])}{$link['param']}{/if}" data-search="{if isset($link['search'])}{$link['search']}{/if}" data-isauthorized="{if isset($iIsAuthorized)}{$iIsAuthorized}{/if}"/>
+	<input type="hidden" id="urlPrefix" value="/report/detail/">
+	<div id="anchor"></div>	
+	<!--头部轮播-->
+	<div class="banner-top new-banner-top new-banner">
+		{block name="topads"}		
+            {include file="lists/lists-common/banner_ads.html"}
+        {/block}
+        {include file="lists/lists-common/nav_common_select.html"}
+    </div>
+    <div class="select-common-fixed js-select-common-fixed">
+        <div class="contentW">
+            {include file="lists/lists-common/nav_common_select.html"}
+        </div>
+    </div>
+	<!--列表内容-->
+	{block name="right"}
+	<div class="contentW js-report-section new-right-nav">
+		<!--报告内容列表-->
+		{if isset($lists) && !empty($lists)}
+		<div class="rightc_main">
+			<ul class="report-list-new js-list-parent clearfix">
+				{foreach $lists as $key=>$val}
+				<li {if $key > 3} class="lazyload" {/if}>
+					<div class="img_arrow_icon {if $val.list.iBook}mw{/if}">
+						{if $val.isShowMark eq 1}
+						<span class="arrow_icon">最热门</span>
+						{/if}
+						{if $val.isShow eq 1}
+						<span class="try_icon">免费试读</span>
+						{/if}
+						{if isset($val.list.iFabricPublish) && $val.list.iFabricPublish eq 1}
+						<span class="ulb_icon">配面料</span>
+						{/if}
+						{if $val.list.iIsAuthorized == 1}
+						<span class="data_icon">大数据</span>
+                        {/if}
+                        {if $val.list.isLiveVideo}
+                        <span>视频解读</span>
+                        {/if}
+						{if $val.list.iBook && in_array($val.list.iBook,$existReportBookIds)}<span data-id="{$val.list.iBook}" class="books_icon">系列</span>{/if}
+					</div>
+					<a href="/details/report/t_{$val.tableName}-id_{$val.list.id}-col_{$val.columnId}/" target="_blank" data-t="{$val.tableName}" data-id="{$val.list.id}" data-total="{$totalCount}" data-index="{$val.offset}" data-col="{$val.columnId}" data-mark="{$val.isShowMark}" data-utype="{$Real_UserType}" class="trend-a js-data-collect">
+						<div class="{$val.shade}"></div>
+						{if strlen($val.list.cover) > 30}
+						<img src="{$val.list.cover}" alt="{$val.list.description}">
+						{else}
+						<img src="{STATIC_URL1}/global/images/loading/analysis.jpg" alt="{$val.list.description}">
+						{/if}
+						<i class="pic_whitebg"></i>
+					</a>
+					{if $P_Collect}
+					<a href="javascript:void(0);" class="report-collect-btn js-collect-btn {if $val.iCollectStatus}cur{/if}"></a>
+					{/if}
+					<div class="text-down">
+						<div class="text-position">
+							<a href="/details/report/t_{$val.tableName}-id_{$val.list.id}-col_{$val.columnId}/" target="_blank" class="report_title" data-t="{$val.tableName}" data-id="{$val.list.id}" data-total="{$totalCount}" data-index="{$val.offset}" data-col="{$val.columnId}" data-mark="{$val.isShowMark}" data-utype="{$Real_UserType}" title="{$val.list.title}">
+								<p class="time clearfix">
+									<span itemprop="release time" class="fl"><img itemprop="thumbnail" src="{STATIC_URL1}/global/images/zzjd_2.png" alt="创建时间">{date('Y-m-d',strtotime($val.list.create_time))}</span>
+									<span itemprop="Browse volume" class="fr"><img itemprop="thumbnail" src="{STATIC_URL1}/global/images/zzjd_3.png" alt="浏览">浏览（<i>{$val.list.view_count}</i>）</span>
+								</p>
+								<p itemprop="name" class="title" title="{$val.list.title}">{$val.list.title}</p>
+							</a>
+							<p class="img-description js-ananist-description">{$val.list.description}</p>
+							<div class="report-img-label">
+								{foreach $val.labels as $label}
+								<a href="{$label.lLink}" title="{$label.name}">{$label.name}</a>
+								{/foreach}
+							</div>
+						</div>
+					</div>
+				</li>
+				{/foreach}
+			</ul>
+		</div>
+        {else}
+        <!-- 搜索无数据 -->
+		<div class="rightc_main">
+			{include file="lists/lists-common/search_null.html"}
+		</div>
+        {/if}
+
+        <!-- 翻页 -->
+		<div class="rightc_bottom">
+			<div class="pages">
+				{$pageHtml}
+			</div>
+        </div>
+
+		<!--免费试读报告-->
+		{if in_array($powers['P_UserType'],[4,5]) && isset($try_list) && !empty($try_list)}
+		<div class="report-frees">
+			<h3></h3>
+			<span>想看全站报告？<a href="javascript:void(0);" class="js-contact-qq-btn">联系客服</a>申请免费试用吧～</span>
+			<div>
+				<ul class="clearfix">
+					{foreach $try_list as $key=>$val}
+					<li>
+						<a href="/details/report/t_{$val.tableName}-id_{$val.list.id}-col_{$val.columnId}/" target="_blank" class="report_title" data-t="{$val.tableName}" data-id="{$val.list.id}" data-total="{$totalCount}" data-index="{$val.offset}" data-col="{$val.columnId}" data-mark="{$val.isShowMark}" data-utype="{$Real_UserType}" title="试读报告">
+							<div>免费试读</div>
+							{if strlen($val.list.cover) > 30}
+							<img src="{$val.list.cover}" alt="{$val.list.description}">
+							{else}
+							<img src="{STATIC_URL1}/global/images/loading/analysis.jpg" alt="{$val.list.description}">
+							{/if}
+						</a>
+						<div>
+							<p>{$val.list.title}</p>
+							{if $powers['P_UserType'] == '5'}
+							<div>
+								<a href="/member/register/" target="_blank">注册</a> 或  <a href="javascript:void(0);" class="loginLayer">登录</a>  后可全文浏览
+							</div>
+							{/if}
+						</div>
+					</li>
+					{/foreach}
+				</ul>
+			</div>
+		</div>
+        {/if}
+        
+		<!--pop 发现-->
+		{if !empty($leftAds)}
+		<div class="report-discovery">
+			<h3></h3>
+			<div>
+				<ul class="clearfix">
+					{foreach $leftAds as $ad}
+					<li>
+						<a href="{$ad.sLink}" {if $ad.sNewWindow}target="_blank"{/if} title="{$ad.sTitle}">
+						<img src="{$ad.sImagePath}" alt="{$ad.sTitle}">
+						</a>
+					</li>
+					{/foreach}
+
+				</ul>
+			</div>
+		</div>
+		{/if}
+	</div>
+	{/block}
+</div>
+{if $P_UserType eq 5}
+<!-- 留资 -->
+{include file="common/sem_trends.html"}
+{/if}
+{/block}
+{block name="other"}
+{/block}
+{block name="self"}
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/styles.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL2}/global/js/fashion/index.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/global.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/common/template.js?{STATIC_CHANGE_TIME}"></script>
+{if in_array($columnId,array(33,34,35,37,132))}
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/regionFromSolr.js?{$regionStaticTime}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/regionAction.js?{STATIC_CHANGE_TIME}"></script>
+{/if}
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/jquery.lightbox-0.5.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/util.pop2.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/Column{$columnId}_Brand.js?{$brandStaticTime}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/util_brand.js?{STATIC_CHANGE_TIME}"></script>
+
+<script type="text/javascript" src="{STATIC_URL3}/global/js/common/banner-slide.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/lists/list-common.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/sem_phone/sem_phone.js?{STATIC_CHANGE_TIME}"></script>
+
+{literal}
+
+<script type="text/javascript">
+    $(function(){   	
+        // 异步加载筛选条件
+        oPopStyles.loadSelectItems({/literal}{$columnId}{literal});
+
+        $(".lazyload img").lazyload({effect : "fadeIn"});
+
+        $('.js-list-parent').on('click', '.active_click', function() {
+            $(this).prev('a.trend-a').trigger('click');
+        });
+        // 报告详情介绍截取
+        $(".js-ananist-description").each(function(){
+            var report_str =$(this).text() || '';
+            var report_new_str = pop_fashion_global.fn.cutByWidth(report_str,800,12)
+            $(this).text(report_new_str);
+        });
+
+        // 列表交互效果
+        $(".js-list-parent li").on('mouseenter mouseleave',function(e){
+            if(e.type=='mouseenter'){
+                $(this).find(".js-ananist-description").stop(true,true).slideDown(100);
+            }else{
+                $(this).find(".js-ananist-description").stop(true,true).slideUp(100);
+            }
+        });
+    });
+
+</script>
+{/literal}
+
+{/block}

@@ -1,0 +1,96 @@
+{extends file="layout.html"}
+
+{block name="title"}1920AW四大时装周|上海时装周-热门展会分析-SHOWROOM上海订货会-POP服装趋势网{/block}
+{block name=keywords}1920AW四大时装周,2019热门展会分析,2019AW上海时装周,SHOWROOM上海订货会{/block}
+{block name=description}2019-2020AW四大时装周、2019AW上海时装周，全球多个国家和地区，2000多品牌的秀场动态时时同步跟踪更新，并根据特色款式进行款式提炼推荐和深度品牌解析与城市维度单品提炼和综合分析。国内设计师新势力-上海订货会SHOWROOM，涵盖100+新兴设计师品牌及3000+款式资料POP独家资源。{/block}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/lib/swp.css" />
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/topic/20190401/css/index.css?{STATIC_CHANGE_TIME}3">
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/topic/common/css/review/review.css?{STATIC_CHANGE_TIME}3">
+{/block}
+
+
+{block name="main"}
+<div class="content-wrap">
+    <div id="canvas-content">
+        <!-- 背景色动画参照 -->
+        <div id="shape"></div> 
+        <!-- 标题列表 -->
+        <div class="title-list-box" id="scroll-nav-contain">
+            <div class="swiper-container" id="title-list">
+                <div class="swiper-wrapper nav-box">
+                    <div class="swiper-slide">
+                        <a data-i="01" href="/analysis/runways/sea_12216/#anchor" target="_blank" title="1920AW四大时装周"><strong>1920AW四大时装周</strong><span></span></a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a data-i="02" href="/analysis/fairs/" target="_blank" title="2019热门展会分析"><strong>2019热门展会分析</strong><span></span></a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a data-i="03" href="/runways/reg_346-sea_12216/#anchor" target="_blank" title="2019AW上海时装周"><strong>2019AW上海时装周</strong><span></span></a>
+                    </div>
+                    <div class="swiper-slide swiper-slide4">
+                        <a data-i="04" href="/styles/retail/ds_3-reg_346-tim_3-dis_1/#anchor" target="_blank" title="SHOWROOM上海订货会"><strong>SHOWROOM上海订货会</strong><span></span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-container" id="thumbs">
+                <div class="swiper-wrapper btn-list">
+                    <div class="btn1 swiper-slide" title="1920AW四大时装周">
+                    </div>
+                    <div class="btn2 swiper-slide" title="2019热门展会分析">
+                    </div>
+                    <div class="btn3 swiper-slide" title="2019AW上海时装周">
+                    </div>
+                    <div class="btn4 swiper-slide" title="SHOWROOM上海订货会">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 线条 -->
+        <div class="lines-container">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <div class="switch-btn-box">        
+            <div class="swiper-button-prev"><i></i></div>
+            <div class="swiper-button-next"><i></i></div>        
+        </div>
+    </div>
+    <div class="review-contain">
+        <div class="review-msg">
+            <img src="{STATIC_URL2}/global/topic/common/images/review-title.png?{STATIC_CHANGE_TIME}" alt="往期回顾" />
+            <div class="review-cont">
+                <div class="left-btn js-left-btn"></div>
+                <div class="right-btn js-right-btn"></div>
+                <div class="review-list">
+                    <ul class="js-review-list clear">
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+
+
+{block name="self"}
+<script type="text/javascript">
+	var page_img_path_str="{STATIC_URL2}";
+	var page_js_path_str="{STATIC_URL3}";
+</script>
+<script src="{STATIC_URL2}/global/topic/common/js/lib/swiper.min.js"></script>
+<script src="{STATIC_URL2}/global/topic/common/js/lib/TweenMax.min.js"></script>
+<script src="{STATIC_URL2}/global/topic/common/js/lib/pixi.min.js"></script>
+<script src="{STATIC_URL2}/global/topic/common/js/lib/PixiPlugin.min.js"></script>
+<script src="{STATIC_URL2}/global/topic/20190401/js/index.js?{STATIC_CHANGE_TIME}3"></script>
+<script src="{STATIC_URL2}/global/topic/common/js/review/review.js?{STATIC_CHANGE_TIME}3"></script>
+{/block}

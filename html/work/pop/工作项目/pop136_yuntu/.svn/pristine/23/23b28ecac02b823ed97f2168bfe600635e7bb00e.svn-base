@@ -1,0 +1,326 @@
+/*
+ * @Author: SLC
+ * @Date: 2020-04-26 13:04:11
+ * @LastEditors: SLC
+ * @LastEditTime: 2020-05-15 14:32:24
+ * @Description: 2D实景模拟关联插件
+ */
+
+(function (factory, g) {
+    'use strict';
+
+    // Browser globals
+    factory(jQuery, Snap, g);
+}(function ($, $S, g) {
+    'use strict';
+
+    // The default settings for the plugin
+    var defaultSettings = {
+        /* ================== 主体 ================== */
+        svgPaper: null, // 对象
+        w: 430, // 宽度
+        h: 770, // 高度
+
+        pw: 100,
+        ph: 100,
+
+        /* ================== 输出模板数据 ================== */
+        tplData: {
+            src: 'https://imgyt2.pop-fashion.com/fashion/fm/virtual_spl/20170526/large_592794dc316cb5385.png', // 路径
+            ogWH: { w: 0, h: 0 }, // 原始宽高
+            neWH: { w: 0, h: 0 }, // 回显宽高
+            scale: 1, // 回显/原始缩放
+            comList: [
+                {
+                    name: '部件1',
+                    paths: ['M80.76 229.49L112.41 420.63L90.89 635.82L340.25 635.82L325.06 411.77L349.11 220.63L273.16 187.72L215 238.35L155.44 187.72L80.76 229.49Z']
+                },
+                {
+                    name: '部件2',
+                    paths: ['M103.54 396.58L57.97 392.78L75.7 232.03L103.54 396.58Z', 'M379.49 385L330.13 396.58L355.44 226.96L379.49 385Z']
+                }
+            ], // 部件列表
+        },
+
+        /* ================== 轮询定时器 ================== */
+        loopTime: 100, // 定时器时间
+        imgLoaded: false, // 数据获取状态
+
+        /* ================== 模板 ================== */
+        tplEl: null, // image对象
+        tplLoaded: false, // 模板绘制状态
+
+        /* ================== 部件 ================== */
+        comBoxEl: $('.js-com-list'), // 列表盒子
+        comEls: [], // image对象列表
+        comUseBgEls: [], // use对象列表
+        comUseMaskEls: [], // use蒙版对象列表
+        comLoaded: false, // 部件绘制状态
+
+        /* ================== 图案 ================== */
+        patternList: [
+            'https://imgyt1.pop-fashion.com/fashion/graphic/2021051301-sh5442/mbig/6311b26112e151401b403bf7235d9e82.jpg',
+            'https://imgyt2.pop-fashion.com/fashion/graphic/2021051301-sh5442/mbig/c2aef00324a105ec803b61beff387629.jpg'
+        ],
+        patternEls: [],
+
+        // paths: [
+        //     'M461.72 205.16l-8.46 27.28 6.57 13.57-6.31 25.17-11.41 70.23.32 48.17 20.96 65.82.2 29.32 5.62 33.47 3.64 58.61 3.45 32.43 11.99 15.63L511 628.9l47.44-11.84 15.12-.1 88.55-.59 28.03-8.56 44.17-17.05 8.57-10.53-33.08-101.35-21.09-84.67-10-41.81-7.74-27.18-11.03-33.43-16.37-26.07-4.4-12.53 7.5-8.43-12.02-20.86-11.96-11.44-8.69-8.32-11.92-6.2-16.22-3.03-9.72.06-9.77-6.21-21.62-4.05-23.78-2.98-20.54-3-23.72 6.44-14.99 19.99z',
+        //     'M485.85 627.43l25.12 2.98 43.94-10.93h107.78l32.43-7.95 6.28 7.95 12.56 49.7-18.84 10.93h-21.97v12.93l-3.14 18.88-24.07 2.98H631.3l-21.98 4.98-54.41-7.96-28.25-8.94-15.69-9.94-12.56-2.99-7.32-9.94-5.24-10.93-11.51 6.96-5.23-10.94-15.69-19.88 3.14-21.87 17.78-6.95 11.51 10.93z'
+        // ],
+        // pathsLen: 0,
+        // pathEls: [],
+        // useBgEls: [],
+        // useMaskEls: [],
+        // patternEls: [],
+        // images: ['./bg1.jpg', './bg2.jpg'],
+        // patternList: [
+        //     'https://imgyt1.pop-fashion.com/fashion/graphic/2021051301-sh5442/mbig/6311b26112e151401b403bf7235d9e82.jpg',
+        //     'https://imgyt2.pop-fashion.com/fashion/graphic/2021051301-sh5442/mbig/c2aef00324a105ec803b61beff387629.jpg'
+        // ],
+        // 拖动
+        // patternWHs: [],
+        // downStatus: false,
+        // hoverStatus: false,
+        // idx: -1,
+        // x: 0,
+        // y: 0,
+        // matrix: '',
+        // delta: []
+    };
+
+    var virtualSnap = function (querySelector, option) {
+        // Use the default settings
+        var def = $.extend(true, {}, defaultSettings),
+            $paper = $(querySelector),
+            self = this;
+
+        if (typeof option === "object") {
+            $.extend(true, def, option);
+        }
+
+        this.def = def;
+        this.def.svgPaper = $S($paper[0]);
+
+        // 获取模板尺寸
+        function getTplSize(src, callback) {
+            var ogWH = null;
+            var neWH = null;
+            var img = new Image();
+            img.src = src;
+            img.onload = function () {
+                // 设置模板原始宽高
+                def.tplData.ogWH = ogWH = {
+                    w: img.naturalWidth,
+                    h: img.naturalHeight
+                };
+                // 设置模板缩放比例
+                if (def.w / ogWH.w < def.h / ogWH.h) {
+                    def.tplData.scale = def.w / ogWH.w
+                } else {
+                    def.tplData.scale = def.w / ogWH.w
+                }
+                // 设置正确大小
+                def.svgPaper.node.setAttribute('width', def.w);
+                def.svgPaper.node.setAttribute('height', def.h);
+                def.svgPaper.node.setAttribute('width', ogWH.w);
+                def.svgPaper.node.setAttribute('height', ogWH.h);
+                def.svgPaper.node.style.transform = 'scale(' + def.tplData.scale + ')';
+                // 居中
+                def.tplData.neWH = neWH = {
+                    w: ogWH.w * def.tplData.scale,
+                    h: ogWH.h * def.tplData.scale
+                }
+                def.svgPaper.node.style.marginLeft = (neWH.w - ogWH.w) / 2 - (neWH.w - def.w) / 2 + 'px'
+                def.svgPaper.node.style.marginTop = (neWH.h - ogWH.h) / 2 - (neWH.h - def.h) / 2 + 'px'
+                // 绘制回调
+                callback && callback();
+            }
+        }
+
+
+        // 绘制部件背景图-全循环
+        // function drawComBg() {
+        //     for (var i = 0; i < def.tplData.comList.length; i++) {
+        //         def.patternEls[i] && def.patternEls[i].remove();
+        //         def.patternEls[i] = def.svgPaper.image(def.images[i], 0, 0, def.pw, def.ph).pattern(0, 0, def.pw, def.ph).attr({'patternTransform': Snap.matrix(1, 0, 0, 1, 0, 0)}).data('idx', i);
+        //         def.comUseMaskEls[i].attr({'fill': def.patternEls[i]}).data('idx', i);
+        //         def.patternWHs.push({w: def.pw, h: def.ph});
+        //         def.delta.push(0);
+        //     }
+        // }
+
+
+        function initialize() {
+            def.svgPaper = $S($paper[0]);
+            // 获取模板原始尺寸
+            def.tplData.ogWH = getImgNatural(def.tplData.src);
+            // 绘制模板
+            drawTplImg(def.tplData.src);
+            // 获取模板尺寸
+            // getTplSize(def.tplData.src, function() {
+            //     drawComPath();
+            //     drawBgColor();
+            //     // drawComBg();
+            //     // chengBase64();
+
+            //     // 保存图片
+            //     // var filterEl = def.svgPaper.filter(Snap.filter.blur(5, 10));
+            //     // def.tplEl.attr({
+            //     //     filter: filterEl
+            //     // });
+            //     // setTimeout(() => {
+            //     //     saveSvgImage(def.svgPaper.outerSVG(), def.w, def.h);
+            //     // }, 5000);
+            // })
+
+        };
+
+        // initialize
+        // initialize();
+    };
+
+    virtualSnap.prototype = {
+        // 初始化
+        init: function () {
+            console.log(this)
+            // 获取模板原始尺寸
+            this.def.tplData.ogWH = this.getImgNatural(this.def.tplData.src);
+            // 绘制模板图
+            this.drawTplImg(this.def.tplData.src);
+            // 绘制部件
+            this.drawComPath();
+
+            // 渲染部件
+            this.renderCom();
+        },
+        // 获取图片原始尺寸
+        getImgNatural: function (src, type) {
+            var img = new Image(),
+                og = { w: 0, h: 0 },
+                self = this;
+            if (!src) { return og; }
+            this.imgLoaded = false;
+            img.crossOrigin = "anonymous";
+            img.onload = function () {
+                og.w = this.width;
+                og.h = this.height;
+                self.imgLoaded = true;
+            }
+            img.onerror = function () {
+                console.log("当前src=" + img.src);
+                console.log("模拟成品图片加载失败");
+                self.imgLoaded = true;
+            }
+            img.src = src;
+            return og;
+        },
+        // 绘制模板图
+        drawTplImg: function (path) {
+            var self = this;
+            clearInterval(this.drawTplImg.timeval);
+            if (!this.imgLoaded) {
+                this.drawTplImg.timeval = setInterval(function () {
+                    clearInterval(self.drawTplImg.timeval);
+                    self.drawTplImg(path);
+                }, this.def.loopTime);
+                return;
+            }
+            // do something
+            this.def.tplEl = this.def.svgPaper.image(path, 0, 0, this.def.tplData.ogWH.w, this.def.tplData.ogWH.h);
+            this.tplLoaded = true;
+        },
+        // 绘制部件路径
+        drawComPath: function () {
+            var self = this;
+            clearInterval(this.drawComPath.timeval);
+            if (!this.tplLoaded) {
+                this.drawComPath.timeval = setInterval(function () {
+                    clearInterval(self.drawComPath.timeval);
+                    self.drawComPath();
+                }, this.def.loopTime);
+                return;
+            }
+            // do something
+            for (var i = 0; i < this.def.tplData.comList.length; i++) {
+                this.def.comEls[i] && this.def.comEls[i].forEach(function (v, idx) {
+                    v.remove();
+                })
+                this.def.comUseBgEls[i] && this.def.comUseBgEls[i].forEach(function (v, idx) {
+                    v.remove();
+                })
+                // this.def.comUseMaskEls[i] && this.def.comUseMaskEls[i].forEach(function (v, idx) {
+                //     v.remove();
+                // })
+                this.def.comEls[i] = this.def.tplData.comList[i].paths.map(function (v, idx) {
+                    return self.def.svgPaper.path(v).toDefs().data('idx', i);
+                })
+                this.def.comUseBgEls[i] = this.def.comEls[i].map(function (v, idx) {
+                    return self.def.svgPaper.use(v).attr({ 'fill': 'transparent' }).data('idx', i);
+                })
+                // this.def.comUseMaskEls[i] = this.def.comEls[i].map(function (v, idx) {
+                //     return self.def.svgPaper.use(v).attr({ 'fill': 'transparent' }).data('idx', i).addClass('mask-use');
+                // })
+                this.def.comUseBgEls[i].forEach(function (v, idx) {
+                    v.node.style = 'mix-blend-mode: multiply';
+                })
+                // this.def.comUseMaskEls[i].forEach(function (v, idx) {
+                //     v.node.style = 'mix-blend-mode: multiply';
+                // })
+            }
+            this.comLoaded = true;
+        },
+        // 绘制部件背景色
+        drawComColor: function (idx, fill) {
+            this.def.comUseBgEls[idx].forEach(function (v, i) {
+                v.attr({ 'fill': fill }).data('idx', idx);
+            })
+        },
+
+        // 选择部件
+        selectCom: function(idx) {
+            var self = this;
+            // this.def.comUseMaskEls[idx].forEach(function (v, i) {
+            //     console.log(v.attr('fill'))
+            //     v.attr({ 'fill': '#ccc' }).data('idx', idx);
+            //     console.log(v.attr('fill'))
+            // })
+            this.def.comUseBgEls[idx].forEach(function (v, i) {
+                var fill = v.attr('fill');
+                v.attr({ 'fill': 'skyblue' }).data({'fill': fill});
+            })
+            var timeout = setTimeout(function() {
+                self.def.comUseBgEls[idx].forEach(function (v, i) {
+                    var fill = v.data('fill') || 'transparent';
+                    v.attr({ 'fill': fill });
+                })
+                clearTimeout(timeout);
+            }, 500);
+        },
+
+        /* ================== 外部方法 ================== */
+        // 渲染部件
+        renderCom: function() {
+            var self = this;
+            var str = '';
+            for (var i = 0; i < this.def.tplData.comList.length; i++) {
+                str += '<li data-idx="' + i + '">' + this.def.tplData.comList[i].name + '</li>';
+            }
+            this.def.comBoxEl.html(str).on('click', 'li', function() {
+                $(this).addClass('on').siblings().removeClass('on');
+                self.selectCom($(this).data().idx);
+            })
+        },
+
+        // 函数节流
+        /* throttle: function (method, context, arr, times) {
+            clearTimeout(method.tid);
+            method.tid = setTimeout(function () {
+                method.apply(context, arr);
+            }, times != undefined ? times : 50);
+        }, */
+    }
+
+    g.virtualSnap = virtualSnap;
+
+}, window));

@@ -1,0 +1,85 @@
+/*
+ * #shuzha
+ * 20180124
+ * */
+
+/*vip中间页样式更新*/
+
+.tour_banner{padding-top: 22px;}
+.tour_login{margin-top: 0px;}
+.tour_login>.con-box{width: 1200px;margin: 0 auto;padding: 100px 0;}
+
+
+.con-box>.trial-l{min-height: 246px; padding-left: 30px;width: 614px; float: left;border-right: 2px dotted #ddd;background: url(../images/report-vip.png) 26px 0 no-repeat;}
+.con-box>.trial-l>h2{ position: relative;top: -7px; color: #333;font-size: 22px;font-weight: bold;line-height: 36px;}
+.con-box>.trial-l>.part-title2{display: none;}
+.con-box>.trial-l>p{font-size: 16px;color: #333;line-height: 32px;padding: 4px 0 23px;}
+.con-box>.trial-l>p>span{font-weight: bold;color: #f4523b;}
+.con-box>.trial-l>.trial-type2,.con-box>.trial-l>.trial-type3{display: none;}
+.con-box>.trial-l>.trial-type3>.trial-type3-msg{font-weight: normal;color: #D8B056;}
+
+.con-box>.trial-l>.set-vip-link{margin-right: 20px;display: inline-block;width: 286px;height: 42px;line-height: 42px;color: #fff;font-size: 16px;text-align: center;font-weight: bold;background: #d8b056;border-radius: 24px;}
+.con-box>.trial-l>.set-vip-link>i{display: inline-block;width: 20px;height: 20px;*zoom:1;*display: inline;background: url(../images/qq-consult-icon.png) 0 0 no-repeat;vertical-align: -4px;margin-right: 3px;}
+.con-box>.trial-l>.part-vip-link{background: #333;display: none;width: 256px;}
+.con-box>.trial-l>.set-trial-link{display: inline-block;width: 138px;height: 38px;line-height: 38px;border: 2px solid #d8b056; font-size: 16px;color: #d8b056;text-align: center;font-weight: bold;border-radius: 24px;}
+.con-box>.trial-l>.set-trial-link:hover,.con-box>.trial-l>.set-vip-link:hover{background: #d8b056;color: #fff;}
+
+.con-box>.trial-l>.set-vip-link:hover{background: #f5cc61;}
+.con-box>.trial-l>.set-trial-link:hover,.con-box>.trial-l>.part-vip-link:hover{background: #d8b056;color: #fff;}
+
+.con-box>.trial-l>.is-login>p{padding: 38px 0; font-size: 16px;line-height: 20px;color: #333;}
+.con-box>.trial-l>.is-login>p>span{font-weight: bold;}
+
+.con-box>.trial-l>.is-login>.btn-l{display: inline-block;height: 42px;width: 86px;text-align: center;font-size: 16px;font-weight: bold;line-height: 42px;border-radius: 24px;color: #fff;background: #f4523b;}
+.con-box>.trial-l>.is-login>.btn-r{display: inline-block;height: 38px;width: 82px;text-align: center;font-size: 16px;font-weight: bold;line-height: 38px;border-radius: 24px;color: #333;margin-left: 10px;background: #fff;border: 2px solid #333;}
+.con-box>.trial-l>.is-login>.btn-l:hover,.con-box>.trial-l>.is-login>.btn-r:hover{color: #fff;background: #d8b056;border-color:#d8b056;}
+
+
+.con-box>.trial-r{width: 458px;padding-top: 32px;padding-right: 22px;}
+.is-runways>.trial-r{padding-top: 75px;}
+
+.con-box>.trial-r .cont-l-pic{padding: 10px;border: 1px solid #dbdbdb;margin-right: 20px;}
+.con-box>.trial-r .cont-r-msg{width: 250px;}
+.is-runways>.trial-r .cont-r-msg{width: 235px;}
+.con-box>.trial-r .cont-r-msg>h3{font-weight: normal; font-size: 16px;color: #333;height: 40px;overflow: hidden; line-height: 20px;padding-top: 8px;}
+.is-runways>.trial-r .cont-r-msg>h3{padding-top: 28px;}
+.con-box>.trial-r .cont-r-msg>p{word-break: break-all; font-size: 14px;color: #666;max-height: 120px;overflow: hidden; line-height: 20px;padding-top: 13px;}
+.is-runways>.trial-r .cont-r-msg>p{display: none; font-size: 14px;color: #666;height: 120px;overflow: hidden; line-height: 20px;padding-top: 13px;}
+.is-insprition>.trial-r{width: 480px;}
+.is-insprition>.trial-r .cont-r-msg{width: 200px;}
+
+.label-msg-col{font-size:14px;color:#666;margin-top:20px;overflow:hidden;}
+.is-runways .label-msg-col{margin-top: 28px;}
+.label-msg-col>p{width:206px;}
+.is-runways .label-msg-col>p{width:190px;}
+.label-msg-col label{padding:4px 0;}
+.label-msg-col a{float: left; padding:4px 10px;background:#ccc;color:#fff;border-radius:3px;margin-right:10px;margin-bottom:10px;}
+.label-msg-col a.video-blank{cursor: default;}
+.label-msg-col a:hover{background:#d8b056;}
+.label-msg-col a.video-blank:hover{background:#ccc;}
+
+
+
+
+/*普通用户*/
+.already-login .is-login{display: none;}
+.already-login .con-box>.trial-r{padding-top: 0px;}
+.already-login .is-runways>.trial-r{padding-top: 36px;}
+.already-login .con-box>.trial-l>.trial-type1{display: none;}
+.already-login .con-box>.trial-l>.trial-type2{display: block;}
+
+/*部分vip用户*/
+.part-vip .con-box>.trial-l>.part-title1,.part-vip .is-login{display: none;}
+.part-vip .con-box>.trial-l>.part-title2{display: block;}
+
+.part-vip .con-box>.trial-l>.trial-type1{display: none;}
+.part-vip .con-box>.trial-l>.trial-type2{display: none;}
+.part-vip .con-box>.trial-l>.trial-type3{display: block;}
+
+.part-vip .con-box>.trial-l>.set-vip-link,.part-vip .con-box>.trial-l>.set-trial-link{display: none;}
+.part-vip .con-box>.trial-l>.part-vip-link{display: inline-block;}
+
+.part-vip .con-box>.trial-r{padding-top: 0px;}
+.part-vip .is-runways>.trial-r{padding-top: 36px;}
+
+.part-vip .con-box>.trial-l{background: #fff;}

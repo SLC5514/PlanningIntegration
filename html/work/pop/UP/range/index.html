@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .selectClass{ 
+      background: url(//image.zhangxinxu.com/image/blog/201104/ppmm_test.jpg) no-repeat center 10px fixed; 
+    }
+    </style>
+</head>
+
+<body>
+  <p>4月13日消息，据台湾媒体报道，32岁的孙燕姿(Sng Ee Tze)和后天将满34岁的荷兰籍印度尼西亚男友纳迪姆(Nadim Van Der
+    Ros)交往5年，曾说过"有空就结婚"的她，果然趁着宣传期尾声，于3月31日在新加坡登记注册了！昨消息传开，她未否认，仅说会选择适当时间公布喜讯，所属"美妙音乐"则表示她个性低调，婚礼只会邀请双方亲友，也不会透露细节，但据新加坡可靠消息指出，婚宴订在5月初。</p>
+  <input id="input" type="text" value='<p>4月13日消息，据台湾媒体报道，32岁的孙燕姿(Sng Ee Tze)和后天将满34岁的荷兰籍印度尼西亚男友纳迪姆(Nadim Van Der Ros)交往5年，曾说过"有空就结婚"的她，果然趁着宣传期尾声，于3月31日在新加坡登记注册了！昨消息传开，她未否认，仅说会选择适当时间公布喜讯，所属"美妙音乐"则表示她个性低调，婚礼只会邀请双方亲友，也不会透露细节，但据新加坡可靠消息指出，婚宴订在5月初。</p>'>
+  <br>
+  <br>
+  <button id="button">选中一些文字，然后点击本按钮</button>
+  <p class="selectClass">4月13日消息，据台湾媒体报道，32岁的孙燕姿(Sng Ee Tze)和后天将满34岁的荷兰籍印度尼西亚男友纳迪姆(Nadim Van Der
+    Ros)交往5年，曾说过"有空就结婚"的她，果然趁着宣传期尾声，于3月31日在新加坡登记注册了！昨消息传开，她未否认，仅说会选择适当时间公布喜讯，所属"美妙音乐"则表示她个性低调，婚礼只会邀请双方亲友，也不会透露细节，但据新加坡可靠消息指出，婚宴订在5月初。4月13日消息，据台湾媒体报道，32岁的孙燕姿(Sng
+    Ee Tze)和后天将满34岁的荷兰籍印度尼西亚男友纳迪姆(Nadim Van Der
+    Ros)交往5年，曾说过"有空就结婚"的她，果然趁着宣传期尾声，于3月31日在新加坡登记注册了！昨消息传开，她未否认，仅说会选择适当时间公布喜讯，所属"美妙音乐"则表示她个性低调，婚礼只会邀请双方亲友，也不会透露细节，但据新加坡可靠消息指出，婚宴订在5月初。4月13日消息，据台湾媒体报道，32岁的孙燕姿(Sng
+    Ee Tze)和后天将满34岁的荷兰籍印度尼西亚男友纳迪姆(Nadim Van Der
+    Ros)交往5年，曾说过"有空就结婚"的她，果然趁着宣传期尾声，于3月31日在新加坡登记注册了！昨消息传开，她未否认，仅说会选择适当时间公布喜讯，所属"美妙音乐"则表示她个性低调，婚礼只会邀请双方亲友，也不会透露细节，但据新加坡可靠消息指出，婚宴订在5月初。4月13日消息，据台湾媒体报道，32岁的孙燕姿(Sng
+    Ee Tze)和后天将满34岁的荷兰籍印度尼西亚男友纳迪姆(Nadim Van Der
+    Ros)交往5年，曾说过"有空就结婚"的她，果然趁着宣传期尾声，于3月31日在新加坡登记注册了！昨消息传开，她未否认，仅说会选择适当时间公布喜讯，所属"美妙音乐"则表示她个性低调，婚礼只会邀请双方亲友，也不会透露细节，但据新加坡可靠消息指出，婚宴订在5月初。</p>
+</body>
+<script>
+  var oBtn = document.getElementById("button");
+  var input = document.getElementById('input');
+  oBtn.onclick = function () {
+    var userSelection, text;
+    if (window.getSelection) {
+      //现代浏览器
+      userSelection = window.getSelection();
+    } else if (document.selection) {
+      //IE浏览器 考虑到Opera，应该放在后面
+      userSelection = document.selection.createRange();
+    }
+    if (!(text = userSelection.text)) {
+      text = userSelection;
+    }
+    console.log(text);
+    /* ------------------------------------------------ */
+    var selectedText = input.value.slice(input.selectionStart, input.selectionEnd);
+    console.log(selectedText);
+    /* ------------------------------------------------ */
+    var getRangeObject = function (selectionObject) {
+      if (selectionObject.getRangeAt)
+        return selectionObject.getRangeAt(0);
+      else { // 较老版本Safari!
+        var range = document.createRange();
+        range.setStart(selectionObject.anchorNode, selectionObject.anchorOffset);
+        range.setEnd(selectionObject.focusNode, selectionObject.focusOffset);
+        return range;
+        // alert("当前浏览器不支持getRangeAt");
+      }
+    }
+    var rangeObject = getRangeObject(userSelection);
+    console.log(rangeObject);
+    /* 完整版------------------------------------------------- */
+    var userSelection, rangeObject;
+    if (window.getSelection) {
+      //现代浏览器
+      userSelection = window.getSelection();
+    } else if (document.selection) {
+      //IE浏览器 考虑到Opera，应该放在后面
+      userSelection = document.selection.createRange();
+    }
+    //Range对象
+    rangeObject = userSelection;
+    if (userSelection.getRangeAt) {
+      //现代浏览器
+      rangeObject = userSelection.getRangeAt(0);
+    }
+  };
+</script>
+<!-- 给选中文字添加背景 -->
+<script src="//www.zhangxinxu.com/study/201104/rangy/rangy-core.js"></script>
+<script src="//www.zhangxinxu.com/study/201104/rangy/rangy-cssclassapplier.js"></script>
+<script>
+  var cssApplier;
+  window.onload = function () {
+    rangy.init();
+    cssApplier = rangy.createCssClassApplier("selectClass", true);
+    document.body.onmouseup = function () {
+      cssApplier.toggleSelection();
+    };
+  };
+</script>
+
+</html>
+<!-- JS Range HTML文档/文字内容选中、库及应用介绍 https://www.zhangxinxu.com/wordpress/2011/04/js-range-html%E6%96%87%E6%A1%A3%E6%96%87%E5%AD%97%E5%86%85%E5%AE%B9%E9%80%89%E4%B8%AD%E3%80%81%E5%BA%93%E5%8F%8A%E5%BA%94%E7%94%A8%E4%BB%8B%E7%BB%8D/ -->
+<!-- vue-editable  https://github.com/jinzhe/vue-editable -->

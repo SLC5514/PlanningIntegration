@@ -1,0 +1,361 @@
+{extends file="layout.html"}
+{block name="selfcss"}
+    <link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/industry.css?{STATIC_CHANGE_TIME}">
+    <link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/jquery-ui-datePicker.css?{STATIC_CHANGE_TIME}">
+    <link rel="stylesheet" type="text/css" href="{STATIC_URL3}/global/js/kindeditor-4.1.7/themes/default/default.css" />
+{/block}
+
+{block name="main"}
+
+
+<div class="activity_personal_center">
+    <div class="con_widthx1200">
+        <div class="back_list"><a {if $col} href="/activity/manage/msgtyp_{$col}/" {else} href="/activity/manage/" {/if}><i></i>返回活动列表</a></div>
+        <div class="post_main">
+            <h3><i></i>发布相关活动<span></span></h3>
+            <div class="post_form clearfix">
+                <input type="hidden" name="activityId" value="{$activityId}">
+                <input type="hidden" name="col" id="col" value="{$col}">
+                <ul>
+                    <li class="post_main_li theme_li clearfix">
+                        <label><span>*</span>活动主题：</label>
+                        <div class="right_box">
+                            <input type="text" name="activityTheme" class="theme_box" placeholder="请输入活动主题" value="{$activityTheme}">
+                        </div>
+                    </li>
+                    <li class="post_main_li clearfix">
+                        <label><span>*</span>活动海报：</label>
+                        <input type="hidden" name="activityPoster" id="activityPoster" value="{$activityPoster}">
+                        <form name="poster_form">
+                            <div class="right_box post_cover">
+                                <div class="posterimg_outside fl">
+                                    {if $activityPoster}
+                                    <img src="{$activityPoster}"/>
+                                    {else}
+                                    <img src="{STATIC_URL2}/global/images/cover_img.jpg"/>
+                                    {/if}
+                                </div>
+                                <div class="uoload_input fl">
+                                    <div class="input_file">
+                                        <a href="javascript:void(0);">添加封面图</a>
+                                        <input type="file" name="poster" onchange="ajaxPosterUpload(this);">
+                                    </div>
+                                    <p>图片尺寸建议为580 x 405</p>
+                                </div>
+                            </div>
+                        </form>
+                    </li>
+                    <li class="post_main_li clearfix">
+                        <label><span>*</span>活动时间：</label>
+                        <div class="right_box">
+                            <div class="k_time_date">
+                                <i></i>
+                                <input type="text" name="activityBeginDate" readonly="readonly" id="datestart" value="{$defaultActBeginDate}">
+                            </div>
+                            <div class="k_time_hour">
+                                <div class="click_hour">
+                                    <i></i>
+                                    <input type="text" name="activityBeginTime" readonly="readonly" {if $actBeginTime}value="{$actBeginTime}"{else}value="00:00"{/if}>
+                                    <span></span>
+                                </div>                                
+                                <div class="hour_downlist">
+                                    <ul>
+                                        <li>00:00</li>
+                                        <li>00:30</li>
+                                        <li>01:00</li>
+                                        <li>01:30</li>
+                                        <li>02:00</li>
+                                        <li>02:30</li>
+                                        <li>03:00</li>
+                                        <li>03:30</li>
+                                        <li>04:00</li>
+                                        <li>04:30</li>
+                                        <li>05:00</li>
+                                        <li>05:30</li>
+                                        <li>06:00</li>
+                                        <li>06:30</li>
+                                        <li>07:00</li>
+                                        <li>07:30</li>
+                                        <li>08:00</li>
+                                        <li>08:30</li>
+                                        <li>09:00</li>
+                                        <li>09:30</li>
+                                        <li>10:00</li>
+                                        <li>10:30</li>
+                                        <li>11:00</li>
+                                        <li>11:30</li>
+                                        <li>12:00</li>
+                                        <li>12:30</li>
+                                        <li>13:00</li>
+                                        <li>13:30</li>
+                                        <li>14:00</li>
+                                        <li>14:30</li>
+                                        <li>15:00</li>
+                                        <li>15:30</li>
+                                        <li>16:00</li>
+                                        <li>16:30</li>
+                                        <li>17:00</li>
+                                        <li>17:30</li>
+                                        <li>18:00</li>
+                                        <li>18:30</li>
+                                        <li>19:00</li>
+                                        <li>19:30</li>
+                                        <li>20:00</li>
+                                        <li>20:30</li>
+                                        <li>21:00</li>
+                                        <li>21:30</li>
+                                        <li>22:00</li>
+                                        <li>22:30</li>
+                                        <li>23:00</li>
+                                        <li>23:30</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="k_time_ge">至</div>
+                            <div class="k_time_date">
+                                <i></i>
+                                <input type="text" name="activityEndDate" readonly="readonly" id="dateend" value="{$defaultActEndDate}">
+                            </div>
+                            <div class="k_time_hour">
+                                <div class="click_hour">
+                                    <i></i>
+                                    <input type="text" name="activityEndTime" readonly="readonly" {if $actEndTime}value="{$actEndTime}"{else}value="00:00"{/if}>
+                                    <span></span>
+                                </div>                                
+                                <div class="hour_downlist">
+                                    <ul>
+                                        <li>00:00</li>
+                                        <li>00:30</li>
+                                        <li>01:00</li>
+                                        <li>01:30</li>
+                                        <li>02:00</li>
+                                        <li>02:30</li>
+                                        <li>03:00</li>
+                                        <li>03:30</li>
+                                        <li>04:00</li>
+                                        <li>04:30</li>
+                                        <li>05:00</li>
+                                        <li>05:30</li>
+                                        <li>06:00</li>
+                                        <li>06:30</li>
+                                        <li>07:00</li>
+                                        <li>07:30</li>
+                                        <li>08:00</li>
+                                        <li>08:30</li>
+                                        <li>09:00</li>
+                                        <li>09:30</li>
+                                        <li>10:00</li>
+                                        <li>10:30</li>
+                                        <li>11:00</li>
+                                        <li>11:30</li>
+                                        <li>12:00</li>
+                                        <li>12:30</li>
+                                        <li>13:00</li>
+                                        <li>13:30</li>
+                                        <li>14:00</li>
+                                        <li>14:30</li>
+                                        <li>15:00</li>
+                                        <li>15:30</li>
+                                        <li>16:00</li>
+                                        <li>16:30</li>
+                                        <li>17:00</li>
+                                        <li>17:30</li>
+                                        <li>18:00</li>
+                                        <li>18:30</li>
+                                        <li>19:00</li>
+                                        <li>19:30</li>
+                                        <li>20:00</li>
+                                        <li>20:30</li>
+                                        <li>21:00</li>
+                                        <li>21:30</li>
+                                        <li>22:00</li>
+                                        <li>22:30</li>
+                                        <li>23:00</li>
+                                        <li>23:30</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="post_main_li clearfix act_type">
+                        <label><span>*</span>活动类型：</label>
+                        <div class="right_box">
+                            <div class="a_activity_box">
+                                <input type="hidden" name="activityType" value="{$defaultActType.id}">
+                                <span>{$defaultActType.sName}<i></i></span>
+                                <ul class="act_main_type">
+                                    {foreach $activityTypes as $key=>$val}
+                                    <li data-id="{$val.id}">{$val.sName}</li>
+                                    {/foreach}
+                                </ul>
+                            </div>
+                            <div class="a_activity_box a_train_box">
+                                <input type="hidden" name="activityChildType" value="{$defaultActChildType.id}">
+                                <span>{$defaultActChildType.sName}<i></i></span>
+                                <ul class="act_child_type">
+                                    {foreach $activityChildTypes as $val}
+                                    <li data-id="{$val.id}">{$val.sName}</li>
+                                    {/foreach}
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="post_main_li act_addr clearfix" {if isset($offline) && $offline}style="display: block;"{else}style="display: none;"{/if}>
+                        <label><span>*</span>活动地点：</label>
+                        <div class="right_box">
+                            <div class="clearfix">
+                                <div class="a_activity_box">
+                                    <input type="hidden" name="activityArea" value="{$defaultActArea.id}">
+                                    <span>{$defaultActArea.sName}<i></i></span>
+                                    <ul class="act_area">
+                                        {foreach $activityArea as $val}
+                                        <li data-id="{$val.id}">{$val.sName}</li>
+                                        {/foreach}
+                                    </ul>
+                                </div>
+                                <div class="a_activity_box">
+                                    <input type="hidden" name="activityCity" value="{$defaultActCity.id}">
+                                    <span id="city">{$defaultActCity.sName}<i></i></span>
+                                    <ul class="act_city">
+                                        {foreach $activityCity as $val}
+                                        <li data-id="{$val.id}">{$val.sName}</li>
+                                        {/foreach}
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="search_input">
+                                <div class="s_mark" id="mark"><i></i>已标记</div>
+                                <input type="text" name="activityAddress" value="{$actAddrDetails}" placeholder="请输入活动地址" onkeyup="search_map(this);" onfocus="search_map(this);">
+                                <input type="hidden" name="activityAddrMap" value="">
+                                <input type="hidden" id="fLng" value="{$fLongitude}">
+                                <input type="hidden" id="fLat" value="{$fLatitude}">
+                            </div>
+                            <div class="post_place_box" id="container"></div>
+                        </div>
+                    </li>
+
+                    <li class="post_main_li website_li clearfix" {if isset($online) && $online}style="display: block;"{else}style="display: none;"{/if}>
+                        <label><span>*</span>活动网址：</label>
+                        <div class="right_box">
+                            <input type="text" class="website_box" name="activityUrl" placeholder="请输入活动网址" value="{$activityWebUrl}">
+                        </div>
+                    </li>
+
+
+                    <li class="post_main_li detail_li clearfix">
+                        <label><span>*</span>活动详情：</label>
+                        <div class="right_box">
+                            <div class="font_write_box">
+                                <textarea name="activityDetails">{if $activityContent}{$activityContent}{/if}</textarea>
+                            </div>
+                            <div class="just_font">还可以输入<i>10000</i>字</div>
+                        </div>
+                    </li>
+
+                    <li class="post_main_li main_contacts clearfix">
+                        <label><span>*</span>主办方：</label>
+                        <div class="right_box">
+                            <input type="text" name="sponsor" placeholder="请输入主办方" value="{$sponsor}">
+                        </div>
+                    </li>
+
+                    <li class="post_main_li main_contacts clearfix">
+                        <label><span>*</span>主办方联系人：</label>
+                        <div class="right_box">
+                            <input type="text" name="contactName" placeholder="请输入主办方联系人" value="{$contactsName}">
+                            <div class="check_box">
+                                <input type="checkBox" name="official" {if $isOfficial}checked="checked"{/if} value="1">是否官方
+                            </div>
+                        </div>
+                    </li>
+                    <li class="post_main_li main_contacts_style clearfix">
+                        <label><span>*</span>主办方联系方式：</label>
+                        <div class="right_box">
+                            <input type="text" name="contactPhone" placeholder="请输入11位手机号码，座机请输入“区号-电话号码-分机号”" value="{$contactsPhone}">
+                        </div>
+                    </li>
+                </ul>
+                <div class="post_button">
+                    <a href="javascript:void(0);" class="kept_post" id="saveNotRelease">保存不发布</a>
+                    <a href="javascript:void(0);" class="only_post" id="saveAndRelease">发布</a>
+                    <a href="javascript:void(0);" class="view_post" id="saveAndPreview">保存并预览</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+
+{block name="self"}
+<script type="text/javascript" src="{STATIC_URL3}/global/js/kindeditor-4.1.7/kindeditor-min.js"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/kindeditor-4.1.7/lang/zh_CN.js"></script>
+<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.3&key=a24d3cf0cc6b2e53bde20beb1e648144&plugin=AMap.Geocoder"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/activity.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/activity_map.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/common/jquery-ui.min.js?{STATIC_CHANGE_TIME}"></script>
+
+{literal}
+<script>
+    var editor = KindEditor.create('textarea[name="activityDetails"]', {
+        uploadJson : '/activity/upload/details/?'+Math.random(),
+        allowFileManager : true,
+        allowMediaUpload : false,
+        items : [
+            'justifyleft', 'justifycenter', 'justifyright', '|', 'cut', 'copy', 'paste', '|', 'fontsize', 'forecolor', '|', 'bold', 'underline', '|', 'image', 'multiimage', 'media'
+        ],
+        afterCreate : function(){
+            var K_body = $(".ke-edit-iframe").contents().find("body");
+            K_body.addClass("no_data");
+        },
+        afterChange : function(){
+            var K_body = $(".ke-edit-iframe").contents().find("body");
+            if (typeof(editor) != 'undefined') {
+                _txtNum(20000);
+                if (!editor.isEmpty()) {
+                    K_body.removeClass("no_data");
+                }
+            }
+        },
+        afterFocus : function () {
+            var K_body = $(".ke-edit-iframe").contents().find("body");
+            if (K_body.hasClass("no_data")) {
+                K_body.removeClass("no_data");
+            }
+        },
+        afterBlur: function () {
+            var K_body = $(".ke-edit-iframe").contents().find("body");
+            if (editor.isEmpty()) {
+                K_body.addClass("no_data");
+            }
+        }
+    });
+
+    function _length(text) {
+        return text.replace(/[^\x00-\xff]/g, "aa").length;
+    };
+
+    function _txtNum(number){
+        var aa = editor.html();
+        var _text = aa.replace(/<img[^>]*\/>/g,"").replace(/<embed[^>]*\/>/g,"").replace(/\s*/g, "");
+        var _len = _length(_text);
+        if( (number - _len) >= 0){
+            var num = parseInt(( number - _len ) / 2);
+            $('.just_font').html("还可以输入<i>" + num + "</i>字");
+        }else{
+            var num = Math.ceil(( _len - number ) / 2);
+            $('.just_font').html("已经超过" + num + "字").css({"color":"#c06"});
+        }
+    };
+
+    $( "#datestart,#dateend" ).datepicker({
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: "yy-mm-dd",
+        monthNamesShort: ['一月','二月','三月','四月','五月','六月',
+        '七月','八月','九月','十月','十一月','十二月'],
+        dayNamesMin: ['日','一','二','三','四','五','六']
+    });
+</script>
+{/literal}
+{/block}

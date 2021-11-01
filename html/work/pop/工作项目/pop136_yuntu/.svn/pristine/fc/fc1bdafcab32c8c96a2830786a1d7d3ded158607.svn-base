@@ -1,0 +1,282 @@
+{extends file="layout.html"}
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css"
+    href="{$smarty.const.STATIC_URL1}/global/css/report/detail.css?{$smarty.const.STATIC_CHANGE_TIME}" />
+{/block}
+
+{block name="main"}
+<input id="encrypt" type="hidden" data-sign="{$sign}" data-timestamp="{$timeStamp}" data-token="{$token}">
+
+<div class="report-content" id="pop_layer">
+    <div class="report-cont">
+        <!--报告-->
+        <div class="pop-report pop-report-detail js-pop-report">
+            <div class="bannner-background">
+                <div class="fiter-img">
+                    <img src="" alt="pic">
+                </div>
+                <div class="layer-main">
+                    <div class="header-detail-infor">
+                        <h1></h1>
+                        <div class="tit-info">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="live-box live-trial-vip">
+                        <!-- <span>视频直播解读</span> -->
+                        <!-- <a href="javascript:void(0);" target="_blank">立即预约<i></i></a> -->
+                        <!-- <a href="javascript:void(0);" target="_blank">回看解读<i></i></a> -->
+                        <!-- <a href="javascript:void(0);" target="_blank">立即收看<i></i></a> -->
+                    </div>
+                    <div class="bannerpic">
+                        <img src="" alt="pic">
+                    </div>
+                </div>
+            </div>
+            <div class="layer-main layer-indexdiv-main"></div>
+        </div>
+    </div>
+</div>
+
+<!--侧边导航-->
+<div class="nav-right js-nav-right">
+    <div class="nav-control js-nav-control1"></div>
+    <ul class="right-tab clearfix js-right-tab nobook">
+        <li class="fl right-tab-text active"><i></i><span>本文简介</span></li>
+        <!-- <li class="fr right-tab-book"><i></i><span>系列推荐</span></li> -->
+    </ul>
+    <div class="right-cont right-cont-text">
+        <div class="right-top">
+            <h3></h3>
+            <div class="report-msg js-report-msg">
+                <div></div>
+                <p class="report-messages"></p>
+            </div>
+            <div class="msg-i4-null" style="height: 12px;display: none;"></div>
+        </div>
+        <div class="right-top">
+            <div class="msg-i msg-i4 js-msg-i4 clear">
+                <i></i>
+                <ul class="fl">
+                    <!-- <li><a target="_blank" href="" title=""></a></li> -->
+                </ul>
+            </div>
+        </div>
+        <div class="see-nav js-see-nav1">
+            <div class="see-title">
+                <i></i>大纲
+            </div>
+            <ul>
+                <!-- <li class="{if $key==0}this-item{/if}">
+                    <a data-id="index_{$topic.iSubTopicId}" onclick="javascript:document.getElementById('index_{$topic.iSubTopicId}').scrollIntoView()" class="clear" title="{$topic.sTitle}">
+                        <i></i><span>{$topic.sTitle}</span>
+                    </a>
+                </li> -->
+            </ul>
+        </div>
+    </div>
+</div>
+<!--小屏幕侧边导航-->
+<div class="nav-right-min js-nav-right-min">
+    <div class="nav-control js-nav-control2">
+        <div class="nav-control-disc js-nav-control-disc">
+            <i></i>
+            <p>点击，可展开侧边栏</p>
+            <div>知道了</div>
+        </div>
+    </div>
+    <ul class="right-tab clearfix js-right-tab nobook">
+        <li class="fl right-tab-text active"><i></i><span>本文简介</span></li>
+        <!-- <li class="fr right-tab-book"><i></i><span>系列推荐</span></li> -->
+    </ul>
+    <div class="right-cont-min right-cont-text">
+        <div class="see-nav js-see-nav2">
+            <div class="see-title">
+                <i></i>大纲
+            </div>
+            <ul class="js-see-list"></ul>
+        </div>
+    </div>
+</div>
+
+<!--底部-->
+<div class="report-footer">
+    <div class="clear">
+        <div class="footer-cont">
+            <div class="go-top js-go-top">
+                <i></i>
+                <p>返回<br />顶部</p>
+            </div>
+            <ul class="clear">
+                <li class="prompt js-prompt">
+                    <i></i>
+                    <div class="prompt-disc">
+                        <div class="clear">
+                            <div class="disc-icon">
+                                <p style="padding-bottom: 25px;">
+                                    <i class="disc-icon1"></i>
+                                </p>
+                                <p>
+                                    <i class="disc-icon2"></i>
+                                </p>
+                                <p>
+                                    <i class="disc-icon3"></i>
+                                </p>
+                                <p style="padding-top: 3px;">
+                                    <i class="disc-icon4"></i>
+                                    <i class="disc-icon5"></i>
+                                </p>
+                            </div>
+                            <div class="dic-msg">
+                                <p>鼠标滑动滚轮，上滑报告</p>
+                                <p style="padding-top: 32px;">键盘上下键，上滑报告</p>
+                                <p style="padding-top: 18px;">按键盘左右键，侧边栏收<br />起展开操作</p>
+                            </div>
+                        </div>
+                        <div class="dic-close">知道了</div>
+                    </div>
+                </li>
+                <!-- 灵感视频无PDF与收藏 -->
+                <li class="report-down" id="J_DownPDF1" data-rename="" data-path=""><i></i><span>下载PDF报告</span></li>
+                <li class="report-down-imgpack js-report-down-imgpack" data-rename="" data-path="">
+                    <i></i><span>下载全部图片</span></li>
+                <li class="report-collect js-report-collect" data-iscollected="">
+                    <i></i><span>加入收藏</span>
+                </li>
+                <li class="report-share">
+                    <i></i><span>分享</span>
+                    <div class="prompt-disc">
+                        <div class="bdsharebuttonbox clear bdshare-button-style0-24" href="javascript:void(0);">
+                            <a href="javascript:void(0)" class="bds-sqq" data-cmd="sqq" title="分享给QQ好友"></a>
+                            <a href="javascript:void(0)" class="bds-weixin" data-cmd="weixin" title="分享到微信"></a>
+                            <a href="javascript:void(0)" class="bds-qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                            <a href="javascript:void(0)" class="bds-tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                        </div>
+                    </div>
+                </li>
+                <li class="yuntu-app">
+                    <a href="javascript:void(0);" title="云图APP">
+                        <i></i><span>云图APP</span>
+                    </a>
+                    <div class="qr-code"></div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- 下载图片 -->
+<div class="download-img-box js-download-img-box">
+    <div class="down-main-top clearfix">
+        <h2 class="fl">下载文件格式</h2>
+        <div class="fr down-close js-down-close"></div>
+    </div>
+    <table class="down-table" width="100%" id="J_DownloadType2">
+        <thead>
+            <tr>
+                <th width="25%">格式</th>
+                <th width="25%">尺寸</th>
+                <th width="25%">文件大小</th>
+                <th width="25%">点击下载</th>
+            </tr>
+        </thead>
+        <tbody class="js-download-tbody">
+            <tr>
+                <td>.eps</td>
+                <td>--</td>
+                <td>10MB</td>
+                <td><a class="js-download-btn" href="javascript:void(0);"
+                        data-bp="%2Ffashion%2Fgraphic%2F201803070330_sh4650%2Feps%2F0-2790380308_sh4650.eps"
+                        title="下载">下载</a></td>
+            </tr>
+            <tr>
+                <td>.eps</td>
+                <td>--</td>
+                <td>10MB</td>
+                <td><a class="js-download-btn" href="javascript:void(0);"
+                        data-bp="%2Ffashion%2Fgraphic%2F201803070330_sh4650%2Feps%2F0-2790380308_sh4650.eps"
+                        title="下载">下载</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- 缩放图片层 -->
+<div class="show-pic-section js-show-pic-section status" data-click="1">
+    <div class="section" data-click="1">
+        <button data-click="1"></button>
+        <div class="down-pic js-download-btn2 js-src">
+            <i></i>
+            <span>下载图片</span>
+        </div>
+        <!-- <div class="recommend js-recommend">
+            <span>相关推荐</span>
+            <div class="icon"></div>
+        </div> -->
+        <i class="i-lfet js-i-lfet"></i>
+        <img class="js-down-img" style="display: none;" ondragstart="return false;" alt="pic">
+        <img src="{$smarty.const.STATIC_URL1}/global/images/report/loading_pie.gif" class="js-gifImg">
+        <i class="i-right js-i-right"></i>
+        <div class="operation-div">
+            <div class="tool-div js-tool-div">
+                <div><button style="top: 0px;"></button></div>
+                <button class="js-origin-img-btn" title="原图">原图</button>
+                <button class="js-reset-img-btn" title="复位">复位</button>
+            </div>
+        </div>
+    </div>
+    <div class="section-right Scrollbar">
+        <div class="head">相关推荐</div>
+        <div class="list js-guess-imgs clearfix">
+        </div>
+        <div class="loading js-loading">
+            <img src="{$smarty.const.STATIC_URL1}/global/images/report/alertloading.gif" />
+        </div>
+    </div>
+</div>
+<div class="show-pic-bg js-show-pic-bg"></div>
+
+<!-- 报告视频 -->
+<div class="report-video-bg js-report-video-bg"></div>
+<div class="report-video-section js-report-video-section">
+    <i class="close"></i>
+    <div id="reportPlayer"></div>
+</div>
+
+{/block}
+
+{block name="other"}
+<!-- 收藏提示tip -->
+<div class="tip-box">提示</div>
+{/block}
+
+{block name="self"}
+{literal}
+<script type="text/javascript" src="https://player.youku.com/jsapi"></script>
+<script type="text/javascript">
+    window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "1", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "24" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = '/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
+</script>
+<script>
+    // 页面定位
+    var id = getQueryString("searchId");
+    function getQueryString(name) {
+        var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) {
+            return unescape(r[2]);
+        }
+        return null;
+    }
+    if (id != null && id != undefined) {
+        setTimeout(function () {
+            document.getElementById(id).scrollIntoView();
+        }, 2000);
+    }
+</script>
+{/literal}
+<script src="{$smarty.const.STATIC_URL3}/global/js/report/detail.js?{$smarty.const.STATIC_CHANGE_TIME}"
+    type="text/javascript" charset="utf-8"></script>
+{/block}
+{block name="footer"}{/block}

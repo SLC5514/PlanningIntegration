@@ -1,0 +1,491 @@
+{extends file="layout.html"}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/styles-page.css?{STATIC_CHANGE_TIME}">
+{/block}
+
+{block name="main"}
+
+<div class="con_width style-contain">
+    <div class="style-top clearfix">
+        <div class="top-l">
+            <div class="top-banner">
+                <p>零时差、无国界，实时更新最新款式资讯；全线索、多渠道，全面汇聚市场流行单品。</p>
+                <ul  class="fl clearfix js-link-back">
+                    <li class="{if !$gender}this-sec{/if}" data-href="/stylezone/gen_0/" data-url="">
+                        <div style="height: 36px;padding-top: 18px;"><img style="margin-left: -1px;" src="{STATIC_URL2}/global/images/styles_page/style-icon1.png" alt="icon" /></div>
+                        <p>全部</p>
+                    </li>
+                    <li class="{if $gender ==2}this-sec{/if}" data-href="/stylezone/gen_2/" data-url="-gen_2">
+                        <div style="height: 39px;padding-top: 15px;"><img style="margin-left: 2px;" src="{STATIC_URL2}/global/images/styles_page/style-icon2.png" alt="icon" /></div>
+                        <p>女装</p>
+                    </li>
+                    <li class="{if $gender == 1}this-sec{/if}" data-href="/stylezone/gen_1/" data-url="-gen_1">
+                        <div style="height: 39px;padding-top: 15px;"><img src="{STATIC_URL2}/global/images/styles_page/style-icon3.png" alt="icon" /></div>
+                        <p>男装</p>
+                    </li>
+                    <li class="{if $gender == 5}this-sec{/if}" data-href="/stylezone/gen_5/" data-url="-gen_5">
+                        <div><img src="{STATIC_URL2}/global/images/styles_page/style-icon4.png" alt="icon" /></div>
+                        <p>童装</p>
+                    </li>
+                </ul>
+                <i></i>
+                <div class="style-search js-style-search fl">
+                    <div class="search-btn js-search-btn">
+                            <div><img src="{STATIC_URL2}/global/images/styles_page/style-icon5.png" alt="icon" /></div>
+                            <p>搜索</p>
+                    </div>
+                    <input type="text" name="" class="js-search-val" value="搜索你想要的款式!"/>
+
+					<div class="search-list clearfix">
+                        <span class="fl">热门推荐：</span>
+                        <ul class="fl">
+                            {foreach $keys as $v}
+                            <li><a href="{$v.link}" target="_blank" title="{$v.name}">{$v.name}</a></li>
+                            {/foreach}
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="recommends js-recommends clearfix">
+                {foreach $ads as $k=>$v}
+                <a href="{$v.sImgLink}" target="_blank" class="{if $k==1}recommend-center{/if}" title="{$v.sKeywords}">
+                    <img src="{STATIC_URL2}{$v.sImgPath}" alt="pic"/>
+                    <div>
+                        <h3>{$v.sKeywords}</h3>
+                        <p>更多</p>
+                    </div>
+                </a>
+               {/foreach}
+            </div>
+
+            <div class="link-list js-link-list">
+                <ul class="clearfix">
+                    <li>
+                        <a href="/styles/runways/" title="秀场提炼" target="_blank">
+                            <i><img src="{STATIC_URL2}/global/images/styles_page/style-icon11.png" alt="icon"/></i>
+                            <div>
+                                <p>秀场提炼</p>
+                                <span>Runways</span>
+                            </div>
+                        </a>
+                        <span class="border-l"></span>
+                        <span class="border-t"></span>
+                        <span class="border-r"></span>
+                        <span class="border-b"></span>
+                    </li>
+                    <li>
+                        <a href="/styles/shows/" title="订货会精选" target="_blank">
+                            <i><img src="{STATIC_URL2}/global/images/styles_page/style-icon12.png" alt="icon"/></i>
+                            <div>
+                                <p>订货会精选</p>
+                                <span>Trunk Shows</span>
+                            </div>
+                        </a>
+                        <span class="border-l"></span>
+                        <span class="border-t"></span>
+                        <span class="border-r"></span>
+                        <span class="border-b"></span>
+                    </li>
+                    <li>
+                        <a href="/styles/designerbrand/" title="设计师品牌" target="_blank">
+                            <i><img src="{STATIC_URL2}/global/images/styles_page/style-icon13.png" alt="icon"/></i>
+                            <div>
+                                <p>设计师品牌<em></em></p>
+                                <span>Designer Brand</span>
+                            </div>
+                        </a>
+                        <span class="border-l"></span>
+                        <span class="border-t"></span>
+                        <span class="border-r"></span>
+                        <span class="border-b"></span>
+                    </li>
+                    <li class="no-r">
+                        <a href="/styles/online/" title="名牌精选" target="_blank">
+                            <i><img src="{STATIC_URL2}/global/images/styles_page/style-icon14.png" alt="icon"/></i>
+                            <div>
+                                <p>名牌精选</p>
+                                <span>Selected Brand</span>
+                            </div>
+                        </a>
+                        <span class="border-l"></span>
+                        <span class="border-t"></span>
+                        <span class="border-r"></span>
+                        <span class="border-b"></span>
+                    </li>
+                    <li>
+                        <a href="/styles/popular/" title="款式流行" target="_blank">
+                            <i><img src="{STATIC_URL2}/global/images/styles_page/style-icon15.png" alt="icon"/></i>
+                            <div>
+                                <p>款式流行</p>
+                                <span>Popular Style</span>
+                            </div>
+                        </a>
+                        <span class="border-l"></span>
+                        <span class="border-t"></span>
+                        <span class="border-r"></span>
+                        <span class="border-b"></span>
+                    </li>
+                    <li>
+                        <a href="/styles/retail/" title="全球实拍" target="_blank">
+                            <i><img src="{STATIC_URL2}/global/images/styles_page/style-icon16.png" alt="icon"/></i>
+                            <div>
+                                <p>全球实拍</p>
+                                <span style="font-size: 12px;line-height: 19px;">Global Photo Shot</span>
+                            </div>
+                        </a>
+                        <span class="border-l"></span>
+                        <span class="border-t"></span>
+                        <span class="border-r"></span>
+                        <span class="border-b"></span>
+                    </li>
+                    <li>
+                        <a href="/styles/trendsetters/" title="明星/ins" target="_blank">
+                            <i><img src="{STATIC_URL2}/global/images/styles_page/style-icon17.png" alt="icon"/></i>
+                            <div>
+                                <p>明星/ins</p>
+                                <span>Trendsetters/INS</span>
+                            </div>
+                        </a>
+                        <span class="border-l"></span>
+                        <span class="border-t"></span>
+                        <span class="border-r"></span>
+                        <span class="border-b"></span>
+                    </li>
+                    <li class="no-r">
+                        <a href="/styles/streetsnaps/" title="街拍图库" target="_blank">
+                            <i><img src="{STATIC_URL2}/global/images/styles_page/style-icon18.png" alt="icon"/></i>
+                            <div>
+                                <p>街拍图库</p>
+                                <span>Street Snaps</span>
+                            </div>
+                        </a>
+                        <span class="border-l"></span>
+                        <span class="border-t"></span>
+                        <span class="border-r"></span>
+                        <span class="border-b"></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="top-list fr">
+            <div class="list-msg clearfix">
+                <div class="msg-l fl">
+                    <h3>
+                    	趋势指数
+                        <div>
+                            <div class="top-disc">趋势指数每日更新TOP10数据以便从单品和品牌维度发现货品潮流趋势、上货周期、并跟踪爆款。</div>
+                        </div>
+                    </h3>
+                    <p>TOP10</p>
+                </div>
+                <div class="msg-r js-top-sec fr clearfix">
+                    <div class="sec-item">品牌</div>
+                    <div>单品</div>
+                </div>
+            </div>
+            <div class="list-tiao js-list-tiao">
+            	<!--品牌↓↓↓-->
+                <ul class="js-tiao1">
+                    {foreach $trendIndex.brand as $k=>$v}
+                    <li class="tiao{$k}">
+                        <a href="{$v.link}" data-id="{$v.id}" target="_blank" class="clearfix" title="{$v.name}">
+                            <div data-num="{$v.total}">
+                                <span>{$v.name}</span>
+                                <div class="hover-box"></div>
+                            </div><span class="top-num hide">{$v.total}</span>
+                        </a>
+                    </li>
+                    {/foreach}
+                </ul>
+                <!--品牌↑↑↑-->
+                <!--单品↓↓↓-->
+                <ul class="js-tiao2" style="display: none;">
+                    {foreach $trendIndex.category as $k=>$v}
+                    <li class="tiao{$k}">
+                        <a href="{$v.link}" data-id="{$v.id}" target="_blank" class="clearfix" title="{$v.name}">
+                            <div data-num="{$v.total}">
+                                <span>{$v.name}</span>
+                                <div class="hover-box"></div>
+                            </div><span class="top-num hide">{$v.total}</span>
+                        </a>
+                    </li>
+                    {/foreach}
+                </ul>
+                <!--单品↑↑↑-->
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="style-list js-style-list">
+        <div class="list-title">
+            <img class="title-icon" src="{STATIC_URL2}/global/images/styles_page/style-icon21.png" alt="icon" />
+            <h3>最近更新的品牌</h3>
+            <img class="title-pic" src="{STATIC_URL2}/global/images/styles_page/style-icon22.png" alt="icon" />
+        </div>
+        <ul class="clearfix">
+        </ul>
+        <div class="list-more js-list-more"><div data-id="0">查看更多</div><p></p></div>
+        <div class="list-more-link js-more-link"><a href="javascript:;" target="_blank" title="查看更多数据">查看更多数据</a><p></p></div>
+        <div class="loading-pic js-loading-section"><img src="{STATIC_URL2}/global/images/styles_page/loading.gif" alt="icon" /></div>
+    </div>
+</div>
+
+{/block}
+{block name="self"}
+<script>
+    var listData={
+    		data:{
+    			list:{$lists}
+    		}
+    	}
+</script>
+{literal}
+<script>
+    $(function(){
+    	var def={
+    		is_scroll:false,	//滚动加载
+    		img_load1:'https://imgf2.pop-fashion.com/global/images/loading/style.gif',
+    		img_load2:'https://imgf2.pop-fashion.com/global/images/loading/stylexiao.gif',
+    		get_list:false,		//是否在获取数据
+    		is_more:true,		//是否还有数据
+    		loading_ele:$(".js-loading-section"),
+    		top0_w:1,			//top0的宽度
+    		get_brand:{
+    			page_num:1
+    		}
+    	};
+    	
+    	var start_w=32,list_w=45;
+    	topList();					//top10显示条
+    	function topList(){
+    		$('.js-tiao1>li>a>div').each(function(index,item){
+    			var _w=start_w;
+    			if(index==0){
+    				def.top0_w=$(item).data('num');
+    				$(item).animate({'width':list_w+start_w+'%'},800);
+    			}else{
+    				_w=($(item).data('num')*list_w/def.top0_w)+start_w+'%';
+    				$(item).animate({'width':_w},800);
+    			}
+    		})
+    		
+    		$('.js-tiao2>li>a>div').each(function(index,item){
+    			var _w=start_w;
+    			if(index==0){
+    				def.top0_w=$(item).data('num');
+    				$(item).animate({'width':list_w+start_w+'%'},800);
+    			}else{
+    				_w=($(item).data('num')*list_w/def.top0_w)+start_w+'%';
+    				$(item).animate({'width':_w},800);
+    			}
+    		})
+    		
+    		//显示数目
+			setTimeout(function(){
+				$('.js-list-tiao .top-num').fadeIn(100);
+			},720);
+    	}
+    	
+    	function listScroll(){				//滚动加载list
+    		$(window).on('scroll',function(){
+    			if(def.get_list==false && def.is_more==true && def.is_scroll==false){
+    				var scroll_top=$(this).scrollTop();
+	    			var body_h=$(this).height();  
+	    			var page_h=$(document).height();  
+//	    			var page_h=document.documentElement.offsetHeight||document.body.offsetHeight;
+	    			if(page_h-scroll_top-body_h<500){
+    					def.is_scroll=true;		//滚动加载
+	    				def.is_list=true;  		
+	    				getList();
+	    			}
+	    			
+    			}
+    		})
+    	}
+    	
+    	//请求列表
+    	function getList(){
+    		if(def.get_list==false){
+	            def.loading_ele.fadeIn(200);
+	            def.is_list=true;
+	            pop_fashion_global.fn.subAjax({
+	                url: '/ajax/getstylezonelist?page='+def.get_brand.page_num,
+	                data:def.get_brand,
+	                successFunc:setList,
+	                errorFunc:function(){
+	                    def.loading_ele.fadeOut(200);
+	                    def.get_list=false;		//跳出加载	
+	                    def.is_scroll=false;	//跳出滚动
+	                }
+	            });
+	            
+	        }
+    	}
+    	
+    	//list写入
+      	setList(listData);
+    	function setList(data){
+    		if(data['data']){
+    			def.get_brand.page_num++;
+    			var _html='',arr=data['data']['list']||[];
+    			for(var i=0,len=arr.length;i<len;i++){
+    				var brandName=arr[i]['brandName']||'';		//brandName
+//  				var tableName=arr[i]['tableNamearr']||'';	
+//  				var _id=arr[i]['id']||'';		//id
+    				var _href=arr[i]['url']||'';		//链接
+    				var img_url=arr[i]['cover']||'';		//大图片
+    				var details=arr[i]['details']||[];		//小图片
+    				var img_len=details.length>=3?3:details.length,img_html='';
+    				for(var j=0;j<img_len;j++){
+    					var detail_img=details[j]['cover']||'';
+    					if(j==1){
+    						img_html+='<img class="pic-center" src="'+def.img_load2+'" data-original="'+detail_img+'" alt="pic"/>';
+    					}else{
+    						img_html+='<img src="'+def.img_load2+'" data-original="'+detail_img+'"/ alt="pic">';
+    					}
+    				}
+    				var _disc=arr[i]['disc']||'';		//描述
+    				
+    				_html+='<li><a class="list-item" href="'+_href+'" target="_blank" title="查看详情">';
+    				_html+='<img src="'+def.img_load1+'" data-original="'+img_url+'" alt="pic"/>';
+    				_html+='<div class="pic-list clearfix">'+img_html+'</div>';
+    				_html+='<div class="pic-bg"></div></a><a class="item-msg" href="'+_href+'" target="_blank" title="'+brandName+'">'+brandName+'</a></li>';
+    				
+    			}
+    			
+    			
+    			if(_html==''){		//如果后面没有数据了
+    				def.is_more=false;
+    				$('.list-more').show().addClass('no-more').children('div').data('id',2).text('没有更多了~');
+    			}else if(def.get_brand.page_num>=9){	//第8页后面了
+    				def.is_more=false;
+    				var page_num=Math.floor((def.get_brand.page_num-1)*3/2+1);
+	        		var _page='-page_'+page_num;
+	        		var _url=$('.js-link-back>.this-sec').data('url')||'';
+    				$('.js-more-link').show().children('a').attr('href','/styles/dis_2'+_url+_page+'-ind_0/#anchor');
+//  				$('.list-more').show().children('div').data('id',1).text('查看更多数据');
+    			}
+    			
+    			$('.js-style-list>ul').append(_html);
+    			
+    			def.get_list=false;		//跳出加载
+    			def.loading_ele.fadeOut(200);
+    			def.is_scroll=false;	//跳出滚动加载
+    			//图片懒加载
+    			$(".js-style-list>ul img").lazyload({effect : "fadeIn"});
+    		}
+    		
+    	}
+    	
+    	//-----------------事件-----------------------
+    	//性别点击刷新
+    	$('.js-link-back>li').on('click',function(){
+    		var _href=$(this).data('href')+'';
+    		if(_href=='/stylezone/gen_0/'){
+    			$.cookie('gender', null ,{ path:'/', domain:'.pop-fashion.com'});
+    		}
+      		window.location.href=_href;
+    	});
+    	
+        //搜索hover效果
+        $('.js-style-search').hover(function(){
+            $(this).stop().addClass('search-hover');
+        },function(){})
+        $('.top-banner').hover(function(){},function(){
+        	$('.js-style-search').stop().removeClass('search-hover');
+            $('.js-style-search>input').blur();
+        })
+
+        //搜索控制
+        var serch_val='搜索你想要的款式!';
+        $('.js-style-search>input').on('focus',function(){
+            var _val=$(this).val();
+            if(_val==serch_val){
+                $(this).val('');
+            }
+        })
+        $('.js-style-search>input').on('blur',function(){
+            var _val=$(this).val();
+            if(_val==''){
+                $(this).val(serch_val);
+            }
+        })
+
+        //秀场提炼hover效果
+        $('.js-link-list li').hover(function(){
+            var _this=$(this);
+            _this.children('span').removeClass('border-hide').hide();
+
+            _this.children('.border-r,.border-l').show().css('height',0).stop().animate({
+                'height':'100%'
+            },300,function(){
+                _this.children('.border-t,.border-b').fadeIn(100);
+            })
+        },function(){
+			var _this=$(this);
+			_this.removeClass('move-bord').children('.border-l,.border-r').css({
+				'height':'0'
+			});
+			_this.children('span').hide().addClass('border-hide');
+        })
+        
+        //top10切换
+        $('.js-top-sec>div').on('click',function(){
+        	if(!$(this).hasClass('sec-item')){
+        		var _index=$(this).index();
+        		$('.js-list-tiao>ul').eq(_index).show().siblings('ul').hide();
+        		$(this).addClass('sec-item').siblings().removeClass('sec-item');
+        	}
+        })
+        
+        //点击查看更多
+        $('.js-list-more>div').on('click',function(){
+        	var _id=$(this).data('id')||'0';
+        	if(_id=='0'){
+        		if(def.get_list==false){
+        			$('.js-list-more').hide(200);
+        			getList();		//请求列表
+        			setTimeout(function(){
+        				listScroll();	//滚动加载
+        			},1000);
+        		}
+        	}
+        })
+        
+        //搜索
+        $('.js-search-btn').on('click',function(){
+        	var _val=$.trim($('.js-search-val').val())||'';
+        	if(_val!=serch_val && _val!=''){
+	    		var _words=encodeURI(encodeURI(_val));
+	        	window.open('/styles/?key='+_words+'#anchor');
+    		}
+        })
+        
+		$('.js-search-val').on('keypress',function(e){
+			var ev=e||window.event;
+	    	if(ev.keyCode==13){
+    			var _val=$.trim($('.js-search-val').val())||'';
+    			if(_val!=serch_val && _val!=''){
+		    		var _words=encodeURI(encodeURI(_val));
+		        	window.open('/styles/?key='+_words+'#anchor');
+		        	
+	    		}
+	    	}
+	    	
+        });
+        
+        //卡片点击清除页面cookie
+//        $('.js-recommends>a').on('click',function(){
+//        	$.cookie('industry', null ,{ path:'/', domain:'.pop-fashion.com'});
+//
+//        })
+        
+        
+    })
+</script>
+{/literal}
+{/block}

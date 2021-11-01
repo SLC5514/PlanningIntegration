@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="applicable-device" content="pc">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen" />
+    <meta name="keywords" content="{block name=keywords}{$keywords}{/block}" />
+    <meta name="description" content="{block name=description}{$description}{/block}" />
+    <link rel="stylesheet" href="{STATIC_URL2}/global/topic/appdownload/css/index.css?{STATIC_CHANGE_TIME}">
+    <title>POP</title>
+</head>
+
+<body>
+    <div class="main">
+        <div class="down-box">
+            <span class="down-h1">云图</span>
+            <span class="down-span">供应链的图案灵感库</span>
+            <div class="down-list">
+                <ul>
+                    <li>
+                        <img src="{STATIC_URL2}/global/topic/appdownload/image/yitusoutu.png" />
+                        <span>以图搜图</span>
+                    </li>
+                    <li>
+                        <img src="{STATIC_URL2}/global/topic/appdownload/image/monichengpin.png" />
+                        <span>模拟成品</span>
+                    </li>
+                    <li>
+                        <img src="{STATIC_URL2}/global/topic/appdownload/image/search.png" />
+                        <span>关键字搜索</span>
+                    </li>
+                    <li>
+                        <img src="{STATIC_URL2}/global/topic/appdownload/image/shaixuan.png" />
+                        <span>分类筛选</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="down-but" id="js-down-but">下载云图APP</div>
+        </div>
+        <div class="isWX" id="js-isWX">请在右上角 ··· 中选择在“浏览器打开”</div>
+    </div>
+    <script type="text/javascript">
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                // 手机旋转事件,大部分手机浏览器都支持 onorientationchange 如果不支持，可以使用原始的 resize
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    //clientWidth: 获取对象可见内容的宽度，不包括滚动条，不包括边框
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    var maxSize=(clientWidth) / 10;
+                    if(maxSize>60){
+                        maxSize=60
+                    }
+                    docEl.style.fontSize = maxSize + 'px';
+                };
+            recalc();
+            //判断是否支持监听事件 ，不支持则停止
+            if (!doc.addEventListener) return;
+            //注册翻转事件
+            win.addEventListener(resizeEvt, recalc, false);
+            
+            //IOS load下载事件
+            win.onload = function () {
+                if (isIOS) {
+                    win.location.href = "https://itunes.apple.com/cn/app/%E4%BA%91%E5%9B%BE/id1436269034?mt=8";
+                }
+            }
+            //下载事件
+            function down(isOnload) {
+                if (u.toLowerCase().match(/MicroMessenger/i) == "micromessenger") {
+                    isWX.style.display = "block";
+                } else if (isIOS) {
+                    win.location.href = "https://itunes.apple.com/cn/app/%E4%BA%91%E5%9B%BE/id1436269034?mt=8";
+                } else if (isAndroid) {
+                    win.location.href = "https://a.app.qq.com/o/simple.jsp?pkgname=com.pop136.cloudpicture&from=singlemessage";
+                }
+            }
+            var u = navigator.userAgent;
+            var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //g
+            var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+            var but = doc.getElementById("js-down-but");
+            var isWX = doc.getElementById("js-isWX");
+            but.addEventListener("click", down);
+            isWX.addEventListener("click", function () {
+                isWX.style.display = "none";
+            });
+        })(document, window);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,194 @@
+{extends file="layout.html"}
+{block name="title"}{$title}{/block}
+{block name=keywords}{$keywords}{/block}
+{block name=description}{$description}{/block}
+{block name="selfcss"}
+	<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/popmall.css?{STATIC_CHANGE_TIME}">
+{/block}
+{block name="main"}
+<div class="list_content">
+    <input type="hidden" id="goods_info" data-id="{$itemInfo.id}" data-title="{$itemInfo.sName}" data-category="{$categoryHtml}" data-subcategory="{$subCategoryHtml}">
+	<div class="list_nav">
+		<div class="contentx1200">
+			<a class="fl" href="/">首页</a>
+			<span class="fl"></span>
+			<a class="fl" href="/item/">POP商城</a>
+			<span class="fl"></span>
+			<a class="fl" href="{$categoryLink}">{$categoryHtml}</a>
+			<span class="fl"></span>
+			<div class="choose_list fl">
+				<a href="{$subCategoryLink}">{$subCategoryHtml}</a><i class="arrow"></i>
+				<div class="md_list">
+                    {foreach $otherSubcategory as $val}
+					<a href="{$val.link}">{$val.txt}</a>
+                    {/foreach}
+				</div>
+			</div>
+			<span class="fl"></span>
+			<a class="fl" href="javascript:void(0);">{$itemInfo.sName}</a>
+		</div>
+	</div>
+	<div class="contentx1200 clearfix">
+		<div class="product_detail_div clearfix">
+			<div class="detail_top clearfix">
+				<div class="img_exhibition fl">
+					<div class="big_img">
+						<a href="javascript:void(0);">
+							<img src="{STATIC_URL2}{$itemInfo.firstImage}">
+						</a>
+					</div>
+					<div class="small_img clearfix">
+						<div class="four_width">
+							<ul>
+	                            {foreach $itemInfo.images as $key=>$val}
+								<li><a href="javascript:void(0);"><img src="{STATIC_URL2}{$val}"></a></li>
+	                            {/foreach}
+							</ul>
+						</div>
+						<div class="s_btn left_switch"></div>
+						<div class="s_btn right_switch"></div>
+					</div>
+				</div>
+				<div class="infor_exhibition fl">
+					<div class="title_div">
+						<h3>{$itemInfo.sName}{if $itemInfo.sCharacteristic}<span>{$itemInfo.sCharacteristic}</span>{/if}</h3>
+						<p>{$itemInfo.sDescription}</p>
+					</div>
+					<div class="price_div">
+						<span class="ch_f">售价：</span><span class="price_num"><em>￥</em>{$itemInfo.priceline}</span>
+					</div>
+                    {if $itemInfo.available == 1}
+					<div class="order_type_div clearfix">
+						<div class="o_type_box">
+							<label class="fl">选择种类：</label>
+							<div class="m_choose_type fl">
+								<ul>
+                                    {foreach $itemInfo.sSellingPriceInfo as $key=>$val}
+									<li data-price="{$val.price}" {if $itemInfo.sSellingPriceInfo|@count eq 1 }class="cur"{/if}>{$val.type}</li>
+                                    {/foreach}
+								</ul>
+							</div>
+						</div>
+						<div class="place_order_btn clearfix">
+                            {if $itemInfo.sSmallShopLink}
+							<div class="wechat_div fl">
+								<a href="javascript:void(0);"><i></i>微信扫码下单</a>
+								<div class="rq_code">
+									<img width="119" height="119" src="{$itemInfo.qrcodeLink}">
+								</div>
+							</div>
+                            {/if}
+                            {if $itemInfo.sTaobaoLink}
+							<a class="tb_link fl" target="_blank" href="{$itemInfo.sTaobaoLink}"><i></i>立即购买</a>
+                            {/if}
+						</div>
+					</div>
+                    {else}
+					<div class="off_shelf_div clearfix">
+						<div class="product_off_wm">很抱歉，此商品已下架！</div>
+						<div class="guess_like_div">
+							<p class="guess_p">猜你喜欢</p>
+							<div class="guess_list clearfix">
+								<ul>
+                                    {foreach $guessList as $val}
+									<li><a href="{$val.link}"><img src="{STATIC_URL2}{$val.firstImage}"></a><p><a href="{$val.link}">{$val.sName}</a></p></li>
+                                    {/foreach}
+								</ul>
+							</div>
+						</div>
+					</div>
+                    {/if}
+                    <div class="m_contact_div clearfix">
+						<div class="tel_div fl"><i></i>客服电话：4008-210-500</div>
+						<span class="f_ge fl">|</span>
+						<a class="qq_link_a fl" target="_blank" href="//wpa.qq.com/msgrd?v=3&uin=2355396874&site=qq&menu=yes"><i></i>在线咨询</a>
+						<span class="f_ge fl">|</span>
+						<div class="share_div bdsharebuttonbox fl" href="javascript:void(0);">
+							<span><i></i>分享到：</span>
+							<a class="bds_sqq" data-cmd="sqq" title="分享给QQ好友"></a>
+							{if $itemInfo.sSmallShopLink}
+							<a class="auto_weixin" title="分享到微信"></a>
+							{/if}
+							<a class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+							<a class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+							<a class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+							<a class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="detail_bottom clearfix">
+				<div class="product_infor_div fl">
+
+					{if {$itemInfo.sAdUrl} && {$itemInfo.sAdPic}}
+					<div class="advertise_link">
+						<a href="{$itemInfo.sAdUrl}" target="_blank">
+							<img src="{STATIC_URL2}{$itemInfo.sAdPic}" alt="广告位" />
+						</a>
+					</div>
+					{/if}
+
+                    {if $itemInfo.sProductParameter}
+					<div class="product_para">
+						<p class="p_d_title">商品参数<span></span></p>
+						<div class="product_para_img"><img src="{STATIC_URL2}{$itemInfo.sProductParameter}" alt="商品参数"></div>
+					</div>
+                    {/if}
+					<div class="product_detail_box">
+						<p class="p_d_title">商品介绍<span></span></p>
+						<div class="product_detail_img">{$itemInfo.sDetailPage}</div>
+					</div>
+				</div>
+				<div class="product_recommend fl">
+					<p class="recom_title"><img src="{STATIC_URL2}/global/images/popmall/more_j.png"></p>
+                    {foreach $moreList as $val}
+					<div class="recommend_box">
+						<a class="p_big_img" href="{$val.link}"><img src="{STATIC_URL2}{$val.firstImage}"></a>
+						<p><a href="{$val.link}">{$val.sName}</a></p>
+					</div>
+                    {/foreach}
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="header_fix_bar clearfix">
+		<div class="contentx1200">
+			<p class="fix_title fl">{$itemInfo.sName}</p>
+			{if $itemInfo.available == 1}
+			{if $itemInfo.sTaobaoLink}
+			<a href="{$itemInfo.sTaobaoLink}" target="_blank" class="tb_link fr"><i></i>立即购买</a>
+			{/if}
+			{if $itemInfo.sSmallShopLink}
+			<div class="wechat_div fr">
+				<a href="javascript:void(0);"><i></i>微信扫码下单</a>
+				<div class="rq_code"><img src="{$itemInfo.qrcodeLink}" width="119" height="119"></div>
+			</div>
+			{/if}
+			{/if}
+			<div class="fix_content fr">
+				<span><i></i>客服电话：4008-210-500</span>
+				<a href="//wpa.qq.com/msgrd?v=3&uin=2355396874&site=qq&menu=yes" target="_blank"><i></i>在线咨询</a>
+			</div>
+		</div>
+	</div>
+	<div class="weixin_rq">
+		<p><i></i>分享到微信</p>
+		<div class="img_box">
+			<img src="{$itemInfo.qrcodeLink}" width="210" height="210">
+		</div>
+		<div class="wx_close"></div>	
+	</div>
+</div>
+{/block}
+{block name="self"}
+<script type="text/javascript" src="{STATIC_URL2}/global/js/fashion/jqzoom.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL2}/global/js/fashion/popmall.js?{STATIC_CHANGE_TIME}"></script>
+{literal}
+<script type="text/javascript">
+    // 百度分享 https://www.hrwhisper.me/baidu-share-not-support-https-solution/
+	window._bd_share_config = {"common": {"bdSnsKey": {}, "bdText": "", "bdMini": "1", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "24"}, "share": {}};
+    with (document)
+    0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = '/static/api/js/share.js?v=89860593.js?cdnversion=' + ~( - new Date() / 36e5)];
+</script>
+{/literal}
+{/block}

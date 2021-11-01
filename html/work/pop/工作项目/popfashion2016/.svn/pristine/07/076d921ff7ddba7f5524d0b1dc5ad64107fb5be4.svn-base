@@ -1,0 +1,8 @@
+<ul>
+    <li class="join_li on"><a href="/service/joinmember/"><span></span><i></i>加入会员</a></li>
+    <li class="notice_li on"><a href="/service/membernotice/"><span></span><i></i>会员须知</a></li>
+    <li class="pay_li on"><a href="/service/tolllist/"><span></span><i></i>收费一览</a></li>
+    <li class="paym_li on"><a href="/service/payment/"><span></span><i></i>付款方式</a></li>
+    <li class="contactus_li on"><a href="/service/contactus/"><span></span><i></i>联系我们</a></li>
+    <li class="legal_li on"><a href="/service/declaration/"><span></span><i></i>法律声明</a></li>
+</ul>

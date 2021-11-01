@@ -1,0 +1,203 @@
+/*
+ * Copyright (c) 2012 pop-fashion.com All rights reserved.
+ */
+
+/* content //////////////////////////////////////////// */
+
+/* index //////////////////// */
+.nfd-list { padding-top: 10px; }
+.nfd-list .hd { height: 28px; line-height: 28px; padding: 3px 0; border-top: 3px solid #c8c8c8; }
+.nfd-list .hd span { font-weight: bold; font-size: 24px; letter-spacing: -1px; }
+.nfd-list .hd strong { height: 21px; margin-top: 7px; line-height: 21px; }
+.nfd-list .bd { padding: 10px 0 0; }
+
+.nfd-list-tabs li { float: left; height: 38px; overflow: hidden; }
+.nfd-list-tabs a { position: relative; display: inline-block; height: 26px; line-height: 26px; padding: 0 5px; margin-right: 5px; font-weight: 700; background: #d7e2e4; white-space: nowrap; color: #000; }
+.nfd-list-tabs a:hover { color: #d12027; }
+.nfd-list-tabs a.check { height: 34px; margin-top: 0; line-height: 29px; background: url(../img/nfd/tabs.png) no-repeat center 0; color: #fff; }
+.nfd-list-tabs a.check:hover { color: #fff; }
+
+/* banner */
+.banner { position: relative; width: 946px; height: 312px; margin: 0 auto; overflow: hidden; }
+
+/* shadow */
+.nfd-shadow { height: 30px; background: url(../img/nfd/shadow.png) no-repeat 0 -35px; }
+
+/* latest */
+.nfd-latest { margin: 0; padding: 0 0 10px; }
+.nfd-latest .bd { padding: 0; }
+.nfd-latest dl { width: 11.1%; *width: 11%; }
+
+/* wrapper */
+.wrapper .main { float: left; width: 660px; }
+.wrapper .sub { float: right; width: 300px; padding-top: 10px; }
+
+.nfd-design .bd div,
+.nfd-idea .bd div { position: relative; padding: 5px 0; border: 1px solid #aaa; zoom: 1; }
+
+.nfd-list-more { position: absolute; top: -30px; right: 0; border: none; }
+
+/* design */
+.nfd-design dl { width: 25%; *width: 24.9%; }
+.nfd-design dd { height: 36px; }
+
+/* idea */
+.nfd-idea dl { width: 33.3%; }
+.nfd-idea dd { height: 36px; }
+
+/* features */
+.nfd-features { padding: 10px; }
+.nfd-features-wrap { position: relative; padding: 0 10px; background-color: #fff; }
+.nfd-features-wrap .hd { position: absolute; top:44px; width: 260px; border-top: none; background-color: #fff; }
+.nfd-features-wrap .bd { padding: 23px 0 10px; }
+.nfd-features li { float: left; width: 260px; margin-top: 10px; padding-top: 10px; border-top: 1px solid #aaa; overflow: hidden; }
+.nfd-features img { display: inline; float: left; margin-right: 10px; }
+.nfd-features h3,
+.nfd-features p { overflow: hidden; zoom: 1; }
+.nfd-features a { display: block; }
+.nfd-features p { padding-top: 2px; text-indent: 2em; color: #888; }
+.nfd-features .tcn { width: 150px; height: 36px; overflow: hidden; }
+.nfd-features .ten { width: 150px; height: 18px; font-weight: 400; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; }
+.nfd-features .more { text-align: right; }
+.nfd-search{height:24px;padding:10px 0;}
+.nfd-search .text{height:22px;line-height:22px;border:1px solid #969696;}
+.nfd-search .submit {position:relative;top:1px;top:-2px\9;*top:-1px;_top:0px;background-color: #000000;background-position: 0 -25px;border: medium none;cursor: pointer;height: 22px;text-indent:-9999px;margin-left:10px;text-indent: -999em;width: 22px;}
+/* list //////////////////// */
+
+/* crumbs */
+.nfd-crumbs .hd { height: 42px; padding: 0; border-bottom: 3px solid #c8c8c8; }
+.nfd-crumbs .hd span { font-size: 35px; }
+.nfd-crumbs .hd strong { font-size: 20px; margin-top: 10px; }
+.nfd-crumbs .bd { padding: 0; text-align: center; background: url(../img/nfd/shadow.png) no-repeat 0 25px; }
+.nfd-crumbs .bd span { display: inline-block; padding: 10px 10px 0 10px; height: 30px; font-size: 20px; font-weight: 700; color: #d12027; background-color: #fff; }
+
+/* item */
+.nfd-item { background: url(../img/nfd/line.png) no-repeat 387px 0; }
+.nfd-item li { display: inline; position: relative; float: left; width: 244px; height: 168px; margin: 0 13px; padding-top: 72px; padding-left: 120px; }
+.nfd-item .s100x150 { top: 72px; padding: 0; border: none; }
+.nfd-item h4 { position: absolute; top: 10px; left: 10px; width: 100%; font-family: Georgia, "Times New Roman", Times, serif; }
+.nfd-item h4 a { display: block; height: 27px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; }
+.nfd-item h4 .ten { font-size: 18px; color: #d12027; }
+.nfd-item h4 a.ten:hover { color: #454547; }
+.nfd-item h4 .tcn { font-size: 14px; }
+.nfd-item p { height: 54px; padding: 0 0 21px; text-indent: 2em; color: #888; }
+.nfd-item .more { display: block; height: 18px; margin-right: 5px; text-align: right; }
+
+/* treeview */
+#tree { padding: 10px; }
+#tree .bd { padding: 0 10px 10px; background-color: #fff; }
+
+.treeview .hover { color: #d12027; cursor: pointer; }
+.treeview .selected { color: #d12027; font-weight: 700; }
+
+.tv-top { position: relative; width: 130px; padding: 5px 0 5px 20px; border-bottom: 1px solid #aaa; background: url(../img/nfd/ico.png) no-repeat 0 -40px; zoom: 1; }
+.tv-top-t { display: block; height: 30px; background: url(../img/nfd/tree.png) no-repeat; }
+#womenswear .tv-top-t { background-position: 0 0; }
+#menswear .tv-top-t { background-position: 0 -30px; }
+#kidswear .tv-top-t { background-position: 0 -60px; }
+#youth .tv-top-t { background-position: 0 -90px; }
+#denim .tv-top-t { background-position: 0 -120px; }
+#sport .tv-top-t { background-position: 0 -150px; }
+#knit .tv-top-t { background-position: 0 -180px; }
+#inimates .tv-top-t { background-position: 0 -210px; }
+#swim .tv-top-t { background-position: 0 -240px; }
+#details .tv-top-t { background-position: 0 -270px; }
+#student .tv-top-t { background-position: 0 -300px; }
+#prints .tv-top-t { background-position: 0 -330px; }
+#textiles .tv-top-t { background-position: 0 -360px; }
+#footwear .tv-top-t { background-position: 0 -390px; }
+#bags .tv-top-t { background-position: 0 -420px; }
+#interiors .tv-top-t { background-position: 0 -450px; }
+#jewellery .tv-top-t { background-position: 0 -480px; }
+
+.tv-top .hitarea { position: absolute; top: 10px; left: 0; width: 20px; height: 20px; cursor: pointer; }
+.tv-top .expandable-hitarea { background: url(../img/nfd/ico.png) no-repeat 0 0; }
+.tv-top .collapsable-hitarea { background: url(../img/nfd/ico.png) no-repeat 0 -20px; }
+
+.tv-next { position: relative; padding: 2px 0px 2px 10px; background: url(../img/nfd/ico.png) no-repeat -40px -20px; zoom: 1; }
+.tv-next-t { display: block; }
+
+.tv-next .hitarea { position: absolute; top: 0; left: 0; width: 10px; height: 18px; }
+.tv-next .expandable-hitarea { background: url(../img/nfd/ico.png) no-repeat -20px 0; }
+.tv-next .collapsable-hitarea { background: url(../img/nfd/ico.png) no-repeat -20px -22px; }
+
+.tv-bottom { padding: 1px 1px 0px 7px; background: url(../img/nfd/ico.png) no-repeat -40px 0; zoom: 1; }
+
+/* fix for IE6 */
+* html .hitarea { display: inline; float: none; }
+
+/* detail //////////////////// */
+#content-main {max-width: 1120px; margin: 0 auto; color: #000; line-height: 1.8; }
+#content-main a { color: #000; }
+#content-main a:hover { color: #d12027; text-decoration: none; }
+#content-main .space10 { clear: both; width: 100%; height: 10px; font-size: 0; line-height: 0; overflow: hidden; }
+#content-main .space15 { clear: both; width: 100%; height: 15px; font-size: 0; line-height: 0; overflow: hidden; }
+
+#content-main .title h1,
+#content-main .title span,
+#content-main .cntimg,
+#content-main .tabs a,
+#content-main h2,
+#content-main h3,
+#content-main h4,
+#content-main h5 { text-align: left; font-weight: 700; font-family: Georgia, "Times New Roman", Times, serif; }
+
+#content-main .title { position: relative; width: 100%; padding: 5px 0 10px; border-bottom: 3px solid #c8c8ce; color: #000; }
+#content-main .title h1 { height: 40px; line-height: 40px; font-size: 26px; }
+#content-main .title span { display: block; height: 32px; line-height: 32px; font-size: 18px; color: #333; }
+#content-main .title .source { position: absolute; right: 0; top: 36px; }
+#content-main .title .source strong { color: #999; }
+
+#content-main td { text-align: center; vertical-align: top; }
+#content-main p { padding: 4px 0; text-align: center; /*text-indent: 2em;*/ }
+#content-main .cntimg { padding: 10px 0 8px; line-height: 16px; font-weight: 400; font-size: 12px; }
+#content-main .cntimg img { vertical-align: top; }
+#content-main .cntimg span { display: block; line-height: 15px; font-weight: 400; font-size: 11px; font-style: italic; text-align: center; color: #666; }
+
+#content-main h2 { padding-bottom: 5px; border-top: 2px solid #c8c8c8; line-height: 45px; font-size: 24px; }
+#content-main h3 { padding-bottom: 5px; line-height: 34px; font-size: 20px; }
+#content-main h4 { height: 28px; padding: 0 5px; line-height: 28px; font-size: 14px; background-color: #d4e8e8; background-position: -999em -999em; overflow: hidden; }
+#content-main h5 { padding-top: 5px 0 2px; font-size: 14px; font-weight: 400; }
+
+#content-main ol { padding: 10px 0; text-align: left; }
+#content-main ol li { padding: 0 0 5px 10px; background: url(../img/nfd/dot.png) no-repeat 0 8px; }
+#content-main .down { padding-left: 23px; line-height: 22px; background: url(../img/nfd/eps.png) no-repeat 0 6px; text-indent: 0; }
+
+#content-main .tabs { height: 32px; }
+#content-main .tabs a { display: inline-block; height: 20px; line-height: 20px; padding: 0 5px; margin: 2px 5px 0 0; font-style: italic; vertical-align: top; background-color: #d5d5d5; }
+#content-main .tabs a.check { height: 32px; margin-top: 0; line-height: 30px; background: url(../img/nfd/tabs.png) no-repeat center 0; color: #fff; }
+
+/*
+ * jQuery lightBox plugin
+ * This jQuery plugin was inspired and based on Lightbox 2 by Lokesh Dhakar (http://www.huddletogether.com/projects/lightbox2/)
+ * and adapted to me for use like a plugin from jQuery.
+ * @name jquery-lightbox-0.5.css
+ * @author Leandro Vieira Pinho - http://leandrovieira.com
+ * @version 0.5
+ * @date April 11, 2008
+ * @category jQuery plugin
+ * @copyright (c) 2008 Leandro Vieira Pinho (leandrovieira.com)
+ * @license CCAttribution-ShareAlike 2.5 Brazil - http://creativecommons.org/licenses/by-sa/2.5/br/deed.en_US
+ * @example Visit http://leandrovieira.com/projects/jquery/lightbox/ for more informations about this jQuery plugin
+ */
+ /* lightbox //////////////////////////////////////////// */
+#jquery-overlay { position: absolute; top: 0; left: 0; z-index: 130; width: 100%; height: 500px; }
+#jquery-lightbox { position: absolute; top: 0; left: 0; width: 100%; z-index: 140; line-height: 0; text-align: center; }
+#jquery-lightbox a img { border: none; }
+#lightbox-container-image-box { position: relative; width: 250px; height: 250px; margin: 0 auto; background-color: #fff; }
+#lightbox-container-image { padding: 10px; }
+#lightbox-loading { position: absolute; top: 40%; left: 0%; width: 100%; height: 25%; line-height: 0; text-align: center; }
+#lightbox-nav { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; }
+#lightbox-container-image-box > #lightbox-nav { left: 0; }
+#lightbox-nav a { outline: none; }
+#lightbox-nav-btnPrev, #lightbox-nav-btnNext { display: block; width: 40%; height: 100%; zoom: 1; }
+#lightbox-nav-btnPrev { left: 0; float: left; }
+#lightbox-nav-btnNext { right: 0; float: right; }
+#lightbox-container-image-data-box { width: 100%; margin: 0 auto; padding: 0 10px 0; font: 10px/1.4em tahoma; background-color: #fff; overflow: auto; }
+#lightbox-container-image-data { padding: 0 10px; color: #666; }
+#lightbox-container-image-data #lightbox-image-details { float: left; width: 70%; text-align: left; }
+#lightbox-image-details-caption { font-weight: 700; }
+#lightbox-image-details-currentNumber { clear: left; display: block; padding-bottom: 1.0em; }
+#lightbox-secNav-btnClose { float: right; width: 66px; padding-bottom: 0.7em; }
+
+center table td ul li{text-align:left;}

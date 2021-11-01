@@ -1,0 +1,55 @@
+/*
+    #author     lut000
+    #date       2017/12/01
+    #porpuse	优化全局样式
+*/
+*{padding: 0;margin: 0;}
+img{border:none;}
+button{display: inline-block;*display: inline-block;border-style: none;background-color: transparent;outline: none;cursor: pointer;}
+button::-moz-focus-inner{border-color:transparent!important;}/*去掉按钮点击虚框*/
+
+
+
+
+/*共用样式*/
+
+.pop-section{width: 1200px;margin: auto;}
+
+.clear{*zoom:1;}
+.clear:after{content: "";display: block;clear: both;}
+
+.hide{display: none;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*媒体查询*/
+@media screen and (min-width:1500px){
+	.pop-section{width: 1500px;}
+}

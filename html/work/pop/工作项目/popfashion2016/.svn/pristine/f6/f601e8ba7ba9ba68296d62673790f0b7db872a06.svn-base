@@ -1,0 +1,33 @@
+.container{width: 100%;height: 100%;background: #fff;}
+.container .banner{width: 100%;height:600px;background: url(../images/banner.jpg) no-repeat center center;}
+.container .banner .box{width: 500px;position: relative;height:100%;margin:0 auto;}
+.container .banner .to_apply{z-index:10;display: inline-block;width: 182px;height: 43px;position: absolute;bottom:80px;left:160px;background:url(../images/baoming0.jpg) no-repeat 0 0;}
+.container .banner .to_apply:hover{background: url(../images/baoming1.jpg) no-repeat 0 0;}
+.content1{width: 100%;padding-bottom: 200px;background: #fff;}
+.content .w1000{width: 1000px;margin:0 auto;}
+.content1 .experience{font-family: "微软雅黑";font-size: 46px;color:#c61e29;font-weight: bolder;margin-bottom: 30px;text-align: center;}
+.content1 .bg_price{height: 596px;position: relative;}
+.content1 .detail{position: absolute;bottom:0;left:0;}
+.content1 .price{width: 225px;height:auto;position: absolute;text-align: center;padding:0 10px;}
+.content1 .price h4{font-family: "微软雅黑";font-size: 24px;color:#040000;text-align: center;margin-left:37px;}
+.content1 .price p{font-family: "微软雅黑";font-size: 18px;color:#231815;line-height: 34px;text-align:left;}
+.content1 .price_01{left:0;bottom:-114px;}
+.content1 .price_01 h4{margin-left:7px;}
+.content1 .price_03 h4{margin-left:46px;}
+.content1 .price_04 h4{margin-left:35px;}
+.content1 .price_02{left:252px;bottom:-26px;}
+.content1 .price_03{left:505px;bottom:-147px;}
+.content1 .price_04{left:757px;bottom:-95px;}
+.content2{width: 100%;height: 201px;background: url(../images/5600.jpg) no-repeat center center;}
+.content3{width: 100%;}
+.content4{width: 100%;background: #fff;padding:90px 0 145px;text-align: center;}
+.content4 .w1000{position: relative;}
+.content4 .to_apply2{display: inline-block;text-align:center;width: 589px;height: 76px;background: url(../images/baoming.jpg) no-repeat center center;}
+.content4 .to_apply2:hover{background: url(../images/baominghover.jpg) no-repeat center center;margin-left:-2px;}
+.content1 .price h4{margin-bottom:12px;}
+.w1013{width:1013px;margin:0 auto;margin-top:-2px;}
+.content3 .price_06{width:407px;margin-top:64px;}
+.content3 .price_06 h2{padding:10px 0;border-top:1px solid #c00511;border-bottom:2px solid #e08288;font-family:"微软雅黑";font-size:30px;font-weight:bold;color:#c00511;margin-bottom:9px;width:270px;text-align:center;}
+.content3 .price_06 p{font-family:"微软雅黑";font-size:18px;color:#231815;line-height:32px;}
+.content3 .price_06 p span{font-weight:bold;}
+.content3 .price_06 p.mar{margin-bottom:55px;}

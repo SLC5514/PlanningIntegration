@@ -1,0 +1,86 @@
+/* 
+	#author fanglinna
+	#data   20180820
+	#porpuse    blog
+*/
+body{font-size:14px;color:#333;}
+h1{font-size:36px;font-weight:bold;}
+h2{font-size:30px;font-weight:bold;}
+h3{font-size:24px;font-weight:bold;}
+h4{font-size:18px;font-weight:bold;}
+h5{font-size:16px;font-weight:bold;}
+h6{font-size:14px;font-weight:bold;}
+
+.blog-detail{width: 800px;margin: 70px 0 100px;}
+.blog-detail>h1{font-size:36px;color:#333;font-weight:bold;margin-bottom:35px;text-align:center;}
+.author-and-data{margin-bottom:35px;text-align:center;}
+.author-and-data>span{font-size:14px;color:#999;}
+.author-and-data>span.author-span{margin-right:30px;}
+.author-and-data>span>img{width:16px;vertical-align:middle;margin-right:5px;}
+/* 详情图片 */
+.blog-detail-infor{margin-bottom:60px;line-height:2;color:#000;}
+.blog-detail-infor strong,.blog-detail-infor b{font-weight: bold;}
+.blog-detail-infor img{max-width:100%;}
+.blog-tags{width:100%;padding-bottom:20px;border-bottom:1px solid #eee;}
+.blog-tags>span{display:inline-block;margin-right:20px;}
+.blog-tags>span>img{vertical-align:middle;width:48px;}
+.blog-tags>a{color:#999;font-size:14px;margin-right:15px;vertical-align:middle;cursor: pointer;}
+.blog-tags>a:hover{color: #d8b056;}
+.prev-next-btn{margin-top:20px;}
+.prev-next-btn>a{font-size:16px;color:#999;}
+.prev-next-btn>a>i{width:19px;height:16px;display:inline-block;vertical-align:-3px;}
+.prev-next-btn>a.prev-btn>i{background:url(../../../images/blog/detail/prev.png) no-repeat;margin-right:10px;background-size:100%;}
+.prev-next-btn>a.next-btn>i{background:url(../../../images/blog/detail/next.png) no-repeat;margin-left:10px;background-size:100%;}
+.prev-next-btn>a:hover{color:#d3ac55;}
+.prev-next-btn>a.prev-btn:hover i{background:url(../../../images/blog/detail/prev-h.png) no-repeat;background-size:100%;}
+.prev-next-btn>a.next-btn:hover i{background:url(../../../images/blog/detail/next-h.png) no-repeat;background-size:100%;}
+
+.blog-hot-tags{width: 342px;position: absolute;top: 140px;right: 0;}
+.blog-hot-tags-title{font-size: 18px;height: 20px;line-height: 20px;padding-left: 10px;margin-bottom: 30px;border-left: 4px solid #d8b056;color:#333;}
+.hot-tags-ul-box{height: 239px;overflow: hidden;}
+.blog-hot-tags ul>li{margin-right: 10px;margin-bottom: 20px;}
+.blog-hot-tags ul>li>a{display: block;height: 40px;line-height: 40px;padding: 0 24px;border-radius: 20px;border: solid 1px #ddd;font-size: 16px;color: #333;
+overflow:hidden;
+text-overflow:ellipsis;
+white-space:nowrap;
+max-width: 342px;
+box-sizing: border-box;}
+.blog-hot-tags ul>li>a:hover{background: #d8b056;color: #fff;border-color: #d8b056;}
+.blog-hot-tags .tags-show-all{margin: 0;display: none;}
+.blog-hot-tags .tags-show-all>a{display: inline;padding: 0;border: none;color: #d8b056;font-size: 16px;}
+.blog-hot-tags .tags-show-all>a:hover{background: none;color: #d8b056;}
+
+@media screen and (max-width:800px){
+	body{font-size:0.7rem;}
+	h1{font-size:1.8rem;}
+	h2{font-size:1.5rem;}
+	h3{font-size:1.2rem;}
+	h4{font-size:0.9rem;}
+	h5{font-size:0.8rem;}
+	h6{font-size:0.7rem;}
+	.blog-detail{width:90%;margin:2rem 5%;}
+	.blog-detail>h1{font-size:0.9rem;margin-bottom:0.875rem;}
+	.author-and-data{margin-bottom:0.875rem;}		
+	.author-and-data>span{font-size:0.6rem;}
+	.author-and-data>span.author-span{margin-right:0.75rem;}
+	.author-and-data>span>img{width:0.625rem;margin-right:0.125rem;vertical-align:-0.05rem;}
+	.blog-detail-infor{margin-bottom:1.5rem;}
+	.blog-tags{padding-bottom:0.5rem;}
+	.blog-tags>span{margin-right:0.5rem;}
+	.blog-tags>span>img{width:1.425rem;}
+	.blog-tags>a{font-size:0.6rem;margin-right:0.375rem;}
+	.prev-next-btn{margin-top:0.5rem;}
+	.prev-next-btn>a{font-size:0.6rem;}
+	.prev-next-btn>a>i{width:0.475rem;height:0.4rem;vertical-align:0px;}
+	.prev-next-btn>a.prev-btn>i{margin-right:0.25rem;}
+	.prev-next-btn>a.next-btn>i{margin-left:0.25rem;}
+
+  .blog-hot-tags{width: auto;position: initial;margin-bottom: 2rem;}
+  .blog-hot-tags-select{font-size: 0.6rem;margin-top: 1rem;}
+  .blog-hot-tags-title{height: 0.9rem;line-height: 0.9rem;font-size: 0.9rem;margin-left: 5%;margin-bottom: 0.98rem;padding-left: 0.38rem;border-left-width: 0.1rem;}
+  .hot-tags-ul-box{height: 6.5rem;}
+  .blog-hot-tags ul{margin-left: 5%;margin-right: 5%;}
+  .blog-hot-tags ul>li{margin-right: 0.5rem;margin-bottom: 0.5rem;}
+  .blog-hot-tags ul>li>a{font-size: 0.65rem;height: 1.75rem;line-height: 1.75rem;padding: 0 1.05rem;max-width: 16.2rem;}
+  .blog-hot-tags .tags-show-all{margin-top: 0.5rem;padding-left: 5%;}
+}

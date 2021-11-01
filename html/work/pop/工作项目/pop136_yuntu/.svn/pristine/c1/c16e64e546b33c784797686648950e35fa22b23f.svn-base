@@ -1,0 +1,14 @@
+{extends file="layout.html"}
+
+{block name="self"}
+<script type="text/javascript" src="{$smarty.const.STATIC_URL2}/global/js/fashion/index.js?{$smarty.const.STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{$smarty.const.STATIC_URL2}/global/js/fashion/global.js?{$smarty.const.STATIC_CHANGE_TIME}"></script>
+{/block}
+
+{block name="main"}
+<div class="error">
+	<img src="{$smarty.const.STATIC_URL2}/global/images/error.png" alt="">
+	<p><span>您访问的页面出错！</span>您可以稍后<a href="">刷新</a>或者<a href="/">返回网站首页</a></p>
+</div>
+{/block}
+	

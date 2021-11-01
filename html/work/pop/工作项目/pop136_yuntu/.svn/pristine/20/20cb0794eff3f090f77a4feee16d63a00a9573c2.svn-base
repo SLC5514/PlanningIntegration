@@ -1,0 +1,27 @@
+{extends file="layout.html"} 
+{block name="selfcss"}
+<!-- <link rel="stylesheet" type="text/css" href="{$smarty.const.STATIC_URL1}/global/css/lib/perfect-scrollbar-og.css?{$smarty.const.STATIC_CHANGE_TIME}">
+<link rel="stylesheet" type="text/css" href="{$smarty.const.STATIC_URL1}/global/css/user/center-view.css?{$smarty.const.STATIC_CHANGE_TIME}" /> -->
+{/block}
+{block name="main"}
+<div class="content js-content-section">
+	666
+</div>
+
+{/block}
+{block name="footer"}
+{/block}
+{block name="self"}
+<script type="text/javascript">
+	require.config({
+		paths:{
+			"perfectScrollbar": ["lib/perfect-scrollbar-1.2.min"],
+		}
+	});
+	require(["jquery","general","msg"],function(jquery,general,msg){
+		$(function(){
+            console.log(666)
+		});
+	});
+</script>
+{/block} 

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Jcrop</title>
+  <link rel="stylesheet" href="../lib/Jcrop-0.9.12/css/jquery.Jcrop.min.css" />
+  <style>
+    /* jcrop init */
+    .jcrop-holder {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    #jcrop-box {
+      width: 500px;
+      height: 500px;
+      line-height: 500px;
+      border: 1px solid #999;
+    }
+
+    #jcrop-box>img {
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <input type="file" id="jcrop-ipt" name="jcrop-ipt" accept=".jpg, .jpeg, .png" />
+  <button id="submit">上传</button>
+  <button id="rotate">旋转</button>
+  <div>
+    x: <span class="x"></span><br>
+    y: <span class="y"></span><br>
+    w: <span class="w"></span><br>
+    h: <span class="h"></span>
+  </div>
+  <hr>
+  <div id="jcrop-box">
+    <img src="" id="jcrop-img">
+  </div>
+</body>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="./jquery.Jcrop.js"></script>
+<!-- <script src="../lib/Jcrop-0.9.12/js/jquery.Jcrop.min.js"></script> -->
+<script>
+  $(function () {
+    var jcropIpt = $('#jcrop-ipt'),
+      jcropBox = $('#jcrop-box'),
+      jcropImg = $('#jcrop-img'),
+      upBtn = $('#submit'),
+      rotateBtn = $('#rotate'),
+      files = [], // 选中的图片列表
+      selectSrc = '', // 展示的图片地址
+      imgSize = {
+        w: 0,
+        h: 0
+      };
+    var jcropApi;
+    var winUrl = window.URL || window.webkitURL; // 获取window的 URL工具
+
+    // 选择图片
+    jcropIpt.change(function () {
+      files = this.files;
+      selectSrc = winUrl.createObjectURL(files[0]);
+      jcropImg.attr("src", selectSrc).load(function () {
+        imgSize.w = this.width;
+        imgSize.h = this.height;
+
+        jcropApi && jcropApi.destroy();
+        $(this).Jcrop({
+          boxWidth: imgSize.w,
+          boxHeight: imgSize.h,
+          bgFade: true,
+          aspectRatio: 1,
+          minSelect: [50, 50],
+          // minSize: [50, 50],
+          onSelect: function (data) {
+            jcropApi.setOptions({
+              allowSelect: false
+            });
+            console.log(data)
+            $('.x').text(data.x);
+            $('.y').text(data.y);
+            $('.w').text(data.w);
+            $('.h').text(data.h);
+            console.log(jcropApi.tellSelect(), '选框实际尺寸');
+            console.log(jcropApi.tellScaled(), '选框界面尺寸');
+            console.log(jcropApi.getBounds(), '图片实际尺寸');
+            console.log(jcropApi.getWidgetSize(), '图片显示尺寸');
+            console.log(jcropApi.getScaleFactor(), '图片缩放比例');
+          }
+        }, function () {
+          jcropApi = this;
+          // jcropApi.animateTo([0, 0, 100, 100]);
+          console.log(jcropApi)
+        });
+      });
+    });
+
+    // 旋转
+    rotateBtn.click(function () {
+      // $('.jcrop-holder').css({
+      //   transform: 'rotate(90deg)'
+      // });
+      jcropApi.setOptions({
+        boxWidth: 500,
+        boxHeight: 500
+      });
+    })
+
+    // 上传
+    upBtn.click(function () {
+      if (!files.length) {
+        console.log('请选择图片');
+        return;
+      }
+      $.ajax({
+        url: 'http://www.pop-fashion.com/picmatch/uploadpic/?time=' + Math.random(),
+        type: 'post',
+        dataType: 'json',
+        data: files[0],
+        success: function (res) {
+          console.log(res);
+        },
+        error: function (err) {
+          console.log(err);
+        }
+      })
+    })
+
+  });
+
+  // 保存文件函数
+  // saveFile(imgUrl, 'slc.png');
+  // function saveFile(data, filename) {
+  //   var save_link = document.createElementNS('http://www.w3.org/1999/xhtml', 'a');
+  //   save_link.href = data;
+  //   save_link.download = filename;
+
+  //   var event = document.createEvent('MouseEvents');
+  //   event.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+  //   save_link.dispatchEvent(event);
+  // }
+</script>
+
+</html>

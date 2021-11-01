@@ -1,0 +1,599 @@
+/*
+ * @Author: SLC
+ * @Date: 2020-04-26 13:04:11
+ * @LastEditors: SLC
+ * @LastEditTime: 2020-06-01 17:17:03
+ * @Description: 2D实景模拟关联插件
+ */
+
+(function (factory, g) {
+    // Browser globals
+    factory(jQuery, Snap, g);
+}(function ($, $Snap, g) {
+    // The default settings for the plugin
+    var defaultSettings = {
+        smallScreen: $(window).width() < 1500, // 大小屏
+        imgHost: 'https://imgyt2.pop-fashion.com', // 图片前缀
+
+        /* ================== 盒子 ================== */
+        svgPaper: null, // snap对象
+        // 通用宽高
+        w: 770, // 宽度（770，430）
+        h: 770, // 高度（770）
+        // 不同类型宽高
+        rectWH: { w: 430, h: 770 },
+        bigSquareWH: { w: 770, h: 770 }, // 默认取大正方形
+        smallSquareWH: { w: 450, h: 450 },
+        aspectRatio: false, // 宽高比类型（false：正方形，true：长方形）
+
+        /* ================== 轮询定时器 ================== */
+        loopTime: 100, // 定时器时间
+        imgLoaded: false, // 数据获取状态
+
+        /* ================== 输出模板数据 ================== */
+        resetTplData: {},
+        tplData: {
+            // // 接口数据
+            // id: "", // 模板id
+            // iSiteId: "",
+            // iClassifyId: "",
+            // sTemplateName: "", // 模板名称
+            // sCover: "", // 小图
+            // sBigTemplateImg: "", // 大图
+            // svg_file: [ // 部件
+            //     {
+            //         iTemplateId: "", // 部件id
+            //         sPartName: "", // 部件名称
+            //         sPartPathArr: [], // 部件路径
+            //         // 新增字段
+            //         pattern: { // 图案
+            //             id: '', // 图案id
+            //             src: '' // 图案链接
+            //         },
+            //         config: { // 配置项
+            //             ...defCfg
+            //         }
+            //     }
+            // ],
+            // // 新增字段
+            // ogWH: { w: 0, h: 0 }, // 原始宽高
+            // tplScale: 1, // 回显/原始缩放
+        },
+
+        /* ================== 部件默认配置项 ================== */
+        defCfg: {
+            loop: 1, // 图案循环（0：无，1：全循环，2：水平，3：垂直）
+            scale: 1, // 大小（图案缩放倍数）
+            angle: 0, // 角度（图案旋转角度）
+            panl: 0, // 水平平移（px，缩放前平移距离）
+            panv: 0, // 垂直平移（px，缩放前平移距离）
+            fill: 'transparent' // 底色填充
+        },
+
+        /* ================== 模板 ================== */
+        tplEl: null, // image对象
+        tplLoaded: false, // 模板绘制状态
+
+        /* ================== 部件 ================== */
+        comBoxEl: $('.js-com-list'), // 列表盒子
+        comEls: [], // 路径
+        comUseBgEls: [], // use路径
+        comLoaded: false, // 部件绘制状态
+        comIdx: 0, // 部件当前部件下标
+
+        /* ================== 图案 ================== */
+        patternBoxEl: $('.js-loop-list'), // 盒子
+        patternEls: [], // 图案image对象
+        comUseMaskEls: [], // use图案
+        // patternList: [], // 图案列表
+
+        /* ================== 控制器滑动盒子 ================== */
+        sliderScaleBox: $('.js-slider-scale'),
+        sliderAngleBox: $('.js-slider-angle'),
+        sliderPanlBox: $('.js-slider-panl'),
+        sliderPanvBox: $('.js-slider-panv'),
+
+        /* ================== 事件状态 ================== */
+        delta: [], // 图案缩放大小（增量++）
+        downStatus: false, // 点击状态
+        hoverStatus: false, // 划过状态
+        mouseStatus: false, // 拖动状态
+        // 临时数据
+        idx: -1,
+        x: 0,
+        y: 0,
+        matrixArr: [],
+    };
+
+    var virtualSnap = function (querySelector, option) {
+        // Use the default settings
+        var def = $.extend(true, {}, defaultSettings),
+            $paper = $(querySelector),
+            self = this;
+
+        if (typeof option === "object") {
+            $.extend(true, def, option);
+        }
+
+        this.def = def;
+        this.def.svgPaper = $Snap($paper[0]);
+
+        // 取色
+        this.def.svgPaper.click(function (e, x, y) {
+            var straw = this.attr('class');
+            if (straw !== 'straw') {
+                return;
+            }
+            var offset = $(this.node).parent().offset();
+            self.getColor(self.def.svgPaper.outerSVG(), self.def.svgPaper.getBBox().w, self.def.svgPaper.getBBox().h, x - offset.left, y - offset.top);
+        })
+
+        // 拖动
+        $(document).on('mousedown', function (e) {
+            var e = e || window.event;
+            var target = $(e.target);
+            self.def.idx = -1;
+            if (!self.def.downStatus && e.button === 0 && target.attr('class') === 'mask-use') {
+                self.def.idx = $Snap(target[0]).data('idx');
+                if (!self.def.patternEls[self.def.idx]) {
+                    return;
+                }
+                self.def.mouseStatus = false;
+                self.def.downStatus = true;
+                self.def.comIdx = self.def.idx;
+                self.def.x = e.clientX;
+                self.def.y = e.clientY;
+                var matrixArr = self.def.patternEls[self.def.comIdx].attr('patternTransform').match(/matrix\((.*)\)/)[1].split(',');
+                self.def.matrixArr = matrixArr;
+            }
+        }).on('mousemove', function (e) {
+            var e = e || window.event;
+            var target = $(e.target);
+            if (self.def.downStatus && self.def.comIdx != -1) {
+                // var x = self.def.x;
+                // var y = self.def.y;
+                // self.def.x = e.clientX;
+                // self.def.y = e.clientY;
+                self.def.mouseStatus = true;
+                // 旋转
+                // self.def.matrix.rotate(-30);
+                // self.def.matrix.translate(self.def.x - x, self.def.y - y);
+                // self.def.matrix.rotate(30);
+                // 无旋转
+                // self.def.matrix.translate(self.def.x - x, self.def.y - y);
+                var martix = $Snap.matrix(self.def.matrixArr[0], self.def.matrixArr[1], self.def.matrixArr[2], self.def.matrixArr[3], self.def.matrixArr[4], self.def.matrixArr[5]).translate((e.clientX - self.def.x) / self.def.tplData.tplScale, (e.clientY - self.def.y) / self.def.tplData.tplScale);
+                self.def.patternEls[self.def.comIdx].attr('patternTransform', martix);
+            }
+            if (!self.def.downStatus && target.attr('class') === 'mask-use') {
+                self.def.hoverStatus = true;
+                self.def.idx = $Snap(target[0]).data('idx');
+            } else {
+                self.def.hoverStatus = false;
+                self.def.idx = -1;
+            }
+        }).on('mouseup', function (e) {
+            var e = e || window.event;
+            var target = $(e.target);
+            if (self.def.idx && self.def.idx !== -1 && !self.def.mouseStatus && e.button === 0 && target.attr('class') === 'mask-use') {
+                self.selectCom(self.def.idx);
+            }
+            if (self.def.downStatus) {
+                self.def.downStatus = false;
+            }
+        })
+
+        // 滚轮缩放
+        var eventHandle = {
+            getEvent: function (event) {
+                return event || window.event;
+            },
+            addEvent: function (elementName, type, handler) {
+                document.querySelectorAll(elementName).forEach(function (element) {
+                    if (element.addEventListener) {
+                        element.addEventListener(type, handler, false);
+                    }
+                    else if (element.attachEvent) {
+                        element.attachEvent('on' + type, handler);
+                    } else {
+                        element['on' + type] = handler;
+                    }
+                })
+            },
+            getWheelDelta: function (event) {
+                return event.wheelDelta ? event.wheelDelta : (-event.detail) * 40;
+            }
+        }
+        function mouseHandle(e) {
+            var e = e || window.e;
+            if (self.def.patternEls[self.def.idx] && self.def.hoverStatus && $Snap(e.target).attr('class') === 'mask-use') {
+                e.preventDefault();
+                e.stopPropagation();
+                e = eventHandle.getEvent(e);
+                var delta = eventHandle.getWheelDelta(e);
+                var ogW = self.def.patternEls[self.def.idx].data('ogw');
+                var deltasNum = ogW * 0.01;
+                if (!self.def.delta[self.def.idx]) { self.def.delta[self.def.idx] = 0; }
+                if (delta < 0) { self.def.delta[self.def.idx] += -deltasNum; }
+                else { self.def.delta[self.def.idx] += deltasNum; }
+                if (self.def.delta[self.def.idx] <= -ogW * (1 - 4 * 0.01)) {
+                    self.def.delta[self.def.idx] = -ogW * (1 - 4 * 0.01);
+                } else if (self.def.delta[self.def.idx] > ogW * (4 - 1)) {
+                    self.def.delta[self.def.idx] = ogW * (4 - 1);
+                }
+                self.scaleChange(self.def.idx);
+            }
+        }
+        eventHandle.addEvent('#paper', 'mousewheel', mouseHandle);
+        eventHandle.addEvent('#paper', 'DOMMouseScroll', mouseHandle);
+
+    };
+
+    virtualSnap.prototype = {
+        // 初始化
+        init: function (data) {
+            this.def.tplData = JSON.parse(JSON.stringify(data));
+            this.def.resetTplData = JSON.parse(JSON.stringify(data));
+            // 清除画布
+            this.def.svgPaper.clear();
+            // 获取模板原始尺寸
+            this.def.tplData.ogWH = this.getImgNatural(this.def.imgHost + this.def.tplData.sBigTemplateImg, true);
+            // 绘制模板图
+            this.drawTplImg(this.def.imgHost + this.def.tplData.sBigTemplateImg);
+            // 绘制部件
+            this.drawComPath();
+            // 设置base64
+            this.setBase64();
+        },
+        // 获取图片原始尺寸
+        getImgNatural: function (src, type, successBack) {
+            var img = new Image(),
+                og = { w: 0, h: 0 },
+                self = this;
+            if (!src) { return og; }
+            this.imgLoaded = false;
+            img.crossOrigin = "anonymous";
+            img.onload = function () {
+                og.w = this.width;
+                og.h = this.height;
+                if (type) { // 设置模板
+                    if (self.def.smallScreen) {
+                        self.def.w = self.def.smallSquareWH.w;
+                        self.def.h = self.def.smallSquareWH.h;
+                    }
+                    if (this.width / this.height !== 1) {
+                        self.def.aspectRatio = true;
+                        self.def.w = self.def.rectWH.w;
+                        self.def.h = self.def.rectWH.h;
+                    }
+                    var scale = 1;
+                    if (self.def.w / og.w < self.def.h / og.h) {
+                        scale = self.def.w / og.w
+                    } else {
+                        scale = self.def.h / og.h
+                    }
+                    self.def.tplData.tplScale = scale;
+                    self.def.svgPaper.attr({
+                        width: self.def.w + 'px',
+                        height: self.def.h + 'px',
+                        viewBox: '0 0 ' + og.w + ' ' + og.h + ''
+                    })
+                }
+                successBack && successBack(og);
+                self.imgLoaded = true;
+            }
+            img.onerror = function () {
+                console.log("当前src=" + img.src);
+                console.log("图片加载失败");
+                self.imgLoaded = true;
+            }
+            img.src = src;
+            return og;
+        },
+        // 绘制模板图
+        drawTplImg: function (src) {
+            var self = this;
+            this.tplLoaded = false;
+            clearInterval(this.drawTplImg.timeval);
+            if (!this.imgLoaded) {
+                this.drawTplImg.timeval = setInterval(function () {
+                    clearInterval(self.drawTplImg.timeval);
+                    self.drawTplImg(src);
+                }, this.def.loopTime);
+                return;
+            }
+            // do something
+            this.def.tplEl = this.def.svgPaper.image(src, 0, 0, this.def.tplData.ogWH.w, this.def.tplData.ogWH.h);
+            this.tplLoaded = true;
+        },
+        // 绘制部件路径
+        drawComPath: function () {
+            var self = this;
+            this.comLoaded = false;
+            clearInterval(this.drawComPath.timeval);
+            if (!this.tplLoaded) {
+                this.drawComPath.timeval = setInterval(function () {
+                    clearInterval(self.drawComPath.timeval);
+                    self.drawComPath();
+                }, this.def.loopTime);
+                return;
+            }
+            // do something
+            for (var i = 0; i < this.def.tplData.svg_file.length; i++) {
+                this.def.comIdx = i;
+                this.def.comEls[i] && this.def.comEls[i].forEach(function (v, idx) {
+                    v.remove();
+                })
+                this.def.comUseBgEls[i] && this.def.comUseBgEls[i].forEach(function (v, idx) {
+                    v.remove();
+                })
+                this.def.comUseMaskEls[i] && this.def.comUseMaskEls[i].forEach(function (v, idx) {
+                    v.remove();
+                })
+                if (!this.def.tplData.svg_file[i].sPartPathArr.length) {
+                    console.log('空路径:模板ID=' + this.def.tplData.svg_file[i].iTemplateId + ';部件名称=' + this.def.tplData.svg_file[i].sPartName);
+                }
+                // 路径
+                this.def.comEls[i] = this.def.tplData.svg_file[i].sPartPathArr.map(function (v, idx) {
+                    return self.def.svgPaper.path(v).toDefs().data('idx', i);
+                })
+                // use路径
+                this.def.comUseBgEls[i] = this.def.comEls[i].map(function (v, idx) {
+                    return self.def.svgPaper.use(v).attr({ 'fill': 'transparent' }).data({ 'idx': i, 'fill': 'transparent' });
+                })
+                // use图案
+                this.def.comUseMaskEls[i] = this.def.comEls[i].map(function (v, idx) {
+                    return self.def.svgPaper.use(v).attr({ 'fill': 'transparent' }).data({ 'idx': i, 'fill': 'transparent' }).addClass('mask-use');
+                })
+                // 设置属性
+                this.def.comUseBgEls[i].forEach(function (v, idx) {
+                    v.node.style['mix-blend-mode'] = 'multiply';
+                })
+                this.def.comUseMaskEls[i].forEach(function (v, idx) {
+                    v.node.style = 'mix-blend-mode: multiply';
+                })
+                // 初始化配置项
+                this.def.tplData.svg_file[i].config = this.def.tplData.svg_file[i].config || JSON.parse(JSON.stringify(this.def.defCfg));
+                this.def.tplData.svg_file[i].pattern = this.def.tplData.svg_file[i].pattern || { id: '', src: '' };
+                this.drawComColor(this.def.tplData.svg_file[i].config.fill);
+                if (this.def.tplData.svg_file[i].pattern.id) {
+                    this.drawComBg(this.def.tplData.svg_file[i].pattern.id, this.def.tplData.svg_file[i].pattern.src, this.def.tplData.svg_file[i].config.loop);
+                }
+            }
+            this.comLoaded = true;
+            // 设置base64
+            this.setBase64();
+            // 默认选中第一个部件（全部）
+            this.selectCom(0);
+        },
+        // 绘制部件背景色
+        drawComColor: function (fill) {
+            this.def.tplData.svg_file && (this.def.tplData.svg_file[this.def.comIdx].config.fill = fill);
+            this.def.comUseBgEls[this.def.comIdx] && this.def.comUseBgEls[this.def.comIdx].forEach(function (v, i) {
+                v.attr({ 'fill': fill }).data('fill', fill);
+            })
+        },
+        // 绘制图案(type: 0无循环 1全循环 2水平循环 3垂直循环)
+        drawComBg: function (id, src, type) {
+            var self = this,
+                idx = this.def.comIdx,
+                loopType = (type === 0 ? type : type) || 1;
+            this.def.delta[idx] = 0;
+            this.def.patternEls[idx] && this.def.patternEls[idx].remove();
+            this.def.tplData.svg_file[idx].pattern = { id: id, src: src };
+            this.def.tplData.svg_file[idx].config.loop = loopType;
+            this.getImgNatural(src, false, function (og) {
+                if (loopType == 0) {
+                    self.def.patternEls[idx] = self.def.svgPaper.image(src, (self.def.w - og.w) / 2, (self.def.h - og.h) / 2, og.w, og.h).pattern(0, 0, self.def.w, self.def.h);
+                } else if (loopType == 1) {
+                    self.def.patternEls[idx] = self.def.svgPaper.image(src, 0, 0, og.w, og.h).pattern(0, 0, og.w, og.h);
+                } else if (loopType == 2) {
+                    self.def.patternEls[idx] = self.def.svgPaper.image(src, 0, (self.def.h - og.h) / 2, og.w, og.h).pattern(0, 0, og.w, self.def.h);
+                } else if (loopType == 3) {
+                    self.def.patternEls[idx] = self.def.svgPaper.image(src, (self.def.w - og.w) / 2, 0, og.w, og.h).pattern(0, 0, self.def.w, og.h);
+                }
+                self.def.patternEls[idx].attr({ 'patternTransform': Snap.matrix(1, 0, 0, 1, 0, 0) }).data({
+                    'idx': idx,
+                    'ogw': og.w,
+                    'ogh': og.h,
+                    'delta': 0,
+                    'id': id
+                });
+                self.def.comUseMaskEls[idx] && self.def.comUseMaskEls[idx].forEach(function (v, i) {
+                    v.attr({ 'fill': self.def.patternEls[idx] });
+                })
+                self.setBase64();
+            })
+        },
+
+        /* ================== 调取方法 ================== */
+
+        // 选择部件
+        selectCom: function (idx) {
+            var self = this;
+            this.def.comIdx = idx;
+            // 初始化配置
+            this.def.comBoxEl.children().eq(idx).addClass('on').siblings().removeClass('on');
+            this.def.patternBoxEl.find('li').eq(this.def.tplData.svg_file[this.def.comIdx].config.loop).addClass('on').siblings().removeClass('on');
+            // 选中效果
+            this.def.comUseBgEls[idx].forEach(function (v, i) {
+                v.attr({ 'fill': 'skyblue' });
+            })
+            var timeout = setTimeout(function () {
+                self.def.comUseBgEls[idx].forEach(function (v, i) {
+                    var fill = v.data('fill') || 'transparent';
+                    v.attr({ 'fill': fill });
+                })
+                clearTimeout(timeout);
+            }, 300);
+        },
+        // 循环方式
+        selLoopFunc: function (type) {
+            this.drawComBg(this.def.tplData.svg_file[this.def.comIdx].pattern.id, this.def.tplData.svg_file[this.def.comIdx].pattern.src, type);
+        },
+        // 缩放
+        scaleChange: function (idx) {
+            var ogW = this.def.patternEls[idx].data('ogw');
+            var ogH = this.def.patternEls[idx].data('ogh');
+            var type = this.def.tplData.svg_file[idx].config.loop;
+            var deltaH = this.def.delta[idx] / (ogW / ogH);
+            if (type == 0) {
+                var deltaOW = this.def.delta[idx] / (ogW / this.def.w);
+                var deltaOH = this.def.delta[idx] / (ogH / this.def.h);
+                this.def.patternEls[idx].attr({
+                    'width': this.def.w + deltaOW,
+                    'height': this.def.h + deltaOH,
+                    'viewBox': '0 0 ' + (this.def.w + deltaOW) + ' ' + (this.def.h + deltaOH)
+                }).select('image').attr({
+                    'width': ogW + this.def.delta[idx],
+                    'height': ogH + deltaH,
+                    'x': (this.def.w + deltaOW - (ogW + this.def.delta[idx])) / 2,
+                    'y': (this.def.h + deltaOH - (ogH + deltaH)) / 2
+                });
+            } else if (type == 1) {
+                this.def.patternEls[idx].attr({ 'width': ogW + this.def.delta[idx], 'height': ogH + deltaH });
+            } else if (type == 2) {
+                var deltaOH = this.def.delta[idx] / (ogH / this.def.h);
+                this.def.patternEls[idx].attr({
+                    'width': ogW + this.def.delta[idx],
+                    'height': this.def.h + deltaOH,
+                    'viewBox': '0 0 ' + (ogW + this.def.delta[idx]) + ' ' + (this.def.h + deltaOH)
+                }).select('image').attr({
+                    'width': ogW + this.def.delta[idx],
+                    'height': ogH + deltaH,
+                    'y': (this.def.h + deltaOH - (ogH + deltaH)) / 2
+                });
+            } else if (type == 3) {
+                var deltaOW = this.def.delta[idx] / (ogW / this.def.w);
+                this.def.patternEls[idx].attr({
+                    'width': this.def.w + deltaOW,
+                    'height': ogH + deltaH,
+                    'viewBox': '0 0 ' + (this.def.w + deltaOW) + ' ' + (ogH + deltaH)
+                }).select('image').attr({
+                    'width': ogW + this.def.delta[idx],
+                    'height': ogH + deltaH,
+                    'x': (this.def.w + deltaOW - (ogW + this.def.delta[idx])) / 2
+                });
+            }
+            var btn = this.def.sliderScaleBox.find('button');
+            var text = this.def.sliderScaleBox.find('.text');
+            var maxW = parseFloat(btn.parent().width());
+            var x = ((this.def.delta[idx] + ogW) / ogW).toFixed(2);
+            btn.css('left', x / 4 * maxW + 'px');
+            text.text('x' + x);
+            this.def.tplData.svg_file[idx].config.scale = x;
+        },
+        // 缩放控制
+        scaleChangeCol: function (type, ratio) {
+            if (!this.def.patternEls[this.def.comIdx]) {
+                return;
+            }
+            var ogW = this.def.patternEls[this.def.comIdx].data('ogw');
+            var deltasNum = ogW * 0.01;
+            if (type === '-') {
+                this.def.delta[this.def.comIdx] += -deltasNum;
+                if (this.def.delta[this.def.comIdx] <= -ogW * (1 - 4 * 0.01)) {
+                    this.def.delta[this.def.comIdx] = -ogW * (1 - 4 * 0.01);
+                }
+            } else if (type === '+') {
+                this.def.delta[this.def.comIdx] += deltasNum;
+                if (this.def.delta[this.def.comIdx] > ogW * (4 - 1)) {
+                    this.def.delta[this.def.comIdx] = ogW * (4 - 1);
+                }
+            } else {
+                if (ratio <= 0) {
+                    ratio = 0.01;
+                }
+                this.def.delta[this.def.comIdx] = (ratio / (1 / 4) - 1) * ogW;
+            }
+            this.scaleChange(this.def.comIdx);
+        },
+
+        // 设置base64
+        setBase64: function () {
+            var imageAll = this.def.svgPaper.selectAll('image');
+            for (var i = 0; i < imageAll.length; i++) {
+                if (!imageAll[i].data('base64')) {
+                    this.getBase64Image(imageAll[i].node.href.baseVal, imageAll[i], function (imgItem, dataURL) {
+                        imgItem.attr('href', dataURL).data('base64', true);
+                    })
+                }
+            }
+        },
+        // 获取base64
+        getBase64Image: function (imgSrc, imgItem, success) {
+            var image = new Image();
+            image.crossOrigin = "anonymous";
+            image.src = imgSrc;
+            image.onload = function () {
+                var canvas = document.createElement("canvas");
+                canvas.width = image.width;
+                canvas.height = image.height;
+                var ctx = canvas.getContext("2d");
+                ctx.drawImage(image, 0, 0, image.width, image.height);
+                var ext = image.src.substring(image.src.lastIndexOf(".") + 1).toLowerCase();
+                var dataURL = canvas.toDataURL("image/" + ext);
+                success && success(imgItem, dataURL);
+            }
+        },
+        // 取色
+        getColor: function (svgXml, w, h, x, y) {
+            var self = this;
+            var image = new Image();
+            image.src = 'data:image/svg+xml;base64,' + window.btoa(unescape(encodeURIComponent(svgXml)));
+            image.onload = function () {
+                var canvas = document.createElement('canvas');
+                canvas.width = w;
+                canvas.height = h;
+                var context = canvas.getContext('2d');
+                context.drawImage(image, 0, 0);
+                var colorData = canvas.getPixelColor(x, y);
+                var color = colorData.rgba;
+                self.drawComColor(color);
+            }
+        },
+
+        // 生成效果图
+        genImage: function (callback) {
+            var w = this.def.w,
+                h = this.def.h;
+            var svgXml = this.def.svgPaper.outerSVG();
+            var image = new Image();
+            image.src = 'data:image/svg+xml;base64,' + window.btoa(unescape(encodeURIComponent(svgXml)));
+            image.onload = function () {
+                var canvas = document.createElement('canvas');
+                var context = canvas.getContext('2d');
+                var pixelRatio = window.devicePixelRatio || 1;
+                var backingStoreRatio = context.webkitBackingStorePixelRatio ||
+                    context.mozBackingStorePixelRatio ||
+                    context.msBackingStorePixelRatio ||
+                    context.oBackingStorePixelRatio ||
+                    context.backingStorePixelRatio || 1;
+                var ratio = pixelRatio / backingStoreRatio;
+                var ratioMin = 1 / ratio;
+                canvas.width = w * ratio;
+                canvas.height = h * ratio;
+                context.drawImage(image, 0, 0, w * ratio, h * ratio);
+                context.scale(ratioMin, ratioMin);
+                var baseurl = canvas.toDataURL('image/png');
+                callback && callback(baseurl);
+            }
+        },
+        // 下载效果图
+        downImage: function () {
+            var self = this;
+            this.genImage(function (baseurl) {
+                var a = document.createElement('a');
+                a.href = baseurl;
+                a.download = self.def.tplData.sTemplateName;
+                a.click();
+            });
+        },
+        // 重置
+        reset: function() {
+            this.init(this.def.resetTplData);
+        }
+    }
+
+    g.virtualSnap = virtualSnap;
+
+}, window));

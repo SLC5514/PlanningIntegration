@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <title>Document</title>
+  <!-- 定制版 ionic 样式 -->
+  <link rel="stylesheet" href="https://unpkg.com/vonic@2.0.0-beta.11/dist/vonic.min.css">
+  
+  <!-- <script src="./lib/require.js"></script> -->
+  <!-- 依赖库 axios/vue/vue-router -->
+  <script src="https://unpkg.com/axios@0.15.3/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/vue@2.1.10/dist/vue.min.js"></script>
+  <script src="https://unpkg.com/vue-router@2.2.1/dist/vue-router.min.js"></script>
+
+  <!-- vonic 核心文件 -->
+  <script src="https://unpkg.com/vonic@2.0.0-beta.11/dist/vonic.min.js"></script>
+</head>
+<body>
+  <von-app></von-app>
+</body>
+<script src="./components/Home.js"></script>
+<script src="./components/About.js"></script>
+<script>
+  const routes = [
+    { path: '/', component: Home },
+    { path: '/about', component: About }
+  ];
+
+  Vue.use(Vonic.app, {
+    routes: routes
+  });
+</script>
+</html>

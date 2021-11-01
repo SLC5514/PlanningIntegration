@@ -1,0 +1,71 @@
+<!-- header start -->
+<script type="text/javascript">
+    function setHeightPos(obj){
+        var ow=obj.width;
+        var oh=obj.height;
+        var k=ow/oh;
+        var pw=32;
+        var ph=32;
+        var nw=0,nh=0;
+        if(ow>=oh){
+            nw=ph*k;
+            obj.style.height=ph+"px";
+            obj.style.marginLeft=(pw-nw)/2+"px";
+        }else{
+            nh=pw/k;
+            obj.style.width=pw+"px";
+            obj.style.marginTop=(ph-nh)/2+"px";
+        }
+    };
+    function setDefaultHeader(obj){
+        var times=obj.getAttribute("data-times") || 0;
+        if(times<3){
+            times++;
+            obj.src="/global/images/common/header-default.png";
+            obj.setAttribute("data-times",times);
+        }
+    };
+</script>
+{if $user_type == "TOURIST" && $is_topic}
+<div class="new-header clear">
+    <a class="home-btn" href="//yuntu.pop136.com/home" title="云图"><img src="{$smarty.const.STATIC_URL2}/global/images/common/logo-init.png" alt="POP">云图</a>
+    {if $google_select_show}
+    <div id="google_translate_element" style="top:0;"></div>
+    {/if}
+	<a class="btn btn1 btn-type2" href="/user/register/" title="去注册">注册，立即试用</a>
+	<a class="btn btn1 btn-type1" href="/user/login/" title="去登录">登录</a>
+	<div>
+		<span class="icon tel-icon1"></span>4008-210-500 <label>（售前）</label>
+		<span class="icon tel-icon2"></span>4008-210-662<label>（售后）</label>
+
+	</div>
+</div>
+{else}
+<div class="header js-header">
+    <a class="home-btn" href="//yuntu.pop136.com/home/" title="云图"><img src="{$smarty.const.STATIC_URL2}/global/images/common/logo.png" alt="POP云图"></a>
+    {if $google_select_show}
+    <div id="google_translate_element"></div>
+    {/if}
+    <ul class="nav-list">
+        <li><a {if $col==3}class="now-choice"{/if} href="/patternlibrary/" title="图案库"><span class="icon gallery-spn"></span>图案库</a></li>
+        <li><a {if $col==2}class="now-choice"{/if} href="/similarpatterns/" title="图搜图"><span class="icon search-spn"></span>图搜图</a></li>
+        <li><a {if $col==1}class="now-choice"{/if} href="/virtualtryon/virtualspl/" title="实景模拟"><span class="icon virtual-spn"></span>实景模拟</a></li>
+        {if in_array(5,$col_power) && (in_array(1,$iTplSite)||empty($iTplSite))}
+        <li><a {if $col==5}class="now-choice"{/if} href="/simulate3d/" title="3D模拟成品"><span class="icon simulate3d-spn"></span>3D模拟成品</a></li>
+        {/if}
+    </ul>
+    <div class="user-info">
+        <a class="my-collect" href="/collect/getlist/"><span class="icon"></span>我的收藏</a>
+        <a class="personal-center js-personal-center" href="/user/usercenterview/" title="个人中心">
+            <img {if $avatarUri neq ''} src="{$smarty.const.STATIC_URL2}{$avatarUri}" {else}src="{$smarty.const.STATIC_URL2}/global/images/common/header-default.png" {/if} alt="头像" onload="window.setHeightPos && window.setHeightPos(this)" onerror="window.setDefaultHeader && window.setDefaultHeader(this)">
+            {$account}
+        </a>
+        {if !$no_login_out}
+        <a class="login-out-btn js-login-out-btn" href="javascript:void(0);" title="退出登录"><span class="icon"></span>退出</a>
+        {/if}
+        <a class="return-home-btn" href="/home/" title="返回首页"><span class="icon"></span>返回首页</a>
+        <p>已有账号，马上<a class="go-login-btn" href="/user/login/" title="登录"><span class="icon"></span>登录</a></p>
+    </div>
+</div>
+{/if}
+<!-- header end -->

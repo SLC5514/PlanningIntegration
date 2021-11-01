@@ -1,0 +1,11 @@
+
+.footerFixed{display: none !important;}
+.clear:after{display: block;content: "";visibility: hidden;clear: both;}
+.clear{zoom: 1;}
+.new-born{font-family: "微软雅黑";min-width: 1200px;position:relative;}
+.posi-contain{position: relative;top: 0;left: 0;}
+a{cursor: pointer;}
+
+/*开始底部不显示*/
+
+.new-born{height: 5460px;background: url(../images/151.jpg) center top no-repeat;}

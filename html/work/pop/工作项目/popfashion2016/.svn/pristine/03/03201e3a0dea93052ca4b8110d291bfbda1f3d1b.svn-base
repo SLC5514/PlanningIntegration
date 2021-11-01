@@ -1,0 +1,849 @@
+{extends file="layout.html"}
+{block name="selfcss"}
+<!--此区域引入本页需要的css-->
+<link rel="stylesheet" href="{STATIC_URL3}/global/css/report/new-report.css?{STATIC_CHANGE_TIME}">
+<link rel="stylesheet" href="{STATIC_URL3}/global/css/nfd-min.css?{STATIC_CHANGE_TIME}">
+<link rel="stylesheet" href="{STATIC_URL3}/global/css/jquery.lightbox-0.5.css">
+<link rel="stylesheet" href="{STATIC_URL3}/global/css/pop_layer.css?{STATIC_CHANGE_TIME}">
+{/block}
+
+{block name="self"}
+<!--此区域引入本页需要的js文件-->
+    <script type="text/javascript" src="https://player.youku.com/jsapi"></script>
+	<script src="{STATIC_URL3}/global/js/fashion/jquery.lightbox-0.5.js"></script>
+	<script src="{STATIC_URL3}/global/js/fashion/util.pop3.js?{STATIC_CHANGE_TIME}"></script>
+    <script src="{STATIC_URL3}/global/js/fashion/util.pop2.js?{STATIC_CHANGE_TIME}"></script>
+    <script type="text/javascript" src="{STATIC_URL3}/global/js/secret/crypto-js/crypto-js.js?{STATIC_CHANGE_TIME}"></script>
+    <script type="text/javascript" src="{STATIC_URL3}/global/js/secret/jsencrypt.js?{STATIC_CHANGE_TIME}"></script>
+	<script>
+		var pVisit = '{$powerDetails.P_Visit}';
+		// 是否显示看了又看
+		var showMoreRec = '{if $showMoreRec}1{else}0{/if}';
+		// 普通用户试用报告
+		var userTryOut = '{$P_UserType==4 && !$isPdf && $powerDetails["P_Tryout"]}';
+	</script>
+    <script type="text/javascript" src="{STATIC_URL3}/global/js/report/scale-img-1.0.js?{STATIC_CHANGE_TIME}"></script>
+    <script type="text/javascript" src="{STATIC_URL3}/global/js/report/report.js?{STATIC_CHANGE_TIME}"></script>
+	{literal}
+    <script type="text/javascript">
+        window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+    </script>
+    <script>
+        eval(function(p,a,c,k,e,d){e=function(c){return(c<a?"":e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)d[e(c)]=k[c]||e(c);k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1;};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p;}('8 B(2,b){D(C 2==\'x\'){2=w.n(2)}3 a=1.o.7(2,1.4.5.c(b),{r:1.4.5.c(\'e\')});9 1.4.s.n(a.y)};8 z(2,b){3 q=1.o.6(2,1.4.5.c(b),{r:1.4.5.c(\'e\')});9 q.A(1.4.5)};8 u(a){3 6=h d();6.t(v());p=6.6(R(a));9 p};8 T(m){3 7=h d();7.U(0());3 k=7.7(m);i=S(k).Q(/\\+/g,\'%X\');9 i};8 0(){3 0=\'-----Y l j-----\';0+=\'V+f+W\';0+=\'P\';0+=\'H+I\';0+=\'G\';0+=\'E/F/J\';0+=\'N/O+M\';0+=\'K\';0+=\'-----L l j-----\';9 0};',61,61,'pub_key|CryptoJS|plainText|var|enc|Utf8|decrypt|encrypt|function|return|encrypted|AES_KEY|parse|JSEncrypt|1234567887654301|||new|data_str|KEY|res|PUBLIC|str|stringify|AES|data_decrypted|decrypted|iv|Base64|setPrivateKey|rsa_decrypt|pri_key|JSON|object|ciphertext|aes_decrypt|toString|aes_encrypt|typeof|if|Avw5eS3UkIPixj4B0mZkhn9VZ9mOgBRgs9Lo|Ihc|GHGXr73iXRhLgqfQhC5dlMisbr3GqnGtPNVOBDYGtGgKS4mpaYzpO60kunooKmdH|3PSU5jrzuzDUEqZvEQaOHfKcUXRx3C61iR9iTnA6YCZLlIX3CnRJzYWCJNRjV|qp|hJXAk3kZvzQjIpzKrYAqHYp|hwIDAQAB|END|EfjuWjJxz02MuWsi|4cKyAfWCegA0G0fGo2aJWqpFrAg25FTDXFf0DRDz|AIEvJu|rcEaJOO94OSQsWzIQSGWM4yoVOVg85YKhW5JlwAHH53Zd8sASLk0ypQv5ze68zeS|replace|decodeURIComponent|encodeURI|rsa_encrypt|setPublicKey|MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1053Mcqn6WH|liJid6|2B|BEGIN'.split('|'),0,{}))
+    </script>
+    {/literal}
+{/block}
+
+{block name="main"}
+
+
+<!--头部导航-->
+{include file="common/header_nav_down.html"}
+
+
+
+<div class="report-contant conheight">
+    <input id="encrypt" type="hidden" data-sign="{$sign}" data-timestamp="{$timeStamp}" data-token="{$token}">
+	<input id="reportInfo" type="hidden" data-usetype="{$P_UserType}" data-colpara="{$res.colpara}" data-t="{$t}" data-id="{$id}" data-col="{$col}" name="">
+	<div id="layer-collect">
+		收藏成功
+	</div>
+
+	{if in_array($P_UserType,[4,5]) && !$isPdf}
+		{if !$powerDetails['P_Visit'] && !$powerDetails['P_Tryout']}
+		<!--游客/普通用户-->
+		<div class="no-vip-report {if $P_UserType==4}already-login{/if}">
+			<div class="no-vip-content {if empty($tryOutList)}out-list-padd{/if}">
+				<div class="clearfix no-vip-top">
+					<div class="trial-vip-r">
+						<img src="{$res.cover}" alt="icon" />
+					</div>
+					<div class="trial-vip-l">
+						<h2>报告浏览需要VIP权限<br />开通VIP可浏览全站趋势图片及行业深度报告书籍</h2>
+						<p class="trial-vip1">您现在是游客状态，去开通试用账号体验全站</p>
+						<p class="trial-vip2">您现在是普通用户，去开通试用账号体验全站</p>
+						<p class="trial-vip3">您现在是游客状态，拨打<span>4008-210-500</span>联系客服开通试用账号体验全站</p>
+						<p class="trial-vip4">您现在是普通用户，拨打<span>4008-210-500</span>联系客服开通试用账号体验全站</p>
+						<a class="set-vip-link js-contact-qq-btn" href="javascript:void(0);" title="联系客服"><i></i>联系客服  快速开通VIP试用账号</a>
+                        <a class="set-trial-link js-contact-qq-btn" href="javascript:void(0);" style="display:none;" title="在线申请试用">在线申请试用</a>
+                        {if !empty($res.sLiveUrl)}
+                        <div class="live-box"><span>视频直播解读</span>
+                            {if $res.live_status == 1}
+							<a href="{$res.sLiveUrl}" target="_blank">立即预约<i></i></a>
+                            {elseif $res.live_status == 2}
+                            <a href="{$res.sLiveUrl}" target="_blank">回看解读<i></i></a>
+                            {elseif $res.live_status == 3}
+                            <a href="{$res.sLiveUrl}" target="_blank">立即收看<i></i></a>
+                            {/if}
+						</div>
+                        {/if}
+					</div>
+				</div>
+				{if !empty($tryOutList)}
+				<div class="no-vip-bott">
+					<div>
+						<ul class="clearfix">
+							{foreach $tryOutList as $value}
+							<li>
+								<a href="{$value.link}" target="_blank" title="试读报告">
+									<div>免费试读</div>
+									<img src="{$value.smallPath}" alt="pic" />
+								</a>
+								<div>
+									<p>{$value.title|escape:"html"}</p>
+									<div>
+										<a href="/member/register/" target="_blank" title="注册">注册</a> 或  <a href="javascript:void(0);" class="loginLayer" title="登录">登录</a>  后可全文浏览
+									</div>
+								</div>
+							</li>
+							{/foreach}
+						</ul>
+					</div>
+				</div>
+				{/if}
+			</div>
+		</div>
+		{/if}
+		{if $P_UserType==5 && $powerDetails['P_Tryout']}
+		<!--免费报告游客提示-->
+		<div class="login-trial">
+			<div class="login-trial-content">
+				<img src="{$cover}" alt="icon" />
+				<div class="trial-bg"></div>
+				<div class="trial-disc">
+					<h2>登录注册后，您可免费浏览报告全文</h2>
+					<a class="redRg btn-l" href="/member/register/" rel="nofollow" target="_blank" title="注册">注册</a><a class="loginLayer btn-r" href="javascript:void(0);" rel="nofollow" title="登录">登录</a>
+				</div>
+			</div>
+		</div>
+		{/if}
+	{/if}
+
+	{if in_array($P_UserType,[1,2,3]) && !$powerDetails.P_Visit && !$isPdf}
+	<!--部分无权限-->
+	<div class="report-null">
+		<div class="report-content-null">
+			<img src="{$cover}" alt="icon" />
+			<div class="null-bg"></div>
+			<div class="null-disc">
+				<img src="{STATIC_URL3}/global/images/report/report-no-icon.png" alt="icon" />
+				<br /><p>浏览本内容需要 <span>{$power}</span> 浏览权限<br />您当前套餐没有哦！联系客服申请该栏目使用</p>
+				<div><a href="javascript:void(0);"  class="neiyeList fefu-link js-contact-qq-btn" href="javascript:void(0);" data-type="after" title="联系客服"><i></i>联系客服</a><div><i></i><span>客服热线：</span><span class="call-num">4008-210-662</span></div></div>
+			</div>
+		</div>
+	</div>
+	{/if}
+
+	{if $powerDetails.P_Visit || $isPdf}
+	<!--内容-->
+	<div class="report-content {if !$isPdf}report-detail-content{/if}" id="pop_layer">
+		<!--点击查看大图-->
+		<div class="pop_layer_page">
+			<div class="layer_bgBlack"></div>
+	        <div class="bigImg">
+	            <div class="bigpicTips">
+	                <span></span>
+	                您可以拖拽图片到任意位置，滚动鼠标放大或缩小图片
+	            </div>
+	            <p class="download_btn">
+	                <a class="dl_jpg" href="javascript:void(0);" title="下载JPG大图"><i></i>下载JPG大图</a>
+	                <a class="dl_ai" href="javascript:void(0);" title="下载AI大图"><i></i>下载AI大图</a>
+	                <a class="original_size" href="javascript:void(0);" title="原图尺寸">原图尺寸</a>
+	                <a class="reset_size" href="javascript:void(0);" title="重置图片">重置图片</a>
+	            </p>
+	            <img class="layerClose" src="{STATIC_URL3}/global/images/layerClose.png" alt="关闭">
+	            <div id="draggable" class="layerBig ui-draggable ui-draggable-handle">
+	                <img id="bigImages" class="layerBigPic szoom" style="transform: scale(1);" alt="pic">
+	            </div>
+	        </div>
+		</div>
+
+		<div class="report-cont" {if $isPdf}style="padding-right:0;"{/if}>
+			<!--报告-->
+			<div class="pop-report {if !$isPdf}pop-report-detail{/if}">
+				{if !$isPdf}
+					<div class="bannner-background">
+						<div class="fiter-img js-fiter-img">
+							<img src="{STATIC_URL3}{$res.bigImgPath}"alt="pic">
+						</div>
+						<div class="layer-main {if $isMos}layer-main-max{/if}">
+							<div class="header-detail-infor">
+								<h1>{$res.title}</h1>
+								<div class="tit-info">
+									<span>{$res.updateDate}</span>
+									{if !empty($res.authorPenName)}
+									<span>作者：{$res.authorPenName}</span>
+									{/if}
+									<span>浏览量：{$res.viewNum}次</span>
+								</div>
+                            </div>
+                            {if !empty($res.sLiveUrl)}
+                            <div class="live-box live-trial-vip"><span>视频直播解读</span>
+                                {if $res.live_status == 1}
+                                <a href="{$res.sLiveUrl}" target="_blank">立即预约<i></i></a>
+                                {elseif $res.live_status == 2}
+                                <a href="{$res.sLiveUrl}" target="_blank">回看解读<i></i></a>
+                                {elseif $res.live_status == 3}
+                                <a href="{$res.sLiveUrl}" target="_blank">立即收看<i></i></a>
+                                {/if}
+                            </div>
+                            {/if}
+							{if $res.bigImgPath}
+							<div class="bannerpic lazyload" style="padding: 70px 0px 0; width: 1110px; height: 624px;">
+								<img src="{STATIC_URL3}/global/images/loading/search_loding.gif" data-original="{STATIC_URL3}{$res.bigImgPath}" alt="pic">
+							</div>
+							{/if}
+						</div>
+					</div>
+					<div class="layer-main layer-indexdiv-main {if $isMos}layer-main-max{/if}">
+						{if $res.table=='t_trend_report'}
+							{include file="t_trend_report_layer.html"}
+						{elseif $res.table=='specialtopic'}
+							{include file="specialtopic_layer.html"}
+						{elseif $res.table=='specialtopic_graphic'}
+							{include file="specialtopic_graphic_layer.html"}
+						{else}
+							{include file="fashion_shows_layer.html"}
+						{/if}
+
+						{if !empty($res.vendorads)}
+						<div class="resources_recommend" id="js-resources-recommend">
+							<p class="r_title clearfix"><span class="fl"><i></i>时尚商学院推荐</span></p>
+							<ul class="clearfix">
+								{foreach $res.vendorads as $val}
+								<li><a href="{$val.sAdLinkAddr}" target="_blank" title="{$val.sCompanyName}"><img src="{$val.sAdImageUrl}" alt="pic"><p class="name_bg">{$val.sCompanyName}</p></a></li>
+								{/foreach}
+							</ul>
+						</div>
+						{/if}
+					</div>
+				{else}
+					<div class="layer-main {if $isMos}layer-main-max{/if}" style="margin:0;" data-type="pdf">
+						{if $res.bigImgPath}
+							{if $res.iIsFlash}
+							<div class="bannerpic lazyload" style="display: table-cell;vertical-align: middle;height: 682px;">
+								<img width="1110px" height="624px" src="{STATIC_URL3}/global/images/loading/search_loding.gif" data-original="{STATIC_URL3}{$res.bigImgPath}" alt="pic">
+							</div>
+							{else}
+							<div class="bannerpic lazyload" style="padding: 18px 0px;">
+								<img src="{STATIC_URL3}/global/images/loading/search_loding.gif" data-original="{STATIC_URL3}{$res.bigImgPath}" alt="pic">
+							</div>
+							{/if}
+						{/if}
+						{if $res.table=='t_trend_report'}
+							{include file="t_trend_report_layer_pdf.html"}
+						{elseif $res.table=='specialtopic'}
+							{include file="specialtopic_layer_pdf.html"}
+						{elseif $res.table=='specialtopic_graphic'}
+							{include file="specialtopic_graphic_layer_pdf.html"}
+						{else}
+							{include file="fashion_shows_layer.html"}
+						{/if}
+						{if $res.ads}
+						<div class="report_bottom_ad">
+							{foreach $res.ads as $ad}
+							<a target="{if $ad.sNewWindow}_blank{/if}" href="{$ad.sLink}" title="{$ad.sTitle}"><img src="{$ad.sImagePath}" alt="pic"/></a>
+							{/foreach}
+						</div>
+						{/if}
+						{if !empty($res.vendorads)}
+						<div class="resources_recommend" id="js-resources-recommend">
+							<p class="r_title clearfix"><span class="fl"><i></i>时尚商学院推荐</span></p>
+							<ul class="clearfix">
+								{foreach $res.vendorads as $val}
+								<li><a href="{$val.sAdLinkAddr}" target="_blank" title="{$val.sCompanyName}"><img src="{$val.sAdImageUrl}" alt="pic"><p class="name_bg">{$val.sCompanyName}</p></a></li>
+								{/foreach}
+							</ul>
+						</div>
+						{/if}
+						<div class="report_bottom_infor">
+							<div class="information_box">
+								<img class="img_left" src="{STATIC_URL3}/global/images/report_ewm1.png" alt="pic">
+							</div>
+						</div>
+					</div>
+				{/if}
+			</div>
+
+			<!--相关面料-->
+			{if $showFabric && !$isPdf}
+			<div class="relevant-about js-relevant-about" id="report-index1">
+				<div class="w-1112">
+					<div class="relevant-title clear">
+						<h3 class="fl"><i></i><span>相关面料</span></h3>
+						<a class="fr" href="http://www.uliaobao.com/" target="_blank" title="搜索更多面料">
+							<img src="{STATIC_URL3}/global/images/report/ulb-search.png" alt="icon" /><span>搜索更多面料</span><i></i>
+						</a>
+					</div>
+					<ul class="relevant-list clear"></ul>
+				</div>
+				<!--加载dom-->
+				<div class="list-load js-list-load1">
+					<img src="{STATIC_URL3}/global/images/report/report-load.png" alt="loading" /><br />
+					<img src="{STATIC_URL3}/global/images/loading/loading.gif" alt="loading" />
+					<p>正在探索与本报告的相关的面料...</p>
+				</div>
+			</div>
+			{/if}
+
+			{if !$isPdf && $showMoreRec}
+			<!--看了又看-->
+			<div class="see-more " id="report-index2">
+				<div class="w-1112">
+					<h3 class="see-title">
+						<i></i><span>看了又看</span>
+					</h3>
+					<ul class="see-list1 js-see-list1 clear"></ul>
+
+					<!--加载dom-->
+					<div class="list-load js-list-load2">
+						<img src="{STATIC_URL3}/global/images/report/report-load.png" alt="loading" /><br />
+						<img src="{STATIC_URL3}/global/images/loading/loading.gif" alt="loading" />
+						<p>正在探索喜欢该内容的其他人还会看什么...</p>
+					</div>
+
+					<ul class="see-list2 js-see-list2 clear"></ul>
+
+				</div>
+
+			</div>
+			{/if}
+		</div>
+	</div>
+	{/if}
+
+	{if !$isPdf}
+	<!--侧边导航-->
+	<div class="nav-right js-nav-right">
+		{if $powerDetails.P_Visit}
+		<div class="nav-control js-nav-control1"></div>
+		{/if}
+		<ul class="right-tab clearfix js-right-tab {if empty($res['reportBookCatalog'])}nobook{/if}">
+			<li class="fl right-tab-text active"><i></i><span>本文简介</span></li>
+			<li class="fr right-tab-book"><i></i><span>系列推荐</span></li>
+		</ul>
+		{if !empty($res['reportBookCatalog'])}
+		<div class="right-cont right-cont-book" style="display: none;">
+			<div class="right-top">
+				<h3>{$res['reportBookCatalog']['sTitle']}</h3>
+				<div class="book-msg js-book-msg">{$res['reportBookCatalog']['sMemo']}</div>
+            </div>
+            <a class="book-list-btn" href="/details/reportbook/{$res['reportBookCatalog']['id']}/?report_id={$res['id']}">查看目录页</a>
+			<div class="see-nav see-nav-topic js-see-nav-topic">
+				<ul class="topic-list">
+					{foreach $res['reportBookCatalog']['sCatalog'] as $key=>$item}
+					<li>
+						<div class="title">
+							<span>{if $key<9}0{/if}{$key+1}&nbsp;{$item.title}</span><i></i>
+						</div>
+						<ul>
+							{foreach $item['reports'] as $row}
+							<li data-id="{$row['id']}">
+								<a href="{$row['link']}" target="_blank" class="clear" title="{$row['title']}">
+									<i></i><span>{$row['title']}</span>
+								</a>
+							</li>
+							{/foreach}
+						</ul>
+					</li>
+					{/foreach}
+				</ul>
+			</div>
+		</div>
+		{/if}
+		<div class="right-cont right-cont-text">
+			<div class="right-top">
+				<h3>{$res.title}</h3>
+				{if $res.description}
+				<div class="report-msg js-report-msg">
+					<div>
+						{$res.description}
+					</div>
+					<p class="report-messages">
+						{$res.description}
+					</p>
+				</div>
+				{/if}
+				<div class="msg-i4-null" style="height: 12px;display: none;"></div>
+				<div class="msg-i msg-i4 js-msg-i4 clear">
+					<i></i>
+					<ul class="fl">
+						{if $res.aDetailLabels}
+						{foreach $res.aDetailLabels as $label}
+							<li><a target="_blank" href="{$label.dLink}" title="{$label.name}">{$label.name}</a></li>
+						{/foreach}
+						{/if}
+					</ul>
+				</div>
+			</div>
+			{if $cntSubTopic > 0}
+			<div class="see-nav js-see-nav1">
+				<div class="see-title">
+					<i></i>大纲
+				</div>
+				{if $powerDetails.P_Visit}
+				<ul>
+					{foreach $res.subTopic as $key => $topic}
+					<li class="{if $key==0}this-item{/if}">
+						<a data-id="index_{$topic.iSubTopicId}" onclick="javascript:document.getElementById('index_{$topic.iSubTopicId}').scrollIntoView()" class="clear" title="{$topic.sTitle}">
+							<i></i><span>{$topic.sTitle}</span>
+						</a>
+					</li>
+					{/foreach}
+				</ul>
+				{else}
+				<div class="cntsub-null">
+					{foreach $res.subTopic as $key => $topic}
+					<div class="clear">
+						<i></i><span>{$topic.sTitle}</span>
+					</div>
+					{/foreach}
+				</div>
+				{/if}
+			</div>
+			{/if}
+			<div class="shop-serve" style="display: none;">
+				<div class="serve-title">
+					<i></i>商务服务
+				</div>
+				<ul>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!--小屏幕侧边导航-->
+	<div class="nav-right-min js-nav-right-min" style="{if $cntSubTopic <= 0}width:0;border: 0 none;{/if}">
+		<div class="nav-control js-nav-control2">
+			<div class="nav-control-disc js-nav-control-disc">
+				<i></i>
+				<p>点击，可展开侧边栏</p>
+				<div>知道了</div>
+			</div>
+		</div>
+		<ul class="right-tab clearfix js-right-tab {if empty($res['reportBookCatalog'])}nobook{/if}">
+			<li class="fl right-tab-text active"><i></i><span>本文简介</span></li>
+			<li class="fr right-tab-book"><i></i><span>系列推荐</span></li>
+		</ul>
+		{if $cntSubTopic > 0 && $powerDetails.P_Visit}
+		{if !empty($res['reportBookCatalog'])}
+		<div class="right-cont-min right-cont-book" style="display: none;">
+			<div class="see-nav see-nav-topic js-see-nav-topic">
+				<ul class="topic-list">
+					{foreach $res['reportBookCatalog']['sCatalog'] as $k=>$item}
+					<li>
+						<div class="title">
+							<span data-ismin="1">{if $k<9}0{/if}{$k+1}&nbsp;{$item.title}</span><i></i>
+						</div>
+						<ul>
+							{foreach $item['reports'] as $row}
+							<li data-id="{$row['id']}">
+								<a href="{$row['link']}" class="clear" title="{$row['title']}" target="_blank">
+									<i></i><span>{$row['title']}</span>
+								</a>
+							</li>
+							{/foreach}
+						</ul>
+					</li>
+					{/foreach}
+				</ul>
+			</div>
+		</div>
+		{/if}
+		<div class="right-cont-min right-cont-text">
+			<div class="see-nav js-see-nav2">
+				<div class="see-title">
+					<i></i>大纲
+				</div>
+				<ul class="js-see-list">
+					{foreach $res.subTopic as $key => $topic}
+					<li class="{if $key==0}this-item{/if}">
+						<a data-id="index_{$topic.iSubTopicId}" onclick="javascript:document.getElementById('index_{$topic.iSubTopicId}').scrollIntoView()" class="clear" title="{$topic.sTitle}">
+							<i></i><p>{$topic.sTitle}</p>
+						</a>
+					</li>
+					{/foreach}
+				</ul>
+			</div>
+		</div>
+		{/if}
+	</div>
+	{/if}
+
+	{if $powerDetails.P_Visit && !$isPdf && !in_array($P_UserType,[4,5])}
+	<!--底部-->
+	<div class="report-footer">
+		<div class="clear">
+			<div class="footer-cont">
+				<div class="go-top js-go-top">
+					<i></i>
+					<p>返回<br />顶部</p>
+				</div>
+				<ul class="clear">
+					<li class="prompt js-prompt">
+						<i></i>
+						<div class="prompt-disc">
+							<div class="clear">
+								<div class="disc-icon">
+									<p style="padding-bottom: 25px;">
+										<i class="disc-icon1"></i>
+									</p>
+									<p>
+										<i class="disc-icon2"></i>
+									</p>
+									<p>
+										<i class="disc-icon3"></i>
+									</p>
+									<p style="padding-top: 3px;">
+										<i class="disc-icon4"></i>
+										<i class="disc-icon5"></i>
+									</p>
+								</div>
+								<div class="dic-msg">
+									<p>鼠标滑动滚轮，上滑报告</p>
+									<p style="padding-top: 32px;">键盘上下键，上滑报告</p>
+									<p style="padding-top: 18px;">按键盘左右键，侧边栏收<br />起展开操作</p>
+								</div>
+							</div>
+							<div class="dic-close">知道了</div>
+						</div>
+					</li>
+					<!-- 灵感视频无PDF与收藏 -->
+					{if $col != 116}
+						{if !$powerDetails.P_PdfDownLoad && !in_array($P_UserType,[1,2])}
+							<li class="report-down" onclick="oCommon.noPower(-5);" data-power="1"><i></i><span>下载PDF报告</span></li>
+						{else}
+							{if $res.pdfPath === 0}
+							<li class="report-down" onclick="oCommon.noPower('', 'pdf生成中');" data-power="1"><i></i><span>下载PDF报告</span></li>
+							{elseif $res.pdfPath !== -1}
+								{if $powerDetails.P_PdfDownLoad}
+								<li class="report-down" id="J_DownPDF1" data-rename="{$dlRename}" data-path="{$res.pdfPrefix}{$res.pdfPath}" data-colpara="{$res.colpara}" data-power="1"><i></i><span>下载PDF报告</span></li>
+								{else}
+								<li class="report-down" onclick="oCommon.noPower(-5);" data-power="1"><i></i><span>下载PDF报告</span></li>
+								{/if}
+							{/if}
+							{if $res.iIsFlash}
+							{if !$res.sImgPackPath}
+							<li class="report-down-imgpack" onclick="oCommon.noPower('', '图片包生成中');"><i></i><span>下载全部图片</span></li>
+							{else}
+							<li class="report-down-imgpack js-report-down-imgpack" data-rename="{$dlRename}" data-path="{$res.pdfPrefix}{$res.sImgPackPath}"><i></i><span>下载全部图片</span></li>
+							{/if}
+							{/if}
+							<!--<li class="report-down "><i></i><span>下载报告</span></li>-->
+							<li class="report-collect js-report-collect {if $res.iscollected}is-collected{/if}" data-mainaccount="{if $powerDetails.P_Visit && !$powerDetails.P_Collect}1{/if}" data-colpara="{$res.colpara}" data-iscollected="{$res.iscollected}">
+								<i></i><span>{if $res.iscollected}已收藏{else}加入收藏{/if}</span>
+							</li>
+						{/if}
+					{/if}
+					<li class="report-share">
+						<i></i><span>分享</span>
+						<div class="prompt-disc">
+							<div class=" bdsharebuttonbox clear" href="javascript:void(0);">
+							    <a href="javascript:void(0)" class="bds-sqq" data-cmd="sqq" title="分享给QQ好友"></a>
+							    <!--<a href="javascript:void(0)" class="auto-weixin" data-src="weixin2" title="分享到微信"></a>-->
+							    <a href="javascript:void(0)" class="bds-weixin" data-cmd="weixin" title="分享到微信"></a>
+							    <a href="javascript:void(0)" class="bds-qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+							    <a href="javascript:void(0)" class="bds-tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+							</div>
+						</div>
+					</li>
+					{if $showFabric}
+					<li class="report-relevant js-report-relevant">
+						<a href="javascript:document.getElementById('report-index1').scrollIntoView()" title="相关面料">
+							<i></i><span>相关面料</span>
+						</a>
+					</li>
+					{/if}
+					{if $showMoreRec}
+					<li class="report-see js-report-see J_sensor_report_view_more" data-t="{$t}" data-id="{$id}" data-col="{$col}">
+						<a href="javascript:document.getElementById('report-index2').scrollIntoView()" title="看了又看">
+							<i></i><span>看了又看</span>
+						</a>
+					</li>
+					{/if}
+					<li class="trend-app">
+						<a href="javascript:void(0);" title="趋势APP">
+							<i></i><span>趋势APP</span>
+						</a>
+						<div class="qr-code"></div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	{/if}
+	{if $P_UserType==4 && !$isPdf && $powerDetails['P_Tryout']}
+	<!--试读报告底部-->
+	<div class="trial-footer-box" style="height: 100px;">
+		<div class="trial-footer">
+			<div class="clearfix js-trial-pr">
+				<div class="trial-msg">
+					<p>开通试用账号，可浏览全站深度行业报告</p>
+					<div>客服热线：<span>4008-210-500</span></div>
+				</div>
+				<div class="trial-btns">
+					<a class="vip-btn js-contact-qq-btn" href="javascript:void(0);" title="联系客服"><i></i>联系客服开通试用</a>
+					<a class="trial-btn js-contact-qq-btn" href="javascript:void(0);" style="display:none;" title="在线申请试用账号">在线申请试用账号</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	{/if}
+</div>
+
+{/block}
+
+{block name="header"}
+<div class="report-hd">
+    <div class="head-top-static js-head-top clearfix">
+        <div class="head-t-content clearfix">
+            <div class="head-logo fl js-head-logo">
+                <a href="https://www.pop-fashion.com/" rel="nofollow" title="POP服装趋势"><img src="{STATIC_URL2}/global/images/new_common/nav_logo.png" alt="POP服装趋势"></a>					
+            </div>
+            <div class="user-contain fr">
+                {if $account eq '' && $accountShow neq 'true'}
+                <div class="user-box fl">
+                    <a href='javascript:void(0);' class='loginLayer' rel="nofollow" title="登录"><span class="lg"></span>登录</a>
+                    <i></i>
+                    <a class="reg-btn" href="/member/register/" rel="nofollow" title="注册"><span class="rg"></span>注册</a>
+                </div>
+                {else}
+                <div class="login-user-box fl js-returnLi">
+                    <a><em></em><span>{$account}</span></a>
+                    <div class="login-success-section js-forUl {if $P_UserType eq 1 || $P_UserType eq 2}login-success-vip{/if}">
+                        <div class="login-suc-head">
+                            <div class="login-suc-head-t clearfix">
+                                {if $P_UserType eq 1}
+                                <p class="fl">{$account}<span><i class="common-icon"></i>管理员账号</span></p>                                
+                                {else if $P_UserType eq 2}
+                                <p class="fl">{$account}<span><i class="common-icon"></i>设计师账号</span></p>
+                                {else if $P_UserType eq 3}
+                                <p class="fl">{$account}<span>试用账号</span></p>
+                                {else}
+                                <p class="fl">{$account}<span>普通用户</span></p>
+                                {/if}
+                                <a class="fl infor-account common-icon" href='/member/message/'>{if $issetNewMessage}<span class="ix"></span>{/if}</a>
+                                <a class="fr signout-account js-signOut">退出</a>
+                                {if $canChangLoginAccount}
+                                    {if $P_AccountType=="main"}
+                                    <a class="fr switch-account js-switch" data-type="1"><i class="common-icon"></i>切换</a>                                    
+                                    {else}
+                                    <a class="fr switch-account js-switch" data-type="2"><i class="common-icon"></i>切换</a>
+                                    {/if}
+                                {/if}                                
+                            </div>
+                            {if $P_UserType eq 1}
+                            <p>用VIP主账号，可管理多个子账号哦~<a href="/member/associate/" target="_blank">管理子账号</a></p>
+                            {else if $P_UserType eq 2}
+                            <p>用VIP主账号，可管理多个子账号哦~</p>
+                            {else if $P_UserType eq 3}
+                            <p>了解潮流趋势 / 服饰研发必备平台</p>
+                            {else}
+                            <p>升级成VIP之后，才能查看网站全部内容</p>
+                            {/if}                            
+                        </div>
+                        <div class="login-suc-content">
+                            <div class="login-suc-link">
+                                <a class="collect-link" href="/member/mycollect/" target="_blank"><span><i></i></span>我的收藏</a>
+                                <a class="history-link" href="/member/myHistory/4/" target="_blank"><span><i></i></span>浏览历史</a>
+                                <a class="workbench-link" href="/member/workbench/" target="_blank"><span><i></i></span>工作室</a>
+                                <a class="color-link" href="/smarttrends/colordata/" target="_blank"><span><i></i></span>色彩分析</a>
+                                <a class="top-link" href="/smarttrends/topstyles/" target="_blank"><span><i></i></span>TOP榜单</a>
+                                <a class="recommend-link" href="/patterns/patternRecommend/" target="_blank"><span><i></i></span>个性推荐</a>
+                            </div>
+                            {if $P_UserType == 4}
+                            <a href="javascript:void(0);" class="js-contact-qq-btn open-account-vip">开通VIP</a>
+                            {/if}
+                        </div>
+                    </div>
+                </div>
+                <!-- 切换账号验证弹层 -->
+                <div class="switch-box js-switch-box" style="display: none;">
+                    <div class="loginClose js-loginClose"></div>
+                    <div class="login-title">
+                        <span>请先进行身份验证</span>
+                    </div>
+                    <div class="login-main">
+                        <p class="errorbox errorbox3" style="top:0px;"></p>
+                        <ul>
+                            <li><input class="js-account" type="text" placeholder="请输入手机号"/></li>
+                            <li>
+                                <input class="js-switch-code" type="text" placeholder="请输入验证码"/>
+                                <span class="code-btn js-code-btn1">获取验证码</span>
+                            </li>
+                            <li class="l_drag border-none" style="padding-top: 15px;border: none;position: relative;">
+                                <div class="code_btn js-click-btn" data-cla=".js-puzzle-drag-content5">点击按钮完成图形验证</div>
+                                <div class="puzzle-drag-wraper js-drag-show" style="display: none;">
+                                    <s class="drag-s"></s>
+                                    <t class="drag-t"></t>
+                                    <div class="puzzle-drag-content js-puzzle-drag-content5">
+                                        <div class="drag-title clearfix">
+                                            <span>为保证你的账户安全，请先完成图形验证</span>
+                                            <span class="close js-close"></span>
+                                            <span class="change js-change"><i></i>换一换</span>
+                                        </div>
+                                        <div class="puzzle-img-box">
+                                            <div class="puzzle-img js-puzzle-img">
+                                                <img>
+                                            </div>
+                                            <div class="puzzle-lost js-puzzle-lost">
+                                                <img>
+                                            </div>
+                                        </div>
+                                        <div class="drag-slide-nav">
+                                            <div class="drag-slide-text">
+                                                <div class="drag-slide-left"></div>
+                                                <div class="drag-slide-center">向右滑动完成拼图</div>
+                                                <div class="drag-slide-right"></div>
+                                            </div>
+                                            <div class="drag-slide-bar js-drag-slide-bar">
+                                                <div class="drag-slide-bar-left"></div>
+                                                <div class="drag-slide-bar-center"></div>
+                                                <div class="drag-slide-bar-right"></div>
+                                            </div>
+                                            <div class="drag-slide-btn js-drag-slide-btn"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="switch-btn js-changeUser">提交</div>
+                    </div>
+                </div>
+                <!-- 弹层背景 -->
+                <div class="switch-bg js-switch-bg" style="display: none;"></div>
+                {/if}
+                {if $P_UserType eq 5 || $P_UserType eq 4}
+                <a href="javascript:void(0);" class="js-contact-qq-btn contact-btn">了解VIP</a>
+                {/if}
+                <a class="help-center-btn" href="http://www.pop136.com/product_help.php">帮助中心</a>
+            </div>         
+        </div>
+    </div>
+</div>
+
+
+<!-- 下载图片 -->
+<div class="download-img-box js-download-img-box">
+	<div class="down-main-top clearfix">
+        <h2 class="fl">下载文件格式</h2><div class="fr down-close js-down-close"></div>
+    </div>
+    <table class="down-table" width="100%" id="J_DownloadType2">
+    	<thead>
+			<tr>
+				<th width="25%">格式</th>
+				<th width="25%">尺寸</th>
+				<th width="25%">文件大小</th>
+				<th width="25%">点击下载</th>
+			</tr>
+		</thead>
+		<tbody class="js-download-tbody">
+			<tr>
+				<td>.eps</td>
+				<td>--</td><td>10MB</td><td><a class="js-download-btn" href="javascript:void(0);" data-bp="%2Ffashion%2Fgraphic%2F201803070330_sh4650%2Feps%2F0-2790380308_sh4650.eps" title="下载">下载</a></td>
+			</tr><tr>
+				<td>.eps</td>
+				<td>--</td><td>10MB</td><td><a class="js-download-btn" href="javascript:void(0);" data-bp="%2Ffashion%2Fgraphic%2F201803070330_sh4650%2Feps%2F0-2790380308_sh4650.eps" title="下载">下载</a></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+
+<!-- 缩放图片层 -->
+<div class="show-pic-section js-show-pic-section status" data-click="1">
+	<div class="section" data-click="1">
+		<button data-click="1"></button>
+		<div class="down-pic js-download-btn2 js-src">
+			<i></i>
+			<span>下载图片</span>
+		</div>
+		<div class="recommend js-recommend">
+			<span>相关推荐</span>
+			<div class="icon"></div>
+		</div>
+		<i class="i-lfet js-i-lfet"></i>
+		<img class="js-down-img" style="display: none;" ondragstart="return false;" alt="pic">
+		<img src="{STATIC_URL3}/global/images/loading_pie.gif"  class="js-gifImg">
+		<i class="i-right js-i-right"></i>
+		<div class="operation-div">
+		   <!--  <p>
+				<img src="{STATIC_URL3}/global/images/report/icon1.png" alt="icon">
+				您可以通过鼠标操作<br/>，<br/>对图片进行尺寸缩放及位置拖拽
+			</p> -->
+			<div class="tool-div js-tool-div">
+				<div><button style="top: 0px;"></button></div>
+				<button class="js-origin-img-btn" title="原图">原图</button>
+				<button class="js-reset-img-btn" title="复位">复位</button>
+			</div>
+		</div>
+
+		<!-- 右键弹出层 -->
+		<!-- <div class="down-box js-down-box">
+			<span class="js-download-btn2 js-src" style="border-bottom: 1px solid rgb( 229, 229, 229 )">保存</span>
+			<span class="js-down-close1">关闭</span>
+		</div> -->
+	</div>
+	<div class="section-right Scrollbar">
+		<div class="head">相关推荐</div>
+		<div class="list js-guess-imgs clearfix">
+
+		</div>
+		<div class="loading js-loading">
+			<img src="{STATIC_URL3}/global/images/alertloading.gif"/>
+		</div>
+	</div>
+</div>
+<div class="show-pic-bg js-show-pic-bg"></div>
+
+<!-- 申请试用弹出 -->
+<div class="feedback-section-box clear js-feedback-section-box">
+    <button></button>
+    <h3><span></span>联系我们</h3>
+    <div class="contact-div">
+        <span>直接联系客服</span>
+        <button class="js-contact-qq-btn" title="直接咨询">直接咨询</button>
+        <p>咨询热线：<span>4008-210-500</span></p>
+        <p>售后服务：<span>4008-210-662</span></p>
+    </div>
+    <div class="form-div js-form-div">
+        <h3>请留下简要的信息，我们将在两个工作日内与您联系!</h3>
+        <ul class="form-list js-form-list js-form-list2">
+            <li>
+                <label for="name">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名</label><input value="" autocomplete="off" class="js-input-area" id="name" name="name" type="text" maxlength="20" placeholder="方便我们称呼您">
+                <p>4-20位字符，一个汉字是两个字符</p>
+            </li>
+            <li>
+                <label for="tel">电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话</label><input value="" autocomplete="off" class="js-input-area js-mobile-area" id="tel" name="tel" type="text" placeholder="联系您需要">
+                <p>请输入手机号</p>
+            </li>
+            <li class="select-itme" style="padding-right: 0px;">
+                <label>咨询类型</label>
+                <div class="select-div js-select-div">
+                    <span class="select-spn now-choice" value="5">申请试用</span>
+                    <ul class="option-list">
+                        {foreach $feedbackTypes as $val}
+                        <li value="{$val.id}">{$val.sName}</li>
+                        {/foreach}
+                    </ul>
+                </div>
+                <p>请选择咨询类型的内容</p>
+
+            </li>
+            <li class="txt-box">
+                <textarea class="js-input-area" name="content" placeholder="可在此处填写您想告知我们的其他信息" maxlength="100"></textarea>
+            </li>
+        </ul>
+        <button class="sub-btn js-sub-btn" data-type="2" title="马上联系我们">马上联系我们</button>
+    </div>
+</div>
+<div class="bg-div js-bg-div"></div>
+
+<!-- 报告视频 -->
+<div class="report-video-bg js-report-video-bg"></div>
+<div class="report-video-section js-report-video-section">
+    <i class="close"></i>
+    <div id="reportPlayer"></div>
+</div>
+
+{/block}
+{block name="footer"}{/block}

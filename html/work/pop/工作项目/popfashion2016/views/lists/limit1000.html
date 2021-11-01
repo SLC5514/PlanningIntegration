@@ -1,0 +1,18 @@
+<!-- 翻页1000 -->
+<div class="no_sear no_searx1000 js-limit-sear">
+	<span class="n_icon"></span>
+	<p class="n_font">亲,网站目前只支持前{PAGE_LIMIT}页的数据查询<br/>需要更多资料？</p>
+	<div class="sear-box clearfix">
+		<div>您可联系专属客服：</div>
+		<p>
+			{if isset($userType) && $userType == 'vip'}
+				<a class="neiyeList fl js-contact-qq-btn" href="javascript:void(0);" data-type="after">QQ咨询</a>
+				<span class="neiyeList fr">客服热线：<em>4008-210-662</em></span>
+			{else}
+				<a class="neiyeList fl js-contact-qq-btn" href="javascript:void(0);">QQ咨询</a>
+				<span class="neiyeList fr">客服热线：<em>4008-210-500</em></span>
+			{/if}
+		</p>
+	</div>
+</div>
+<!-- 翻页1000 END -->

@@ -1,0 +1,216 @@
+{extends file="layout.html"}
+{block name="title"}服装品牌-POP服装趋势网{/block}
+{block name=keywords}品牌成册款式图库,品牌流行趋势分析报告,热门品牌矢量花型,品牌广告电子书Look Book,品牌集合广场{/block}
+{block name="description"}品牌赋予商业无限生机，我们理解并分析品牌设计。以设计师、品牌、T台、广告大片等元素，探讨品牌价值诞生。从单品打造到订货会，将品牌力注入产品。{/block}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/topic/brand/css/index.css?{STATIC_CHANGE_TIME}">
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/topic/common/css/h5-common.css?{STATIC_CHANGE_TIME}">
+{/block}
+
+{block name="main"}
+{include file="topic/common/h5-header.html"}
+<div class="color-banner js-color-banner">
+	<div class="w1200">
+		<h1>品牌</h1>
+		<p class="pc-title">品牌赋予商业无限生机，POP汇聚品牌设计。以设计师，品牌，T台，广告大片等视角，探讨<br/>品牌价值诞生。从单品打造到订货会，多维解读时尚设计品牌力</p>
+		<p class="h5-title">品牌赋予商业无限生机，POP汇聚品牌设计。以设计师，品牌，T台，广告大片等视角，探讨品牌价值诞生。从单品打造到订货会，多维解读时尚设计品牌力</p>
+		<a href="/member/register/" class="h5-reg-btn">立即注册<i></i></a>		
+	</div>	
+</div>
+
+<div class="section-top">
+	<div class="w1200">
+		<div itemscope class="section1 clearfix js-section1" id="section1">
+			<div class="con-lf fl">
+				<h2 class="h2-pc"><img src="{STATIC_URL2}/global/topic/brand/images/bs.png"></h2>
+				<h2 class="h2-h5"><img src="{STATIC_URL2}/global/topic/brand/images/bs-h5.png"></h2>
+				<p itemprop="description">追踪品牌前沿款式，季节性款式图册。可使用单张模式，成册模式，轻松查看品牌款式，充分掌握流行资源</p>
+				<div>
+					<a href="/analysis/online/" target="_blank">设计师品牌<i></i><em></em><span></span></a>
+					<a href="/styles/online/" target="_blank">名牌精选<i></i><em></em><span></span></a>
+					<a href="/styles/popular/" target="_blank">款式流行<i></i><em></em><span></span></a>
+				</div>
+			</div>
+			<div class="con-rg fr">
+				<h3>品牌成册款式图库</h3>
+				<div class="clearfix">
+					<img src="{STATIC_URL2}/global/topic/brand/images/bs1.jpg" alt="品牌款式1" title="品牌款式1">
+					<div class="downlist">
+						<img src="{STATIC_URL2}/global/topic/brand/images/bs2.jpg">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div itemscope class="section2 clearfix js-section2" id="section2">
+			<div class="con-rg fr">
+				<h2 class="h2-pc"><img src="{STATIC_URL2}/global/topic/brand/images/ba.png"></h2>
+				<h2 class="h2-h5"><img src="{STATIC_URL2}/global/topic/brand/images/ba-h5.png"></h2>
+				<p itemprop="description">聚焦分析品牌特色，品牌款式，重点潮流，风格搭配。全面掌握品牌市场动向，无论是创意方向及细节搭配，都可以在此找到方向</p>
+				<div>
+					<a href="/analysis/online/" target="_blank">设计师品牌分析<i></i><em></em><span></span></a>
+					<a href="/analysis/runways/" target="_blank">T台分析<i></i><em></em><span></span></a>
+					<a href="/analysis/shows/" target="_blank">订货会分析<i></i><em></em><span></span></a>
+					<a href="/analysis/retail/" target="_blank">标杆分析<i></i><em></em><span></span></a>
+				</div>
+			</div>
+			<div class="con-lf fl">
+				<h3>品牌流行趋势分析报告</h3>
+				<ul>
+					<li><img src="{STATIC_URL2}/global/topic/brand/images/ba1.jpg" alt="品牌报告1" title="品牌报告1"></li>
+					<li><img src="{STATIC_URL2}/global/topic/brand/images/ba2.jpg" alt="品牌报告2" title="品牌报告2"></li>									
+				</ul>
+			</div>			
+		</div>
+	</div>
+</div>
+
+<div class="section-bottom">
+	<div class="w1200">
+		<div itemscope class="section3 clearfix js-section3" id="section3">
+			<div class="con-lf fl">
+				<h2 class="h2-pc"><img src="{STATIC_URL2}/global/topic/brand/images/patterns.png"></h2>
+				<h2 class="h2-h5"><img src="{STATIC_URL2}/global/topic/brand/images/patterns-h5.png"></h2>
+				<p itemprop="description">汇集各品牌花型，追踪热门品牌的T台、订货会，提炼每季有代表性的趋势花型，进行矢量绘制。一键下载，高效研发</p>
+				<a itemprop="url" href="/patterns/topbrands/" target="_blank"><span>大牌花型图<i></i></span><em></em></a>
+			</div>
+			<div class="con-rg fr">
+				<h3>热门品牌矢量花型</h3>
+				<div>
+					<ul>
+						<li><img src="{STATIC_URL2}/global/topic/brand/images/patterns1.jpg" alt="品牌花型1" title="品牌花型1"></li>
+						<li><img src="{STATIC_URL2}/global/topic/brand/images/patterns2.jpg" alt="品牌花型2" title="品牌花型2"></li>									
+					</ul>
+					<div>
+						<img src="{STATIC_URL2}/global/topic/brand/images/patterns3.png" alt="品牌花型3" title="品牌花型3">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div itemscope class="section4 clearfix js-section4" id="section4">			
+			<div class="con-rg fr">
+				<h2 class="h2-pc"><img src="{STATIC_URL2}/global/topic/brand/images/lb.png"></h2>
+				<h2 class="h2-h5"><img src="{STATIC_URL2}/global/topic/brand/images/lb-h5.png"></h2>
+				<p itemprop="description">在线查看品牌广告电子书，包含高清广告大图，LOOKBOOK合辑。每季推出男女搭配手册</p>
+				<a itemprop="url" href="/books/lookbook/" target="_blank"><span>广告大片<i></i></span><em></em></a>
+			</div>
+			<div class="con-lf fl">
+				<h3>品牌广告电子书LOOKBOOK</h3>
+				<ul>
+					<li><img src="{STATIC_URL2}/global/topic/brand/images/lb1.jpg" alt="品牌电子书1" title="品牌电子书1"></li>
+					<li><img src="{STATIC_URL2}/global/topic/brand/images/lb2.jpg" alt="品牌电子书2" title="品牌电子书2"></li>
+					<li><img src="{STATIC_URL2}/global/topic/brand/images/lb3.jpg" alt="品牌电子书3" title="品牌电子书3"></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div itemscope class="section-add js-section-add">
+	<div class="w1200 clearfix">
+		<div class="con-lf fl">
+			<h2 class="h2-pc"><img src="{STATIC_URL2}/global/topic/brand/images/brand.png"></h2>
+			<h2 class="h2-h5"><img src="{STATIC_URL2}/global/topic/brand/images/brand-h5.png"></h2>
+			<p itemprop="description">集合国内外主流品牌，细分地区及市场定位。通过字母表及搜索功能，快速找到感兴趣的品牌，即刻探索品牌资讯</p>
+			<a itemprop="url" href="/brands/" target="_blank"><span>查看品牌集合<i></i></span><em></em></a>
+		</div>
+		<div class="con-rg fr">
+			<h3>品牌集合广场</h3>
+			<div>
+				<img src="{STATIC_URL2}/global/topic/brand/images/brand1.jpg">
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="section5">
+	<div class="w1200">
+		<h2>POP提供丰富的使用体验</h2>
+		<ul>
+			<li><i></i>周更新1000+图集</li>
+			<li><i></i>流行趋势观点预测</li>
+			<li><i></i>打造团队协作工作室</li>
+			<li><i></i>更强大的检索功能</li>
+			<li><i></i>图文合辑更多视角</li>
+			<li><i></i>前沿智能设计工具&nbsp;&nbsp;</li>
+		</ul>
+	</div>
+</div>
+
+<div class="section6">
+	<div class="w1200">
+		<h2>更多使用指南</h2>
+		<ul class="clearfix">
+			<li>
+				<a href="/topic/theme_color/" target="_blank">
+					<img src="{STATIC_URL2}/global/topic/brand/images/img1.jpg" alt="主题色彩" title="主题色彩">
+					<p>主题色彩</p>
+					<div class="opacityx40"></div>
+					<div class="opacityx80"></div>
+				</a>
+			</li>
+			<li>
+				<a href="/topic/patterns/" target="_blank">
+					<img src="{STATIC_URL2}/global/topic/brand/images/img2.jpg" alt="图案" title="图案">
+					<p>图案</p>
+					<div class="opacityx40"></div>
+					<div class="opacityx80"></div>
+				</a>
+			</li>
+			<li>
+				<a href="/topic/single/" target="_blank">
+					<img src="{STATIC_URL2}/global/topic/brand/images/img3.jpg" alt="单品" title="单品">
+					<p>单品</p>
+					<div class="opacityx40"></div>
+					<div class="opacityx80"></div>
+				</a>
+			</li>
+			<li>
+				<a href="/topic/fabric/" target="_blank">
+					<img src="{STATIC_URL2}/global/topic/brand/images/img5.jpg" alt="面料" title="面料">
+					<p>面料</p>
+					<div class="opacityx40"></div>
+					<div class="opacityx80"></div>
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<div class="section7">
+	<div class="w1200">
+		{if $account eq '' && $accountShow neq 'true'}
+		<h2>即刻加入POP</h2>
+		<p>获取时尚热点,创造你的流行势能</p>
+		<div><span></span></div>		
+		<a href="/member/register/" target="_blank">
+			<span>立即注册<i></i></span>
+			<em></em>
+		</a>
+		{else}
+		<h2>成为VIP会员</h2>
+		<p>尊享全站精选：趋势报告、款式、图集、设计素材...<br/>开启灵感致胜之旅</p>
+		<div><span></span></div>		
+		<a href="javascript:void(0);" class="js-contact-qq-btn">咨询VIP服务<i></i></a>
+		{/if}
+	</div>
+</div>
+
+<div class="section8">
+	<div class="contact-box">
+		<h2>电脑浏览,发现精彩免费内容</h2>
+		<p>www.pop-fashion.com</p>
+		<div>
+			<em><img src="{STATIC_URL2}/global/topic/brand/images/tel.png"></em>
+		</div>
+		<span>售前客服</span>
+		<strong>4008 210 500</strong>
+	</div>
+</div>
+{include file="topic/common/h5-footer.html"}
+{/block}
+
+
+{block name="self"}
+<script type="text/javascript" src="{STATIC_URL2}/global/topic/brand/js/index.js?{STATIC_CHANGE_TIME}"></script>
+{/block}

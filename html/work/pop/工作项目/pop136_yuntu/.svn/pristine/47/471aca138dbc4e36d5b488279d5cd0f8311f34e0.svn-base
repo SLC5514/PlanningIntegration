@@ -1,0 +1,7 @@
+{extends file="layout.html"}
+{block name="main"}
+<div class="error">
+    <img src="{$smarty.const.STATIC_URL2}/global/images/error.png" alt="">
+    <p><span>您访问的页面出错！</span>您可以稍后<a href="javascript:location.reload();">刷新</a>或者<a href="/">返回网站首页</a></p>
+</div>
+{/block}

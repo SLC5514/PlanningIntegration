@@ -1,0 +1,108 @@
+{extends file="layout.html"}
+
+{block name="title"}设界共享趋势产业联盟-POP服装趋势网{/block}
+{block name=keywords}跨界联名,人工智能,精准商贸对接,现场分区概览,设计无界资源共享{/block}
+{block name=description}设界共享(DESIGNER WORLD.SHARING)——趋势产业联盟，展会时间：2017/10/11～13，展会地点：上海国家会展中心。{/block}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/topic/20170920/css/index.css?{STATIC_CHANGE_TIME}">
+{/block}
+
+{block name="main"}
+<div class="season-section">
+	<div class="p1"></div>
+	<div class="p2">
+		<img src="{STATIC_URL2}/global/topic/20170920/images/pic2.png"/>
+	</div>
+	<div class="p3">
+		<img src="{STATIC_URL2}/global/topic/20170920/images/pic3.png"/>
+		<div class="cont3">
+			<div class="l js-left-btn"><img src="{STATIC_URL2}/global/topic/20170920/images/icon1.png"/></div>
+			<div class="r js-right-btn"><img src="{STATIC_URL2}/global/topic/20170920/images/icon2.png"/></div>
+			<div class="lun">
+				<ul class="clear js-review-list">
+					<li class="img1"></li>
+					<li class="img2"></li>
+					<li class="img3"></li>
+					<li class="img4"></li>
+					<li class="img5"></li>
+					<li class="img6"></li>
+					<li class="img1"></li>
+					<li class="img2"></li>
+					<li class="img3"></li>
+					<li class="img4"></li>
+					<li class="img5"></li>
+					<li class="img6"></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="p4">
+		<img src="{STATIC_URL2}/global/topic/20170920/images/pic4.png"/>
+	</div>
+	<div class="p5">
+		<img src="{STATIC_URL2}/global/topic/20170920/images/pic5.png"/>
+	</div>
+	<div class="p6">
+		<img src="{STATIC_URL2}/global/topic/20170920/images/pic6.png"/>
+	</div>
+	<div class="p7">
+		<img src="{STATIC_URL2}/global/topic/20170920/images/pic7.png"/>
+	</div>
+
+	{include file="topic/topic_layer.html"}
+</div>
+{/block}
+
+
+{block name="self"}
+{literal}
+<script>
+	$(function(){
+		
+    	var _index=0,is_lun=false,review_ul=$('.js-review-list'),_len=$('.js-review-list li').length/2,list_w=780;		//轮播当前i
+    	
+    	$('.js-left-btn').on('click',function(){
+    		if(is_lun==true){
+    			return;
+    		}
+    		is_lun=true;		//正在轮播
+    		_index--;
+    		if(_index<0){
+    			_index=_len-1;
+    			review_ul.stop().css({
+	    			"margin-left":_len*-1*list_w+"px"
+	    		})
+    		}
+    		
+    		review_ul.stop().animate({
+    			"margin-left":_index*-1*list_w+"px"
+    		},400,function(){
+    			is_lun=false;
+    		});
+    		
+    	})
+    	
+    	$('.js-right-btn').on('click',function(){
+    		if(is_lun==true){
+    			return;
+    		}
+    		is_lun=true;
+    		_index++;
+    		if(_index>_len){
+    			_index=1;
+    			review_ul.stop().css({
+	    			"margin-left":"0px"
+	    		})
+    		}
+    		
+    		review_ul.stop().animate({
+    			"margin-left":_index*-1*list_w+"px"
+    		},400,function(){
+    			is_lun=false;
+    		});
+    	})
+    })
+</script>
+{/literal}
+{/block}

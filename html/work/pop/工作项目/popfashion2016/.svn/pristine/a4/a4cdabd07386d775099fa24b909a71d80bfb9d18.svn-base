@@ -1,0 +1,187 @@
+{extends file="layout.html"}
+
+{block name="selfcss"}
+    <link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/lists/brand.css?{STATIC_CHANGE_TIME}">
+{/block}
+{block name="main"}
+{block name="topads"}{/block}
+	<div class="contant conheight brand">
+		<div class="banner-top">
+	        <div class="banner-box js-banner-box">
+	            <ul class="banner-list js-slide-list">
+	                {foreach $topAds as $key=>$ad}
+	                <li {if $key != 0}class="hide"{/if}><a href="{$ad.sLink}" {if $ad.sNewWindow} target="_blank" {/if} title="{$ad.sTitle}"><img src="{$ad.sImagePath}" alt="{$ad.sTitle}"></a></li>
+	                {/foreach}
+	            </ul>
+	            <ul class="banner-navs clearfix js-progress-bar">
+	                {foreach $topAds as $key=>$ad}
+	                {if $ad.count>1}
+	                <li {if $key == 0}class="cur"{/if}></li>
+	                {/if}
+	                {/foreach}
+	            </ul>
+	            {if $ad.count>1}
+	            <div class="banner-prev js-slide-pre"></div>
+	            <div class="banner-next js-slide-next"></div>
+	            {/if}
+	        </div>
+        </div>	
+		<div name="anchor" id="anchor" style="position: absolute; top: 278px"></div>
+		<div class="all_pp brand_scroll con_width">
+			<div class="tit">
+				<div class="tit_con">
+					<span class="leftspan"></span>
+					<h3>品牌<p>BRANDS</p></h3>
+					<span class="rightspan"></span>
+				</div>
+			</div>
+            <div class="choose_col clearfix">
+            	<div class="keycho brand_keycho fl">
+					<div class="keyWord">
+						<ul>
+							<li class="keyWord_downlist">
+								<a id="Gender" class="keyW fl clickme del" href="#" data-id="{$GenderChecked.id}" title="{$GenderChecked.val}">性别: {$GenderChecked.val}</a><em class="fl"></em>
+								<div class="downlist">
+									{foreach $sGender as $key=>$val}
+									<a href="javascript:void(0);" data-id='{$key}' data-url='{$val.link}' title="{$sub.value}" >{$val.name}</a>
+									{/foreach}
+								</div>
+							</li>
+							<li class="keyWord_downlist">
+								<a id="Industry" class="keyW fl clickme del" href="javascript:void(0);" title="{$IndustryChecked.val}" data-id="{$IndustryChecked.id}">行业: {$IndustryChecked.val}</a><em class="fl"></em>
+								<div class="downlist">
+									{foreach $sIndustry as $key=>$val}
+									<a href="javascript:void(0);" data-id='{$key}' data-url='{$val.link}' title="{$sub.value}">{$val.name}</a>
+									{/foreach}
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="lanmu_intro fr">
+					简介
+					<div class="intro_cont"><i></i>提供全球4万多品牌时时产品变化和款式资料，同时提供重点地区重点品牌全维度多视角、货品结构与设计特点深入解析，关注品牌前世今生动态变化与原因分析</div>
+				</div>
+            </div>
+            <div class="all_con">
+            	<ul class="s_leibie" data='{$params}' data-params='{$params}' data-rec="{count($topBrands)}" id="s_leibie">
+					<li>
+						<label class="fl">地区：</label>
+						<div class="fl">
+							{foreach $region as $key=>$val}
+								<a href="{$val.link}" data-id='{$key}' {if $param['reg'] == $key}class="cur"{/if} class="{if $key=='1'}curpurple{elseif $key=='2'}curyellow{elseif $key=='3'}curgreen{else}curblue{/if}" title="{$val.name}">{$val.name}</a>
+								{if $val.child}
+								{foreach $val.child as $childId => $childVal}
+								<a href="{$childVal.link}" {if $param['reg'] == $childId}class="cur"{/if}  class="{if $key=='1'}curpurple{elseif $key=='2'}curyellow{elseif $key=='3'}curgreen{else}curblue{/if}" title="{$childVal.name}">{$childVal.name}</a>
+								{/foreach}
+							   {/if}
+							{/foreach}
+						</div>
+					</li>
+					{if !empty($sAgeLevel)}
+					<li>
+						<label class="fl">年龄层：</label>
+						<div class="fl">
+							{foreach $sAgeLevel as $key => $val}
+							   <a href="{$val.link}" {if $param['age'] == $key}class="cur"{/if} title="{$val.sName}">{$val.sName}</a>
+							{/foreach}
+						</div>
+					</li>
+					{/if}
+					<li>
+						<label class="fl">市场定位：</label>
+						<div class="fl">
+							{foreach $sMarketHotPosition as $key=>$val}
+							 <a href="{$val.link}" data-id='{$key}' {if $param['bpos'] == $key}class="cur"{/if} title="{$val.sName}">{$val.sName}</a>
+							{/foreach}
+						</div>
+					</li>
+					{if isset($sDress) && !empty($sDress)}
+                    <li>
+						<label class="fl">穿着：</label>
+						<div class="fl">
+							<a href="javascript:void(0);" data-id='0' class="cur" title="全部">全部</a>
+						    {foreach $sDress as $key=>$val}
+							 <a href="javascript:void(0);" data-id='{$key}' title="{$val.sName}">{$val.sName}</a>
+							{/foreach}
+						</div>
+					</li>
+                    {/if}
+				</ul>
+				<div class="all_searchContent"><a class="all_searchContent_a" href="#anchorTwo"><i></i>共找到<span>0</span>个品牌</a></div>
+            </div>
+		</div>
+		{if !empty($topBrands)}
+		<div class="updata_pp">
+			<div class="updata_con">
+				<div class="con_width">
+					<div class="brand_img fl"><span></span><p class="title">热门品牌推荐<br/><em>BRAND RECOMMENDATION</em><i></i></p></div>
+					<ul itemscope class="clearfix updata_list fl">
+					    {foreach $topBrands as $val}
+                        {if $val.count}
+						<li>
+							<a itemprop="url" href="/brands/detail/id_{$val.id}/" target='_blank' title="查看详情">
+								{if !empty($val.sLogoPic)}<img itemprop="thumbnail" src="{STATIC_URL3}{$val.sLogoPic}" alt="pic">{/if}
+								<div class="showxq {if !empty($val.sLogoPic)}showdiv{/if}" {if !empty($val.sLogoPic)}style="display:none;"{/if} >
+									<p itemscope class="bt">
+                                        <span itemprop="name" class="fontCh" title="{$val.name}">{$val.name}</span><br>
+                                        <span itemprop="name" class="fontEn" title="{$val.b_name}">{$val.b_name}</span>
+                                    </p>
+									<span itemscope class="bt_fenge"></span>
+									<p itemprop="number" class="up_time">共有：<i>{$val.count}</i></p>
+									<span class="span_l"></span>
+									<span class="span_r"></span>
+								</div>
+							</a>
+						</li>
+                        {/if}
+						{/foreach}
+					</ul>
+				</div>
+			</div>
+		</div>
+		{/if}
+		<div  id="anchorTwo" name="anchorTwo"></div>
+		<div class="all_pp brand_num con_width">
+			<div class="all_con">
+				<div class="brand_search">
+					<div class="fl s_box">
+						<span class="search_icon fl" id="searchButton"></span>
+						<input type="text" class="fr" id="searchInput" value="请输入品牌名" growing-track="true">
+					</div>
+					<span class="fl line">|</span>
+					<div class="fl zm" id='az'>
+						<a href="javascript:void(0);" data-id='ALL' class="check" title="全部品牌">全部品牌</a>
+						{foreach $AliasAll as $val}
+						<a href="javascript:void(0);" data-id='{$val}' title="{$val}">{$val}</a>
+						{/foreach}
+						<a href="javascript:void(0);" data-id='NUMBER' title="0-9">0-9</a>
+						<a href="javascript:void(0);" data-id='OTHER' title="其他">其他</a>
+					</div>
+				</div>
+				<div class="brand_result contentHolder">
+					<ul class="clearfix" id="brand_result">
+
+
+                    </ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <!-- 品牌库引导页 -->
+	<div class="shadow_guide s_index shadow_index1"></div>
+	<div class="brand_guide con_width">
+		<div class="brandStep1"></div>
+		<div class="brandStep2"></div>
+		<div class="brandStep3"></div>
+		<div class="brandStep4"></div>
+		<div class="brandKnow"></div>
+	</div>
+    <!-- /品牌库引导页 -->
+{/block}
+{block name="self"}
+	 
+	<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/global.js?{STATIC_CHANGE_TIME}"></script>
+	<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/brand.js?{STATIC_CHANGE_TIME}"></script>
+{/block}

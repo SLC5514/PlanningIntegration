@@ -1,0 +1,282 @@
+{extends file="layout.html"}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL1}/global/css/pattern/pattern.css?{STATIC_CHANGE_TIME}">
+{/block}
+{block name="main"}
+<!-- 新的头部 -->
+<div class="report-hd">
+	<div class="hd-cont clear">
+		<div class="fr hd-r clear">
+			{if $account eq '' && $accountShow neq 'true'}
+		
+			<div class="hd-icon3">
+				<a href="javascript:void(0);" class="loginLayer" rel="nofollow" title="登录">登录</a>
+			</div>
+			<div class="fg-line"></div>
+			<div class="hd-icon4">
+				<a class="redRg" href="/member/register/" rel="nofollow" title="注册">注册</a>
+			</div>
+			{else}
+
+			<div class="hd-studio">
+				<a class="welcome_cont" href="/member/workbench/" title="我的工作室">
+					<i></i><span>我的工作室</span>
+				</a>
+			</div>
+			<!-- <div class="fg-line hide js-mydata-item"></div>
+			<div class="hd-studio hide js-mydata-item">
+				{if !$dataReport}
+					<a class="welcome_cont js-mydata-btn" href="javascript:void(0);" title="我的数据报表">
+						<span>我的数据报表</span>
+					</a>
+					{else}
+					<a class="welcome_cont" href="/member/dataReport/" title="我的数据报表">
+						<span>我的数据报表</span>
+					</a>
+					{/if}
+			</div> -->
+			<div class="fg-line"></div>
+			<div class="hd-icon1">
+				<a href="/member/mycollect/" title="我的收藏">
+					<i></i><span>我的收藏</span>
+				</a>
+			</div>
+			<div class="hd-icon2">
+				<a href="/member/message/" title="消息">
+					<span>消息</span>{if $issetNewMessage}<i></i>{/if}			
+				</a>
+			</div>
+			<div class="sign-out-div">
+				<a href="/member/logout/" id="loginout" class="lout" title="退出">退出</a>
+			</div>
+			{/if}
+			{if $P_UserType eq 5 || $P_UserType eq 4}
+			<div class="hd-icon5 js-contact-qq-btn">
+				<a href="javascript:void(0);" title="咨询VIP服务">咨询VIP服务</a>
+			</div>
+			{/if}
+
+
+			<div class="hd-index">
+				<a href="/" title="返回首页">
+					<i></i>
+					<p>返回<br>首页</p>
+				</a>
+			</div>
+		</div>
+		
+		<div class="logo-icon">
+			<a href="/" target="_blank" title="返回首页">
+				<img src="{STATIC_URL2}/global/images/report/index-logo.png" alt="返回首页">
+			</a>
+		</div>
+
+		<h2>模拟成品</h2>
+	</div>
+</div>
+{if !$isLogin}{* 未登录的情况 *}
+<div class="virtual-bg">
+	<div class="authority-judge-tourist js-authority-tourist">
+		<p>这个花型很棒哦〜需登录后查看成品模拟效果</p>
+		<div class="authority-contact">
+			<a href="javascript:void(0);" class="loginLayer login-btn" title="立即登录">立即登录</a>
+			<a href="/member/register/" target="_blank" class="reg-btn" title="注册">注册</a>
+		</div>
+	</div>
+</div>
+{elseif !$canUse}{* 普通用户次数用完的情况*}
+<div class="virtual-bg">
+	<div class="authority-judge-ordinary js-authority-ordinary">
+		<div class="authority-text">您当前为普通用户账号，当前免费使用 <span>20</span> 次仅剩 <span>0</span> 次！</div>
+		<p>想体验更多次数欢迎拨打电话 或 直接联系在线客服</p>
+		<div class="authority-contact">
+			<a class="js-contact-qq-btn" href="javascript:void(0);" title="在线客服"><i></i>在线客服</a>
+			<span>电话咨询 <em>4008-210-500</em></span>
+		</div>
+	</div>
+</div>
+{else}{* 可以正常访问的情况 *}
+	{if $trialInfo}
+	<div class="contentW ordinary-try-section">
+		<div class="ordinary-try-time">
+			<p class="fl" id="trial_time_info">您当前为普通用户，拥有 <span>{$trialInfo.max}</span> 次免费体验机会！还剩余 <span>{$trialInfo.free}</span> 次！</p>
+			<div class="fr">想体验更多内容拨打 <span>4008-210-500</span> 或 直接联系<a class="js-contact-qq-btn" href="javascript:void(0);" title="在线客服"><i></i>在线客服</a></div>
+		</div>
+	</div>
+	{/if}
+<!-- 内容 -->
+<div class="contentW content {if $trialInfo}ordinary-top{/if} nclear">
+	<!-- 模板 -->
+	<div class="pattern-list-div">
+		<ul class="pattern-tab-list nclear js-pattern-tab-list">
+			<li data-classify-id="11808" class="now-choice"><!-- <img src="{STATIC_URL1}/global/images/pattern/icon1-active.png" alt="icon"> --><span style="border-left:none">女装</span></li>
+			<li data-classify-id="11807"><!-- <img src="{STATIC_URL1}/global/images/pattern/icon2.png" alt="icon"> --><span>男装</span></li>
+			<li data-classify-id="11809"><!-- <img src="{STATIC_URL1}/global/images/pattern/icon3.png" alt="icon" style="width: 20px"> --><span>童装</span></li>
+			<li data-classify-id="11810" style="border-right:none"><!-- <img src="{STATIC_URL1}/global/images/pattern/icon4.png" alt="icon" style="width: 20px"> --><span>配饰</span></li>
+		</ul>
+		<div class="item-box">
+			<div class="contentHolder pattern-list-content js-pattern-list-content">
+				<!-- 模板列表 -->
+				{foreach $lists as $cid=>$list}
+				<ul id="pattern_list_{$cid}" class="pattern-list nclear js-pattern-list">
+					{foreach $list as $k=>$img}
+					<li {if $k%2==1}style="margin-right:0"{/if} data-tpl-id="{$img.id}" data-model-src="{STATIC_URL1}{$img.sLargePath}" data-src="{$bg_pic}">
+						<img src="{STATIC_URL1}{$img.sThumbnailPath}" alt="pic">
+						<span>生成模拟成品图</span>
+						<div class="pattern-bg"></div>
+						<div class="border-div"></div>
+					</li>
+					<!-- <li {if $k%2==1}style="margin-right:0"{/if} data-tpl-id="{$img.id}" data-model-src="{STATIC_URL1}/global/images/pattern/dress-mask.png" data-src="{STATIC_URL1}/global/images/pattern/81024-preview-large.jpg">
+						<img src="{STATIC_URL1}{$img.sThumbnailPath}" alt="pic">
+						<span>生成虚拟样衣图</span>
+						<div class="pattern-bg"></div>
+						<div class="border-div"></div>
+					</li> -->
+					{/foreach}
+				</ul>
+				{/foreach}
+			</div>
+		</div>
+	</div>
+	<!-- 虚拟效果 -->
+	<div class="pattern-box nclear js-pattern-box">
+        <div class="pattern-area">
+        	<div class="pattern-div js-pattern-div">
+	            <!-- 模板 -->
+	            <img class="mask-pic js-mask-pic" alt="模型图片" ondragstart="return false;">
+	            <!-- 花型 -->
+	            <img class="pattern-pic js-pattern-pic" data-color="{$defaultColor}" data-full="{$isFull}" alt="图案">
+	        </div>
+        </div>
+        <div class="tool-box nclear">
+        	<a class="detail-btn js-detail-btn" href="{$detailSrc}" target="_blank" title="查看详情"><span>查看<br/>图案</span></a>
+        	<p>
+        		<img src="{STATIC_URL1}/global/images/pattern/icon9.png" alt="icon">
+        		您可以拖拽图案到任意位置<br/>，滚动鼠标放大或缩小图案内容
+        	</p>
+        	<div class="tool-div js-tool-div">
+	            <button class="add-ratio js-add-ratio" title="放大"><img src="{STATIC_URL1}/global/images/pattern/icon6.png" alt="icon"></button>
+	            <div><button></button></div>
+	            <button class="reduce-ratio js-reduce-ratio" title="缩小"><img src="{STATIC_URL1}/global/images/pattern/icon7.png" alt="icon"></button>
+	        </div>
+        </div>
+    </div>
+    <!-- 左侧控制 -->
+    <div class="control-div">
+    	<div class="control-containt">
+    		<h3>图案应用</h3>
+    		<!--<label>花型应用：</label>-->
+    		<ul class="tab-pattern-nav">
+    			<li class="now-choice js-set-type" data-type="1" style="border-radius:5px 0 0 5px">循环</li><li class="js-set-type" data-type="2" style="border-radius:0 5px 5px 0">局部</li>
+    		</ul>
+    		<!--<label>背景色：</label>-->
+    		<div class="color-container" style="display: none;">
+		        <div class="color-series-div js-color-series-div">
+		            <canvas class="series-canvas js-series-canvas"></canvas>
+		            <span></span>
+		        </div><br/>
+		        <div class="check-detail-color">
+		        	<div class="detail-color-div js-detail-color-div">
+			            <canvas class="detail-canvas"></canvas>
+			            <span></span>
+			        </div>
+			        <div class="color-val-div js-color-val-div">
+			            <label>RGB</label><input readonly class="js-color-val" type="text">&nbsp;
+			            <label>#</label><input readonly class="js-color-val" type="text"><br>
+			            <!-- <label>当前选择:</label><span></span> -->
+			        </div>
+			        <button class="js-close-color-btn">关闭</button>
+		        </div>
+		    </div>
+		    <!--<label>本地上传：</label><br/>-->
+		    <label style="display: none;" class="file-btn js-upload-btn" for="file-ele">上传本地花型</label>
+		    <input type="hidden" id="upload-src">
+		    <form class="hide js-form" enctype="multipart/form-data">
+		    	<input class="js-account-id" type="hidden" name="accountId">
+            	<input class="js-upload-ele" id="file-ele" name="material" type="file" accept="image/gif,image/jpeg,image/jpg,image/png">
+            </form>
+    	</div>
+    	<button class="download-pic-btn js-download-btn" title="下载图片">下载模拟成品图</button>
+    	<button class="reset-pattern-btn js-reset-pattern-btn">重置</button>
+    	<div class="custom-systom">
+    		<img src="{STATIC_URL2}/global/images/pattern/virtual-banner.jpg?{STATIC_CHANGE_TIME}" alt="pic"/>
+    	</div>
+    </div>
+</div>
+<!--推荐图案模块-->
+<div class="recommend-box js-recommend-box">
+	<button class="recommend-show-btn js-recommend-show-btn">推荐图案</button>
+	<div>
+		<div class="recommend-contain nclear">
+			<!--列表左右控制按钮-->
+			<div class="recommend-left-btn js-recommend-left"><span></span></div>
+			<div class="recommend-right-btn js-recommend-right"><span></span></div>
+			
+			<!--推荐描述-->
+			<!-- <div class="recommend-disc">
+				<div></div>
+				<p>推荐图案</p>
+			</div> -->
+			
+			<div class="recommend-pics js-recommend-pics nclear">
+				<!--推荐列表-->
+				<ul class="recommend-list js-recommend-list nclear"></ul>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 图片剪裁 -->
+<div class="edit-pic-box js-edit-pic-box">
+	<button titlt="关闭"></button>
+    <h3>
+    	您可以拖拽花型到框内任意位置滚动鼠标放大缩小图片
+        <p>* 为保证呈现效果，图片尺寸不得小于250*250</p>
+    </h3>
+    <div class="shot_pic">
+		<table width="100%" border="0" class="js-cut-table1">
+			<tr>
+				<td rowspan="2" valign="top">
+					<div class="cut-div js-cut-box" id="cut_div">
+						<table class="cut-table2" cellspacing="0" cellpadding="0" border="0" unselectable="on">
+							<tr><td style="background: #000000; height: 75px;" colspan="3"></td></tr>
+							<tr>
+								<td style="background: #000000; width: 75px;"></td>
+								<td id='gd' style="border-style:solid"></td>
+								<td style="background: #000000; width: 75px;"></td>
+							</tr>
+							<tr><td style="background: #000000; height: 75px;" colspan="3"></td></tr>
+						</table>
+						<img class="js-cut-img" id="cut_img" style="position:relative;" src="{STATIC_URL1}/global/images/pattern/81024-preview-large.jpg" alt="占位图片"/>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+    <div class="edit-btn-div">
+        <button class="js-save-btn" title="确定">确定</button>
+    </div>
+</div>
+{/if}
+<div class="loading-div js-loading-div"></div>
+<!-- <div class="bg-div js-bg-div"></div> -->
+<!-- <iframe id="dl_pic" src="" frameborder="0"></iframe> -->
+{/block}
+
+{block name="self"}
+<script type="text/javascript">
+	var tpl_id;
+	var page_img_path_str="{STATIC_URL1}";
+</script>
+<script type="text/javascript" src="{STATIC_URL1}/global/js/pattern/pattern-cut.js?{STATIC_CHANGE_TIME}"></script>
+<!--[if lte IE 8]>
+    <script type="text/javascript" src="{STATIC_URL1}/global/js/pattern/pattern-cut.ie.js?{STATIC_CHANGE_TIME}"></script>
+<![endif]-->
+<script type="text/javascript" src="{STATIC_URL1}/global/js/lib/cropper/cropper.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL1}/global/js/lib/ajaxform/ajaxform.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL1}/global/js/pattern/pattern.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL1}/global/js/pattern/color-card.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL1}/global/js/common/drag.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL1}/global/js/pattern/cut-pic.js?{STATIC_CHANGE_TIME}"></script>
+{/block}
+

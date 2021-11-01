@@ -1,0 +1,203 @@
+{extends file="layout.html"}
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/member/data-report.css?{STATIC_CHANGE_TIME}">
+
+{/block}
+
+{block name="main"}
+
+<div class="msit-head js-msit-head">
+    <a class="msit-logo" href="/" title="pop服装趋势"><img class="" src="{STATIC_URL1}/global/images/home/logo.png?{STATIC_CHANGE_TIME}" alt="pop服装趋势"></a>
+</div>
+
+<div class="content data-box">
+
+    <h2>{date('Y年m月', strtotime('-1 month'))}度账号使用表</h2>
+
+	<div class="data-section data-section0">
+		<h3><span></span>企业账号使用概况</h3>
+		<div class="clearfix">
+			<div class="number-div fl">
+				<h4>企业账号总登录天数</h4>
+				<img src="{STATIC_URL1}/global/images/member/one.png?{STATIC_CHANGE_TIME}">
+				<ul class="number-list js-main-day">
+					<li>
+						<div><span>--</span>天</div>
+						<p>您当前企业号当月总共登录<span>--</span>天</p>
+					</li>
+					<li>
+						<div>第<span>--</span>名</div>
+						<p>获得当月VIP登录天数第<span>--</span>名</p>
+					</li>
+				</ul>
+			</div>
+			<div class="number-div number-div1 fr">
+				<h4>企业账号总登录次数</h4>
+				<img src="{STATIC_URL1}/global/images/member/one.png?{STATIC_CHANGE_TIME}">
+				<ul class="number-list js-main-times">
+					<li>
+						<div><span>--</span>次</div>
+						<p>恭喜<label>--</label>总登录次数<span>--</span>次</p>
+					</li>
+					<li>
+						<div>第<span>--</span>名</div>
+						<p>获得当月VIP登录次数第<span>--</span>名</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	{if $hasChildAccount > 0}
+    <div class="data-section data-section1 clearfix">
+		<h3><span></span>设计师专属账号使用概况</h3>
+		<div class="clearfix">
+			<div class="number-div fl">
+				<h4>设计师专属账号登录概况</h4>   		
+				<ul class="number-list js-rate-list">
+					<li>
+						<div>
+							<span>--</span><label>%</label>
+						</div>
+						<p>您当前设计师专属账号登录率达到<span>--</span>%</p>
+					</li>
+
+					<li>
+						<div>
+							第<span>--</span>名
+						</div>
+						<p>获得当月VIP专属<br/>账号第<span>--</span>名</p>
+					</li>
+				</ul>
+				
+			</div>
+			<div class="chart-div" id="chart-div">
+
+			</div>
+		</div>
+    </div>
+    <div class="data-section clearfix">
+    	<div class="clearfix">
+			<div class="number-div fl js-day-list">
+				<h4>设计师专属账号总登录天数</h4>
+				<ul class="number-list">
+					<li>
+						<div>
+							<span>--</span>天
+						</div>
+						<p>恭喜<label>--</label><br/>当月总登录<span>--</span>天</p>
+					</li>
+
+					<li>
+						<div>
+							第<span>--</span>名
+						</div>
+						<p>获得当月VIP登录<br/>天数第<span>--</span>名</p>
+					</li>
+				</ul>
+			</div>
+			<div class="top-list-div">
+				<h4>设计师专属账号总登录天数排名</h4>
+				<ul class="top-list js-day-top-list">
+					
+				</ul>
+			</div>
+		</div>
+    </div>
+    <div class="data-section clearfix">
+    	<div class="clearfix">
+			<div class="number-div fl js-time-list">
+				<h4>设计师专属账号总登录次数</h4>
+				<ul class="number-list">
+					<li>
+						<div><span>--</span>次</div>
+						<p>恭喜<label>--</label><br/>总登录次数<span>--</span>次</p>
+					</li>
+
+					<li>
+						<div>第<span>--</span>名</div>
+						<p>获得当月VIP登录<br/>次数第<span>--</span>名</p>
+					</li>
+				</ul>
+			</div>
+			<div class="top-list-div">
+				<h4>设计师专属账号总登录次数排名</h4>
+				<ul class="top-list js-time-top-list">
+					
+				</ul>
+			</div>
+		</div>
+    </div>
+    <div class="data-section">
+    	<h3><span></span>账号使用详情</h3>
+    	<table class="data-table site-data-table js-site-data-table">
+    		<thead>
+    			<tr>
+                    <th>账号列表</th>
+                    <th>总登录天数</th>
+                    <th>登录次数</th>
+                    <th>最后一次登录时间</th>
+                    <th>登录IP</th>
+                    <th>报告浏览次数</th>
+                    <th>款式浏览次数</th>
+                    <th>下载次数</th>
+                    <th>操作</th>
+                </tr>
+    		</thead>
+    		<tbody>
+    			
+    		</tbody>
+    	</table>
+
+
+        <table class="data-table msite-data-table js-msite-data-table">
+            <thead>
+                <tr>
+                    <th>账号列表</th>
+                    <th>总登录天数</th>
+                    <th>报告浏览次数</th>
+                    <th>款式浏览次数</th>
+                </tr>
+                
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
+
+        <p><img src="{STATIC_URL3}/global/images/member/icon1.png?{STATIC_CHANGE_TIME}" alt="icon"> PC网页浏览能查看更多数据详情哦</p>
+	</div>
+	{else}
+	<div class="no-account"><a href="/member/associate/" target="_blank">开通设计师专属账号</a>，可查看各个设计师使用平台的状况</div>
+	<div class="no-account-h5"><a href="javascript:void(0);" target="_blank">开通设计师专属账号</a>，可查看各个设计师使用平台的状况</div>
+	{/if}
+</div>
+
+<div class="page-footer">
+    <div class="footer-nav">
+        <img src="{STATIC_URL1}/global/images/member/icon2.png?{STATIC_CHANGE_TIME}" alt="pop">
+        <ul>
+            <li class="item"><a href="http://www.pop136.com/" title="POP官网">POP官网</a></li>
+            <li class="item"><a href="https://www.pop-fashion.com/" title="服装趋势网">服装趋势网</a></li>
+            <li><a href="http://www.pop-shoe.com/" title="鞋子趋势网">鞋子趋势网</a></li>
+            <li class="item"><a href="http://www.pop-bags.com/" title="箱包趋势网">箱包趋势网</a></li>
+            <li class="item"><a href="http://www.91jiafang.com/" title="家纺趋势网">家纺趋势网</a></li>
+            <li><a href="http://www.51shoushi.com/" title="首饰趋势网">首饰趋势网</a></li>
+        </ul>
+    </div>
+    <div class="footer-info">
+        <p>逸尚创展（上海）科技有限公司 | 上海逸尚云联信息技术股份有限公司 © 2004-2020<br/><span>法律顾问：北京中银（上海）律师事务所 <a href="http://www.beian.miit.gov.cn/" target="_blank">沪ICP备06003020号-1</a></span></p>
+		<a target="_blank" href="http://wap.scjgj.sh.gov.cn/businessCheck/verifKey.do?showType=extShow&serial=9031000020160526093630000000851495-SAIC_SHOW_310000-20120428141018720124&signData=MEUCIQDZWDSUQE195cBFzEmHGyMfx92RgQ9hs6ZMwm3ePnH6kAIgMh9DQQ9W3S+fDej1PTh5x9PdFq9QKDSvtOGWbRJfWZU=" style="width:0.5rem;height:0.6rem;display:inline-block;"><img src="{STATIC_URL1}/global/images/safty1.png" class="fl" style="width:100%;margin-right:0.2rem;"></a>
+        <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31010402000973" title="沪公网安备"><img src="https://imgf1.pop-fashion.com/global/images/safty.png" alt="icon"><span>沪公网安备 31010402000973号</span></a>
+    </div>
+</div>
+{/block}
+
+
+{block name="self"}
+<script type="text/javascript" src="{STATIC_URL3}/global/js/common/echarts.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/member/data-report.js?{STATIC_CHANGE_TIME}"></script>
+<script>
+	var user_id = {$user_id};
+	var hash ='{$hash}';
+</script>
+{/block}

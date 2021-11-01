@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Snap</title>
+        <link rel="stylesheet" href="./snap2.css">
+        <link rel="stylesheet" href="./snap1.css">
+        <style>
+            #test {
+                width: 1132px;
+                height: 886px;
+                background: #e6e6e6;
+            }
+        </style>
+    </head>
+
+    <body>
+        <svg id="test" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"></svg>
+        <div class="aaa"></div>
+    </body>
+
+    <script src="./snap.svg-min.js"></script>
+    <script>
+        var paper = Snap("#test");
+        var bigCircle = paper.circle(150, 150, 100);
+        // 返回两点之间的距离
+        console.log(Snap.len(0, 0, 100, 0));
+        // typeof操作员
+        console.log(Snap.is('1', 'string'));
+        // 将颜色字符串解析为RGB对象
+        console.log(Snap.getRGB('#fff'));
+        // 将RGB值转换为颜色的十六进制表示
+        console.log(Snap.rgb([255, 255, 255]));
+        // 实用程序方法将给定的路径字符串解析为路径段数组的数组
+        console.log(Snap.parsePathString('M461.72 205.16l-8.46 27.28 6.57 13.57-6.31 25.17-11.41 70.23.32 48.17 20.96 65.82.2 29.32 5.62 33.47 3.64 58.61 3.45 32.43 11.99 15.63L511 628.9l47.44-11.84 15.12-.1 88.55-.59 28.03-8.56 44.17-17.05 8.57-10.53-33.08-101.35-21.09-84.67-10-41.81-7.74-27.18-11.03-33.43-16.37-26.07-4.4-12.53 7.5-8.43-12.02-20.86-11.96-11.44-8.69-8.32-11.92-6.2-16.22-3.03-9.72.06-9.77-6.21-21.62-4.05-23.78-2.98-20.54-3-23.72 6.44-14.99 19.99z'));
+
+        bigCircle.node.onclick = function () {
+            bigCircle.attr({
+                fill: 'skyblue',
+                'fill-opacity': 0.5,
+                cx: '+=10rem'
+            });
+            console.log(bigCircle);
+        }
+        // 解析SVG
+        console.log(Snap.parse('<svg id="aaa"></svg>'));
+        // 将外部SVG文件作为片段加载
+        Snap.load('./untitled.svg', function (rs) {
+            paper.add(rs);
+            paper.select('svg').remove();
+        })
+        // 返回给定点下的最高元素
+        Snap.getElementByPoint(0, 0).attr({stroke: "red"});
+        // 编写插件
+        Snap.plugin(function (Snap, Element, Paper, global, Fragment) {
+            Snap.newmethod = function () {};
+            Element.prototype.newmethod = function () {};
+            Paper.prototype.newmethod = function () {};
+        });
+        console.log(paper.newmethod);
+        // 返回给定元素的边界框描述符
+        console.log(bigCircle.getBBox());
+        // 获取或设置元素的变换
+        console.log(bigCircle.transform());
+        // 返回元素的父级
+        console.log(bigCircle.parent());
+        // 创建<use>链接到当前元素的元素
+        var bigCircleUse = bigCircle.use();
+        // 将元素移动到共享<defs> 区域
+        bigCircleUse.toDefs();
+        // 创建一个<pattern>
+        var patternEl = paper.path("M10-5-10,15M15,0,0,15M0-5-20,15").attr({
+            fill: "none",
+            stroke: "#bada55",
+            strokeWidth: 5
+        }).pattern(0, 0, 10, 10);
+        // 可以将pattern用作fill
+        bigCircle.attr({
+            fill: patternEl
+        });
+        // 创建一个<marker>
+        var maskEl = bigCircleUse.marker(0, 0, 100, 100);
+        bigCircle.attr({
+            'marker-start': maskEl
+        });
+        // 键值对
+        bigCircle.data('i', 1);
+        console.log(bigCircle.data('i'));
+        bigCircle.removeData('i');
+        // 返回元素的SVG字符串
+        console.log(bigCircle.outerSVG(), '////', bigCircle.toString());
+
+        // 创建一个动画对象
+        var toMinAn = Snap.animation({r: 50}, 1000);
+        // 数字的通用动画
+        // var rect = Snap().rect(0, 0, 10, 10);
+        // Snap.animate(0, 10, function (val) {
+        //     rect.attr({
+        //         x: val
+        //     });
+        // }, 1000);
+        // in given context is equivalent to
+        // rect.animate({x: 10}, 1000);
+
+        // 创建矩阵
+        var Matrix = Snap.matrix(1, 0, 0, 1, 0, 0);
+        // 平移
+        console.log(Matrix.translate(10, 10));
+        // 缩放
+        console.log(Matrix.scale(2, 2));
+        // 旋转
+        console.log(Matrix.rotate(30));
+        // 旋转
+        console.log(Matrix.x(150, 150), Matrix.y(150, 150));
+        // 返回表示给定矩阵的转换字符串
+        console.log(Matrix.toTransformString());
+
+        // 创建元素
+        var rect = paper.rect(0, 0, 10, 10);
+        var circle = paper.circle(50, 50, 40);
+        var image = paper.image("./bg2.jpg", 50, 50, 80, 80);
+        var path = paper.path("M10,20L30,40");
+        var g = paper.g(rect, circle, image, path);
+        var mask = paper.mask();
+        var use = paper.use(mask);
+        var filter = paper.filter();
+
+        // 返回Data URI字符串
+        console.log(paper.toDataURL())
+        // 清除节点
+        // paper.clear();
+
+        // 事件 click dblclick mousedown mousemove mouseout mouseover mouseup touchstart touchmove touchend touchcancel hover drag
+        circle.click(function() {
+            console.log(666)
+            circle.unclick();
+        });
+
+        console.log(Snap.mui());
+    </script>
+
+</html>

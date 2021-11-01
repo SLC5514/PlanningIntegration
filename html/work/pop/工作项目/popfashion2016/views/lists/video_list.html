@@ -1,0 +1,202 @@
+{extends file="layout.html"}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/lists/video-list.css?{STATIC_CHANGE_TIME}">
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/lists/common/list-common.css?{STATIC_CHANGE_TIME}">
+{/block}
+{block name="main"}
+<div class="video-banner-section">
+    <div class="contentW">
+        <div class="swiper-video ">
+            <div class="swiper-overflow js-swiper-overflow swiper-container">
+                <div class="swiper-wrapper js-swiper-wrapper clearfix">
+                    {if $adDatas}
+                    {foreach $adDatas as $item}
+                    <div class="swiper-slide">
+                        <a href="{$item.sLink}" target="_blank">
+                        <img src="{STATIC_URL1}{$item.sImagePath}"/>
+                        <div class="title-layer">
+                            <p>{$item.sTitle}</p>
+                        </div>
+                        <em></em>
+                        </a>
+                    </div>
+                    {/foreach}
+                    {/if}
+                </div>
+            </div>
+            <div class="switch-btn-box">
+                <a class="switch-next js-switch-next"></a>
+                <a class="switch-prev js-switch-prev"></a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="video-content-section">
+    <div class="contentW">        
+        <!--发布会-->
+        <div class="conference-video-box">
+            <div class="conference-video-header clearfix">
+                <h1 class="fl">发布会视频<p>RUNWAY VIDEO</p></h1>
+                <!-- <div class="fl js-area-video-box">
+                    <a data-reg="" class="on">全部</a>
+                    <a data-reg="272">巴黎时装周</a>
+                    <a data-reg="341">纽约时装周</a>
+                    <a data-reg="335">米兰时装周</a>
+                    <a data-reg="323">伦敦时装周</a>
+                    <a data-reg="other">其他</a>
+                    <a data-reg="titbit" class="video-footage-a"><i></i>幕后花絮</a>
+                </div> -->
+            </div>
+            <div class="conference-video-main">
+                {if $lists.3}
+                <ul class="conference-video-ul js-conference-video-ul clearfix lazyload">
+                    {foreach $lists.3 as $item}
+                    <li>
+                        {if $powers.P_UserType == 5}
+                        <a href="javascript:void(0);" class="js-general-user-status" data-columnId="3">
+                            {else}
+                            <a href="{$item.inside_url}" target="_blank" data-columnId="3">
+                            {/if}
+                            <div class="img-box">
+                                {if $item.video_tag == 1}
+                                <img src="{$item.cover}"/>
+                                {else}
+                                {$item.cover}
+                                {/if}
+                            </div>
+                            <div class="conference-text">
+                                <p>{$item.title}</p>
+                                <div class="">
+                                    <span class="region-span">{$item.regionName}</span>
+                                    <span class="brand-span">{$item.brand_name}</span>
+                                    <span>{$item.seasonName}</span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    {/foreach}
+                </ul>
+                {if $info.3.more_url}
+                <div class="more-conference-video js-more-conference-video">
+                    <a href="{$info.3.more_url}" target="_blank">查看更多<i></i></a>
+                </div>
+                {/if}
+                {else}
+                <div class="video-list-blank-data">
+                    <img src="{STATIC_URL1}/global/images/fashion_home/null.png">
+                    <p>暂无内容 ，去看看别的把～</p>
+                </div>          
+                {/if}
+            </div>
+        </div>
+        <!--/发布会-->
+        
+        <!--广告大片-->
+        <div class="advertisement-box">
+            <div class="advertisement-header">
+                <h1>广告大片<p>AD CAMPAIGN</p></h1>
+            </div>
+            <div class="advertisement-main">
+                {if $lists.71}
+                <ul class="advertisement-ul clearfix">
+                    {foreach $lists.71 as $item}
+                    <li>
+                        {if $powers.P_UserType == 5}
+                        <a href="javascript:void(0);" class="js-general-user-status" data-columnId="71" data-videoTag="{$item.video_tag}">
+                            {else}
+                            <a href="{$item.inside_url}" class="" data-columnId="71" data-videoTag="{$item.video_tag}" target="_blank">
+                            {/if}
+                            <div class="img-box">
+                                {if $item.video_tag == 1}
+                                <img src="{$item.cover}"/>
+                                {else}
+                                {$item.cover}
+                                {/if}
+                            </div>
+                            <p>{$item.title}</p>
+                        </a>
+                    </li>
+                    {/foreach}
+                </ul>
+                {if $info.71.more_url}
+                <div class="more-advertisement">
+                    <a href="{$info.71.more_url}" target="_blank">查看更多<i></i></a>
+                </div>
+                {/if}
+                {else}
+                <div class="video-list-blank-data">
+                    <img src="{STATIC_URL1}/global/images/fashion_home/null.png">
+                    <p>暂无内容 ，去看看别的把～</p>
+                </div>
+                {/if}
+            </div>
+        </div>
+        <!--/广告大片-->
+        
+        <!--主题灵感-->
+        <div class="theme-inspiration-box">
+            <div class="theme-inspiration-header">
+                <h1>主题灵感<p>INSPIRATION</p></h1>
+            </div>
+            <div class="theme-inspiration-main">
+                {if $lists.116}
+                <ul class="theme-inspiration-ul clearfix">
+                    {foreach $lists.116 as $item}
+                    <li>                        
+                        <a href="{$item.inside_url}" target="_blank">
+                            <div class="img-box">
+                                <img src="{$item.cover}"/>
+                            </div>
+                            <div class="inspiration-text">
+                                <p>{$item.title}</p>
+                                <div>{$item.memo}</div>
+                            </div>
+                        </a>
+                    </li>
+                    {/foreach}
+                </ul>
+                <div class="more-theme-inspiration">
+                    <a href="/inspiration/video/" target="_blank">查看更多<i></i></a>
+                </div>
+                {else}
+                <div class="video-list-blank-data">
+                    <img src="{STATIC_URL1}/global/images/fashion_home/null.png">
+                    <p>暂无内容 ，去看看别的吧～</p>
+                </div>
+                {/if}
+            </div>
+        </div>
+        <!--/主题灵感-->        
+    </div>
+</div>
+
+<!-- 权限弹出层 -->
+<div class="general-user-info-fixbox js-general-user-info-fixbox">
+    <div class="contentW">
+        <button title="关闭"></button>
+        <h3 class="js-runway-general-title">想预览该场发布会图库？</h3>
+        <p class="js-runway-general-intro">立即注册账号，您更能随时随地看全球发布会，全年各大时装周资讯及时上线</p>
+        <a class="js-runway-general-btn"href="/member/pagelogin/" title="立即登录">登录/注册 预览该场发布会</a>
+        <a class="js-contact-qq-btn js-runway-general-btn" href="javascript:void(0);" title="在线客服">咨询了解VIP，会员体验畅通无阻</a>
+        <a class="js-contact-qq-btn js-lookbook-general-btn lookbook-general-btn" href="javascript:void(0);" title="在线客服">咨询了解VIP，会员体验畅通无阻</a>
+        <a class="js-lookbook-general-btn" href="/member/pagelogin/" title="立即登录">登录/注册 发现免费推荐</a>
+        <span>电话咨询 <span>4008-210-500</span></span>
+    </div>
+</div>
+
+{if $P_UserType eq 5}
+<!-- 留资 -->
+{include file="common/sem_trends.html"}
+{/if}
+
+{/block}
+
+{block name="self"}
+<script type="text/javascript" src="{STATIC_URL2}/global/js/lib/swiper/swiper.min.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/lists/list-common.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/lists/video-list.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/sem_phone/sem_phone.js?{STATIC_CHANGE_TIME}"></script>
+{/block}
+
+

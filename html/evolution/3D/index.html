@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D</title>
+    <script src="../lib/jquery-3.5.1/jquery.min.js"></script>
+    <style>
+        .dice{position: relative;width: 100px;height: 100px;margin-left: 50px;margin-top: 50px;background-color: rgba(150, 150, 150, 1);
+            transform: rotate3d(1, 1, 1, 45deg);}
+        .dice>div{position: absolute;width: 100%;height: 100%;top: 0;}
+        .dice>.d1{left: 0;background-color: #eee;
+            transform: translate3d(10px, 10px, 50px);}
+        .dice>.d2{left: 100%;background-color: #ccc;}
+    </style>
+</head>
+<body>
+    <h3>3D</h3>
+    <h4>CSS3</h4>
+    <div class="dice">
+        <div class="d1">1</div>
+        <div class="d2">2</div>
+    </div>
+</body>
+<script>
+
+</script>
+</html>

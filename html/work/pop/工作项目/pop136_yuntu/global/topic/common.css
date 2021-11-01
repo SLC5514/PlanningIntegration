@@ -1,0 +1,17 @@
+/* 专题页头部样式 */
+.loading-div{display:none;}
+.bg-div{display:none;}
+.new-header{padding: 0 30px;height: 60px;background-color: #fff;}
+.new-header .home-btn{position: static;display: inline-block;margin-top: 15px;width: 115px;font-size: 20px;float: left;color: #333;}
+.new-header .home-btn>img{margin-right: 6px;vertical-align: -3px;}
+.new-header>div{float: right;margin-top: 17px;margin-right: 20px;font-size: 14px;font-weight: bold;}
+.new-header>div>label{font-size: 12px;font-weight: normal;}
+.new-header>div>span{margin-left: 10px;width: 25px;height: 25px;vertical-align: -7px;}
+
+.new-header>.btn1{float: right;margin-left: 10px;margin-top: 15px;}
+.new-header .btn-type2{width: auto;padding-left: 10px;padding-right: 10px;}
+
+.tel-icon1{background-position: -356px -78px;}
+.tel-icon2{background-position: -563px -76px;}
+
+.footer{padding: 25px;background-color: #eeeeee;color: #666666}

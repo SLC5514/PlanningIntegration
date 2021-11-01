@@ -1,0 +1,90 @@
+@charset 'utf-8';
+
+
+/* 注册页面 */
+
+.contant{padding:60px 0;}
+.reg-content{background-color:#fff;}
+.reg-content-left .reg-image{width:380px;height:590px;margin-right:40px;}
+.reg-content-left .VIP-tequan{width:270px;margin-top:50px;padding-right:40px;border-right:1px solid #eee;}
+.reg-content-left .VIP-tequan>h2{font-size:30px;color:#333;margin-bottom:35px;}
+.reg-content-left .VIP-tequan>h3{color:#333;font-size:18px;font-weight:bold;margin-bottom:15px;}
+.reg-content-left .VIP-tequan>h3>i{background:url(../../images/user/icon.png) no-repeat 0 0;margin-right:6px;width:27px;height:18px;display:inline-block;}
+.reg-content-left .reg-intro{margin-bottom:90px;}
+.reg-content-left .reg-intro>ul>li{font-size:14px;color:#333;margin-bottom:10px;}
+.reg-content-left .reg-intro>ul>li>i{margin-right:10px;font-style:normal;display: inline-block;}
+.reg-content-left .reg-contact{font-size:18px;color:#333;font-weight:bold;padding-bottom:50px;}
+.reg-content-left .reg-contact>span{font-family:"Arial";font-size:20px;color:#333;font-weight:bold;}
+.reg-content-left .reg-contact>i{background:url(../../images/user/icon.png) no-repeat -45px 0;width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:4px;}
+
+.reg-content-right .reg-info{margin-top:50px;padding:0 20px 0 30px;position: relative;}
+.reg-content-right .switch-btn{margin-bottom:45px;}
+.reg-content-right .switch-btn>a{font-size:18px;color:#999;font-weight:bold;margin-right:35px;}
+.reg-content-right .switch-btn>a.now-active{color:#232f3c;border-bottom:4px solid #232f3c;}
+.reg-content-right .reg-info>form{position: relative;}
+.reg-content-right .reg-info>form>ul{width:390px;position: relative;}
+.reg-content-right .reg-info>form>ul>li{border-bottom:1px solid #eee;margin-bottom:45px;padding-bottom:5px;position: relative;height: 35px;}
+.reg-content-right .reg-info>form>ul>li.border-none{border:none;padding:0;margin:0;}
+.reg-content-right .reg-info>form>ul>li>label{font-size:14px;color:#505050;width:65px;height:30px;line-height:30px;float: left;margin-right:25px;}
+.reg-content-right .reg-info>form>ul>li>input{width:240px;height: 30px;line-height: 30px;float:left; border:none 0;}
+.reg-content-right .reg-info>form>ul>li.reg-btn{width:100%;height:50px;padding-top:15px;}
+.reg-content-right .reg-info>form>ul>li.reg-btn>input{width:100%;height:50px;font-size:16px;color:#fff;border-radius:4px;text-align:center;cursor: pointer;background: #232f3c;}
+.reg-content-right .reg-info>form>ul>li.reg-btn>input:hover{background-color:#4f5963;}
+/* .reg-content-right .reg-info>form>ul>li.reg-btn>input:hover{background-color:#f5cc61;} */
+.reg-content-right .reg-info>form>ul>li.reg-btn>input.no-login{background-color:#ccc;}
+.reg-content-right .reg-info>form>ul>li.agree-fw{text-align:center;margin-top:20px;font-size:12px;color:#333;}
+.reg-content-right .reg-info>form>ul>li.agree-fw>a{color:#3399ff;}
+.reg-content-right .reg-info>form>ul>li>span.msg{width:auto;position:absolute;bottom:-25px;*bottom:-20px;left:0;color:#ff6633;font-size:12px; display:none;z-index:2;}
+.reg-content-right .reg-info>form>ul>li>em{background:url(../../images/user/icon.png) no-repeat -86px 4px;display:inline-block;width:22px;height:15px;position: absolute;right:17px;bottom:17px;cursor: pointer;}
+.reg-content-right .reg-info>form>ul>li>em.pwd-display{background-position:-128px 0;}
+/* .reg-content-right .reg-info>form>ul>li.forget_pwd{margin-top:10px;} */
+.reg-content-right .reg-info>form>ul>li.forget_pwd>label{width:auto;color:#000;font-size:12px;}
+.reg-content-right .reg-info>form>ul>li.forget_pwd>label>input{vertical-align:middle;margin-top:-2px;}
+.reg-content-right .reg-info>form>ul>li.forget_pwd>a{float:right;font-size:12px;color:#999;}
+.reg-content-right .reg-info>p.contact-login{margin-top:40px;font-size:14px;color:#999;text-align:center;height:32px;line-height:32px;}
+.reg-content-right .reg-info>p.contact-login>em{background:url(../../images/user/icon.png) no-repeat 0 -29px;width:12px;height:16px;display:inline-block;margin-right:5px;}
+.reg-content-right .reg-info>p.contact-login>strong{font-family:"Arial";color:#666;font-weight:bold;font-size:20px;border-right:1px solid #eee;padding-right:5px;}
+/* width:115px;height:30px;font-size:16px;color:#d8b056;text-align:center;line-height: 30px;border:1px solid #d8b056;border-radius:20px;display:inline-block; */
+.reg-content-right .reg-info>p.contact-login>a{margin-left:5px;}
+.reg-content-right .reg-info>p.contact-login>a>i{background:url(../../images/user/icon.png?2019052003) no-repeat -44px -57px;width:14px;height:14px;display:inline-block;margin-right:5px;vertical-align:middle;margin-top:-3px;}
+.reg-content-right .reg-info>p.contact-login .i-img{background:url(../../images/user/icon.png?2019052003) no-repeat -44px -78px;}
+/* .reg-content-right .reg-info p.errorbox{position:absolute;width:475px;height:20px;top:-20px;left:0;background:#f8eeb9 url("../../images/message_bg_03.png") no-repeat 5px 2px;color:#333;padding-left:25px;line-height:20px;display:none;} */
+
+.reg-content-right{-moz-user-select: none; -khtml-user-select: none; user-select: none;}
+/* 新加 */
+.loginClass{margin-bottom: 60px;}
+.loginClass span{font-size: 16px;color: #999;width: 49%;text-align: center;display: inline-block;border-right: 1px solid #d6d6d6;font-weight: bold;cursor: pointer;}
+.loginClass span:first-child{padding-left: 0px;}
+.loginClass span:last-child{padding-right: 0px;border-right:none;}
+.action{color: #232f3c !important;}
+.l_pwd{margin-bottom: 15px !important;}
+.l_drag{height: 50px !important;}
+.code-btn{width: 89px;height: 34px;background-color: #232f3c;border-radius: 4px;color: #fff;font-size: 14px;line-height: 34px;text-align: center;float: right;cursor: pointer;}
+/* 选择登录账号 */
+.chooseUser{width: 400px;height: 255px;box-shadow: 0 0 5px rgba(0,0,0,0.2);position: absolute;bottom: 59px;background: #FFF;left: 30px;z-index: 10;border-radius: 15px;display: none;}
+.chooseUser .chooseHead{font-size: 16px;color: #232f3c;text-align: center;width: 100%;padding: 20px 0;border-bottom: 1px solid #f1f1f1;}
+.chooseUser .close{background: url(../../images/common/close.png);width: 12px;height: 12px;position: absolute;top: 10px;right: 10px;}
+.chooseUser i{background: none; width: 12px;height: 12px;display: inline-block;vertical-align: -3px;cursor: pointer;border: 1px solid;border-radius: 50%;}
+.chooseUser .i-action{background: #232f3c;border: none;width: 14px;height: 14px;}
+.chooseUser .userList{padding-top: 35px;}
+.chooseUser .userLi{width: 49%;float: left;height: 25px;line-height: 25px;}
+.chooseUser .default{margin-left: 65px;}
+.chooseUser .confirm-btn{color: #fff;width: 362px;height: 50px;border-radius: 4px;background-color: #eee;position: absolute;left: 19px;bottom: 17px;text-align: center;line-height: 50px;font-size: 16px;cursor: pointer;}
+.chooseUser .btn-action{background-color: #232f3c;}
+@media screen and (min-width:1500px){
+    .reg-content-right .reg-info>p.contact-login>a{margin-left:14px;}
+	.reg-content .reg-content-left{margin-right:50px;}
+	.reg-content-left .reg-image{margin-right:40px;}
+    .reg-content-left .VIP-tequan{padding-right:80px;}
+    .reg-content-right .reg-info{padding:0 25px 0 30px;}
+    .reg-content-right .reg-info>ul{width:490px;}
+    .reg-content-right .reg-info>form>ul{width: 490px;}
+    .reg-content-right .reg-info>form>ul>li>input{width: 280px;}
+    .reg-content-right .reg-info>p.contact-login>strong{padding-right:10px;}
+    .chooseUser .confirm-btn{width: 462px;}
+    .chooseUser{width: 490px;}
+    .chooseUser .default{font-size: 14px;}
+    .chooseUser .chooseHead{font-size: 16px;}
+}
+
+.reg_content .reg_info li input::-webkit-input-placeholder{color: #ccc;}

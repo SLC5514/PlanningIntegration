@@ -1,0 +1,110 @@
+{extends file="layout.html"}
+{block name="title"}找回用户名-POP服装趋势网{/block}
+{block name='selfcss'}
+<link rel="stylesheet" type="text/css" href="{$smarty.const.STATIC_URL1}/global/css/user/findpassword.css?{$smarty.const.STATIC_CHANGE_TIME}">
+{/block}
+{block name="self"}
+<!-- <script type="text/javascript" src="{STATIC_URL3}/global/js/user/findpassword.js?{STATIC_CHANGE_TIME}"></script> -->
+<script type="text/javascript" src="{STATIC_URL3}/global/js/user/findpassword_new.js?{STATIC_CHANGE_TIME}"></script>
+{/block}
+{block name="main"}
+<div class="findUser">
+    <div class="head">
+        <div class="crumbs"><span>登录页</span>><span class="action">找回用户名</span></div>
+    </div>
+    <div class="findMain">
+        <div class="mainHead">找回用户名</div>
+        <!-- 找回用户名 -->
+        <div class="mainTable">
+            <div class="tableH1 js-tableH1">
+                <span data-id='1' class="action" style="border-right: 1px solid #ddd;">手机号+密码找回？</span>
+                <span data-id='2'>手机号验证码找回？</span>
+                <label>当手机号曾注册过多个账号时,建议您使用此方式</label>
+            </div>
+
+            <div class="mainUl">
+                <p class="errorbox"></p>
+                <div class="mainLi">
+                    <label>手机号</label>
+                    <input class="isTable" type="text" id="phone" placeholder="请输入手机号"/>
+                    <p class="msg"></p>
+                </div>
+                <div class="mainLi js-password">
+                    <label>密码</label>
+                    <input type="password" id="password" placeholder="请输入密码"/>
+                    <p class="msg"></p>
+                </div>
+                <div class="mainLi">
+                    <label>验证码</label>
+                    <input class="isTable" type="text" id="verifyCode" placeholder="请输入验证码"/>
+                    <span class="js-code-btn3" data-type="FORGET_ACCOUNT">获取验证码</span>
+                    <p class="msg"></p>
+                </div>
+                <div class="code-btn1" style="margin-top: 30px;">
+                    <div class="code_btn js-click-btn" data-cla=".js-puzzle-drag-content1">点击按钮完成图形验证</div>
+                    <div class="puzzle-drag-wraper js-drag-show" style="display: none;">
+                        <s class="drag-s"></s>
+                        <t class="drag-t"></t>
+                        <div class="puzzle-drag-content js-puzzle-drag-content1">
+                            <div class="drag-title clearfix">
+                                <span>为保证你的账户安全，请先完成图形验证</span>
+                                <span class="close js-close"></span>
+                                <span class="change js-change"><i></i>换一换</span>
+                            </div>
+                            <div class="puzzle-img-box">
+                                <div class="puzzle-img js-puzzle-img">
+                                    <img>
+                                </div>
+                                <div class="puzzle-lost js-puzzle-lost">
+                                    <img>
+                                </div>
+                            </div>
+                            <div class="drag-slide-nav">
+                                <div class="drag-slide-text">
+                                    <div class="drag-slide-left"></div>
+                                    <div class="drag-slide-center">向右滑动完成拼图</div>
+                                    <div class="drag-slide-right"></div>
+                                </div>
+                                <div class="drag-slide-bar js-drag-slide-bar">
+                                    <div class="drag-slide-bar-left"></div>
+                                    <div class="drag-slide-bar-center"></div>
+                                    <div class="drag-slide-bar-right"></div>
+                                </div>
+                                <div class="drag-slide-btn js-drag-slide-btn"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-submit js-submit">提交</div>
+            </div>
+        </div>
+        <div class="contact">
+            <div>
+                若遇到问题：您可通过联系客服热线
+                <span>4008-210-662</span>
+                <a class="js-contact-qq-btn" data-type='1' style="margin-right: 0;cursor: pointer;"><i></i>在线客服</a>
+                <a href="/member/leavemessage"><i class="i-img"></i>线上留言</a>
+                的方式找回密码
+            </div>
+        </div>
+    </div>
+    <div class="multi-account">
+        <div class="multiMain">
+            <span>尊敬的POP用户您好，您当前找回的</span>
+            <span>用户名为 ：<label class="js-account">霸波尔奔</label></span>
+            <span>请根据账号及密码完成登录</span>
+        </div>
+        <div class="multiClose js-multiClose"></div>
+    </div>
+    <div class="box-contact">
+        <span>尊敬的POP用户您好，您输入的手机号下存在多个账户，为保证您的账号安全，请您在线留言或找人工客服确认！</span>
+        <div class="btn-list">
+            <span class="js-contact-qq-btn" data-type='1' style="cursor: pointer;"><i></i>在线客服</span>
+            <span class="js-message-on" style="cursor: pointer;"><i class="i-img"></i>在线留言</span>
+            <span class="phone">4008-210-662</span>
+        </div>
+        <div class="multiClose js-multiClose"></div>
+    </div>
+    <div class="box-bg"></div>
+</div>
+{/block}

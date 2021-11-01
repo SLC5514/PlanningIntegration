@@ -1,0 +1,67 @@
+{assign var=cntSubTopic value=count($res.subTopic)}
+{foreach $res.subTopic as $topic}
+<div class="indexdiv clearfix" style="margin-top: 0; padding-top: 15px;">
+    <h3><span>{$topic.sTitle}</span></h3>
+    <div class="xq" style="height: 70px; overflow: hidden; width: 1100px;">
+        {if $topic.sDesc}<p class="fl">{$topic.sDesc}</p>{/if}
+    </div>
+    {foreach $topic.subPage as $subpage}
+    {if $subpage.pageType == 1}
+    <div class="ullist {if $subpage.imgtype == 0}ullist_165{/if}">
+        <div class="download_box">
+            <img src="{STATIC_URL3}/global/images/down_bg.jpg"/ alt="pic">
+            <div class="down_bg">
+                <p class="title">{$subpage.pageName}</p>
+            </div>
+        </div>
+        <ul {if $subpage.imgtype == 1}class=""{else}class=""{/if}>
+            <li class="display_none"></li>
+            {foreach $subpage.stylePic as $image}
+            <li>
+                <a target="_blank" href="{$site}{$image.link}" title="查看详情">
+                    <img src="{STATIC_URL3}{$image.imgurl}" alt="pic">
+                    <div class="divhover">
+                        <p class="hoverp1">{$image.colsName}</p>
+                        <p class="hoverp2">{$image.genderName}</p>
+                        <p class="hoverp3">{$image.brandName}</p>
+                        <p class="hoverp4">{$image.sCategoryName} {$image.sSubcategoryName}</p>
+                        <p class="hoverp5"><i></i></p>
+                    </div>
+                </a>
+            </li>
+            {/foreach}
+        </ul>
+    </div>
+    {else if $subpage.pageType == 2}
+    <div class="stage-role">
+        <div class="map_layer">
+            <img src="{STATIC_URL3}{$subpage.picSrc}" alt="pic"/>
+        </div>
+        <div class="positions">
+            {foreach $subpage.hotAreas as $hotarea}
+            <a class="position material" href="{$hotarea.link}" target="_blank" style="left:{$hotarea.left}px;top:{$hotarea.top}px;width:{$hotarea.width}px;height:{$hotarea.height}px;" title="查看详情">
+                <p class="position-shadow"></p>
+                <p class="position-des">
+                    <span>{$hotarea.memo}</span>
+                </p>
+            </a>
+            {/foreach}
+        </div>
+    </div>
+    {else if $subpage.pageType == 3}
+    <div class="ullist">
+        {$subpage.content}
+    </div>
+    {else if $subpage.pageType == 4}
+    <div class="report-section js-report-section" data-pageid="{$subpage.iPageId}">
+    </div>
+    {/if}
+    {/foreach}
+</div>
+{/foreach}
+
+<script>
+    // flash报告页数据
+    var flashPages = {json_encode($flashPages, JSON_UNESCAPED_UNICODE)} || {};
+    var is_generate_pdf = '{$smarty.get.generatepdf}' || false;
+</script>

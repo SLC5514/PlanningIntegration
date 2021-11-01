@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cross-domain-policy>
+    <allow-access-from domain="*.pop-fashion.com"/>
+    <allow-access-from domain="*.pop136.com"/>
+    <!-- 鞋子 -->
+    <allow-access-from domain="internal.pop-shoe.com"/>
+    <!-- 箱包 -->
+    <allow-access-from domain="ed.pop-bags.com"/>
+    <!--家纺、首饰-->
+    <allow-access-from domain="cms.91jiafang.com"/>
+    <allow-access-from domain="ed.51shoushi.com"/>
+    <allow-access-from domain="allonkwok.com"/>
+</cross-domain-policy>

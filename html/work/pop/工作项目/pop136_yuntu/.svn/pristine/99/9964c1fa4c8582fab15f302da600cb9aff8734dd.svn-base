@@ -1,0 +1,749 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+/**
+ * 云试衣控制器
+ * Created by PhpStorm.
+ * User: limeng
+ * Date: 2017/11/2 13:39
+ */
+class VirtualTryOn extends POP_Controller
+{
+    const COL = 1;
+    //品类
+    public $site = [
+        1 => '服装',
+        5 => '家纺',
+        2 => '箱包',
+        3 => '鞋子',
+        100 => '其他',
+    ];
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->assign("col", self::COL);
+        $this->get_use_type = $this->get_use_type(self::COL);
+        $this->checkPower(self::COL, "yuntu:virtualtry");
+    }
+
+    /*2d试衣*/
+
+    //是否弹出选择模板弹窗--针对普通用户
+    public function templateSelectShow()
+    {
+        $this->load->model('VirtualTryOn_model');
+        $aUser = get_cookie_value();
+        $iTplSite = $aUser['iTplSite'];
+        if ($this->get_use_type == "GENERAL") {
+            if ($aUser['id'] && empty($iTplSite)) {
+                $iTplSite = $this->VirtualTryOn_model->getUserTplSite($aUser['id']);
+            }
+            if (!$iTplSite) {//弹出弹窗选择
+                outPrintApiJson(0, '请选择模板站点', array('user_type' => $this->get_use_type, 'site' => $this->site));
+            }
+
+        }
+        //不弹出
+        outPrintApiJson(0, 'ok', array('user_type' => $this->get_use_type));
+
+    }
+
+    /*
+     * 取左侧菜单模板站点展示--
+     * 左侧默认第一个品类下的模板分类列表；
+     * 右侧默认第一个品类下、所有分类下的第一张封面图；
+     */
+    public function getLeftMenu()
+    {
+        $page = max($this->input->get_post('page', true), 1);
+        $limit = $this->input->get_post('pageSize', true) ? $this->input->get_post('pageSize', true) : 30;
+        $offset = ($page - 1) * $limit;
+
+        $this->load->model('VirtualTryOn_model');
+        //模板站点侧边栏
+        $userTplSite = [];
+        $aUser = get_cookie_value();
+        //普通用户
+        if ($this->get_use_type == "GENERAL") {
+            $iTplSite = $this->VirtualTryOn_model->getUserPowerTemplateSite($this->get_use_type);//模板可多选 1,2,3,5,100
+            if (!$iTplSite) {
+                outPrintApiJson(100, '未选择模板站点');
+            }
+            $iTplSite = explode(',', $iTplSite);
+            foreach ($iTplSite as $site){
+                //取用户选择的品类站点模板
+                $classify_ids = $classify_names = [];
+                $classify = $this->VirtualTryOn_model->getClassifyBySite($site);
+                foreach ($classify as $value){
+                    $classify_ids[] = $value['id'];
+                    $classify_names[$value['id']] = [$value['sName']];
+                }
+                list($count, $template_data) = $this->VirtualTryOn_model->getTemplateDataBySite($site, $classify_ids, $offset, $limit);
+
+                $userTplSite[$site] = ['name' => $this->site[$site], 'data' => ['classify' => $classify_names, 'list' => ['count' => $count,'pageSize'=>$limit, 'list' => $template_data]]];
+
+                if(!empty($template_data)) {
+                    $userTplSite[$site] = ['name' => $this->site[$site], 'data' => ['classify' => $classify_names, 'list' => ['count' => $count,'pageSize'=>$limit, 'list' => $template_data]]];
+                }
+            }
+
+        }elseif ($this->get_use_type == "VIP") {//VIP
+            $template_2d = $this->VirtualTryOn_model->getUserPowerTemplateSite($this->get_use_type);//品类和分类json
+            $templateSiteArr = json_decode($template_2d, true);
+            $i = 0;
+            foreach ($templateSiteArr as $site => $classify) {
+                //取用户开通的品类站点模板
+                $count=0;
+                $classify_names = $template_data =[];
+                $classify_ids = $classify;
+                if ($site && $classify_ids) {
+                    list($count, $template_data) = $this->VirtualTryOn_model->getTemplateDataBySite($site, $classify_ids, $offset, $limit);
+                }
+                $classifys = $this->VirtualTryOn_model->getClassifyNameById($classify_ids);
+                foreach ($classifys as $value){
+                    $classify_names[$value['id']] = $value['sName'];
+                }
+
+                $userTplSite[$site] = ['name' => $this->site[$site], 'data' => ['classify' => $classify_names, 'list' => ['count' => $count,'pageSize'=>$limit, 'list' => $template_data]]];
+                if (!empty($template_data)) {
+                    $userTplSite[$site] = ['name' => $this->site[$site], 'data' => ['classify' => $classify_names, 'list' => ['count' => $count,'pageSize'=>$limit, 'list' => $template_data]]];
+                }
+
+                /* 取默认第一个模板站点下的分类模板
+                 *  if ($i == 0) {
+                     $data = [];
+                     //取默认第一个模板站点下的分类模板
+                     $count = 0;
+                     $template_data = [];
+                     if ($site && $classify) {
+                         list($count, $template_data) = $this->VirtualTryOn_model->getClassifyBySite($site, $classify, $offset, $limit);
+                     }
+                     $userTplSite[$site] = ['name' => $this->site[$site], 'data' => ['classify' => $classify, 'list' => ['count' => $count, 'list' => $template_data]], 'info' => []];
+                 } else {
+                     $i++;
+                     $userTplSite[$site] = ['name' => $this->site[$site], 'data' => [], 'info' => []];
+                 }*/
+            }
+
+        }
+
+        if ($this->input->is_ajax_request() || $_REQUEST['ajax']) {
+            outPrintApiJson(0, 'OK', $userTplSite);
+        }
+
+        return $userTplSite;
+    }
+
+
+    //获取分类下模板列表
+    public function getTplListByClassifyId()
+    {
+        $page = max($this->input->get_post('page', true), 1);
+        $limit = $this->input->get_post('pageSize', true) ? $this->input->get_post('pageSize', true) : 30;
+        $offset = ($page - 1) * $limit;
+        $site = $this->input->get_post('site', true);//站点
+
+        $classify_ids = $this->input->get_post('classify_id',true);
+        if(!empty($classify_ids)){
+            $classify_ids = explode(',',$classify_ids);
+        }
+        if(!$site){
+            outPrintApiJson(100,'模板站点id不存在');
+        }
+        $this->load->model('VirtualTryOn_model');
+        list($count,$list) = $this->VirtualTryOn_model->getTemplateDataBySite($site, $classify_ids, $offset, $limit);
+        outPrintApiJson(0,'ok',['count'=>$count,'list'=>$list]);
+
+    }
+
+    //2d模板详情--兼容后台预览
+    public function getVirtualDetail()
+    {
+        $templateId = $this->input->get_post('templateId',true);//制版间效果图id
+        $pattern = $this->input->get_post('pattern',true);//大图url
+
+        if(!$templateId){
+            outPrintApiJson(100,'模板id不存在');
+        }
+        $this->load->model('VirtualTryOn_model');
+        $detail = $this->VirtualTryOn_model->getTemplateDeatil($templateId);
+
+        outPrintApiJson(0, 'OK', $detail,['pattern_url'=>$pattern?$pattern:'']);
+    }
+
+
+
+    /**@todo 保存制版间 格式待定
+     * {
+        模板1,
+        封面图: base64,
+        部件: [
+            { 部件1: [路径1、路径2], 配置: {...} },
+            { 部件2: [路径1、路径2], 配置: {...} }
+        ]
+     }
+     */
+    public function saveDesignTpl()
+    {
+        $templateId = $this->input->post('templateId',true);
+
+    }
+
+    //我的制版间列表
+    public function myDesignList()
+    {
+        $groupId = $this->input->get_post('group_id', true);
+        $page = max($this->input->get_post('page',true),1);
+        $pageSize = $this->input->get_post('pageSize',true) ? $this->input->get_post('pageSize',true) : 30;
+        $offset = ($page-1)*$pageSize;
+
+        if (!$groupId || !is_numeric($groupId)) {
+            outPrintApiJson(100, '分组id为空');
+        }
+        $this->load->model('VirtualTryOn_model');
+        list($count, $data) = $this->VirtualTryOn_model->getSingleGroupList(getUserId(1), $groupId,$offset,$pageSize);
+        outPrintApiJson(0,'ok',['count'=>$count,'list'=>$data]);
+
+    }
+
+    //我的花型列表
+    public function myFlowers()
+    {
+        $page = max($this->input->get_post('page',true),1);
+        $limit = $this->input->get_post('pageSize',true)?$this->input->get_post('pageSize',true):30;
+        $offset = ($page-1)*$limit;
+
+        $aUser = get_cookie_value();
+        $userId = $aUser['id'];
+        if(!$userId){
+            outPrintApiJson(0,'未登录');
+        }
+      
+        $this->load->model('VirtualTryOn_model');
+        list($count,$list)= $this->VirtualTryOn_model->getFlowersList($userId,$offset,$limit);
+        outPrintApiJson(0,'ok',['count'=>$count,'list'=>$list]);
+    }
+
+    //上传本地花型
+    public function uploadFlowers()
+    {
+        $this->load->model('VirtualTryOn_model');
+        list($count,$list) = $this->VirtualTryOn_model->getFlowersList(getUserId(),0,100);
+        if($count>=100){
+            outPrintApiJson(0,'上传的本地图片大于100张,请先删除');
+        }
+
+        $imgField = 'material';
+        $uploadSize = 1024 * 1024 * 5;
+
+        $sourceID = '';
+        $dirType = 'upload_pic_material'; // 原图
+
+        $dirSite = 'yuntu/';
+        $dirTime = date('Y/m/d');
+        $fPrefix = 'material';
+        // 上传目录
+        $dirUpload = "/{$dirSite}{$dirType}/{$dirTime}/";
+        $fileName = '';
+        $fStream = '';
+        $imgPath = '';
+        $iBase64 = 0;
+
+        $file = $_FILES[$imgField];
+        if (!in_array(strtolower($file['type']), array('image/gif', 'image/jpg', 'image/jpeg', 'image/bmp', 'image/png'))) {
+            outPrintApiJson(100, '请上传正确的图片格式！');
+        }
+
+        if ($file['size'] > $uploadSize) {
+            outPrintApiJson(100, '上传的图片大小不能超过' . ($uploadSize / 1024 / 1024) . 'MB！');
+        }
+
+        $fileExt = substr($file['type'], 6);
+        $fileName = md5(uniqid()) . '.' . $fileExt;
+        $fStream = file_get_contents($file['tmp_name']);
+        $iBase64 = 0;
+
+        $apiUpload = OpCurl::getInstance("http://api.pop136.com/internal/UploadApi.php");
+        $uploadData = array(
+            'fName' => $fileName,
+            'fTargetPath' => $dirUpload,
+            'fPrefix' => $fPrefix,
+            'iBase64' => $iBase64,
+            'fStream' => $fStream
+        );
+        $uploadRet = json_decode($apiUpload->post($uploadData), true);
+        if (isset($uploadRet['status']) && $uploadRet['status']) {
+            $imgPath = $uploadRet['info'];
+        } else {
+            outPrintApiJson(100, '保存上传图片失败！');
+        }
+
+        $rows = array(
+            'iUserId' => getUserId(1),
+            'sUploadUrl' => $imgPath,
+        );
+
+        $this->db->insert(VirtualTryOn_model::TABLE_T_UPLOAD_PATTERN_FLOWERS, $rows);
+        $id = $this->db->insert_id();
+        outPrintApiJson(0, '上传成功！', array(
+            'id' => $id,
+            'imgPath' => $imgPath
+        ));
+
+    }
+
+
+    //删除我的花型列表数据
+    public function delMyFlowers()
+    {
+        $this->load->model('VirtualTryOn_model');
+        $idArr = $this->input->get_post('id_arr', TRUE);
+        if(empty($idArr)){
+            outPrintApiJson(100,'删除的id为空');
+        }
+        $this->db->delete(VirtualTryOn_model::TABLE_T_UPLOAD_PATTERN_FLOWERS, array('id' => $idArr));
+        outPrintApiJson(0, '删除成功！');
+    }
+
+    //定制模板列表
+    public function getUserCustomTpl()
+    {
+        $page = max($this->input->get_post('page',true),1);
+        $limit = $this->input->get_post('pageSize',true)?$this->input->get_post('pageSize',true):30;
+        $offset = ($page-1)*$limit;
+
+        $this->load->model('VirtualTryOn_model');
+        list($count,$list) = $this->VirtualTryOn_model->getUserCustomTpl(getUserId(),$offset,$limit);
+        outPrintApiJson(0,'ok',['count'=>$count,'list'=>$list]);
+    }
+
+    //分组管理-新增、编辑、删除分组，获取分组列表
+    public function manageGroup($act = '')
+    {
+        $this->load->model('VirtualTryOn_model');
+        $userId = getUserId(1);
+        switch ($act){
+            case 'add_group'://新增分组
+                $groupName = $this->input->get_post('group_name',true);
+                if(!$groupName){
+                    outPrintApiJson(100,'分组名称为空');
+                }
+               $insert_id =  $this->VirtualTryOn_model->tplAddGroup($userId,$groupName);
+                if($insert_id){
+                    outPrintApiJson(0,'新增分组成功',['group_id'=>$insert_id]);
+                }
+                outPrintApiJson(100,'新增分组失败');
+                break;
+            case 'edit_group'://编辑分组
+                $groupId = $this->input->get_post('group_id',true);
+                $groupName = $this->input->get_post('group_name',true);
+                if($groupId && $groupName){
+                   $affect =  $this->VirtualTryOn_model->tplEditGroup($userId,$groupId,$groupName);
+                   if($affect===false){
+                       outPrintApiJson(100,'编辑失败');
+                   }else{
+                       outPrintApiJson(0,'编辑成功');
+                   }
+                }else{
+                    outPrintApiJson(100,'未选择分组');
+                }
+
+                break;
+            case 'del_group'://删除分组
+                $groupId = $this->input->get_post('group_id',true);
+                if(!$groupId){
+                    outPrintApiJson(100,'未选择分组');
+                }
+
+                $affect = $this->VirtualTryOn_model->tplDelGroup($userId,$groupId);
+                if($affect===false){
+                    outPrintApiJson(100,'删除失败');
+                }
+                outPrintApiJson(0,'删除成功');
+                break;
+            case 'list_group'://制版间列表展示所有分组
+                //下拉一次性展示所有分组列表
+                list($count, $groupLists) = $this->VirtualTryOn_model->getTplGroupList($userId);
+                outPrintApiJson(0,'ok',['count'=>$count,'group_list'=>$groupLists]);
+                break;
+            case 'center_group'://个人中心-分组列表（取第一张封面图）
+                $page = max($this->input->get_post('page',true),1);
+                $pageSize = $this->input->get_post('pageSize',true) ? $this->input->get_post('pageSize',true) : 30;
+                $offset = ($page-1)*$pageSize;
+                list($count,$groupLists )= $this->VirtualTryOn_model->getTplGroupList($userId,$offset,$pageSize);
+                if(!$count){
+                    outPrintApiJson(100,'没有创建分组');
+                }
+
+                $groupIds = [];
+                foreach ($groupLists as $v){
+                    $groupIds[] = $v['id'];
+                }
+                //取分组封面图
+                $data = [];
+                if($groupIds) {
+                     $data = $this->VirtualTryOn_model->getGroupCover($userId, $groupIds);
+                }
+                outPrintApiJson(0,'ok',['count'=>$count,'list'=>$data]);
+                break;
+            case 'groupid_list'://获取单个分组下模板图列表
+                $groupId = $this->input->get_post('group_id', true);
+                $page = max($this->input->get_post('page',true),1);
+                $pageSize = $this->input->get_post('pageSize',true) ? $this->input->get_post('pageSize',true) : 30;
+                $offset = ($page-1)*$pageSize;
+
+                if (!$groupId && !is_numeric($groupId)) {
+                    outPrintApiJson(100, '分组id为空');
+                }
+                list($count, $data) = $this->VirtualTryOn_model->getSingleGroupList($userId, $groupId,$offset,$pageSize);
+                outPrintApiJson(0,'ok',['count'=>$count,'list'=>$data]);
+                break;
+            default:break;
+
+        }
+
+    }
+
+    //个人中心效果图管理-删除、移除、移动分组
+    public function manageDesignImg($act = '')
+    {
+        $this->load->model('VirtualTryOn_model');
+        $userId = getUserId(1);
+        switch ($act){
+            case 'move_img'://图片移动分组
+                $oldGroupId = $this->input->get_post('old_group_id',true);//原分组id
+                $newGroupId = $this->input->get_post('new_group_id',true);//新分组id
+                $imgId = $this->input->get_post('img_id',true);//效果图id
+                if(!$oldGroupId || !$newGroupId || !$imgId){
+                    outPrintApiJson(100,'必要参数缺失');
+                }
+                $id = $this->VirtualTryOn_model->moveDesignImg($userId,$oldGroupId,$newGroupId,$imgId);
+                if($id){
+                    outPrintApiJson(0,'移动成功',['group_id'=>$id]);
+                }
+                outPrintApiJson(100,'移动失败');
+
+                break;
+            case 'remove_img'://图片移除分组
+                $groupId = $this->input->get_post('group_id',true);//分组id
+                $imgId = $this->input->get_post('img_id_arr',true);//要移除的图片arr
+                if(!$groupId || !$imgId ){
+                    outPrintApiJson(100,'必要参数缺失');
+                }
+
+                $affect = $this->VirtualTryOn_model->removeImg($userId,$groupId,$imgId);
+                if($affect!==false){
+                    outPrintApiJson(0,'移除成功');
+                }
+                outPrintApiJson(0,'移除失败');
+                break;
+            case 'del_Img'://删除模拟图
+                $imgIdArr = $this->input->get_post('img_id_arr',true);//效果图id
+                if( !$imgIdArr ){
+                    outPrintApiJson(100,'必要参数缺失');
+                }
+                $affect = $this->VirtualTryOn_model->delDesignImg($userId,$imgIdArr);
+                if($affect!==false){
+                    outPrintApiJson(0,'删除成功');
+                }
+                outPrintApiJson(0,'删除失败');
+                break;
+        }
+    }
+
+    //分享页设置
+    public function saveMyShareSet()
+    {
+        $groupId = $this->input->get_post('group_id');//分组id
+        $isEncrypt = $this->input->get_post('is_encrypt');//是否加密
+        $expireDay = $this->input->get_post('expire_day');//有效期天数 1：1天；7:7天；30:1个月；0：永久
+        $this->load->model('VirtualTryOn_model');
+        $userId = getUserId(1);
+
+        $expireDate = '永久';
+        if($expireDay!=0){
+            $expireDate = date('Y-m-d H:i:s',strtotime("+{$expireDay} day"));
+            if($expireDay==30){
+                $expireDate = date('Y-m-d H:i:s',strtotime("+1 month"));
+            }
+        }
+
+        list($shareUrl,$pwd) = $this->VirtualTryOn_model->saveMyShareSet($userId,$groupId,$isEncrypt,$expireDay);
+        outPrintApiJson(0,'ok',['shareUrl'=>$shareUrl,'key'=>$pwd,'expireDate'=>$expireDate]);
+
+    }
+
+    //@todo 分享页列表
+    public function shareList($keys='')
+    {
+        if(empty($keys)){
+            outPrintApiJson(100,'参数有误');
+        }
+        $pwd = $this->input->get_post('pwd',true);
+        $str = base64_decode($keys);
+        $param = explode('_',$str);
+        if(count($param)<3){
+            outPrintApiJson(100,'参数有误');
+        }
+        $groupId = !empty($param[0]) && is_numeric($param[0]) ? $param[0] : 0;
+        $shareId = !empty($param[2]) && is_numeric($param[2]) ? $param[2] : 0;
+        if(!$groupId){
+            outPrintApiJson(100,'分组id不存在');
+        }
+        if(!$shareId){
+            outPrintApiJson(100,'分享id不存在');
+        }
+        
+        $this->load->model('VirtualTryOn_model');
+        $rows = $this->VirtualTryOn_model->verifyShare($shareId);
+        if(!$rows){
+            outPrintApiJson(100,'分享数据不存在');
+        }
+//        有效期
+        $now = date('Y-m-d H:i:s');
+        if($rows[0]['iExpireDay']){
+            $expireDate = date('Y-m-d H:i:s',strtotime("+{$rows[0]['iExpireDay']} day"));
+            if($rows[0]['iExpireDay']==30){
+                $expireDate = date('Y-m-d H:i:s',strtotime("+1 month"));
+            }
+            if($now>$expireDate){
+                outPrintApiJson(100,'分享链接已过期');
+            }
+        }
+
+        if($rows[0]['iIsEncrypt']){
+            if($pwd!=$rows[0]['sPwd']){
+                outPrintApiJson(100,'邀请码错误');
+            }
+        }
+
+    }
+
+
+
+    /*2d试衣end*/
+
+
+    public function virtualSpl()
+    {
+        //局部满身和默认色
+//        $sDefaultColor = $detailSrc = "";
+//        $sApplication = true;
+//        $id = $this->input->get_post('id', TRUE);
+//        $table = $this->input->get_post('t', TRUE);
+//        if (!empty($table) && !empty($id) && $table != 'mihuidesignpic') {
+//            $table = getProductTableName($table);
+//            $info = OpPopFashionMerger::getProductData($id, $table);
+//            $sDefaultColor = isset($info[$id]['sDefaultColor']) ? $info[$id]['sDefaultColor'] : '';
+//            $sApplication = (isset($info[$id]['sApplication']) && $info[$id]['sApplication'] == '14102') ? false : true;
+//        }
+//        $this->setTDK("virtualtryon", "virtualspl");
+//        $this->assign('sDefaultColor', $sDefaultColor); // 默认色
+//        $this->assign('isFull', $sApplication); // 是否满身
+        $this->display("virtual/virtualSpl.html");
+    }
+
+    // 暂时用来解决前端合成图片时跨域问题
+    public function proxy()
+    {
+        ini_set('user_agent', 'Mozilla/4.0 (compatible; MSIE 6.0)');
+        header('Content-type: image/jpeg');
+        $img = $this->input->get_post('proxy_img', TRUE);
+        $img = urldecode($img);
+        echo file_get_contents($img);
+        exit();
+    }
+
+    //取左侧模板
+    public function virtualTemplates()
+    {
+        $this->load->model('VirtualTryOn_model');
+        $aUser = get_cookie_value();
+        if ($aUser['id'] && empty($aUser['iTplSite'])) {
+            $iTplSite = $this->VirtualTryOn_model->getUserTplSite($aUser['id']);
+        } else {
+            $iTplSite = $aUser['iTplSite'];
+        }
+        if (!$iTplSite) {
+            outPrintApiJson(1011, '未选择站点');
+        }
+        $templates = $this->VirtualTryOn_model->getTemplates($iTplSite, $aUser['id']);
+        outPrintApiJson(0, 'OK', $templates, array('site' => $iTplSite));
+    }
+
+    public function setTplSite()
+    {
+        $site = (int)$this->input->get_post("site");
+        if (empty($site)) {
+            outPrintApiJson(1013, '缺少站点参数！');
+        }
+        $this->load->model('VirtualTryOn_model');
+        $aUser = get_cookie_value();
+        $iTplSite = $this->VirtualTryOn_model->getUserTplSite($aUser['id']);
+        if ($iTplSite) {
+            outPrintApiJson(1011, '已经选择过模板站点');
+        } else {
+            $res = $this->VirtualTryOn_model->modTplSite($aUser['id'], $site);
+            if ($res) {
+                outPrintApiJson(0, 'OK');
+            } else {
+                outPrintApiJson(1012, '设置失败！');
+            }
+        }
+
+    }
+
+    /*------------------------------------------------------------------------------------------------------------------
+     * 虚拟样衣底部 匹配图案
+     *----------------------------------------------------------------------------------------------------------------*/
+    public function virtualSplPicMatch()
+    {
+        // 图片路径
+        $path = $this->input->get_post('path');
+        $count = intval($this->input->get_post('count'));
+        $count = $count <= 0 ? 63 : $count;
+        // $path = "https://img2.fm.pop-fashion.com/fashion/fashion_shows/coverimage/sCoverImg_1474508481.jpg";
+        if (empty($path)) {
+            outPrintApiJson(1011, '缺少path参数');
+        }
+        $info = array();
+        $path = urldecode($path);
+        // /global/images/virtual/default-pattern.png 为默认图
+        if ($path === '/global/images/virtual/default-pattern.png') {
+            // 默认获取中文服装--图案素材的前40张，按照时间与ID倒序
+            $this->load->model('VirtualTryOn_model');
+            $result = [];
+            $count = 40;
+            $result['data'] = $this->VirtualTryOn_model->getDefaultPatternMaterial(82, 0, $count);
+        } else {
+            // 有$path时，底部推荐
+            $path = stristr($path, 'http://') || stristr($path, 'https://') ? $path : STATIC_URL1 . $path;
+
+            $result = OpPopMalongInterface::getPicMatchList(OpPopMalongInterface::SITE_FASHION_CLOUD, $path, $count);
+            $info = array('usetime' => $result['usetime']);//其他信息
+        }
+
+        // 判断是否有权限
+        if ($this->get_use_type != "VIP" && !empty($result['data'])) {
+            foreach ($result['data'] as $key => $value) {
+                $result['data'][$key]["big"] = $result['data'][$key]["mbig"] = $result['data'][$key]["small"];
+            }
+        }
+        outPrintApiJson(0, 'OK', $result['data'], $info);
+    }
+    /*------------------------------------------------------------------------------------------------------------------
+     * 上传使用
+     *----------------------------------------------------------------------------------------------------------------*/
+    public function virtualSplUpload()
+    {
+        $imgField = 'material';
+        $uploadSize = 1024 * 1024 * 5;
+        // 帐户
+        $accountId = $this->input->get_post('accountId');
+        $accountId = empty($accountId) ? '' : $accountId;
+        // 原图id
+        $sid = intval($this->input->get_post('sid'));
+        // 切图dataUrl数据(兼容ie9)
+        $postImgData = $this->input->get_post($imgField);
+        if ($sid > 0) {
+            // 切图的原图id
+            $sourceID = 'fm_upload_pic_material_' . $sid;
+            // 图片上传目录 原图和切图区分
+            $dirType = 'design_area'; // 切图
+        } else {
+            $sourceID = '';
+            $dirType = 'upload_pic_material'; // 原图
+        }
+        $dirSite = 'yuntu/';
+        $dirTime = date('Y/m/d');
+        $fPrefix = 'material';
+        // 上传目录
+        $dirUpload = "/{$dirSite}{$dirType}/{$dirTime}/";
+        $fileName = '';
+        $fStream = '';
+        $imgPath = '';
+        $iBase64 = 0;
+
+        if (!isset($_FILES[$imgField]) || $_FILES[$imgField]['size'] == 0) {
+            if (empty($postImgData)) {
+                outPrintApiJson(1, '请上传要匹配的图片！');
+            } else {
+                // 将canvas的toDataUrl得到的数据保存为png图片
+                $imgStr = $postImgData;
+                $imgData = substr($imgStr, strpos($imgStr, ",") + 1);
+                $fileName = md5(uniqid()) . '.png';
+                $fStream = $imgData;
+                $iBase64 = 1;
+            }
+        } else {
+            $file = $_FILES[$imgField];
+            if (!in_array(strtolower($file['type']), array('image/gif', 'image/jpg', 'image/jpeg', 'image/bmp', 'image/png'))) {
+                outPrintApiJson(1, '请上传正确的图片格式！');
+            }
+
+            if ($file['size'] > $uploadSize) {
+                outPrintApiJson(1, '上传的图片大小不能超过' . ($uploadSize / 1024 / 1024) . 'MB！');
+            }
+
+            $fileExt = substr($file['type'], 6);
+            $fileName = md5(uniqid()) . '.' . $fileExt;
+            $fStream = file_get_contents($file['tmp_name']);
+            $iBase64 = 0;
+        }
+        $apiUpload = OpCurl::getInstance("http://api.pop136.com/internal/UploadApi.php");
+        $uploadData = array(
+            'fName' => $fileName,
+            'fTargetPath' => $dirUpload,
+            'fPrefix' => $fPrefix,
+            'iBase64' => $iBase64,
+            'fStream' => $fStream
+        );
+        $uploadRet = json_decode($apiUpload->post($uploadData), true);
+        if (isset($uploadRet['status']) && $uploadRet['status']) {
+            $imgPath = $uploadRet['info'];
+        } else {
+            outPrintApiJson(1, '保存上传图片失败！');
+        }
+        if ($sid > 0) { // 切图
+            $table = 'fm_design_area';
+            $rows = array(
+                'sAccountId' => $accountId,
+                'sDesignAreaImg' => $imgPath,
+                'iSourceType' => 2, // 用户上传
+                'sSourceId' => $sourceID,
+                'dCreateTime' => date('Y-m-d H:i:s')
+            );
+        } else {
+            $table = 'fm_upload_pic_material';
+            $rows = array(
+                'sAccountId' => $accountId,
+                'sUploadPicImg' => $imgPath,
+                'dCreateTime' => date('Y-m-d H:i:s')
+            );
+        }
+        $this->db->insert($table, $rows);
+        $id = $this->db->insert_id();
+        outPrintApiJson(0, '上传成功！', array(
+            'id' => $id,
+            'imgPath' => $imgPath
+        ));
+    }
+
+    //记录虚拟样衣试用使用情况
+    public function tryoutLog()
+    {
+        $img_path = $this->input->get_post("path");
+        if (empty($img_path)) {
+            outPrintApiJson(2, "图片为空！");
+        }
+        $this->load->model('User_model');
+        list($status, $total, $used) = $this->User_model->add_try_out_num("yuntu:virtualtry", $img_path);
+        $data = ["total" => $total, "free" => $total - $used];
+        if ($status) {
+            outPrintApiJson(0, "OK", $data);
+        } else {
+            outPrintApiJson(2001, "已经使用完!", $data);
+        }
+    }
+}

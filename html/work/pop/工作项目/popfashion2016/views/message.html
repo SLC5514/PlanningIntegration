@@ -1,0 +1,86 @@
+{extends file="layout.html"}
+
+{block name="selfcss"}
+    <link rel="stylesheet" type="text/css" href="{STATIC_URL1}/global/css/message.css?{STATIC_CHANGE_TIME}">
+{/block}
+
+
+{block name="main"}
+<!-- 留言表单 -->
+<div class="message js-message">
+    <div class="message-main">
+        <div class="message-table">
+            <div class="message-H1">
+                <div>线上留言</div>
+                <span></span>
+            </div>
+            <div class="message-explain">尊敬用户您好，为保证你在留言后，我们的客服人员能够快速追踪定位您的问题，在最短时间内联系上您，请您如实并尽可能填写完整的信息</div>
+            <ul>
+                <li style="position: relative;" class="js-Type">
+                    <label><em>*</em>问题 类型</label>
+                    <div class="issue-type clearfix">
+                        <span class="js-messageType">请选择你的问题类型</span>
+                        <i class="js-issur-show"></i>
+                    </div>
+                    <div class="issue-Ul js-issue-Ul">
+                        <div class="issue-Li">账号或密码错误</div>
+                        <div class="issue-Li">忘记账号或密码</div>
+                        <div class="issue-Li">账号登录异常</div>
+                        <div class="issue-Li">登录后页面显示异常</div>
+                        <div class="issue-Li">需要修改账号密码</div>
+                        <div class="issue-Li">如何找回账号密码？</div>
+                        <div class="issue-Li">客户端在哪里下载？怎么安装？</div>
+                        <div class="issue-Li">手机上怎么安装客户端？怎么信任？</div>
+                        <div class="issue-Li">网站怎么收费？</div>
+                        <div class="issue-Li">其他（网站权限问题、书籍问题等）</div>
+                    </div>
+                </li>
+                <li>
+                    <label><em>*</em>姓名</label>
+                    <input class="js-table js-user_name" type="text" placeholder="请输入您的姓名"/>
+                </li>
+                <li>
+                    <label><em>*</em>企业名称</label>
+                    <input class="js-table js-company" type="text" placeholder="请输入您的企业名称"/>
+                </li>
+                <li>
+                    <label><em>*</em>电话</label>
+                    <input class="js-table js-telphone" type="text" placeholder="请输入您的电话"/>
+                </li>
+                <li>
+                    <label>用户名</label>
+                    <input class="js-account1" type="text" placeholder="请输入您的用户名"/>
+                </li>
+                <li style="border: none;">
+                    <label>留言</label>
+                    <div style="position:relative;">
+                        <textarea class="js-text" placeholder="请输入您的意见或问题，我们看到会及时联系你~"></textarea>
+                        <span class="number js-number">0/500</span>
+                    </div>
+                    <div class="message-describe clearfix">
+                        <span>填写详细准确的留言描述，帮助我们更快定位您的问题，列如：在xxx页面使用xxx功能后，无法xxx;</span>
+                        <div class="example">
+                            <span>举例说明：</span>
+                            <span>在登录页面使用登录功能时，点击登录按钮后页面提示用户名错误，再次输入时仍然提示用户名错误，无法正常登录</span>
+                        </div>
+                    </div>
+                </li>
+                <li style="border: none;">
+                    <div class="message-btn js-message-btn">提交</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- 表单提交成功 -->
+<div class="meg-success js-meg-success">
+    <div class="meg-box">
+        <img src='../global/images/user/meg-success.png'>
+        <span>提交成功，我们的客服会尽快联系您，请耐心等待哦！</span>
+    </div>
+</div>
+{/block}
+{block name="self"}
+<script type="text/javascript" src="{STATIC_URL2}/global/js/message/message.js?{STATIC_CHANGE_TIME}"></script>
+{/block}
+

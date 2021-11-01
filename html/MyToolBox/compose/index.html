@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>compose || pipeline</title>
+</head>
+
+<body>
+  compose || pipeline
+</body>
+<script>
+  var name = 's steve';
+
+  // 首字母大写
+  function initialUpperCase(str) {
+    return str.replace(/\b(\w)|\s(\w)/g, function (m) {
+      return m.toUpperCase();
+    });
+  }
+
+  // 空格区分数组
+  function spaceSplit(str) {
+    return str.split(' ');
+  }
+
+  // 组合
+  function compose(...fns) {
+    // var argsArray = Array.prototype.slice.call(arguments);
+    // var argsArray = Array.from(arguments);
+    // console.log(fns, argsArray)
+    return function (x) {
+      // reduceRight
+      return fns.reduce(function (arg, fn) {
+        return fn(arg);
+      }, x);
+    }
+  }
+
+  var result = compose(initialUpperCase, spaceSplit)(name);
+
+  console.log(result)
+</script>
+
+</html>

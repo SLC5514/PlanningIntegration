@@ -1,0 +1,39 @@
+{extends file="layout.html"} 
+{block name="selfcss"}
+    {literal}
+        <style>
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+        .view,.content{
+            width: 100%;
+            height: 100%;
+        }
+        </style>
+     {/literal}
+{/block} 
+ 
+{block name="main"}
+<div class="content">
+    <iframe src="{$iframe_url}" width="100%" height="100%"></iframe>
+</div>
+{/block}
+
+{block name="footer"}
+{/block}
+
+{block name="self"}
+	<script type="text/javascript">
+		require(["jquery","general","msg"],function(jquery,general,msg){
+            $(function(){
+                var def={
+                    loading_ele:$(".js-loading-div"),                                                                   //加载等待
+                    bg_ele:$(".js-bg-div")                                                                              //加载等待
+                };
+                def.loading_ele.fadeOut(200);
+                def.bg_ele.fadeOut(400);
+            });
+        });
+	</script>
+{/block}

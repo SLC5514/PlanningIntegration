@@ -1,0 +1,99 @@
+{assign var=cntSubTopic value=count($res.subTopic)}
+{foreach $res.subTopic as $key => $topic}
+<div class="indexdiv new-indexdiv clearfix padd-bott-parren" id="index_{$topic.iSubTopicId}">
+    <h3><span>{$topic.sTitle}</span></h3>
+    <div class="xq">
+        {if $topic.sDesc}
+        <p class="fl">{$topic.sDesc}</p>
+        {/if}
+    </div>
+    {foreach $topic.subPage as $subpage}
+        {if $subpage.pageType == 1}
+        <div class="ullist_box padd-bott-and">
+            <div class="ullist {if $subpage.imgtype == 0}ullist_165{/if}" style="display:{if $subpage.expansion == 1}block{else}none{/if}">
+                <div class="download_box">
+                    <img src="{STATIC_URL3}/global/images/down_bg.jpg"/ alt="icon">
+                    <div class="down_bg">
+                        <p class="title">{if $subpage.pageName}{$subpage.pageName}{else}相关资料推荐{/if}</p>
+                        {if $subpage.zipname}
+                        <a class="download_img" href="javascript:void(0);" {if $powerDetails.P_Collect}onclick="oCommon.download('{$subpage.zipname}');"
+                        {else if $powerDetails.P_UserType==1}onclick="oCommon.noPower(-2);"
+                        {else}onclick="oCommon.noPower(-2);"{/if} title="打包下载"><i></i>打包下载</a>
+                        {else}
+                        <a class="download_img cur" href="javascript:void(0);" title="下载包生成中"><i></i>下载包生成中</a>
+                        {/if}
+                    </div>
+                </div>
+                <ul>
+                    <li class="display_none"></li>
+                    {foreach $subpage.stylePic as $image}
+                    <li>
+                        <a target="_blank" href="{$image.link}" class="lazyload" title="查看详情">
+                            <img src="{STATIC_URL3}/global/images/loading/search_loding.gif" data-original="{STATIC_URL3}{$image.imgurl}" alt="pic">
+                            <div class="divhover">
+                                <p class="hoverp1">{$image.colsName}</p>
+                                <p class="hoverp2">{$image.genderName}</p>
+                                <p class="hoverp3">{$image.brandName}</p>
+                                <p class="hoverp4">{$image.sCategoryName} {$image.sSubcategoryName}</p>
+                                <p class="hoverp5"><i></i></p>
+                            </div>
+                        </a>
+                    </li>
+                    {/foreach}
+                </ul>
+            </div>
+            <div class="more_style_open" style="display:{if $subpage.expansion == 1}none{else}block{/if}">
+                <span>查看更多{if $subpage.pageName}{$subpage.pageName}{else}相关资料推荐{/if}</span><i></i>
+            </div>
+            <div class="more_style_close" style="display:{if $subpage.expansion == 1}block{else}none{/if}">
+                <span>收起</span><i></i>
+            </div>
+        </div>
+        {else if $subpage.pageType == 2}
+        <div class="stage-role padd-bott-and">
+            <div class="map_layer lazyload">
+                <img src="{STATIC_URL3}/global/images/loading/search_loding.gif" data-original="{STATIC_URL3}{$subpage.picSrc}" alt="pic"/>
+            </div>
+            <div class="positions">
+                {foreach $subpage.hotAreas as $hotarea}
+                <a class="position material" href="{$hotarea.link}" target="_blank" style="left:{$hotarea.left}px;top:{$hotarea.top}px;width:{$hotarea.width}px;height:{$hotarea.height}px;" title="查看详情">
+                    <p class="position-shadow"></p>
+                    <p class="position-des">
+                        <span>{$hotarea.memo}</span>
+                    </p>
+                </a>
+                {/foreach}
+            </div>
+        </div>
+        {else if $subpage.pageType == 3}
+        <div class="padd-bott-and">
+            <!--视频/图片-->
+           {$subpage.content}
+        </div>
+        {else if $subpage.pageType == 4}
+        <div class="report-section js-report-section" data-pageid="{$subpage.iPageId}">
+            
+        </div>
+        {/if}
+    {/foreach}
+</div>
+{/foreach}
+<script>
+    // flash报告页数据
+    var flashPages = {json_encode($flashPages, JSON_UNESCAPED_UNICODE)} || {};
+    /* 页面定位 */
+    var id=getQueryString("searchId");
+    function getQueryString (name) {
+        var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) {
+            return unescape(r[2]);
+        }
+        return null;
+    }  
+    if(id != null && id != undefined){          
+        setTimeout(function(){
+            document.getElementById(id).scrollIntoView();
+        }, 2000);
+    }
+</script>

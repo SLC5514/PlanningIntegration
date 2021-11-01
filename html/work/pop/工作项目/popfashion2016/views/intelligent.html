@@ -1,0 +1,78 @@
+{extends file="layout.html"}
+{block name="title"}服装智能设计工具_服装大数据分析_3D智能AI服装设计-POP服装趋势网{/block}
+{block name=keywords}服装智能设计,服装设计工具,服装大数据分析,3D智能服装设计,AI智能服装设计{/block}
+{block name=description}POP服装趋势网智能+为服装企业和设计师提供服装设计相关大数据分析，包括色彩数据分析、TOP热榜款式数据，同时提供各种智能服装设计工具，包括3D模拟成衣、以图搜图、智能推荐款式、以色搜图等等，为设计师提供智能数据分析和设计工具。{/block}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/intelligent.css?{STATIC_CHANGE_TIME}">
+{/block}
+
+{block name="main"}
+<div class="viewport">
+    <!-- 头图 -->
+    <div class="banner">
+        <div></div>
+    </div>
+    <!-- 内容 -->
+    <div class="viewport-content w1500">
+        <ul class="clearfix">
+            <li>
+                <div class="fl left"><img src="{STATIC_URL2}/global/images/intelligent/img1.png" alt=""></div>
+                <div class="fl">
+                    <div class="title">色彩数据分析<i></i></div>
+                    <div class="info">通过智能AI监控每一场发布会数据，给用户呈现多个维度的<span>色彩走势</span>，并且每年根据潮流趋势推出<span>关键色</span>，协助企业对服装研发效率。</div>
+                    <a class="btn" target="_blank" href="/smarttrends/colordata/"><i></i><span>体验专业版</span></a>
+                </div>
+            </li>
+            <li>
+                <div class="fl left"><img src="{STATIC_URL2}/global/images/intelligent/img2.png" alt=""></div>
+                <div class="fl">
+                    <div class="title">TOP款式热榜<i></i></div>
+                    <div class="info">结合大数据智能分析工具，从行业、品类、季节等多个维度进行数据智能分析总结，为设计师提供<span>最受欢迎的时尚潮流款式</span>，快速发掘款式开发灵感。</div>
+                    <a class="btn" target="_blank" href="/smarttrends/topstyles/"><i></i><span>尝试一下</span></a>
+                </div>
+            </li>
+            <li>
+                <div class="fl left"><img src="{STATIC_URL2}/global/images/intelligent/img3.png" alt=""></div>
+                <div class="fl">
+                    <div class="title">2D&3D试衣<i></i></div>
+                    <div class="info">使用你的图案、面料，采用最新的在线<span>快速生成2d和3d的模拟实景效果</span>，让你一键拥有<span>在线制版间</span>，云图百款模版等你体验。</div>
+                    <a class="btn" target="_blank" href="https://yuntu.pop136.com/"><i></i><span>体验专业版</span></a>
+                    <a class="btn gray" href="/details/virtualSpl/?id=241667&t=graphicitem&col=82&sign=d6be5&codepic=http%253A%252F%252Fimg3pop384fmpop384poppop380fashionpop384com%252Ffashion%252Fgraphic%252F201401225%252Fmbig%252F69a55150c265d2cf99ed3b41fc6a7062pop384jpg"><i></i><span>试一试</span></a>
+                </div>
+            </li>
+            <li>
+                <div class="fl left"><img src="{STATIC_URL2}/global/images/intelligent/img4.png" alt=""></div>
+                <div class="fl">
+                    <div class="title">以图搜图<i></i></div>
+                    <div class="info">系统通过<span>图片特征</span>寻找<span>相似图案</span>、<span>相关面料</span>和<span>匹配款式等，</span>快速帮助用户找到所需图案。pop素材库支持色彩和图案内容筛选，提升找图效率。</div>
+                    <a class="btn" target="_blank" href="/picmatch/similarpic/"><i></i><span>尝试一下</span></a>
+                </div>
+            </li>
+            <li>
+                <div class="fl left"><img src="{STATIC_URL2}/global/images/intelligent/img5.png" alt=""></div>
+                <div class="fl">
+                    <div class="title">智能推荐<i></i></div>
+                    <div class="info">根据用户使用习惯生成款式、单品、报告、图案等内容，<span>精准推荐优质内容</span>；其中相关推荐则根据款式和图案的标签特征，为用户推荐相匹配的内容。</div>
+                    <a class="btn" target="_blank" href="/patterns/patternRecommend/"><i></i><span>个性化推荐</span></a>
+                </div>
+            </li>
+            <li>
+                <div class="fl left"><img src="{STATIC_URL2}/global/images/intelligent/img6.png" alt=""></div>
+                <div class="fl">
+                    <div class="title">色彩搜图</div>
+                    <div class="info">通过指定的颜色进行搜索相匹配的款式与图案，也可以根据色系来快速搜索图片，通过简单的搜索寻找更完美的款式图。</div>
+                    <a class="btn" target="_blank" href="/Colorsearch/"><i></i><span>尝试一下</span></a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+{if $P_UserType eq 5}
+{include file="common/sem_trends.html"}
+{/if}
+{/block}
+
+{block name="self"}
+<script type="text/javascript" src="{STATIC_URL3}/global/js/sem_phone/sem_phone.js?{STATIC_CHANGE_TIME}"></script>
+{/block}

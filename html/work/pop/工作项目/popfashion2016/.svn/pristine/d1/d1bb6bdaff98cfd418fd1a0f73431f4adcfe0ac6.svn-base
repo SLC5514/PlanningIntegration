@@ -1,0 +1,133 @@
+{extends file="layout.html"}"
+
+{block name="title"}女/男装色彩预测|企划设计|图案工艺,女装/牛仔主题预测_链接-POP服装趋势网{/block}
+{block name=keywords}女/男装色彩预测、企划设计、图案工艺,女装/牛仔主题预测{/block}
+{block name=description}链接Link包括Fake经典、东方华梦、正视消耗和黑暗希望四部分，涉及女/男装色彩预测、企划设计、图案工艺，女装/牛仔主题预测的各个方面。{/block}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css"
+      href="{STATIC_URL2}/global/topic/20161017/css/index.css?{STATIC_CHANGE_TIME}">
+{/block}
+
+
+{block name="main"}
+<div itemscope class="container">
+    <div itemscope class="banner">
+        <div itemscope class="banner_lay"></div>
+        <div itemscope class="bannerCenter">
+            <p class="link2"><img src="{STATIC_URL2}/global/topic/20161017/images/link2.png"/></p>
+            <ul class="bgList">
+                <li class="li li1"><a href="#content1"></a></li>
+                <li class="li li2"><a href="#content2"></a></li>
+                <li class="li li3"><a href="#content3"></a></li>
+                <li class="li li4"><a href="#content4"></a></li>
+            </ul>
+        </div>
+    </div>
+    <div itemscope class="content content1" id="content1">
+        <div itemscope class="con_box">
+            <div itemscope class="box">
+                <p><a href="/details/report/t_moscon-id_275859-col_23/" target="_blank"><img itemprop="thumbnail" src="{STATIC_URL2}/global/topic/20161017/images/fake.png" title="FAKE CLASSIC" alt="Fake经典"/> </a></p>
+                <p class="smallBox">经典总是历久不衰，一次次被创作，但总是无法被超越。本主题也是一种对经典的致敬。它在新一季的流行趋势中得到升华，以戏谑经典态度，通过组合、夸张、解构的手法被重新定义，碰撞出新的视觉感受。</p>
+                <dl class="dl01 fl">
+                    <dt><img itemprop="thumbnail" src="{STATIC_URL2}/global/topic/20161017/images/bswomen.png"/></dt>
+                    <dl><a href="/details/report/t_moscon-id_277293-col_22/" target="_blank">女装色彩预测</a></dl>
+                    <dl><a href="/details/report/t_design-id_2279-col_21/" target="_blank">年轻女装企划设计</a></dl>
+                    <dl><a href="/details/report/t_moscon-id_278225-col_22/" target="_blank">女装图案工艺</a></dl>
+                    <dl><a href="/details/report/t_moscon-id_277915-col_22/" target="_blank">牛仔主题预测--经典改造</a></dl>
+                </dl>
+                <dl class="dl02 fr">
+                    <dt><img itemprop="thumbnail" src="{STATIC_URL2}/global/topic/20161017/images/bsman.png"/></dt>
+                    <dl><a href="/details/report/t_moscon-id_277292-col_22/" target="_blank">男装色彩预测</a></dl>
+                    <dl><a href="/details/report/t_trend-id_18614-col_21/" target="_blank">青年男装企划设计</a></dl>
+                    <dl><a href="/details/report/t_trend-id_18561-col_22/" target="_blank">男装图案工艺-变形</a></dl>
+                    <dl><a href="/details/report/t_trend-id_18328-col_22/" target="_blank">男装图案工艺-破格</a></dl>
+                    <dl><a href="/details/report/t_trend-id_18327-col_22/" target="_blank">男装图案工艺-重组</a></dl>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div itemscope class="content content2" id="content2">
+        <div itemscope class="con_box">
+            <div itemscope class="box">
+                <p><a href="/details/report/t_moscon-id_275825-col_23/" target="_blank"><img src="{STATIC_URL2}/global/topic/20161017/images/df.png" title="CHINA DREAM" alt="东方华梦"/></a></p>
+                <p class="smallBox">中国在世界眼中始终有着像梦一般神秘而精彩的想象，各种中国元素如碎片一般，热闹活跃的聚合在一起，成为世界眼中活生生的令人心驰神往的梦境。</p>
+                    <dl class="dl01 fl">
+                    <dt><img itemprop="thumbnail" src="{STATIC_URL2}/global/topic/20161017/images/hswoman.png"/></dt>
+                    <dl><a href="/details/report/t_moscon-id_277297-col_22/" target="_blank">女装色彩预测</a></dl>
+                    <dl><a href="/details/report/t_moscon-id_276031-col_22/" target="_blank">女装主题企划</a></dl>
+                    <dl><a href="/details/report/t_design-id_2278-col_21/" target="_blank">年轻女装企划设计</a></dl>
+                    <dl><a href="/details/report/t_moscon-id_278274-col_22/" target="_blank">女装图案工艺</a></dl>
+                </dl>
+                <dl class="dl02 fr">
+                    <dt><img itemprop="thumbnail" src="{STATIC_URL2}/global/topic/20161017/images/hsman.png"/></dt>
+                    <dl><a href="/details/report/t_moscon-id_277433-col_22/" target="_blank">男装色彩预测</a></dl>
+                    <dl><a href="/details/report/t_design-id_2282-col_21/" target="_blank">青年男装企划设计</a></dl>
+                    <dl><a href="/details/report/t_trend-id_18286-col_22/" target="_blank">男装图案工艺</a></dl>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div itemscope class="content content3" id="content3">
+        <div itemscope class="con_box">
+            <div itemscope class="box">
+                <p><a href="/details/report/t_moscon-id_275829-col_23/" target="_blank"><img itemprop="thumbnail" src="{STATIC_URL2}/global/topic/20161017/images/lose.png" title="FACE CONSUMPTION" alt="正视消耗"/></a></p>
+                <p class="smallBox">我们如何保护因人类的过渡消耗而饱受创伤的地球？如何直面并积极应对消耗产生的负面效应？未来人类的生存环境会如何进化？是值得每个人去探索的。 二次处理的面料，经过二次改造，拼接、编织或散边手法，结合自然的苔藓风貌纹理，宣誓了对人类消耗的循环使用。同时，皮草等珍贵自然材质也可以通过再处理，或人工仿制，得到更高的使用价值。</p>
+                <dl class="dl01 fl">
+                    <dt><img itemprop="thumbnail" src="{STATIC_URL2}/global/topic/20161017/images/bswomen.png"/></dt>
+                    <dl><a href="/details/report/t_moscon-id_277295-col_22/" target="_blank">女装色彩预测</a></dl>
+                    <dl><a href="/details/report/t_trend-id_18611-col_21/" target="_blank">年轻女装企划设计</a></dl>
+                    <dl><a href="/details/report/t_moscon-id_278243-col_22/" target="_blank">女装图案工艺</a></dl>
+                    <dl><a href="/details/report/t_moscon-id_276272-col_22/" target="_blank">女装牛仔预测-华丽本真</a></dl>
+                </dl>
+                <dl class="dl02 fr">
+                    <dt><img itemprop="thumbnail" src="{STATIC_URL2}/global/topic/20161017/images/bsman.png"/></dt>
+                    <dl><a href="/details/report/t_moscon-id_277294-col_22/" target="_blank">男装色彩预测</a></dl>
+                    <dl><a href="/details/report/t_design-id_2281-col_21/" target="_blank">青年男装企划设计</a></dl>
+                    <dl><a href="/details/report/t_trend-id_18299-col_22/" target="_blank">男装图案工艺-基本华丽</a></dl>
+                    <dl><a href="/details/report/t_trend-id_18293-col_22/" target="_blank">男装图案工艺-隐约重塑</a></dl>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div itemscope class="content content4" id="content4">
+        <div itemscope class="con_box">
+            <div itemscope class="box">
+                <p><a href="/details/report/t_moscon-id_275830-col_23/" target="_blank"><img itemprop="thumbnail" src="{STATIC_URL2}/global/topic/20161017/images/ha.png" title="DARKNESS HOPE" alt="暗黑希望"/></a></p>
+                <p class="smallBox">黑暗将被视为积极的片刻，可以带来新的想法和深刻感受，从而拥抱黑暗、接受忧郁，思考方法、解决问题，这是苦乐参半的暗黑新思潮。死亡不再是禁忌，人们开始正视它真实存在，而不是以往的避讳和逃避，甚至开始有人愿意去死亡体验馆体验它，从而更珍视生命的意义。这种开放超脱的思维方式，将暗黑推向积极的思潮。</p>
+                <dl class="dl01 fl">
+                    <dt><img itemprop="thumbnail" src="{STATIC_URL2}/global/topic/20161017/images/hswoman.png"/></dt>
+                    <dl><a href="/details/report/t_moscon-id_276475-col_22/" target="_blank">女装主题预测-梦游仙境</a></dl>
+                    <dl><a href="/details/report/t_moscon-id_277376-col_22/" target="_blank">女装色彩预测</a></dl>
+                    <dl><a href="/details/report/t_trend-id_18612-col_21/" target="_blank">年轻女装企划设计</a></dl>
+                    <dl><a href="/details/report/t_moscon-id_278253-col_22/" target="_blank">女装图案工艺</a></dl>
+                </dl>
+                <dl class="dl02 fr">
+                    <dt><img itemprop="thumbnail" src="{STATIC_URL2}/global/topic/20161017/images/hsman.png"/></dt>
+                    <dl><a href="/details/report/t_moscon-id_277379-col_22/" target="_blank">男装色彩预测</a></dl>
+                    <dl><a href="/details/report/t_design-id_2283-col_21/" target="_blank">青年男装企划设计</a></dl>
+                    <dl><a href="/details/report/t_trend-id_18222-col_22/" target="_blank">男装图案工艺-恶魔之眼</a></dl>
+                    <dl><a href="/details/report/t_moscon-id_277914-col_22/" target="_blank">男装图案工艺-暗黑骷髅</a></dl>
+                    <dl><a href="/details/report/t_trend-id_18202-col_22/" target="_blank">男装图案工艺-玩酷骨架</a></dl>
+                    <dl><a href="/details/report/t_trend-id_18217-col_22/" target="_blank">男装图案工艺-暗夜文字</a></dl>
+                    <dl><a href="/details/report/t_trend-id_18219-col_22/" target="_blank">男装图案工艺-繁花颓靡</a></dl>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+
+{include file="topic/topic_layer.html"}
+{/block}
+
+{block name="self"}
+<script>
+    $(function(){
+        $(".bannerCenter .bgList li.li").hover(function(){
+            $(this).css("opacity",1).siblings().css("opacity",0);
+        },function(){
+            $(this).css("opacity",0);
+        });
+    })
+</script>
+{/block}

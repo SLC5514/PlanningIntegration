@@ -1,0 +1,87 @@
+{extends file="layout.html"}
+{block name="title"}用户登陆-POP服装趋势网{/block}
+{block name=keywords}{/block}
+{block name=description}{/block}
+{block name='selfcss'}{/block}
+{block name="header"}{/block}
+{block name="main"}
+<div class="alertLayer dianzi_alertLayer" style='display:block;'>
+<div class="layerShadow"></div>
+	<div class="content">
+		<div class="top">
+			<h1>POP服务协议</h1>
+			<span class="xian"></span>
+		</div>
+		<div class="middle">
+			<div class="des des1">
+				<h5>一、订购单</h5>
+				<table width="100%">
+					<tbody>
+						<tr>
+							<td class="fonW" width="20%">订单编号</td>
+							<td width="80%" colspan="3">{$electronicContractinfo['sContractOrderID']}</td>
+						</tr>
+						<tr>
+							<td class="fonW">订购公司</td>
+							<td>{$electronicContractinfo['sOrderCompany']}</td>
+							<td class="fonW">订购日期</td>
+							<td>{$electronicContractinfo['dOrderTime']}</td>
+						</tr>
+						<tr>
+							<td class="fonW">订单内容</td>
+							<td>{$electronicContractinfo['sOrderContent']}</td>
+							<td class="fonW">服务期限</td>
+							<td>起始:{$electronicContractinfo['dServiceStartTime']} 截止:{$electronicContractinfo['dServiceEndTime']}</td>
+						</tr>
+						<tr>
+							<td class="fonW">开户费</td>
+							<td>{$electronicContractinfo['fOpenAccountCost']}元（人民币）</td>
+							<td class="fonW">服务费</td>
+							<td>{$electronicContractinfo['fServiceCost']}元（人民币）</td>
+						</tr>
+						<tr>
+							<td class="fonW">设计费素材</td>
+							<td>{$electronicContractinfo['fMaterialCost']}元（人民币）</td>
+							<td class="fonW">费用总计</td>
+							<td>{$electronicContractinfo['fTotalCost']}元（人民币）</td>
+						</tr>
+					</tbody>
+				</table>			
+				<p class="jianju">本协议是您与本网站（网址：www.pop136.com），以下简称为"“POP”之间就网站服务等相关事宜所订立的服务协议。您使用POP服务前，应当仔细阅读《上海逸尚信息咨询有限公司/POP全球时尚网络机构服务协议》（以下简称“本协议”）的全部内容，尤其是涉及您重大权益的加粗部分的文字。</p>
+				<p class="jianju">您在本页面点击“同意以上协议内容”按钮后，即视为您已阅读、理解并同意本协议的全部内容，本协议即在您与POP之间产生法律效力，成为对双方均具有约束力的法律文件。</p>
+				<h5>二、用户资格及账户</h5>
+				<p>1、用户应当为具有完全民事行为能力的自然人，或者是具有独立承担法律责任能力的其他合法主体。若用户属于无民事行为能力、限制民事行为能力人的，或是不具有独立承担法律责任能力的其他主体的，您应在监护人监护下进行交易或是得到有权主体授权后进行交易。</p>
+				<p class="jianju">2、用户点击“同意以上协议内容”按钮，将视为用户同意本协议的所有条款，且具有履行本协议权利和义务的行为能力，并可以对自己的行为承担法律责任。</p>
+				<p class="jianju">3、在成为我们的VIP客户后，用户应妥善保管其POP平台帐户及密码，应定期或不定期修改密码，以保证帐户安全。用户不得将POP平台帐户出借、转让或用作其他非法用途，否则因帐户未妥善保管而造成损失的，用户应承担相应法律责任，除非有证据证明该行为与用户无关。若用户因POP平台帐户被盗或因其他非用户原因造成损失的，用户应立即通知POP客服并向公安机关报案。</p>
+				<h5>三、用户信息</h5>
+				<p>1、用户应主动向POP提供注册资料，并保证其提供的注册资料真实、准确、完整、合法有效，用户资料如有变动的，应及时联系客服人员更新资料。如果用户提供的注册资料不合法、不真实、不准确、不详尽的，需承担因此引起的相应责任及后果，并且POP有权提前终止用户使用POP各项服务的权利。</p>
+				<p class="jianju">2、用户在POP进行浏览、搜索等活动时，POP对收集的用户信息中涉及用户个人身份和用户个人隐私的信息进行保护，承诺在未获得用户许可的情况下，不会将用户的上述信息对外公开或提供给任何第三方，但用户同意公开其个人资料和隐私信息或依据法庭传票、法律命令或遵循法律程序而需要披露的情形除外</p>
+				<p class="jianju">3、用户同意，POP有权通过邮件、短信电话等形式，向POP用户发送订单信息、VIP活动等通知信息。</p>
+				<h5>四、设计素材配送</h5>
+				<p>1、如需要给您配送设计素材时，因如下情况造成订单延迟或无法配送、交货等，POP不承担延迟配送、交货的责任：</p>
+				<p class="jianju">① 您提供的信息错误、地址不详细等原因导致的；</p>
+				<p class="jianju">②货物送达后无人签收，导致无法配送或延迟配送的；</p>
+				<p class="jianju">③不可抗力因素导致的，例如：自然灾害、交通戒严、突发战争等。</p>
+				<h5>五、知识产权和保密条款</h5>
+				<p>1、POP网站上的所有内容（包括但不限于：照片、文本、图形、LOGO、创意等）所有权归属于内容所有者及经营者，并受中华人民共和国著作权法及相关法律保护。</p>
+				<p class="jianju">2、POP提供搜索浏览资讯服务及相关软件著作权均归pop所有，仅供您学习和研究使用，如何使用由您决定，您不得未经书面同意以任何形式将此服务给任何第三方进行共享使用或作与pop存在竞争关系的盈利性使用。如有以上行为发生，POP有权单方面停止服务，并提前终止本协议，用户支付的服务费用将不予退还。由此造成POP经济损失的，POP保留追究用户法律责任的权利。</p>
+				<p class="jianju">3、POP有权删除网站中各类不符合法律政策或不真实的信息内容而无须提前通知用户。</p>
+				<h5>六、责任限制</h5>
+				<p>1、不论在任何情况下，POP均不对电力故障，罢工，暴乱，骚乱，灾难性天气（如火灾、洪水、风暴等），爆炸，战争，政府行为，司法行政机关的命令或由于互联网运营机构（包括但不仅限于联通、电信等网络供应商）的不作为而造成的不能履行或延迟履行承担责任。</p>
+				<p class="jianju">2、如因上述不可抗力或其他POP无法控制的原因使POP无法提供相应服务或丢失有关的信息、记录等，POP不承担责任。但是POP会尽可能合理地协助处理善后事宜，并努力使用户免受经济损失。</p>
+				<h5>七、争议解决方式</h5>
+				<p>1、与本协议相关的一切事宜均适用于中华人民共和国的法律，因本协议引起的或与本协议的履行有关的任何争议，当事人双方可以通过和解或者调解的方式解决。当事人不愿和解、调解或者和解、调解不成的，任何一方可向POP平台总部所在地的人民法院提起诉讼。</p>
+				<p class="jianju">2、如发生本协议条款与上述法律相抵触时，则这些条款将完全按法律规定重新解释，而其它合法条款则依旧保持对用户产生法律效力和影响。</p>
+				<p class="jianju">3、本协议的规定是可分割的，如本协议中的任何条款无论因何种原因被视为完全或部分无效或不具有执行力，该规定可被删除而其余条款应予以执行。</p>					
+			</div>
+		</div>
+		<div class="bottom">
+			<p class="tishi">*必须完整阅读以上条款，并将滚动条滚动至本弹出窗底部才可点击同意按钮</p>
+			<input class="dianzi gray1" disabled="true" type="button" name="" value="同意以上协议" id="elecbtn"/>
+		</div>
+	</div>
+</div>
+{/block}
+{block name="footer"}{/block}
+{block name='global'}{/block}
+{block name='self'}<script type="text/javascript" src="{STATIC_URL2}/global/js/user/login.js"></script>{/block}

@@ -1,0 +1,321 @@
+{literal}
+<script id="T_Title" type="text/html">{{stitle}}</script>
+
+<script id="T_LeftRightBtn" type="text/html">
+    
+    <div class="pics-prev pics-item-control">
+        <div class="js-pic-prev leftBtn" data-col="" data-t="" data-id="" data-total=""
+         data-index="" data-type="" data-isuc="" data-wbid="">
+            <p></p>
+            <span>上一{{word}}</span>
+        </div>
+    </div>
+    
+    <div class="pics-next pics-item-control">
+        <div class="js-pic-next rightBtn" data-col="" data-t="" data-id="" data-total=""
+         data-index="" data-type="" data-isuc="" data-wbid="">
+            <p></p>
+            <span>下一{{word}}</span>
+        </div>
+    </div>
+    
+</script>
+
+<script id="T_DetailList" type="text/html">
+    {{if detailCnt}}
+        {{each detailList as value index}}
+        <li class="{{if index==0}}img-sec{{/if}} {{if col==82 || col==120 || col==121 || col==124 || col==80 || col==85 || col==117 || col==84}}patter-img{{/if}}" >
+            <div></div>
+            <img class="bigpic" src="{{value.smallPath}}" data-t="{{value.simpleName}}" data-id="{{value.id}}" data-sp="{{value.smallPath}}" data-mp="{{value.mbigPath}}" data-bp="{{value.bigPath}}" data-bpurlencode="{{value.urlencodePath}}" data-staticurl="{{value.staticURL}}" data-sign="{{value.sign}}" data-col="{{value.columnid}}" data-shape="{{value.shape}}" data-size="{{value.size}}" data-up="{{value.urlencodePath}}" data-rename="{{value.rename}}" alt="pic">
+        </li>
+        {{/each}}
+    {{/if}}
+</script>
+
+<script id="T_Visit" type="text/html">
+	{{if !visit && (realUserType==4 || realUserType==5)}}
+	<!--vip权限提示-->
+    <div class="new-vip-null js-new-vip-null {{if realUserType!=5}}already-login{{/if}}">
+        <div class="vip-null-content">
+            <img src="{{cover}}" alt="pic" />
+            <div class="null-bg"></div>
+            <div class="null-disc">
+            	<h2>大图浏览需要VIP权限<br />开通VIP可浏览全站趋势图片及行业深度报告书籍</h2>
+            	<p class="vip-null-msg1">您现在是游客状态，拨打<span>4008-210-500</span>联系客服开通试用账号体验全站</p>
+            	<p class="vip-null-msg2">您现在是普通用户，拨打<span>4008-210-500</span>联系客服开通试用账号体验全站</p>
+            	<a class="set-vip-link js-contact-qq-btn" href="javascript:void(0);" title="联系客服"><i></i>联系客服  快速开通VIP试用账号</a>
+            	<a id="js-contact-qq-btn101" class="set-trial-link js-contact-qq-btn" style="display:none;" href="javascript:void(0);" title="在线申请试用">在线申请试用</a>
+            	<div class="is-login">
+            		<p>注册/登录后可<span>清晰浏览</span>款式列表，及部分<span>免费</span>精选报告！</p>
+	            	<a class="redRg btn-l" href="/member/register/" rel="nofollow" target="_blank" title="注册">注册</a>
+	            	<a class="loginLayer btn-r" href="javascript:void(0);" rel="nofollow" title="登录">登录</a>
+            	</div>
+            </div>
+        </div>
+    </div>
+	{{/if}}
+    {{if visit}}
+    <div class="img-contain ui-draggable ui-draggable-handle" id="draggable">
+        <img class="bigbox js-bigbox" src="{{detailList[0].bigPath}}" data-t="{{detailList[0].simpleName}}" data-id="{{detailList[0].id}}" data-sp="{{detailList[0].smallPath}}" data-mp="{{detailList[0].mbigPath}}" data-bp="{{detailList[0].bigPath}}" data-bpurlencode="{{detailList[0].urlencodePath}}" data-spurlencode="{{detailList[0].smallUrlencodePath}}" data-staticurl="{{detailList[0].staticURL}}" data-sign="{{detailList[0].sign}}" data-col="{{detailList[0].columnid}}" data-shape="{{detailList[0].shape}}" data-size="{{detailList[0].size}}" data-up="{{detailList[0].urlencodePath}}" data-rename="{{detailList[0].rename}}" alt="pic">
+    	<div class="bp-load js-bp-load"></div>
+    </div>
+    {{else}}                      
+    <!--无权限  并且是部分无权限的时候-->
+    {{if (realUserType!=4 && realUserType!=5)}}
+    <div class="detail-null js-detail-null">
+        <div class="detail-content-null">
+            <img class="js-null-img" alt="pic" />
+            <div class="null-bg"></div>
+            <div class="null-disc">
+                <img src="{{STATIC_URL2}}/global/images/new-detail/report-no-icon.png" alt="pic" />
+                <br /><p>浏览本内容需要 <span>{{pow1}}{{pow2}}</span> 浏览权限<br />您当前套餐没有哦！联系客服申请该栏目使用</p>
+                <div><a class="neiyeList fefu-link js-contact-qq-btn" href="javascript:void(0);" data-type="after" title="联系客服"><i></i>联系客服</a><div><i></i><span>客服热线：</span><span class="call-num">4008-210-662</span></div></div>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+    <!--无权限-->
+    {{/if}}
+</script>
+
+<script id="T_StyleInfo" type="text/html">
+    {{if view_count}}
+    <div class="msg-i msg-i1 clearfix">
+        <i></i><p>浏览量：<span>{{view_count}}次</span></p>
+    </div>
+    {{/if}}
+
+    {{if updateTime  && col != 121}}
+    <div class="msg-i msg-i2 clearfix">
+        <i></i><p>更新日期：<span>{{updateTime}}</span></p>
+    </div>
+    {{/if}}
+    {{if source}}
+    <div class="msg-i msg-i3 clearfix">
+        <i></i><p>图片来源：<span>{{#source}}</span></p>
+    </div>
+    {{/if}}
+    {{if brandInfo}}
+    <div class="msg-i msg-i5 clearfix">
+        <i></i><p>所属品牌：<a href="{{brandInfo.link}}" class="js-click-brand" target="_blank" title="{{brandInfo.name}}">{{brandInfo.name}}<em></em></a></p>
+    </div>
+    {{/if}}
+    {{if styleInfoCnt}}
+    <div class="msg-i msg-i4 js-msg-i4 clearfix">
+        <i></i>
+        <ul class="fl">
+            {{if styleInfoCnt}}
+                {{each styleInfo as value index}}
+                <li>
+                    <a href="{{value.dLink}}" target="_blank" class="mousehover js-click-tag" title="{{value.name}}">{{value.name}}</a>
+                </li>
+                {{/each}}
+            {{/if}}
+        </ul>
+    </div>
+    {{/if}}    
+</script>
+
+<script id="T_SupplierInfo" type="text/html">
+    {{if supllierInfo}}
+    <div class="Supplier shadow">
+        <h3>花型供应商信息</h3>
+        <div class="Supplier_info">
+            <p>名称：<span>{{supllierInfo.name}}</span></p>
+            <p>电话：<span>{{supllierInfo.telphone}}</span></p>
+            <p>QQ：<span>{{supllierInfo.qq}}</span></p>
+        </div>
+    </div>
+    {{/if}}
+</script>
+
+<script id="T_Label" type="text/html">
+    {{if relationLabelsCnt}}
+    <div class="keyword1 shadow">
+        <h3>关键词</h3>
+        <div class="keylist">
+            {{each relationLabels as value index}}
+            <a target="_blank" href="{{value}}" title="{{index}}">{{index}}</a>
+            {{/each}}
+        </div>
+    </div>
+    {{/if}}
+</script>
+
+
+<script id="T_Print" type="text/html">
+    {{if col == 82 || col == 117 || col == 120 || col == 124}}
+        {{if iQuickPrint==1 && col==82}}
+            <!-- POP快印 -->
+            <li class="popky_li">
+                <a class="popky_a" href="javascript:popky();" rel="nofollow" title="查看详情">
+                    <img src="{{STATIC_URL3}}/global/images/online_ds_6.png" alt="pic"/><i></i>
+                </a>
+                <span class="new_icon"></span><div class="only_info popky_info" {{if popky_tip}}style="display:none;"{{/if}} onclick="popky_hide();"><p><b>POP数码印花服务</b><br/>趋势花型一键打印，所见即所得！</p><em></em></div>
+            </li>
+            <form method="post" id="popky_form" action="{{popky_action}}" target="_blank">
+                <input type="hidden" name="data" value="{{popky_json}}" id="popky_json">
+            </form>
+        {{/if}}
+    {{/if}}
+</script>
+
+<script id="T_Spatter" type="text/html">
+    {{if col == 82 || col == 117 || col == 120 || col == 124}}
+    <!-- 相似图案 -->
+        <a target="_blank" data-url="/picmatch/loading/" href="/picmatch/loading/?path={{detailList['0']['urlencodePath']}}" title="相似图案">
+            <i></i><span>相似图案</span>
+        </a>
+    {{else if detailCnt && (col=='50' || col=='52' || col=='54' || col=='55' || col=='56' || col=='57'|| col=='122' || col=='123')}}
+        <a target='_blank' data-url="/picmatch/piccutlist/t_{$detailList['0']['simpleName']}-id_{$detailList['0']['id']}/" href="/picmatch/piccutlist/t_{{detailList['0']['simpleName']}}-id_{{detailList['0']['id']}}/?path={{detailList['0']['urlencodePath']}}" title="相似图案"><i></i><span>相似图案</span></a>
+    {{/if}}
+</script>
+
+<script id="T_Mfabric" type="text/html">
+    {{if col=='121'}}
+        <!-- 面料定制 -->
+            <a target="_self" href="javascript:popky();" rel="nofollow" title="查看详情">
+                <i></i><span>面料定制</span>
+            </a>
+            <form method="post" id="popky_form" action="{{popky_action}}" target="_blank">
+                <input type="hidden" name="data" value="{{popky_json}}" id="popky_json">
+                <input type="hidden" name="iUlbId" value="{{iUlbId}}">
+            </form>
+        <!-- /面料定制 -->
+        <!-- 提示 -->
+            <div class="popky-infor">
+                <div class="box-arrow"></div>
+                <p>一键云打印，所见即所得。优质供应商最新海量数码花型展示，对应店铺多品种底布 挑选，直接下单打印。</p>
+            </div>
+    {{/if}}
+</script>
+
+<script id="T_Rfabric" type="text/html">
+    {{if col == 82 || col == 117 || col == 120}}
+        <!-- 相关面料 -->
+        <a target='_blank' data-url="http://www.uliaobao.com/s/search/toSerchImage" href="http://www.uliaobao.com/s/search/toSerchImage?imageUrl={{detailList['0']['staticURL']}}{{detailList['0']['urlencodePath']}}" rel="nofollow" title="查看详情">
+            <i></i><span>相关面料</span>
+        </a>
+    {{else if detailCnt && (col=='50' || col=='52' || col=='54' || col=='55' || col=='56' || col=='57'|| col=='122' || col=='123')}}
+        <a target='_blank' data-url="/picmatch/piccutlist/t_{{detailList['0']['simpleName']}}-id_{{detailList['0']['id']}}/" href="/picmatch/piccutlist/t_{{detailList['0']['simpleName']}}-id_{{detailList['0']['id']}}/?path={{detailList['0']['urlencodePath']}}"><i></i><span>相关面料</span></a>
+    {{/if}}
+</script>
+
+<script id="T_Vcloth" type="text/html">
+    {{if col == 82 || col == 117 || col == 120 || col == 121}}
+        <!-- 虚拟样衣 -->
+        <a class="cloth_a" href="javascript:void(0);" data-pic="{{detailList[0]['mbigPath']}}" data-col={{col}} data-t="{{detailList[0]['simpleName']}}" data-id="{{id}}" data-sign="{{detailList[0]['sign']}}" id="fitting_cat">
+            <i></i><span>模拟成品</span>
+        </a>
+    {{/if}}
+</script>
+
+<script id="T_Cfabric" type="text/html">
+    {{if col=='121'}}
+        <!-- 面料定制 -->
+        <li class="popky_li">
+            <a class="popky_a" target="_self" href="javascript:popky();" rel="nofollow" title="查看详情">
+                <img src="{{STATIC_URL3}}/global/images/online_ds_7.png" alt="pic"/>
+                <i></i>
+            </a>
+            <span class="new_icon"></span>
+        </li>
+        <form method="post" id="popky_form" action="{{popky_action}}" target="_blank">
+            <input type="hidden" name="data" value="{{popky_json}}" id="popky_json">
+            <input type="hidden" name="iUlbId" value="{{iUlbId}}">
+        </form>
+    {{/if}}
+</script>
+
+<script id="T_StyleAd" type="text/html">
+    {{if adsCnt}}
+    <div class="add shadow">
+        {{each ads as value index}}
+        <a {{if value.sNewWindow}}target="_blank"{{/if}} href="{{value.sLink}}" rel="nofollow" title="查看详情"><img src="{{value.sImagePath}}" alt="{{value.sTitle}}"></a>
+        {{/each}}
+    </div>
+    {{/if}}
+</script>
+
+
+<script id="T_Workbench" type="text/html">
+    <div class="join-workbench-layer js-join-workbench-layer">
+        <div class="join-main-top clearfix">
+            <h2 class="fl">选择工作台</h2><div class="fr workbench-close js-workbench-close"></div>
+        </div>
+        <div class="join-main-content clearfix">
+            <div class="join-picture js-join-picture fl"><img alt="pic"></div>
+            {{if userType == 2}}
+            <div class="create-workbenth fl">
+                <div class="create-input">
+                    <p class="msg-info js-msg-info"></p>
+                    <input class="js-input-text" type="text" placeholder="快速创建新工作台">
+                    <input class="js-input-button" type="button" value="创建">
+                </div>
+                <ul class="workbench-name">
+                    {{each workbench as value index}}
+                        <li data-workbenchid="{{value.id}}" class="{{if value.status ==1}}full-li{{/if}}"><span>{{value.name}}</span><a href="javascript:void(0);" title="{{value.msg}}">{{value.msg}}</a></li>
+                    {{/each}}
+                </ul>
+            </div>
+            {{else}}
+            <div class="vip-workbench fl">
+                <p>您当前为管理员账号，使用设计师<br/>专属账号可使用工作台管理喜欢的款式</p>
+                <a href="/member/associate/" target="_blank" title="设计师专属账号">设计师专属账号</a>
+            </div>
+            {{/if}}
+        </div>
+    </div>
+</script>
+
+<script id="T_DownloadType" type="text/html">
+	<thead>
+		<tr>
+			<th width="25%">格式</th>
+			<th width="25%">尺寸</th>
+			<th width="25%">文件大小</th>
+			<th width="25%">点击下载</th>
+		</tr>
+	</thead>
+	<tbody {{if downloadTypeCnt}} data-downtype='{{downloadType}}'{{/if}}>
+		{{if !downloadTypeCnt}}
+		<tr>
+			<td>.jpg</td>
+			<td id="imgShape">尺寸</td>
+			<td id="imgSize">文件大小</td>
+			<td><a class="js-download-btn" href="javascript:void(0);" data-bp="" title="下载">下载</a></td>
+		</tr>
+		{{/if}}
+	</tbody>
+</script>
+
+<script id="T_Collect" type="text/html">    
+    <a href="javascript:void(0);" class="top_bg shoucang {{if visit}}grey{{else}}pow_down{{/if}} {{if collected==1}}is-collected{{/if}} {{if collected==2}}no_shoucang{{/if}}shoucangtype{{userType}}" data-colpara="{{colpara}}" data-iscollected="{{collected}}" data-usertype="{{userType}}" data-t="{{detailList[0]['simpleName']}}" data-id="{{id}}" data-col="{{col}}"><i class="ie-top"></i><span>{{if collected==1}}已收藏{{else}}加入收藏{{/if}}</span></a>
+</script>
+
+<script id="T_JoinW" type="text/html">
+    <a href="javascript:void(0);" class="top_bg {{if visit}}{{if !_workbench}}{{if _general}}vipadd {{/if}}pow no_collect{{/if}}{{else}} pow_add {{/if}}collecttype{{userType}}" data-usertype="{{userType}}" {{if userType == 4}}disabled="disabled"{{/if}} title="加入工作台"><i></i><span>加入工作台</span></a>
+</script>
+
+<script id="T_Download" type="text/html">
+    <a href="javascript:void(0);" class="top_bg grey downbtn {{if visit}}grey{{else}}pow_down{{/if}} {{if !download}}pow{{/if}}" data-path="" data-column="" data-id="" title="下载单张"><i></i><span>下载单张</span></a>
+</script>
+
+<script id="T_VendorAdLists" type="text/html">
+    {{if vendorads}}
+    <div class="pop_layer resources_recommend resources_recommend_style" id="js-resources-recommend3">
+        <p class="r_title clearfix"><span class="fl"><i></i>时尚商学院推荐</span></p>
+        <ul class="clearfix">
+            {{each vendorads as val}}
+            <li><a href="{{val.sAdLinkAddr}}" target="_blank" title="{{val.sCompanyName}}"><img src="{{val.sAdImageUrl}}" alt="pic"><p class="name_bg">{{val.sCompanyName}}</p></a></li>
+            {{/each}}
+        </ul>
+    </div>
+    <div class="resources_btn">
+        <a class="btn_con" href="javascript:void(0);" onclick="javascript:document.getElementById('js-resources-recommend3').scrollIntoView()" title="时尚商学院推荐"><i></i><br/>时尚商学院<br/>推荐</a>
+    </div>
+    {{/if}}
+</script>
+
+
+{/literal}

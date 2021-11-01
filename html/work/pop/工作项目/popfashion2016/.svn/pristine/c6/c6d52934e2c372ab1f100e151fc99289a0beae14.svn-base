@@ -1,0 +1,245 @@
+{extends file="layout.html"}
+{block name="title"}{$title}{/block}
+{block name=keywords}{$keywords}{/block}
+{block name=description}{$description}{/block}
+{block name="selfcss"}
+	<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/common.css">
+	<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/pop_layer.css">
+{/block}
+
+{block name="main"}
+<div id="pop_layer" data-f5="1">
+<div class="pop_layer_page">
+    <div class="pop_alert">
+        <div class="pop_report clearfix">
+            <div class="pop_report_top clearfix">
+                <div class="layerLeft shadow fl">
+                	<div class="layerLeft_title"><h3>{$stitle}</h3></div>
+                    <div class="layerLeft_top">
+                        <div class="fl">
+                            <span id="J_Download"><a href="javascript:void(0);" class="top_bg grey downbtn {if $visit}grey{else}pow_down{/if} {if !$download}pow{/if}"  id="J_DownNumContanier" data-path="" data-column="" data-id="" title="下载"><span id="downtxt">下载</span></a></span>
+                            <div href="javascript:void(0);" class="top_bg grey share_btn bdsharebuttonbox fl" style="left: 264px; width: 40px; background-color: rgb(204, 204, 204);"> 
+    						分享到：
+                                <a href="javascript:void(0);" class="bds_sqq" data-cmd="sqq" title="分享给QQ好友"></a>
+                                <a href="javascript:void(0);" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                                <a href="javascript:void(0);" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                                <a href="javascript:void(0);" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                                <a href="javascript:void(0);" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+                                <a href="javascript:void(0);" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+                            </div>                       
+                        </div>
+                    </div>
+                    <div class="bigbox" id="J_DetailList">
+                        {if $visit}
+                        <img src="{$detailList.bigPath}" class="bigpic on" data-t="{$detailList.simpleName}" data-id="{$detailList.id}" data-sp="{$detailList.smallPath}" data-bp="{$detailList.bigPath}" data-col="{$detailList.columnid}" data-shape="{$detailList.shape}" data-size="{$detailList.size}" alt="pic">
+                        <i class="enlarge" title="高清浏览"></i>
+                        {else}
+                        <div class="qx_remind">
+                            <div class="remind_info clearfix">
+                                <span class="fl"></span>
+                                <p class="fl">对不起，本书暂时只提供预览版本…<br/><span>如您想提前阅读本书内容，可咨询并购买实体版本</span></p>
+                            </div>
+                            <div class="remind_cous">
+                                <a class="qq_ic" href="{$qqlink}" target="_blank" title="QQ咨询"><i></i>QQ咨询</a>
+                                <a class="tel_ic" href="javascript:void(0);" title="咨询电话"><i></i>咨询电话：{$telnumber}</a>
+                            </div>
+                            <div class="remind_img">
+                                <span></span>
+                            </div>
+                        </div>
+                        {/if}
+                    </div>
+                </div>
+            </div>
+            <div class="pop_report_bottom clearfix">
+                <div class="layerRight fr">
+                    <div class="inf inf1 shadow">
+                        <h3>{$info}信息</h3>
+                        <ul class="inflist repeat_inflist">
+    						{if $styleInfo.brand.name}
+    						<li class="brand_detail">
+    							<p>
+    								<label>品牌：</label>
+    								<span><a href="{$styleInfo.brand.link}" class="mousehover" target="_blank" title="{$styleInfo.brand.name}">{$styleInfo.brand.name}</a></span>
+    							</p>  
+    							
+                        	</li>
+    						{/if}
+    						{if $styleInfo.classify.name}
+                        	<li>
+    							<p>
+    								<label>归类：</label>
+    								<span><a href="{$styleInfo.classify.link}" target="_blank" class="mousehover" title="{$styleInfo.classify.name}">{$styleInfo.classify.name}</a></span>
+    							</p>
+    							            		
+                        	</li>
+    						{/if}
+							{if $styleInfo.industry}
+							<li>
+								<p>
+									<label>行业：</label>
+									<span>
+									{foreach $styleInfo.industry as $key => $val}
+										<a href="{$val.link}" target="_blank" class="mousehover" title="{$val.name}">{$val.name}</a>
+									{/foreach}
+									</span>
+								</p>   					
+							</li>
+							{/if}
+                        	{if $styleInfo.gender}
+    						<li>
+    							<p>
+    								<label>性别：</label>
+    								<span>
+									{foreach $styleInfo.gender as $key => $val}
+									<a href="{$val.link}" target="_blank" class="mousehover" title="{$val.name}">{$val.name}</a>
+									</span>
+									{/foreach}
+    							</p> 
+    						</li>
+    						{/if}
+							{if $styleInfo.catagory}
+							<li>
+								<p>
+									<label>分类：</label>
+									<span>
+									{foreach $styleInfo.catagory as $key => $val}
+										<a href="{$val.link}" target="_blank" class="mousehover" title="{$val.name}">{$val.name}</a>
+									{/foreach}
+									</span>
+								</p>              
+														
+							</li>
+							{/if}
+    						{if $styleInfo.subcatagory.name} 
+    						<li>
+    							<p>
+    								<label>品名：</label>
+    								<span><a href="{$styleInfo.subcatagory.link}" target="_blank" class="mousehover" title="{$styleInfo.subcatagory.name}">{$styleInfo.subcatagory.name}</a></span>
+    							</p> 
+    						</li>
+    						{/if}
+                        	<!--li>
+                        		<p>
+    							<label>浏览量：</label>
+    							<span>{$view_count}次</span>
+    							</p>
+                        	</li-->
+    						{if $updateTime}
+     						<li class="update_time">
+     							<p>
+    							<label>更新日期：</label>
+    							<span>{$updateTime}</span>
+    						</p> 
+     						</li>
+    						{/if}
+    						{if $source}
+     						<li class="pic_laiyuan">
+     							<p>
+    							<label>图片来源：</label>
+    							{$source}
+    							</p> 
+     						</li>
+    						{/if}
+                       </ul>
+                    </div>
+                    {if $relationLabels|count neq 0}
+                    <!--div class="keyword1 shadow">
+                        <h3>关键词</h3>
+                        <div class="keylist">
+                            {foreach $relationLabels as $title=>$label}
+                            <a target="_blank" href="{$label}">{$title}</a>
+                            {/foreach}
+                        </div>
+                    </div-->
+                    {/if}
+    				{if $ads|count neq 0}
+                    <div class="add shadow">
+    				{foreach $ads as $ad}
+                        <a {if $ad.sNewWindow}target="_blank"{/if} href="{$ad.sLink}" rel="nofollow" title="{$ad.sTitle}"><img src="{$ad.sImagePath}" alt="{$ad.sTitle}" alt="pic"></a>
+    				{/foreach}
+                    </div>
+    				{/if}
+                </div>
+            </div>
+        </div>
+		{if $table neq 'presscondetails'}
+        <div class="layer_down">
+            <div class="btnbox">
+                <a href="javascript:void(0);" class="moreRec_arrow fl"></a>
+                <a href="javascript:void(0);" class="moreRec fl" title="更多推荐">更多<br/>推荐</a>
+            </div>
+            <div class="layerblack" id="J_MoreRec" data-t="{$t}" data-id="{$id}" data-col="{$col}"></div>
+        </div>
+		{/if}
+        <!-- 相关款式推荐图片列表 -->
+                <!-- 看大图弹层 -->
+        <div class="layer_bgBlack"></div>
+        <div class="bigImg">
+            <div class="bigpicTips">
+                <p>您可以拖拽图片到任意位置，滚动鼠标放大或缩小图片</p>
+                <p class="two_buttom">
+                    <a href="javascript:void(0);" title="原图尺寸" class="original_size">原图尺寸</a>
+                    <a href="javascript:void(0);" title="重置图片" class="reset_size">重置图片</a>
+                    <a href="javascript:void(0);" title="直接下载" class="download_size">直接下载</a>
+                </p>
+            </div>
+            <img src="{STATIC_URL3}/global/images/layerClose.png" class="layerClose" alt="关闭">
+            <div class="layerBig ui-draggable ui-draggable-handle" id="draggable">
+                <img class="layerBigPic" id="bigImages" alt="pic">
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<div class="shadow_black"></div>
+<div class="pop_download">
+    <div class="load_close_btn"></div>
+    <p class="title">下载文件格式</p>
+    <table width="100%">
+       <thead>
+			<tr>
+                <th width="25%">格式</th>
+                <th width="25%">尺寸</th>
+                <th width="25%">文件大小</th>
+                <th width="25%">点击下载</th>
+            </tr>
+		</thead>
+        <tbody {if $downloadType}data-downtype='{$downloadType}'{/if}>
+            {if !$downloadType}
+            <tr>
+                <td>.jpg</td>
+                <td id="imgShape">尺寸</td>
+                <td id="imgSize">文件大小</td>
+                <td><a class="download_btn" href="javascript:void(0);" data-bp="" title="下载">下载</a></td>
+            </tr>
+            {/if}
+        </tbody>
+    </table>
+</div>
+{include file="more_rec_template.html"}
+
+{/block}
+{block name="self"}
+	<script type="text/javascript" src="{STATIC_URL2}/global/js/common/template.js"></script>
+	<script type="text/javascript" src="{STATIC_URL2}/global/js/common/imagesloaded.pkgd.min.js"></script>
+	<script type="text/javascript" src="{STATIC_URL2}/global/js/fashion/index.js"></script>
+	<script type="text/javascript" src="{STATIC_URL2}/global/js/fashion/aggregation.js?{STATIC_CHANGE_TIME}"></script>
+    <script type="text/javascript" src="{STATIC_URL2}/global/js/fashion/util.collect.js"></script>
+{literal}
+<script type="text/javascript">
+    // 细节图轮播
+    $('.bigbox img').eq(0).css('display', 'inline');
+    // 百度分享 https://www.hrwhisper.me/baidu-share-not-support-https-solution/
+	window._bd_share_config = {"common": {"bdSnsKey": {}, "bdText": "", "bdMini": "1", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "24"}, "share": {}};
+	with (document)
+	0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = '/static/api/js/share.js?v=89860593.js?cdnversion=' + ~( - new Date() / 36e5)];
+	(function(){ 
+		$('.bigbox , #draggable').contextmenu(function(){
+            return false;
+        });
+	})(window);
+</script>
+{/literal}
+{/block}

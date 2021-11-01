@@ -1,0 +1,317 @@
+{literal}
+<script id="T_Title" type="text/html">{{stitle}}</script>
+
+<script id="T_LeftRightBtn" type="text/html">
+
+    <div class="pics-prev pics-item-control">
+        <div class="js-pic-prev leftBtn" data-col="" data-t="" data-id="" data-total=""
+         data-index="" data-type="" data-isuc="" data-wbid="">
+            <p></p>
+            <span>上一{{word}}</span>
+        </div>
+    </div>
+
+    <div class="pics-next pics-item-control">
+        <div class="js-pic-next rightBtn" data-col="" data-t="" data-id="" data-total=""
+         data-index="" data-type="" data-isuc="" data-wbid="">
+            <p></p>
+            <span>下一{{word}}</span>
+        </div>
+    </div>
+
+</script>
+
+<script id="T_ReadList" type="text/html">
+	{{each moreList as value index}}
+		<li {{if (isBook || isMagazine)}}class="book-list"{{/if}}>
+	        <a href="{{value.link}}" target="_blank" class="clearfix" title="查看详情">
+	        	<div class="read-pic clearfix">
+                    {{if (!isBook && !isMagazine)}}
+                        {{if value.cover.length == 1}}
+                            <img class="fl" src="https://imgf2.pop-fashion.com{{value.cover[0]}}" alt="pic" height="73" width="99" style="display: inline;">
+                        {{else}}
+                            {{each value.cover as value index}}
+                                <img class="fl" src="https://imgf2.pop-fashion.com{{value}}" alt="pic" height="73" width="33" style="display: inline;">
+                            {{/each}}
+                        {{/if}}
+	        		{{else}}
+	        		<img src="{{value.cover}}" alt="pic" />
+	        		{{/if}}
+	        	</div>
+	        	<div class="read-msg">
+	        		<p>{{value.title}}</p>
+	        	</div>
+	        </a>
+	    </li>
+    {{/each}}
+</script>
+
+<script id="T_Visit" type="text/html">
+    {{if (visit && !is_fast)}}
+    <div class="img-contain ui-draggable ui-draggable-handle" id="draggable">
+        <img class="bigbox js-bigbox dragIcon" src="{{detailList[0].bigPath}}" data-t="{{detailList[0].simpleName}}" data-id="{{detailList[0].id}}" data-sp="{{detailList[0].smallPath}}" data-mp="{{detailList[0].mbigPath}}" data-bp="{{detailList[0].bigPath}}" data-bpurlencode="{{detailList[0].urlencodePath}}" data-staticurl="{{detailList[0].staticURL}}" data-sign="{{detailList[0].sign}}" data-col="{{detailList[0].columnid}}" data-shape="{{detailList[0].shape}}" data-size="{{detailList[0].size}}" data-up="{{detailList[0].urlencodePath}}" data-rename="{{detailList[0].rename}}" alt="pic">
+    	<div class="bp-load js-bp-load"></div>
+    </div>
+    {{else}}
+    <!--无权限-->
+    <div class="detail-null js-detail-null">
+        <div class="detail-content-null">
+            <img class="js-null-img" alt="pic" />
+            <div class="null-bg"></div>
+            {{if !is_fast}}
+            <div class="null-disc">
+                <img src="https://imgf2.pop-fashion.com/global/images/new-detail/report-no-icon.png" alt="icon" />
+                <br /><p>浏览本内容需要 <span>{{pow1}}{{pow2}}</span> 浏览权限<br />您当前套餐没有哦！联系客服申请该栏目使用</p>
+                <div><a class="neiyeList fefu-link js-contact-qq-btn" href="javascript:void(0);" data-type="after" title="联系客服"><i></i>联系客服</a><div><i></i><span>客服热线：</span><span class="call-num">4008-210-662</span></div></div>
+            </div>
+            {{else}}
+            <div class="speed-buy js-speed-buy">
+	    		{{if isBook && buyLink}}
+	    			<p>本书仅支持快速预览部分内容，完整内容请购买书籍</p>
+					<a href="{{buyLink}}" target="_blank" title="立即购买">
+						<i></i>立即购买
+					</a>
+				{{else}}
+					<p style="padding-top: 52px;">暂时不支持浏览全部</p>
+				{{/if}}
+	    	</div>
+            {{/if}}
+        </div>
+    </div>
+    <!--无权限-->
+    {{/if}}
+</script>
+
+<script id="T_StyleInfo" type="text/html">
+	{{if (isBook || isMagazine) && description}}
+	<div class="report-msg">
+		<div>{{description}}</div>
+		<p class="report-messages" style="display: none;">{{description}}</p>
+	</div>
+    {{/if}}
+	{{if (isBook || isMagazine) && bookNumber}}
+    <div class="msg-i msg-i0 clearfix">
+        <i></i><p>编号：<span>{{bookNumber}}</span></p>
+    </div>
+    {{/if}}
+    {{if  view_count}}
+    <div class="msg-i msg-i1 clearfix">
+        <i></i><p>浏览量：<span>{{view_count}}次</span></p>
+    </div>
+    {{/if}}
+    {{if updateTime}}
+    <div class="msg-i msg-i2 clearfix">
+        <i></i><p>更新日期：<span>{{updateTime}}</span></p>
+    </div>
+    {{/if}}
+	{{if source && (!isBook && !isMagazine)}}
+    <div class="msg-i msg-i3 clearfix">
+        <i></i><p>图片来源：<span>{{#source}}</span></p>
+    </div>
+    {{/if}}
+    {{if styleInfoCnt}}
+    <div class="msg-i msg-i4 js-msg-i4 clearfix">
+        <i></i>
+        <ul class="fl">
+            {{if styleInfo.brand && styleInfo.brand.name && (!isBook && !isMagazine)}}
+                <li class="brand_detail">
+                    {{if styleInfo.brand.link == "javascript:void(0);"}}
+                    {{styleInfo.brand.name}}
+                    {{else}}
+                    <a href="{{styleInfo.brand.link}}" target="_blank" class="mousehover" title="{{styleInfo.brand.name}}">{{styleInfo.brand.name}}</a>
+                    {{/if}}
+                </li>
+            {{/if}}
+            {{if styleInfo.bookName && styleInfo.bookName.name}}
+                <li>
+                    <a href="{{styleInfo.bookName.link}}" target="_blank" class="mousehover" title="{{styleInfo.bookName.name}}">{{styleInfo.bookName.name}}</a>
+                </li>
+            {{/if}}
+            {{if styleInfo.season && styleInfo.season.name}}
+                <li>
+                    <a href="{{styleInfo.season.link}}" target="_blank" class="mousehover" title="{{styleInfo.season.name}}">{{styleInfo.season.name}}</a>
+                </li>
+            {{/if}}
+            {{if styleInfo.gender && styleInfo.gender.name && (!isBook && !isMagazine)}}
+                <li>
+                    <a href="{{styleInfo.gender.link}}" target="_blank" class="mousehover" title="{{styleInfo.gender.name}}">{{styleInfo.gender.name}}</a>
+                </li>
+            {{/if}}
+            {{if styleInfo.industry && styleInfo.industry.name && (!isBook && !isMagazine)}}
+                <li>
+                    <a href="{{styleInfo.industry.link}}" target="_blank" class="mousehover" title="{{styleInfo.industry.name}}">{{styleInfo.industry.name}}</a>
+                </li>
+            {{/if}}
+            {{if styleInfo.catagory && styleInfo.catagory.name && (isBook || isMagazine)}}
+                <li>
+                    <a href="{{styleInfo.catagory.link}}" {{if styleInfo.catagory.link != "javascript:void(0);"}}target="_blank" class="mousehover"{{/if}} title="{{styleInfo.catagory.name}}">{{styleInfo.catagory.name}}</a>
+                </li>
+            {{/if}}
+            {{if styleInfo.subcatagory && styleInfo.subcatagory.name && (isBook || isMagazine)}}
+                <li>
+                    <a href="{{styleInfo.subcatagory.link}}" {{if styleInfo.subcatagory.link != "javascript:void(0);"}}target="_blank" class="mousehover"{{/if}} title="{{styleInfo.subcatagory.name}}">{{styleInfo.subcatagory.name}}</a>
+                </li>
+            {{/if}}
+            {{if styleInfo.region && styleInfo.region.name}}
+                <li>
+                    <a href="{{styleInfo.region.link}}" target="_blank" class="mousehover" title="{{styleInfo.region.name}}">{{styleInfo.region.name}}</a>
+                </li>
+            {{/if}}
+        </ul>
+    </div>
+    {{/if}}
+</script>
+
+<script id="T_Label" type="text/html">
+    {{if relationLabelsCnt}}
+    <div class="keyword1 shadow">
+        <h3>关键词</h3>
+        <div class="keylist">
+            {{each relationLabels as value index}}
+            <a target="_blank" href="{{value}}" title="{{index}}">{{index}}</a>
+            {{/each}}
+        </div>
+    </div>
+    {{/if}}
+</script>
+
+<script id="T_BookBuy" type="text/html">
+	{{if isBook && buyLink}}
+	    <a href="{{buyLink}}" target="_blank" title="购买">
+			<i></i>购买
+		</a>
+    {{/if}}
+</script>
+
+
+<script id="T_Print" type="text/html">
+    {{if col == 82 || col == 117 || col == 120 || col == 124}}
+        {{if iQuickPrint==1 && col==82}}
+            <!-- POP快印 -->
+            <li class="popky_li">
+                <a class="popky_a" href="javascript:popky();" rel="nofollow">
+                    <img src="{{STATIC_URL3}}/global/images/online_ds_6.png" alt="icon"/><i></i>
+                </a>
+                <span class="new_icon"></span><div class="only_info popky_info" {{if popky_tip}}style="display:none;"{{/if}} onclick="popky_hide();"><p><b>POP数码印花服务</b><br/>趋势花型一键打印，所见即所得！</p><em></em></div>
+            </li>
+            <form method="post" id="popky_form" action="{{popky_action}}" target="_blank">
+                <input type="hidden" name="data" value="{{popky_json}}" id="popky_json">
+            </form>
+        {{/if}}
+    {{/if}}
+</script>
+
+<script id="T_Mfabric" type="text/html">
+    {{if col=='121'}}
+        <!-- 面料定制 -->
+            <a target="_self" href="javascript:popky();" rel="nofollow" title="面料定制">
+                <i></i><span>面料定制</span>
+            </a>
+            <form method="post" id="popky_form" action="{{popky_action}}" target="_blank">
+                <input type="hidden" name="data" value="{{popky_json}}" id="popky_json">
+                <input type="hidden" name="iUlbId" value="{{iUlbId}}">
+            </form>
+        <!-- /面料定制 -->
+        <!-- 提示 -->
+            <div class="popky-infor">
+                <div class="box-arrow"></div>
+                <p>一键云打印，所见即所得。优质供应商最新海量数码花型展示，对应店铺多品种底布 挑选，直接下单打印。</p>
+            </div>
+    {{/if}}
+</script>
+
+<script id="T_Cfabric" type="text/html">
+    {{if col=='121'}}
+        <!-- 面料定制 -->
+        <li class="popky_li">
+            <a class="popky_a" target="_self" href="javascript:popky();" rel="nofollow">
+                <img src="{{STATIC_URL3}}/global/images/online_ds_7.png" alt="icon"/>
+                <i></i>
+            </a>
+            <span class="new_icon"></span>
+        </li>
+        <form method="post" id="popky_form" action="{{popky_action}}" target="_blank">
+            <input type="hidden" name="data" value="{{popky_json}}" id="popky_json">
+            <input type="hidden" name="iUlbId" value="{{iUlbId}}">
+        </form>
+    {{/if}}
+</script>
+
+<script id="T_StyleAd" type="text/html">
+    {{if adsCnt}}
+    <div class="add shadow">
+        {{each ads as value index}}
+        <a {{if value.sNewWindow}}target="_blank"{{/if}} href="{{value.sLink}}" rel="nofollow" title="查看详情"><img src="{{value.sImagePath}}" alt="{{value.sTitle}}"></a>
+        {{/each}}
+    </div>
+    {{/if}}
+</script>
+
+
+<script id="T_Workbench" type="text/html">
+    <div class="join-workbench-layer js-join-workbench-layer">
+        <div class="join-main-top clearfix">
+            <h2 class="fl">选择工作台</h2><div class="fr workbench-close js-workbench-close"></div>
+        </div>
+        <div class="join-main-content clearfix">
+            <div class="join-picture js-join-picture fl"><img alt="pic"></div>
+            {{if userType == 2}}
+            <div class="create-workbenth fl">
+                <div class="create-input">
+                    <p class="msg-info js-msg-info"></p>
+                    <input class="js-input-text" type="text" placeholder="快速创建新工作台">
+                    <input class="js-input-button" type="button" value="创建">
+                </div>
+                <ul class="workbench-name">
+                    {{each workbench as value index}}
+                        <li data-workbenchid="{{value.id}}" class="{{if value.status ==1}}full-li{{/if}}"><span>{{value.name}}</span><a href="javascript:void(0);" title="{{value.msg}}">{{value.msg}}</a></li>
+                    {{/each}}
+                </ul>
+            </div>
+            {{else}}
+            <div class="vip-workbench fl">
+                <p>您当前为管理员账号，使用设计师<br/>专属账号可使用工作台管理喜欢的款式</p>
+                <a href="/member/associate/" target="_blank" title="设计师专属账号">设计师专属账号</a>
+            </div>
+            {{/if}}
+        </div>
+    </div>
+</script>
+
+<script id="T_DownloadType" type="text/html">
+	<thead>
+		<tr>
+			<th width="25%">格式</th>
+			<th width="25%">尺寸</th>
+			<th width="25%">文件大小</th>
+			<th width="25%">点击下载</th>
+		</tr>
+	</thead>
+	<tbody {{if downloadTypeCnt}} data-downtype='{{downloadType}}'{{/if}}>
+		{{if !downloadTypeCnt}}
+		<tr>
+			<td>.jpg</td>
+			<td id="imgShape">尺寸</td>
+			<td id="imgSize">文件大小</td>
+			<td><a class="js-download-btn" href="javascript:void(0);" data-bp="" title="下载">下载</a></td>
+		</tr>
+		{{/if}}
+	</tbody>
+</script>
+
+<script id="T_Collect" type="text/html">
+    <a href="javascript:void(0);" class="top_bg shoucang {{if visit}}grey{{else}}pow_down{{/if}} {{if isCollect==1}}is-collected{{/if}} {{if collected==2}}no_shoucang{{/if}}shoucangtype{{userType}}" data-para="{{collectPara}}" data-iscollected="{{isCollect}}" data-type="{{collectType}}" data-t="" data-id="" data-col=""><i class="ie-top"></i><span>{{if isCollect==1}}已收藏{{else}}收藏全册{{/if}}</span></a>
+</script>
+
+<script id="T_Download" type="text/html">
+    <a href="javascript:void(0);" class="top_bg grey downbtn {{if visit}}grey{{else}}pow_down{{/if}} {{if !download}}pow{{/if}}" data-path="" data-column="" data-id="" title="下载单张"><i></i><span>下载单张</span></a>
+</script>
+
+<script id="T_CeDownload" type="text/html">
+	{{if download && downloadUrl}}
+		<a href="{{downloadUrl}}" class="top_bg grey downbtn {{if visit}}grey{{else}}pow_down{{/if}} {{if !download}}pow{{/if}}" onclick="return oCommon.downloadPrivilege();" data-path="" data-column="" data-id="" title="下载全册"><i></i><span>下载全册</span></a>
+	{{/if}}
+</script>
+
+
+{/literal}

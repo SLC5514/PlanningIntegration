@@ -1,0 +1,42 @@
+{extends file="layout.html"}
+{block name="main"}
+  <div class="aboutUs our_user">
+  	<div class="ab_banner"><p>OUR USERS</p><span>我们的用户</span></div>
+  	<div class="wid1200">
+  		<div class="about_content">
+  			<div class="content_left fl our_user_active">
+          <ul>
+            <li class="about_li on"><a href="/service/aboutus/"><span></span><i></i>关于我们</a></li>
+            <li class="user_li cur"><a href="/service/ouruser/"><span></span><i></i>我们的用户</a></li>
+            <li class="pro_li on"><a href="/service/ourproducts/"><span></span><i></i>我们的产品</a></li>
+          </ul>
+  			</div>
+  			<div class="content_right fl">
+  				<h1 class="big_title">我们的<span>用</span>户</h1>
+  				<h3 class="small_title"><em></em><span>Our users</span><em></em></h3>
+  				<div class="content_x840">
+  					<div class="intro_col1">
+  						<div class="fl"><i></i>我们的用户遍布整体纺织服饰全行业内（<span>品牌企业、内外贸易公司、成衣工厂、原料商、批发零售、设计、设计院校、行业协会等</span>）从事品牌、成衣、原料、工艺任何一个领域内需要了解趋势走向、市场动态、企划研发素材的专业人士（<span>企业/品牌决策者、市场总监、品牌产品创意总监、设计师、买手等</span>）都在使用我们。
+						</div>
+  						<div class="fr"><img src="{STATIC_URL1}/global/images/aboutus/u1.jpg" alt="设计草图1"/></div>
+  					</div>
+  					<div class="intro_col2">
+  						<div class="fl"><img src="{STATIC_URL1}/global/images/aboutus/u2.png" alt="设计草图2"/></div>
+  						<div class="fr">
+  							<p>目前中国超过90%以上的品牌企业在使用POP趋势运用在企业研发决策环节中，超过80%以上设计师专业客户在使用POP提供的设计灵感及素材在设计工作中。</p>
+  							<img src="{STATIC_URL1}/global/images/aboutus/u3.jpg" alt="设计草图3"/>
+  						</div>
+  					</div>
+  				</div>
+  				<div class="together">
+  					<div class="content_x840">
+  						<div class="fl"><h4>我与你一起：</h4><p><i></i>我们不相信会有完美无缺的作品，但我们相信产品能够完美彰显设计创造者的思考传递和风格精神。<br/> POP服装趋势从趋势到快速反应到潮流解析，再到丰富便捷的设计素材，让你的设计研发工作充满更多可持续的的灵感，一应俱全。<br/>这些依据与判断、创意和灵感，一起打造出一个你喜欢称之为作品的产品。</p></div>
+  						<div class="fr"><img src="{STATIC_URL1}/global/images/aboutus/u4.png" alt="我与你一起"/></div>
+  						<p class="pop_want">POP服装趋势愿与您一起努力，开启——趋势、款式、面料—所见即所得的设计新模式！</p>
+  					</div>
+  				</div>
+  			</div>
+  		</div>
+  	</div>
+  </div> 
+{/block} 

@@ -1,0 +1,1562 @@
+{extends file="layout.html"}
+{block name="title"}{$title}{/block}
+{block name=keywords}{$keywords}{/block}
+{block name=description}{$description}{/block}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/mutual/japan_korea.css?{STATIC_CHANGE_TIME}" />
+{/block}
+
+{block name="main"}
+<div class="main">
+    <div class="banner">
+        <h1>日韩专区</h1>
+        <div class="tit-hline"></div>
+    </div>
+    <ul class="main-nav js-main-nav">
+        <li class="{if !isset($params['gen']) || empty($params['gen'])}on{/if}"><a href="/mutual/reg_1/">全部</a></li>
+        <li class="{if $params['gen'] == 1}on{/if}"><a href="/mutual/reg_1-gen_1/">男装</a></li>
+        <li class="{if $params['gen'] == 2}on{/if}"><a href="/mutual/reg_1-gen_2/">女装</a></li>
+        <li class="{if $params['gen'] == 5}on{/if}"><a href="/mutual/reg_1-gen_5/">童装</a></li>
+    </ul>
+    <div class="w1200">
+        <div class="section section1">
+            <div class="tit-h2">
+                <i></i>
+                <h2>日韩广告大片</h2>
+                <div class="h2"></div>
+            </div>
+            <div class="sec-content clearfix">
+                <div class="hor-box js-box">
+                    <div class="clearfix">
+                        <h3 class="fl">韩国地区</h3>
+                        <div class="korea-h3 fl"></div>
+                        <div class="fr">
+                            <ul class="pagination js-pagination">
+                                <li class="noclick" data-type="0">＜</li>
+                                <li data-type="1">＞</li>
+                            </ul>
+                            <a class="more" target="_blank" href="{$data['lookbook']['korea']['link']}">更多</a>
+                        </div>
+                    </div>
+                    <ul class="data-ul js-data-ul">
+                        <li class="on">
+                            <ul class="clearfix">
+                                {if $data['lookbook']['korea'] }
+                                {for $i=0;$i<4;$i++ }
+                                <li>
+                                    <div>
+                                        <div class="img-box">
+                                            <img data-original="{$data['lookbook']['korea'][$i]['cover']}" alt="">
+                                        </div>
+                                        <div class="hover-box">
+                                            <div class="bg"></div>
+                                            <a class="free" href="/books/seclist/id_{$data['lookbook']['korea'][$i]['id']}-t_{$data['lookbook']['korea'][$i]['table']}-yl_{$data['lookbook']['korea'][$i]['iPreviewMode']}-col_{$data['lookbook']['korea'][$i]['col']}/" title="免费预览"><i></i>{if $data['lookbook']['korea'][$i]['iPreviewMode']==1}免费预览{else}完整预览{/if}</a>
+                                        </div>
+                                    </div>
+                                    <p class="info">{$data['lookbook']['korea'][$i]['name_text']}</p>
+                                </li>
+                                {/for}
+                                {/if}
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="clearfix">
+                                {if $data['lookbook']['korea'] }
+                                {for $i=4;$i<8;$i++ }
+                                <li>
+                                    <div>
+                                        <div class="img-box">
+                                            <img data-original="{$data['lookbook']['korea'][$i]['cover']}" alt="">
+                                        </div>
+                                        <div class="hover-box">
+                                            <div class="bg"></div>
+                                            <a class="free" href="/books/seclist/id_{$data['lookbook']['korea'][$i]['id']}-t_{$data['lookbook']['korea'][$i]['table']}-yl_{$data['lookbook']['korea'][$i]['iPreviewMode']}-col_{$data['lookbook']['korea'][$i]['col']}/" title="免费预览"><i></i>{if $data['lookbook']['korea'][$i]['iPreviewMode']==1}免费预览{else}完整预览{/if}</a>
+                                        </div>
+                                    </div>
+                                    <p class="info">{$data['lookbook']['korea'][$i]['name_text']}</p>
+                                </li>
+                                {/for}
+                                {/if}
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="clearfix">
+                                {if $data['lookbook']['korea'] }
+                                {for $i=8;$i<12;$i++ }
+                                <li>
+                                    <div>
+                                        <div class="img-box">
+                                            <img data-original="{$data['lookbook']['korea'][$i]['cover']}" alt="">
+                                        </div>
+                                        <div class="hover-box">
+                                            <div class="bg"></div>
+                                            <a class="free" href="/books/seclist/id_{$data['lookbook']['korea'][$i]['id']}-t_{$data['lookbook']['korea'][$i]['table']}-yl_{$data['lookbook']['korea'][$i]['iPreviewMode']}-col_{$data['lookbook']['korea'][$i]['col']}/" title="免费预览"><i></i>{if $data['lookbook']['korea'][$i]['iPreviewMode']==1}免费预览{else}完整预览{/if}</a>
+                                        </div>
+                                    </div>
+                                    <p class="info">{$data['lookbook']['korea'][$i]['name_text']}</p>
+                                </li>
+                                {/for}
+                                {/if}
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="hor-box js-box">
+                    <div class="clearfix">
+                        <h3 class="fl">日本地区</h3>
+                        <div class="japan-h3 fl"></div>
+                        <div class="fr">
+                            <ul class="pagination js-pagination">
+                                <li class="noclick" data-type="0">＜</li>
+                                <li data-type="1">＞</li>
+                            </ul>
+                            <a class="more" target="_blank" href="{$data['lookbook']['japan']['link']}">更多</a>
+                        </div>
+                    </div>
+                    <ul class="data-ul js-data-ul">
+                        <li class="on">
+                            <ul class="clearfix">
+                                {if $data['lookbook']['japan'] }
+                                {for $i=0;$i<4;$i++ }
+                                <li>
+                                    <div>
+                                        <div class="img-box">
+                                            <img data-original="{$data['lookbook']['japan'][$i]['cover']}" alt="">
+                                        </div>
+                                        <div class="hover-box">
+                                            <div class="bg"></div>
+                                            <a class="free" href="/books/seclist/id_{$data['lookbook']['japan'][$i]['id']}-t_{$data['lookbook']['japan'][$i]['table']}-yl_{$data['lookbook']['japan'][$i]['iPreviewMode']}-col_{$data['lookbook']['korea'][$i]['col']}/" title="免费预览"><i></i>{if $data['lookbook']['korea'][$i]['iPreviewMode']==1}免费预览{else}完整预览{/if}</a>
+                                        </div>
+                                    </div>
+                                    <p class="info">{$data['lookbook']['japan'][$i]['name_text']}</p>
+                                </li>
+                                {/for}
+                                {/if}
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="clearfix">
+                                {if $data['lookbook']['japan'] }
+                                {for $i=4;$i<8;$i++ }
+                                <li>
+                                    <div>
+                                        <div class="img-box">
+                                            <img data-original="{$data['lookbook']['japan'][$i]['cover']}" alt="">
+                                        </div>
+                                        <div class="hover-box">
+                                            <div class="bg"></div>
+                                            <a class="free" href="/books/seclist/id_{$data['lookbook']['japan'][$i]['id']}-t_{$data['lookbook']['japan'][$i]['table']}-yl_{$data['lookbook']['japan'][$i]['iPreviewMode']}-col_{$data['lookbook']['korea'][$i]['col']}/" title="免费预览"><i></i>{if $data['lookbook']['korea'][$i]['iPreviewMode']==1}免费预览{else}完整预览{/if}</a>
+                                        </div>
+                                    </div>
+                                    <p class="info">{$data['lookbook']['japan'][$i]['name_text']}</p>
+                                </li>
+                                {/for}
+                                {/if}
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="clearfix">
+                                {if $data['lookbook']['japan'] }
+                                {for $i=8;$i<12;$i++ }
+                                <li>
+                                    <div>
+                                        <div class="img-box">
+                                            <img data-original="{$data['lookbook']['japan'][$i]['cover']}" alt="">
+                                        </div>
+                                        <div class="hover-box">
+                                            <div class="bg"></div>
+                                            <a class="free" href="/books/seclist/id_{$data['lookbook']['japan'][$i]['id']}-t_{$data['lookbook']['japan'][$i]['table']}-yl_{$data['lookbook']['japan'][$i]['iPreviewMode']}-col_{$data['lookbook']['korea'][$i]['col']}/" title="免费预览"><i></i>{if $data['lookbook']['korea'][$i]['iPreviewMode']==1}免费预览{else}完整预览{/if}</a>
+                                        </div>
+                                    </div>
+                                    <p class="info">{$data['lookbook']['japan'][$i]['name_text']}</p>
+                                </li>
+                                {/for}
+                                {/if}
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="section section2">
+            <div class="tit-h2">
+                <i></i>
+                <h2>日韩款式提炼</h2>
+                <div class="h2"></div>
+            </div>
+            <div class="sec-content">
+                <div class="hor-box js-box">
+                    <div class="clearfix">
+                        <h3 class="fl">韩国地区</h3>
+                        <div class="korea-h3 fl"></div>
+                        <div class="fr">
+                            <ul class="pagination js-pagination">
+                                <li class="noclick" data-type="0">＜</li>
+                                <li data-type="1">＞</li>
+                            </ul>
+                            <a class="more" target="_blank" href="{$data['designerbrand']['korea']['link']}">更多</a>
+                        </div>
+                    </div>
+                    <ul class="data-ul js-data-ul">
+                        <li class="on">
+                            <ul class="clearfix">
+                                {if $data['designerbrand']['korea']}
+                                {for $i=0;$i<6;$i++}
+                                <li>
+                                    <div>
+                                        <a href="/details/style/t_{$data['designerbrand']['korea'][$i]['table']}-id_{$data['designerbrand']['korea'][$i]['id']}-col_{$data['designerbrand']['korea'][$i]['col']}/" title="查看详情">
+                                            <div class="img-box">
+                                                <img data-original="{$data['designerbrand']['korea'][$i]['cover']}" alt="">
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <p class="label">
+                                        {foreach $data['designerbrand']['korea'][$i]['labels'] as $lab}
+                                        <a href="{$lab['lLink']}" title="{$lab['name']}" target="_blank">{$lab['name']}</a><i></i>
+                                        {/foreach}
+                                    </p>
+                                </li>
+                                {/for}
+                                {/if}
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="clearfix">
+                                {if $data['designerbrand']['korea']}
+                                {for $i=6;$i<12;$i++}
+                                <li>
+                                    <div>
+                                        <a href="/details/style/t_{$data['designerbrand']['korea'][$i]['table']}-id_{$data['designerbrand']['korea'][$i]['id']}-col_{$data['designerbrand']['korea'][$i]['col']}/" title="查看详情">
+                                            <div class="img-box">
+                                                <img data-original="{$data['designerbrand']['korea'][$i]['cover']}" alt="">
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <p class="label">
+                                        {foreach $data['designerbrand']['korea'][$i]['labels'] as $lab}
+                                        <a href="{$lab['lLink']}" title="{$lab['name']}" target="_blank">{$lab['name']}</a><i></i>
+                                        {/foreach}
+                                    </p>
+                                </li>
+                                {/for}
+                                {/if}
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="clearfix">
+                                {if $data['designerbrand']['korea']}
+                                {for $i=12;$i<18;$i++}
+                                <li>
+                                    <div>
+                                        <a href="/details/style/t_{$data['designerbrand']['korea'][$i]['table']}-id_{$data['designerbrand']['korea'][$i]['id']}-col_{$data['designerbrand']['korea'][$i]['col']}/" title="查看详情">
+                                            <div class="img-box">
+                                                <img data-original="{$data['designerbrand']['korea'][$i]['cover']}" alt="">
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <p class="label">
+                                        {foreach $data['designerbrand']['korea'][$i]['labels'] as $lab}
+                                        <a href="{$lab['lLink']}" title="{$lab['name']}" target="_blank">{$lab['name']}</a><i></i>
+                                        {/foreach}
+                                    </p>
+                                </li>
+                                {/for}
+                                {/if}
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="hor-box js-box">
+                    <div class="clearfix">
+                        <h3 class="fl">日本地区</h3>
+                        <div class="japan-h3 fl"></div>
+                        <div class="fr">
+                            <ul class="pagination js-pagination">
+                                <li class="noclick" data-type="0">＜</li>
+                                <li data-type="1">＞</li>
+                            </ul>
+                            <a class="more" target="_blank" href="{$data['designerbrand']['japan']['link']}">更多</a>
+                        </div>
+                    </div>
+                    <ul class="data-ul js-data-ul">
+                        <li class="on">
+                            <ul class="clearfix">
+                                {if $data['designerbrand']['japan']}
+                                {for $i=0;$i<6;$i++}
+                                <li>
+                                    <div>
+                                        <a href="/details/style/t_{$data['designerbrand']['japan'][$i]['table']}-id_{$data['designerbrand']['japan'][$i]['id']}-col_{$data['designerbrand']['japan'][$i]['col']}/" title="查看详情">
+                                            <div class="img-box">
+                                                <img data-original="{$data['designerbrand']['japan'][$i]['cover']}" alt="">
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <p class="label">
+                                        {foreach $data['designerbrand']['japan'][$i]['labels'] as $lab}
+                                        <a href="{$lab['lLink']}" title="{$lab['name']}" target="_blank">{$lab['name']}</a><i></i>
+                                        {/foreach}
+                                    </p>
+                                </li>
+                                {/for}
+                                {/if}
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="clearfix">
+                                {if $data['designerbrand']['japan']}
+                                {for $i=6;$i<12;$i++}
+                                <li>
+                                    <div>
+                                        <a href="/details/style/t_{$data['designerbrand']['japan'][$i]['table']}-id_{$data['designerbrand']['japan'][$i]['id']}-col_{$data['designerbrand']['japan'][$i]['col']}/" title="查看详情">
+                                            <div class="img-box">
+                                                <img data-original="{$data['designerbrand']['japan'][$i]['cover']}" alt="">
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <p class="label">
+                                        {foreach $data['designerbrand']['japan'][$i]['labels'] as $lab}
+                                        <a href="{$lab['lLink']}" title="{$lab['name']}" target="_blank">{$lab['name']}</a><i></i>
+                                        {/foreach}
+                                    </p>
+                                </li>
+                                {/for}
+                                {/if}
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="clearfix">
+                                {if $data['designerbrand']['japan']}
+                                {for $i=12;$i<18;$i++}
+                                <li>
+                                    <div>
+                                        <a href="/details/style/t_{$data['designerbrand']['japan'][$i]['table']}-id_{$data['designerbrand']['japan'][$i]['id']}-col_{$data['designerbrand']['japan'][$i]['col']}/" title="查看详情">
+                                            <div class="img-box">
+                                                <img data-original="{$data['designerbrand']['japan'][$i]['cover']}" alt="">
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <p class="label">
+                                        {foreach $data['designerbrand']['japan'][$i]['labels'] as $lab}
+                                        <a href="{$lab['lLink']}" title="{$lab['name']}" target="_blank">{$lab['name']}</a><i></i>
+                                        {/foreach}
+                                    </p>
+                                </li>
+                                {/for}
+                                {/if}
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="section section3 clearfix">
+            <div class="fl">
+                <div class="tit-h2">
+                    <i></i>
+                    <h2>日韩实拍</h2>
+                    <div class="h2"></div>
+                </div>
+                <div class="sec-content">
+                    <div class="hor-box js-box">
+                        <div class="clearfix">
+                            <h3 class="fl">韩国地区</h3>
+                            <div class="korea-h3 fl"></div>
+                            <div class="fr">
+                                <ul class="pagination js-pagination">
+                                    <li class="noclick" data-type="0">＜</li>
+                                    <li data-type="1">＞</li>
+                                </ul>
+                                <a class="more" target="_blank" href="{$data['retail']['korea']['link']}">更多</a>
+                            </div>
+                        </div>
+                        <ul class="data-ul js-data-ul">
+                            <li class="on">
+                                <ul class="clearfix">
+                                    {if $data['retail']['korea']}
+                                    {for $i=0;$i<4;$i++}
+                                    <li>
+                                        <div>
+                                            <a href="/details/style/t_{$data['retail']['korea'][$i]['table']}-id_{$data['retail']['korea'][$i]['id']}-col_{$data['retail']['korea'][$i]['col']}/" title="查看详情">
+                                                <div class="img-box">
+                                                    <img data-original="{$data['retail']['korea'][$i]['cover']}" alt="">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <p class="label">
+                                            {foreach $data['retail']['korea'][$i]['labels'] as $k=>$lab}
+                                            <a href="{$lab['lLink']}" title="{$lab['name']}" target="_blank">{$lab['name']}</a><i></i>
+                                            {/foreach}
+                                        </p>
+                                    </li>
+                                    {/for}
+                                    {/if}
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="clearfix">
+                                    {if $data['retail']['korea']}
+                                    {for $i=4;$i<8;$i++}
+                                    <li>
+                                        <div>
+                                            <a href="/details/style/t_{$data['retail']['korea'][$i]['table']}-id_{$data['retail']['korea'][$i]['id']}-col_{$data['retail']['korea'][$i]['col']}/" title="查看详情">
+                                                <div class="img-box">
+                                                    <img data-original="{$data['retail']['korea'][$i]['cover']}" alt="">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <p class="label">
+                                            {foreach $data['retail']['korea'][$i]['labels'] as $k=>$lab}
+                                            <a href="{$lab['lLink']}" title="{$lab['name']}" target="_blank">{$lab['name']}</a><i></i>
+                                            {/foreach}
+                                        </p>
+                                    </li>
+                                    {/for}
+                                    {/if}
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="clearfix">
+                                    {if $data['retail']['korea']}
+                                    {for $i=8;$i<12;$i++}
+                                    <li>
+                                        <div>
+                                            <a href="/details/style/t_{$data['retail']['korea'][$i]['table']}-id_{$data['retail']['korea'][$i]['id']}-col_{$data['retail']['korea'][$i]['col']}/" title="查看详情">
+                                                <div class="img-box">
+                                                    <img data-original="{$data['retail']['korea'][$i]['cover']}" alt="">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <p class="label">
+                                            {foreach $data['retail']['korea'][$i]['labels'] as $k=>$lab}
+                                            <a href="{$lab['lLink']}" title="{$lab['name']}" target="_blank">{$lab['name']}</a><i></i>
+                                            {/foreach}
+                                        </p>
+                                    </li>
+                                    {/for}
+                                    {/if}
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="hor-box js-box">
+                        <div class="clearfix">
+                            <h3 class="fl">日本地区</h3>
+                            <div class="japan-h3 fl"></div>
+                            <div class="fr">
+                                <ul class="pagination js-pagination">
+                                    <li class="noclick" data-type="0">＜</li>
+                                    <li data-type="1">＞</li>
+                                </ul>
+                                <a class="more" target="_blank" href="{$data['retail']['japan']['link']}">更多</a>
+                            </div>
+                        </div>
+                        <ul class="data-ul js-data-ul">
+                            <li class="on">
+                                <ul class="clearfix">
+                                    {if $data['retail']['japan']}
+                                    {for $i=0;$i<4;$i++}
+                                    <li>
+                                        <div>
+                                            <a href="/details/style/t_{$data['retail']['japan'][$i]['table']}-id_{$data['retail']['japan'][$i]['id']}-col_{$data['retail']['japan'][$i]['col']}/" title="查看详情">
+                                                <div class="img-box">
+                                                    <img data-original="{$data['retail']['japan'][$i]['cover']}" alt="">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <p class="label">
+                                            {foreach $data['retail']['japan'][$i]['labels'] as $k=>$lab}
+                                            <a href="{$lab['lLink']}" title="{$lab['name']}" target="_blank">{$lab['name']}</a><i></i>
+                                            {/foreach}
+                                        </p>
+                                    </li>
+                                    {/for}
+                                    {/if}
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="clearfix">
+                                    {if $data['retail']['japan']}
+                                    {for $i=4;$i<8;$i++}
+                                    <li>
+                                        <div>
+                                            <a href="/details/style/t_{$data['retail']['japan'][$i]['table']}-id_{$data['retail']['japan'][$i]['id']}-col_{$data['retail']['japan'][$i]['col']}/" title="查看详情">
+                                                <div class="img-box">
+                                                    <img data-original="{$data['retail']['japan'][$i]['cover']}" alt="">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <p class="label">
+                                            {foreach $data['retail']['japan'][$i]['labels'] as $k=>$lab}
+                                            <a href="{$lab['lLink']}" title="{$lab['name']}" target="_blank">{$lab['name']}</a><i></i>
+                                            {/foreach}
+                                        </p>
+                                    </li>
+                                    {/for}
+                                    {/if}
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="clearfix">
+                                    {if $data['retail']['japan']}
+                                    {for $i=8;$i<12;$i++}
+                                    <li>
+                                        <div>
+                                            <a href="/details/style/t_{$data['retail']['japan'][$i]['table']}-id_{$data['retail']['japan'][$i]['id']}-col_{$data['retail']['japan'][$i]['col']}/" title="查看详情">
+                                                <div class="img-box">
+                                                    <img data-original="{$data['retail']['japan'][$i]['cover']}" alt="">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <p class="label">
+                                            {foreach $data['retail']['japan'][$i]['labels'] as $k=>$lab}
+                                            <a href="{$lab['lLink']}" title="{$lab['name']}" target="_blank">{$lab['name']}</a><i></i>
+                                            {/foreach}
+                                        </p>
+                                    </li>
+                                    {/for}
+                                    {/if}
+                                </ul>
+                            </li>
+                        </ul>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="fr">
+                <div class="tit-h2">
+                    <i></i>
+                    <h2>日韩T台</h2>
+                    <div class="h2"></div>
+                </div>
+                <div class="sec-content">
+                    <div class="ver-box js-box">
+                        <div class="clearfix">
+                            <h3 class="fl">韩国地区</h3>
+                            <div class="korea-h3 fl"></div>
+                            <div class="fr">
+                                <ul class="pagination js-pagination">
+                                    <li class="noclick" data-type="0">＜</li>
+                                    <li data-type="1">＞</li>
+                                </ul>
+                                <a class="more" target="_blank" href="{$data['runway']['korea']['link']}">更多</a>
+                            </div>
+                        </div>
+                        <ul class="data-ul js-data-ul">
+                            <li class="on">
+                                <ul class="clearfix">
+                                    {if $data['runway']['korea']}
+                                    {for $i=0;$i<2;$i++}
+                                    <li class="clearfix">
+                                        <div>
+                                            <a href="/runways/inside/id_{$data['runway']['korea'][$i]['id']}/" title="查看详情">
+                                                <div class="img-box js-t-box">
+                                                    {$data['runway']['korea'][$i]['cover']}
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <ul>
+                                            <li><a class="info" href="/runways/inside/id_{$data['runway']['korea'][$i]['id']}/" title="{$data['runway']['korea'][$i]['nme']}">{$data['runway']['korea'][$i]['nme']}</a></li>
+                                            <li>设计师：{$data['runway']['korea'][$i]['brand_name']}</li>
+                                            <li>时间： {$data['runway']['korea'][$i]['seasonName']}</li>
+                                            <li>地点：{$data['runway']['korea'][$i]['regionName']}</li>
+                                            <li><i></i>预览（{$data['runway']['korea'][$i]['view_count']}）</li>
+                                        </ul>
+                                    </li>
+                                    {/for}
+                                    {/if}
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="clearfix">
+                                    {if $data['runway']['korea']}
+                                    {for $i=2;$i<4;$i++}
+                                    <li class="clearfix">
+                                        <div>
+                                            <a href="/runways/inside/id_{$data['runway']['korea'][$i]['id']}/" title="查看详情">
+                                                <div class="img-box js-t-box">
+                                                    {$data['runway']['korea'][$i]['cover']}
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <ul>
+                                            <li><a class="info" href="/runways/inside/id_{$data['runway']['korea'][$i]['id']}/" title="{$data['runway']['korea'][$i]['nme']}">{$data['runway']['korea'][$i]['nme']}</a></li>
+                                            <li>设计师：{$data['runway']['korea'][$i]['brand_name']}</li>
+                                            <li>时间： {$data['runway']['korea'][$i]['seasonName']}</li>
+                                            <li>地点：{$data['runway']['korea'][$i]['regionName']}</li>
+                                            <li><i></i>预览（{$data['runway']['korea'][$i]['view_count']}）</li>
+                                        </ul>
+                                    </li>
+                                    {/for}
+                                    {/if}
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="clearfix">
+                                    {if $data['runway']['korea']}
+                                    {for $i=4;$i<6;$i++}
+                                    <li class="clearfix">
+                                        <div>
+                                            <a href="/runways/inside/id_{$data['runway']['korea'][$i]['id']}/" title="查看详情">
+                                                <div class="img-box js-t-box">
+                                                    {$data['runway']['korea'][$i]['cover']}
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <ul>
+                                            <li><a class="info" href="/runways/inside/id_{$data['runway']['korea'][$i]['id']}/" title="{$data['runway']['korea'][$i]['nme']}">{$data['runway']['korea'][$i]['nme']}</a></li>
+                                            <li>设计师：{$data['runway']['korea'][$i]['brand_name']}</li>
+                                            <li>时间： {$data['runway']['korea'][$i]['seasonName']}</li>
+                                            <li>地点：{$data['runway']['korea'][$i]['regionName']}</li>
+                                            <li><i></i>预览（{$data['runway']['korea'][$i]['view_count']}）</li>
+                                        </ul>
+                                    </li>
+                                    {/for}
+                                    {/if}
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="ver-box js-box">
+                        <div class="clearfix">
+                            <h3 class="fl">日本地区</h3>
+                            <div class="japan-h3 fl"></div>
+                            <div class="fr">
+                                <ul class="pagination js-pagination">
+                                    <li class="noclick" data-type="0">＜</li>
+                                    <li data-type="1">＞</li>
+                                </ul>
+                                <a class="more" target="_blank" href="{$data['runway']['japan']['link']}">更多</a>
+                            </div>
+                        </div>
+                        <ul class="data-ul js-data-ul">
+                            <li class="on">
+                                <ul class="clearfix">
+                                    {if $data['runway']['japan']}
+                                    {for $i=0;$i<2;$i++}
+                                    <li class="clearfix">
+                                        <div>
+                                            <a href="/runways/inside/id_{$data['runway']['japan'][$i]['id']}/" title="查看详情">
+                                                <div class="img-box js-t-box">
+                                                    {$data['runway']['japan'][$i]['cover']}
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <ul>
+                                            <li><a class="info" href="/runways/inside/id_{$data['runway']['japan'][$i]['id']}/" title="{$data['runway']['japan'][$i]['nme']}">{$data['runway']['japan'][$i]['nme']}</a></li>
+                                            <li>设计师：{$data['runway']['japan'][$i]['brand_name']}</li>
+                                            <li>时间： {$data['runway']['japan'][$i]['seasonName']}</li>
+                                            <li>地点：{$data['runway']['japan'][$i]['regionName']}</li>
+                                            <li><i></i>预览（{$data['runway']['japan'][$i]['view_count']}）</li>
+                                        </ul>
+                                    </li>
+                                    {/for}
+                                    {/if}
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="clearfix">
+                                    {if $data['runway']['japan']}
+                                    {for $i=2;$i<4;$i++}
+                                    <li class="clearfix">
+                                        <div>
+                                            <a href="/runways/inside/id_{$data['runway']['japan'][$i]['id']}/" title="查看详情">
+                                                <div class="img-box js-t-box">
+                                                    {$data['runway']['japan'][$i]['cover']}
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <ul>
+                                            <li><a class="info" href="/runways/inside/id_{$data['runway']['japan'][$i]['id']}/" title="{$data['runway']['japan'][$i]['nme']}">{$data['runway']['japan'][$i]['nme']}</a></li>
+                                            <li>设计师：{$data['runway']['japan'][$i]['brand_name']}</li>
+                                            <li>时间： {$data['runway']['japan'][$i]['seasonName']}</li>
+                                            <li>地点：{$data['runway']['japan'][$i]['regionName']}</li>
+                                            <li><i></i>预览（{$data['runway']['japan'][$i]['view_count']}）</li>
+                                        </ul>
+                                    </li>
+                                    {/for}
+                                    {/if}
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="clearfix">
+                                    {if $data['runway']['japan']}
+                                    {for $i=4;$i<6;$i++}
+                                    <li class="clearfix">
+                                        <div>
+                                            <a href="/runways/inside/id_{$data['runway']['japan'][$i]['id']}/" title="查看详情">
+                                                <div class="img-box js-t-box">
+                                                    {$data['runway']['japan'][$i]['cover']}
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <ul>
+                                            <li><a class="info" href="/runways/inside/id_{$data['runway']['japan'][$i]['id']}/" title="{$data['runway']['japan'][$i]['nme']}">{$data['runway']['japan'][$i]['nme']}</a></li>
+                                            <li>设计师：{$data['runway']['japan'][$i]['brand_name']}</li>
+                                            <li>时间： {$data['runway']['japan'][$i]['seasonName']}</li>
+                                            <li>地点：{$data['runway']['japan'][$i]['regionName']}</li>
+                                            <li><i></i>预览（{$data['runway']['japan'][$i]['view_count']}）</li>
+                                        </ul>
+                                    </li>
+                                    {/for}
+                                    {/if}
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section section4 clearfix">
+            <div class="fl">
+                <div class="tit-h2">
+                    <i></i>
+                    <h2>日韩市场速报</h2>
+                    <div class="h2"></div>
+                </div>
+                <div class="sec-content">
+                    <div class="hor-box report-box js-box">
+                        <div class="clearfix">
+                            <h3 class="fl">韩国地区</h3>
+                            <div class="korea-h3 fl"></div>
+                            <div class="fr">
+                                <ul class="pagination js-pagination">
+                                    <li class="noclick" data-type="0">＜</li>
+                                    <li data-type="1">＞</li>
+                                </ul>
+                                <a class="more" target="_blank" href="{$data['analysis']['korea']['link']}">更多</a>
+                            </div>
+                        </div>
+                        {if empty($params['gen']) || $params['gen']<0}
+                        <ul class="data-ul js-data-ul">
+                            <li class="on">
+                                <ul class="clearfix">
+                                    <li>
+                                        <div>
+                                            <a href="/details/report/t_{$data['analysis']['korea'][1][0]['table']}-id_{$data['analysis']['korea'][1][0]['id']}-col_{$data['analysis']['korea'][1][0]['columnId']}/">
+                                                <div class="img-box">
+                                                    <img data-original="{$data['analysis']['korea'][1][0]['cover']}" alt="">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <section class="report-msg">
+                                            <div class="view-hover">
+                                                <span>浏览（{$data['analysis']['korea'][1][0]['iViewCount']}）</span>
+                                            </div>
+                                            <a class="title" href="/details/report/t_{$data['analysis']['korea'][1][0]['table']}-id_{$data['analysis']['korea'][1][0]['id']}-col_{$data['analysis']['korea'][1][0]['columnId']}/" title="{$data['analysis']['korea'][1][0]['sTitle']}">{$data['analysis']['korea'][1][0]['sTitle']}</a>
+                                            <p class="info">{$data['analysis']['korea'][1][0]['sDesc']}</p>
+                                            <p class="label">
+                                                {foreach $data['analysis']['korea'][1][0]['labels'] as $lab}
+                                                <a href="{$lab['lLink']}" title="{$lab['name']}" target="_blank">{$lab['name']}</a><i></i>
+                                                {/foreach}
+                                            </p>
+                                        </section>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <a href="/details/report/t_{$data['analysis']['korea'][2][0]['table']}-id_{$data['analysis']['korea'][2][0]['id']}-col_{$data['analysis']['korea'][2][0]['columnId']}/">
+                                                <div class="img-box">
+                                                    <img data-original="{$data['analysis']['korea'][2][0]['cover']}" alt="">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <section class="report-msg">
+                                            <div class="view-hover">
+                                                <span>浏览（{$data['analysis']['korea'][2][0]['iViewCount']}）</span>
+                                            </div>
+                                            <a class="title" href="/details/report/t_{$data['analysis']['korea'][2][0]['table']}-id_{$data['analysis']['korea'][2][0]['id']}-col_{$data['analysis']['korea'][2][0]['columnId']}/" title="{$data['analysis']['korea'][2][0]['sTitle']}">{$data['analysis']['korea'][2][0]['sTitle']}</a>
+                                            <p class="info">{$data['analysis']['korea'][2][0]['sDesc']}</p>
+                                            <p class="label">
+                                                {foreach $data['analysis']['korea'][2][0]['labels'] as $lab}
+                                                <a href="{$lab['lLink']}" title="{$lab['name']}" target="_blank">{$lab['name']}</a><i></i>
+                                                {/foreach}
+                                            </p>
+                                        </section>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <a href="/details/report/t_{$data['analysis']['korea'][5][0]['table']}-id_{$data['analysis']['korea'][5][0]['id']}-col_{$data['analysis']['korea'][5][0]['columnId']}/">
+                                                <div class="img-box">
+                                                    <img data-original="{$data['analysis']['korea'][5][0]['cover']}" alt="">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <section class="report-msg">
+                                            <div class="view-hover">
+                                                <span>浏览（{$data['analysis']['korea'][5][0]['iViewCount']}）</span>
+                                            </div>
+                                            <a class="title" href="/details/report/t_{$data['analysis']['korea'][5][0]['table']}-id_{$data['analysis']['korea'][5][0]['id']}-col_{$data['analysis']['korea'][5][0]['columnId']}/" title="{$data['analysis']['korea'][5][0]['sTitle']}">{$data['analysis']['korea'][5][0]['sTitle']}</a>
+                                            <p class="info">{$data['analysis']['korea'][5][0]['sDesc']}</p>
+                                            <p class="label">
+                                                {foreach $data['analysis']['korea'][5][0]['labels'] as $lab}
+                                                <a href="{$lab['lLink']}" title="{$lab['name']}" target="_blank">{$lab['name']}</a><i></i>
+                                                {/foreach}
+                                            </p>
+                                        </section>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="clearfix">
+                                    <li>
+                                        <div>
+                                            <a href="/details/report/t_{$data['analysis']['korea'][1][1]['table']}-id_{$data['analysis']['korea'][1][1]['id']}-col_{$data['analysis']['korea'][1][1]['columnId']}/">
+                                                <div class="img-box">
+                                                    <img data-original="{$data['analysis']['korea'][1][1]['cover']}" alt="">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <section class="report-msg">
+                                            <div class="view-hover">
+                                                <span>浏览（{$data['analysis']['korea'][1][1]['iViewCount']}）</span>
+                                            </div>
+                                            <a class="title" href="/details/report/t_{$data['analysis']['korea'][1][1]['table']}-id_{$data['analysis']['korea'][1][1]['id']}-col_{$data['analysis']['korea'][1][1]['columnId']}/" title="{$data['analysis']['korea'][1][1]['sTitle']}">{$data['analysis']['korea'][1][1]['sTitle']}</a>
+                                            <p class="info">{$data['analysis']['korea'][1][1]['sDesc']}</p>
+                                            <p class="label">
+                                                {foreach $data['analysis']['korea'][1][1]['labels'] as $lab}
+                                                <a href="{$lab['lLink']}" title="{$lab['name']}" target="_blank">{$lab['name']}</a><i></i>
+                                                {/foreach}
+                                            </p>
+                                        </section>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <a href="/details/report/t_{$data['analysis']['korea'][2][1]['table']}-id_{$data['analysis']['korea'][2][1]['id']}-col_{$data['analysis']['korea'][2][1]['columnId']}/">
+                                                <div class="img-box">
+                                                    <img data-original="{$data['analysis']['korea'][2][1]['cover']}" alt="">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <section class="report-msg">
+                                            <div class="view-hover">
+                                                <span>浏览（{$data['analysis']['korea'][2][1]['iViewCount']}）</span>
+                                            </div>
+                                            <a class="title" href="/details/report/t_{$data['analysis']['korea'][2][1]['table']}-id_{$data['analysis']['korea'][2][1]['id']}-col_{$data['analysis']['korea'][2][1]['columnId']}/" title="{$data['analysis']['korea'][2][1]['sTitle']}">{$data['analysis']['korea'][2][1]['sTitle']}</a>
+                                            <p class="info">{$data['analysis']['korea'][2][1]['sDesc']}</p>
+                                            <p class="label">
+                                                {foreach $data['analysis']['korea'][2][1]['labels'] as $lab}
+                                                <a href="{$lab['lLink']}" title="{$lab['name']}" target="_blank">{$lab['name']}</a><i></i>
+                                                {/foreach}
+                                            </p>
+                                        </section>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <a href="/details/report/t_{$data['analysis']['korea'][5][1]['table']}-id_{$data['analysis']['korea'][5][1]['id']}-col_{$data['analysis']['korea'][5][1]['columnId']}/">
+                                                <div class="img-box">
+                                                    <img data-original="{$data['analysis']['korea'][5][1]['cover']}" alt="">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <section class="report-msg">
+                                            <div class="view-hover">
+                                                <span>浏览（{$data['analysis']['korea'][5][1]['iViewCount']}）</span>
+                                            </div>
+                                            <a class="title" href="/details/report/t_{$data['analysis']['korea'][5][1]['table']}-id_{$data['analysis']['korea'][5][1]['id']}-col_{$data['analysis']['korea'][5][1]['columnId']}/" title="{$data['analysis']['korea'][5][1]['sTitle']}">{$data['analysis']['korea'][5][1]['sTitle']}</a>
+                                            <p class="info">{$data['analysis']['korea'][5][1]['sDesc']}</p>
+                                            <p class="label">
+                                                {foreach $data['analysis']['korea'][5][1]['labels'] as $lab}
+                                                <a href="{$lab['lLink']}" title="{$lab['name']}" target="_blank">{$lab['name']}</a><i></i>
+                                                {/foreach}
+                                            </p>
+                                        </section>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="clearfix">
+                                    <li>
+                                        <div>
+                                            <a href="/details/report/t_{$data['analysis']['korea'][1][2]['table']}-id_{$data['analysis']['korea'][1][2]['id']}-col_{$data['analysis']['korea'][1][2]['columnId']}/">
+                                                <div class="img-box">
+                                                    <img data-original="{$data['analysis']['korea'][1][2]['cover']}" alt="">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <section class="report-msg">
+                                            <div class="view-hover">
+                                                <span>浏览（{$data['analysis']['korea'][1][2]['iViewCount']}）</span>
+                                            </div>
+                                            <a class="title" href="/details/report/t_{$data['analysis']['korea'][1][2]['table']}-id_{$data['analysis']['korea'][1][2]['id']}-col_{$data['analysis']['korea'][1][2]['columnId']}/" title="{$data['analysis']['korea'][1][2]['sTitle']}">{$data['analysis']['korea'][1][2]['sTitle']}</a>
+                                            <p class="info">{$data['analysis']['korea'][1][2]['sDesc']}</p>
+                                            <p class="label">
+                                                {foreach $data['analysis']['korea'][1][2]['labels'] as $lab}
+                                                <a href="{$lab['lLink']}" title="{$lab['name']}" target="_blank">{$lab['name']}</a><i></i>
+                                                {/foreach}
+                                            </p>
+                                        </section>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <a href="/details/report/t_{$data['analysis']['korea'][2][2]['table']}-id_{$data['analysis']['korea'][2][2]['id']}-col_{$data['analysis']['korea'][2][2]['columnId']}/">
+                                                <div class="img-box">
+                                                    <img data-original="{$data['analysis']['korea'][2][2]['cover']}" alt="">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <section class="report-msg">
+                                            <div class="view-hover">
+                                                <span>浏览（{$data['analysis']['korea'][2][2]['iViewCount']}）</span>
+                                            </div>
+                                            <a class="title" href="/details/report/t_{$data['analysis']['korea'][2][2]['table']}-id_{$data['analysis']['korea'][2][2]['id']}-col_{$data['analysis']['korea'][2][2]['columnId']}/" title="{$data['analysis']['korea'][2][2]['sTitle']}">{$data['analysis']['korea'][2][2]['sTitle']}</a>
+                                            <p class="info">{$data['analysis']['korea'][2][2]['sDesc']}</p>
+                                            <p class="label">
+                                                {foreach $data['analysis']['korea'][2][2]['labels'] as $lab}
+                                                <a href="{$lab['lLink']}" title="{$lab['name']}" target="_blank">{$lab['name']}</a><i></i>
+                                                {/foreach}
+                                            </p>
+                                        </section>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <a href="/details/report/t_{$data['analysis']['korea'][5][2]['table']}-id_{$data['analysis']['korea'][5][2]['id']}-col_{$data['analysis']['korea'][5][2]['columnId']}/">
+                                                <div class="img-box">
+                                                    <img data-original="{$data['analysis']['korea'][5][2]['cover']}" alt="">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <section class="report-msg">
+                                            <div class="view-hover">
+                                                <span>浏览（{$data['analysis']['korea'][5][2]['iViewCount']}）</span>
+                                            </div>
+                                            <a class="title" href="/details/report/t_{$data['analysis']['korea'][5][2]['table']}-id_{$data['analysis']['korea'][5][2]['id']}-col_{$data['analysis']['korea'][5][2]['columnId']}/" title="{$data['analysis']['korea'][5][2]['sTitle']}">{$data['analysis']['korea'][5][2]['sTitle']}</a>
+                                            <p class="info">{$data['analysis']['korea'][5][2]['sDesc']}</p>
+                                            <p class="label">
+                                                {foreach $data['analysis']['korea'][5][2]['labels'] as $lab}
+                                                <a href="{$lab['lLink']}" title="{$lab['name']}" target="_blank">{$lab['name']}</a><i></i>
+                                                {/foreach}
+                                            </p>
+                                        </section>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        {else}
+                        <ul class="data-ul js-data-ul">
+                            <li class="on">
+                                <ul class="clearfix">
+                                    {if $data['analysis']['korea']}
+                                    {for $i=0;$i<3;$i++}
+                                    <li>
+                                        <div>
+                                            <a href="/details/report/t_{$data['analysis']['korea'][$i]['table']}-id_{$data['analysis']['korea'][$i]['id']}-col_{$data['analysis']['korea'][$i]['columnId']}/">
+                                                <div class="img-box">
+                                                    <img data-original="{$data['analysis']['korea'][$i]['cover']}" alt="">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <section class="report-msg">
+                                            <div class="view-hover">
+                                                <span>浏览（{$data['analysis']['korea'][$i]['iViewCount']}）</span>
+                                            </div>
+                                            <a class="title" href="/details/report/t_{$data['analysis']['korea'][$i]['table']}-id_{$data['analysis']['korea'][$i]['id']}-col_{$data['analysis']['korea'][$i]['columnId']}/" title="{$data['analysis']['korea'][$i]['sTitle']}">{$data['analysis']['korea'][$i]['sTitle']}</a>
+                                            <p class="info">{$data['analysis']['korea'][$i]['sDesc']}</p>
+                                            <p class="label">
+                                                {foreach $data['analysis']['korea'][$i]['labels'] as $lab}
+                                                <a href="{$lab['lLink']}" title="{$lab['name']}" target="_blank">{$lab['name']}</a><i></i>
+                                                {/foreach}
+                                            </p>
+                                        </section>
+                                    </li>
+                                    {/for}
+                                    {/if}
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="clearfix">
+                                    {if $data['analysis']['korea']}
+                                    {for $i=3;$i<6;$i++}
+                                    <li>
+                                        <div>
+                                            <a href="/details/report/t_{$data['analysis']['korea'][$i]['table']}-id_{$data['analysis']['korea'][$i]['id']}-col_{$data['analysis']['korea'][$i]['columnId']}/">
+                                                <div class="img-box">
+                                                    <img data-original="{$data['analysis']['korea'][$i]['cover']}" alt="">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <section class="report-msg">
+                                            <div class="view-hover">
+                                                <span>浏览（{$data['analysis']['korea'][$i]['iViewCount']}）</span>
+                                            </div>
+                                            <a class="title" href="/details/report/t_{$data['analysis']['korea'][$i]['table']}-id_{$data['analysis']['korea'][$i]['id']}-col_{$data['analysis']['korea'][$i]['columnId']}/" title="{$data['analysis']['korea'][$i]['sTitle']}">{$data['analysis']['korea'][$i]['sTitle']}</a>
+                                            <p class="info">{$data['analysis']['korea'][$i]['sDesc']}</p>
+                                            <p class="label">
+                                                {foreach $data['analysis']['korea'][$i]['labels'] as $lab}
+                                                <a href="{$lab['lLink']}" title="{$lab['name']}" target="_blank">{$lab['name']}</a><i></i>
+                                                {/foreach}
+                                            </p>
+                                        </section>
+                                    </li>
+                                    {/for}
+                                    {/if}
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="clearfix">
+                                    {if $data['analysis']['korea']}
+                                    {for $i=6;$i<9;$i++}
+                                    <li>
+                                        <div>
+                                            <a href="/details/report/t_{$data['analysis']['korea'][$i]['table']}-id_{$data['analysis']['korea'][$i]['id']}-col_{$data['analysis']['korea'][$i]['columnId']}/">
+                                                <div class="img-box">
+                                                    <img data-original="{$data['analysis']['korea'][$i]['cover']}" alt="">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <section class="report-msg">
+                                            <div class="view-hover">
+                                                <span>浏览（{$data['analysis']['korea'][$i]['iViewCount']}）</span>
+                                            </div>
+                                            <a class="title" href="/details/report/t_{$data['analysis']['korea'][$i]['table']}-id_{$data['analysis']['korea'][$i]['id']}-col_{$data['analysis']['korea'][$i]['columnId']}/" title="{$data['analysis']['korea'][$i]['sTitle']}">{$data['analysis']['korea'][$i]['sTitle']}</a>
+                                            <p class="info">{$data['analysis']['korea'][$i]['sDesc']}</p>
+                                            <p class="label">
+                                                {foreach $data['analysis']['korea'][$i]['labels'] as $lab}
+                                                <a href="{$lab['lLink']}" title="{$lab['name']}" target="_blank">{$lab['name']}</a><i></i>
+                                                {/foreach}
+                                            </p>
+                                        </section>
+                                    </li>
+                                    {/for}
+                                    {/if}
+                                </ul>
+                            </li>
+                        </ul>
+                        {/if}
+                    </div>
+                    <div class="hor-box report-box js-box">
+                        <div class="clearfix">
+                            <h3 class="fl">日本地区</h3>
+                            <div class="japan-h3 fl"></div>
+                            <div class="fr">
+                                <ul class="pagination js-pagination">
+                                    <li class="noclick" data-type="0">＜</li>
+                                    <li data-type="1">＞</li>
+                                </ul>
+                                <a class="more" target="_blank" href="{$data['analysis']['japan']['link']}">更多</a>
+                            </div>
+                        </div>
+                        {if empty($params['gen']) || $params['gen']<0}
+                        <ul class="data-ul js-data-ul">
+                            <li class="on">
+                                <ul class="clearfix">
+                                    <li>
+                                        <div>
+                                            <a href="/details/report/t_{$data['analysis']['japan'][1][0]['table']}-id_{$data['analysis']['japan'][1][0]['id']}-col_{$data['analysis']['japan'][1][0]['columnId']}/">
+                                                <div class="img-box">
+                                                    <img data-original="{$data['analysis']['japan'][1][0]['cover']}" alt="">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <section class="report-msg">
+                                            <div class="view-hover">
+                                                <span>浏览（{$data['analysis']['japan'][1][0]['iViewCount']}）</span>
+                                            </div>
+                                            <a class="title" href="/details/report/t_{$data['analysis']['japan'][1][0]['table']}-id_{$data['analysis']['japan'][1][0]['id']}-col_{$data['analysis']['japan'][1][0]['columnId']}/" title="{$data['analysis']['japan'][1][0]['sTitle']}">{$data['analysis']['japan'][1][0]['sTitle']}</a>
+                                            <p class="info">{$data['analysis']['japan'][1][0]['sDesc']}</p>
+                                            <p class="label">
+                                                {foreach $data['analysis']['japan'][1][0]['labels'] as $lab}
+                                                <a href="{$lab['lLink']}" title="{$lab['name']}" target="_blank">{$lab['name']}</a><i></i>
+                                                {/foreach}
+                                            </p>
+                                        </section>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <a href="/details/report/t_{$data['analysis']['japan'][2][0]['table']}-id_{$data['analysis']['japan'][2][0]['id']}-col_{$data['analysis']['japan'][2][0]['columnId']}/">
+                                                <div class="img-box">
+                                                    <img data-original="{$data['analysis']['japan'][2][0]['cover']}" alt="">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <section class="report-msg">
+                                            <div class="view-hover">
+                                                <span>浏览（{$data['analysis']['japan'][2][0]['iViewCount']}）</span>
+                                            </div>
+                                            <a class="title" href="/details/report/t_{$data['analysis']['japan'][2][0]['table']}-id_{$data['analysis']['japan'][2][0]['id']}-col_{$data['analysis']['japan'][2][0]['columnId']}/" title="{$data['analysis']['japan'][2][0]['sTitle']}">{$data['analysis']['japan'][2][0]['sTitle']}</a>
+                                            <p class="info">{$data['analysis']['japan'][2][0]['sDesc']}</p>
+                                            <p class="label">
+                                                {foreach $data['analysis']['japan'][2][0]['labels'] as $lab}
+                                                <a href="{$lab['lLink']}" title="{$lab['name']}" target="_blank">{$lab['name']}</a><i></i>
+                                                {/foreach}
+                                            </p>
+                                        </section>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <a href="/details/report/t_{$data['analysis']['japan'][5][0]['table']}-id_{$data['analysis']['japan'][5][0]['id']}-col_{$data['analysis']['japan'][5][0]['columnId']}/">
+                                                <div class="img-box">
+                                                    <img data-original="{$data['analysis']['japan'][5][0]['cover']}" alt="">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <section class="report-msg">
+                                            <div class="view-hover">
+                                                <span>浏览（{$data['analysis']['japan'][5][0]['iViewCount']}）</span>
+                                            </div>
+                                            <a class="title" href="/details/report/t_{$data['analysis']['japan'][5][0]['table']}-id_{$data['analysis']['japan'][5][0]['id']}-col_{$data['analysis']['japan'][5][0]['columnId']}/" title="{$data['analysis']['japan'][5][0]['sTitle']}">{$data['analysis']['japan'][5][0]['sTitle']}</a>
+                                            <p class="info">{$data['analysis']['japan'][5][0]['sDesc']}</p>
+                                            <p class="label">
+                                                {foreach $data['analysis']['japan'][5][0]['labels'] as $lab}
+                                                <a href="{$lab['lLink']}" title="{$lab['name']}" target="_blank">{$lab['name']}</a><i></i>
+                                                {/foreach}
+                                            </p>
+                                        </section>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="clearfix">
+                                    <li>
+                                        <div>
+                                            <a href="/details/report/t_{$data['analysis']['japan'][1][1]['table']}-id_{$data['analysis']['japan'][1][1]['id']}-col_{$data['analysis']['japan'][1][1]['columnId']}/">
+                                                <div class="img-box">
+                                                    <img data-original="{$data['analysis']['japan'][1][1]['cover']}" alt="">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <section class="report-msg">
+                                            <div class="view-hover">
+                                                <span>浏览（{$data['analysis']['japan'][1][1]['iViewCount']}）</span>
+                                            </div>
+                                            <a class="title" href="/details/report/t_{$data['analysis']['japan'][1][1]['table']}-id_{$data['analysis']['japan'][1][1]['id']}-col_{$data['analysis']['japan'][1][1]['columnId']}/" title="{$data['analysis']['japan'][1][1]['sTitle']}">{$data['analysis']['japan'][1][1]['sTitle']}</a>
+                                            <p class="info">{$data['analysis']['japan'][1][1]['sDesc']}</p>
+                                            <p class="label">
+                                                {foreach $data['analysis']['japan'][1][1]['labels'] as $lab}
+                                                <a href="{$lab['lLink']}" title="{$lab['name']}" target="_blank">{$lab['name']}</a><i></i>
+                                                {/foreach}
+                                            </p>
+                                        </section>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <a href="/details/report/t_{$data['analysis']['japan'][2][1]['table']}-id_{$data['analysis']['japan'][2][1]['id']}-col_{$data['analysis']['japan'][2][1]['columnId']}/">
+                                                <div class="img-box">
+                                                    <img data-original="{$data['analysis']['japan'][2][1]['cover']}" alt="">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <section class="report-msg">
+                                            <div class="view-hover">
+                                                <span>浏览（{$data['analysis']['japan'][2][1]['iViewCount']}）</span>
+                                            </div>
+                                            <a class="title" href="/details/report/t_{$data['analysis']['japan'][2][1]['table']}-id_{$data['analysis']['japan'][2][1]['id']}-col_{$data['analysis']['japan'][2][1]['columnId']}/" title="{$data['analysis']['japan'][2][1]['sTitle']}">{$data['analysis']['japan'][2][1]['sTitle']}</a>
+                                            <p class="info">{$data['analysis']['japan'][2][1]['sDesc']}</p>
+                                            <p class="label">
+                                                {foreach $data['analysis']['japan'][2][1]['labels'] as $lab}
+                                                <a href="{$lab['lLink']}" title="{$lab['name']}" target="_blank">{$lab['name']}</a><i></i>
+                                                {/foreach}
+                                            </p>
+                                        </section>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <a href="/details/report/t_{$data['analysis']['japan'][5][1]['table']}-id_{$data['analysis']['japan'][5][1]['id']}-col_{$data['analysis']['japan'][5][1]['columnId']}/">
+                                                <div class="img-box">
+                                                    <img data-original="{$data['analysis']['japan'][5][1]['cover']}" alt="">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <section class="report-msg">
+                                            <div class="view-hover">
+                                                <span>浏览（{$data['analysis']['japan'][5][1]['iViewCount']}）</span>
+                                            </div>
+                                            <a class="title" href="/details/report/t_{$data['analysis']['japan'][5][1]['table']}-id_{$data['analysis']['japan'][5][1]['id']}-col_{$data['analysis']['japan'][5][1]['columnId']}/" title="{$data['analysis']['japan'][5][1]['sTitle']}">{$data['analysis']['japan'][5][1]['sTitle']}</a>
+                                            <p class="info">{$data['analysis']['japan'][5][1]['sDesc']}</p>
+                                            <p class="label">
+                                                {foreach $data['analysis']['japan'][5][1]['labels'] as $lab}
+                                                <a href="{$lab['lLink']}" title="{$lab['name']}" target="_blank">{$lab['name']}</a><i></i>
+                                                {/foreach}
+                                            </p>
+                                        </section>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="clearfix">
+                                    <li>
+                                        <div>
+                                            <a href="/details/report/t_{$data['analysis']['japan'][1][2]['table']}-id_{$data['analysis']['japan'][1][2]['id']}-col_{$data['analysis']['japan'][1][2]['columnId']}/">
+                                                <div class="img-box">
+                                                    <img data-original="{$data['analysis']['japan'][1][2]['cover']}" alt="">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <section class="report-msg">
+                                            <div class="view-hover">
+                                                <span>浏览（{$data['analysis']['japan'][1][2]['iViewCount']}）</span>
+                                            </div>
+                                            <a class="title" href="/details/report/t_{$data['analysis']['japan'][1][2]['table']}-id_{$data['analysis']['japan'][1][2]['id']}-col_{$data['analysis']['japan'][1][2]['columnId']}/" title="{$data['analysis']['japan'][1][2]['sTitle']}">{$data['analysis']['japan'][1][2]['sTitle']}</a>
+                                            <p class="info">{$data['analysis']['japan'][1][2]['sDesc']}</p>
+                                            <p class="label">
+                                                {foreach $data['analysis']['japan'][1][2]['labels'] as $lab}
+                                                <a href="{$lab['lLink']}" title="{$lab['name']}" target="_blank">{$lab['name']}</a><i></i>
+                                                {/foreach}
+                                            </p>
+                                        </section>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <a href="/details/report/t_{$data['analysis']['japan'][2][2]['table']}-id_{$data['analysis']['japan'][2][2]['id']}-col_{$data['analysis']['japan'][2][2]['columnId']}/">
+                                                <div class="img-box">
+                                                    <img data-original="{$data['analysis']['japan'][2][2]['cover']}" alt="">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <section class="report-msg">
+                                            <div class="view-hover">
+                                                <span>浏览（{$data['analysis']['japan'][2][2]['iViewCount']}）</span>
+                                            </div>
+                                            <a class="title" href="/details/report/t_{$data['analysis']['japan'][2][2]['table']}-id_{$data['analysis']['japan'][2][2]['id']}-col_{$data['analysis']['japan'][2][2]['columnId']}/" title="{$data['analysis']['japan'][2][2]['sTitle']}">{$data['analysis']['japan'][2][2]['sTitle']}</a>
+                                            <p class="info">{$data['analysis']['japan'][2][2]['sDesc']}</p>
+                                            <p class="label">
+                                                {foreach $data['analysis']['japan'][2][2]['labels'] as $lab}
+                                                <a href="{$lab['lLink']}" title="{$lab['name']}" target="_blank">{$lab['name']}</a><i></i>
+                                                {/foreach}
+                                            </p>
+                                        </section>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <a href="/details/report/t_{$data['analysis']['japan'][5][2]['table']}-id_{$data['analysis']['japan'][5][2]['id']}-col_{$data['analysis']['japan'][5][2]['columnId']}/">
+                                                <div class="img-box">
+                                                    <img data-original="{$data['analysis']['japan'][5][2]['cover']}" alt="">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <section class="report-msg">
+                                            <div class="view-hover">
+                                                <span>浏览（{$data['analysis']['japan'][5][2]['iViewCount']}）</span>
+                                            </div>
+                                            <a class="title" href="/details/report/t_{$data['analysis']['japan'][5][2]['table']}-id_{$data['analysis']['japan'][5][2]['id']}-col_{$data['analysis']['japan'][5][2]['columnId']}/" title="{$data['analysis']['japan'][5][2]['sTitle']}">{$data['analysis']['japan'][5][2]['sTitle']}</a>
+                                            <p class="info">{$data['analysis']['japan'][5][2]['sDesc']}</p>
+                                            <p class="label">
+                                                {foreach $data['analysis']['japan'][5][2]['labels'] as $lab}
+                                                <a href="{$lab['lLink']}" title="{$lab['name']}" target="_blank">{$lab['name']}</a><i></i>
+                                                {/foreach}
+                                            </p>
+                                        </section>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        {else}
+                        <ul class="data-ul js-data-ul">
+                            <li class="on">
+                                <ul class="clearfix">
+                                    {if $data['analysis']['japan']}
+                                    {for $i=0;$i<3;$i++}
+                                    <li>
+                                        <div>
+                                            <a href="/details/report/t_{$data['analysis']['japan'][$i]['table']}-id_{$data['analysis']['japan'][$i]['id']}-col_{$data['analysis']['japan'][$i]['columnId']}/">
+                                                <div class="img-box">
+                                                    <img data-original="{$data['analysis']['japan'][$i]['cover']}" alt="">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <section class="report-msg">
+                                            <div class="view-hover">
+                                                <span>浏览（{$data['analysis']['japan'][$i]['iViewCount']}）</span>
+                                            </div>
+                                            <a class="title" href="/details/report/t_{$data['analysis']['japan'][$i]['table']}-id_{$data['analysis']['japan'][$i]['id']}-col_{$data['analysis']['japan'][$i]['columnId']}/" title="{$data['analysis']['japan'][$i]['sTitle']}">{$data['analysis']['japan'][$i]['sTitle']}</a>
+                                            <p class="info">{$data['analysis']['japan'][$i]['sDesc']}</p>
+                                            <p class="label">
+                                                {foreach $data['analysis']['japan'][$i]['labels'] as $lab}
+                                                <a href="{$lab['lLink']}" title="{$lab['name']}" target="_blank">{$lab['name']}</a><i></i>
+                                                {/foreach}
+                                            </p>
+                                        </section>
+                                    </li>
+                                    {/for}
+                                    {/if}
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="clearfix">
+                                    {if $data['analysis']['japan']}
+                                    {for $i=3;$i<6;$i++}
+                                    <li>
+                                        <div>
+                                            <a href="/details/report/t_{$data['analysis']['japan'][$i]['table']}-id_{$data['analysis']['japan'][$i]['id']}-col_{$data['analysis']['japan'][$i]['columnId']}/">
+                                                <div class="img-box">
+                                                    <img data-original="{$data['analysis']['japan'][$i]['cover']}" alt="">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <section class="report-msg">
+                                            <div class="view-hover">
+                                                <span>浏览（{$data['analysis']['japan'][$i]['iViewCount']}）</span>
+                                            </div>
+                                            <a class="title" href="/details/report/t_{$data['analysis']['japan'][$i]['table']}-id_{$data['analysis']['japan'][$i]['id']}-col_{$data['analysis']['japan'][$i]['columnId']}/" title="{$data['analysis']['japan'][$i]['sTitle']}">{$data['analysis']['japan'][$i]['sTitle']}</a>
+                                            <p class="info">{$data['analysis']['japan'][$i]['sDesc']}</p>
+                                            <p class="label">
+                                                {foreach $data['analysis']['japan'][$i]['labels'] as $lab}
+                                                <a href="{$lab['lLink']}" title="{$lab['name']}" target="_blank">{$lab['name']}</a><i></i>
+                                                {/foreach}
+                                            </p>
+                                        </section>
+                                    </li>
+                                    {/for}
+                                    {/if}
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="clearfix">
+                                    {if $data['analysis']['japan']}
+                                    {for $i=6;$i<9;$i++}
+                                    <li>
+                                        <div>
+                                            <a href="/details/report/t_{$data['analysis']['japan'][$i]['table']}-id_{$data['analysis']['japan'][$i]['id']}-col_{$data['analysis']['japan'][$i]['columnId']}/">
+                                                <div class="img-box">
+                                                    <img data-original="{$data['analysis']['japan'][$i]['cover']}" alt="">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <section class="report-msg">
+                                            <div class="view-hover">
+                                                <span>浏览（{$data['analysis']['japan'][$i]['iViewCount']}）</span>
+                                            </div>
+                                            <a class="title" href="/details/report/t_{$data['analysis']['japan'][$i]['table']}-id_{$data['analysis']['japan'][$i]['id']}-col_{$data['analysis']['japan'][$i]['columnId']}/" title="{$data['analysis']['japan'][$i]['sTitle']}">{$data['analysis']['japan'][$i]['sTitle']}</a>
+                                            <p class="info">{$data['analysis']['japan'][$i]['sDesc']}</p>
+                                            <p class="label">
+                                                {foreach $data['analysis']['japan'][$i]['labels'] as $lab}
+                                                <a href="{$lab['lLink']}" title="{$lab['name']}" target="_blank">{$lab['name']}</a><i></i>
+                                                {/foreach}
+                                            </p>
+                                        </section>
+                                    </li>
+                                    {/for}
+                                    {/if}
+                                </ul>
+                            </li>
+                        </ul>
+                        {/if}
+                    </div>
+                </div>
+            </div>
+            <div class="fr">
+                <div class="tit-h2">
+                    <i></i>
+                    <h2>日韩画册/街拍</h2>
+                    <div class="h2"></div>
+                </div>
+                <div class="sec-content">
+                    <div class="hor-box js-box">
+                        <div class="clearfix">
+                            <h3 class="fl">日韩画册</h3>
+                            <div class="h3-title1 fl"></div>
+                            <div class="fr">
+                                <ul class="pagination js-pagination">
+                                    <li class="noclick" data-type="0">＜</li>
+                                    <li data-type="1">＞</li>
+                                </ul>
+                                <a class="more" target="_blank" href="{$data['magazine']['link']}">更多</a>
+                            </div>
+                        </div>
+                        <ul class="data-ul js-data-ul">
+                            <li class="on">
+                                <ul class="clearfix">
+                                    <li>
+                                        <div>
+                                            <div class="img-box">
+                                                <img data-original="{STATIC_URL2}{$data['magazine']['korea'][0]['magazine_cover']}" alt="">
+                                            </div>
+                                            <div class="hover-box">
+                                                <div class="bg"></div>
+                                                <a class="free" href="/books/innermaga/id_{$data['magazine']['korea'][0]['url_id']}/" title="免费预览"><i></i>完整预览</a>
+                                            </div>
+                                        </div>
+                                        <p class="info">{$data['magazine']['korea'][0]['column_title']}</p>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <div class="img-box">
+                                                <img data-original="{STATIC_URL2}{$data['magazine']['japan'][0]['magazine_cover']}" alt="">
+                                            </div>
+                                            <div class="hover-box">
+                                                <div class="bg"></div>
+                                                <a class="free" href="/books/innermaga/id_{$data['magazine']['japan'][0]['url_id']}/" title="免费预览"><i></i>完整预览</a>
+                                            </div>
+                                        </div>
+                                        <p class="info">{$data['magazine']['japan'][0]['column_title']}</p>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="clearfix">
+                                    <li>
+                                        <div>
+                                            <div class="img-box">
+                                                <img data-original="{STATIC_URL2}{$data['magazine']['korea'][1]['magazine_cover']}" alt="">
+                                            </div>
+                                            <div class="hover-box">
+                                                <div class="bg"></div>
+                                                <a class="free" href="/books/innermaga/id_{$data['magazine']['korea'][1]['url_id']}/" title="免费预览"><i></i>完整预览</a>
+                                            </div>
+                                        </div>
+                                        <p class="info">{$data['magazine']['korea'][1]['column_title']}</p>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <div class="img-box">
+                                                <img data-original="{STATIC_URL2}{$data['magazine']['japan'][1]['magazine_cover']}" alt="">
+                                            </div>
+                                            <div class="hover-box">
+                                                <div class="bg"></div>
+                                                <a class="free" href="/books/innermaga/id_{$data['magazine']['japan'][1]['url_id']}/" title="免费预览"><i></i>完整预览</a>
+                                            </div>
+                                        </div>
+                                        <p class="info">{$data['magazine']['japan'][1]['column_title']}</p>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="clearfix">
+                                    <li>
+                                        <div>
+                                            <div class="img-box">
+                                                <img data-original="{STATIC_URL2}{$data['magazine']['korea'][2]['magazine_cover']}" alt="">
+                                            </div>
+                                            <div class="hover-box">
+                                                <div class="bg"></div>
+                                                <a class="free" href="/books/innermaga/id_{$data['magazine']['korea'][2]['url_id']}/" title="免费预览"><i></i>完整预览</a>
+                                            </div>
+                                        </div>
+                                        <p class="info">{$data['magazine']['korea'][2]['column_title']}</p>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <div class="img-box">
+                                                <img data-original="{STATIC_URL2}{$data['magazine']['japan'][2]['magazine_cover']}" alt="">
+                                            </div>
+                                            <div class="hover-box">
+                                                <div class="bg"></div>
+                                                <a class="free" href="/books/innermaga/id_{$data['magazine']['japan'][2]['url_id']}/" title="免费预览"><i></i>完整预览</a>
+                                            </div>
+                                        </div>
+                                        <p class="info">{$data['magazine']['japan'][2]['column_title']}</p>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="hor-box js-box">
+                        <div class="clearfix">
+                            <h3 class="fl">日韩街拍</h3>
+                            <div class="h3-title2 fl"></div>
+                            <div class="fr">
+                                <ul class="pagination js-pagination">
+                                    <li class="noclick" data-type="0">＜</li>
+                                    <li data-type="1">＞</li>
+                                </ul>
+                                <a class="more" target="_blank" href="{$data['streetsnaps']['link']}">更多</a>
+                            </div>
+                        </div>
+                        <ul class="data-ul js-data-ul">
+                            <li class="on">
+                                <ul class="clearfix">
+                                    <li>
+                                        <div>
+                                            <a href="/details/style/t_{$data['streetsnaps']['korea'][0]['table']}-id_{$data['streetsnaps']['korea'][0]['id']}-col_{$data['streetsnaps']['korea'][0]['col']}/">
+                                                <div class="img-box">
+                                                    <img data-original="{$data['streetsnaps']['korea'][0]['cover']}" alt="">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <p class="label">
+                                            {foreach $data['streetsnaps']['korea'][0]['labels'] as $lab}
+                                            <a href="{$lab['lLink']}" title="{$lab['name']}" target="_blank">{$lab['name']}</a><i></i>
+                                            {/foreach}
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <a href="/details/style/t_{$data['streetsnaps']['japan'][0]['table']}-id_{$data['streetsnaps']['japan'][0]['id']}-col_{$data['streetsnaps']['japan'][0]['col']}/">
+                                                <div class="img-box">
+                                                    <img data-original="{$data['streetsnaps']['japan'][0]['cover']}" alt="">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <p class="label">
+                                            {foreach $data['streetsnaps']['japan'][0]['labels'] as $lab}
+                                            <a href="{$lab['lLink']}" title="{$lab['name']}" target="_blank">{$lab['name']}</a><i></i>
+                                            {/foreach}
+                                        </p>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="clearfix">
+                                    <li>
+                                        <div>
+                                            <a href="/details/style/t_{$data['streetsnaps']['korea'][1]['table']}-id_{$data['streetsnaps']['korea'][1]['id']}-col_{$data['streetsnaps']['korea'][1]['col']}/">
+                                                <div class="img-box">
+                                                    <img data-original="{$data['streetsnaps']['korea'][1]['cover']}" alt="">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <p class="label">
+                                            {foreach $data['streetsnaps']['korea'][1]['labels'] as $lab}
+                                            <a href="{$lab['lLink']}" title="{$lab['name']}" target="_blank">{$lab['name']}</a><i></i>
+                                            {/foreach}
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <a href="/details/style/t_{$data['streetsnaps']['japan'][1]['table']}-id_{$data['streetsnaps']['japan'][1]['id']}-col_{$data['streetsnaps']['japan'][1]['col']}/">
+                                                <div class="img-box">
+                                                    <img data-original="{$data['streetsnaps']['japan'][1]['cover']}" alt="">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <p class="label">
+                                            {foreach $data['streetsnaps']['japan'][1]['labels'] as $lab}
+                                            <a href="{$lab['lLink']}" title="{$lab['name']}" target="_blank">{$lab['name']}</a><i></i>
+                                            {/foreach}
+                                        </p>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="clearfix">
+                                    <li>
+                                        <div>
+                                            <a href="/details/style/t_{$data['streetsnaps']['korea'][2]['table']}-id_{$data['streetsnaps']['korea'][2]['id']}-col_{$data['streetsnaps']['korea'][2]['col']}/">
+                                                <div class="img-box">
+                                                    <img data-original="{$data['streetsnaps']['korea'][2]['cover']}" alt="">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <p class="label">
+                                            {foreach $data['streetsnaps']['korea'][2]['labels'] as $lab}
+                                            <a href="{$lab['lLink']}" title="{$lab['name']}" target="_blank">{$lab['name']}</a><i></i>
+                                            {/foreach}
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <a href="/details/style/t_{$data['streetsnaps']['japan'][2]['table']}-id_{$data['streetsnaps']['japan'][2]['id']}-col_{$data['streetsnaps']['japan'][2]['col']}/">
+                                                <div class="img-box">
+                                                    <img data-original="{$data['streetsnaps']['japan'][2]['cover']}" alt="">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <p class="label">
+                                            {foreach $data['streetsnaps']['japan'][2]['labels'] as $lab}
+                                            <a href="{$lab['lLink']}" title="{$lab['name']}" target="_blank">{$lab['name']}</a><i></i>
+                                            {/foreach}
+                                        </p>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+
+{block name="self"}
+<script type="text/javascript" src="{STATIC_URL3}/global/js/mutual/japan_korea.js?{STATIC_CHANGE_TIME}"></script>
+{/block}

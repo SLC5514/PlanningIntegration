@@ -1,0 +1,22 @@
+<div class="keyWord keyWord_downlist column-nav-downlist">
+    {foreach $columns as $key=>$column}
+    {if $key == $columnId}
+    {if $key == $columnPid}
+    <a class="keyW fl clickme del" href="javascript:void(0);" title="全部">栏目: 全部<em class="downlist_icon"></em></a>
+    {else}
+    <a class="keyW fl clickme del" href="javascript:void(0);" title="{$column.sName}">栏目: {$column.sName}<em class="downlist_icon"></em></a>
+    {/if}
+    {/if}
+    {/foreach}
+    <div class="downlist">
+        {foreach $columns as $key=>$column}
+        {if $key != $columnId}
+        {if $key == $columnPid}
+        <a href="{$column.sLink}" title="全部">全部</a>
+        {else}
+        <a href="{$column.sLink}" title="{$column.sName}">{$column.sName}</a>
+        {/if}
+        {/if}
+        {/foreach}
+    </div>
+</div>

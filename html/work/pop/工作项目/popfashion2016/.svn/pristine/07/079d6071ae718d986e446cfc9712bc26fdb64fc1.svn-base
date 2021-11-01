@@ -1,0 +1,60 @@
+.findUser{background: #f9f9f9;}
+.findUser .head{height: 50px;line-height: 50px;border: 1px solid #e5e5e5;background: #fff;}
+.findUser .head .crumbs{width: 1500px;margin: 0 auto;}
+.findUser .head .crumbs span{font-size: 12px;margin: 0 10px;}
+.findUser .head .crumbs .action{color: #d8b056;}
+.findUser .findMain{width: 1200px;height: 792px;background: #fff;margin: 30px auto 58px;position: relative;}
+.findUser .findMain .mainHead{font-size: 18px;color: #999;height: 138px;border-bottom: 1px dashed #e3e3e3;line-height: 138px;text-align: center;font-weight: bold;}
+.findUser .findMain .progressHead{font-size: 18px;height: 138px;border-bottom: 1px dashed #e3e3e3;position: relative;}
+.findUser .findMain .progressHead .head-progress{width: 345px;height: 52px;position: absolute;top: 50%;margin-top: -26px;left: 50%;margin-left: -160px;z-index: 2;}
+.findUser .findMain .progressHead .pro-dashed{position: absolute;height: 1px;width: 277px;left: 50%;margin-left: -134px;top: 60px;border-bottom: 1px dashed #e3e3e3;z-index: 1;}
+.findUser .findMain .progressHead .head-progress span{width: 60px;height: 100%;font-size: 14px;display: inline-block;text-align: center;}
+.findUser .findMain .progressHead .head-progress span label{display: block;height: 24px;line-height: 25px;width: 24px;text-align: center;margin: 5px auto;background: url(../../images/user/find-progress.png);background-position: -31px 0px;}
+.findUser .findMain .progressHead .progress{background-position: 0px 34px !important;height: 34px !important;line-height: 34px !important;width: 34px !important;color: #fff;margin: 0 auto !important;}
+.findUser .findMain .progressHead .progress1{background-position: 55px 0px !important;color: #fff;}
+.findUser .findMain .mainTable{margin: 60px auto 0;width: 430px;}
+.findUser .findMain .mainTable .tableH1{text-align: center;padding-bottom: 20px;height: 49px;}
+.findUser .findMain .mainTable .tableH1 span{padding: 0 15px;height: 16px;display: inline-block;line-height: 16px;font-size: 18px;font-weight: bold;cursor: pointer;}
+.findUser .findMain .mainTable .tableH1 label{display: block;margin-top: 15px;font-size: 12px;color: #999;}
+.findUser .findMain .mainTable .tableH1 .action{color: #232f3c;}
+.findUser .findMain .mainTable .mainUl{position: relative;}
+.findUser .findMain .mainTable .mainUl .mainLi{padding: 10px 0;border-bottom: 1px solid #ccc;margin-bottom: 30px;position: relative;}
+.mainTable .mainUl .mainLi label{width: 90px;font-size: 14px;color: #666;display: inline-block;}
+.mainTable .mainUl .mainLi input{border: none;width: 240px;line-height: 18px;}
+.mainTable .mainUl .mainLi span{position: absolute;background-color: #232f3c;border-radius: 4px;color: #fff;font-size: 14px;text-align: center;cursor: pointer;bottom: 10px;right: 0;padding: 8px 10px;}
+.mainTable .mainUl .mainLi span label{position: absolute;width: 123px;padding: 12px 24px;background: #f9edb9;top: -86px;left: 0px;border: 1px solid #efc267;font-size: 12px;color: #81511c;text-align: left;}
+.mainTable .mainUl .mainLi span label s{width: 10px;height: 10px;position: absolute;bottom: -7px;transform-origin: center center;transform: rotate(45deg);left: 10px;z-index: 1;border: 1px solid #efc267;}
+.mainTable .mainUl .mainLi span label t{width: 12px;height: 12px;position: absolute;bottom: -5px;transform-origin: center center;transform: rotate(45deg);left: 10px;z-index: 2;background: #f9edb9;}
+.mainTable .mainUl .mainLi span label b{position: absolute;width: 8px;height: 8px;right: 5px;top: 4px;background: url(../../images/user/find-colse.png);cursor: pointer;}
+.mainTable .mainUl .code-btn1{position: relative;margin: 30px 0 10px 0;height: 42px;}
+.mainTable .mainUl .tab-submit{height: 50px;line-height: 50px;text-align: center;font-size: 16px;background: #232f3c;border-radius: 4px;color: #fff;cursor: pointer;}
+.mainTable .mainUl .tab-submit:hover{background: #4f5963;}
+.mainTable .find-btn{height: 50px;line-height: 50px;text-align: center;font-size: 16px;margin-top: 40px;border:2px solid #999;border-radius: 4px;cursor: pointer;}
+.mainTable .action1{border:3px solid #232f3c;color: #232f3c;}
+.mainTable .type-btn{border:none;color: #fff;background-color: #232f3c;cursor: pointer;}
+.mainTable .type-btn:hover{background-color: #4f5963;}
+.alter-box{width: 470px;height: 70px;position: absolute;top: 50%;left: 50%;margin-top: -35px;margin-left: -225px;}
+.alter-box img{float: left;}
+.alter-box .success{float: right;width: 380px;}
+.alter-box .success span:first-child{font-size: 18px;font-weight: bold;display: block;margin: 5px 0 15px;}
+.alter-box .success span:last-child{font-size: 14px;}
+.alter-box .success a{color: #d8b056;}
+.contact{position: absolute;width: 1160px;height: 55px;left: 20px;bottom: 28px;background: #f9f9f9;line-height: 55px;text-align: center;}
+.contact span{font-size: 18px;color: #232f3c;padding: 0 15px;border-right: 2px solid #ccc;height: 14px;line-height: 14px;vertical-align: -3px;display: inline-block;}
+.contact a{margin: 0 15px;}
+.contact i{background: url(../../images/user/icon.png?2019052001) no-repeat;background-position: -44px -57px;width: 14px;height: 14px;display: inline-block;margin-right: 5px;vertical-align: middle;margin-top: -3px;}
+.contact .i-img{background-position: -44px -78px;}
+.multi-account{width: 550px;height: 188px;position: fixed;left: 50%;margin-left: -275px;top: 50%;margin-top: -94px;background: #fff;z-index: 11;border-radius: 4px;display: none;}
+.multi-account .multiMain{width: 80%;margin: 50px auto;font-size: 16px;}
+.multi-account .multiMain span{display: block;text-align: center;margin: 10px 0;}
+.multi-account .multiMain span label{font-weight: bold;color: #232f3c;}
+.box-contact{width: 550px;height: 243px;position: fixed;left: 50%;margin-left: -275px;top: 50%;margin-top: -94px;background: #fff;z-index: 11;border-radius: 4px;display: none;}
+.box-contact>span{font-size: 16px;width: 401px;margin: 50px auto;display: block;}
+.box-contact .btn-list{text-align: center;}
+.box-contact .btn-list span{height: 40px;line-height: 40px;padding: 0px 20px;border-radius: 20px;display: inline-block;font-size: 14px;background-color: #666;color: #fff;margin-right: 10px;}
+.box-contact .btn-list span i {background: url(../../images/user/findUser-icon.png) no-repeat;background-position: 0px 0px;width: 13px;height: 13px;display: inline-block;margin-right: 5px;vertical-align: middle;margin-top: -3px;}
+.box-contact .btn-list .i-img{background-position: -15px 0px;}
+.box-contact .btn-list .phone{background-color: #fff;color: #666;border: 1px solid #666;font-weight: bold;}
+.multiClose{background: url(../../images/user/close1.png);width: 18px;height: 18px;position: absolute;top: 10px;right: 10px;}
+.box-bg{background-color: #000;opacity: 0.8;height: 100%;width: 100%;position: fixed;left: 0;top: 0;z-index: 10;display: none;}
+

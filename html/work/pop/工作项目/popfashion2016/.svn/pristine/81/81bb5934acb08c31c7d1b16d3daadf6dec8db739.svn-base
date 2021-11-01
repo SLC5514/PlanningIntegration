@@ -1,0 +1,98 @@
+{extends file="layout.html"}
+
+{block name="title"}找料帮尊享服务-POP服装趋势网{/block}
+{block name=keywords}专业团队,趋势面料色卡,快速找样,按需送样{/block}
+{block name=description}POP&优料宝联合推出“找料帮”尊享服务，专人服务——满足您找面料的需求。全力只为找面料，尽心助力设计师。{/block}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/topic/20170314/css/index.css">
+{/block}
+
+
+{block name="main"}
+<div class="lookHelp">
+    <div class="banner">
+        <p class="banner_content" alt="找料帮’，尊享服务" title="POP&优料宝联合推出‘找料帮’，尊享服务"></p>
+    </div>
+    <div class="group">
+        <div class="w1000">
+            <ul>
+                <li class="fl"><img src="{STATIC_URL2}/global/topic/20170314/images/img1.jpg"></li>
+                <li class="fr g_li2">
+                    <h3>优秀的设计师永远缺一块好的“布料”！</h3>
+                    <p class="g_p2">还 在 为 找 面 料 苦 恼 吗？</p>
+                    <em></em>
+                    <p class="g_p3">“POP/找料帮”解决您的找料难题！<br />费用低、商家信息公开、不赚差价、交易透明放心</p>
+                </li>
+            </ul>
+            <ul class="style">
+                <li class="fl g_li2">
+                    <h3>足不出户－快速解决找料问题</h3>
+                    <p class="g_p2">将 心 仪 面 料 尽 收 囊 中</p>
+                    <em></em>
+                    <p class="g_p3">POP服装趋势&优料宝＋资深专业面料买手<br />联合推出“找料帮”服务</p>
+                </li>
+                <li class="fr">
+                    <img src="{STATIC_URL2}/global/topic/20170314/images/img2.jpg">
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="service">
+        <div class="w1000">
+            <div class="s-title clearfix">
+                <span class="fl hor-span"></span>
+                <p class="fl">四大保障 / 让找料更容易！</p>
+                <span class="fl hor-span"></span>
+            </div>
+            <div class="sv-baozhang clearfix">
+                <ul>
+                    <li><span class="fl"><img src="{STATIC_URL2}/global/topic/20170314/images/icon1.jpg"></span><span
+                            class="span-tit fl">专人<br />找料</span><i class="fl"></i><span
+                            class="span-infor fl">数十位专业面料买手团队，<br />实现精准找料</span></li>
+                    <li><span class="fl"><img src="{STATIC_URL2}/global/topic/20170314/images/icon2.jpg"></span><span
+                            class="span-tit fl">迅速<br />响应</span><i class="fl"></i><span
+                            class="span-infor fl">3天迅速完成找料，<br />省时省力</span></li>
+                    <li><span class="fl"><img src="{STATIC_URL2}/global/topic/20170314/images/icon3.jpg"></span><span
+                            class="span-tit fl">高性<br />价比</span><i class="fl"></i><span
+                            class="span-infor fl">费用低、卖家信息公开，<br />交易透明放心，不赚差价</span></li>
+                    <li><span class="fl"><img src="{STATIC_URL2}/global/topic/20170314/images/icon4.jpg"></span><span
+                            class="span-tit fl">省心<br />交易</span><i class="fl"></i><span
+                            class="span-infor fl">全程专业对接，一对一服务，<br />做您的贴身面料管家</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="step-by-step">
+        <div class="w1000">
+            <div class="s-title clearfix">
+                <span class="fl hor-span"></span>
+                <p class="fl">交 易 流 程</p>
+                <span class="fl hor-span"></span>
+            </div>
+            <div class="step-bg">
+                <div class="step1-ps">对接找料需求</div>
+                <div class="step2-ps">给到面料照片或<br />寄出小样</div>
+                <div class="step3-ps">专业找料人员<br />快速响应</div>
+                <div class="step4-ps">完成<br />面料<br />找样</div>
+                <div class="step5-ps">买卖双方<br />自行对接</div>
+                <div class="step6-ps">完成交易</div>
+            </div>
+        </div>
+    </div>
+    <div class="service_hotline clearfix">
+        <div class="w1000">
+            <div class="fl hotline_num">
+                <p class="hot_txt">不用为找料犯愁，“找料帮”解决服装企业的面料需求！</p>
+                <strong>服务热线：</strong>
+                <p class="hot_num">4008-210-500 /131-6624-7487（华女士）</p>
+            </div>
+            <div class="fl">
+                <img src="{STATIC_URL2}/global/topic/20170314/images/ewm.jpg">
+            </div>
+        </div>
+    </div>
+</div>
+
+{include file="topic/topic_layer.html"}
+{/block}

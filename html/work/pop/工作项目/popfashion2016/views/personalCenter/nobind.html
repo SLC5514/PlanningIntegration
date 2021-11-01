@@ -1,0 +1,29 @@
+{extends file="layout.html"}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/per.css?{STATIC_CHANGE_TIME}">
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/personal.css?{STATIC_CHANGE_TIME}">
+{/block}
+
+{block name="self"}
+<script type="text/javascript" src="{STATIC_URL2}/global/js/user/unbind.js?{STATIC_CHANGE_TIME}"></script>
+{/block}
+{block name="main"}
+<div class="unbind_all">  
+	<div class="unbind_box">
+		<div class="unbind_cont">
+			<div class="cont_wid clearfix">
+				<span class="fl"></span>
+				<p class="fl">对不起！您的设计师专属账号尚未关联任何主账号，目前无法正常使用。<br/><span>您可要求任意主账号管理员进行绑定后 ，再重新登陆使用。</span></p>
+			</div>
+		</div>
+		<div class="unbind_btn">
+			<a class="qq_ad js-contact-qq-btn" href="javascript:void(0);" title="QQ咨询"><i></i>QQ咨询</a>
+			<a href="javascript:void(0);" class="tel_ad" title="咨询电话"><i></i>咨询电话：4008 210 500</a>
+		</div>	
+	</div>
+	<div class="unbind_footer">
+			<img src="https://imgf2.pop-fashion.com/global/images/login_txt.png"/>
+	</div>
+</div>	
+{/block}

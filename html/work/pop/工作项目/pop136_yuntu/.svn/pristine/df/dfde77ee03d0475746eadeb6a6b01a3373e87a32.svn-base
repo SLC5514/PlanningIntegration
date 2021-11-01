@@ -1,0 +1,372 @@
+{extends file="layout.html"}
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css"
+    href="{$smarty.const.STATIC_URL1}/global/css/virtual/share-virtual.css?{$smarty.const.STATIC_CHANGE_TIME}" />
+{/block}
+{block name="header"}{/block}
+{block name="main"}
+<div class="content js-content on">
+    <input id="params" name="params" type="hidden" data-isencrypt="{$isEncrypt}">
+    <div class="header">
+        <a href="https://yuntu.pop136.com/home"><img src="{$smarty.const.STATIC_URL2}/global/images/common/logo2.png"
+                alt=""></a>
+        <span>智能设计，让打样更快速</span>
+    </div>
+    <div class="empty-ctn">
+        <img src="{$smarty.const.STATIC_URL2}/global/images/virtual/share/share_empty.png" alt="">
+        <div class="title">哈尼,您访问的页面不存在了</div>
+        <div class="msg">
+            <p>可能原因:</p>
+            <p>1.访问地址错误;</p>
+            <p>2.访问的链接已过期;</p>
+            <p>3.访问的文件已取消分享;</p>
+        </div>
+    </div>
+    <div class="banner">
+        <div class="section">
+            <div class="title js-group-name">{$groupName}</div>
+            <p>2D实景模拟 让打样更快速，让生产更智能</p>
+            <span>POP云图 智能云试衣系统</span>
+        </div>
+    </div>
+    <div class="section js-section">
+        <ul class="vir-list js-vir-list clear">
+            <!-- <li><img src="{$smarty.const.STATIC_URL2}/global/images/user/placeholder.png" alt=""></li>  -->
+        </ul>
+    </div>
+    <div class="h5-footer">
+        <div class="title">让设计更轻松，让打样更快速</div>
+        <div class="info">官方网站：https://yuntu.pop136.com/</div>
+        <a class="btn js-app-btn" href="javascript:;">下载云图APP查看更多</a>
+    </div>
+    <!-- 邀请码 -->
+    <div class="invitation-code-box js-invitation-code-box">
+        <div class="title">获取邀请码之后才能查看</div>
+        <div class="ctn">
+            <div class="ipt clear">
+                <label class="fl" for="invCode">邀请码：</label>
+                <input class="fl" id="invCode" type="text">
+                <div class="msg">邀请码错误</div>
+            </div>
+        </div>
+        <div class="btn-box">
+            <button class="confirm">确定</button>
+        </div>
+    </div>
+    <!-- 查看大图 -->
+    <div class="preview-box js-preview-box">
+        <div class="ctn">
+            <div class="probar">1/1</div>
+            <i class="close"></i>
+            <i class="prev"></i>
+            <i class="next"></i>
+            <img src="" alt="">
+        </div>
+    </div>
+</div>
+{/block}
+{block name="footer"}
+{/block}
+{block name="self"}
+<script type="text/javascript">
+    (function () {
+        function autoRootFontSize() {
+            var width = document.documentElement.getBoundingClientRect().width;
+            document.documentElement.style.fontSize = (Math.min(screen.width, width < 750 ? width : 750) / 750) * 100 + 'px';
+        }
+        window.addEventListener('onorientationchange' in window ? 'orientationchange' : 'resize', autoRootFontSize, false);
+        autoRootFontSize();
+    })();
+
+    var iosLinkUrl = "https://apps.apple.com/cn/app/pop%E4%BA%91%E5%9B%BE/id1436269034";
+    var androidLinkurl = "https://android.myapp.com/myapp/detail.htm?apkName=com.pop136.cloudpicture";
+    var u = navigator.userAgent, isAndroid, isIOS;
+    window.onload = function () {
+        init();
+    }
+    function init() {
+        isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1;
+        isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+        var link = isIOS ? iosLinkUrl : androidLinkurl;
+        $('.js-app-btn').attr('href', link);
+    }
+
+    require.config({
+        paths: {
+            "perfectScrollbar": ["lib/perfect-scrollbar-1.2.min"],
+        }
+    });
+    require(["jquery", "general", "msg"], function (jquery, general, msg) {
+        $(function () {
+            var def = {
+                urlParams: general.fn.getLocationParameter() || {},
+                iptParams: $('#params').data() || {},
+                loadingEl: $('.js-loading-div'),
+                loadingBgEl: $('.js-bg-div'),
+                invCodeBoxEl: $('.js-invitation-code-box'),
+                invCodeIpt: $('#invCode'),
+                invCodeMsg: $('#invCode').siblings('.msg'),
+                screenType: $('.js-section').width() <= 750 ? 2 : ($('.js-section').width() < 1500 ? 1 : 0), // 大屏0, 小屏1, 移动2
+                virData: {
+                    el: $('.js-vir-list'),
+                    page: 0,
+                    pageSize: 30,
+                    total: 0,
+                    isLoad: false,
+                    pwd: '',
+                    group_name: '',
+                },
+                previewData: {
+                    idx: 0,
+                    pageX: 0,
+                    pageY: 0,
+                    moveNum: 0
+                }
+            }
+
+            if (def.iptParams.isencrypt === 1) {
+                loadingToggle(false);
+                def.invCodeBoxEl.fadeIn(200);
+            } else {
+                getShareList();
+            }
+
+            $(window).on("resize", function () {
+                general.fn.throttle(waterFall, null, ['.js-vir-list', true], 18);
+            });
+            $('.js-content').on("scroll", function () {
+                general.fn.throttle(scrollLoad, this, [], 18);
+            });
+
+            // 邀请码
+            def.invCodeBoxEl.on('click', '.confirm', function () {
+                var pwd = def.invCodeIpt.val();
+                def.virData.pwd = pwd;
+                if (!pwd) {
+                    def.invCodeMsg.show();
+                } else {
+                    def.invCodeMsg.hide();
+                    getShareList(pwd, function() {
+                        def.invCodeBoxEl.fadeOut(200);
+                    });
+                }
+            })
+
+            // 查看大图
+            def.virData.el.on('click', 'li', function () {
+                var idx = $(this).index();
+                def.previewData.idx = idx;
+                loadingToggle(true);
+                $('.js-preview-box').fadeIn(200).find('img').attr('src', $(this).find('img').attr('src')).on('load', function () {
+                    $(this).parent().height(this.height)
+                    def.loadingEl.fadeOut(200);
+                }).on('error', function () {
+                    console.log('加载失败');
+                });
+                if (def.screenType === 2) {
+                    var imgs = def.virData.el.find('img');
+                    $('.js-preview-box img').css('left', 0);
+                    $('.js-preview-box .probar').text(def.previewData.idx + 1 + '/' + imgs.length);
+                }
+            })
+            $('.js-preview-box').on('click', '.close', function () {
+                $('.js-preview-box').fadeOut(200)
+                loadingToggle(false);
+            }).on('click', '.prev', function () {
+                if (def.previewData.idx > 0) {
+                    def.previewData.idx--;
+                    loadingToggle(true);
+                    $('.js-preview-box').fadeIn(200).find('img').attr('src', def.virData.el.children().eq(def.previewData.idx).find('img').attr('src')).on('load', function () {
+                        $(this).parent().height(this.height)
+                        def.loadingEl.fadeOut(200);
+                    })
+                }
+                console.log(def.previewData.idx)
+            }).on('click', '.next', function () {
+                if (def.previewData.idx < def.virData.el.children().length - 1) {
+                    def.previewData.idx++;
+                    loadingToggle(true);
+                    $('.js-preview-box').fadeIn(200).find('img').attr('src', def.virData.el.children().eq(def.previewData.idx).find('img').attr('src')).on('load', function () {
+                        $(this).parent().height(this.height)
+                        def.loadingEl.fadeOut(200);
+                    })
+                }
+                console.log(def.previewData.idx)
+            }).on('touchstart', 'img', function (e) {
+                var e = e || window.event;
+                var touches = e.originalEvent.changedTouches[0];
+                def.previewData.pageX = touches.pageX;
+                def.previewData.pageY = touches.pageY;
+            }).on('touchmove', 'img', function (e) {
+                var e = e || window.event;
+                var touches = e.originalEvent.changedTouches[0];
+                def.previewData.moveNum = def.previewData.pageX - touches.pageX;
+                $(this).css({
+                    left: -def.previewData.moveNum + 'px'
+                })
+            }).on('touchend', 'img', function (e) {
+                var e = e || window.event;
+                var touches = e.originalEvent.changedTouches[0];
+                var imgs = def.virData.el.find('img');
+                if (def.previewData.moveNum > 100 && def.previewData.idx < imgs.length) {
+                    def.previewData.idx++;
+                    def.loadingEl.fadeIn(200);
+                    $('.js-preview-box img').animate({
+                        left: '0px'
+                    }, 200).attr('src', imgs[def.previewData.idx].getAttribute('src')).on('load', function () {
+                        def.loadingEl.fadeOut(200);
+                    })
+                    $('.js-preview-box .probar').text(def.previewData.idx + 1 + '/' + imgs.length);
+                } else if (def.previewData.moveNum < -100 && def.previewData.idx > 0) {
+                    def.previewData.idx--;
+                    def.loadingEl.fadeIn(200);
+                    $('.js-preview-box img').animate({
+                        left: '0px'
+                    }, 200).attr('src', imgs[def.previewData.idx].getAttribute('src')).on('load', function () {
+                        def.loadingEl.fadeOut(200);
+                    })
+                    $('.js-preview-box .probar').text(def.previewData.idx + 1 + '/' + imgs.length);
+                } else {
+                    def.loadingEl.fadeOut(200);
+                    $(this).animate({
+                        left: '0px'
+                    }, 200);
+                }
+            })
+
+            // 加载下一页
+            function scrollLoad() {
+                var lastEl = def.virData.el.children().last();
+                var lastOffsetTop = lastEl.offset().top;
+                var reH = $(window).height() - lastEl.height();
+                if (!def.isLoad && lastOffsetTop <= reH) {
+                    getShareList(def.virData.pwd);
+                }
+            }
+
+            // 瀑布流
+            function waterFall(strName, loop) {
+                var boxEl = $(strName);
+                var itemEls = boxEl.find('li');
+                var rootSize = parseFloat($('html').css('font-size'));
+                var smallScreen = $('.js-section').width() <= 750 ? 2 : ($('.js-section').width() < 1500 ? 1 : 0); // 大屏0, 小屏1, 移动2
+                var pageWidth = smallScreen === 2 ? $('.js-section').width() - rootSize * 0.3 * 2 : $('.js-section').width();
+                var columns = smallScreen === 0 ? 6 : (smallScreen === 1 ? 5 : 3);
+                var itemWidth = smallScreen === 2 ? rootSize * 2.1 : 210;
+                var space = (pageWidth - itemWidth * columns) / (columns - 1);
+                var spaceBtm = smallScreen === 2 ? rootSize * 0.3 : 48;
+                var defh = smallScreen === 2 ? rootSize * 2.76 : 276;
+                var colHArr = [];
+                var maxTop = 0;
+                for (var i = 0; i < columns; i++) {
+                    colHArr[i] = 0;
+                }
+                itemEls.each(function (i, v) {
+                    var item = $(v);
+                    var itemImg = $(v).find('img');
+                    var h = itemImg.data('h');
+                    var minValue = colHArr[0];
+                    var minIndex = 0;
+                    if (!h) {
+                        h = defh;
+                        itemImg.data('h', defh);
+                        if (!loop) {
+                            itemImg.on('load', function () {
+                                $(this).data('h', this.height);
+                                waterFall(strName, true);
+                            }).on('error', function () {
+                                $(this).data('h', defh).height(defh);
+                                waterFall(strName, true);
+                            })
+                        }
+                    }
+                    for (var i = colHArr.length; i >= 0; i--) {
+                        if (colHArr[i] <= minValue) {
+                            minValue = colHArr[i];
+                            minIndex = i;
+                        }
+                    }
+                    item.css({
+                        left: minIndex * itemWidth + minIndex * space,
+                        top: minValue + (i > columns - 1 ? spaceBtm : 0)
+                    })
+                    colHArr[minIndex] += h + spaceBtm;
+                    var top = parseInt(item.css('top'));
+                    if (maxTop < top + h) {
+                        maxTop = top + h;
+                        boxEl.height(maxTop);
+                    }
+                })
+            }
+
+            // 页面加载控制
+            function loadingToggle(type) {
+                if (type === true) {
+                    def.loadingEl.fadeIn(200);
+                    def.loadingBgEl.fadeIn(400);
+                } else if (type === false) {
+                    def.loadingEl.fadeOut(200);
+                    def.loadingBgEl.fadeOut(400);
+                } else {
+                    def.loadingEl.fadeToggle(200);
+                    def.loadingBgEl.fadeToggle(400);
+                }
+            }
+
+            // 获取单个分组下模板图列表
+            function getShareList(pwd, callback) {
+                if (def.virData.page && def.virData.total && (def.virData.page * def.virData.pageSize >= def.virData.total)) {
+                    return;
+                }
+                def.virData.page++;
+                def.isLoad = true;
+                loadingToggle(true);
+                $.ajax({
+                    url: location.pathname,
+                    type: 'post',
+                    dataType: "json",
+                    data: {
+                        pwd: pwd,
+                        page: def.virData.page,
+                        pageSize: def.virData.pageSize
+                    },
+                    success: function (res) {
+                        if (res.code === 0) {
+                            def.virData.total = res.data.count;
+                            var list = res.data.list;
+                            var str = '';
+                            for (var i = 0; i < list.length; i++) {
+                                str += '<li data-id="' + list[i].id + '"><img src="' + general.def.img_path + list[i].sTemplateRender + '" alt=""></li>';
+                            }
+                            def.virData.group_name = res.data.group_name;
+                            $('.js-group-name').text(res.data.group_name);
+                            def.virData.el.append(str);
+                            $('.js-content').removeClass('on');
+                            waterFall('.js-vir-list');
+                            callback && callback();
+                        } else if (res.code === 1003) {
+                            def.invCodeIpt.val('');
+                            def.invCodeMsg.show();
+                            def.virData.page = 0;
+                        } else if (res.code === 1004) {
+                            $('.js-content').addClass('empty-box');
+                            callback && callback();
+                        } else {
+                            msg.msg({ "txt": res.msg }, 2000);
+                            callback && callback();
+                        }
+                    },
+                    error: function (err) {
+                        console.log('for bug: ' + err)
+                    },
+                    complete: function () {
+                        def.isLoad = false;
+                        loadingToggle(false);
+                    }
+                })
+            }
+
+        });
+    });
+</script>
+{/block}

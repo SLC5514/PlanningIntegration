@@ -1,0 +1,160 @@
+<div class="result_list">
+	{if $result.data}
+	<div class="w1200">
+		<div class="result_top">
+			<div class="search_img fl">
+				<div>
+					<img class="js-search-img" data-src="{$imageurl}"/>
+				</div>
+			</div>
+			<div class="search_infor fl">
+				<p class="b_title">在本站图案素材中找到以下内容</p>
+				<p class="s_txt">如果没有找到合适的图案素材，你可以调整截取区域或换张图试试~</p>
+				<p class="p_time">搜索共耗时 <span>{$result.usetime}</span> 秒</p>
+				<!--<a class="return_btn" href="{$backurl}">返回</a>-->
+				<p class="p_provide">图像识别技术由码隆科技<i></i>合作提供</p>
+			</div>
+		</div>
+		<div class="result_bottom">
+			<div class="list_header">
+				<p class="b_title fl">相似图案素材</p>
+				<p class="b_tishi fl"><i></i>在列表中排序越靠前的图案，系统判断与您的需求相似度越高</p>
+				<a class="b_tuijian fr"  href='{$uliaobaourl}' target='_blank' rel="nofollow">推荐有类似图案的面料</a>
+			</div>			
+			<div class="result_img_list">
+				<div class="pic_content_box clearfix">
+					<label class="fl">图案内容：</label>
+					<div class="fl"><a href="/picmatch/loading/?path={$path}" class="{if !$cat}cur{/if} border_right">全部（{$result.count}）</a>
+					{foreach from=$result.category key=key item=val name=loop}
+						<a href="/picmatch/loading/?path={$path}&cat={$val.id}" class="{if $cat==$val.id}cur {/if} {if !$smarty.foreach.loop.last}border_right{/if}" title="{$val.name}">{$val.name}</a>
+					{/foreach}
+					</div>
+				</div>
+				<ul>
+				{foreach from=$result.data item=item key=key name=loop}
+					{if $smarty.foreach.loop.iteration<=20}
+					<li>
+						<a class="img_a" href="{$item.link}" target='_blank'><img src="{$item.path}" /></a>
+						<div class="text_b">
+							<p class="p_l">{$item.sPatternContent} {$item.sPatternUseName}</p>
+						</div>
+					</li>
+					{else}
+					<li style="display:none">
+						<a class="img_a" href="{$item.link}"  target='_blank'><img data-img="{$item.path}"/></a>
+						<div class="text_b">
+							<p class="p_l">{$item.sPatternContent} {$item.sPatternUseName}</p>
+						</div>
+					</li>
+					{/if}
+				{/foreach}
+				</ul>
+				<div class="load_box" {if $result.data|count < 20} style="display:none"{/if}>
+					<img src="{STATIC_URL2}/global/images/loading2.gif">
+				</div>
+			</div>
+		</div>
+	</div>
+	{else}
+	<div class="w1200">
+		<div class="result_top">
+			<div class="search_img fl">
+				<img src="{$imageurl}" />
+				<p class="p_time">共耗时 <span>{$result.usetime}</span> 秒</p>
+			</div>
+			<div class="search_infor fl">
+				<p class="b_title">在本站图案素材中找不到相关内容</p>
+				<p class="s_txt">如果没有找到合适的图案素材，你可以调整截取区域或换张图试试~</p>
+				<a class="b_tuijian" href='{$uliaobaourl}' target='_blank' rel="nofollow">推荐有类似图案的面料</a>
+			</div>
+			<!--<a class="return_btn h_return_btn fr" href="{$backurl}">返回</a>-->
+		</div>
+		<div class="n_result_bottom">
+			<p class="txt"><i></i>很抱歉，没有找到符合条件的内容！</p>
+			<div class="contact_box">
+				<p>请联系您的专属资讯小秘书为您服务：</p>
+				<a class="r_qq js-contact-qq-btn" href="javascript:void(0);" data-type="{if $P_UserType|in_array:[1,2]}after{/if}"><i></i>QQ咨询</a>
+				<a class="r_tel" href="javascript:void(0);"><i></i>小秘书热线：<span>4008-210-662</span></a>
+			</div>
+		</div>
+	</div>
+	{/if}
+</div>
+<script charset="utf-8" src="//wpa.b.qq.com/cgi/wpa.php"></script>
+<script type="text/javascript">
+	
+	var search_src = $('.js-search-img').data('src')||'';
+	var pic_ele = new Image();
+	pic_ele.onload=function(){		//图片加载后
+		var pic_w=pic_ele.width||1;
+    	var pic_h=pic_ele.height||1;
+		if(pic_w<pic_h){
+			$('.js-search-img').show().css({
+				'height':'100%',
+				'width':'auto'
+			}).attr('src',search_src);
+		}else{
+			$('.js-search-img').show().css({
+				'width':'100%',
+				'height':'auto'
+			}).attr('src',search_src);
+		}
+    };
+	pic_ele.src = search_src;
+	
+	//获取更多内容
+	var readMore={
+		page:3,
+		pagesize:10,
+		wait:false,
+		init:function(){
+			var self = this;
+			var load = false;
+				$(window).scroll(function(){
+					if(!self.wait){
+						var loadHeight=$(".load_box").offset().top;
+						var nowHeight = $(window).height()+$(window).scrollTop();
+						if(nowHeight>=loadHeight){
+							self.getData();
+						}
+					}
+				});	
+		},
+		getData:function(){
+				var path = '{$path}';
+				var cat  = '{$cat}';
+				var self=this;
+				self.wait = true;
+				$.ajax({
+					type:'get',
+					url:'/picmatch/fabriclistAjax/?path=' +path + '&cat='+cat+'&page='+self.page+ '&time=' + Math.random(),
+					dataType:'json',
+					async:'false',
+					success:function(data){
+						var html = '';
+						for(var i in data){
+							data[i]['sPatternUseName']=data[i]['sPatternUseName']?data[i]['sPatternUseName']:'';
+							data[i]['sPatternContent']=data[i]['sPatternContent']?data[i]['sPatternContent']:'';
+							html+='<li>'+
+									'<a class="img_a" href="'+data[i]['link']+'" target="_blank"><img src="'+data[i]['path']+'" /></a>'+
+									'<div class="text_b">'+
+										'<p class="p_l">'+data[i]['sPatternContent']+data[i]['sPatternUseName']+'</p>'+
+									'</div>'+
+								 '</li>';
+						}
+						
+						if(html==''){
+							self.wait = true;
+							$(".load_box").hide();
+						}else{
+							$(".result_img_list ul").append(html);
+							self.wait = false;
+						}
+					}
+				});
+				self.page++;
+			}
+	}
+	readMore.init();
+
+</script>

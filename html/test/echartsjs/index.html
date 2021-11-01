@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>echarts</title>
+        <script src="https://cdn.jsdelivr.net/npm/echarts@4.6.0/dist/echarts.min.js"></script>
+    </head>
+
+    <body>
+        <div id="main" style="width: 1200px;height:560px;border: 1px solid;"></div>
+    </body>
+    <!-- <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: [
+                {
+                    subtext: '• 2020年春夏款式总数：22211款',
+                    left: 10,
+                    top: '90%',
+                    textStyle: {
+                        color: '#9899AD'
+                    }
+                }
+            ],
+            textStyle: {
+                color: '#9899AD'
+            },
+            backgroundColor: '#292F3E',
+            tooltip: {},
+            grid: [{
+                width: '45%',
+                height: '75%',
+                left: 70
+            }],
+            xAxis: {
+                // 坐标轴轴线
+                axisLine: {
+                    show: false
+                },
+                // 坐标轴刻度
+                axisTick: {
+                    show: false,
+                },
+                // 坐标轴刻度标签
+                axisLabel: {
+                    margin: 12
+                },
+                // 坐标轴在 grid 区域中的分隔线
+                splitLine: {
+                    lineStyle: {
+                        color: '#333947'
+                    }
+                }
+            },
+            yAxis: {
+                data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"],
+                axisLine: {
+                    show: false,
+                },
+                axisTick: {
+                    show: false,
+                },
+                axisLabel: {
+                    margin: 50,
+                    align: 'left',
+                }
+            },
+            graphic: [{
+                type: 'group',
+                left: '71%',
+                top: 'middle',
+                onclick: function(e) {
+                    console.log(e)
+                },
+                children: [
+                    {
+                        type: 'circle',
+                        z: 100,
+                        shape: {
+                            r: 50
+                        },
+                        style: {
+                            fill: '#292F3E'
+                        }
+                    },
+                    {
+                        type: 'text',
+                        z: 100,
+                        left: 'center',
+                        top: 'middle',
+                        style: {
+                            text: '色彩分类',
+                            fill: '#9899AD',
+                            // stroke: '#9899AD',
+                            font: '18px Microsoft YaHei'
+                        }
+                    }
+                ]
+            }],
+            series: [
+                {
+                    name: 'bar',
+                    type: 'bar',
+                    barWidth: 12,
+                    data: [5, 20, 36, 10, 10, 20],
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'right',
+                            formatter: '{bg|{c}}',
+                            rich: {
+                                bg: {
+                                    backgroundColor: {
+                                        image: './img/label.png'
+                                    },
+                                    color: '#fff',
+                                    align: 'center',
+                                    padding: [0, 0, 0, 5],
+                                    width: 50 - 5,
+                                    height: 24
+                                }
+                            }
+                        }
+                    },
+                    itemStyle: {
+                        barBorderRadius: 10,
+                        color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
+                            offset: 0,
+                            color: '#FC9E84'
+                        },
+                        {
+                            offset: 1,
+                            color: '#FF358A'
+                        }
+                        ])
+                    }
+                },
+                {
+                    name: '访问来源',
+                    type: 'pie',
+                    radius: '40%',
+                    center: ['75%', '50%'],
+                    label: {
+                        fontSize: 12
+                    },
+                    labelLine: {
+                        length: 30,
+                        lineStyle: {
+                            color: '#9899AD'
+                        }
+                    },
+                    emphasis: {
+                        label: {
+                            color: '#fff',
+                        },
+                        labelLine: {
+                            lineStyle: {
+                                color: '#fff'
+                            }
+                        }
+                    },
+                    data: [
+                        {value: 335, name: '直接访问', itemStyle: {color: '#fff'}},
+                        {value: 310, name: '邮件营销'},
+                        {value: 234, name: '联盟广告'},
+                        {value: 135, name: '视频广告'},
+                        {value: 1548, name: '搜索引擎'}
+                    ]
+                }
+            ]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+
+        // 事件
+        myChart.on('click', {seriesName: 'bar'}, function (params) {
+            console.log(params)
+        })
+    </script> -->
+
+    <!-- <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            dataset: [
+                {
+                    dimensions: ['name', 'value1', 'value2', 'value3'],
+                    source: [
+                        {name: 'aaa', 'value1': 20, 'value2': 45, 'value3': 65},
+                        {name: 'bbb', 'value1': 20, 'value2': 45, 'value3': 65},
+                        {name: 'ccc', 'value1': 20, 'value2': 45, 'value3': 65},
+                        {name: 'ddd', 'value1': 20, 'value2': 45, 'value3': 65}
+                    ]
+                }, {
+                    dimensions: ['product', '2015', '2016', '2017'],
+                    source: [
+                        {product: 'aaa2', '2015': 10, '2016': 30, '2017': 50},
+                        {product: 'bbb2', '2015': 10, '2016': 30, '2017': 50},
+                        {product: 'ccc2', '2015': 10, '2016': 30, '2017': 50},
+                        {product: 'ddd2', '2015': 10, '2016': 30, '2017': 50}
+                    ]
+                }
+            ],
+            xAxis: {},
+            yAxis: {type: 'category'},
+            series: [
+                {type: 'bar'},
+                {type: 'bar'},
+                {type: 'bar'},
+                {type: 'bar', datasetIndex: 1},
+                {type: 'bar', datasetIndex: 1},
+                {type: 'bar', datasetIndex: 1},
+            ]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+
+        // 事件
+        myChart.on('click', {seriesName: 'bar'}, function (params) {
+            console.log(params)
+        })
+    </script> -->
+
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: [
+                {
+                    subtext: '• 2020年春夏款式总数：22211款',
+                    left: 10,
+                    top: '90%',
+                    textStyle: {
+                        color: '#9899AD'
+                    }
+                }
+            ],
+            textStyle: {
+                color: '#9899AD'
+            },
+            backgroundColor: '#292F3E',
+            tooltip: {},
+            grid: [{
+                width: '45%',
+                height: '75%',
+                left: 70
+            }],
+            xAxis: {
+                // 坐标轴轴线
+                axisLine: {
+                    show: false
+                },
+                // 坐标轴刻度
+                axisTick: {
+                    show: false,
+                },
+                // 坐标轴刻度标签
+                axisLabel: {
+                    margin: 12
+                },
+                // 坐标轴在 grid 区域中的分隔线
+                splitLine: {
+                    lineStyle: {
+                        color: '#333947'
+                    }
+                }
+            },
+            yAxis: {
+                type: 'category',
+                axisLine: {
+                    show: false,
+                },
+                axisTick: {
+                    show: false,
+                },
+                axisLabel: {
+                    margin: 50,
+                    align: 'left',
+                }
+            },
+            graphic: [{
+                type: 'group',
+                left: '71%',
+                top: 'middle',
+                onclick: function (e) {
+                    console.log(e)
+                },
+                children: [
+                    {
+                        type: 'circle',
+                        z: 100,
+                        shape: {
+                            r: 50
+                        },
+                        style: {
+                            fill: '#292F3E'
+                        }
+                    },
+                    {
+                        type: 'text',
+                        z: 100,
+                        left: 'center',
+                        top: 'middle',
+                        style: {
+                            text: '色彩分类',
+                            fill: '#9899AD',
+                            font: '18px Microsoft YaHei'
+                        }
+                    }
+                ]
+            }],
+            dataset: [
+                {
+                    dimensions: ['product', 'count'],
+                    source: [
+                        {product: '衬衫', 'count': 5},
+                        {product: '羊毛衫', 'count': 10},
+                        {product: '雪纺衫', 'count': 15},
+                        {product: '裤子', 'count': 20},
+                        {product: '高跟鞋', 'count': 25},
+                        {product: '袜子', 'count': 30}
+                    ]
+                }, {
+                    dimensions: ['product', 'count'],
+                    source: [
+                        {product: '直接访问', 'count': 5, itemStyle: {color: '#fff'}},
+                        {product: '邮件营销', 'count': 10},
+                        {product: '联盟广告', 'count': 15},
+                        {product: '视频广告', 'count': 20},
+                        {product: '搜索引擎', 'count': 25}
+                    ]
+                }
+            ],
+            series: [
+                {
+                    name: 'bar',
+                    type: 'bar',
+                    barWidth: 12,
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'right',
+                            formatter: '{bg|{@count}}',
+                            rich: {
+                                bg: {
+                                    backgroundColor: {
+                                        image: './img/label.png'
+                                    },
+                                    color: '#fff',
+                                    align: 'center',
+                                    padding: [0, 0, 0, 5],
+                                    width: 50 - 5,
+                                    height: 24
+                                }
+                            }
+                        }
+                    },
+                    itemStyle: {
+                        barBorderRadius: 10,
+                        color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
+                            offset: 0,
+                            color: '#FC9E84'
+                        },
+                        {
+                            offset: 1,
+                            color: '#FF358A'
+                        }
+                        ])
+                    }
+                },
+                {
+                    name: '色彩分类',
+                    type: 'pie',
+                    radius: '40%',
+                    center: ['75%', '50%'],
+                    datasetIndex: 1,
+                    label: {
+                        fontSize: 12
+                    },
+                    labelLine: {
+                        length: 30,
+                        lineStyle: {
+                            color: '#9899AD'
+                        }
+                    },
+                    emphasis: {
+                        label: {
+                            color: '#fff',
+                        },
+                        labelLine: {
+                            lineStyle: {
+                                color: '#fff'
+                            }
+                        }
+                    }
+                }
+            ]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+
+        // 事件
+        myChart.on('click', {seriesName: 'bar'}, function (params) {
+            console.log(params)
+        })
+    </script>
+
+    <!-- <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        var colorList = [
+            "#1cd389",
+            "#668eff",
+            "#ffc751",
+            "#5bd1ff",
+            "#ff6e72",
+            "#16c1af",
+            "#9692ff",
+            "#1cd389"
+        ];
+
+        // 指定图表的配置项和数据
+        var option = {
+            tooltip: {},
+            xAxis: {
+                type: 'category'
+            },
+            yAxis: {},
+            color: ['#e54035'],
+            dataset: [
+                {
+                    dimensions: ['product', 'count', 'count2', 'count3'],
+                    source: [
+                        {product: '衬衫', 'count': 0, 'count2': 5, 'count3': 8},
+                        {product: '羊毛衫', 'count': 4, 'count2': 10, 'count3': 8},
+                        {product: '雪纺衫', 'count': 6, 'count2': 15, 'count3': 20},
+                        {product: '裤子', 'count': 8, 'count2': 20, 'count3': 5},
+                        {product: '高跟鞋', 'count': 10, 'count2': 25, 'count3': 5},
+                        {product: '袜子', 'count': 12, 'count2': 30, 'count3': 5}
+                    ]
+                }
+            ],
+            series: [{
+                type: 'pictorialBar',
+                barGap: '-50%',
+                barWidth: 36,
+                barMinHeight: 20,
+                symbol: 'path://M0,10 L10,10 C10,10 10,5 5,5 C0,5 0,10 0,10 z',
+                itemStyle: {
+                    opacity: 0.5,
+                    color: function (params) {
+                        return colorList[params.dataIndex]
+                    }
+                },
+                emphasis: {
+                    itemStyle: {
+                        opacity: 1
+                    }
+                },
+                label: {
+                    normal: {
+                        show: true,
+                        position: 'top',
+                        formatter: '{bg|{@count}%}',
+                        rich: {
+                            bg: {
+                                backgroundColor: 'rgba(41, 47, 62, 0.6)',
+                                color: '#fff',
+                                align: 'center',
+                                borderRadius: 5,
+                                padding: 5
+                            }
+                        }
+                    }
+                }
+            }, {
+                type: 'pictorialBar',
+                barGap: '-50%',
+                barWidth: 36,
+                barMinHeight: 20,
+                symbol: 'path://M0,10 L10,10 C10,10 10,5 5,5 C0,5 0,10 0,10 z',
+                itemStyle: {
+                    opacity: 0.5,
+                    color: function (params) {
+                        return colorList[params.dataIndex]
+                    }
+                },
+                emphasis: {
+                    itemStyle: {
+                        opacity: 1
+                    }
+                },
+                label: {
+                    normal: {
+                        show: true,
+                        position: 'top',
+                        formatter: '{bg|{@count2}%}',
+                        rich: {
+                            bg: {
+                                backgroundColor: 'rgba(41, 47, 62, 0.6)',
+                                color: '#fff',
+                                align: 'center',
+                                borderRadius: 5,
+                                padding: 5
+                            }
+                        }
+                    }
+                }
+            }, {
+                type: 'pictorialBar',
+                barGap: '-50%',
+                barWidth: 36,
+                barMinHeight: 20,
+                symbol: 'path://M0,10 L10,10 C10,10 10,5 5,5 C0,5 0,10 0,10 z',
+                itemStyle: {
+                    opacity: 0.5,
+                    color: function (params) {
+                        return colorList[params.dataIndex]
+                    }
+                },
+                emphasis: {
+                    itemStyle: {
+                        opacity: 1
+                    }
+                },
+                label: {
+                    normal: {
+                        show: true,
+                        position: 'top',
+                        formatter: '{bg|{@count3}%}',
+                        rich: {
+                            bg: {
+                                backgroundColor: 'rgba(41, 47, 62, 0.6)',
+                                color: '#fff',
+                                align: 'center',
+                                borderRadius: 5,
+                                padding: 5
+                            }
+                        }
+                    }
+                }
+            }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+
+        // 事件
+        myChart.on('click', {seriesName: 'bar'}, function (params) {
+            console.log(params)
+        })
+    </script> -->
+
+</html>

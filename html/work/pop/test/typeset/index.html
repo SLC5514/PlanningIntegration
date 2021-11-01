@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #app {
+      width: 1200px;
+      height: 1000px;
+    }
+    .box {
+      margin-left: 50px;
+      width: 100%;
+      height: 100%;
+      border: 1px solid blue;
+      position: relative;
+      cursor: pointer;
+    }
+    .box>div {
+      border: 1px solid orange;
+      background: rgba(215, 211, 218, 0.5);
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: default;
+    }
+    table {
+      cursor: pointer;
+    }
+    td {
+      cursor: default;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div class="box" ref="box" @mousemove="mousemoveFn" @mousedown="mousedownFn">
+      <div v-for="(v, i) in list" :style="{width: v.width + 'px', height: v.height + 'px', left: v.left + 'px', top: v.top + 'px'}">{{i}}</div>
+    </div>
+    <hr>
+    <table width="1200" height="1000" border="1" cellspacing="6">
+      <tr>
+        <td>1</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>4</td>
+      </tr>
+    </table>
+  </div>
+</body>
+<!-- <script charset="utf-8" type="text/javascript" src="https://jayasom.com/assets/javascripts/inner.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+<script>
+  var App = new Vue({
+    el: '#app',
+    data: {
+      margin: 3,
+      border: 1,
+      appSize: {
+        width: 1200,
+        height: 1000
+      },
+      ogSize: {
+        width: 250,
+        height: 200
+      },
+      mouseLocation: {
+        x: 0,
+        y: 0
+      },
+      startLocation: {
+        x: 0,
+        y: 0
+      },
+      borderLocation: {
+        x: 0,
+        y: 0,
+        ax: 0,
+        ay: 0
+      },
+      ranks: {
+        row: 0,
+        rowH: [],
+        col: 0,
+        colW: []
+      },
+      type: 2,
+      list: []
+    },
+    computed: {},
+    mounted() {
+      this.init();
+      console.log(this.list)
+    },
+    methods: {
+      init: function() {
+        switch (this.type) {
+          case 1: 
+            this.list.push({
+              width: this.appSize.width - this.margin*2,
+              height: this.appSize.height - this.margin*2,
+              left: this.margin - this.border,
+              top: this.margin - this.border
+            })
+            break;
+          case 2: 
+            this.ranks.row = 1;
+            this.ranks.col = 2;
+            this.ranks.rowH.push(this.appSize.height/this.ranks.row);
+            this.ranks.colW.push(this.appSize.width/this.ranks.col, this.appSize.width/this.ranks.col)
+            this.list.push({
+              width: this.appSize.width/this.ranks.col - this.margin*2,
+              height: this.appSize.height/this.ranks.row - this.margin*2,
+              left: (this.margin - this.border),
+              top: (this.margin - this.border)
+            }, {
+              width: this.appSize.width/this.ranks.col - this.margin*2,
+              height: this.appSize.height/this.ranks.row - this.margin*2,
+              left: this.appSize.width/this.ranks.col + (this.margin - this.border),
+              top: (this.margin - this.border)
+            })
+            break;
+          case 3: 
+            this.ranks.row = 2;
+            this.ranks.col = 2;
+            this.list.push({
+              width: this.appSize.width/this.ranks.col - this.margin*2,
+              height: this.appSize.height/this.ranks.row - this.margin*2,
+              left: (this.margin - this.border),
+              top: (this.margin - this.border)
+            }, {
+              width: this.appSize.width/this.ranks.col - this.margin*2,
+              height: this.appSize.height/this.ranks.row - this.margin*2,
+              left: this.appSize.width/this.ranks.col + (this.margin - this.border),
+              top: (this.margin - this.border)
+            }, {
+              width: this.appSize.width/this.ranks.col - this.margin*2,
+              height: this.appSize.height/this.ranks.row - this.margin*2,
+              left: (this.margin - this.border),
+              top: this.appSize.height/this.ranks.row + (this.margin - this.border)
+            }, {
+              width: this.appSize.width/this.ranks.col - this.margin*2,
+              height: this.appSize.height/this.ranks.row - this.margin*2,
+              left: this.appSize.width/this.ranks.col + (this.margin - this.border),
+              top: this.appSize.height/this.ranks.row + (this.margin - this.border)
+            })
+            break;
+          default: break;
+        }
+      },
+      mousedownFn: function(e) {
+        this.startLocation.x = e.clientX - this.$refs.box.offsetLeft;
+        this.startLocation.y = e.clientY - this.$refs.box.offsetTop;
+        // console.log(this.startLocation.x, this.startLocation.y)
+        if (this.type == 2) {
+          var xMLine = this.ranks.col + 1;
+          var yMLine = this.ranks.row + 1;
+          var xLineSun = 0, yLineSun = 0;
+          var areaCount = this.ranks.col*this.ranks.row;
+          this.borderLocation.x = 0;
+          this.borderLocation.y = 0;
+          // 边缘判断
+          for (var i = 0; i < xMLine; i++) {
+            if (i == 0) {
+              if (this.startLocation.x < this.margin) {
+                console.log('x' + i);
+                this.borderLocation.x = i + 1;
+              }
+            } else {
+              xLineSun = 0;
+              for (var j = 0; j < i; j++) {
+                xLineSun += this.ranks.colW[j];
+              }
+              if (this.startLocation.x > (xLineSun - (this.margin - this.border)) && this.startLocation.x < (xLineSun + (this.margin - this.border))) {
+                console.log('x' + i);
+                this.borderLocation.x = i + 1;
+              }
+            }
+          }
+          for (var i = 0; i < yMLine; i++) {
+            if (i == 0) {
+              if (this.startLocation.y < this.margin) {
+                console.log('y' + i);
+                this.borderLocation.y = i + 1;
+              }
+            } else {
+              yLineSun = 0;
+              for (var j = 0; j < i; j++) {
+                yLineSun += this.ranks.rowH[j];
+              }
+              if (this.startLocation.y > (yLineSun - (this.margin - this.border)) && this.startLocation.y < (yLineSun + (this.margin - this.border))) {
+                console.log('y' + i);
+                this.borderLocation.y = i + 1;
+              }
+            }
+          }
+          // 区域 判断
+          for (var i = 0; i < this.ranks.col; i++) {
+            xLineSun = 0;
+            for (var j = 0; j < i; j++) {
+              xLineSun += this.ranks.colW[i];
+            }
+            console.log(xLineSun)
+            // if (i == 0) {
+            //   if (this.startLocation.x > this.ranks.colW[i])
+            // } else {
+
+            // }
+          }
+
+          // if (this.startLocation.x < this.appSize.width/this.ranks.col) {
+          //   // console.log('x左块');
+          //   this.borderLocation.ax = 1;
+          // } else if (this.startLocation.x > this.appSize.width/this.ranks.col) {
+          //   // console.log('x右块');
+          //   this.borderLocation.ax = 2;
+          // }
+
+          // 边缘判断
+          // if (this.startLocation.x < this.margin) {
+          //   // console.log('x左');
+          //   this.borderLocation.x = 1;
+          // } else if (this.startLocation.x > (this.appSize.width/this.ranks.col - (this.margin - this.border)) && this.startLocation.x < (this.appSize.width/this.ranks.col + (this.margin - this.border))) {
+          //   // console.log('x中');
+          //   this.borderLocation.x = 2;
+          // } else if (this.startLocation.x > this.appSize.width - (this.margin - this.border)) {
+          //   // console.log('x右');
+          //   this.borderLocation.x = 3;
+          // } else {
+          //   this.borderLocation.x = 0;
+          // }
+          // if (this.startLocation.y < this.margin) {
+          //   // console.log('y上');
+          //   this.borderLocation.y = 1;
+          // }else if (this.startLocation.y > this.appSize.height - (this.margin - this.border)) {
+          //   // console.log('y下');
+          //   this.borderLocation.y = 2;
+          // } else {
+          //   this.borderLocation.y = 0;
+          // }
+          // 区域判断
+          // if (this.startLocation.x < this.appSize.width/this.ranks.col) {
+          //   // console.log('x左块');
+          //   this.borderLocation.ax = 1;
+          // } else if (this.startLocation.x > this.appSize.width/this.ranks.col) {
+          //   // console.log('x右块');
+          //   this.borderLocation.ax = 2;
+          // }
+          // // 边框判断
+          // if (this.borderLocation.x == 1 && this.borderLocation.ax == 1) {
+          //   console.log('x左');
+          // } else if (this.borderLocation.x == 2) {
+          //   console.log('x中');
+          // } else if (this.borderLocation.x == 3) {
+          //   console.log('x右');
+          // } else if (this.borderLocation.y == 1 && this.borderLocation.ax == 1) {
+          //   console.log('y上-x左');
+          // } else if (this.borderLocation.y == 2 && this.borderLocation.ax == 1) {
+          //   console.log('y下-x左');
+          // } else if (this.borderLocation.y == 1 && this.borderLocation.ax == 2) {
+          //   console.log('y上-x右');
+          // } else if (this.borderLocation.y == 2 && this.borderLocation.ax == 2) {
+          //   console.log('y下-x右');
+          // }
+        }
+        if (this.type == 3) {
+          // 边缘判断
+          if (this.startLocation.x < this.margin) {
+            // console.log('x左');
+            this.borderLocation.x = 1;
+          } else if (this.startLocation.x > (this.appSize.width/this.ranks.col - (this.margin - this.border)) && this.startLocation.x < (this.appSize.width/this.ranks.col + (this.margin - this.border))) {
+            // console.log('x中');
+            this.borderLocation.x = 2;
+          } else if (this.startLocation.x > this.appSize.width - (this.margin - this.border)) {
+            // console.log('x右');
+            this.borderLocation.x = 3;
+          } else {
+            this.borderLocation.x = 0;
+          }
+          if (this.startLocation.y < this.margin) {
+            // console.log('y上');
+            this.borderLocation.y = 1;
+          } else if (this.startLocation.y > (this.appSize.height/this.ranks.row - (this.margin - this.border)) && this.startLocation.y < (this.appSize.height/this.ranks.row + (this.margin - this.border))) {
+            // console.log('y中');
+            this.borderLocation.y = 2;
+          } else if (this.startLocation.y > this.appSize.height - (this.margin - this.border)) {
+            // console.log('y下');
+            this.borderLocation.y = 3;
+          } else {
+            this.borderLocation.y = 0;
+          }
+          // 区域判断
+          if (this.startLocation.x < this.appSize.width/this.ranks.col) {
+            // console.log('x左块');
+            this.borderLocation.ax = 1;
+          } else if (this.startLocation.x > this.appSize.width/this.ranks.col) {
+            // console.log('x右块');
+            this.borderLocation.ax = 2;
+          }
+          if (this.startLocation.y < this.appSize.height/this.ranks.row) {
+            // console.log('y上块');
+            this.borderLocation.ay = 1;
+          } else if (this.startLocation.y > this.appSize.height/this.ranks.row) {
+            // console.log('y下块');
+            this.borderLocation.ay = 2;
+          }
+          // 边框判断
+          if (this.borderLocation.x == 2 && this.borderLocation.y == 2) {
+            console.log('中心', '===');
+          } else if (this.borderLocation.x == 1 && this.borderLocation.ay == 1) {
+            console.log('x左-y上');
+          } else if (this.borderLocation.x == 2 && this.borderLocation.ay == 1) {
+            console.log('x中-y上');
+          } else if (this.borderLocation.x == 3 && this.borderLocation.ay == 1) {
+            console.log('x右-y上');
+          } else if (this.borderLocation.x == 1 && this.borderLocation.ay == 2) {
+            console.log('x左-y下');
+          } else if (this.borderLocation.x == 2 && this.borderLocation.ay == 2) {
+            console.log('x中-y下');
+          } else if (this.borderLocation.x == 3 && this.borderLocation.ay == 2) {
+            console.log('x右-y下');
+          } else if (this.borderLocation.y == 1 && this.borderLocation.ax == 1) {
+            console.log('y上-x左');
+          } else if (this.borderLocation.y == 2 && this.borderLocation.ax == 1) {
+            console.log('y中-x左');
+          } else if (this.borderLocation.y == 3 && this.borderLocation.ax == 1) {
+            console.log('y下-x左');
+          } else if (this.borderLocation.y == 1 && this.borderLocation.ax == 2) {
+            console.log('y上-x右');
+          } else if (this.borderLocation.y == 2 && this.borderLocation.ax == 2) {
+            console.log('y中-x右');
+          } else if (this.borderLocation.y == 3 && this.borderLocation.ax == 2) {
+            console.log('y下-x右');
+          }
+        }
+      },
+      mousemoveFn: function(e) {
+        this.mouseLocation.x = e.clientX - this.$refs.box.offsetLeft;
+        this.mouseLocation.y = e.clientY - this.$refs.box.offsetTop;
+      },
+    },
+  })
+</script>
+</html>

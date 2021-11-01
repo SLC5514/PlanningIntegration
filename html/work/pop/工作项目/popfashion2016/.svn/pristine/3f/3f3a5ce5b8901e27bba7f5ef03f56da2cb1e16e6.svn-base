@@ -1,0 +1,179 @@
+<div>
+	<div class="">
+		<ul class="select_items paixu fl clearfix">
+			{if isset($iSeason) && !empty($iSeason)}
+			<li class="pli">
+				<span class="aspan">季节<i class="nav-icon"></i></span>
+				<div class="showbox short-sum">
+					<div class="dateHeight contentHolder">
+						<div class="content">
+							{foreach $iSeason as $key=>$season}
+							<a href="{$season.link}" class="{if $key != 0}borderTop{/if}" title="{$season.name}">{$season.name}</a>
+							{/foreach}
+						</div>
+					</div>	
+				</div>
+			</li>
+			{/if}
+			{if isset($iNo) && !empty($iNo)}
+			<li class="pli">
+				<span  class="aspan">期数<i class="nav-icon"></i></span>
+				<div class="showbox short-sum">
+					<div class="dateHeight contentHolder">
+						<div class="content">
+							{foreach $iNo as $key=>$val}
+							<a class="clickme {if $key != 0}borderTop{/if}" href="{$val.link}" title="{$val.name}">{$val.name}</a>
+							{/foreach}
+						</div>
+					</div>
+				</div>
+			</li>
+			{/if}
+			{if !empty($iRelationTheme)}
+			<li class="pli trends-hot-icon">
+				<span  class="aspan">趋势专题<i class="nav-icon"></i></span>
+				<div class="showbox category_box trend_box">
+					<div class="category_div contentHolder ps-container">
+						<div class="content">
+							{foreach $iRelationTheme as $key => $val}
+							<dl class="category_dl active_dl clearfix">
+								<dt><a href="{$val.link}" title="{$val['name']}">{$val['name']}<i></i></a></dt>
+								<dd class="{if $key != count($iRelationTheme)-1} border-bottom {/if}">
+									{if is_array($val['attrs'])}
+									{foreach $val['attrs'] as $k => $v}
+									<a class="clickme {if empty({$v.link})} default_cur {/if}" href="{$v.link}" title="{$v['name']}">{$v['name']}</a>
+									{/foreach}
+									{/if}
+								</dd>
+							</dl>
+							{/foreach}
+						</div>
+					</div>
+				</div>
+			</li>
+			{/if}
+			{if !empty($categorys)}
+			<li class="pli">
+				<span class="aspan">单品<i class="nav-icon"></i></span>
+				<div class="showbox category_box">
+					<div class="category_div contentHolder ps-container">
+						<div class="content">
+							{foreach $categorys as $key=>$category}
+							<dl class="category_dl clearfix {if $key < count($categorys)-1}border-bottom{/if}">
+								<dt><a class="clickme" href="{$category.link}" title="{$category.name}" onclick="return oCommon.clickBeforeFlicker(this);">{$category.name}</a></dt>
+								{if isset($category.subcategorys)}
+								<dd>
+								{foreach $category.subcategorys as $key=>$subcategory}
+								<a class="clickme" href="{$subcategory.link}" title="{$subcategory.name}" onclick="return oCommon.clickBeforeFlicker(this);">{$subcategory.name}</a>
+								{/foreach}
+								</dd>
+								{/if}
+							</dl>
+							{/foreach}
+						</div>
+					</div>
+				</div>
+			</li>
+			{/if}
+			{if isset($topicTypes) && !empty($topicTypes)}
+			<li class="pli">
+				<span  class="aspan">主题类型<i class="nav-icon"></i></span>
+				<div class="showbox showDate short-sum">
+					<div class="dateHeight contentHolder">
+						<div class="content">
+							{foreach $topicTypes as $key=>$topicType}
+							<a class="clickme {if $key != 0}borderTop{/if}" href="{$topicType.link}" title="{$topicType.name}">{$topicType.name}</a>
+							{/foreach}
+						</div>
+					</div> 
+				</div>
+			</li>
+			{/if}
+			{if isset($iTechnologyType) && !empty($iTechnologyType)}
+			<li class="pli">
+				<span  class="aspan">工艺类型<i class="nav-icon"></i></span>
+				<div class="showbox short-sum">
+					<div class="dateHeight contentHolder">
+						<div class="content">
+							{foreach $iTechnologyType as $key=>$val}
+							<a class="clickme {if $key != 0}borderTop{/if}" href="{$val.link}" title="{$val.name}">{$val.name}</a>
+							{/foreach}
+						</div>
+					</div>
+				</div>
+			</li>
+			{/if}
+			{if isset($sRegionalStyle) && !empty($sRegionalStyle)}
+			<li class="pli">
+				<span  class="aspan">地域风格<i class="nav-icon"></i></span>
+				<div class="showbox short-sum">
+					<div class="dateHeight contentHolder">
+						<div class="content">
+							{foreach $sRegionalStyle as $key=>$regionalStyle}
+							<a class="clickme {if $key != 0}borderTop{/if}" href="{$regionalStyle.link}" title="{$regionalStyle.name}">{$regionalStyle.name}</a>
+							{/foreach}
+						</div>
+					</div>
+				</div>
+			</li>
+			{/if}
+			{if !empty($sGender) && !isset($paramsArr['gcen'])}
+			<li class="pli">
+			    <span  class="aspan">男童/女童<i class="nav-icon"></i></span>
+			    <div class="showbox showDate short-sum">
+			        <div class="dateHeight contentHolder">
+			            <div class="content">
+			                {foreach $sGender as $key=>$gender}
+			                <a class="clickme {if $key != 0}borderTop{/if}" href="{$gender.link}" onclick="return oCommon.clickBeforeFlicker(this);" title="{$gender.name}">{$gender.name}</a>
+			                {/foreach}
+			            </div>
+			        </div>
+			    </div>
+			</li>
+			{/if}
+			{if isset($sAgeLayer) && !empty($sAgeLayer)}
+			<li class="pli">
+				<span  class="aspan">年龄层<i class="nav-icon"></i></span>
+				<div class="showbox short-sum">
+					<div class="dateHeight contentHolder">
+						<div class="content">
+							{foreach $sAgeLayer as $key=>$ageLayer}
+							<a class="clickme {if $key != 0}borderTop{/if}" href="{$ageLayer.link}" title="{$ageLayer.name}">{$ageLayer.name}</a>
+							{/foreach}
+						</div>
+					</div>
+				</div>
+			</li>
+			{/if}
+			{if isset($sManner) && !empty($sManner)}
+			<li class="pli">
+				<span  class="aspan">风格<i class="nav-icon"></i></span>
+				<div class="showbox short-sum">
+					<div class="dateHeight contentHolder">
+						<div class="content">
+							{foreach $sManner as $key=>$val}
+							<a class="clickme {if $key != 0}borderTop{/if}" href="{$val.link}" title="{$val.name}">{$val.name}</a>
+							{/foreach}
+						</div>
+					</div>
+				</div>
+			</li>
+			{/if}
+		</ul>
+	</div>
+	<div class="vis">
+		<h3>视角筛选</h3>
+		<ul>
+			{foreach $sVisualAngle as $key => $val}
+			<li class="li_click {if isset($paramsArr['vis']) && $paramsArr['vis'] == $val['id'] || (!isset($paramsArr['vis']) && $val['id'] == 0)}cur{/if}">
+			<div class="next-btn-hover"></div>
+			<a  class="click_a" href="{$val.link}" title="{$val.name}"><span>{$val.name}</span><i></i></a>
+			</li>
+			{/foreach}
+		</ul>
+	</div>
+	<div class="other">
+		<input type="hidden" name="hidd"/>
+		<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/select_items.js?{STATIC_CHANGE_TIME}"></script>
+	</div>
+</div>

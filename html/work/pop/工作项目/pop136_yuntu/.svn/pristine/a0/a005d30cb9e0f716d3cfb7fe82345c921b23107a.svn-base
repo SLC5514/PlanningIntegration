@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<app>
+    <name>云图</name>
+    <version>2.0</version>
+    <ios>5.3.7</ios>
+    <android>1.0.7</android>
+    <forceUp>false</forceUp>
+</app>

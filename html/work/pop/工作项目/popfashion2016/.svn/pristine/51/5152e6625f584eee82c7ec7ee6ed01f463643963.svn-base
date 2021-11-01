@@ -1,0 +1,324 @@
+{extends file="layout.html"}"
+
+{block name="title"}MOS-18春夏男|女|童装色彩/图案趋势报告-POP服装趋势网{/block}
+{block name=keywords}MOS-18春夏男、女装色彩/图案趋势报告,MOS-18春夏男、女童图案趋势报告{/block}
+{block name=description}MOS-18春夏服装色彩和图案趋势报告共融四大趋势主题：寻找五维空间、FEMLEISURE、主官幻觉、重拾繁荣。价格：3800元/本，订购热线：4008210500。{/block}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/topic/20161227/css/index.css?{STATIC_CHANGE_TIME}">
+{/block}
+
+{block name="main"}
+<div itemscope class="b_contain">
+    <div itemscope class="b_banner">
+        <div itemscope class="widthx750">
+            <div itemscope class="btop_1">
+                <img itemprop="thumbnail" src="{STATIC_URL2}/global/topic/20161227/images/big_title.png">
+                <h1>共融</h1>
+                <h2>共同融合、共同繁荣、四大趋势主题</h2>
+            </div>
+            <div itemscope class="btop_2">
+                <img itemprop="thumbnail" src="{STATIC_URL2}/global/topic/20161227/images/clock.png">
+            </div>
+            <div itemscope class="btop_3">
+                <img itemprop="thumbnail" src="{STATIC_URL2}/global/topic/20161227/images/price_cot.png">
+            </div>
+        </div>
+    </div>
+    <div itemscope class="book_lists">
+        <div itemscope class="widthx1200">
+            <div class="layer_alp"></div>
+            <div itemscope class="bcontent_1">
+                <div class="book_cover">
+                    <div itemscope class="b_book1 effect1">
+                        <div itemscope class="book1_bg" title="MOS-18春夏女装色彩趋势报告">
+                            <div itemscope class="book1_font">
+                                <p itemprop="name" class="b_title">《MOS-18春夏女装色彩趋势报告》</p>
+                                <p itemprop="name" class="b_des b_des1">18春夏女装研发必备，色彩趋势权威指导书！</p>
+                                <p itemprop="name" class="b_des">色彩趋势丨色彩搭配丨灵感源泉 款式应用</p>
+                            </div>
+                            <div itemscope class="book_img">
+                                <img itemprop="thumbnail" src="{STATIC_URL2}/global/topic/20161227/images/book1.png"
+                                    alt="MOS-18春夏女装色彩趋势报告">
+                            </div>
+                        </div>
+                    </div>
+                    <div itemscope class="b_book1 effect2">
+                        <div itemscope class="book1_bg" title="MOS-18春夏女装图案趋势报告">
+                            <div itemscope class="book1_font">
+                                <p itemprop="name" class="b_title">《MOS-18春夏女装图案趋势报告》</p>
+                                <p itemprop="name" class="b_des b_des1">18春夏大牌矢量手稿，热门爆款图案花型！</p>
+                                <p itemprop="name" class="b_des">图案趋势丨元素延展丨款式应用工艺样片丨图案素材丨矢量图稿</p>
+                            </div>
+                            <div itemscope class="book_img">
+                                <img itemprop="thumbnail" src="{STATIC_URL2}/global/topic/20161227/images/book2.png"
+                                    alt="MOS-18春夏女装图案趋势报告">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="book_content">
+                    <div class="indexdiv" id="indexdiv1">
+                        <div class="close_btn"></div>
+                        <ul>
+                            <li><img src="{STATIC_URL2}/global/topic/20161227/images/ws_img1.jpg"></li>
+                            <li><img src="{STATIC_URL2}/global/topic/20161227/images/ws_img2.jpg"></li>
+                            <li><img src="{STATIC_URL2}/global/topic/20161227/images/ws_img3.jpg"></li>
+                            <li><img src="{STATIC_URL2}/global/topic/20161227/images/ws_img4.jpg"></li>
+                            <li><img src="{STATIC_URL2}/global/topic/20161227/images/ws_img5.jpg"></li>
+                            <li><img src="{STATIC_URL2}/global/topic/20161227/images/ws_img6.jpg"></li>
+                        </ul>
+                    </div>
+                    <div class="indexdiv" id="indexdiv2">
+                        <div class="close_btn"></div>
+                        <ul>
+                            <li><img src="{STATIC_URL2}/global/topic/20161227/images/wt_img1.jpg"></li>
+                            <li><img src="{STATIC_URL2}/global/topic/20161227/images/wt_img2.jpg"></li>
+                            <li><img src="{STATIC_URL2}/global/topic/20161227/images/wt_img3.jpg"></li>
+                            <li><img src="{STATIC_URL2}/global/topic/20161227/images/wt_img4.jpg"></li>
+                            <li><img src="{STATIC_URL2}/global/topic/20161227/images/wt_img5.jpg"></li>
+                            <li><img src="{STATIC_URL2}/global/topic/20161227/images/wt_img6.jpg"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div itemscope class="bcontent_2">
+                <div class="book_cover">
+                    <div itemscope class="b_book1 effect3">
+                        <div itemscope class="book1_bg" title="MOS-18春夏男装色彩趋势报告">
+                            <div itemscope class="book1_font">
+                                <p itemprop="name" class="b_title">《MOS-18春夏男装色彩趋势报告》</p>
+                                <p itemprop="name" class="b_des b_des1">18春夏男装研发必备，色彩趋势权威指导书！</p>
+                                <p itemprop="name" class="b_des">色彩趋势丨色彩搭配丨灵感源泉款式应用</p>
+                            </div>
+                            <div itemscope class="book_img">
+                                <img itemprop="thumbnail" src="{STATIC_URL2}/global/topic/20161227/images/book3.png"
+                                    alt="MOS-18春夏男装色彩趋势报告">
+                            </div>
+                        </div>
+                    </div>
+                    <div itemscope class="b_book1 effect4">
+                        <div itemscope class="book1_bg" title="MOS-18春夏男装图案报告">
+                            <div itemscope class="book1_font">
+                                <p itemprop="name" class="b_title">《MOS-18春夏男装图案报告》</p>
+                                <p itemprop="name" class="b_des b_des1">最具前瞻度男装图案，帮你打造潮流爆款！</p>
+                                <p itemprop="name" class="b_des">图案趋势丨元素延展丨款式应用工艺样片丨图案素材丨矢量图稿</p>
+                            </div>
+                            <div itemscope class="book_img">
+                                <img itemprop="thumbnail" src="{STATIC_URL2}/global/topic/20161227/images/book4.png"
+                                    alt="MOS-18春夏男装图案报告">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="book_content">
+                    <div class="indexdiv" id="indexdiv3">
+                        <div class="close_btn"></div>
+                        <ul>
+                            <li><img src="{STATIC_URL2}/global/topic/20161227/images/ns_img1.jpg"></li>
+                            <li><img src="{STATIC_URL2}/global/topic/20161227/images/ns_img2.jpg"></li>
+                            <li><img src="{STATIC_URL2}/global/topic/20161227/images/ns_img3.jpg"></li>
+                            <li><img src="{STATIC_URL2}/global/topic/20161227/images/ns_img4.jpg"></li>
+                            <li><img src="{STATIC_URL2}/global/topic/20161227/images/ns_img5.jpg"></li>
+                            <li><img src="{STATIC_URL2}/global/topic/20161227/images/ns_img6.jpg"></li>
+                        </ul>
+                    </div>
+                    <div class="indexdiv" id="indexdiv4">
+                        <div class="close_btn"></div>
+                        <ul>
+                            <li><img src="{STATIC_URL2}/global/topic/20161227/images/nt_img1.jpg"></li>
+                            <li><img src="{STATIC_URL2}/global/topic/20161227/images/nt_img2.jpg"></li>
+                            <li><img src="{STATIC_URL2}/global/topic/20161227/images/nt_img3.jpg"></li>
+                            <li><img src="{STATIC_URL2}/global/topic/20161227/images/nt_img4.jpg"></li>
+                            <li><img src="{STATIC_URL2}/global/topic/20161227/images/nt_img5.jpg"></li>
+                            <li><img src="{STATIC_URL2}/global/topic/20161227/images/nt_img6.jpg"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div itemscope class="bcontent_3">
+                <div class="book_cover">
+                    <div itemscope class="b_book1 effect5">
+                        <div itemscope class="book1_bg" title="MOS-18春夏女童装图案趋势报告">
+                            <div itemscope class="book1_font">
+                                <p itemprop="name" class="b_title">《MOS-18春夏女童图案趋势报告》</p>
+                                <p itemprop="name" class="b_des b_des1">海外最新大牌童装提炼，童装市场未来热卖！</p>
+                                <p itemprop="name" class="b_des">海外市场提炼丨四大主题方向高清图案素材丨款式工艺细节</p>
+                            </div>
+                            <div itemscope class="book_img">
+                                <img itemprop="thumbnail" src="{STATIC_URL2}/global/topic/20161227/images/book5.png"
+                                    alt="MOS-18春夏女童装图案趋势报告">
+                            </div>
+                        </div>
+                    </div>
+                    <div itemscope class="b_book1 effect6">
+                        <div itemscope class="book1_bg" title="MOS-18春夏男童装图案趋势报告">
+                            <div itemscope class="book1_font">
+                                <p itemprop="name" class="b_title">《MOS-18春夏男童图案趋势报告》</p>
+                                <p itemprop="name" class="b_des b_des1">海外最新大牌童装提炼，童装市场未来热卖！</p>
+                                <p itemprop="name" class="b_des">海外市场提炼丨四大主题方向高清图案素材丨款式工艺细节</p>
+                            </div>
+                            <div itemscope class="book_img">
+                                <img itemprop="thumbnail" src="{STATIC_URL2}/global/topic/20161227/images/book6.png"
+                                    alt="MOS-18春夏男童装图案趋势报告">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="book_content">
+                    <div class="indexdiv" id="indexdiv5">
+                        <div class="close_btn"></div>
+                        <ul>
+                            <li><img src="{STATIC_URL2}/global/topic/20161227/images/wc_img1.jpg"></li>
+                            <li><img src="{STATIC_URL2}/global/topic/20161227/images/wc_img2.jpg"></li>
+                            <li><img src="{STATIC_URL2}/global/topic/20161227/images/wc_img3.jpg"></li>
+                            <li><img src="{STATIC_URL2}/global/topic/20161227/images/wc_img4.jpg"></li>
+                            <li><img src="{STATIC_URL2}/global/topic/20161227/images/wc_img5.jpg"></li>
+                            <li><img src="{STATIC_URL2}/global/topic/20161227/images/wc_img6.jpg"></li>
+                        </ul>
+                    </div>
+                    <div class="indexdiv" id="indexdiv6">
+                        <div class="close_btn"></div>
+                        <ul>
+                            <li><img src="{STATIC_URL2}/global/topic/20161227/images/nc_img1.jpg"></li>
+                            <li><img src="{STATIC_URL2}/global/topic/20161227/images/nc_img2.jpg"></li>
+                            <li><img src="{STATIC_URL2}/global/topic/20161227/images/nc_img3.jpg"></li>
+                            <li><img src="{STATIC_URL2}/global/topic/20161227/images/nc_img4.jpg"></li>
+                            <li><img src="{STATIC_URL2}/global/topic/20161227/images/nc_img5.jpg"></li>
+                            <li><img src="{STATIC_URL2}/global/topic/20161227/images/nc_img6.jpg"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div itemscope class="b_footer">
+        <div itemscope class="widthx820">
+            <div class="f_con clearfix">
+                <div itemscope class="left_brack fl">
+                    <img itemprop="thumbnail" src="{STATIC_URL2}/global/topic/20161227/images/k_l.png">
+                </div>
+                <div itemscope class="b_f_font fl">
+                    <p itemprop="name" class="first_p">MOS系列趋势指导书籍即将开售，敬请期待！</p>
+                    <p itemprop="name" class="sec_p">18春夏趋势所见即所得，服装企业不容错过！</p>
+                    <p itemprop="name" class="th_p">咨询热线: <span>4008-210-500</span></p>
+                </div>
+                <div itemscope class="right_brack fl">
+                    <img itemprop="thumbnail" src="{STATIC_URL2}/global/topic/20161227/images/k_r.png">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{include file="topic/topic_layer.html"}
+{/block}
+
+{block name="self"}
+{literal}
+<script>
+    $(function () {
+        ; (function ($) {
+            $.fn.fanye = function (options) {
+                var defaultVal = {};
+                var obj = $.extend(defaultVal, options);
+                return this.each(function () {
+                    var sel = $(this);
+                    var lisel = sel.find("li");
+                    var liLen = lisel.length;
+                    var display = $(".indexdiv").css('display');
+                    var t = 200;
+                    var s = 100;
+                    var num = 0;
+                    var pcur = $(".indexdiv");
+                    var imgwidth = $(".indexdiv").width();
+                    $('body').on('mousemove', '.indexdiv', function (e) {
+                        e = e || window.event;
+                        var x = e.offsetX;
+                        if (x > (imgwidth / 2) && x < imgwidth) {
+                            pcur.addClass('img_right');
+                            pcur.removeClass('img_left');
+                        } else if (x > 0 && x <= (imgwidth / 2)) {
+                            pcur.addClass('img_left');
+                            pcur.removeClass('img_right');
+                        }
+                    });
+                    lisel.eq(0).show();
+                    sel.on('click', function (e) {
+                        e = e || window.event;
+                        var x = e.offsetX;
+                        if (x > (imgwidth / 2) && x < imgwidth) {
+                            num++;
+                            if (num >= liLen) {
+                                num = 0;
+                            }
+                            lisel.eq(num).fadeIn(t).siblings('li').fadeOut(s);
+                        } else if (x > 0 && x <= (imgwidth / 2)) {
+                            num--;
+                            if (num < 0) {
+                                num = liLen - 1;
+                            }
+                            lisel.eq(num).fadeIn(t).siblings('li').fadeOut(s);
+                        }
+                    });
+                });
+            }
+        })(jQuery);
+        function scrollFn() {
+            var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            if (scrollTop > -1 && scrollTop < 500) {
+                $(".b_banner").addClass('b_begin');
+                var timer2 = setTimeout(function () {
+                    $(".btop_2").addClass('animation2');
+                }, 1000)
+                var timer3 = setTimeout(function () {
+                    $(".btop_3").addClass('animation3');
+                }, 1500);
+                var timer2 = setTimeout(function () {
+                    $(".btop_2").addClass('animation1');
+                }, 3000)
+            }
+            if (scrollTop > 500 && scrollTop < 900) {
+                $(".effect1").stop().animate({ 'left': '0' }, 500);
+                $(".effect2").stop().animate({ 'right': '155px' }, 500);
+            }
+            if (scrollTop > 900 && scrollTop < 1300) {
+                $(".effect3").stop().animate({ 'left': '0' }, 500);
+                $(".effect4").stop().animate({ 'right': '155px' }, 500);
+            }
+            if (scrollTop > 1300 && scrollTop < 1700) {
+                $(".effect5").stop().animate({ 'left': '0' }, 500);
+                $(".effect6").stop().animate({ 'right': '155px' }, 500);
+            }
+        }
+        scrollFn();
+        $(window).scroll(function () {
+            scrollFn()
+        });
+        var b_book = $(".b_book1");
+        var layer = $(".layer_alp");
+        var indexdiv = $(".indexdiv");
+        var close = $(".close_btn");
+        b_book.on('click', function () {
+            var self = $(this);
+            var index = self.index();
+            var indexdiv = self.parent().siblings('.book_content').find('.indexdiv');
+            indexdiv.eq(index).show();
+            layer.show();
+        });
+        close.on('click', function (e) {
+            e = e || window.event;
+            indexdiv.hide();
+            layer.hide();
+            e.stopPropagation();
+        });
+        $("#indexdiv1").fanye();
+        $("#indexdiv2").fanye();
+        $("#indexdiv3").fanye();
+        $("#indexdiv4").fanye();
+        $("#indexdiv5").fanye();
+        $("#indexdiv6").fanye();
+    });
+</script>
+{/literal}
+{/block}

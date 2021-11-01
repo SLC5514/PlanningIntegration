@@ -1,0 +1,704 @@
+{extends file="layout.html"}
+{block name="title"}以图搜图搜索结果-POP服装趋势网{/block}
+{block name=keywords}POP识图,以图搜图,图像检索,图像识别,图片识别,图片搜索,图像搜索,识图,搜图,找图,找款,服装款式图片{/block}
+{block name=description}POP服装趋势网以图搜图、图像搜索系统，拥有时尚行业领先的智能图像识别技术，上传对应服饰行业图片，为你搜寻类似服饰图款，快速找款，省时省力。{/block}
+{block name="selfcss"}
+	<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/per.css?{STATIC_CHANGE_TIME}">
+	<style>
+		.search_cont_top .search_cont_r{ width: 80%;height: 80px;}
+		.search_cont_top .search_cont_r input[type="text"]{ width: 728px !important;}
+		.search_listDown{ position: absolute;top: 65px;width: 728px;}
+		.search_listDown .menu, .search_listDown .hot-menu{ width: 100%;}
+		.search_cont_top .search_cont_r .heae-user{ position: absolute;top: 28px;right: 0;}
+		@media screen and (min-width:1500px) {
+			.search_cont_top .search_cont_r{ width: 83%;}
+			.search_cont_top .search_cont_r input[type="text"]{ width: 1006px !important;}
+			.search_listDown{ width: 1006px;}
+		}
+	</style>
+{/block}
+{block name="header"}{/block}
+{block name="main"}
+	<div id='html_controller'>
+		<div style="background: #fff;">
+			<div class="con_width" class="js-con_width">
+				{include file="common/search_head.html"}
+			</div>
+			<!-- 下拉 -->
+			<div class="head_slide js-head-slide">
+				<div class="slide_main">
+					<div class="fl">
+						<a href="/"><img src="{STATIC_URL2}/global/images/lists/nav_logo.png?{STATIC_CHANGE_TIME}"></a>
+					</div>
+					<div class="screen-btn js-screen-btn">
+						<span>筛选</span>
+						<i></i>
+						<div class="screen-list">
+							<i></i>
+							<div class="screen-item clearfix">
+								<div class="item-left js-sCategory-head"><a>款式</a></div>
+								<div class="item-right js-sCategory">
+									
+								</div>
+							</div>
+							<div class="screen-item clearfix" style="margin-bottom: 0;">
+								<div class="item-left js-sPatternContent-head"><a>图案</a></div>
+								<div class="item-right js-sPatternContent">
+									
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="screen_text">
+						<input id="search_box1" class="js-search-ipt" data-staut="1" value="" placeholder="搜索你想要的" οnfοcus="this.placeholder=''" οnblur="this.placeholder='搜索你想要的'" growing-track="true" type="text"  autocomplete='off'>
+						<!-- 历史记录 -->
+						<div class="search_listDown" style="width: 100%;">
+							<div class="menu"></div>
+							<div class="hot-menu">
+								<div class="menu-hot-list">
+									<div class="label js-history-label">历史记录<div class="fr"><span class="operat js-clear-operat">清除记录</span></div></div>
+									<ul class="history-list"></ul>
+									<div class="label">热门搜索</div>
+									<ul class="hot-list"></ul>
+								</div>
+							</div>
+							<!-- <div class="look-brand-box">
+								<a class="look-all-brand js-look-all-brand" href="javascript:void(0)" title="查看所有品牌">查看所有品牌<em></em></a>
+							</div> -->
+						</div>
+						<a href="/Colorsearch/" class="sea-color"></a>
+						<!-- 上传图片 -->
+						<div class="files js-figure-btn"></div>
+						<!-- 上传图片end -->
+						<div class="search-filesImg" style="display: none;">
+							<img src=""/>
+						</div>
+						<div class="btn_icon js-search-btn"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		{if !$canUse}{* 普通用户次数用完的情况*}
+		<div class="authority-bg">
+			<div class="authority-main">
+				<span class="main-h1">普通用户拥有20次体验机会，当前账号已经耗尽！</span>
+				<span class="main-h2">想体验更多次数，拨打<label>4008-210-500</label>联系在线客服</span>
+				<span class="main-btn js-contact-qq-btn">联系客服 快速开通VIP试用账号</span>
+			</div>
+			<input type="hidden" value="1" id="fre"/>
+		</div>
+		{else}
+			{if $trialInfo}
+			<div class="free-times">
+				<div class="times-txt">
+					当前账号为普通用户，拥有<span>20</span>次免费体验机会，还剩余<span>{$trialInfo.free}</span>次机会
+				</div>
+			</div>
+			{/if}
+			{* 可以正常访问的情况 *}
+			<!-- 有数据 -->
+			<div class="js-screen">
+				<div class="screen">
+					<div class="screen-btn js-screen-btn">
+						<span>筛选</span>
+						<i></i>
+						<div class="screen-list">
+							<i></i>
+							<div class="screen-item clearfix">
+								<div class="item-left js-sCategory-head"><a>款式</a></div>
+								<div class="item-right js-sCategory">
+									<!-- <span><a data-id="{$val['id']}" href="{$val['link']}">{$val['name']}</a></span> -->
+								</div>
+							</div>
+							<div class="screen-item clearfix" style="margin-bottom: 0;">
+								<div class="item-left js-sPatternContent-head"><a>图案</a></div>
+								<div class="item-right js-sPatternContent">
+									<!-- <span><a data-id="{$val['id']}" href="{$val['link']}">{$val['name']}</a></span> -->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="moving-water clearfix">
+					<div class="moving-list js-moving-list clearfix">
+					</div>
+					<div class="data-load js-data-load">
+						<img src="{STATIC_URL2}/global/images/styles_page/loading.gif?{STATIC_CHANGE_TIME}"/>
+					</div>
+				</div>
+			</div>
+			<!-- 无数据 -->
+			<div class="no-data js-no-data" style="display: none;">
+				<div class="no-data-box">
+					<img src="{STATIC_URL2}/global/images/common/search-result.png?{STATIC_CHANGE_TIME}"/>
+					<span class="img-text">抱歉没有找到符合条件的内容</span>
+					<div class="dividing"></div>
+					<span class="qq-text">如有其他疑问，请联系您的专属资讯秘书为您服务：</span>
+					<a class="qq-btn js-contact-qq-btn">QQ咨询</a>
+					<span class="tpl">小秘书热线：<label>4008-210-662</label></span>
+				</div>
+			</div>
+			<!-- 未上传图片 -->
+			<div class="upload-img js-upload-img" style="display: none;">
+				<div class="upload-box">
+					<div class="upload-btn js-figure-btn">上传图片</div>
+					<span>上传图片以后可以进行以图搜图</span>
+				</div>
+			</div>
+			<!-- 切图层 -->
+			<div class="firework js-firework" style="visibility: hidden;">
+				<img src="" style="visibility: hidden;">
+				<div class="firework-img js-firework-img">
+
+				</div>
+				<div class="edit-btn js-edit-btn"><i></i>框选主体</div>
+				<div class="firework-btn js-firework-btn">
+					<span class="cancel">取消</span>
+					<span class="save">确定</span>
+				</div>
+			</div>
+			<!-- 上传图片load -->
+			<div class="upload-load js-upload-load" style="display: none;">
+				<img src="{STATIC_URL2}/global/images/styles_page/loading.gif?{STATIC_CHANGE_TIME}"/>
+				<span>正在努力上传图片…</span>
+			</div>
+		{/if}
+	</div>
+	<!-- 切换账号验证弹层 -->
+    <div class="switch-box js-switch-box" style="display: none;">
+        <div class="loginClose js-loginClose"></div>
+        <div class="login-title">
+            <span>请先进行身份验证</span>
+        </div>
+        <div class="login-main">
+            <p class="errorbox errorbox3" style="top:0px;"></p>
+            <ul>
+                <li><input class="js-account" type="text" placeholder="请输入手机号"/></li>
+                <li>
+                    <input class="js-switch-code" type="text" placeholder="请输入验证码"/>
+                    <span class="code-btn js-code-btn1">获取验证码</span>
+                </li>
+                <li class="l_drag border-none" style="padding-top: 15px;border: none;position: relative;">
+                    <div class="code_btn js-click-btn" data-cla=".js-puzzle-drag-content5" data-stu="1">点击按钮完成图形验证</div>
+                    <div class="puzzle-drag-wraper js-drag-show" style="display: none;">
+                        <s class="drag-s"></s>
+                        <t class="drag-t"></t>
+                        <div class="puzzle-drag-content js-puzzle-drag-content5">
+                            <div class="drag-title clearfix">
+                                <span>为保证你的账户安全，请先完成图形验证</span>
+                                <span class="close js-close"></span>
+                                <span class="change js-change"><i></i>换一换</span>
+                            </div>
+                            <div class="puzzle-img-box">
+                                <div class="puzzle-img js-puzzle-img">
+                                    <img>
+                                </div>
+                                <div class="puzzle-lost js-puzzle-lost">
+                                    <img>
+                                </div>
+                            </div>
+                            <div class="drag-slide-nav">
+                                <div class="drag-slide-text">
+                                    <div class="drag-slide-left"></div>
+                                    <div class="drag-slide-center">向右滑动完成拼图</div>
+                                    <div class="drag-slide-right"></div>
+                                </div>
+                                <div class="drag-slide-bar js-drag-slide-bar">
+                                    <div class="drag-slide-bar-left"></div>
+                                    <div class="drag-slide-bar-center"></div>
+                                    <div class="drag-slide-bar-right"></div>
+                                </div>
+                                <div class="drag-slide-btn js-drag-slide-btn"></div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div class="switch-btn js-changeUser">提交</div>
+        </div>
+    </div>
+    <!-- 弹层背景 -->
+    <div class="switch-bg js-switch-bg" style="display: none;"></div>
+{/block}
+
+{block name="self"}
+<script type="text/javascript" src="{STATIC_URL1}/global/js/fashion/search.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript">
+$(function(){
+	function getUrlParam(name) {
+		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+		var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+		if (r != null) return decodeURI(r[2]);
+		return ''; //返回参数值
+	}
+	var def={
+		photo_url:'',  //框选裁剪后的图片
+		cut_pos:'',  //框选数据
+		original_img:'',	//原始图片RUL
+		cat:'',			//标签
+		page:1,			//页码
+		Total:1,		//总页数
+		scaleOpt:'',		//切图数据
+		Jcrop_api:'',		//切图接口API
+		allowsuf:['jpg', 'jpeg', 'gif', 'png'], 	//允许上传格式
+		dataStatus:true,
+		isBrowser:isBrowser()
+	}
+	function init(){
+		def.original_img=decodeURIComponent(getUrlParam("original_img"));
+		def.photo_url=decodeURIComponent(getUrlParam("path"));
+		def.cat=decodeURIComponent(getUrlParam("cat"));
+		statePhoto();
+		if(def.original_img && def.photo_url){
+			$('.search-filesImg img').each(function(){
+				$(this).attr('src',"https://imgf3.pop-fashion.com"+def.photo_url);
+				$(this).load(function(){
+					$(this).parent().show();
+				})
+			})
+			/* if(def.isBrowser){
+				$('.js-firework').css('position','absolute');
+			} */
+			$('.js-firework>img').attr('src',"https://imgf3.pop-fashion.com"+def.original_img);
+			$('.js-search-ipt').attr('placeholder','');
+			newJcrop("https://imgf3.pop-fashion.com"+def.original_img);
+			var fre=$('#fre').val();
+			if(fre != '1'){
+				getMovingData();
+			}
+		}
+	}
+	function isBrowser(){
+		var browser = {
+			versions: function () {
+				var u = navigator.userAgent, app = navigator.appVersion;
+				return {                    			//移动终端浏览器版本信息
+					trident: u.indexOf('Trident') > -1, 		//IE内核
+					presto: u.indexOf('Presto') > -1,	 //opera内核
+					webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+					gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+					mobile: !!u.match(/AppleWebKit.*Mobile.*/) || !!u.match(/AppleWebKit/), //是否为移动终端
+					ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+					android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+					iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者QQHD浏览器
+					iPad: u.indexOf('iPad') > -1, //是否iPad
+					webApp: u.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部
+				};
+			}(),
+			language: (navigator.browserLanguage || navigator.language).toLowerCase()
+		}
+		if (browser.versions.android || browser.versions.iPhone || browser.versions.iPad) {  //是移动端
+			return true;
+		} else {   //不是移动端
+			return false;
+		}
+	}
+	$(window).load(function (){
+		init();
+	})
+	$(window).resize(function() {
+		masonryFun();
+	})
+	$(window).on("scroll",function(){
+		var scrollTop = $(this).scrollTop();
+		var scrollHeight = $(document).height();
+		var windowHeight = $(this).height();
+		/* if(!def.isBrowser){
+			if (scrollTop + windowHeight > scrollHeight-100) {
+				$('.js-firework').addClass('action');
+			} else {
+				$('.js-firework').removeClass('action');
+			}
+		} */
+		if (scrollTop + windowHeight > scrollHeight-100) {
+			$('.js-firework').addClass('action');
+		} else {
+			$('.js-firework').removeClass('action');
+		}
+        scrollFun();
+	});
+	function statePhoto(){
+		if(def.original_img){
+			$('.js-upload-img').hide();
+			$('.js-screen').show();
+			$('.js-firework').css('visibility','visible');
+		}else{
+			$('.js-upload-img').show();
+			$('.js-screen').hide();
+			$('.js-firework').css('visibility','hidden');
+		}
+	}
+	function newCutPic(){
+		if(def.original_img && def.cut_pos){
+			$.ajax({
+				url: '/picmatch/new_cut_pic/?'+Math.random(),
+				method: 'post',
+				dataType: 'json',
+				data:{
+					photo_url:def.original_img,
+					cut_pos:def.cut_pos
+				},
+				success: function(data) {
+					if (data.code == 200) {
+						location.href=data.path;
+					}else{
+						msg.msg({ 'txt': '图片上传错误'}, 1200);
+					}
+				}
+			})
+		}
+	}
+	function getMovingData(){
+		$('.js-data-load').show();
+		if(!def.dataStatus){
+			return;
+		}
+		def.dataStatus=false;
+		$.ajax({
+			url: '/picmatch/similarpic/?'+Math.random(),
+			method: 'post',
+			dataType: 'json',
+			data:{
+				path:def.photo_url,
+				original_img:def.original_img,
+				cat:def.cat,
+				page:def.page
+			},
+			success: function(data) {
+				if (data.code == 200) {
+					var html='',c_html='',p_html='';
+					var list=data.data;
+					var sCategoryList=data.info.filters;
+					var sPatternContentList=data.info.filters;
+					for(var item in list){
+						if(item!='total_num'){
+							html+='<a href="/details/style/t_'+list[item].table+'-id_'+list[item].id+'-col_'+list[item].col+'/" target="_blank" class="item">'+
+							'<img src="https://imgf2.pop-fashion.com/global/images/loading/patterns270.jpg" data-original="'+list[item].cover+'">'+
+							'<div class="label-bg"></div>'+
+							'<div class="moving-label">'+list[item].label+'</div>'+
+							'</a>';
+						}
+					}
+					if(def.page == 1){
+						$('.js-moving-list').css('visibility','hidden');
+						var url=location.href;
+						if(url.indexOf('&cat=')>0){
+							url=url.substring(0,url.indexOf('&cat='));
+						}
+						if(sCategoryList){
+							for(var item in sCategoryList.sCategory){
+								c_html+='<span><a data-id="'+item+'" href="'+url+'&cat='+item+'">'+sCategoryList.sCategory[item]+'</a></span>';
+							}
+							$('.js-sCategory').each(function(){
+								if(c_html!=''){
+									$(this).append(c_html);
+								}else{
+									$(this).parent().hide();
+								}
+							})
+							$('.js-sCategory-head a').each(function(){
+								$(this).attr('href',url+'&cat=4');
+							});
+						}
+						if(sCategoryList){
+							for(var item in sPatternContentList.sPatternContent){
+								p_html+='<span><a data-id="'+item+'" href="'+url+'&cat='+item+'">'+sPatternContentList.sPatternContent[item]+'</a></span>';
+							}
+							$('.js-sPatternContent').each(function(){
+								if(p_html!=''){
+									$(this).append(p_html);
+								}else{
+									$(this).parent().hide();
+								}
+							})
+							$('.js-sPatternContent-head a').each(function(){
+								$(this).attr('href',url+'&cat=9');
+							});
+						}
+						$('.screen-item a').each(function(){
+							var id=$(this).data('id');
+							if(id==def.cat){
+								$(this).css('color','#333');
+							}
+						})
+					}
+					//总页码
+					def.Total=data.info.total_page;
+					//无数据
+					if(def.Total!=0){
+						$('.js-no-data').hide();
+						$('.js-screen-btn').show();
+						$('.js-screen').show();
+					}else{
+						$('.js-no-data').show();
+						$('.js-screen-btn').hide();
+						$('.js-screen').hide();
+					}
+					$('.js-moving-list').append(html);
+					var lazyloadimg = $(".js-moving-list img");
+					lazyloadimg.length && lazyloadimg.lazyload({
+						effect : "show",
+						failure_limit:12,
+						threshold: 500,
+						load:masonryFun()
+					});
+					//图片重叠
+					/* var time=setInterval(function(){
+						masonryFun();
+					}, 2000); */
+					def.dataStatus=true;
+				}else{
+					msg.msg({ 'txt': '图片上传错误'}, 1200);
+				}
+			}
+		})
+	}
+	function masonryFun() {
+		var $contain = $("body").find(".js-moving-list");
+		$contain.imagesLoaded(function() {
+			$contain.masonry({
+				gutterWidth: 0,
+				itemSelector: '.item',
+				isAnimated: false
+			});
+			$contain.masonry("reload");
+			$('.js-data-load').hide();
+			$('.js-moving-list').css('visibility','visible');
+			$('.js-firework').removeClass('action');
+		})
+	}
+	
+    $("#uploadImg1").change(function(){
+        var fileList = $(this)[0].files;
+        var fileSuf = this.value.substring(this.value.lastIndexOf('.') + 1);
+        if(!_checkSuf(fileSuf,def.allowsuf)){
+            msg.msg({ 'txt': '只允许上传jpg,jpeg,gif,png格式的图片。'}, 1200);
+            $("#uploadImg1").val('');
+            return;
+        }
+        if (fileList.length > 0) {
+            var file = fileList[0];
+            var formData = new FormData();
+			formData.append('userfile', file);
+            $.ajax({
+                url: '/picmatch/new_upload_pic/?'+Math.random(),
+                method: 'post',
+                dataType: 'json',
+                processData: false,
+                contentType: false,
+                data:formData,
+                success: function(data) {
+                    if (data.code == 200) {
+						def.original_img=decodeURIComponent(data.imgPath);
+						cancel();
+						newJcrop("https://imgf3.pop-fashion.com"+def.original_img);
+                    }else{
+
+                    }
+                }
+            })
+        }
+	})
+	function newJcrop(imgPath) {
+		var layer=$('.js-firework-img');
+		var imgData=new Image();
+		//statePhoto();
+		imgData.src=imgPath;
+		$(imgData).load(function () {
+			w = imgData.width;
+			h = imgData.height;
+			$('.js-firework>img').attr('data-w',w);
+			$('.js-firework>img').attr('data-h',h);
+			var element=new Image();
+			layer.append(element);
+			element.src=imgPath;
+			$(element).load(function(){
+				// $('.js-firework>img').attr('src',imgPath);
+				// $('.js-firework>img').css('visibility','hidden');
+				console.log(w, h, element.width, element.height)
+				def.scaleOpt = _getScale(w, h, element.width, element.height);
+				console.log(def.scaleOpt)
+				element.style.position='absolute';
+				element.style.visibility='hidden';
+				element.style.width=def.scaleOpt.w + 'px';
+				element.style.height=def.scaleOpt.h + 'px';
+				$(element).Jcrop({
+					minSize: [10, 10],          // 选框最小尺寸
+					maxSize: [288, 414],        // 选框最大尺寸
+					allowSelect: true,          // 允许新选框
+					allowMove: true,            // 允许选框移动
+					allowResize: true,          // 允许选框缩放
+					dragEdges: true,            // 允许拖动边框
+					onSelect: selectFun,   // 选框选定时的事件，参数c={ x, y, x1, y1, w, h }
+					createHandles: ['nw','ne','se','sw']      //只留边角控制器
+				},function(){
+					def.Jcrop_api=this;
+					def.Jcrop_api.disable();
+				});
+			})
+		})
+	}
+    /* 检查文件是否符合上传条件 */
+    function _checkSuf(fileSuf, suffixs) {
+        for(var i = 0, j = suffixs.length;i < j; i ++) {
+            if(fileSuf.toLowerCase() == suffixs[i].toLowerCase()) {
+                return true;
+            }
+        }
+        return false;
+	};
+	/* 创建一个新的裁剪区域 */
+	$('.js-edit-btn').on('click',function(){
+		$(this).hide();
+		$('.js-firework-btn').show();
+		var x,y;
+		x=$('.jcrop-holder').width()/2;
+		y=$('.jcrop-holder').height()/2;
+		def.Jcrop_api.enable();
+		def.Jcrop_api.setSelect([x-100,y-100,x+100,y+100]);
+	})
+	
+    /* 取消裁剪 */
+    $('.cancel').on('click',function(){
+		cancelfun();
+	})
+	function cancelfun(){
+		def.Jcrop_api.release();
+		def.Jcrop_api.disable();
+		$('.js-edit-btn').show();
+		$('.js-firework-btn').hide();
+	}
+	/* 清空裁剪dom */
+    function cancel(){
+        $('.js-firework-img').html('');
+        $("#uploadImg1").val('');
+		$('#cropData1').val('');
+		$('.js-edit-btn').show();
+		$('.js-firework-btn').hide();
+    }
+    /* 提交裁剪数据 
+     * ajax里面调用window.open在有的的浏览器会被禁用
+     * 新打开页面后在提交裁剪数据
+    */
+    $('.save').on('click',function(){
+        var cropData =$('#cropData1').val() == '' ? '' : JSON.parse($('#cropData1').val());
+        if(cropData == ''){
+            msg.msg({ 'txt': '请先框选图片。'}, 1200);
+            return;
+        }
+        def.cut_pos = cropData.x +','+ cropData.y +','+ cropData.img_w +','+ cropData.img_h +','+ cropData.w +','+ cropData.h;
+		newCutPic()
+    })
+    /* 设置裁剪数据 */
+    function selectFun(c){
+		var ratio = def.scaleOpt.scale;
+        var data = {};
+        data = {
+			x: c.x / ratio,
+			y: c.y / ratio,
+			img_h:$('.js-firework>img').data('h'),
+			img_w:$('.js-firework>img').data('w'),
+			w: c.w / ratio,
+			h: c.h / ratio
+		};
+        var dataJson = JSON.stringify(data);
+        $('#cropData1').val(dataJson);
+    }
+    /* 
+     * 获取缩放比例 
+     * 
+     * 原始宽高vw,vh
+     * 实际显示宽高sw,sh
+     * 返回：
+     * { w,h,scale:max(sw/vw,sh/vh) }
+     * w,h均为缩放到sw、sh后的宽高
+     */
+    function _getScale(vw, vh, sw, sh) {
+		vw = Number(vw);
+        vh = Number(vh);
+        sw = Number(sw);
+        sh = Number(sh);
+        if(vw <= 0 || vh <= 0) {
+            console.log('参数不能为0');
+            return false;
+        }
+		var scale = 1;
+		var w_scale=288/vw,h_scale=414/vh;
+        if(w_scale < h_scale){
+            sw = 288;
+            scale = w_scale;
+            sh = vh * scale;
+        }else{
+            sh = 414;
+            scale = h_scale;
+            sw = vw * scale;
+        }
+        return {
+            scale: scale,
+            w: sw,
+            h: sh
+        };
+	};
+    $('.js-figure-btn1').on('click',function(){
+        $("#uploadImg1").trigger("click");
+	})
+	$('.js-screen-btn').on('click',function(event){
+		var sta=$(this).attr('class');
+		if(sta.indexOf('action')>0){
+			$(this).removeClass('action');
+		}else{
+			$(this).addClass('action');
+		}
+		event.stopPropagation();
+	})
+	$(document).bind("click", function(){
+		$('.js-screen-btn').removeClass('action');
+	})
+	$('.js-search-ipt').focus(function() {
+		$('.search-filesImg').hide();
+		$(this).attr('placeholder','搜索你想要的');
+	}).blur(function() {
+		var val=$(this).val();
+		if(val == "" && def.original_img != ""){
+			$('.search-filesImg').show();
+			$(this).attr('placeholder','')
+		}else{
+			$('.search-filesImg').hide();
+			$(this).attr('placeholder','搜索你想要的');
+		}
+	})
+	function scrollFun(){
+		var scroll_t = $(window).scrollTop()||0;
+		var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+		var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+		var scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+        if (scroll_t <= 80) {
+			$('.js-head-slide').css('visibility','hidden');
+        }else{
+			$('.js-head-slide').css('visibility','visible');
+		}
+		$('.menu-hot-list').hide();
+		masonryFun();
+		if(scrollHeight > clientHeight && scrollTop + clientHeight >= scrollHeight-1000 && def.page < def.Total && def.dataStatus) {
+			def.page++;
+			getMovingData();
+		}
+    }
+	$('.js-search-ipt').on('keypress', function(event){
+		if(event.which == 13){
+			var keywords = $.trim($(this).val());
+			if(keywords == '' || keywords == '搜索你想要的') {
+				return false;
+			}
+			if(keywords){
+				window.location.href = "/search/?key="+encodeURIComponent(encodeURIComponent(keywords));
+			}
+		}
+	})
+	$('.js-search-btn').on('click',function(){
+		var val=$(this).parent().find('.js-search-ipt').val();
+		window.location.href='/search/?key='+encodeURIComponent(encodeURIComponent(val));
+	})
+});
+</script>
+{/block}

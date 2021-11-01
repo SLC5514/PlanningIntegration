@@ -1,0 +1,70 @@
+
+
+body{background: #f9f9f9;}
+.hide{display: none;}
+#anchor{position: absolute;top:280px;width: 0;	height: 0;}
+
+.banner-top{width: 100%;overflow: hidden; position: relative; height: 250px;}
+/*banner*/
+.banner-box{width: 100%;height: 100%;position: relative;overflow: hidden;background: #e5e5e5;}
+.banner-box>.banner-list{width: 100%;height: 100%;position: relative;overflow: hidden;}
+.banner-box>.banner-list>li{position: absolute;z-index: 2;width: 1666px;height: 100%;left: 50%;margin-left: -833px;}
+.banner-box>.banner-list>li>a{display: block;height: 100%;width: 100%;}
+.banner-box>.banner-list>li>a>img{display: block;height: 100%;width: 100%;}
+.banner-navs{position: absolute;z-index: 16;height: 4px;right: 50%;top: 194px; margin-right: -600px;}
+.banner-navs>li{cursor: pointer; float: left; width: 20px;background: #9d9a95;margin-left: 3px;border-radius: 2px;height: 4px;opacity: 0.5;}
+.banner-navs>li.cur{background: #fff;opacity: 1;}
+.banner-prev{display: none; width: 30px;height: 60px;position: absolute;z-index: 8;left: 50%;margin-left: -600px; top: 120px;background: url(../../images/report-list/banner-top-l.png) center no-repeat;cursor: pointer;}
+.banner-next{display: none; width: 30px;height: 60px;position: absolute;z-index: 8;right: 50%;margin-right: -600px; top: 120px;background: url(../../images/report-list/banner-top-r.png) center no-repeat;cursor: pointer;}
+
+
+
+
+
+/*筛选--您已选择*/
+.select-width-content{border:1px solid #eee;padding:0 20px;margin-top:10px;background:#fff;}
+.rightc_s_t{position:relative;z-index:11;border-bottom:1px dotted #d5d5d5;}
+.neiyeList{background:url(../../../images/neiyeList.png) no-repeat 0 0}
+
+.select-top-box{border-bottom:1px dotted #ccc;}
+.keycho{position:relative;z-index:7;margin-top:20px;}
+.yixz{float:left;font-size: 12px;color:#333;margin-right:19px;display:inline-block;height:24px;line-height:24px;width:60px;text-align:right;}
+.key_allbox-width{width:820px;position:relative;}
+.keyWord{height:24px; float:left;margin-bottom:20px;white-space:nowrap;margin-right:10px;*padding-bottom:20px;}
+.keyWord>a{font-size: 12px;color:#fff;padding:0 10px;height:24px;line-height:24px;background:#d8b056;position:relative;border:none;}
+.keyWord a.auto_sx{padding-right:25px;background:#fff;color:#333;border:1px solid #e2e2e2;height:22px;line-height:22px;}
+.keyWord a.auto_sx>span{display:inline-block;vertical-align:middle;margin-top:-4px;max-width:210px;overflow:hidden;}
+.keyWord_downlist{position:relative;}
+.keyWord_downlist:hover .keyW{z-index:11;}
+.Zindex4{z-index:8;}
+.keyWord_downlist em.downlist_icon{background:url(../../../images/neiyeList.png) no-repeat -26px -591px;display:inline-block;width:9px;height:7px;margin-left:10px;vertical-align:middle;*margin-top:1px;}
+.keyWord_downlist .downlist{position:absolute;width:100%;background:#fff;top:22px;display:none;left:0;z-index:10;border:none;}
+.keyWord_industry .downlist{width:155px;}
+.keyWord_downlist .downlist a{display:block;height:30px;line-height:30px;cursor:pointer;font-size: 12px;color:#000;padding:0 10px;}
+.keyWord_downlist .downlist a:hover{background:#d8b056;color:#fff;}
+.column-nav-downlist>a{background:#333;border-color:#333;min-width:97px;}
+
+.brand_keycho .keyWord{height:31px;}
+.brand_keycho .keyWord ul li{float:left;margin-right:20px;border:1px solid #e2e2e2;}
+.brand_keycho .keyWord a.keyW{padding:0 15px;height:31px;line-height:31px;border:none;}
+.brand_keycho .keyWord a{background:#fff;color:#333;}
+.brand_keycho .keyWord em.fl{width:29px;height:31px;border-left:1px solid #e2e2e2;display:inline-block;background:#fbfbfb url("../../images/neiyeList.png") no-repeat 10px -65px;cursor:pointer;}
+.brand_keycho .keyWord .downlist{width: 114px;left:-1px;top:31px;background:#fff;border:1px solid #e2e2e2;}
+.brand_keycho .keyWord_industry .downlist{width:185px;}
+.brand_keycho .keyWord .downlist a:hover{background:#f1f1f1;color:#333;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

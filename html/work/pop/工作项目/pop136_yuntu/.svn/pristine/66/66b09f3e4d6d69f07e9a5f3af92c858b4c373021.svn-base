@@ -1,0 +1,92 @@
+<?php
+
+/**
+ * Created by PhpStorm.
+ * User: limeng
+ * Date: 2017/11/3 13:57
+ */
+class VirtualTryOn_model extends POP_Model
+{
+    public function getUserTplSite($uId)
+    {
+        $rs = $this->db->where(['id' => $uId])->get('pop136.fashion_user')->result_array();
+        $iTplSite = $rs[0]['iTplSite'];
+        return $iTplSite;
+    }
+
+    public function modTplSite($uId, $iTplSite)
+    {
+        $sql = "UPDATE pop136.fashion_user SET iTplSite={$iTplSite} WHERE id=$uId";
+        return $this->db->query($sql);
+    }
+
+    public function getTemplates($iSite = 1, $iAccountId)
+    {
+        //云图 增加个人定制模板查询,条件如 iAccountId=0 OR iAccountId = 当前登录用户ID
+        $where = " `iSite`={$iSite} AND `iStatus`=1 AND `iAccountId` IN (0,{$iAccountId}) ";
+        $lists = $this->db->where($where)
+            ->order_by('iWeight DESC')
+            ->get('fashion.t_virtual_spl_template')
+            ->result_array();
+        $list = array();
+        foreach ($lists as $k => $v) {
+            if (!key_exists($v['iClassifyId'], $list)) {
+                $list[$v['iClassifyId']] = array();
+            }
+            $list[$v['iClassifyId']][] = $v;
+
+            //是否有定制模板
+            if ($v['iClassifyId'] == '12218') {
+                $list['isCustom'] = '1';  //1：有定制模板
+            }
+        }
+
+        $lists = $list;
+        return $lists;
+    }
+
+    /**
+     * 模拟成品--没有$path时--默认图案素材的前40条数据
+     *
+     * @param $columnId
+     * @param $offset
+     * @param $limit
+     * @return array
+     */
+    public function getDefaultPatternMaterial($columnId, $offset, $limit)
+    {
+        // 拼接条件
+        $list = $result = [];
+        $conditions = ['iColumnId' => $columnId];
+        if ($columnId == 82) { // 82 -- 图案素材
+            $endTime = date("Y-m-d") . 'T' . date("H:i:s", strtotime("-2 hour"));
+            $conditions['dCreateTime'] = '[* TO ' . $endTime . 'Z]';
+            $conditions['aWebsite'] = 1;
+        }
+
+        $arSort = ["dCreateTime" => "DESC", "pri_id" => "DESC"];// 时间与ID倒序
+        $totalCount = POPSearch::wrapQueryPopFashionMerger('', $conditions, $result, $offset, $limit, $arSort);
+        if ($totalCount) {
+            foreach ($result as $key => $val) {
+                $row["t"] = getProductTableName($val["tablename"]);
+                $row["id"] = $val["pri_id"];
+
+                // 获取其他数据
+                $_aData = OpPopFashionMerger::getProductData($row["id"], $val["tablename"]);
+                $aData = $_aData[$row["id"]];
+                $imgPath = getImagePath($val["tablename"], $aData);
+
+                $row['href'] = "/PatternLibrary/details/t_{$row['t']}-id_{$row['id']}";
+                $row['big'] = $imgPath['bigPath'] ? $imgPath['bigPath'] : '';
+                $row['small'] = $imgPath['smallPath'] ? $imgPath['smallPath'] : '';
+                $row['mbig'] = $imgPath['bigPath'] ? str_replace('/big/', '/mbig/', $imgPath['bigPath']) : '';
+                $row['isFull'] = $aData['sApplication'] == '14102' ? false : true; // 14102 局部, 14103 满身
+                $row['defaultColor'] = $aData['sDefaultColor'];
+
+                $list[$key] = $row;
+            }
+        }
+        return $list;
+    }
+
+}

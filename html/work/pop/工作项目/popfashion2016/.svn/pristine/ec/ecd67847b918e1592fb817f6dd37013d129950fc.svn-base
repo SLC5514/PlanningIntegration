@@ -1,0 +1,40 @@
+{extends file="layout.html"}
+{block name="title"}POP&优料宝，发现“五维趋势”，2018SS趋势企划立体发布4.7广州见！-POP服装趋势网{/block}
+{block name=keywords}POP&优料宝，发现“五维趋势”，2018SS趋势企划立体发布4.7广州见！{/block}
+{block name=description}POP&优料宝，发现“五维趋势”，2018SS趋势企划立体发布4.7广州见！服务热线: 4008-233-090。{/block}
+{block name="selfcss"}{/block}
+
+{block name="main"}
+<div style='width:900px;overflow:hidden;margin:10px auto;'>
+    <iframe src='' width=900 height=13210></iframe>
+</div>
+
+{include file="topic/topic_layer.html"}
+{/block}
+{block name="self"}
+<script>
+$(function(){
+	$.ajaxPrefilter( function (options) {
+		if (options.crossDomain && jQuery.support.cors) {
+		   var http = (window.location.protocol === 'http:' ? 'http:' : 'https:');
+		   options.url = http + '//cors-anywhere.herokuapp.com/' + options.url;
+		   //options.url = "http://cors.corsproxy.io/url=" + options.url;
+		}
+	});
+						 
+	 var share_link="http://mp.weixin.qq.com/s/Uuk_eatlsu3OmlmwpzrGRw";//微信文章地址
+	$.get(
+		  share_link,
+		  function (response) {
+		  console.log("> ", response); 
+		  var html = response;
+		  html=html.replace(/data-src/g, "src"); 
+		  var html_src = 'data:text/html;charset=utf-8,' + html;
+		  $("iframe").attr("src" , html_src);
+	});
+});
+</script>
+{/block}
+
+
+

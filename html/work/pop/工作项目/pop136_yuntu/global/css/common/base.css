@@ -1,0 +1,146 @@
+/*
+	#author		lut000
+	#date 		2017/10/30
+*/
+@charset "utf-8";
+
+/*default*/
+*{margin: 0;padding: 0;}
+body{font-family: "Microsoft YaHei","SimHei";font-size: 12px;}
+a{text-decoration: none;}
+img{border:none\9;}
+button{outline: none;cursor: pointer;background-color: transparent;border-style: none;}
+li{list-style: none;}
+p{word-break:break-all;}
+input{outline: none;}
+input[type="button"],input[type="submit"]{background: transparent;border-style: none;cursor: pointer;}
+input:-webkit-autofill{-webkit-box-shadow: 0 0 0px 1000px white inset;}
+h2,h3{font-weight: 500;color: #333;}
+
+.view{min-width: 1200px;overflow: hidden;}
+/*1200*/
+.section{width: 1200px;margin: auto;}
+/*header*/
+.header{z-index: 500;position: fixed;left: 0;top: 0;min-width: 1200px;width: 100%;height: 60px;background-color: #1c232b;color: #fff;text-align: center;}
+.home-btn{z-index: 10;position: absolute;display: inline-block;width: 115px;left: 30px;top: 19px;}
+.user-info{z-index: 10;position: absolute;right: 30px;top: 15px}
+.user-info>a{font-size: 14px;margin-left: 20px;color: #fff;}
+.user-info>a:hover{color: #d8b056}
+.user-info>a>span{width: 20px;height: 20px;margin-left: 5px;margin-right: 3px;vertical-align: -5px;}
+.user-info>a>img{display: inline-block;width: 32px;height: 30px;margin-right: 5px;border-radius: 50%;vertical-align: middle;}
+a.login-out-btn>span{background-position: -155px -20px}
+a.return-home-btn>span{background-position: -75px -20px}
+a.my-collect>span{background-position: -199px -311px}
+a.login-out-btn:hover{color: #e0c381;}
+a.login-out-btn:hover span{background-position: -195px -20px}
+a.return-home-btn:hover{color: #e0c381;}
+a.return-home-btn:hover span{background-position: -117px -20px}
+a.my-collect:hover span{background-position: -237px -311px;}
+.user-info>p{display: none;}
+.go-login-btn{display: inline-block;width: 70px;height: 30px;line-height: 30px;font-size: 14px;margin-left: 10px;color: #fff;background-color: #d8b056;border-radius: 3px;}
+.go-login-btn:hover{background-color: #dba428}
+
+.nav-list{width: 80%;}
+.nav-list>li{display: inline-block;*zoom:1;*display: inline;}
+.nav-list>li>a{display: block;*display: block;width: 128px;height: 60px;line-height: 60px;font-size: 16px;color: #fff;}
+.nav-list>li>a>span{width: 20px;height: 25px;margin-right: 3px;vertical-align: middle;}
+.zhineng-spn{background-position: -10px -312px;}
+.virtual-spn{background-position: -558px -18px;}
+.search-spn{background-position: 1px -78px;}
+.gallery-spn{background-position: -63px -78px;}
+.simulate3d-spn{background-position: -436px -296px;}
+
+.nav-list>li>a:hover{border-bottom: 2px solid #d8b056;color: #d8b056;background-color: #323940}
+.nav-list>li>a.now-choice{color: #d8b056;background-color: #323940;border-bottom: 2px solid #d8b056;}
+.nav-list>li>a:hover .zhineng-spn,.nav-list>li>a.now-choice .zhineng-spn{background-position: -64px -312px;}
+.nav-list>li>a:hover .virtual-spn{background-position: -592px -18px;}
+.nav-list>li>a.now-choice .virtual-spn{background-position: -592px -18px;}
+.nav-list>li>a:hover .search-spn{background-position: -32px -78px;}
+.nav-list>li>a.now-choice .search-spn{background-position: -32px -78px;}
+.nav-list>li>a:hover .gallery-spn{background-position: -95px -78px;}
+.nav-list>li>a.now-choice .gallery-spn{background-position: -95px -78px;}
+.nav-list>li>a:hover .simulate3d-spn{background-position: -461px -296px;}
+.nav-list>li>a.now-choice .simulate3d-spn{background-position: -461px -296px;}
+
+#google_translate_element{padding-left:20px; border-left: 1px solid #61656b;position: absolute;left: 160px;top:19px;height: 24px;}
+
+/*content*/
+.content{padding-top: 60px}
+/*footer*/
+.footer{font-size: 14px;text-align: center;padding: 40px 0;color: #fff;background-color: #323940}
+.footer a{color: #fff;}
+/*common*/
+
+.hide{display: none;}
+.clear{*zoom:1;}
+.clear:after{display: block;content: "";clear: both;}
+.nborder-r{border-right: 0 !important;}
+.n-l{margin-left: 0 !important}
+.txt-r{text-align: right;}
+.not-selected{
+	-webkit-user-select: none; 
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+.over-hidden{overflow: hidden;}
+.v-c{vertical-align: middle;}
+
+.w960{width: 960px;margin: auto;}
+
+/*color*/
+.color-1{color: #000}
+.color-2{color: #fff}
+.color-3{color: #dba428}
+
+.btn-color1{color: #dba428}
+
+.btn{display: inline-block;border-radius: 3px;text-align: center;font-size: 14px}
+.btn1{width: 70px;padding: 6px 0}
+.btn-type1{background-color: #d2d2d2;color: #333333}
+.btn-type1:hover{background-color: #d8b056;color: #fff;}
+.btn-type2{background-color: #d8b056;color: #fff}
+.btn-type2:hover{background-color: #dba428;}
+
+/*bg-color*/
+.bg-color1{background-color: #000}
+.bg-color2{background-color: #fff}
+
+/*font*/
+.font-12{font-size: 12px;}
+.font-14{font-size: 14px;}
+.font-16{font-size: 16px;}
+.font-18{font-size: 18px;}
+.font-20{font-size: 20px;}
+.font-24{font-size: 24px;}
+
+
+
+/*引入详情页iframe*/
+.detail-frame{overflow-x: auto;overflow-y: hidden;display: none; position: fixed;z-index: 610;left: 0;top: 0;width: 100%;height: 100%;}
+.detail-frame>iframe{min-width: 1200px;overflow: hidden;}
+
+/*----------------通用class----------------*/
+
+
+.icon{display: inline-block;background-image: url(../../images/common/icon.png?20200117);background-repeat: no-repeat;}
+
+.bg-div{z-index: 500;position: fixed;left: 0;top: 0;width: 100%;height: 100%;background-color: #000;opacity: 0.6;}
+.loading-div{z-index: 501;position: fixed;left: 0;top: 0;width: 100%;height: 100%;background-image: url(../../images/common/alertloading.gif);background-repeat: no-repeat;background-position: center;background-size: 50px;}
+
+
+@media only screen and (min-width: 1500px){      
+	.view{min-width: 1500px}
+	.section{width: 1500px;}
+	.nav-list{width: 100%;}
+}
+
+
+
+/* 问卷css */
+.bgDom{position: fixed;top: 0;left: 0;opacity: 0.3;filter: alpha(opacity=30);background-color: #000;width: 100%;height: 100%;z-index: 10;display: none;}
+.iframeDom{position: fixed;width: 1000px;height: 650px;top: 50%;left: 50%;margin-left: -500px;margin-top: -325px;z-index: 11;display: none;}
+.iframeDom .iframeImg{/* background-color: #f2f2f2; */background-color: #d1b164;position: absolute;bottom: 0px;right: 0px;width: 50px;height: 50px;display: none;cursor:pointer}
+
+.iframeImg>img{width: 25px;height: 25px;margin:13px;}

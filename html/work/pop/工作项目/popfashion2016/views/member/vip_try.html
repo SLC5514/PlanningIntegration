@@ -1,0 +1,178 @@
+{extends file="layout.html"} {block name='selfcss'}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL1}/global/css/member/vip_try.css?{STATIC_CHANGE_TIME}" />
+{/block} {block name="self"}
+<script charset="utf-8" src="https://wpa.b.qq.com/cgi/wpa.php"></script>
+<script type="text/javascript" src="{STATIC_URL1}/global/js/member/vip_try.js?{STATIC_CHANGE_TIME}"></script>
+{/block}
+{block name="header"}{/block}
+{block name="main"}
+<div class="contant">
+    <div class="main pc-box">
+        <h1>VIP试用申请</h1>
+        <div class="hline"></div>
+        <div class="advisory-btns">
+            <div class="tel-btn">电话咨询 <span>4008-210-500</span></div>
+            <div class="vip-btn js-vip-btn">咨询会员服务</div>
+        </div>
+        <div class="fromBox">
+            <ul>
+                <li>
+                    <label for="categoryIpt"><i>*</i> 选择试用品类</label>
+                    <div class="iptBox js-select">
+                        <div class="ipt selt" id="categoryIpt">请选择您需要试用的品类</div>
+                        <div class="arrow js-arrow"><i></i></div>
+                    </div>
+                    <ul class="options js-options">
+                        <!-- <li data-val="" data-def="请选择您需要试用的品类">请选择您需要试用的品类</li> -->
+                        <li data-val="1">服装</li>
+                        <li data-val="2">箱包</li>
+                        <li data-val="3">鞋子</li>
+                        <li data-val="4">首饰</li>
+                        <li data-val="5">家纺</li>
+                    </ul>
+                    <p class="info">请输入您需要试用的品类</p>
+                </li>
+                <li>
+                    <label for="nameIpt"><i>*</i> 姓名</label>
+                    <div class="iptBox">
+                        <input type="text" class="ipt" id="nameIpt" placeholder="请输入您的真实姓名">
+                    </div>
+                    <p class="info">请输入您的真实姓名</p>
+                </li>
+                <li>
+                    <label for="mobileIpt"><i>*</i> 电话</label>
+                    <div class="iptBox">
+                        <input type="text" class="ipt" id="mobileIpt" placeholder="请输入您的联系方式">
+                    </div>
+                    <p class="info">请输入您的联系方式，以便我们可以快速联系到您</p>
+                </li>
+                <li>
+                    <label for="companyIpt">公司名称</label>
+                    <div class="iptBox">
+                        <input type="text" class="ipt" id="companyIpt" placeholder="请输入您的公司名称">
+                    </div>
+                </li>
+                <li>
+                    <div class="btn js-submit">提交</div>
+                </li>
+        </div>
+        <div class="advisory-alert-bg js-advisory-alert-bg"></div>
+        <div class="advisory-alert js-advisory-alert">
+            <div class="alert-content">
+                <i class="close js-adv-close"></i>
+                <div class="title">选择您需要咨询的品类</div>
+                <div class="cot">
+                    <ul class="js-adv-ul">
+                        <li data-idx="1">服装<i></i></li>
+                        <li data-idx="2">鞋子<i></i></li>
+                        <li data-idx="2">箱包<i></i></li>
+                        <li data-idx="3">家纺<i></i></li>
+                        <li data-idx="3">首饰<i></i></li>
+                    </ul>
+                    <div>
+                        <div class="btn">确认</div>
+                        <div class="btn qqbtn" id="qqwpa-btn1">确认</div>
+                        <div class="btn qqbtn" id="qqwpa-btn2">确认</div>
+                        <div class="btn qqbtn" id="qqwpa-btn3">确认</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="toast js-toast"></div>
+    <div class="h5-box">
+        <div class="info">你可以快速联系到我们的方式：</div>
+        <div class="btns js-h5-btns">
+            <a class="btn tel-btn" href="tel:4008-210-500">
+                <i></i>
+                <span>4008-210-500</span>
+            </a>
+            <div class="btn qq-btn js-h5-qqbtn">
+                <i></i>
+                <span>QQ咨询</span>
+            </div>
+        </div>
+        <div class="hline"></div>
+        <ul class="from-list">
+            <li>
+                <label for="h5-categoryIpt">主营品类</label>
+                <div class="ipt-box">
+                    <div class="ipt" id="h5-categoryIpt">请输入您的主营品类</div>
+                    <div class="arrow"></div>
+                </div>
+            </li>
+            <li>
+                <label for="h5-nameIpt">姓名</label>
+                <div class="ipt-box">
+                    <input type="text" class="ipt" id="h5-nameIpt" placeholder="请输入您的姓名">
+                </div>
+            </li>
+            <li>
+                <label for="h5-mobileIpt">电话</label>
+                <div class="ipt-box">
+                    <input type="text" class="ipt" id="h5-mobileIpt" placeholder="请输入您的电话">
+                </div>
+            </li>
+            <li>
+                <label for="h5-companyIpt">公司名称</label>
+                <div class="ipt-box">
+                    <input type="text" class="ipt" id="h5-companyIpt" placeholder="请输入您的公司名称">
+                </div>
+            </li>
+            <li class="noborder">
+                <div class="btn js-h5-submit">提交</div>
+            </li>
+        </ul>
+        <div class="h5-set-qqwpa-box js-h5-qqwpa-box">
+            <div class="content">
+                <i class="close js-h5-qqwpa-close"></i>
+                <div class="title">选择您需要咨询的品类</div>
+                <ul class="js-h5-qqwpa-ul">
+                    <li class="on" data-idx="1">服装</li>
+                    <li data-idx="2">鞋子</li>
+                    <li data-idx="2">箱包</li>
+                    <li data-idx="3">家纺</li>
+                    <li data-idx="3">首饰</li>
+                </ul>
+                <div>
+                    <div class="btn" id="h5-qqwpa-btn1">确认</div>
+                    <div class="btn qqbtn" id="h5-qqwpa-btn2">确认</div>
+                    <div class="btn qqbtn" id="h5-qqwpa-btn3">确认</div>
+                </div>
+            </div>
+        </div>
+        <div class="h5-set-category-bg js-set-category-box-bg"></div>
+        <div class="h5-set-category js-set-category-box">
+            <div class="content">
+                <div class="top clearfix">
+                    <div class="cancel fl js-sel-cancel">取消</div>
+                    <div class="title">选择主营品类</div>
+                    <div class="comfirm fr js-sel-comfirm">完成</div>
+                </div>
+                <div class="btm js-set-category">
+                    <div class="bg-top"></div>
+                    <div class="bg-btm"></div>
+                    <div class="list-box js-set-list">
+                        <ul>
+                            <li data-val="1">服装</li>
+                            <li data-val="3">鞋子</li>
+                            <li data-val="2">箱包</li>
+                            <li data-val="5">家纺</li>
+                            <li data-val="4">首饰</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="h5-comfirm-alert js-h5-comfirm-alert">
+            <div class="content">
+                <div class="title">提交成功</div>
+                <p>我们会尽快联系您，请耐心等待哦！</p>
+                <div class="btn js-comfirm-close">我知道啦</div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{/block}
+{block name="footer"}{/block}

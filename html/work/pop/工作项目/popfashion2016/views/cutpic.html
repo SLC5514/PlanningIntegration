@@ -1,0 +1,85 @@
+{extends file="layout.html"}
+
+{block name="selfcss"}
+	<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/lib/cropper/cropper.css?{STATIC_CHANGE_TIME}">
+{/block}
+{block name="main"}
+<!-- main start -->
+
+{if $init}
+<div class="picture_search no-picture-search">
+	<div class="w1200">
+		<div class="shot_pic fl">
+			<div class="no-picture-set">
+				<div class="set-area"><p><i></i>请选择并上传一张本地图片<br/>匹配“图案/面料/款式”的相关资料</p></div>
+
+				<div class="select-pic-box">
+					<div class="select-picture">
+						<a class="upload_a" href="javascript:void(0);" title="上传图片">上传图片</a>
+						<form method="post" class="uploadFileForm" enctype="multipart/form-data">
+							<input class="i_file" name="userfile" onchange="ajaxFabricUpload(this);" type="file">
+						</form>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div class="shot_exp fr">
+			<p class="exp_infor1"><i></i>建议图片大小不超过3M</p>
+			<p class="exp_infor"><i></i>截取图像时，请您注意保持框选区域的清晰度及完整性</p>
+			<div class="exp_img">
+				<img src="{STATIC_URL1}/global/images/exp.png" alt="pic"/>
+				<i class="exp_icon"></i>
+			</div>
+		</div>
+	</div>
+</div>
+{else}
+<div class="picture_search ">
+	<div class="w1200 clearfix">
+		<div class="shot_pic fl">
+			<!--裁剪图案-->
+			<div class="picture-set js-picture-set">
+				<img class="js-cut-pic" src="{STATIC_URL1}{$photo_url}" alt="pic" style="visibility: hidden;"/>
+			</div>
+			
+			<div class="shot_btn">
+				<form name="cutFileForm" id="cutFileForm" method="post">
+					<input class="js-tid-val" type="hidden" name="tb_id" value="{$tb_id}"/>
+					<input type="hidden" name="photo_url" value='{$photo_url}'>
+					<a href="javascript:void(0);" title="相似图案" class="find_a js-find-a"><p></p>查找<br />相似图案</a>
+					<a href="javascript:void(0);" title="相关面料" class="search_a js-search-a"><p></p>搜索<br />相关面料</a>
+					<a href="javascript:void(0);" title="搭色款式" class="analysis_a js-analysis-a"><p></p>匹配<br />搭色款式</a>
+				</form>
+				<div class="warm_p">
+					<i></i>
+					<p class="clearfix">
+						<span class="fl">并用滚轮调整图片大小</span>
+						<span class="fr">您可以使用鼠标任意拖拽图片</span>
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="shot_exp fr">
+			<p class="exp_infor" style="margin-top: 20px;"><i></i>截取图像时，请您注意保持框选区域的清晰度及完整性</p>
+			<div class="exp_img">
+				<img src="/global/images/exp.png" alt="pic"/>
+				<i class="exp_icon"></i>
+			</div>
+			<div class="upload_box">
+				<a class="upload_a" href="javascript:void(0);" title="重新上传"><i></i>重新上传</a>
+				<form method="post" class="uploadFileForm" enctype="multipart/form-data">
+					<input class="i_file" name="userfile" onchange="ajaxFabricUpload(this);" type="file">
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+{/if}
+<!-- main end -->
+{/block}
+
+{block name="self"}
+	<script type="text/javascript" src='{STATIC_URL2}/global/js/lib/cropper/cropper.js?{STATIC_CHANGE_TIME}'></script>
+	<script type="text/javascript" src='{STATIC_URL2}/global/js/fashion/cutpic.js?{STATIC_CHANGE_TIME}'></script>
+{/block}

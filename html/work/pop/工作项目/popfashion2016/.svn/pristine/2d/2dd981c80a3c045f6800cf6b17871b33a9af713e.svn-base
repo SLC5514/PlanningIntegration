@@ -1,0 +1,147 @@
+{extends file="layout.html"}
+{block name="title"}服装色彩_服装图案_服装品牌_服装面料-POP服装趋势网{/block}
+{block name=keywords}服装色彩,服装图案,服装品牌,服装面料,服装单品{/block}
+{block name="description"}流行变革时刻发生，我们深入研究潮流趋势，细查色彩、面料、品牌等，形成观点报告和千量图集。无论您想获取设计灵感，还是把握商业机会，都可通过POPFASHION轻松获得未来服装流行动向。{/block}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/topic/scene_home/css/index.css?{STATIC_CHANGE_TIME}">
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/topic/common/css/h5-common.css?{STATIC_CHANGE_TIME}">
+{/block}
+
+{block name="main"}
+{include file="topic/common/h5-header.html"}
+<div class="section1">
+	<div class="w1200">
+		<h1>智能助力设计  趋势预见流行</h1>
+		<p>流行变革时刻在发生，我们深入研究潮流趋势，细查色彩，面料，品牌等, 形成观点报告和千量图集。无论你想获取设计灵感，还是把握商业机会，都可通过POPFASHION轻松获得未来服装流行动向</p>
+		<div>
+			<img src="{STATIC_URL2}/global/topic/scene_home/images/computer.png" alt="POP FASHION" title="一站式灵感素材专业潮流资讯">
+		</div>
+	</div>
+</div>
+
+<div class="section2">
+	<div class="w1200">
+		<h2>
+			<img src="{STATIC_URL2}/global/topic/scene_home/images/pop.png">
+		</h2>
+		<p>查看你的在线灵感库</p>
+		<ul>
+			<li>
+				<a href="/topic/theme_color/" target="_blank">
+					<div class="img-box">
+						<img src="{STATIC_URL2}/global/topic/scene_home/images/color.jpg" alt="主题色彩" title="主题色彩">
+						<div class="layer-box"><span>了解更多<i></i></span></div>
+					</div>
+					<div class="infor-box">
+						<h3><span>主题色彩</span><em></em></h3>
+						<p>我们观察海量色彩信息，研究了不同社会动态，预测未来色彩</p>
+					</div>
+				</a>
+			</li>
+			<li class="h5-right">
+				<a href="/topic/patterns/" target="_blank">
+					<div class="img-box">
+						<img src="{STATIC_URL2}/global/topic/scene_home/images/pattern.jpg" alt="图案" title="图案">
+						<div class="layer-box"><span>了解更多<i></i></span></div>
+					</div>
+					<div class="infor-box">
+						<h3><span>图案</span><em></em></h3>
+						<p>以专业视角汇集国内外花型设计创意。每周更新数千张高清图</p>
+					</div>
+				</a>
+			</li>
+			<li>
+				<a href="/topic/fabric/" target="_blank">
+					<div class="img-box">
+						<img src="{STATIC_URL2}/global/topic/scene_home/images/fabric.jpg" alt="面料" title="面料">
+						<div class="layer-box"><span>了解更多<i></i></span></div>
+					</div>
+					<div class="infor-box">
+						<h3><span>面料</span><em></em></h3>
+						<p>我们将文化，面料与市场一同研究分析，以图集合集形式呈现</p>
+					</div>
+				</a>
+			</li>
+			<li class="h5-right">
+				<a href="/topic/single/" target="_blank">
+					<div class="img-box">
+						<img src="{STATIC_URL2}/global/topic/scene_home/images/single.jpg" alt="单品" title="单品">
+						<div class="layer-box"><span>了解更多<i></i></span></div>
+					</div>
+					<div class="infor-box">
+						<h3><span>单品</span><em></em></h3>
+						<p>细致洞察消费者心态，追踪风格热点及文化符号</p>
+					</div>
+				</a>
+			</li>
+			<li>
+				<a href="/topic/brand/" target="_blank">
+					<div class="img-box">
+						<img src="{STATIC_URL2}/global/topic/scene_home/images/brand.jpg" alt="品牌" title="品牌">
+						<div class="layer-box"><span>了解更多<i></i></span></div>
+					</div>
+					<div class="infor-box">
+						<h3><span>品牌</span><em></em></h3>
+						<p>品牌赋予商业无限生机，我们理解并分析品牌设计</p>
+					</div>
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<div class="section3">
+	<div class="w1200">
+		<ul>
+			<li>
+				<img src="{STATIC_URL2}/global/topic/scene_home/images/icon1.jpg">
+				<h4>全国直营</h4>
+				<p>诚意专业服务</p>
+			</li>
+			<li>
+				<img src="{STATIC_URL2}/global/topic/scene_home/images/icon2.jpg">
+				<h4>趋势分析</h4>
+				<p>持续更新报告</p>
+			</li>
+			<li>
+				<img src="{STATIC_URL2}/global/topic/scene_home/images/icon3.jpg">
+				<h4>高清图集</h4>
+				<p>海量图集图册</p>
+			</li>
+		</ul>
+		<div class="clearfix">
+			<div class="fl">
+				<img src="{STATIC_URL2}/global/topic/scene_home/images/img.jpg" alt="加入POP畅游时尚前沿" title="加入POP畅游时尚前沿">
+			</div>
+			{if $account eq '' && $accountShow neq 'true'}
+			<div class="fl fr-box">
+				<p>加入POP畅游时尚前沿</p>
+				<div>全国直营，绝无代理！免费注册，即享服装设计最新潮流资讯</div>
+				<a href="/member/register/" target="_blank">立即注册</a>
+			</div>
+			{else}
+			<div class="fl fr-box">
+				<p>成为VIP会员</p>
+				<div>尊享全站精选：趋势报告、款式、图集、设计素材...开启灵感致胜之旅</div>
+				<a href="javascript:void(0);" class="js-contact-qq-btn">咨询VIP服务</a>
+			</div>
+			{/if}
+		</div>
+	</div>
+</div>
+
+<div class="section8">
+	<div class="contact-box">
+		<h2>电脑浏览,发现精彩免费内容</h2>
+		<p>www.pop-fashion.com</p>
+		<div>
+			<em><img src="{STATIC_URL2}/global/topic/scene_home/images/tel.png"></em>
+		</div>
+		<span>售前客服</span>
+		<strong>4008 210 500</strong>
+	</div>
+</div>
+{include file="topic/common/h5-footer.html"}
+{/block}
+

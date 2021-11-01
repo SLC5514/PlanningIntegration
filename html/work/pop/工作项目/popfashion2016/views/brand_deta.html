@@ -1,0 +1,404 @@
+{extends file="layout.html"}
+
+{block name="main"}
+	<div class="header_next">
+		<div class="detaill">
+			<div class="crumb-nav"><a href="/" title="首页">首页</a><span>></span><a href="/brands/" title="全部品牌">全部品牌</a><span>></span><a class="child-column" title="{$BrandName}" href="javascript:void(0);">{$BrandName}</a></div>
+			<div class="detail_t clearfix">
+				<div class="brand-detail-box clearfix">
+					<div class="brand-title fl">
+						<h3>{$BrandName}</h3>
+						<p>{$brandDescribe}</p>
+					</div>
+					<a href="javascript:void(0);"  onclick="{if $iAccountType==2} oCommon.collect( $(this), 5 ,'branddb' ,{$iBrand} , 2, '', {if $isCollect}0{else}1{/if}) {else}oCommon.noPower(-2){/if}" class="a1 fr {if $isCollect}cur{/if}"><i></i><span>{if $isCollect}已收藏{else}收藏{/if}</span></a>
+				</div>
+				{if $aRelateBrandsInfo}
+				<div class="relation_brand">
+					<p class="brand_name"><i></i>与该品牌关联的主/副线品牌：
+					{foreach $aRelateBrandsInfo as $val}
+					<a href="/brands/detail/id_{$val['id']}" target="_blank" title="{$val['name']}">{$val['name']}</a>
+					{/foreach}
+					</p>
+				</div>
+				{/if}
+			</div>
+		</div>
+	</div>
+	<div class="con_width">
+	     {if !empty($gender) || !empty($industry)}
+	    <div class="search_cont_tishi">
+			<i></i>您已锁定：{if !empty($gender)}<span>性别：<em>{$gender}</em></span>{/if} {if !empty($industry)}<span>行业：<em>{$industry}</em></span>{/if}现在所呈现为<strong>{$gender}{$industry}</strong>下内容，如需查看所有内容请<a href="javascript:void(0);" id="cancel_industry" title="点击这里">点击这里</a>！
+		</div>
+		{/if}
+		<div class="con_total">
+		 	<!-- 潮流分析 -->
+		   	{if !empty($listC) }
+		   	<div class="con_width_floor1">
+			    <div class="cliu">
+				   <span>流行分析</span>
+				   <a class="fr" href="/analysis/bra_{$iBrand}/" target="_blank" title="查看全部">查看全部 > </a>
+			    </div>
+			    <ul class="floor1_T">
+					{foreach $listC as $val}
+				    <li itemscope class="li1">
+					    <a class="img_a" itemprop="url" href="javascript:void(0);" onclick="javascript:hrefUrl('analysis',$(this))" data-id="{$val.id}" data-t="{$val.tablename}" data-col="{$val.col}" title="查看详情">
+						   <img itemprop="thumbnail" class="runwayImg" src="{STATIC_URL2}/global/images/loading/analysis.gif" alt="{$val.description}" data-original="{$val.sSmallPath}">
+					    </a>
+					    <div class="text-down">
+							<div class="brand-analysis-position">
+								<a itemprop="url" class="report_title" href="javascript:void(0);" onclick="javascript:hrefUrl('analysis',$(this))" data-id="{$val.id}" data-t="{$val.tablename}" data-col="{$val.col}" title="查看详情">
+									<p itemscope="" class="time clearfix">
+				        				<span itemprop="release time" class="fl"><img itemprop="thumbnail" src="{STATIC_URL1}/global/images/zzjd_02.png" alt="创建时间">{$val.update_time}</span>
+				        				<span itemprop="browse volume" class="fr"><img itemprop="thumbnail" src="{STATIC_URL1}/global/images/zzjd_03.png" alt="浏览量">浏览（{$val.viewCount}）</span>
+				        			</p>
+				        			<p itemprop="name" class="title" title="{$val.title}">{$val.title}</p>
+			        			</a>
+			        			<p class="brand-analysis-description js-brand-description">{$val.description}</p>
+			        			<div class="brand-analysis-img-label">
+									{foreach $val.labels as $label}
+									<a href="{$label.lLink}" target="_blank" title="{$label.name}">{$label.name}</a>
+									{/foreach}
+			        			</div>
+							</div>
+					    </div>
+				    </li>
+				    {/foreach}
+				</ul>
+	     	</div>
+		    {/if}
+		    <!-- T台发布 -->
+		    {if !empty($listT)}
+			<div class="con_width_floor2">
+				<div itemscope class="cliu">
+					<span itemprop="name">T台</span>
+					<a itemprop="url" href="/runways/bra_{$iBrand}/" class="fr" target="_blank" title="查看全部">查看全部 > </a>
+				</div>
+				<ul itemscope class="floor2_T clearfix">
+				{foreach $listT as $val}
+					<li>
+						<a itemprop="url" class="floor2_a" onclick="javascript:hrefUrl('runway',$(this))" href="javascript:void(0);" data-id="{$val.id}" data-t="{$val.tablename}" data-col="{$val.col}" title="查看详情">
+							{$val.cover}
+						</a>
+						<span class="fl line-middle"></span>
+						<div itemscope class="span">
+							<p itemprop="name" class="p1" onclick="javascript:hrefUrl('runway',$(this))" data-id="{$val.id}" data-t="{$val.tablename}" data-col="{$val.col}" >
+							{$val.nme}</p>
+							<div itemscope class="p">
+                             <p itemprop="designer" class="p2">设计师<span>:</span><a itemprop="url" href="/runways/bra_{$iBrand}/" target="_blank" title="{$val.designer}">{$val.designer}</a></p>
+							 <p itemprop="time" class="p3">时　间<span>:</span>{$val.for_date_text}</p>
+							 <p itemprop="place" class="p4">地　点<span>:</span>{$val.region_text}</p>
+							 <p itemprop="release date" class="p5"><a class="span1" href="javascript:void(0);" title="{$val.update_time}"><i></i>{$val.update_time}</a><a itemprop="browse volume" href="javascript:void(0);" class="span2" title="{$val.viewCount}"><i></i>浏览(<em>{$val.viewCount}</em>)</a></p>
+							</div>
+						</div>
+					</li>
+				{/foreach}
+				</ul>
+			</div>
+			{/if}
+			{if !empty($listK)}
+			<div class="con_width_floor3">
+				<div class="cliu">
+					<span>款式</span>
+					<a href="/styles/bra_{$iBrand}-dis_1/" class="fr" target="_blank" title="查看全部">查看全部 > </a>
+				</div>
+				<ul class="styles clearfix">
+				   {foreach $listK as $val}
+					<li itemscope class="clearfix">
+						<div itemscope class="pic-box">
+							<a itemprop="url" class="img_a" href="javascript:void(0);" onclick="javascript:hrefUrl('style',$(this))" data-id="{$val.id}" data-t="{$val.tablename}" data-col="{$val.col}" title="查看详情">
+								<img alt="{$val['title']}" itemprop="thumbnail" class="runwayImg" src="{STATIC_URL2}/global/images/loading/style.gif" data-original="{$val.cover}"/ alt="pic">
+								<div class="color-and-time">
+									<p itemprop="release date" class="Dtime"><em></em>{$val.update_time}</p>
+	                            </div>
+							</a>
+						</div>
+						<div itemscope class="picTxt">
+                        	<div class="brand-slabel-position">
+								{foreach $val.labels as $label}
+								<a href="{$label.lLink}" target="_blank" title="{$label.name}">{$label.name}</a>
+								{/foreach}
+                        	</div>
+                        </div>
+					</li>
+					{/foreach}
+				</ul>
+			</div>
+			{/if}
+			{if !empty($listL)}
+			<div class="con_width_floor5">
+				<div class="cliu">
+					<span>广告大片</span>
+					<a href="/books/lookbook/bra_{$iBrand}/" class="fr" target="_blank" title="查看全部">查看全部 > </a>
+				</div>
+				<div class="lookbook_list">
+					<ul class="clearfix">
+						{foreach $listL as $val}
+						<li>
+							<div class="pic-box">
+								<a class="pic_list click_jump" href="javascript:void(0);" data-url="/books/seclist/" data-yl="{$val.iPreviewMode}" data-id="{$val.id}" data-t="{$val.tablename}" data-col="{$val.col}">
+									<img alt="{$val.title}" src="{$val.sSmallPath}">
+									<p itemprop="release date" class="Dtime"><em></em>{$val.update_time}</p>
+								</a>
+							</div>
+							<p class="look_tit"><a class="click_jump" href="javascript:void(0);"  data-url="/books/seclist/" data-yl="{$val.iPreviewMode}" data-id="{$val.id}" data-t="{$val.tablename}" data-col="{$val.col}">{$val.title}</a></p>
+						</li>
+						{/foreach}
+					</ul>
+				</div>
+			</div>
+			{/if}
+
+            {if !empty($listO)}
+            <div class="con_width_floor5">
+                <div class="cliu">
+                    <span>订货会合辑</span>
+                    <a href="/books/ordermeeting/bra_{$iBrand}/" class="fr" target="_blank" title="查看全部">查看全部 > </a>
+                </div>
+                <div class="lookbook_list">
+                    <ul class="clearfix">
+                        {foreach $listO as $val}
+                        <li>
+                            <div class="pic-box">
+                                <a class="pic_list click_jump" href="javascript:void(0);" data-url="/books/seclist/" data-yl="{$val.iPreviewMode}" data-id="{$val.id}" data-t="{$val.tablename}" data-col="{$val.col}">
+                                    <img alt="{$val.title}" src="{$val.sSmallPath}">
+                                    <p itemprop="release date" class="Dtime"><em></em>{$val.update_time}</p>
+                                </a>
+                            </div>
+                            <p class="look_tit"><a class="click_jump" href="javascript:void(0);"  data-url="/books/seclist/" data-yl="{$val.iPreviewMode}" data-id="{$val.id}" data-t="{$val.tablename}" data-col="{$val.col}">{$val.title}</a></p>
+                        </li>
+                        {/foreach}
+                    </ul>
+                </div>
+            </div>
+            {/if}
+
+			{if !empty($listV)}
+			<div class="con_width_floor6">
+				<div class="cliu">
+					<span>店铺陈列</span>
+					<a href="/references/visual/bra_{$iBrand}/" class="fr" target="_blank" title="查看全部">查看全部 > </a>
+				</div>
+				<div class="visual_list">
+					<ul class="clearfix">
+						{foreach $listV as $val}
+						<li>
+							<div class="img-box">
+								<a class="a_pic" href="/details/style/t_{$val.tablename}-id_{$val.id}-col_{$val.col}/" target="_blank" data-t="{$val.tablename}" data-col="{$val.col}" data-id="{$val.id}" title="查看详情">
+									{if strlen($val.sSmallPath) > 30}
+									<img src="{$val.sSmallPath}" alt="pic">
+									{else}
+									<img src="{STATIC_URL1}/global/images/loading/referenceMR.jpg" alt="pic">
+									{/if}
+									<p itemprop="release date" class="Dtime"><em></em>{$val.update_time}</p>
+								</a>
+							</div>
+							<div class="visual_tit">
+								{foreach $val.labels as $label}
+								<a href="{$label.lLink}" target="_blank" title="{$label.name}">{$label.name}</a>
+								{/foreach}
+							</div>
+						</li>
+						{/foreach}
+					</ul>
+				</div>
+			</div>
+			{/if}
+			{if !empty($listG)}
+			<div class="con_width_floor7">
+				<div class="cliu">
+					<span>大牌花型</span>
+					<a href="/patterns/topbrands/bra_{$iBrand}" class="fr" target="_blank" title="查看全部">查看全部 > </a>
+				</div>
+				<div class="major_list">
+					<ul>
+						{foreach $listG as $val}
+						<li>
+							<div class="pic-box">
+								<a class="a_pic" href="/details/style/t_{$val.tablename}-id_{$val.id}-col_{$val.col}/" target="_blank" data-t="{$val.tablename}" data-col="{$val.col}" data-id="{$val.id}" title="查看详情">
+									{if strlen($val.sSmallPath) > 30}
+									<img src="{$val.sSmallPath}" alt="pic"><span></span>
+									{else}
+									<img src="{STATIC_URL1}/global/images/loading/referenceMR150.jpg" alt="pic"><span></span>
+									{/if}
+									<p itemprop="release date" class="Dtime"><em></em>{$val.update_time}</p>
+								</a>
+							</div>
+							<div class="major_tit">
+								<div class="major-label-position">
+									{foreach $val.labels as $label}
+									<a href="{$label.lLink}" target="_blank" title="{$label.name}">{$label.name}</a>
+									{/foreach}
+								</div>
+							</div>
+						</li>
+						{/foreach}
+					</ul>
+				</div>
+			</div>
+			{/if}
+			{if !empty($listX)}
+			<div class="con_width_floor8">
+				<div class="cliu">
+					<span>款式细节</span>
+					<a href="/references/details/{$xjBrandname}" class="fr" target="_blank" title="查看全部">查看全部 > </a>
+				</div>
+				<div class="details_list">
+					<ul class="clearfix">
+						{foreach $listX as $val}
+						<li>
+							<div class="pic-box">
+								<a class="a_pic" href="/details/style/t_{$val.tablename}-id_{$val.id}-col_{$val.col}/" target="_blank" data-t="{$val.tablename}" data-col="{$val.col}" data-id="{$val.id}" title="查看详情">
+									{if strlen($val.sSmallPath) > 30}
+									<img src="{$val.sSmallPath}" alt="pic">
+									{else}
+									<img src="{STATIC_URL1}/global/images/loading/styleMR.jpg" alt="pic">
+									{/if}
+									<div class="hoverBg"></div>
+									<p itemprop="release date" class="Dtime"><em></em>{$val.update_time}</p>
+								</a>
+							</div>
+							<div class="details_tit">
+								<div class="details-label-position">
+									{foreach $val.labels as $label}
+									<a href="{$label.lLink}" target="_blank" title="{$label.name}">{$label.name}</a>
+									{/foreach}
+								</div>
+							</div>
+						</li>
+						{/foreach}
+					</ul>
+				</div>
+			</div>
+			{/if}
+			{if !empty($similarBrands)}
+			<div class="con_width_floor4">
+				<div class="cliu">
+					<span>相似品牌推荐</span>
+					<a href="/brands/{if !empty($c)}c_{$c}-{/if}alias_{$alias}/" class="fr" target="_blank" title="查看全部">查看全部 > </a>
+				</div>
+				<ul class="morebrand">
+			 	   {foreach $similarBrands as $val}
+					<li onclick="showMe({$val.id})" style="cursor:pointer">
+						<div class="t">
+							<div itemscope class="brand_name">
+								 <p itemprop="name"><span class="so">{$val.name}</span></p>
+								 <p itemprop="name"><a itemprop="url" class="luyi" href="/brands/detail/id_{$val.id}/" target="_blank" title="{$val.b_name}">{$val.b_name}</a></p>
+							 </div>
+							 <p>—</p>
+							 <p itemprop="number" class="sp">共有:{$val.count}</p>
+					    </div>
+					</li>
+					{/foreach}
+				</ul>
+			</div>
+			{/if}
+		</div>
+	</div>
+{/block}
+
+{block name="self"}
+	<script type="text/javascript" src="{STATIC_URL2}/global/js/fashion/index.js?{STATIC_CHANGE_TIME}"></script>
+	<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/global.js?{STATIC_CHANGE_TIME}"></script>
+{literal}
+<script>
+function showMe(id){
+	window.open('/brands/detail/id_'+id+'/');
+}
+function hrefUrl(action,obj){
+	var id  = obj.attr('data-id');
+	var t   = obj.attr('data-t');
+	var col = obj.attr('data-col');
+	if(action=='analysis'){
+		window.open('/details/report/t_'+t+'-id_'+id+'-col_'+col+'/');	//潮流分析
+	}else if(action=='runway'){
+		window.open('/runways/inside/id_'+id+'/');//T台
+	}else{
+		window.open('/details/style/t_'+t+'-id_'+id+'-col_'+col+'/'); //款式库
+	}
+}
+$(function(){
+	//图片懒加载
+	$('.runwayImg,.floor2_T img').lazyload({
+		effect: "fadeIn",
+		threshold: 200
+	});
+	//取消条件
+	$("#cancel_industry").click(function(){
+		$.cookie('gender', null,{expires:-1,path:'/',domain:'pop-fashion.com'});
+		$.cookie('industry',null,{expires:-1,path:'/',domain:'pop-fashion.com'});
+		location.reload();
+	});
+
+	$('.active_click').on('click',function(){
+		$(this).prev('a').triggerHandler('click');
+	});
+
+	//点击图片和标题跳转到二级列表页
+	$(".lookbook_list").on("click",".click_jump, .yl, .wz",function() {
+		var $self = $(this);
+		var _url = $self.data('url');
+		var _tab = $self.data('t');
+		var _id = $self.data('id');
+		var _yl = $self.data('yl');
+		var _col = $self.data('col');
+
+		window.open(_url+encodeURIComponent('id_'+_id+'-t_'+_tab+'-yl_'+_yl+'-col_'+_col)+'/');
+	});
+
+	// 标签显示全部
+	$(".styles li").on('mouseenter mouseleave',function(e){
+		var label_position=$(this).find(".brand-slabel-position")
+		var cur_height=label_position.css('height');
+		label_position.css('height','auto');
+		var animate_height=label_position.css('height');
+		label_position.css('height',cur_height);
+		if(e.type=="mouseenter"){
+			label_position.animate({height:animate_height},100);
+		}else{
+			label_position.animate({height:'54px'},50);
+		}
+	});
+	// 列表交互效果
+	$(".floor1_T li").on('mouseenter mouseleave',function(e){
+		if(e.type=='mouseenter'){
+			$(this).find(".js-brand-description").stop(true,true).slideDown(100);
+		}else{
+			$(this).find(".js-brand-description").stop(true,true).slideUp(100);
+		}
+	});
+	// 大牌花型标签显示全部
+	$(".major_list li").on('mouseenter mouseleave',function(e){
+		var label_position=$(this).find(".major-label-position")
+		var cur_height=label_position.css('height');
+		label_position.css('height','auto');
+		var animate_height=label_position.css('height');
+		label_position.css('height',cur_height);
+		if(e.type=="mouseenter"){
+			label_position.animate({height:animate_height},100);
+		}else{
+			label_position.animate({height:'50px'},50);
+		}
+	});
+	// 款式细节标签显示全部
+	$(".details_list li").on('mouseenter mouseleave',function(e){
+		var label_position=$(this).find(".details-label-position")
+		var cur_height=label_position.css('height');
+		label_position.css('height','auto');
+		var animate_height=label_position.css('height');
+		label_position.css('height',cur_height);
+		if(e.type=="mouseenter"){
+			label_position.animate({height:animate_height},100);
+		}else{
+			label_position.animate({height:'54px'},50);
+		}
+	});
+
+	$('.qx_close').click(function(){
+		$('.shadow_black').hide();
+		$(this).parent('.quanxian_cont').hide();
+	});
+});
+
+</script>
+{/literal}
+{/block}

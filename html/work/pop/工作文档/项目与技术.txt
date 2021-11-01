@@ -1,0 +1,14 @@
+小程序后台：
+	webpack、babel、（模块打包、编译）
+	vue、vue-router、（js框架、路由）
+	element-ui、（ui框架）
+	axios、es6、less、（http库、js语法、 CSS预处理）
+	tinymce...（富文本编辑器）
+新款式后台：
+	webpack、babel、（模块打包、编译）
+	vue、vue-router、vuex、（js框架、路由、状态管理）
+	element-ui、（ui框架）
+	axios、es6、sass、eslint、（http库、js语法、 CSS预处理、代码格式）
+	vue-particles、vue-count-to、cropperjs...（粒子效果、数字滚动、图片裁剪）
+栏目页广告位：
+	css3 filter、svg filter、ie filter...（css3滤镜、svg滤镜、ie滤镜的高斯模糊实现）

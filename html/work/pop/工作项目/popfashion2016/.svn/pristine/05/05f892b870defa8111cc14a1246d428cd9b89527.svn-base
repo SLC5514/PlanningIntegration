@@ -1,0 +1,109 @@
+{extends file="layout.html"}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/personal.css?{STATIC_CHANGE_TIME}">
+{/block}
+
+{block name="main"}
+<div class="main myWorkTable">
+	<div class="con_width">
+		<div class="section">
+			{$personalHeader}			
+		</div>
+		<div class="attention">
+			<div class="atten_list">
+				<ul class="clearfix">
+					<li>
+						<a {if $count.trend} href="/trends/coll_2/#anchor" target="_blank" {else} href="javascript:void(0);" class="gray" {/if} title="趋势解读">
+							<img src="{STATIC_URL2}/global/images/atten.jpg"/>
+							<div class="atten_title">趋势解读</div>
+							<div class="pic_whitebg"></div>
+						</a>
+						<p class="atten_con">共有 <span>{$count.trend}</span> 个收藏</p>
+					</li>
+					<li>
+						<a {if $count.analysis} href="/analysis/coll_2/#anchor" target="_blank" {else} href="javascript:void(0);" class="gray" {/if} title="流行分析">
+							<img src="{STATIC_URL2}/global/images/analysis.jpg"/>
+							<div class="atten_title">流行分析</div>
+							<div class="pic_whitebg"></div>
+						</a>
+						<p class="atten_con">共有 <span>{$count.analysis}</span> 个收藏</p>
+					</li>
+					<li>
+						<a {if $count.style} href="/styles/coll_2-dis_1/#anchor" target="_blank" {else} href="javascript:void(0);" class="gray" {/if} title="款式">
+							<img src="{STATIC_URL2}/global/images/stylec.png"/>
+							<div class="atten_title">款式</div>
+							<div class="pic_whitebg"></div>
+						</a>
+						<p class="atten_con">共有 <span>{$count.style}</span> 个收藏</p>
+					</li>
+					<li>
+						<a {if $count.patterns} href="{$patternsUrl}" target="_blank" {else} href="javascript:void(0);" class="gray" {/if} title="图案">
+							<img src="{STATIC_URL2}/global/images/patterns.jpg"/>
+							<div class="atten_title">图案</div>
+							<div class="pic_whitebg"></div>
+						</a>
+						<p class="atten_con">共有 <span>{$count.patterns}</span> 个收藏</p>
+					</li>
+					<li>
+						<a {if $count.prescon} href="/runways/coll_2/#anchor" target="_blank" {else} href="javascript:void(0);" class="gray" {/if} title="T台">
+							<img src="{STATIC_URL2}/global/images/runway.jpg"/>
+							<div class="atten_title">T台</div>
+							<div class="pic_whitebg"></div>
+						</a>
+						<p class="atten_con">共有 <span>{$count.prescon}</span> 个收藏</p>
+					</li>	
+					<li>
+						<a {if $count.brand} href="/member/collectlist/column_brand/" target="_blank" {else} href="javascript:void(0);" class="gray" {/if} title="品牌">
+							<img src="{STATIC_URL2}/global/images/brand.jpg"/>
+							<div class="atten_title">品牌</div>
+							<div class="pic_whitebg"></div>
+						</a>
+						<p class="atten_con">共有 <span>{$count.brand}</span> 个收藏</p>
+					</li>
+					<li>
+						<a {if $count.book} href="/books/coll_2/#anchor" target="_blank" {else} href="javascript:void(0);" class="gray" {/if} title="读物">
+							<img src="{STATIC_URL2}/global/images/picture.jpg"/>
+							<div class="atten_title">读物</div>
+							<div class="pic_whitebg"></div>
+						</a>
+						<p class="atten_con">共有 <span>{$count.book}</span> 个收藏</p>
+					</li>				
+					<li>
+						<a {if $count.material} href="{$materialUrl}" target="_blank" {else} href="javascript:void(0);" class="gray" {/if} title="素材">
+							<img src="{STATIC_URL2}/global/images/refrenece.jpg"/>
+							<div class="atten_title">素材</div>
+							<div class="pic_whitebg"></div>
+						</a>
+						<p class="atten_con">共有 <span>{$count.material}</span> 个收藏</p>
+					</li>
+					<li>
+						<a {if $count.lookbook} href="/books/lookbook/coll_1/#anchor" target="_blank" {else} href="javascript:void(0);" class="gray" {/if} title="广告大片">
+							<img src="{STATIC_URL2}/global/images/collookbook.jpg"/>
+							<div class="atten_title">广告大片</div>
+							<div class="pic_whitebg"></div>
+						</a>
+						<p class="atten_con">共有 <span>{$count.lookbook}</span> 个收藏</p>
+					</li>
+					<li>
+						<a {if $count.ordermeeting} href="/books/ordermeeting/coll_1/#anchor" target="_blank" {else} href="javascript:void(0);" class="gray" {/if} title="订货会合辑">
+						<img src="{STATIC_URL2}/global/images/collordermeeting.jpg"/>
+						<div class="atten_title">订货会合辑</div>
+						<div class="pic_whitebg"></div>
+						</a>
+						<p class="atten_con">共有 <span>{$count.ordermeeting}</span> 个收藏</p>
+					</li>
+					<li>
+						<a {if $count.accessories} href="/references/accessories/coll_1/#anchor" target="_blank" {else} href="javascript:void(0);" class="gray" {/if} title="服饰品">
+							<img src="{STATIC_URL2}/global/images/Accessories.jpg"/>
+							<div class="atten_title">服饰品</div>
+							<div class="pic_whitebg"></div>
+						</a>
+						<p class="atten_con">共有 <span>{$count.accessories}</span> 个收藏</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+{/block}

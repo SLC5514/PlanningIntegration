@@ -1,0 +1,105 @@
+{extends file="layout.html"} 
+{block name="selfcss"}
+<!-- <link rel="stylesheet" type="text/css" href="{$smarty.const.STATIC_URL1}/global/css/lib/perfect-scrollbar.css?{$smarty.const.STATIC_CHANGE_TIME}"> -->
+<link rel="stylesheet" type="text/css" href="{$smarty.const.STATIC_URL1}/global/css/report/list.css?{$smarty.const.STATIC_CHANGE_TIME}" />
+{/block} 
+
+{block name="main"}
+<div class="content">
+	<div id="cond" data-params="{$params}" data-key="{$key}" style="display:none;"></div>
+	<div class="section">
+		<!-- 列表控制器 -->
+		<div class="list-controller">
+			<div class="select-nav js-select-nav">
+				<div class="selected clear js-keycho hide">
+					<span>您已经选择：</span>
+					<div>
+						<!-- <span>季节：2020春夏<a class="close"></a></span> -->
+					</div>
+					<a class="empty" href="/trendspattern/">清空筛选</a>
+				</div>
+				<div class="select clear" data-key="gen" data-name="sGender">
+					<span class="label">性别</span>
+					<div>
+						<!-- <a>男鞋</a> -->
+					</div>
+				</div>
+				<div class="select season clear" data-key="sea" data-name="iSeason">
+					<span class="label">季节</span>
+					<div>
+						<!-- <a>2020春夏</a> -->
+					</div>
+					<a class="more js-season-more">更多</a>
+				</div>
+			</div>
+			<div class="search-nav clear">
+				<ul class="type-list clear fl">
+					<li class="on">最新</li>
+					<li>最热</li>
+				</ul>
+				<div class="fr clear screen-result">
+					<div class="search-box js-search-box clear">
+						<input class="sear-input js-sear-input" type="text" placeholder="搜索">
+						<input class="icon neiye-list js-neiye-list" type="button">
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--搜索结果为空-->
+		<div class="trends-null js-trends-null">
+			<div class="null-pic"></div>
+			<p>抱歉，搜索不到相关结果！可尝试更换关键字或减少筛选条件哦~</p>
+			<div class="clear link-msg">
+				<a class="js-contact-qq-btn" href="javascript:void(0);" data-type="1" rel="nofollow"><span class="icon"></span>在线客服</a>
+				<div><span class="icon"></span>咨询热线：4008-210-662</div>
+			</div>
+		</div>
+		<!-- 列表 -->
+		<div class="trends-section js-trends-section">
+			<ul class="clear js-trends-list js-lists-parent">
+				<!-- <li>
+					<div class="collect-data js-collect-data"></div>
+					<a href="javascript:void(0);" target="_blank">
+						<img src="" alt="">
+					</a>
+					<div class="text-down">
+						<a href="javascript:void(0);" target="_blank">
+							<p class="time clear">
+								<span class="fl">浏览（263）</span>
+								<span class="fr">2019-07-13</span>
+							</p>
+							<p class="title" title="--女装围巾图案趋势">--女装围巾图案趋势</p>
+						</a>
+						<div class="label">
+							<a href="javascript:void(0);" target="_blank" title="2019春夏">2019春夏</a>
+							<a href="javascript:void(0);" target="_blank" title="围巾">围巾</a>
+						</div>
+					</div>
+				</li> -->
+			</ul>
+			<!--分页-->
+			<div class="rightc-bottom js-rightc-bottom"></div>
+			<!-- <div class="list-more js-list-more"><span class="icon"></span>下拉加载更...</div> -->
+		</div>
+	</div>
+</div>
+{/block}
+
+{block name="other"}
+	<!-- 收藏提示tip -->
+	<div class="tip-box">提示</div>
+	<!-- 最新趋势 普通用户提示 -->
+	<div class="trend-prompt js-trend-prompt">
+		<div class="section">
+			<div class="close"></div>
+			<div class="title">企业VIP用户专享</div>
+			<div class="info">查看海量图案趋势报告<br/>第一时间掌握市场流行图案花型趋势变化</div>
+			<a class="btn" href="/topic/enterprise_service/" target="_blank">了解企业VIP特权服务</a>
+		</div>
+	</div>
+{/block}
+
+{block name="self"}
+	<script src="{$smarty.const.STATIC_URL3}/global/js/report/list.js?{$smarty.const.STATIC_CHANGE_TIME}" type="text/javascript" charset="utf-8"></script>
+	<script src="{$smarty.const.STATIC_URL3}/global/js/pattern/collect-common.js?{$smarty.const.STATIC_CHANGE_TIME}" type="text/javascript" charset="utf-8"></script>
+{/block}

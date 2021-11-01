@@ -1,0 +1,204 @@
+{extends file="layout.html"}
+{block name="selfcss"}
+	<link rel="stylesheet" type="text/css" href="{$smarty.const.STATIC_URL1}/global/css/lib/perfect-scrollbar.css?{$smarty.const.STATIC_CHANGE_TIME}">
+	<link rel="stylesheet" type="text/css" href="{$smarty.const.STATIC_URL1}/global/css/lib/cropper.css?{$smarty.const.STATIC_CHANGE_TIME}">
+	<link rel="stylesheet" type="text/css" href="{$smarty.const.STATIC_URL1}/global/css/virtual/virtual.css?{$smarty.const.STATIC_CHANGE_TIME}">
+{/block}
+{block name="main"}
+<div class="content">
+	<div class="virtual-box js-virtual-box">
+		<!-- 模板 -->
+		<div class="pattern-list-div clear js-pattern-list-div">
+			<ul class="pattern-tab-list js-pattern-tab-list">
+				<!-- <li class="now-choice"><img src="{$smarty.const.STATIC_URL2}/global/images/virtual/icon1-active.png">女装</li> -->
+			</ul>
+			<div class="item-box">
+				<div class="pattern-list-content js-pattern-list-content">
+					<!-- 模板列表 -->
+					<!-- <ul class="pattern-list clear js-pattern-list" style="display:block">
+						<li data-model-src="{$smarty.const.STATIC_URL2}/global/images/virtual/dress-mask.png" data-src="{$smarty.const.STATIC_URL2}/global/images/virtual/test1.jpeg">
+							<img src="{$smarty.const.STATIC_URL2}/global/images/virtual/pic3.jpg" alt="pic">
+							<span>生成虚拟样衣图</span>
+							<div class="pattern-bg"></div>
+							<div class="border-div"></div>
+						</li>
+					</ul> -->
+
+				</div>
+			</div>
+			<a class="description-btn" href="/topic/20180920/" title="查看详情" target="_blank">定制专属模板</a>
+		</div>
+		<!-- 虚拟效果 -->
+		<div class="pattern-box clear js-pattern-box">
+	        <div class="pattern-area">
+		        <!-- 主画布 -->
+		        <canvas class="main-canvas js-main-canvas" data-full="{$isFull}" data-color="{$sDefaultColor}"></canvas>
+	        </div>
+	        <div class="tool-box clear">
+
+	        	<div class="remaining-div js-remaining-div">剩余<br/><span>20</span>次<br/>体验</div>
+
+	        	<a class="detail-btn js-detail-btn" href="javascript:void(0);" title="查看详情"><span>查看<br/>图案</span></a>
+	        	<p>
+	        		<img src="{$smarty.const.STATIC_URL2}/global/images/virtual/icon10.png" alt="icon">
+	        		您 可 以 使 用 鼠 标 任 意 拖 拽 图 片 ， 并 用 滚 轮 调 整 图 片 大 小
+	        	</p>
+	        	<div class="tool-div js-tool-div">
+		            <button class="add-ratio js-add-ratio" title="放大"><img src="{$smarty.const.STATIC_URL2}/global/images/virtual/icon9.png" alt="icon"></button>
+		            <div><button></button></div>
+		            <button class="reduce-ratio js-reduce-ratio" title="缩小"><img src="{$smarty.const.STATIC_URL2}/global/images/virtual/icon8.png" alt="icon"></button>
+		            <!-- <button title="原图">原图</button> -->
+		            <!-- <button title="复位">复位</button> -->
+		        </div>
+	        </div>
+	    </div>
+	    <!-- 左侧控制 -->
+	    <div class="control-div js-control-div">
+	    	<div class="control-containt">
+	    		<h3>图案应用</h3>
+	    		<label>花型应用：</label>
+	    		<ul class="tab-pattern-nav">
+	    			<li class="js-set-type" data-type="1" style="border-radius:5px 0 0 5px">循环</li><li class="js-set-type" data-type="2" style="border-radius:0 5px 5px 0">局部</li>
+	    		</ul>
+	    		<label>背景色：</label><button class="get-img-color js-get-img-color"></button>
+	    		<div class="color-container">
+			        <div class="color-series-div js-color-series-div">
+			            <canvas class="series-canvas js-series-canvas"></canvas>
+			            <span></span>
+			        </div><br/>
+			        <div class="check-detail-color">
+			        	<div class="detail-color-div js-detail-color-div">
+				            <canvas class="detail-canvas"></canvas>
+				            <span></span>
+				        </div>
+				        <div class="color-val-div js-color-val-div">
+				            <label>RGB</label><input readonly class="js-color-val" type="text">
+				            <label>&nbsp;#</label><input readonly class="js-color-val" type="text"><br/>
+				            <!-- <label>当前选择:</label><span></span> -->
+				        </div>
+				        <!-- <button class="js-close-color-btn">关闭</button> -->
+			        </div>
+			    </div>
+			    <label>花型旋转：</label>
+			    <div class="rotate-section">
+			    	<ul class="js-rotate-plate">
+			    		<li class="rotate-pos1">0</li>
+			    		<li class="rotate-pos2">315</li>
+			    		<li class="rotate-pos3">270</li>
+			    		<li class="rotate-pos4">225</li>
+			    		<li class="rotate-pos5">180</li>
+			    		<li class="rotate-pos6">135</li>
+			    		<li class="rotate-pos7">90</li>
+			    		<li class="rotate-pos8">45</li>
+			    	</ul>
+			    	<div class="rotate-div">
+			    		<h3>输入角度</h3>
+			    		<input class="js-rotate-area" value="0°">
+			    	</div>
+			    	<div class="rotate-point-plate"></div>
+			    	<div class="rotate-bg-plate"></div>
+			    </div>
+	            <div class="hr-div"><button class="return-back-btn js-return-back-btn">返回</button></div>
+	    	</div>
+
+
+	    </div>
+	</div>
+	<!--推荐图案模块-->
+	<div class="recommend-box js-recommend-box full-state">
+		<div class="function-div"><label class="file-btn js-upload-btn" for="file-ele"><span class="icon"></span>上传本地花型</label><input type="hidden" id="upload-src"><form class="hide js-form" enctype="multipart/form-data"><input class="js-account-id" type="hidden" name="accountId"><input class="js-upload-ele" id="file-ele" name="material" type="file" accept="image/gif,image/jpeg,image/jpg,image/png"></form><button class="download-pic-btn js-download-btn" title="下载图片"><span class="icon"></span>下载模拟效果图</button><button class="reset-pattern-btn js-reset-pattern-btn"><span class="icon"></span>重置</button><button class="recommend-show-btn recommend-hide-btn active-status js-recommend-show-btn"><span class="icon"></span>展开图案列表</button></div>
+		<div class="recommend-div js-recommend-div">
+			<div class="recommend-contain clear js-picture-section">
+				<!--列表左右控制按钮-->
+				<div class="icon recommend-left-btn js-recommend-left"></div>
+				<div class="icon recommend-right-btn js-recommend-right"></div>
+
+				<!--推荐描述-->
+				<!-- <div class="recommend-disc">
+					<div></div>
+					<p>推荐图案</p>
+				</div> -->
+
+				<div class="recommend-pics js-recommend-pics clear">
+					<!--推荐列表-->
+					<ul class="recommend-list js-recommend-list clear"></ul>
+				</div>
+			</div>
+
+			<div class="recommend-contain clear js-my-pattern-section">
+				<!--列表左右控制按钮-->
+				<div class="icon recommend-left-btn js-recommend-left"></div>
+				<div class="icon recommend-right-btn js-recommend-right"></div>
+
+				<!--推荐描述-->
+				<!-- <div class="recommend-disc">
+					<div></div>
+					<p>推荐图案</p>
+				</div> -->
+
+				<div class="recommend-pics js-recommend-pics clear">
+					<!--推荐列表-->
+					<ul class="recommend-list js-recommend-list clear"></ul>
+					<div class="no-my-pattern js-no-my-pattern">
+						<h3>还没有get 1分钟在线创意花型技能，快体验下</h3>
+						<a href="/mihui/muhuiIndex/" title="开始设计" target="_blank">开始设计</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 图片剪裁 -->
+	<div class="edit-pic-box js-edit-pic-box">
+		<button class="icon" titlt="关闭"></button>
+	    <h3>
+	    	手动框选图片
+	        <p>框选区域包括完整花型</p>
+	    </h3>
+	    <div class="cut-div js-cut-box">
+			<img class="js-cut-img" style="position:relative;" src=""/>
+		</div>
+	    <div class="edit-btn-div">
+	        <button class="js-save-btn" title="确定">确定</button>
+	    </div>
+	</div>
+
+
+	<div class="guide-section js-guide-section">
+		<img style="z-index:3;" src="{$smarty.const.STATIC_URL2}/global/images/virtual/step1.jpg">
+		<img style="z-index:2;" src="{$smarty.const.STATIC_URL2}/global/images/virtual/step2.jpg">
+		<img style="z-index:1;" src="{$smarty.const.STATIC_URL2}/global/images/virtual/step3.jpg">
+	</div>
+
+</div>
+
+
+
+{/block}
+{block name="footer"}
+{/block}
+
+{block name="self"}
+	<script type="text/javascript">
+		var virtual_back_obj={
+			col_user_type:'{$col_user_type}',
+			try_times:'{$module_power["yuntu:virtualtry"][1]}'
+		};
+	</script>
+	<script type="text/javascript" src="{$smarty.const.STATIC_URL3}/global/js/virtual/virtual.js?{$smarty.const.STATIC_CHANGE_TIME}"></script>
+{/block}
+{block name="other"}
+	<!-- 在线客服 -->
+	<button class="online-btn js-contact-qq-btn" data-type="1" title="在线客服"><span class="icon"></span><label>在线客服</label></button>
+	<div class="detail-frame js-detail-frame">
+		<iframe src="" width="100%" height="100%"  frameborder="no" border="0" scrolling="no" allowtransparency="yes"></iframe>
+	</div>
+
+
+	<!-- 用户模板类型选择 -->
+	<div class="user-model-box js-user-model-box">
+		<h3>选择关注的品类</h3>
+		<p>选择后，您在模拟成品时，将使用对应模版</p>
+		<ul><li data-type="1">服装</li><li style="margin-left:20px;" data-type="2">箱包</li><li data-type="5">家纺</li><li style="margin-left:20px;" data-type="3">鞋子</li></ul>
+		<button title="我决定好了">我决定好了</button>
+	</div>
+{/block}

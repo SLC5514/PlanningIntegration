@@ -1,0 +1,243 @@
+/*-----------------------新增列表页共用对象 lut000 2018/09/14---------------------------*/
+
+// 列表页共用对象
+var pop_list_page_obj={
+
+};
+
+/*---------------------end of change---------------------*/
+
+$(function(){
+    $('.js-question-mark').hover(function() {
+      $('.js-column-msg').css({left: $(this).prev().width()-7 + 'px'}).addClass('on');
+    }, function() {
+      $('.js-column-msg').removeClass('on');
+    })
+    // 新广告位
+    var linkData = $('#link').data();
+    //  && linkData.url.split('/')[1] != 'inspiration' && linkData.col && linkData.col != 121
+    if ($('.sp-box').length) {
+      $.ajax({
+        url : '/poprec/top/',
+        type : 'post',
+        data: {
+          col: $('#link').data().col,
+          params: $('#link').data().param
+        },
+        success : function(res){
+          var resJson = JSON.parse(res);
+          if (resJson.code == 0) {
+            var banner = new BannerSlide({
+              el: '.sp-box',
+              imgList: resJson.data
+            })
+          } else {
+            console.log(resJson.msg);
+          }
+        }
+      });
+    }
+
+    // 无权限弹出层事件
+
+    $('body').on('click','.js-general-user-status',function(){
+        var columnid = $(this).attr("data-columnId") ? $(this).attr("data-columnId") : null;
+        if(P_UserType==5){
+            if(columnid == 3){
+                $(".js-runway-general-title").html("想预览该场发布会图库？");
+                $(".js-runway-general-intro").html("立即注册账号，您更能随时随地看全球发布会，全年各大时装周资讯及时上线");
+                $(".js-runway-general-btn").show();
+                $(".js-lookbook-general-btn").hide();
+            }else if(columnid == 71){
+                $(".js-runway-general-title").html("这是品牌产品系列展示，");
+                $(".js-runway-general-intro").html("全球一线品牌、市场热门品牌、新锐设计师品牌，时尚大片品牌灵魂与当季搭配展示");
+                $(".js-runway-general-btn").hide();
+                $(".js-lookbook-general-btn").show();
+            }
+            $('.js-general-user-info-fixbox').slideDown(400);
+        }
+    });
+    $('.js-general-user-info-fixbox>div>button').on('click',function(){
+        $('.js-general-user-info-fixbox').slideUp(200);
+    });
+
+    // 滚动定位关键字搜索
+    $(".js-input-search").on('focus', function(){
+        $(this).siblings(".js-search-downdrop").slideDown(50);
+    });
+    $(".style-search-box").on('blur', function(e){
+        e.stopPropagation();
+        $(this).siblings(".js-search-downdrop").slideUp(50);
+    });
+    $("body").on('click',function(e){
+        $(".js-search-downdrop").slideUp(50);
+    });
+    $(".js-input-search,.js-sear").on('click',function(e){
+        e.stopPropagation();
+    }); 
+
+    // 滚动筛选项定位
+    var $sel = $(".js-shaixuan-wid");
+    var $date = $(".js-patterns-date-list");
+    var $select_box = $(".js-selected-box");
+    var $color=$(".js_color_analysis")
+    var $save = $(".js-save-search");
+    var hei = $select_box.height();
+    var $slide = $('.sp-box');
+    var offset_top;
+    $(window).on("scroll", function(){
+        if ($sel.length) {
+          offset_top = $sel.offset().top;
+          if ($sel.css('display') == 'none') {
+            offset_top = $sel.parent().offset().top;
+          }
+        } else if ($date.length) {
+          offset_top = $date.offset().top;
+          if ($date.css('display') == 'none') {
+            offset_top = $date.parent().offset().top;
+          }
+        }
+        if (!offset_top) {
+          return;
+        }
+        var $rightc_s = $(".js-rightc-s").css("display");
+        var scroll_top = $(window).scrollTop();
+        if(scroll_top >=offset_top - 40){
+            if($save.length){
+                $save.hide();
+            }
+            if($rightc_s == 'none' || $(".js-rightc-s").length==0){
+                $(".js-selected-key-scroll").show();
+            }else{
+                $(".js-search-key-scroll").show();
+            }
+            $($select_box[1]).addClass("sectionx1460").parent().addClass("select-scroll-fixed").show();
+        }else{
+            $save.show();
+            $(".js-selected-key-scroll").hide();
+            $(".js-search-key-scroll").hide();
+            $($select_box[1]).removeClass("sectionx1460").parent().removeClass("select-scroll-fixed").hide();
+        }
+    });
+
+    /*hover显示左右轮播按钮*/
+    // $('.js-banner-box').hover(function(){
+    //     $('.js-slide-pre, .js-slide-next').show();
+    // },function(){
+    //     $('.js-slide-pre, .js-slide-next').hide();
+    // });
+    
+    /*轮播列表导航hover阻止冒泡*/
+    // $('.js-progress-bar').hover(function(ev){
+    //     var e=ev || window.event;
+    //     if(e && e.stopPropagation){
+    //         e.stopPropagation();
+    //     }else{
+    //         window.event.cancelBubble=true;
+    //     }
+    //     return false;
+    // });
+
+    //广告位轮播
+    // if($(".js-banner-box").length){
+	  //   	var tab_list = new StabSlide({
+	  //       "contain": $('.js-banner-box'),
+	  //       "speed": 300,
+	  //       "hv_stop":true				//hover下暂停轮播
+	  //   });
+    // }
+    
+
+
+    // 列表页收藏
+    var isClick = false;
+    $(".js-list-parent").on('click','.js-collect-btn', function() {
+        if(isClick==false){         
+            listsCollect($(this));
+        }
+    });
+    function listsCollect(obj){
+        isClick=true;
+        var data_a = obj.parents('li').find('a.js-data-collect');
+        var iColumnId =data_a.data('col')||'';
+        var sTableName = data_a.data('t')||'';
+        var iPriId = data_a.data('id')||'';
+        if(obj.hasClass('cur')){            
+            var curl ='/collect/setcollect/'+iColumnId+'-'+sTableName+'-'+iPriId+'/cancel/?'+Math.random(); 
+        }else{
+            var curl ='/collect/setcollect/'+iColumnId+'-'+sTableName+'-'+iPriId+'/?'+Math.random();
+        }
+        $.ajax({
+            url : curl,
+            type : 'get',
+            dataType : 'json',
+            success : function(data){
+                // 取消成功
+                if(parseInt(data.code) === 10){
+                    obj.removeClass('cur');
+                    oCommon.showTips(data.msg);
+                }
+                // 加入成功
+                else if(parseInt(data.code) === 20) {
+                    obj.addClass('cur');
+                    oCommon.showTips(data.msg);
+                }
+                isClick=false;
+            }
+        });
+    }
+    
+    
+    // 有无视频版
+    var link = $("#link");
+    var url = link.attr("data-url");
+    var param = link.attr("data-param") || "";
+    var search = link.attr("data-search") || "";
+    var new_url;
+    var strs = param.split("-");
+    // T台有视频版
+    $(".js-only-video-select").on("click", function() {
+        videoJumpFunc($(this));
+    });
+
+    function videoJumpFunc(obj) {
+        var url_arr = [];
+        var self = obj.find("a");
+        if(self.hasClass('i_video')){
+            self.removeClass('i_video');
+            for(var i = 0; i < strs.length; i++){
+                if(strs[i] != 'ver_video'){
+                    url_arr.push(strs[i]);
+                }
+            }
+            if(search == ""){
+                new_url = url + url_arr.join("-") + '/#anchor';
+            }else{
+                console.log(url + url_arr.join("-"),search)
+                new_url = url + url_arr.join("-")+'/' +search+ '#anchor';                
+            }
+        }else{
+            self.addClass('i_video');
+            if(param == ""){
+                new_url = search == "" ? url +'ver_video/#anchor' : url +'ver_video/'+search+'#anchor';
+            }else{
+                if(param.indexOf("ver_") != -1){
+                    for(var i = 0; i < strs.length; i++){                    
+                        if(strs[i].indexOf('ver_') != -1){                        
+                            strs[i] = 'ver_video';
+                        }
+                        url_arr.push(strs[i])
+                    }
+                }else{
+                    url_arr.push('ver_video')
+                    for(var i = 0; i < strs.length; i++){
+                        url_arr.push(strs[i])
+                    }
+                }                        
+                
+                new_url = search == "" ? url + url_arr.join("-") + '/#anchor' : url + url_arr.join("-")+'/'+ search + '#anchor';
+            }
+        }
+        window.location.href = new_url;
+    }
+});

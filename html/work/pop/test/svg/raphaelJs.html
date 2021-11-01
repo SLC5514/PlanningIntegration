@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>raphaelJs</title>
+  <style>
+    body {
+      margin: 0;
+      user-select: none;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 红 橙 黄 绿 青 蓝 紫 -->
+</body>
+<script src="./raphael.js"></script>
+<script>
+  var paper = Raphael(0, 0, 1500, 500);
+  
+  // 直线
+  var pathL = paper.path("M100,100 L200,100").attr('stroke', 'orange'); // 画线到（x y）
+  var pathH = paper.path('M200,100 H300').attr('stroke', 'yellow'); // 水平线到（x）
+  var pathV = paper.path('M300,100 V200').attr('stroke', 'green'); // 垂直线到（y）
+  var pathZ = paper.path('M300,200 L200,200 200,300 Z').attr('stroke', 'purple'); // 关闭路径（none）
+  paper.path('M200,300 H300 V400').attr('stroke', 'black');
+  paper.path('M300,200 H400 V300 H300').attr('stroke', 'black');
+
+  // 曲线
+  var pathQ = paper.path("M200,100 Q300,100 300,200").attr('stroke', 'red'); // 二次贝塞尔（x1 y1 x y）
+  var pathT = paper.path("M300,200 Q200,200 200,300 T100,400").attr('stroke', 'blue'); // 平滑二次贝塞尔（T前无Q为直线）（x y）
+  var pathC = paper.path("M300,200 C200,200 200,300 300,300").attr('stroke', 'red'); // 三次贝塞尔（x1 y1 x2 y2 x y）
+  var pathS = paper.path("M300,200 C400,200 400,300 300,300 S200,400 300,400").attr('stroke', 'blue'); // 平滑三次贝塞尔（x2 y2 x y）
+  var pathA = paper.path("M300,400 A100,100,0,0,0,400,300").attr('stroke', 'red'); // 弧（rx ry x-axis-rotation large-arc-flag sweep-flag x y）
+
+  // 图形
+  var circle = paper.circle(300, 300, 50).attr('stroke', 'red'); // 圆（x y r）
+  var ellipse = paper.ellipse(300, 300, 20, 50).attr('stroke', 'blue'); // 椭圆（x y rx ry）
+  var rect = paper.rect(300, 100, 50, 50, 10).attr('stroke', 'red'); // 矩形（x y w h r）
+
+  // 文本
+  var text = paper.text(200, 50, "Raphaël\nkicks\nbutt!").attr('fill', "red"); // 文本 （x y 文本）
+
+  var cirEl = paper.circle(400, 100, 10).attr({
+    fill: 'black',
+    stroke: 'red',
+    cursor: 'pointer'
+  });
+
+  // 事件
+  cirEl.click(function(e) {
+    console.log('click', e);
+  })
+  .dblclick(function(e) {
+    console.log('dblclick', e);
+  })
+  .drag(function(dx, dy, x, y, e) {
+    console.log('drag', dx, dy, x, y, e);
+    this.attr({
+      cx: x,
+      cy: y
+    });
+  }, function(x, y, e) {
+    console.log('start', x, y, e);
+  }, function(e) {
+    console.log('end', e);
+  })
+  .hover(function(e) {
+    console.log('hover', e);
+  }, function(e) {
+    console.log('hoverout', e);
+  })
+  .mouseover(function(e) {
+    console.log('mouseover', e);
+  })
+  .mousemove(function(e) {
+    console.log('mousemove', e);
+  })
+  .mouseout(function(e) {
+    console.log('mouseout', e);
+  })
+  .mousedown(function(e) {
+    console.log('mousedown', e);
+  })
+  .mouseup(function(e) {
+    console.log('mouseup', e);
+  })
+  .touchstart(function(e) {
+    console.log('touchstart', e);
+  })
+  .touchmove(function(e) {
+    console.log('touchmove', e);
+  })
+  .touchend(function(e) {
+    console.log('touchend', e);
+  })
+
+  // 基本
+  cirEl.attr('fill', 'rgba(0,0,0,0.3)'); // 设置元素的属性
+  cirEl.clone().hide().show().remove(); // 克隆、隐藏、显示、删除
+  cirEl.data('key', 'test'); // 设置数据
+  cirEl.glow({ // 辉光效果
+    width: 10,
+    fill: false,
+    opacity: 0.5,
+    offsetx: 0,
+    offsety: 0,
+    color: 'blue',
+  });
+
+  // 转换
+  cirEl.translate(10, 20); // 位移（dx dy）
+  cirEl.rotate(50); // 旋转（deg cx cy）
+  cirEl.scale(0.5, 1); // 比例
+  cirEl.transform("t40,30 s2,1"); // 转换（t位移，r旋转，s比例，m矩阵）
+
+  // 动画
+  cirEl.animate({ // 动画（params ms easing callback）（animation）
+    cx: 300,
+    cy: 300,
+    fill: 'green'
+  }, 300, 'easeOut');
+
+  // var cloneEl = cirEl.clone();
+  // cloneEl.animateWith(cirEl, cirEl, {}, 300, 'easeOut');
+
+  // var count = 0;
+  // var step = function() {
+  //   count++;
+  //   console.log(count);
+  //   if (count >= 1000) {
+  //     return;
+  //   }
+  //   window.requestAnimationFrame(step);
+  // }
+  // window.requestAnimationFrame(step);
+
+
+  var line = paper.path("M500,100 Q600,10 700,150");
+</script>
+
+</html>

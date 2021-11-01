@@ -1,0 +1,213 @@
+{extends file="layout.html"}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/per.css?{STATIC_CHANGE_TIME}">
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/personal.css?{STATIC_CHANGE_TIME}">
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/user/register.css?{STATIC_CHANGE_TIME}">
+{/block}
+
+{block name="main"}
+<div class="main">
+    <div class="con_width">
+    <!--个人中心 头部开始-->
+    {$personalHeader}
+    <!--个人中心 头部结束-->
+
+    <div class="col-main clearfix">
+        <!--个人中心 左侧菜单开始-->
+        {$personalLeftMenu}
+        <!--个人中心 左侧菜单结束-->
+
+        <div class="col-con  fl">
+            <!-- item-manage -->
+            <div class="item-manage manage_share">
+                <div class="hd"><span><i></i>我要分享</span></div>
+                <div id="shareMain" class="share_content">
+                    <form class="shareForm" enctype="multipart/form-data" method="POST" action="">
+                        <input type="hidden" value="uploadshare" name="action">
+                        <p><label>上传图片：</label><input type="file" value="" name="shareUrl"></p>
+                        <p><label> 备注：</label><input type="text" value="" name="sTitle" class="share_title"></p>
+                        <p><a id="shareSubmit" class="share_btn" href="javascript:void(0);" title="立即分享">立即分享</a></p>
+                        <p class="agreexy">
+                            <input type="checkbox" name="site_agreement">
+                            <span>我已阅且同意<a style="cursor:pointer" id="agree" class="agree">网站用户分享协议</a></span>
+                        </p>
+                    </form>
+                    <div class="bao baoshare">
+                        <h3 class="hd2">
+                            <span id="page_record" class="hd_left hd_white {if {$status} eq 0}cur{/if}" onclick="go('')"><strong>全部分享记录</strong></span>
+                            <span id="page_xunyang" class="hd_grey {if {$status} eq 2}cur{/if}" onclick="go('2')"><strong>审核通过</strong></span>
+                            <span id="page_message" class="hd_grey {if {$status} eq 1}cur{/if}" onclick="go('1')"><strong>待审核</strong></span>
+                            <span id="page_message" class="hd_right {if {$status} eq 3}cur{/if}" onclick="go('3')"><strong>未通过</strong></span>
+                        </h3>
+                        <div id="tableContent" class="bd clearfix">
+                            <div id="sampleRecord" class="divHide">
+                                <table cellpadding="0" border="0" width="100%" class="record_tab">
+                                    <tbody>
+                                    <tr>
+                                        <th width="9%">查看</th>
+                                        <th width="32%">备注</th>
+                                        <th width="9%">审核状态</th>
+                                        <th width="14%">上传时间</th>
+                                        <th width="10%">操作</th>
+                                    </tr>
+                                    {foreach $shareList as $val}
+                                    <tr>
+                                        <td>
+                                            <a href="{STATIC_URL2}{$val.sSharedPic}" target="_blank" title="点击浏览">点击浏览</a>
+                                        </td>
+                                        <td class="contact_person">
+                                            <p class="contact_p">{$val.sTitle}</p>
+                                        </td>
+                                        {if $val.approvalSt eq "1"}
+                                        <td class="waitcheck">待审核</td>
+                                        {/if}
+                                        {if $val.approvalSt eq "2"}
+                                        <td class="checkpass">审核通过</td>
+                                        {/if}
+                                        {if $val.approvalSt eq "3"}
+                                        <td class="nopass">未通过</td>
+                                        {/if}
+                                        <td>
+                                            <span>{$val.dCreateTime}</span>
+                                        </td>
+                                        <td class="status">
+                                            {if $val.approvalSt eq "1"}
+                                            <div class="deletebtn" shareid="{$val.id}">取消分享</div>
+                                            {/if}
+                                            {if $val.approvalSt eq "2"}
+                                            <div class="deletebtn" shareid="{$val.id}">删除分享</div>
+                                            {/if}
+                                        </td>
+                                    </tr>
+                                    {/foreach}
+                                    {if $totalCount eq "0"}
+                                    <tr>
+                                        <td colspan="5">没有记录</td>
+                                    </tr>
+                                    {/if}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--分页--页码开始-->
+                {$pageHtml}
+                <!--分页--页码结束-->
+            </div>
+            <!-- /item-manage -->
+        </div>
+    </div>
+    <div class="shadowxy"></div>
+    <div class="closeBtn"></div>
+    <div class="alertLayer share_alertLayer" style="display:none">
+        <div class="layerShadow"></div>
+        <div class="content">
+            <div class="top">
+                <h1>用户分享协议</h1>
+                <span class="xian"></span>
+            </div>
+            <div class="middle">
+                <div class="des">
+                    <p>用户在接受 服装流行前线 https://www.pop-fashion.com/ （以下简单为 POP） 的相关服务之前，请务必仔细阅读本条款并同意本声明。</p>
+                    <p>用户直接或通过各类方式（如站外API引用等）间接使用 POP服务和数据的行为，都将被视作已无条件接受本声明所涉全部内容；若用户对本声明的任何条款有异议，请停止使用 POP所提供的全部服务。</p>
+                    <h5>第一条</h5>
+                    <p>用户以各种方式使用 POP服务和数据（包括但不限于发布、宣传介绍、转载、浏览及利用 POP或 POP用户发布内容）的过程中，不得以任何方式利用 POP直接或间接从事违反中国法律法规，以及社会公德的行为。用户应当恪守下述承诺：</p>
+                    <p>1. 发布、转载或提供的内容符合中国法律法规、社会公德；</p>
+                    <p>2. 不得干扰、损害和侵犯 POP的各种合法权利与利益；</p>
+                    <p>3.不得干扰、损害和侵犯其他 POP用户的各种合法权利与利益；</p>
+                    <p>4.遵守 POP以及与之相关的网络服务的协议、指导原则、管理细则等。</p>
+                    <p>POP有权对违反上述承诺的内容予以删除。</p>
+                    <h5>第二条</h5>
+                    <p>1. POP仅为用户发布的内容提供存储空间， POP不对用户发布、转载的内容提供任何形式的保证：不保证内容满足您的要求，不保证 POP的服务不会中断。因网络状况、通讯线路、第三方网站或管理部门的要求等任何原因而导致您不能正常使用 POP， POP不承担任何法律责任。</p>
+                    <p>2. 用户在 POP发布的内容（包含但不限于 POP目前各产品功能里的内容）仅表明其个人的立场和观点，并不代表 POP的立场或观点。作为内容的发布者，需自行对所发布内容负责，因所发布内容引发的一切纠纷，由该内容的发布者承担全部法律及连带责任。 POP不承担任何法律及连带责任。</p>
+                    <p>3. 用户在 POP发布涉嫌侵犯他人知识产权或其他合法权益的内容，经相关方提供初步证据， POP有权先行予以删除，并保留移交司法机关查处的权利。参照相应司法机关的查处结果， POP对于网站发布内容的处置具有最终决定权。</p>
+                    <p>4. 个人或单位如认为 POP上存在侵犯自身合法权益的内容，应准备好具有法律效应的证明材料，及时与 POP取得联系，以便 POP迅速做出处理。</p>
+                    <p>POP有权对违反上述承诺的内容予以删除。</p>
+                    <h5>附则</h5>
+                    <p>对以上协议的解释、修改及更新权均属于 POP所有。</p>
+                    <p>联系我们：coprp@pop136.com</p>
+                </div>
+            </div>
+            <div class="bottom">
+                <input class="fl red" type="button" id="accept" value="接受" />
+                <input type="button" id="cancel" value="取消" />
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+
+
+{block name="self"}
+<script type="text/javascript" src="{STATIC_URL2}/global/js/fashion/work.js?{STATIC_CHANGE_TIME}"></script>
+{literal}
+<script type="text/javascript">
+    //查看协议
+    $('#shareMain').on('click', '#agree', function(){
+        $(".shadowxy, .closeBtn, .share_alertLayer").css({"display": "block"});
+    });
+
+    //关闭or取消
+    $('.main').on('click', '.closeBtn, #cancel', function(){
+        $(".shadowxy, .closeBtn, .share_alertLayer").css({"display": "none"});
+    });
+
+    //接受
+    $('.main').on('click', ' #accept', function(){
+        $('input[name="site_agreement"]').prop('checked',true);
+        $(".shadowxy, .closeBtn, .share_alertLayer").css({"display": "none"});
+    });
+
+    $('body').on('click', '#shareSubmit', function () {
+        if ($('input[name="site_agreement"]').prop('checked') != true) {
+            alert("请阅读网站用户分享协议，同意后才能进行分享");
+            return false;
+        }
+        ajaxShareSubmit($(this));
+    });
+
+    var ajaxShareSubmit = function (submitObj) {
+        var options = {
+            beforeSend: function () {
+                return true;
+            },
+            type: 'post',
+            url: '/member/updatePic/?' + Math.random(),
+            async: false,
+            success: function (e) {
+                if (e == 'success') {
+                    window.location.reload();
+                } else {
+                    layer.alert(e);
+                    return;
+                }
+            }
+        };
+        submitObj.closest('form.shareForm').ajaxSubmit(options);
+    };
+
+    //状态查询
+    function go(st) {
+        if(st === ''){
+            window.location = '/member/share/';
+        }else{
+            window.location = '/member/share/status=' + st + '/';
+        }
+    }
+
+    //删除取消分享
+    $('.deletebtn').click(function () {
+        var o = $(this);
+        $(o).unbind();
+        $.post('/member/unsetshare/', {'shareid': $(o).attr('shareid')}, function (data) {
+            if (data == 'success') {
+                alert('操作成功');
+                window.location = window.location;
+            }
+        });
+    });
+</script>
+{/literal}
+{/block}

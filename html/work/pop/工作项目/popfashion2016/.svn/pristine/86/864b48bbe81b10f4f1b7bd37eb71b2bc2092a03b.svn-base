@@ -1,0 +1,27 @@
+{extends file="layout.html"}
+{block name="main"}
+<div class="business_photo">
+	<div class="business_content">
+		<h3>POP商拍团队帮您</h3>
+		<p class="img_p"><img src="/global/images/bus_font.png" alt="pic"/></p>
+		<p class="tishi_p">在下面提交您的商拍需求<i></i></p>
+		<ul>
+			<li class="clearfix"><label>商拍地区</label><input type="text" name="businessArea" value="您关注哪个城市的商拍？" /></li>
+			<li class="clearfix"><label>名牌名称</label><input type="text" name="brandName" value="您关注哪个品牌的商拍？" /></li>
+			<li class="clearfix"><label>联系电话</label><input type="text" name="telephone" value="请提交电话，我们将及时回复您！" /></li>
+			<li class="cate_li clearfix">
+				<label>产品大类</label>
+				<div class="check_box">
+					<label><input type="radio" name="category" value="0" checked/><span>女</span></label>
+					<label><input type="radio" name="category" value="1"/><span>男</span></label>
+					<label><input type="radio" name="category" value="2"/><span>童</span></label>
+				</div>
+			</li>
+			<li><a class="sub_button" href="javascript:void(0);" title="提交">提交</a></li>
+		</ul>
+	</div>
+</div>
+{/block}
+{block name="self"}
+	<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/business.js?{STATIC_CHANGE_TIME}"></script>
+{/block}

@@ -1,0 +1,380 @@
+{extends file="layout.html"}
+
+{block name="title"}联名玩转潮流-POP服装趋势网{/block}
+{block name=keywords}广告大片,高清款式,T台展示,快反应{/block}
+{block name=description}联名系列如今犹如龙卷风般席卷时尚圈，越来越多的大牌与潮牌合作，或与艺术家、艺人合作，推出高逼格的联名系列，让老牌焕发青春的光彩。POP为您精选出最新的联名系列，并有高清款式、广告大片及时更新，让您随时大感受潮流热度。{/block}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/topic/20170830/css/index.css?{STATIC_CHANGE_TIME}">
+<!--[if lte IE 9]>
+	<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/topic/20170830/css/ie-hack9.css?{STATIC_CHANGE_TIME}">
+<![endif]-->
+{/block}
+
+{block name="main"}
+<div class="season-section">
+	<div class="season-contain js-season-contain">
+		<div class="season-top">
+	  		<!--视频-->
+	  		<div class="video-box radio_d js-video-box">
+				<div class="p_radio" style="opacity: 0;">
+					<a href="{STATIC_URL2}/global/topic/20170830/images/video.flv"  id="player" style="display: block;width: 100%;height: 100%;"></a>
+				</div>
+				<!--<video class="p_radio1" src="{STATIC_URL2}/global/topic/20170830/images/video.mp4" style="display: block;" width="100%" autoplay="autoplay" autobuffer loop="loop"></video>-->
+	  		</div>
+	  		<div class="video-bg"></div>
+	  		
+	  		<!--内容-->
+	  		<div class="top-content clear">
+	  			<div class="content-r clear">
+	  				<div class="msg-r">
+	  					<a class="msg-item" href="/styles/?key=%25E8%2581%2594%25E5%2590%258D%25E7%25B3%25BB%25E5%2588%2597" title="高清款式" target="_blank">
+	  						<div class="item-title">
+	  							<h2>高清款式<p></p></h2>
+	  							<p>精选联名款式大图，高清展示设计细节</p>
+	  						</div>
+	  						<div class="item-pic">
+	  							<div class="f-box"></div>
+	  							<img src="{STATIC_URL2}/global/topic/20170830/images/pic4.png"/>
+	  							<i></i>
+	  						</div>
+	  					</a>
+	  					<a class="msg-item msg-b" href="/books/seclist/id_13481-t_designrefrence-yl_2-col_115/" title="快反应" target="_blank">
+	  						<div class="item-title">
+	  							<h2>快反应<p></p></h2>
+	  							<p>资深小编带你深度解读联名系列的精髓</p>
+	  						</div>
+	  						<div class="item-pic">
+	  							<div class="f-box"></div>
+	  							<img src="{STATIC_URL2}/global/topic/20170830/images/pic3.png"/>
+	  							<i></i>
+	  						</div>
+	  					</a>
+	  				</div>
+	  				<div class="msg-l">
+	  					<a class="msg-item" href="/books/lookbook/?key=%25E8%2581%2594%25E5%2590%258D%25E7%25B3%25BB%25E5%2588%2597" title="广告大片" target="_blank">
+	  						<div class="item-title">
+	  							<h2>广告大片<p></p></h2>
+	  							<p>逼格满满的品牌联名大片第一时间掌握</p>
+	  						</div>
+	  						<div class="item-pic">
+	  							<div class="f-box"></div>
+	  							<img src="{STATIC_URL2}/global/topic/20170830/images/pic1.png" />
+	  							<i></i>
+	  						</div>
+	  					</a>
+	  					<a class="msg-item msg-b" href="/runways/?key=%25E8%2581%2594%25E5%2590%258D%25E7%25B3%25BB%25E5%2588%2597#anchor" title="T台展示" target="_blank">
+	  						<div class="item-title">
+	  							<h2>T台展示<p></p></h2>
+	  							<p>紧跟各大秀场，及时更新品牌联名动向</p>
+	  						</div>
+	  						<div class="item-pic">
+	  							<div class="f-box"></div>
+	  							<img src="{STATIC_URL2}/global/topic/20170830/images/pic2.png"/>
+	  							<i></i>
+	  						</div>
+	  					</a>
+	  				</div>
+	  			</div>
+	  			<div class="content-l">
+	  				<img src="{STATIC_URL2}/global/topic/20170830/images/title-txt.png"/>
+	  				<div></div>
+	  				<h2>联名玩转潮流</h2>
+	  				<p class="p2">联名系列如今犹如龙卷风般席卷时尚圈，越来越多的大牌与潮牌合作，或与艺术家、<br />艺人合作，推出高逼格的联名系列，让老牌焕发青春的光彩。<br />POP为你精选出最新的联名系列，并有高清款式、广告大片及时更新，让你随时感受<br />潮流热度。</p>
+	  				<p class="p1">联名系列如今犹如龙卷风般席卷时尚圈，越来越多的大<br />牌与潮牌合作，或与艺术家、艺人合作，推出高逼格的<br />联名系列，让老牌焕发青春的光彩。<br />POP为你精选出最新的联名系列，并有高清款式、广告<br />大片及时更新，让你随时感受潮流热度。</p>
+	  			</div>
+	  		</div>
+  			<img class="page-down js-page-down" src="{STATIC_URL2}/global/topic/20170830/images/close.png" alt="icon" />
+		</div>
+	  	<div class="review-contain">
+	  		<div class="review-msg">
+	  			<img src="{STATIC_URL2}/global/topic/20170830/images/prev-title.png" alt="title" />
+	  			<div class="review-cont">
+	  				<div class="left-btn js-left-btn"></div>
+  					<div class="right-btn js-right-btn"></div>
+	  				<div class="review-list">
+	  					<ul class="js-review-list clear">
+	  						<li>
+			  					<a href="/topic/20170802/" target="_blank" title="图案专栏重磅来袭，POP带你玩转趋势">
+			  						<div>
+			  							<div class="img-c"><img src="{STATIC_URL2}/global/topic/20170830/images/re5.png" alt="图案专栏" /></div>
+			  							<div class="review-hover review-hover5"></div>
+			  						</div>
+			  						<p>独立设计师季</p>
+			  					</a>
+			  				</li>
+			  				<li>
+			  					<a href="/topic/20170703/" target="_blank" title="图案专栏重磅来袭，POP带你玩转趋势">
+			  						<div>
+			  							<div class="img-c"><img src="{STATIC_URL2}/global/topic/20170830/images/re-4.jpg" alt="图案专栏" /></div>
+			  							<div class="review-hover review-hover0"></div>
+			  						</div>
+			  						<p>POP独家带来，最权威的色彩趋势--<br />新生</p>
+			  					</a>
+			  				</li>
+			  				<li>
+			  					<a href="/topic/20170602/" target="_blank" title="图案专栏重磅来袭，POP带你玩转趋势">
+			  						<div>
+			  							<div class="img-c"><img src="{STATIC_URL2}/global/topic/20170830/images/re0.jpg" alt="图案专栏" /></div>
+			  							<div class="review-hover review-hover1"><img src="{STATIC_URL2}/global/topic/20170830/images/hover-1.png" alt="新生" /></div>
+			  						</div>
+			  						<p>图案专栏重磅来袭，POP带你玩转趋势</p>
+			  					</a>
+			  				</li>
+			  				<li>
+			  					<a href="/topic/20170516/" target="_blank" title="18/19秋冬POP大主题趋势预测发布——新生">
+			  						<div>
+			  							<div class="img-c"><img src="{STATIC_URL2}/global/topic/20170830/images/re1.jpg" alt="新生" /></div>
+			  							<div class="review-hover review-hover2"></div>
+			  						</div>
+			  						<p>18/19秋冬POP大主题趋势预测发布--新生</p>
+			  					</a>
+			  				</li>
+			  				<li>
+			  					<a href="/topic/20170516/" target="_blank" title="时尚也要玩大数据流行色一秒掌握！">
+			  						<div>
+			  							<div class="review-hover review-hover3"></div>
+			  							<div class="img-c"><img src="{STATIC_URL2}/global/topic/20170830/images/re2.jpg" alt="大数据" /></div>
+			  						</div>
+			  						<p>时尚也要玩大数据，流行色一秒掌握！</p>
+			  					</a>
+			  				</li>
+	  						<li>
+			  					<a href="/topic/20170802/" target="_blank" title="图案专栏重磅来袭，POP带你玩转趋势">
+			  						<div>
+			  							<div class="img-c"><img src="{STATIC_URL2}/global/topic/20170830/images/re5.png" alt="图案专栏" /></div>
+			  							<div class="review-hover review-hover5"></div>
+			  						</div>
+			  						<p>独立设计师季</p>
+			  					</a>
+			  				</li>
+			  				<li>
+			  					<a href="/topic/20170703/" target="_blank" title="图案专栏重磅来袭，POP带你玩转趋势">
+			  						<div>
+			  							<div class="img-c"><img src="{STATIC_URL2}/global/topic/20170830/images/re-4.jpg" alt="图案专栏" /></div>
+			  							<div class="review-hover review-hover0"></div>
+			  						</div>
+			  						<p>POP独家带来，最权威的色彩趋势--<br />新生</p>
+			  					</a>
+			  				</li>
+			  				<li>
+			  					<a href="/topic/20170602/" target="_blank" title="图案专栏重磅来袭，POP带你玩转趋势">
+			  						<div>
+			  							<div class="img-c"><img src="{STATIC_URL2}/global/topic/20170830/images/re0.jpg" alt="图案专栏" /></div>
+			  							<div class="review-hover review-hover1"><img src="{STATIC_URL2}/global/topic/20170830/images/hover-1.png" alt="新生" /></div>
+			  						</div>
+			  						<p>图案专栏重磅来袭，POP带你玩转趋势</p>
+			  					</a>
+			  				</li>
+			  				<li>
+			  					<a href="/topic/20170516/" target="_blank" title="18/19秋冬POP大主题趋势预测发布——新生">
+			  						<div>
+			  							<div class="img-c"><img src="{STATIC_URL2}/global/topic/20170830/images/re1.jpg" alt="新生" /></div>
+			  							<div class="review-hover review-hover2"></div>
+			  						</div>
+			  						<p>18/19秋冬POP大主题趋势预测发布--新生</p>
+			  					</a>
+			  				</li>
+			  				<li>
+			  					<a href="/topic/20170516/" target="_blank" title="时尚也要玩大数据流行色一秒掌握！">
+			  						<div>
+			  							<div class="review-hover review-hover3"></div>
+			  							<div class="img-c"><img src="{STATIC_URL2}/global/topic/20170830/images/re2.jpg" alt="大数据" /></div>
+			  						</div>
+			  						<p>时尚也要玩大数据，流行色一秒掌握！</p>
+			  					</a>
+			  				</li>
+			  			</ul>
+	  				</div>
+	  			</div>
+	  		</div>
+	  	</div>
+	  
+	</div>
+
+{include file="topic/topic_layer.html"}
+</div>
+{/block}
+
+
+{block name="self"}
+<script type="text/javascript" src="{STATIC_URL2}/global/js/flowplayer/flowplayer-3.2.4.min.js"></script>
+<script>
+    $(function(){
+    	
+    	videoResize();
+    	function videoResize(){
+    		$('.p_radio').css({
+    			"height":1200+"px",
+    			"width":"2132px",
+    			"top":-225+"px",
+    			"left":"50%",
+    			"margin-left":"-1066px"
+    		})
+    	}
+    	
+        var _this='',timerId=null;
+        play();
+        function play(){
+        	$f("player", "{STATIC_URL2}/global/js/flowplayer/flowplayer.commercial.swf", {
+            clip: {
+                autoPlay: true,
+                autoBuffering: false,
+                autoPlayNext:true,
+                onBegin: function () { this.getPlugin("play").hide(); } //隐藏按钮
+            },
+            playlist: [//播放列表
+                {
+                    url: '{STATIC_URL2}/global/topic/20170830/images/video.flv',//需要播放的文件
+                    autoPlay: true,
+                    autoPlayNext:true,
+                    autoPlayNext : true
+                }
+            ],
+            onLoad: function() {    // 当播放器载入完成时调用
+		        this.setVolume(0);    // 设置音量0-100，默认50
+		        setTimeout(function(){
+		        	$('.p_radio').css('opacity',1);
+		        },200)
+		    },
+		    onFinish:function(){  
+		    	if(_this==''){
+		    		_this=this;
+		    	}
+//		    	playAgain(_this);
+	         	_this.play();
+	         	clearTimeout(timerId);
+            	timerId=setTimeout(function(){
+            		_this.play();
+            	},8900)
+	        }, 
+            plugins: {
+                controls: {
+                    url: '{STATIC_URL2}/global/js/flowplayer/flowplayer.controls-3.2.4-dev.swf',
+                	scrubber:false,  
+                	autoPlayNext : true,
+                	
+                	playlist: true,  
+                    bottom: -200,//功能条距底部的距离
+                    height: 0, //功能条高度
+//                  zIndex: 1,
+//                  fontColor: '#ffffff',
+//                  timeFontColor: '#333333',
+//                  playlist: true,//上一个、下一个按钮
+                    play:false, //开始按钮
+                    volume: false, //音量按钮
+                    mute: false, //静音按钮
+                    stop: false,//停止按钮
+                    fullscreen: false, //全屏按钮
+                    scrubber: false,//进度条
+//                  url: "flowplayer.controls-3.2.12.swf", //决定功能条的显示样式（功能条swf文件,根据项目定亦可引用:http://releases.flowplayer.org/swf/flowplayer.controls-3.2.12.swf）
+                    time: false, //是否显示时间信息
+                    autoHide: true, //功能条是否自动隐藏
+//                  backgroundColor: '#aedaff', //背景颜色
+//                  backgroundGradient: [0.1, 0.1, 1.0], //背景颜色渐变度（等分的点渐变）
+                    opacity: 0, //功能条的透明度
+//                  borderRadius: '30',//功能条边角
+                    tooltips: {
+                        buttons: false//是否显示
+                        /*fullscreen: '全屏',//全屏按钮，鼠标指上时显示的文本
+                        stop:'停止',
+                        play:'开始',
+                        volume:'音量',
+                        mute: '静音',
+                        next:'下一个',
+                        previous:'上一个'*/
+                    }
+                }
+            }
+        })
+      
+        }
+        
+        
+    });
+
+</script>
+{literal}
+<script>
+	$(function(){
+		$('.js-page-down').on('click',function(){
+			$('body,html').stop(true,true).animate({
+				scrollTop:900
+			},400)
+		})
+		
+		
+    	//往期回顾hover效果
+    	$('.js-review-list>li').hover(function(){
+    		$(this).siblings('li').find('.img-c>img').stop().animate({'opacity':0},400,function(){
+    			$(this).hide();
+    		});
+    		$(this).siblings('li').find('.review-hover').stop().show().animate({'opacity':1},400);
+    	},function(){
+    		$(this).siblings('li').find('.img-c>img').stop().show().animate({'opacity':1},100);
+    		$(this).siblings('li').find('.review-hover').stop().animate({'opacity':0},400,function(){
+    			$(this).hide();
+    		});
+    	})
+    	
+    	var _index=0,is_lun=false,review_ul=$('.js-review-list'),_len=$('.js-review-list li').length/2,list_w=$('.js-review-list li').eq(0).outerWidth(true);		//轮播当前i
+    	$(window).on('resize',function(){
+    		is_lun=true;		//正在轮播
+    		list_w=$('.js-review-list li').eq(0).outerWidth(true);
+    		review_ul.stop().css({
+    			"margin-left":_index*-1*list_w+"px"
+    		})
+    		
+    		setTimeout(function(){
+	    		list_w=$('.js-review-list li').eq(0).outerWidth(true);
+	    		review_ul.stop().css({
+	    			"margin-left":_index*-1*list_w+"px"
+	    		})
+	    		is_lun=false;		//正在轮播
+    		},300)
+    	})
+    	
+    	$('.js-left-btn').on('click',function(){
+    		if(is_lun==true){
+    			return;
+    		}
+    		is_lun=true;		//正在轮播
+    		_index--;
+    		if(_index<0){
+    			_index=_len-1;
+    			review_ul.stop().css({
+	    			"margin-left":_len*-1*list_w+"px"
+	    		})
+    		}
+    		
+    		review_ul.stop().animate({
+    			"margin-left":_index*-1*list_w+"px"
+    		},300,function(){
+    			is_lun=false;
+    		});
+    		
+    	})
+    	
+    	$('.js-right-btn').on('click',function(){
+    		if(is_lun==true){
+    			return;
+    		}
+    		is_lun=true;
+    		_index++;
+    		if(_index>_len){
+    			_index=1;
+    			review_ul.stop().css({
+	    			"margin-left":"0px"
+	    		})
+    		}
+    		
+    		review_ul.stop().animate({
+    			"margin-left":_index*-1*list_w+"px"
+    		},300,function(){
+    			is_lun=false;
+    		});
+    	})
+    })
+</script>
+{/literal}
+{/block}

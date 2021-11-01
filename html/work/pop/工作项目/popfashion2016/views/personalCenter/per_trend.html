@@ -1,0 +1,69 @@
+{extends file="layout.html"}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/pop_layer.css?{STATIC_CHANGE_TIME}">
+<link rel="stylesheet" href="{STATIC_URL2}/global/css/nfd-min.css" />
+<link rel="stylesheet" href="{STATIC_URL2}/global/css/jquery.lightbox-0.5.css" media="screen" charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/personal.css?{STATIC_CHANGE_TIME}">
+{/block}
+
+{block name="main"}	
+<div class="con_width">
+	<div class="con_main">
+		<div class="per_banner">
+			<img src="{STATIC_URL2}/global/images/per_banner.jpg">
+			<h3 class="tit">共收藏 {$total} 篇未来趋势</h3>
+			<div class="per_bannerbg"></div>
+			<p class="pertext">
+				<!--span class="per_edit"><i></i>编辑</span-->
+				<a href="/member/mycollect/" title="返回"><span><i></i>返回</span></a></p>
+		</div>
+		<ul class="trend clearfix lazyload">
+			{foreach $trends as $key=>$val}
+			<li>
+				<a href="javascript:void(0);" class="abig img_click" data-t="{$val.info.simpleName}" data-col="{$val.iColumnId}" data-id="{$val.iPriId}" data-total="{$total}" data-index="{$val.info.index}" title="{$val.info.title}">
+					{if $val.info.cover_pic}
+					<img src="{STATIC_URL2}/global/images/loading/trend.gif" data-original="{$val.info.cover_pic}"/>
+					{else}
+					<img src="{STATIC_URL2}/global/images/loading/trendMR.jpg"/>
+					{/if}
+					{if $val.info.columnName neq ''}
+					<div class="topIcon">{$val.info.columnName}</div>
+					{/if}
+					<div class="pic_whitebg"></div>        				          				
+				</a>
+				<div class="text_down">
+					<p class="title active_click">{$val.info.title}</p>
+					<p class="time">
+						<span class="fl"><img src="{STATIC_URL2}/global/images/zzjd_02.png">{$val.info.updateTime}</span>
+						<a href="javascript:void(0);" data-cid="{$val.iCollectId}" data-pid="{$val.iPriId}" data-t="{$val.info.simpleName}" class="cancelbtn fr concelcollect" data-t="{$val.info.simpleName}"  data-type="{$type}" data-col="{$val.iColumnId}" title="取消收藏"><i></i><span>取消收藏</span></a>
+					</p>
+				</div>            			
+			</li>
+			{/foreach}
+		</ul>
+	</div>
+	<input type="hidden" id="link" data-col="{$col}" data-urlprefix="/details/report/" data-type="{$type}" data-isuc="1"/>
+	{$pageHtml}
+</div>
+<div class="shadow_black"></div>
+<div class="pop_shoucang">
+	<p class="content">是否确认取消收藏？</p>
+	<a href="javascript:void(0);" class="record" title="确定">确定</a>
+	<a href="javascript:void(0);" class="cancel" title="取消">取消</a>
+</div>
+{/block}
+
+{block name="self"}
+<script type="text/javascript" src="{STATIC_URL2}/global/js/workbench/workbench.js?{STATIC_CHANGE_TIME}"></script>
+<script src="{STATIC_URL3}/global/js/fashion/jquery.lightbox-0.5.js"></script>
+<script src="{STATIC_URL3}/global/js/common/template.js"></script>
+<script src="{STATIC_URL3}/global/js/fashion/util.pop2.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript">
+	$(function(){
+		$('.active_click').on('click',function(){
+			$(this).parent().prev('a').trigger('click');
+		});
+	});
+</script>
+{/block}

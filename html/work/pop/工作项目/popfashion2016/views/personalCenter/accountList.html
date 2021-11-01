@@ -1,0 +1,685 @@
+{extends file="layout.html"}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/per.css?{STATIC_CHANGE_TIME}">
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/personal.css?{STATIC_CHANGE_TIME}">
+{/block}
+
+{block name="main"}
+<div class="main">
+    <div class="con_width">
+    <!--个人中心 头部开始-->
+    {$personalHeader}
+    <!--个人中心 头部结束-->
+    <div class="col-main clearfix">
+        <!--个人中心 左侧菜单开始-->
+        {$personalLeftMenu}
+        <!--个人中心 左侧菜单结束-->
+        <div class="col-con  fl">
+            <!-- item-manage -->
+            <div class="item-manage manage_user_child manage_user_child_index">
+                <div class="hd"><span><i></i>关联账号管理</span></div>
+				{if $iNowLicense gt 0}
+                <div class="main_ac_mind clearfix">
+                    <span class="bind_icon fl"></span>
+                    <div class="bind_font fl">
+                        <p>您当前使用的是<span>管理员账号</span>，只具备基础的访问和下载权限，建议只用于账号管理时使用；</p>
+                        <p>日常使用建议您使用<span>设计师专属账号</span>登录POP服装趋势网，即可开启网站所有特色功能 。</p>
+                    </div>
+                </div>
+                <div class="second_col clearfix">
+                    <div class="search_list fl">
+                        <input type="text" value="{if $keyword neq ''}{$keyword}{else}请输入姓名或手机号{/if}" name="msea" id="search_val">
+                        <input type="button" id="search_but" name="search_button" value="搜索">
+                        <input type="hidden" id="link" data-url="{if isset($link['url'])}{$link['url']}{/if}" data-param="{if isset($link['param'])}{$link['param']}{/if}" data-search="{if isset($link['search'])}{$link['search']}{/if}"/>
+                    </div>
+                    <div class="hd_down fl">
+                        <a href="javascript:void(0);" class="tianjia fl" title="添加设计师专属账号"><i></i>添加设计师专属账号</a>
+                        <span class="fl">您共可以绑定<em class="hong">{$iLicenseNumber}</em>个设计师专属账号，现在已绑定<em class="hong">{$iNowLicense}</em>个账号</span>
+                        <!--<a href="javascript:void(0);" class="goumai fr" id="nowBuyIntegral">立即购买积分</a>-->
+
+                        <!--span class="fr">您的账号中现在共有<em>{$iIntegralTotalNumber}</em>个积分可供使用</span-->
+                    </div>
+                </div>
+
+                <div class="mainall">
+                    {if !$childList && $keyword neq ''}
+                    <div class="search_no_data"><p><i></i>很抱歉,您搜索的用户不存在！</p></div>
+                    {else}
+                    <table width="100%" class="consume">
+                        <tbody>
+                        <tr>
+                            <th width="20%">序号</th>
+                            <th width="20%">姓名</th>
+                            <th width="20%">手机号</th>
+                            <!--th width="15%">个人积分</th-->
+                            <th width="12%">绑定日期</th>
+                            <th width="50%">操作</th>
+                        </tr>
+                        {foreach $childList as $k => $i}
+                        <tr>
+                            <td>{($k+1)+($page-1)*$pageSize}</td>
+                            <td>{$i.sName}</td>
+                            <td class="phone">{$i.sChildAccount}</td>
+                            <!--td>{$i.iIntegraNumber}点&nbsp;</td-->
+                            <td>{$i.dCreateTime|date_format:"%Y/%m/%d"}&nbsp;</td>
+                            <td>
+                                <!--input type="button" value="分配积分" class="fp"/-->
+                                <input type="button" value="解除关联" class="jc"/>
+                                <input type="button" value="重置密码" class="resetPassword"/>
+                            </td>
+                        </tr>
+                        {/foreach}
+
+                        </tbody>
+                    </table>
+                    {/if}
+                </div>
+                <!--分页--页码开始-->
+                <div id = "pages">
+                    {$pageHtml}
+                </div>
+                <!--分页--页码结束-->
+				{else}
+                <div class="search_unbind_box clearfix">
+                    <div class="unbind_prompt_infor">
+                        <span class="unbind_icon fl"></span>
+                        <div class="unbind_font fl">
+                            <p>您当前使用的是<span>管理员账号</span>，只具备基础的访问和下载权限，建议只用于账号管理时使用；</p>
+                            <p>日常使用建议您使用<span>设计师专属账号</span>登录POP服装趋势网，即可开启网站所有特色功能 。</p>
+                        </div>
+                    </div>
+                    <div class="btn_box clearfix">
+                        <a href="javascript:void(0);" class="tianjia unbind_a fl" title="添加设计师专属账号"><i></i>添加设计师专属账号</a>
+                        <span class="unbind_span fl"><i class="tanhao"></i>您共可以添加<em class="hong"> {$iLicenseNumber} </em>个设计师专属账号，现在已绑定<em class="hong"> 0 </em>个账号</span>
+                    </div>
+                </div>
+				{/if}
+                <div class="bottom-tel a-bottom-tel">管理关联账号遇到问题？可咨询客服，或拨打售后电话  4008-210-662<a class="js-contact-qq-btn" href="javascript:void(0);">联系客服</a></div>
+            </div>
+            <!-- /item-manage -->
+        </div>
+    </div>
+</div>
+
+<div class="bangding" id="globalBuyIntegralLayer" style="display: none;">
+    <div class="bangding_bg"></div>
+
+
+    <!--添加-->
+    <div class="bdzh" id="bdzh" style="display: none;">
+        <p class="tou">绑定设计师专属账号</p>
+        <div class="xinxi">
+            <form action="">
+                <p>　　姓：<input id="sur" style="width: 92px;" type="text" autocomplete="off">
+                    　名：<input id="name" style="width: 92px;" type="text" autocomplete="off">
+                </p>
+                <p>手机号：<input id="bdcount" type="text" autocomplete="off"></p>
+                <p>验证码：<input id="spabdpwd" type="text" class="psw" autocomplete="off"><input type="button" value="获取验证码" class="huoqu"></p>
+                <p><input type="button" value="确认绑定" id="querenbd" class="queren"></p>
+            </form>
+        </div>
+        <div class="suc">
+            <i></i>
+            <span class="gongxi">恭喜您，设计师专属账号绑定成功！</span>
+            <p class="yonghu">用 户 名： <span id="qrcount">13068658752</span><br>初始密码： <span id="qrpwd">4k6j3l</span></p>
+            <p><input type="button" value="确认" onclick="window.location.reload();" class="queren gb"></p>
+        </div>
+        <div class="guanb gb"></div>
+    </div>
+
+
+    <!--重置-->
+    <div class="bdzh" id="czmm" style="display: none;">
+        <p class="tou">重置密码</p>
+        <div class="suc" id="suc" style="display: block;">
+            <i></i>
+            <span class="gongxi">恭喜您，子账号密码重置成功！</span>
+            <p class="yonghu">用 户 名： <span id="qrcountcz"></span><br>密码： <span id="qrpwdcz"></span></p>
+            <p><input type="button" value="确认" onclick="window.location.reload();" class="queren gb"></p>
+        </div>
+        <div class="guanb gb"></div>
+    </div>
+
+
+    <!--解除-->
+    <div class="jiechu" style="display: none;">
+        <p class="tou">解除账号关注</p>
+        <div class="xinxi">
+            <form action="">
+                <p class="tanhao">确认要取消手机号：<em class="hong" id="hongcount"></em>与您的绑定关系？</p>
+                <p>验证码：<input id="spajcpwd" type="text" class="psw" autocomplete="off">
+                    <img class="spa" id="spajc"  onclick="GetCheckCode(this);" src="/member/imgcaptcha/" title="点击更换验证码">
+                </p>
+                <p><input type="button" value="确认操作" id="querenjc" class="queren"></p>
+            </form>
+        </div>
+        <div class="guanb gb"></div>
+    </div>
+
+
+    <!--分配-->
+    <div class="fenpei" style="display: none;">
+        <p class="tou">分配积分</p>
+        <div class="xinxi">
+            <form action="">
+                <div class="shouji">
+                    <p><span>手机号：</span><input name="count" id="count" type="text" class="text"><input type="button" class="btn"></p>
+                    <ul id="list">
+                        {foreach $childListAll as $k => $i}
+                        <li>{$i.sChildAccount}</li>
+                        {/foreach}
+                    </ul>
+                </div>
+                <p style="margin-left:-37px;">当前个人积分：<b id="nowscore" class="yellow">0</b></p>
+                <p style="margin-left:-49px;">账户可分配积分：<b class="yellow">{$iIntegralTotalNumber}</b></p>
+                <p style="margin-left:-36px;">本次分配积分：<input id="sendScore" type="text" class="psw" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" autocomplete="off"></p>
+                <p>验证码：<input id="spafppwd" type="text" class="psw" autocomplete="off">
+                    <img id="spafp" class="spa"  onclick="GetCheckCode( this );"  src="/member/imgcaptcha/" title="点击更换验证码">
+                </p>
+                <p style="margin-left:0px;"><input type="button" id="Send" value="确认分配" class="queren"></p>
+            </form>
+        </div>
+        <div class="guanb gb"></div>
+    </div>
+
+
+    <!--购买-->
+    <!--<div class="mai" id="buyIntegralLayer" style="top:50px; display: none;">
+        <p class="tou">购买积分</p>
+        <div class="xinxi">
+            <form action="/pay/alipayapi.php" method="post" target="_blank" id="orderPayForm">
+                <input type="hidden" name="ordernumber" id="ordernumber" value="">
+                <input type="hidden" name="paymethod" id="paymethod" value="1">
+                <input type="hidden" name="paymoney" id="paymoney" value="0">
+                <div class="shouji">
+                    <p>
+                        <span>积分数量：</span>
+                        <span class="jian" id="reduceIntegral">-</span>
+                        <input name="buyIntegralNum" maxlength="5" id="buyIntegralNum" type="text" class="text" style="margin:0 -1px;text-align:center;height:26px;" value="0">
+                        <span class="jia" id="increaseIntegral">+</span>
+                        <em>10分=1元</em>
+                    </p>
+                </div>
+                <p class="zhifu">
+                    支付方式：
+                    <a href="javascript:void(0);" class="kuang paymethod" paymethod="1">网上银行</a>
+                    <a href="javascript:void(0);" class="paymethod" paymethod="2">支付宝</a>
+                </p>
+                <div class="choose" id="banks">
+                    <div>选择银行：</div>
+                    &lt;!&ndash; 交通银行 民生银行 光大银行 &ndash;&gt;
+                    <table width="311">
+                        <tbody><tr>
+                            <td><input type="radio" name="bank" value="ICBCB2C" id="ICBCB2C"><label class="ICBC" for="ICBCB2C"><i></i>工商银行</label></td>
+                            <td><input type="radio" name="bank" value="ABC" id="ABC"><label class="ABC" for="ABC"><i></i>农业银行</label></td>
+                            <td><input type="radio" name="bank" value="CMB" id="CMB"><label class="CMB" for="CMB"><i></i>招商银行</label></td>
+                        </tr>
+                        <tr>
+                            <td><input type="radio" name="bank" value="CCB" id="CCB"><label class="CCB" for="CCB"><i></i>建设银行</label></td>
+                            <td><input type="radio" name="bank" value="BOCB2C" id="BOCB2C"><label class="BOC" for="BOCB2C"><i></i>中国银行</label></td>
+                            <td><input type="radio" name="bank" value="POSTGC" id="POSTGC"><label class="PSBC" for="POSTGC"><i></i>邮政银行</label></td>
+                        </tr>
+                        <tr>
+                            <td><input type="radio" name="bank" value="COMM-DEBIT" id="COMM"><label class="COMM" for="COMM"><i></i>交通银行</label></td>
+                            <td><input type="radio" name="bank" value="GDB" id="GDB"><label class="GDB" for="GDB"><i></i>广发银行</label></td>
+                            <td><input type="radio" name="bank" value="CMBC" id="CMBC"><label class="CMBC" for="CMBC"><i></i>民生银行</label></td>
+                        </tr>
+                        <tr>
+                            <td><input type="radio" name="bank" value="SPABANK" id="SPABANK"><label class="SPABANK" for="SPABANK"><i></i>平安银行</label></td>
+                            <td><input type="radio" name="bank" value="CEB-DEBIT" id="CEB-DEBIT"><label class="CEB" for="CEB-DEBIT"><i></i>光大银行</label></td>
+                            <td><input type="radio" name="bank" value="SPDB" id="SPDB"><label class="SPDB" for="SPDB"><i></i>浦发银行</label></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" class="lx">
+                                银行卡类型：
+                                <input type="radio" name="cardType" value="1" id="cardType1"><label for="cardType1">储蓄卡</label>
+                                <input type="radio" name="cardType" value="2" id="cardType2"><label for="cardType2">信用卡</label>
+                            </td>
+                        </tr>
+                        </tbody></table>
+                </div>
+                <p>应付金额：<b class="yellow" id="paymoney_show">0</b> 元 </p>
+                <p style="margin-left:20px;"><input type="button" id="ConfirmPurchase" value="确认购买" class="queren"></p>
+            </form>
+        </div>
+        <div class="guanb close"></div>
+    </div>-->
+
+
+
+    <!-- 确认支付层 -->
+    <!--<div class="mai zhifu" id="confirmLayer">
+        <p class="tou">订单支付</p>
+        <div class="xinxi">
+            <p>请您在新打开的 <em class="hong">支付宝/网上银行</em> 页面进行支付，支付完成前请不要关闭该窗口。</p>
+            <p><a href="javascript:void(0);" class="close">完成支付</a>
+                <a href="javascript:void(0);" id="resetBuyIntegral">重新支付</a>
+            </p>
+            <p class="help">如果您支付过程中遇到了<em class="hong">问题</em>？可以随时联系我们的客服<a href="http://b.qq.com/webc.htm?new=0&amp;sid=800020016&amp;eid=2188z8p8p8p8K8p8p8q8x&amp;o=www.pop-fashion.com&amp;q=7&amp;ref=" class="qq" target="_blank"><img src="http://img1.f.pop-fashion.com/global/indexchannel/images/QQ.jpg" alt="点击这里给我发消息"></a></p>
+        </div>
+        <div class="guanb close"><img src="http://img3.f.pop-fashion.com/global/indexchannel/images/clo.jpg"></div>
+    </div>-->
+    <!-- 确认支付层 -->
+</div>
+
+{/block}
+
+{block name="self"}
+<script type="text/javascript" src="{STATIC_URL2}/global/js/fashion/childaccountmanage.js?{STATIC_CHANGE_TIME}"></script>
+{literal}
+<script type="text/javascript">
+
+    //绑定click事件
+    $('#list').find('li').click(function(){
+        var count = $(this).html();
+        $('#count').val(count);
+        $('#list').toggle();
+        $.ajax({
+            type: "POST",
+            url:  "/member/",
+            data: "count="+count,
+            dataType: 'json',
+            success: function(msg){
+                if(msg.success == 1){
+                    $('#nowscore').html(msg.info.iIntegraNumber);
+                }else{
+                    alert('找不到相关信息');
+                }
+            }
+        });
+    });
+
+    //重置密码
+    $('body').on( 'click','.resetPassword',function(){
+        var count = $(this).parents("tr").find(".phone").text();
+        $.ajax({
+            type: "POST",
+            url:  "/member/reset/",
+            data: "phone="+count,
+            dataType: 'json',
+            success: function(msg){
+                if(msg.success == 1){
+                    $('#qrcountcz').html(count);
+                    $('#qrpwdcz').html(msg.pwd);
+                    $('.bangding').show();
+                    $('#czmm').show();
+                    $('#suc').show();
+                }else{
+                    alert('重置密码失败');
+                }
+            }
+        });
+    });
+
+    //分配积分
+    $('#Send').click(function(){
+        var count = $('#count').val();
+        var sendScore = $('#sendScore').val();
+        var code = $('#spafppwd').val();
+        if(count==''){
+            alert('请选择设计师专属账号');
+            return;
+        }
+        if(!sendScore){
+            alert('请输入分配的积分');
+            return;
+        }
+        if(!code){
+            alert('请输入验证码');
+            return;
+        }
+        $.ajax({
+            type: "POST",
+            url:  "/member/allotintegral/",
+            data: "count="+count+"&score="+sendScore+'&code='+code,
+            dataType: 'json',
+            success: function(msg){
+                alert(msg.msg);
+                if(msg.success==1){
+                    window.location.reload();
+                }
+            }
+        });
+    });
+
+    //解除关联
+    $('#querenjc').click(function(){
+        var count = $('#hongcount').html();
+        var code = $('#spajcpwd').val();
+        if(!count){
+            alert('请选择设计师专属账号');
+            return;
+        }
+        if(!code){
+            alert('请输入验证码');
+            return;
+        }
+        $.ajax({
+            type: "POST",
+            url:  "/member/unassociate/",
+            data: "count="+count+'&code='+code,
+            dataType: 'json',
+            success: function(msg){
+                alert(msg.msg);
+                if(msg.success==1){
+                    window.location.reload();
+                }
+            }
+        });
+    });
+
+    //添加子账号
+    $('#querenbd').click(function(){
+        var sur = $('#sur').val();
+        var name = $('#name').val();
+        var count = $('#bdcount').val();
+        var code = $('#spabdpwd').val();
+        if(!$.trim(sur)) {
+            layer.alert('请填写姓');
+            return;
+        }
+        if(!$.trim(name)) {
+            layer.alert('请填写名');
+            return;
+        }
+        if(!count){
+            layer.alert('请填写需要添加的设计师专属账号');
+            return;
+        }
+        if(!code){
+            layer.alert('请输入验证码');
+            return;
+        }
+        $.ajax({
+            type: "POST",
+            url:  "/member/addchild/",
+            data: "count="+count+'&code='+code+'&sur='+sur+'&name='+name,
+            dataType: 'json',
+            success: function(msg){
+                if(msg.success==1){
+                    $('#qrcount').html(msg.count);
+                    $('#qrpwd').html(msg.pwd);
+                    $('.bangding .bdzh .xinxi').hide();
+                    $('.bangding .bdzh .suc').show();
+                    return;
+                }else{
+                    alert(msg.msg);
+                    return;
+
+                }
+            }
+        });
+    });
+
+    var wait=90;
+    $('.huoqu').click(function(){
+        var count = $.trim($('#bdcount').val());
+        if(!count){
+            alert('请填写需要添加的设计师专属账号');
+            return;
+        }
+        $.ajax({
+            type: "POST",
+            url:  "/member/sendCode/",
+            data: "phone="+count,
+            dataType: 'json',
+            success: function(msg){
+                if(msg.success == 1){
+                    this.disabled = false;
+                    time();
+                } else{
+                    alert(msg.msg);
+                }
+                return;
+            }
+        });
+    });
+
+    function time() {
+        if (wait == 0) {
+            $('.huoqu').removeAttr("disabled");
+            $('.huoqu').val("获取验证码");
+            wait = 90;
+        } else {
+            $('.huoqu').attr("disabled", true);
+            $('.huoqu').val(wait + "s");
+            wait--;
+            setTimeout(function() {
+                        time()
+                    },
+                    1000)
+        }
+    }
+
+</script>
+
+
+<script type="text/javascript">
+	//搜索
+   $("#search_but").on( "click",function(){
+		var search = $.trim($("#search_val").val());
+		if( search =='请输入姓名或手机号'){
+			search='';
+		}
+		search_click( 'key',search );
+    });
+	
+	//搜索(enter)
+	$('#search_val').on('keypress',function(event){
+		var search= $.trim($(this).val());
+		if( search =='请输入姓名或手机号'){
+			search='';
+		}
+		if(event.keyCode == "13")    
+		{
+			search_click( 'key',search );
+		}
+	});
+	function search_click(_key,_val) {
+		var $link = $("#link");
+		var _param = $link.data('param');
+		var search = $link.data('search');
+		var _url = $link.data('url');
+		// 页码如果存在则将页码去掉
+		if (_param.indexOf('-page_') !== -1) {
+			var reg = RegExp('-page_([^-]*)', 'gi');
+			_param = _param.replace(reg,'');
+		}
+		else if (_param.indexOf('page_') !== -1) {
+			var reg = RegExp('page_([^-]*)', 'gi');
+			_param = _param.replace(reg,'');
+		}
+			
+		// 关键字条件
+		if(_key == 'key') {
+			_val = encodeURIComponent(encodeURIComponent(_val));
+			if ($.trim(_param) != '') {
+				// 不存在则增加
+				if (_param.indexOf('?key=') === -1) {
+					_param = _param.replace(/\/$/,'')+'/?key='+_val;
+				}
+				// 否则替换
+				else {
+					_param = _param.replace(/\/$/,'').replace('/?key=([^&]*)/gi','/?key='+_val);
+				}
+			} else {
+				_param = '?key='+_val;
+			}
+		}
+		// 非关键字条件
+		else {
+			if ($.trim(_param) != '') {
+				// 不存在则增加
+				if (_param.indexOf(_key+'_') === -1) {
+					_param += '-'+_key+'_'+_val;
+				}
+				// 否则替换
+				else {
+					var reg = new RegExp(_key+'_'+'([^-]*)', 'gi');
+					_param = _param.replace(reg,_key+'_'+_val);
+				}
+			}
+			else {
+				_param = _key+'_'+_val;
+			}
+			_param = search ? _param.replace(/\/$/,'')+'/'+search : _param+'/';
+		}	
+		location.href = _url+_param.replace(/^\//,'')+'#anchor';	
+	}
+	var Itext=$("body");
+		var defaultValue = '请输入姓名或手机号';
+		Itext.on('blur', '#search_val', function(){
+			$this = $(this);
+			var _val = $.trim($this.val());
+			if(_val == ''){
+				$this.val(defaultValue);
+			}
+		}).on('focus', '#search_val', function(){
+			var $this = $(this);
+			var txt = $this.val();
+			if(txt == defaultValue){
+				$this.val('');
+			}
+		})    
+    //刷新图片验证码
+    function GetCheckCode(obj){
+        obj.src = "/member/imgcaptcha/?temp="+Math.random();
+    }
+
+    //立即购买
+    (function($){
+        $.BuyIntegral = function ( args ) {
+            var $this = this;
+            this.buyIntegralNum = $( args.buyIntegralNum );
+            this.payMoney = $( args.payMoney );
+            this.reduceIntegral = $( args.reduceIntegral );
+            this.increaseIntegral = $( args.increaseIntegral );
+
+            var fIntegralNum = function(){
+                //购买积分数
+                var buyIntegralNum = parseInt( $( args.buyIntegralNum ).val() );
+                if( isNaN( buyIntegralNum ) ) {
+                    buyIntegralNum = 0;
+                }
+                else {
+                    if( buyIntegralNum > 99999 ) {
+                        buyIntegralNum = 99999;
+                    }
+                }
+                return buyIntegralNum;
+            };
+            var fPayMoney = function( integralnumber ) {
+                //支付金额 10积分 = 1元
+                var payMoney;
+                payMoney = parseFloat( integralnumber/10 );
+                $( args.payMoney ).val( payMoney );
+                $( args.payMoney+'_show' ).html( payMoney );
+                return payMoney;
+            };
+            this.fBuyIntegralNum = function(){
+                $this.buyIntegralNum.keyup(function(){
+                    var buyIntegralNum = $(this).val();
+                    buyIntegralNum = buyIntegralNum.replace( /\D+/g , '' );
+                    $(this).val( buyIntegralNum );
+                    fIntegralNum();
+                    fPayMoney( buyIntegralNum );
+                    return ;
+                });
+            };
+            this.fReduceIntegral = function () {
+                //减少积分
+                return $this.reduceIntegral.click(function(){
+                    var integralnumber = fIntegralNum();
+                    if( integralnumber > 10 ) {
+                        integralnumber = integralnumber-10;
+                        $( args.buyIntegralNum ).val( integralnumber );
+                        fPayMoney( integralnumber );
+                    }
+                    return ;
+                });
+            };
+            this.fIncreaseIntegral = function () {
+                //增加积分
+                return $this.increaseIntegral.click(function(){
+                    var integralnumber = fIntegralNum();
+                    integralnumber = integralnumber+10;
+                    if( integralnumber > 99999 ) {
+                        integralnumber = 99999;
+                    }
+                    $( args.buyIntegralNum ).val( integralnumber );
+                    fPayMoney( integralnumber );
+                    return ;
+                });
+            };
+        };
+        var Buy = new $.BuyIntegral( { reduceIntegral : '#reduceIntegral', increaseIntegral : '#increaseIntegral', buyIntegralNum : '#buyIntegralNum', payMoney : '#paymoney' });
+        Buy.fReduceIntegral();Buy.fIncreaseIntegral();Buy.fBuyIntegralNum();
+
+        $('input[name=bank]').click(function(){
+            var thisval = $.trim( $(this).val() );
+            var cardType = $('input[name=cardType]');
+            if( thisval == 'CEB-DEBIT' || thisval == 'CMBC' || thisval == 'COMM-DEBIT' ) {
+                cardType.attr( 'disabled' ,true ).eq(0).attr( 'checked' , true );
+            }
+            else {
+                cardType.attr( 'disabled' ,false );
+            }
+            return ;
+        });
+        //提交订单
+        $('input#ConfirmPurchase').click(function(){
+            var formObj = $("#orderPayForm");
+            var buyIntegralNum = formObj.find("input[name=buyIntegralNum]").val();
+            var options = {
+                beforeSend : function(){
+                    if( parseInt( buyIntegralNum ) <= 0 || buyIntegralNum == '' ) {
+                        alert( '选择购买积分数' );return false;
+                    }
+                    return true;
+                },
+                type: 'POST',
+                url : '/asyncRequest.php?'+Math.random(),
+                async : false,	//同步执行
+                dataType : 'json',
+                data : { m : 'payOrder' },
+                success: function( e ) {
+                    if( e.status == '1' ) {
+                        $('#ordernumber').val( e.info );
+                        formObj.submit();//与上面顺序不可颠倒
+                        $('#buyIntegralLayer').hide();
+                        $('#confirmLayer').show();
+                        return ;
+                    }
+                    else {
+                        alert( e.info );return ;
+                    }
+                }
+            };
+            formObj.ajaxSubmit( options );
+        });
+        //立即支付
+        $('#nowBuyIntegral').click(function(){
+            $('#globalBuyIntegralLayer').show();
+            $('#buyIntegralLayer').show();
+        });
+        //重新支付
+        $('#resetBuyIntegral').click(function(){
+            $('#globalBuyIntegralLayer').show();
+            $('#buyIntegralLayer').show();
+            $('#confirmLayer').hide();
+        });
+        //关闭弹层
+        $( '#globalBuyIntegralLayer .close' ).click(function(){
+            window.location.href=location.href;
+        });
+        $('a.paymethod').click(function(){
+            var banks = $('#banks');
+            $('input#paymethod' ).val( $.trim( $(this).attr( 'paymethod' ) ) );
+            $(this).index() == 0 ? banks.slideDown() : banks.slideUp();
+        });
+    })(jQuery);
+</script>
+{/literal}
+{/block}
+

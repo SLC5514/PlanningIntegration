@@ -1,0 +1,63 @@
+{extends file="layout.html"} 
+{block name="selfcss"}
+	<link rel="stylesheet" type="text/css" href="{$smarty.const.STATIC_URL1}/global/css/lib/cropper.css?{$smarty.const.STATIC_CHANGE_TIME}" />
+	<link rel="stylesheet" type="text/css" href="{$smarty.const.STATIC_URL1}/global/css/similar/similar-patterns.css?{$smarty.const.STATIC_CHANGE_TIME}" />
+{/block} 
+ 
+{block name="main"}
+<div class="content">
+	<div class="section picture-search">
+		<div class="picture-similar">
+			<h2>请框选图片中要识别的区域</h2>
+			
+			<div class="picture-box clear">
+				<!--裁剪图案-->
+				<div class="picture-set js-picture-set">
+					<img class="js-cut-pic" src="" alt="" />
+				</div>
+				
+				<div class="picture-msg">
+					<p>
+		        		<img src="{STATIC_URL2}/global/images/similar/icon4.png" alt="icon">
+		        		您可以使用鼠标任意拖拽图片 ， 并用滚轮调整图片大小
+		        	</p>
+					
+				</div>
+			</div>
+		</div>
+		
+		<div class="picture-up">
+			<p>
+				<span class="icon"></span>
+				截取图像时，请您注意保<br />持框选区域的清晰度及完整性
+			</p>
+			<div class="up-img"></div>		
+		</div>
+	</div>
+	
+	<div class="similar-box">
+		<!--相似图案-->
+		<a class="js-similar-to" href="javascript:void(0);" title="识别相似图案">
+			<span class="icon"></span>识别相似图案
+		</a>
+		<label class="upload-box" for="similar-file">
+			<span class="icon"></span>上传本地图案
+		</label>
+		<form style="display: none;" method="post" class="js-img-upload" enctype="multipart/form-data">
+			<input id="similar-file" class="i-file" name="userfile" type="file" accept="image/gif,image/jpeg,image/jpg,image/png">
+		</form>
+	</div>
+	
+</div>
+{/block}
+
+{block name="self"}
+	<script src="{$smarty.const.STATIC_URL3}/global/js/similar/similar-patterns.js?{$smarty.const.STATIC_CHANGE_TIME}" type="text/javascript" charset="utf-8"></script>
+{/block}
+
+
+
+
+
+
+

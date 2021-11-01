@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script src="../jquery.min.js"></script>
+  <script src="../greensock-js/src/minified/TweenMax.min.js"></script>
+  <script src="./PixiPlugin.min.js"></script>
+  <script src="../pixi.min.js"></script>
+  <script>
+    let type = "WebGL";
+    if (!PIXI.utils.isWebGLSupported()) {
+      type = "canvas";
+    }
+    PIXI.utils.sayHello(type);
+
+    let app = new PIXI.Application({
+      width: window.innerWidth,
+      height: window.innerHeight,
+      antialias: true,
+      transparent: false,
+      resolution: 1
+    });
+    document.body.appendChild(app.view);
+
+    app.renderer.view.style.position = "absolute";
+    app.renderer.view.style.left = 0;
+    app.renderer.view.style.top = 0;
+
+    let imgURL = "./reed_ginventory_cover.jpg";
+    image = PIXI.Sprite.fromImage(imgURL, true);
+    app.stage.addChild(image);
+
+    // image1 = PIXI.Sprite.fromImage(imgURL, true);
+    // app.stage.addChild(image1);
+    // image2 = PIXI.Sprite.fromImage(imgURL, true);
+    // app.stage.addChild(image2);
+
+    // https://greensock.com/docs/TweenLite/static.to
+    // var TimelineLite = new TimelineLite();
+    // TimelineLite.to(image2, 5, {
+    //   delay: 1, // 延迟
+    //   ease: Elastic.easeOut, // 缓动方式
+    //   pixi: { rotation: 60 },
+    //   onStart: function() {
+    //     console.log("Start!");
+    //   },
+    //   onComplete: function() {
+    //     console.log("Complete!");
+    //   }
+    // }).to(image1, 5, {
+    //   delay: 1,
+    //   ease: Elastic.easeOut,
+    //   pixi: { rotation: 30 },
+    //   onStart: function() {
+    //     console.log("Start!");
+    //   },
+    //   onComplete: function() {
+    //     console.log("Complete!");
+    //     // TimelineLite.restart();
+    //   }
+    // });
+
+    window.onresize = function() {
+      app.renderer.resize(window.innerWidth, window.innerHeight);
+    };
+
+    // image.anchor.set(0.5);
+
+    var TimelineLite = new TimelineLite();
+    TimelineLite.to(image, 1, {
+      delay: 0.5,
+      ease: Elastic.ease,
+      pixi: { scale: 1.2 },
+      onStart: function() {
+        console.log("Start!");
+      },
+      onComplete: function() {
+        console.log("Complete!");
+      }
+    });
+
+    let rectangle = new PIXI.Graphics();
+    rectangle.beginFill(0x66ccff);
+    rectangle.drawRect(0, 0, 400, 200);
+    rectangle.endFill();
+    rectangle.x = 100;
+    rectangle.y = 100;
+
+    // image.mask = rectangle;
+
+    app.stage.addChild(rectangle);
+  </script>
+</html>

@@ -1,0 +1,377 @@
+{extends file="layout.html"}
+{block name="title"}POP趋势APP上线了！趋势预见流行-POP服装趋势网{/block}
+{block name=keywords}POP趋势,智能设计工具,趋势APP,POP服装趋势网{/block}
+{block name="description"}POP服装趋势网旗下移动APP-POP趋势上线了，POP趋势专为设计师提供前沿的时尚潮流资讯，设计师无论身在何处，均可随时开启设计灵感之源。{/block}
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css"
+    href="{STATIC_URL2}/global/topic/common/css/h5-common.css?{STATIC_CHANGE_TIME}" />
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/topic/trend_app/css/index.css?{STATIC_CHANGE_TIME}" />
+{/block}
+{block name="main"}
+<div class="content js-view-contain">
+    {include file="topic/common/h5-header.html"}
+    <div class="pc-box">
+        <div class="main">
+            <div class="main-header">
+                <div class="w1200 clearfix">
+                    <div class="logo fl">
+                        <a href="/">
+                            <img src="{STATIC_URL2}/global/topic/trend_app/images/logo.png?{STATIC_CHANGE_TIME}" alt="">
+                        </a>
+                    </div>
+                    <div class="download-btnbox fr">
+                        <div class="combtn js-show-download-alert"><span>立即下载</span><i class="down"></i></div>
+                    </div>
+                    <div class="download-btnbox fr">
+                        <div class="combtn" style="margin-right: 30px;"><a href='/member/vipapply/'>VIP试用申请</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-banner js-scrolltop1">
+                <div class="w1200">
+                    <div class="banner-content">
+                        <div class="moveup-box">
+                            <img class="banner-logo tp-moveup"
+                                src="{STATIC_URL2}/global/topic/trend_app/images/pop_logo.png?{STATIC_CHANGE_TIME}"
+                                alt="">
+                        </div>
+                        <div class="moveup-box">
+                            <img class="banner-title tp-moveup td-1"
+                                src="{STATIC_URL2}/global/topic/trend_app/images/title.png?{STATIC_CHANGE_TIME}" alt="">
+                        </div>
+                        <div class="moveup-box">
+                            <div class="info tp-moveup td-2">
+                                <p>POP趋势专为设计师提供前沿的时尚潮流资讯，设计师无论身在何处</p>
+                                <p>均可随时开启设计灵感之源</p>
+                            </div>
+                        </div>
+                        <div class="moveup-box">
+                            <div class="download-tabbox tp-moveup td-3">
+                                <div class="tab clearfix">
+                                    <div class="combtn fl js-download-tab on" data-index="0"><i
+                                            class="apple"></i><span>iPhone版下载</span></div>
+                                    <div class="vline fl"></div>
+                                    <div class="combtn fr js-download-tab" data-index="1"><i
+                                            class="android"></i><span>Android版下载</span></div>
+                                </div>
+                                <div class="tab-content js-download-tabcon">
+                                    <div class="item clearfix on">
+                                        <img class="qrcode fl"
+                                            src="{STATIC_URL2}/global/topic/trend_app/images/apple_qr_code.png?{STATIC_CHANGE_TIME}"
+                                            alt="">
+                                        <div class="info fl">
+                                            <p>扫描二维码下载或者从手机上的APP</p>
+                                            <p>Store中搜索POP趋势下载</p>
+                                        </div>
+                                    </div>
+                                    <div class="item clearfix android-item">
+                                        <img class="qrcode fl"
+                                            src="{STATIC_URL2}/global/topic/trend_app/images/android_qr_code.png?{STATIC_CHANGE_TIME}"
+                                            alt="">
+                                        <div class="info fl">
+                                            <div class="download-btnbox">
+                                                <div class="highlight"></div>
+                                                <a class="btn-content"
+                                                    href="http://tools.pop136.com/app/pop-trend-android.apk"><span>安卓版本下载</span><i
+                                                        class="down"></i></a>
+                                            </div>
+                                            <p>扫描二维码下载或者点击按钮下载</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section1 js-scrolltop2">
+                <div class="w1200">
+                    <ul>
+                        <li>
+                            <div class="img-box moveup-box">
+                                <img class="tp-moveup"
+                                    src="{STATIC_URL2}/global/topic/trend_app/images/img1.png?{STATIC_CHANGE_TIME}"
+                                    alt="">
+                            </div>
+                            <div class="moveup-box">
+                                <div class="title title1 tp-moveup td-1">
+                                    <!-- <p>便捷的</p>
+                  <p>移动化办公工具</p> -->
+                                </div>
+                            </div>
+                            <div class="moveup-box">
+                                <div class="info tp-moveup td-2">
+                                    <p>移动化办公也能随身</p>
+                                    <p>记录搜索设计灵感之源</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img-box moveup-box">
+                                <img class="tp-moveup"
+                                    src="{STATIC_URL2}/global/topic/trend_app/images/img2.png?{STATIC_CHANGE_TIME}"
+                                    alt="">
+                            </div>
+                            <div class="moveup-box">
+                                <div class="title title2 tp-moveup td-1">
+                                    <!-- <p>平台内容</p>
+                  <p>聚焦、快反应</p> -->
+                                </div>
+                            </div>
+                            <div class="moveup-box">
+                                <div class="info tp-moveup td-2">
+                                    <p>聚焦准确的行业资讯</p>
+                                    <p>灵活应对市场潮流变化</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img-box moveup-box">
+                                <img class="tp-moveup"
+                                    src="{STATIC_URL2}/global/topic/trend_app/images/img3.png?{STATIC_CHANGE_TIME}"
+                                    alt="">
+                            </div>
+                            <div class="moveup-box">
+                                <div class="title title3 tp-moveup td-1">
+                                    <!-- <p>时尚产业</p>
+                  <p>全面有依据</p> -->
+                                </div>
+                            </div>
+                            <div class="moveup-box">
+                                <div class="info tp-moveup td-2">
+                                    <p>5大不同时尚产业链</p>
+                                    <p>帮助您掌握热门时尚情报</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="section2 js-scrolltop3">
+                <div class="bg1"></div>
+                <div class="bg2"></div>
+                <div class="w1200">
+                    <div class="iphone1 moveup-box">
+                        <div class="tp-moveup"></div>
+                    </div>
+                    <div class="iphone2 moveup-box">
+                        <div class="tp-moveup td-1"></div>
+                    </div>
+                    <div class="msg">
+                        <div class="moveup-box">
+                            <div class="title tp-moveup td-2">
+                                <!-- <p>5大时尚产业</p>
+                <p>为您的时尚赋能升级</p> -->
+                            </div>
+                        </div>
+                        <div class="moveup-box">
+                            <div class="info tp-moveup td-3">
+                                <p>从趋势、流行两个方向进行趋势洞察，为您呈现服装、鞋</p>
+                                <p>子、箱包、家纺、首饰5大时尚产业的潮流资讯内容；</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section3 js-scrolltop4">
+                <div class="bg1"></div>
+                <div class="bg2"></div>
+                <div class="bg3">
+                    <div class="cir cir1">
+                        <div class="btm"></div>
+                        <div class="top"></div>
+                    </div>
+                    <div class="cir cir2">
+                        <div class="btm"></div>
+                        <div class="top"></div>
+                    </div>
+                    <div class="cir cir3">
+                        <div class="btm"></div>
+                        <div class="top"></div>
+                    </div>
+                    <div class="cir cir4">
+                        <div class="btm"></div>
+                        <div class="top"></div>
+                    </div>
+                    <div class="cir cir5">
+                        <div class="btm"></div>
+                        <div class="top"></div>
+                    </div>
+                </div>
+                <div class="w1200">
+                    <div class="msg">
+                        <div class="moveup-box">
+                            <div class="title tp-moveup td-1">
+                                <!-- <p>大数据智能分析</p>
+                <p>实现发现市场热门款式</p> -->
+                            </div>
+                        </div>
+                        <div class="moveup-box">
+                            <div class="info tp-moveup td-2">
+                                <p>全线索、多渠道、全面汇集市场流行单品，以多角度加局部细节</p>
+                                <p>的形式展示各个爆款，在线快速了解每一款</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="iphone moveup-box">
+                        <div class="tp-moveup"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="section4">
+                <div class="bg"></div>
+                <div class="w1200">
+                    <ul>
+                        <li>
+                            <div class="img-box">
+                                <img src="{STATIC_URL2}/global/topic/trend_app/images/icon_logo.png?{STATIC_CHANGE_TIME}"
+                                    alt="">
+                            </div>
+                            <p>打开趋势APP，发现更多精彩内容</p>
+                            <div class="combtn js-show-download-alert"><span>立即下载</span><i class="down"></i></div>
+                        </li>
+                        <li class="vip-img">
+                            <div class="img-box">
+                                <img src="{STATIC_URL2}/global/topic/trend_app/images/icon_vip.png?{STATIC_CHANGE_TIME}"
+                                    alt="">
+                            </div>
+                            <p>发起VIP试用申请，获取免费体验权限</p>
+                            <a class="combtn" href="/member/vipapply/"><span>VIP试用申请</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="download-alert-bg js-download-alert-bg"></div>
+            <div class="download-alert js-download-alert">
+                <div class="content">
+                    <i class="close js-download-alert-close"></i>
+                    <div class="title">用手机扫描二维码，快速下载APP</div>
+                    <ul>
+                        <li>
+                            <img src="{STATIC_URL2}/global/topic/trend_app/images/apple_qr_code.png?{STATIC_CHANGE_TIME}"
+                                alt="">
+                            <p>iPhone版</p>
+                        </li>
+                        <li>
+                            <img src="{STATIC_URL2}/global/topic/trend_app/images/android_qr_code.png?{STATIC_CHANGE_TIME}"
+                                alt="">
+                            <p>Android版</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="h5-box">
+        <div class="main">
+            <div class="main-header">
+                <div class="logo">
+                    <img src="{STATIC_URL2}/global/topic/trend_app/images/h5/h5-logo.png?{STATIC_CHANGE_TIME}" alt="">
+                    <span>POP趋势</span>
+                </div>
+                <div class="title">
+                    <img src="{STATIC_URL2}/global/topic/trend_app/images/title.png?{STATIC_CHANGE_TIME}" alt="">
+                </div>
+                <div class="info">
+                    <p>POP趋势专为设计师提供前沿的时尚潮流资讯</p>
+                    <p>设计师无论身在何处均可随时开启设计灵感之源</p>
+                </div>
+                <div class="btn combtn js-download-app"><span>立即下载</span><i class="down"></i></div>
+            </div>
+            <div class="section1">
+                <ul>
+                    <li class="clearfix">
+                        <div class="img-box fl">
+                            <img src="{STATIC_URL2}/global/topic/trend_app/images/h5/img1.png?{STATIC_CHANGE_TIME}"
+                                alt="">
+                        </div>
+                        <div class="msg">
+                            <div class="title title1">
+                                <!-- 便捷的移动化办公工具 -->
+                            </div>
+                            <p>移动化办公也能随身记录搜索设计灵感之源</p>
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                        <div class="img-box fl">
+                            <img src="{STATIC_URL2}/global/topic/trend_app/images/h5/img2.png?{STATIC_CHANGE_TIME}"
+                                alt="">
+                        </div>
+                        <div class="msg">
+                            <div class="title title2">
+                                <!-- 平台内容聚焦-快反应 -->
+                            </div>
+                            <p>聚焦准确的行业资讯、灵活应对市场潮流变化</p>
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                        <div class="img-box fl">
+                            <img src="{STATIC_URL2}/global/topic/trend_app/images/h5/img3.png?{STATIC_CHANGE_TIME}"
+                                alt="">
+                        </div>
+                        <div class="msg">
+                            <div class="title title3">
+                                <!-- 时尚产业-全面有依据 -->
+                            </div>
+                            <p>5大不同时尚产业链、帮助您掌握热门时尚情报</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="section2">
+                <div class="bg1"></div>
+                <div class="bg2"></div>
+                <div class="iphone1"></div>
+                <div class="iphone2"></div>
+                <div class="sec-content">
+                    <div class="hline"></div>
+                    <div class="title">
+                        <!-- <p>5大时尚产业</p>
+            <p>为您的时尚赋能升级</p> -->
+                    </div>
+                    <div class="info">从趋势、流行两个方向进行趋势洞察，为您呈现服装、鞋子、箱包、家纺、首饰5大时尚产业的潮流资讯内容;</div>
+                </div>
+            </div>
+            <div class="section3">
+                <div class="bg1"></div>
+                <div class="bg2"></div>
+                <div class="bg3"></div>
+                <div class="iphone"></div>
+                <div class="sec-content">
+                    <div class="hline"></div>
+                    <div class="title">
+                        <!-- <p>大数据智能分析</p>
+            <p>实现发现市场热门款式</p> -->
+                    </div>
+                    <div class="info">全线索、多渠道、全面汇集市场流行单品，以多角度加局部细节的形式展示各个爆款，在线快速了解每一款</div>
+                </div>
+            </div>
+            <div class="section4">
+                <ul>
+                    <li>
+                        <div class="img-box">
+                            <img src="{STATIC_URL2}/global/topic/trend_app/images/h5/h5-logo.png?{STATIC_CHANGE_TIME}"
+                                alt="">
+                        </div>
+                        <p>打开趋势APP，发现更多精彩内容</p>
+                        <div class="combtn js-download-app"><span>立即下载</span><i class="down"></i></div>
+                    </li>
+                    <li class="hline"></li>
+                    <li class="vip-item">
+                        <div class="img-box">
+                            <img src="{STATIC_URL2}/global/topic/trend_app/images/h5/icon_vip.png?{STATIC_CHANGE_TIME}"
+                                alt="">
+                        </div>
+                        <p>发起VIP试用申请，获取免费体验权限</p>
+                        <a class="combtn" href="/member/vipapply/"><span>VIP试用申请</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    {include file="topic/common/h5-footer.html"}
+</div>
+{/block}
+{block name="self"}
+<script type="text/javascript" src="{STATIC_URL2}/global/topic/trend_app/js/index.js?{STATIC_CHANGE_TIME}"></script>
+{/block}

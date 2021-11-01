@@ -1,0 +1,53 @@
+p{margin: 0;}
+a{text-decoration: none;}
+ul{list-style: none;padding: 0;margin: 0;}
+.fl{float: left;}
+.fr{float: right;}
+.w1200{width: 1200px;margin: 0 auto;}
+.w1500{width: 1500px;margin: 0 auto;}
+.clearfix{*zoom: 1;}
+.clearfix:after{content:".";display: block;height: 0;clear: both;visibility: hidden;font-size:0;line-height:0;}
+html{min-width: initial;}
+body{margin: 0;}
+
+.viewport{position: relative;min-width: 1500px;cursor: default;overflow: hidden;}
+/* 头图 */
+.banner{height: 420px;margin: 0 auto;position: relative;overflow: hidden;}
+.banner>div{width: 2000px;height: 420px;background: url(../images/intelligent/banner.png) no-repeat center;background-size: cover;position: absolute;left: 50%;margin-left: -1000px;}
+/* 内容 */
+.viewport-content{padding: 80px 0 100px 0;}
+.viewport-content>ul{margin: 0 -15px;}
+.viewport-content>ul>li{width: 735px;height: 290px;margin: 0 15px 20px;padding: 15px 20px;box-sizing: border-box;float: left;border-radius:5px;overflow: hidden;position: relative;background: #ffffff;top: 0;transition: box-shadow .3s ease-out,transform .3s ease-out;}
+.viewport-content>ul>li:hover{box-shadow:0px 15px 20px -2px rgba(46,53,83,0.07);transform: translate3d(0,-10px,0);}
+.viewport-content>ul>li>.left{margin-right: 30px;}
+.viewport-content>ul>li>.left>img{width: 260px;}
+.viewport-content>ul>li .title{font-size:24px;color:#333;line-height:29px;letter-spacing:1px;margin-top: 25px;}
+.viewport-content>ul>li .title>i{display: inline-block;width: 46px;height: 14px;background: url(../images/intelligent/vip.png) no-repeat center;background-size: cover;margin-left: 8px;position: relative;top: -4px;}
+.viewport-content>ul>li .title>i.svip{height: 15px;background: url(../images/intelligent/svip.png) no-repeat center;background-size: cover;}
+.viewport-content>ul>li .info{width: 405px;font-size:16px;color:#646464;line-height:24px;letter-spacing:1px;margin-top: 20px;}
+.viewport-content>ul>li .info>span{color: #333;}
+.viewport-content>ul>li .btn{position: absolute;bottom: 40px;left: 310px;width:130px;height:40px;line-height: 40px;font-size: 16px;text-align: center;border-radius:20px;border:1px solid #1D232C;overflow: hidden;cursor: pointer;}
+.viewport-content>ul>li .btn>i{display: block;width: 100%;height: 100%;margin-left: -100%;border-radius:18px;background: #1D232C;transition: all 0.2s ease-in-out;}
+.viewport-content>ul>li .btn>span{position: absolute;left: 0;top: 0;color: #333;width: 100%;transition: color 0.2s ease-in-out;}
+.viewport-content>ul>li .btn:hover>i{background: #1D232C;margin-left: 0;}
+.viewport-content>ul>li .btn.gray{border-color: #ccc;left: 470px;}
+.viewport-content>ul>li .btn.gray>i{background: #ccc;}
+.viewport-content>ul>li .btn.gray>span{color: #ccc;}
+.viewport-content>ul>li .btn:hover>span{color: #fff;}
+.viewport-content>ul>li .btn-paper{position: absolute;bottom: 40px;left: 310px;width:127px;height:32px;line-height: 32px;text-align: center;background:#fff5ce;box-shadow:0px 2px 6px 0px rgba(255,229,176,0.95);border-radius:8px;opacity:0.53;border:1px solid #f9e27b;font-size:16px;color:#f0a763;cursor: default;}
+.viewport-content>ul>li .btn-paper>i{display: inline-block;width: 18px;height: 13.5px;margin-right: 6px;background: url(../images/intelligent/paper_airplane.png) no-repeat center;background-size: cover;}
+
+@media screen and (max-width: 1500px) {
+    .w1500{width: 1200px;}
+    .viewport{min-width: 1200px;}
+    .banner>div{background: url(../images/intelligent/banner_1200.png) no-repeat center;background-size: cover;}
+    .viewport-content{padding-top: 70px;padding-bottom: 90px;}
+    .viewport-content>ul>li{width: 590px;height: 250px;margin: 0 10px 10px;padding: 20px;}
+    .viewport-content>ul>li>.left{margin-right: 10px;}
+    .viewport-content>ul>li>.left>img{width: 210px;}
+    .viewport-content>ul>li .title{margin-top: 8px;}
+    .viewport-content>ul>li .info{width: 320px;font-size:14px;margin-top: 10px;}
+    .viewport-content>ul>li .btn{bottom: 25px;left: 240px;}
+    .viewport-content>ul>li .btn.gray{left: 400px;}
+    .viewport-content>ul>li .btn-paper{bottom: 25px;left: 240px;}
+}

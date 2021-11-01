@@ -1,0 +1,174 @@
+<div class="head-top-static head-top-search js-head-top clearfix">
+    <input type="hidden" id="have_column" value="{$lists.have_column_show}">
+    <div class="head-t-content clearfix">
+        <div class="head-logo fl js-head-logo">
+            <a href="https://www.pop-fashion.com/" rel="nofollow" title="POP服装趋势"><img src="{STATIC_URL2}/global/images/new_common/nav_logo.png" alt="POP服装趋势"><i class="common-icon"></i></a>
+                <div class="allWeb">
+                    <ul class="leftlists">
+                        <li><a href="https://www.pop-fashion.com/" target="_blank" rel="nofollow" title="服装"><em class="common-icon fashion"></em>服装</a></li>
+                        <li><a href="http://www.pop-bags.com/" target="_blank" rel="nofollow" title="箱包"><em class="common-icon bag"></em>箱包</a></li>
+                        <li><a href="http://www.pop-shoe.com/" target="_blank" rel="nofollow" title="鞋子"><em class="common-icon shoe"></em>鞋子</a></li>
+                        <li><a href="http://www.51shoushi.com/" target="_blank" rel="nofollow" title="首饰"><em class="common-icon dec"></em>首饰</a></li>
+                        <li><a href="http://www.91jiafang.com/" target="_blank" rel="nofollow" title="家纺"><em class="common-icon home"></em>家纺</a></li>
+                        <li><a href="http://yuntu.pop136.com/" target="_blank" rel="nofollow" title="云图"><em class="common-icon yuntu"></em>云图</a></li>
+                        <li><a href="http://www.pop136.com/" target="_blank" rel="nofollow" title="官网"><em class="common-icon guanw"></em>官网</a></li>
+                    </ul>
+                </div>
+        </div>
+        <div class="user-contain fr">
+            {if $account eq '' && $accountShow neq 'true'}
+            <div class="user-box fl">
+                <a href='javascript:void(0);' class='loginLayer' rel="nofollow" title="登录"><span class="lg"></span>登录</a>
+                <i></i>
+                <a class="reg-btn" href="/member/register/" rel="nofollow" title="注册"><span class="rg"></span>注册</a>
+            </div>
+            {else}
+            <div class="login-user-box fl js-returnLi">
+                <a><em></em><span>{$account}</span></a>
+                <div class="login-success-section js-forUl {if $P_UserType eq 1 || $P_UserType eq 2}login-success-vip{/if}">
+                    <div class="login-suc-head">
+                        <div class="login-suc-head-t clearfix">
+                            {if $P_UserType eq 1}
+                            <p class="fl">{$account}<span><i class="common-icon"></i>管理员账号</span></p>                                
+                            {else if $P_UserType eq 2}
+                            <p class="fl">{$account}<span><i class="common-icon"></i>设计师账号</span></p>
+                            {else if $P_UserType eq 3}
+                            <p class="fl">{$account}<span>试用账号</span></p>
+                            {else}
+                            <p class="fl">{$account}<span>普通用户</span></p>
+                            {/if}
+                            {if $issetNewMessage}
+                            <a class="fl infor-account common-icon" href='/member/message/'><span class="ix"></span></a>
+                            {/if}
+                            <a class="fr signout-account js-signOut">退出</a>
+                            {if $canChangLoginAccount}
+                                {if $P_AccountType=="main"}
+                                <a class="fr switch-account js-switch" data-type="1"><i class="common-icon"></i>切换</a>                                    
+                                {else}
+                                <a class="fr switch-account js-switch" data-type="2"><i class="common-icon"></i>切换</a>
+                                {/if}
+                            {/if}                                
+                        </div>
+                        {if $P_UserType eq 1}
+                        <p>用VIP主账号，可管理多个子账号哦~<a href="/member/associate/" target="_blank">管理子账号</a></p>
+                        {else if $P_UserType eq 2}
+                        <p>设计师账号，可探索个性化推荐内容</p>
+                        {else if $P_UserType eq 3}
+                        <p>了解潮流趋势 / 服饰研发必备平台</p>
+                        {else}
+                        <p>升级成VIP之后，才能查看网站全部内容</p>
+                        {/if}                            
+                    </div>
+                    <div class="login-suc-content">
+                        <div class="login-suc-link">
+                            <a class="collect-link" href="/member/mycollect/" target="_blank"><span><i></i></span>我的收藏</a>
+                            <a class="history-link" href="/member/myHistory/4/" target="_blank"><span><i></i></span>浏览历史</a>
+                            <a class="workbench-link" href="/member/workbench/" target="_blank"><span><i></i></span>工作室</a>
+                            <a class="color-link" href="/smarttrends/colordata/" target="_blank"><span><i></i></span>色彩分析</a>
+                            <a class="top-link" href="/smarttrends/topstyles/" target="_blank"><span><i></i></span>TOP榜单</a>
+                            <a class="recommend-link" href="/patterns/patternRecommend/" target="_blank"><span><i></i></span>个性推荐</a>
+                        </div>
+                        {if $P_UserType == 4}
+                        <a href="javascript:void(0);" class="js-contact-qq-btn open-account-vip">开通VIP</a>
+                        {/if}
+                    </div>
+                </div>
+            </div>
+            <!-- 切换账号验证弹层 -->
+            <div class="switch-box js-switch-box" style="display: none;">
+                <div class="loginClose js-loginClose"></div>
+                <div class="login-title">
+                    <span>请先进行身份验证</span>
+                </div>
+                <div class="login-main">
+                    <p class="errorbox errorbox3" style="top:0px;"></p>
+                    <ul>
+                        <li><input class="js-account" type="text" placeholder="请输入手机号"/></li>
+                        <li>
+                            <input class="js-switch-code" type="text" placeholder="请输入验证码"/>
+                            <span class="code-btn js-code-btn1">获取验证码</span>
+                        </li>
+                        <li class="l_drag border-none" style="padding-top: 15px;border: none;position: relative;">
+                            <div class="code_btn js-click-btn" data-cla=".js-puzzle-drag-content5">点击按钮完成图形验证</div>
+                            <div class="puzzle-drag-wraper js-drag-show" style="display: none;">
+                                <s class="drag-s"></s>
+                                <t class="drag-t"></t>
+                                <div class="puzzle-drag-content js-puzzle-drag-content5">
+                                    <div class="drag-title clearfix">
+                                        <span>为保证你的账户安全，请先完成图形验证</span>
+                                        <span class="close js-close"></span>
+                                        <span class="change js-change"><i></i>换一换</span>
+                                    </div>
+                                    <div class="puzzle-img-box">
+                                        <div class="puzzle-img js-puzzle-img">
+                                            <img>
+                                        </div>
+                                        <div class="puzzle-lost js-puzzle-lost">
+                                            <img>
+                                        </div>
+                                    </div>
+                                    <div class="drag-slide-nav">
+                                        <div class="drag-slide-text">
+                                            <div class="drag-slide-left"></div>
+                                            <div class="drag-slide-center">向右滑动完成拼图</div>
+                                            <div class="drag-slide-right"></div>
+                                        </div>
+                                        <div class="drag-slide-bar js-drag-slide-bar">
+                                            <div class="drag-slide-bar-left"></div>
+                                            <div class="drag-slide-bar-center"></div>
+                                            <div class="drag-slide-bar-right"></div>
+                                        </div>
+                                        <div class="drag-slide-btn js-drag-slide-btn"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="switch-btn js-changeUser">提交</div>
+                </div>
+            </div>
+            <!-- 弹层背景 -->
+            <div class="switch-bg js-switch-bg" style="display: none;"></div>
+            {/if}
+            {if $P_UserType eq 5 || $P_UserType eq 4}
+            <a href="javascript:void(0);" class="js-contact-qq-btn contact-btn">了解VIP</a>
+            {/if}
+            {if $P_UserType neq 5}
+            <a class="help-center-btn" href="http://www.pop136.com/product_help.php">帮助中心</a>
+            {/if}
+        </div>
+        <div class="function-contain con_width">
+            <div class="f-search-section clearfix">
+                <div class="f-search-input js-search-box fl">
+                    <div class="js-all-input-contain all-input-contain">
+                        <input id="search_box2" class="input-Itext js-search-ipt" value="{$keyword}" data-staut="1" growing-track="true" placeholder="搜索你想要的" type="text" οnfοcus="this.placeholder=''" οnblur="this.placeholder='搜索你想要的'" autocomplete='off' />
+                        <input class="search-btn js-search-btn common-icon" type="button">
+                        <div class="search_listDown">
+                            <div class="menu"></div>
+                            <div class="hot-menu">
+                                <div class="menu-hot-list">
+                                    <div class="label js-history-label">历史记录<div class="fr"><span class="operat js-clear-operat">清除记录</span></div></div>
+                                    <ul class="history-list"></ul>
+                                    <div class="label">热门搜索</div>
+                                    <ul class="hot-list"></ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="search-filesImg" style="display: none;">
+                        <img src=""/>
+                    </div>
+                    <div class="sea-col js-sea-color" style="top: 4px;" data-stu="1">
+        
+                    </div>                   
+                </div>
+            </div>
+            <div class="f-find-box">
+                <a class="find-color" href="/Colorsearch/" title="色彩搜图"><i class="common-icon"></i>色彩搜图</a>
+                <span></span>
+                <a class="find-camera js-figure-btn" href="javascript:void(0);" title="以图搜图"><i class="common-icon"></i>以图搜图</a>
+                <input type="hidden" id="cropData1"/>
+            </div>
+        </div>            
+    </div>
+</div>

@@ -1,0 +1,907 @@
+{extends file="layout.html"}
+
+{block name="selfcss"}
+    <link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/new-detail/style-detail-F5.css?{STATIC_CHANGE_TIME}">
+{/block}
+
+
+
+{block name="main"}
+<input type="hidden" class="js-input-detail" data-id="{$id}" data-col="{$col}" data-t="{$t}">
+<input id="encrypt" type="hidden" data-sign="{$sign}" data-timestamp="{$timeStamp}" data-token="{$token}">
+<div class="pop_layer_page pop_layer_page1" id="pop_layer" data-f5="1">
+	{include file="detail_layer_template.html"}
+</div>
+{/block}
+
+
+{block name="header"}
+
+	<!--头部导航-->
+	{include file="common/header_nav_down.html"}
+
+
+	<div class="report-hd">
+		<div class="head-top-static js-head-top clearfix">
+            <div class="head-t-content clearfix">
+                <div class="head-logo fl js-head-logo">
+                    <a href="https://www.pop-fashion.com/" rel="nofollow" title="POP服装趋势"><img src="{STATIC_URL2}/global/images/new_common/nav_logo.png" alt="POP服装趋势"></a>					
+                </div>
+                <div class="user-contain fr">
+                    {if $account eq '' && $accountShow neq 'true'}
+                    <div class="user-box fl">
+                        <a href='javascript:void(0);' class='loginLayer' rel="nofollow" title="登录"><span class="lg"></span>登录</a>
+                        <i></i>
+                        <a class="reg-btn" href="/member/register/" rel="nofollow" title="注册"><span class="rg"></span>注册</a>
+                    </div>
+                    {else}
+                    {if $pwd_tip}
+                    <div class="login-password-info js-login-password-info">您已很久没修改密码，为了您的账号安全，请前往<a href="/member/pwd/">修改密码</a><i onclick="$('.js-login-password-info').hide()"></i></div>
+                    {/if}
+                    <div class="login-user-box fl js-returnLi">
+                        <a><em></em><span>{$account}</span></a>
+                        <div class="login-success-section js-forUl {if $P_UserType eq 1 || $P_UserType eq 2}login-success-vip{/if}">
+                            <div class="login-suc-head">
+                                <div class="login-suc-head-t clearfix">
+                                    {if $P_UserType eq 1}
+                                    <p class="fl">{$account}<span><i class="common-icon"></i>管理员账号</span></p>                                
+                                    {else if $P_UserType eq 2}
+                                    <p class="fl">{$account}<span><i class="common-icon"></i>设计师账号</span></p>
+                                    {else if $P_UserType eq 3}
+                                    <p class="fl">{$account}<span>试用账号</span></p>
+                                    {else}
+                                    <p class="fl">{$account}<span>普通用户</span></p>
+                                    {/if}
+                                    {if $issetNewMessage}
+                                    <a class="fl infor-account common-icon" href='/member/message/'><span class="ix"></span></a>
+                                    {/if}
+                                    <a class="fr signout-account js-signOut">退出</a>
+                                    {if $canChangLoginAccount}
+                                        {if $P_AccountType=="main"}
+                                        <a class="fr switch-account js-switch" data-type="1"><i class="common-icon"></i>切换</a>                                    
+                                        {else}
+                                        <a class="fr switch-account js-switch" data-type="2"><i class="common-icon"></i>切换</a>
+                                        {/if}
+                                    {/if}                                
+                                </div>
+                                {if $P_UserType eq 1}
+                                <p>用VIP主账号，可管理多个子账号哦~<a href="/member/associate/" target="_blank">管理子账号</a></p>
+                                {else if $P_UserType eq 2}
+                                <p>设计师账号，可探索个性化推荐内容</p>
+                                {else if $P_UserType eq 3}
+                                <p>了解潮流趋势 / 服饰研发必备平台</p>
+                                {else}
+                                <p>升级成VIP之后，才能查看网站全部内容</p>
+                                {/if}                            
+                            </div>
+                            <div class="login-suc-content">
+                                <div class="login-suc-link">
+                                    <a class="collect-link" href="/member/mycollect/" target="_blank"><span><i></i></span>我的收藏</a>
+                                    <a class="history-link" href="/member/myHistory/4/" target="_blank"><span><i></i></span>浏览历史</a>
+                                    <a class="workbench-link" href="/member/workbench/" target="_blank"><span><i></i></span>工作室</a>
+                                    <a class="color-link" href="/smarttrends/colordata/" target="_blank"><span><i></i></span>色彩分析</a>
+                                    <a class="top-link" href="/smarttrends/topstyles/" target="_blank"><span><i></i></span>TOP榜单</a>
+                                    <a class="recommend-link" href="/patterns/patternRecommend/" target="_blank"><span><i></i></span>个性推荐</a>
+                                </div>
+                                {if $P_UserType == 4}
+                                <a href="javascript:void(0);" class="js-contact-qq-btn open-account-vip">开通VIP</a>
+                                {/if}
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 切换账号验证弹层 -->
+                    <div class="switch-box js-switch-box" style="display: none;">
+                        <div class="loginClose js-loginClose"></div>
+                        <div class="login-title">
+                            <span>请先进行身份验证</span>
+                        </div>
+                        <div class="login-main">
+                            <p class="errorbox errorbox3" style="top:0px;"></p>
+                            <ul>
+                                <li><input class="js-account" type="text" placeholder="请输入手机号"/></li>
+                                <li>
+                                    <input class="js-switch-code" type="text" placeholder="请输入验证码"/>
+                                    <span class="code-btn js-code-btn1">获取验证码</span>
+                                </li>
+                                <li class="l_drag border-none" style="padding-top: 15px;border: none;position: relative;">
+                                    <div class="code_btn js-click-btn" data-cla=".js-puzzle-drag-content5">点击按钮完成图形验证</div>
+                                    <div class="puzzle-drag-wraper js-drag-show" style="display: none;">
+                                        <s class="drag-s"></s>
+                                        <t class="drag-t"></t>
+                                        <div class="puzzle-drag-content js-puzzle-drag-content5">
+                                            <div class="drag-title clearfix">
+                                                <span>为保证你的账户安全，请先完成图形验证</span>
+                                                <span class="close js-close"></span>
+                                                <span class="change js-change"><i></i>换一换</span>
+                                            </div>
+                                            <div class="puzzle-img-box">
+                                                <div class="puzzle-img js-puzzle-img">
+                                                    <img>
+                                                </div>
+                                                <div class="puzzle-lost js-puzzle-lost">
+                                                    <img>
+                                                </div>
+                                            </div>
+                                            <div class="drag-slide-nav">
+                                                <div class="drag-slide-text">
+                                                    <div class="drag-slide-left"></div>
+                                                    <div class="drag-slide-center">向右滑动完成拼图</div>
+                                                    <div class="drag-slide-right"></div>
+                                                </div>
+                                                <div class="drag-slide-bar js-drag-slide-bar">
+                                                    <div class="drag-slide-bar-left"></div>
+                                                    <div class="drag-slide-bar-center"></div>
+                                                    <div class="drag-slide-bar-right"></div>
+                                                </div>
+                                                <div class="drag-slide-btn js-drag-slide-btn"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="switch-btn js-changeUser">提交</div>
+                        </div>
+                    </div>
+                    <!-- 弹层背景 -->
+                    <div class="switch-bg js-switch-bg" style="display: none;"></div>
+                    {/if}
+                    {if $P_UserType eq 5 || $P_UserType eq 4}
+                    <a href="javascript:void(0);" class="js-contact-qq-btn contact-btn">了解VIP</a>
+                    {/if}
+                    {if $P_UserType neq 5}
+                    <a class="help-center-btn" href="http://www.pop136.com/product_help.php">帮助中心</a>
+                    {/if}
+                </div>         
+            </div>
+        </div>
+	</div>
+	
+	<!-- 申请试用弹出 -->
+	<div class="feedback-section-box clear js-feedback-section-box">
+	    <button></button>
+	    <h3><span></span>联系我们</h3>
+	    <div class="contact-div">
+	        <span>直接联系客服</span>
+	        <button class="js-contact-qq-btn" title="直接咨询">直接咨询</button>
+	
+	        <p>咨询热线：<span>4008-210-500</span></p>
+	        <p>售后服务：<span>4008-210-662</span></p>
+	    </div>
+	    <div class="form-div js-form-div">
+	        <h3>请留下简要的信息，我们将在两个工作日内与您联系!</h3>
+	        <ul class="form-list js-form-list js-form-list2">
+	            <li>
+	                <label for="name">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名</label><input value="" autocomplete="off" class="js-input-area" id="name" name="name" type="text" maxlength="20" placeholder="方便我们称呼您">
+	                <p>4-20位字符，一个汉字是两个字符</p>
+	            </li>
+	            <li>
+	                <label for="tel">电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话</label><input value="" autocomplete="off" class="js-input-area js-mobile-area" id="tel" name="tel" type="text" placeholder="联系您需要">
+	                <p>请输入手机号</p>
+	            </li>
+	            <li class="select-itme" style="padding-right: 0px;">
+	                <label>咨询类型</label>
+	                <div class="select-div js-select-div">
+	                    <span class="select-spn now-choice" value="5">申请试用</span>
+	                    <ul class="option-list">
+	                        {foreach $feedbackTypes as $val}
+	                        <li value="{$val.id}">{$val.sName}</li>
+	                        {/foreach}
+	                    </ul>
+	                </div>
+	                <p>请选择咨询类型的内容</p>
+	
+	            </li>
+	            <li class="txt-box">
+	                <textarea class="js-input-area" name="content" placeholder="可在此处填写您想告知我们的其他信息" maxlength="100"></textarea>
+	            </li>
+	        </ul>
+	        <button class="sub-btn js-sub-btn" data-type="2" title="马上联系我们">马上联系我们</button>
+	    </div>
+	</div>
+	<!-- <div class="bg-div js-bg-div"></div> -->
+	
+{/block}
+
+{block name="self"}
+    <script type="text/javascript" src="{STATIC_URL2}/global/js/common/template.js?{STATIC_CHANGE_TIME}"></script>
+    <script type="text/javascript" src="{STATIC_URL2}/global/js/common/imagesloaded.pkgd.min.js?{STATIC_CHANGE_TIME}"></script>
+    <script type="text/javascript" src="{STATIC_URL2}/global/js/fashion/index.js?{STATIC_CHANGE_TIME}"></script>
+    <script type="text/javascript" src="{STATIC_URL2}/global/js/fashion/util.collect.js?{STATIC_CHANGE_TIME}"></script>
+    <script type="text/javascript" src="{STATIC_URL2}/global/js/fashion/global.js?{STATIC_CHANGE_TIME}"></script>
+    <script type="text/javascript" src="{STATIC_URL3}/global/js/common/echarts.js"></script>
+    {if $columnId != 121}
+	<script type="text/javascript" src="{STATIC_URL3}/global/js/secret/crypto-js/crypto-js.js?{STATIC_CHANGE_TIME}"></script>
+    <script type="text/javascript" src="{STATIC_URL3}/global/js/secret/jsencrypt.js?{STATIC_CHANGE_TIME}"></script>
+    {/if}
+	<script type="text/javascript" src="{STATIC_URL2}/global/js/fashion/util_pop3_pic.js?{STATIC_CHANGE_TIME}"></script>
+{literal}
+<script>         
+	eval(function(p,a,c,k,e,d){e=function(c){return(c<a?"":e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)d[e(c)]=k[c]||e(c);k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1;};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p;}('8 B(2,b){D(C 2==\'x\'){2=w.n(2)}3 a=1.o.7(2,1.4.5.c(b),{r:1.4.5.c(\'e\')});9 1.4.s.n(a.y)};8 z(2,b){3 q=1.o.6(2,1.4.5.c(b),{r:1.4.5.c(\'e\')});9 q.A(1.4.5)};8 u(a){3 6=h d();6.t(v());p=6.6(R(a));9 p};8 T(m){3 7=h d();7.U(0());3 k=7.7(m);i=S(k).Q(/\\+/g,\'%X\');9 i};8 0(){3 0=\'-----Y l j-----\';0+=\'V+f+W\';0+=\'P\';0+=\'H+I\';0+=\'G\';0+=\'E/F/J\';0+=\'N/O+M\';0+=\'K\';0+=\'-----L l j-----\';9 0};',61,61,'pub_key|CryptoJS|plainText|var|enc|Utf8|decrypt|encrypt|function|return|encrypted|AES_KEY|parse|JSEncrypt|1234567887654301|||new|data_str|KEY|res|PUBLIC|str|stringify|AES|data_decrypted|decrypted|iv|Base64|setPrivateKey|rsa_decrypt|pri_key|JSON|object|ciphertext|aes_decrypt|toString|aes_encrypt|typeof|if|Avw5eS3UkIPixj4B0mZkhn9VZ9mOgBRgs9Lo|Ihc|GHGXr73iXRhLgqfQhC5dlMisbr3GqnGtPNVOBDYGtGgKS4mpaYzpO60kunooKmdH|3PSU5jrzuzDUEqZvEQaOHfKcUXRx3C61iR9iTnA6YCZLlIX3CnRJzYWCJNRjV|qp|hJXAk3kZvzQjIpzKrYAqHYp|hwIDAQAB|END|EfjuWjJxz02MuWsi|4cKyAfWCegA0G0fGo2aJWqpFrAg25FTDXFf0DRDz|AIEvJu|rcEaJOO94OSQsWzIQSGWM4yoVOVg85YKhW5JlwAHH53Zd8sASLk0ypQv5ze68zeS|replace|decodeURIComponent|encodeURI|rsa_encrypt|setPublicKey|MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1053Mcqn6WH|liJid6|2B|BEGIN'.split('|'),0,{}))
+</script>
+<script>
+
+var J_Title = $('#J_Title');                // 标题
+var J_DetailList = $('#J_DetailList');      // 细节大图
+var J_StyleInfo = $('#J_StyleInfo');        // 款式信息
+var J_Label = $('#J_Label');                // 关联标签
+var J_MoreSea = $('#J_MoreSea');            // 更多搜索
+var J_StyleAd = $('#J_StyleAd');            // 广告
+var J_DownloadType = $('#J_DownloadType');  // 图片下载类型
+var J_DownloadType2= $('#J_DownloadType2'); // 图片下载类型右键
+var J_MoreRec = $('#J_MoreRec');            // 更多推荐
+var J_Collect = $('#J_Collect');            // 更多推荐 T_Collect   T_JoinW T_Download  T_Share
+var J_JoinW = $('#J_JoinW');                // 加入工作台
+var J_Download = $('#J_Download');          // 下载单张
+var J_MoreRecDis = $('#J_MoreRecDis');      // 更多推荐是否显示
+var J_VendorAdLists = $("#J_VendorAdLists");
+var J_Spatter = $("#J_Spatter");             //相关图案
+var J_Rfabric = $("#J_Rfabric");             //相关面料
+var J_Vcloth  = $("#J_Vcloth");               //虚拟样衣
+var J_Visit   = $("#J_Visit");                //判断栏目权限
+var J_Mfabric =$("#J_Mfabric");              //面料定制	
+
+var detail_def_obj={
+"detail_list":[],       //细节图列表
+"id":'',
+"col":'',
+"table":'',
+"type":'',
+"is_cat_set":false,
+"move_y":0,             //滚动条移动距离
+"dis_index":0,
+"is_move_pic":false,    //是否移动中
+"control_top":74,       //放大镜top距离
+"min_radio":0.5,        //图片放大最小倍数
+"max_radio":3,          //图片放大最大倍数
+'imgW':0,           //图片宽
+'imgH':0,           //图片宽
+"new_analysis":-1,  //色彩分析内容更新
+"colorPieData":'',
+
+"action_down": true,   //下载统计
+"action_timer": null,
+"visit":0,
+
+"action": {		//统计数据
+        token: statistics_action_token,
+        iUserType: P_UserType_action,		//用户类型
+        iUserId: '',  			//用户ID
+        sChildUserId: '', 		//子账号id
+        sTableName: '', 		//假表名
+        iPrid: '',				//当前详情ID
+
+        iColumnId: '',			//主栏目ID
+        iSubColumnId: '',  		//子栏目ID
+        sSelfUrl: location.href, 			//当前URL
+        sRefererUrl: location.href,		//上个页面URL
+        iSite: 1, 				//站点
+        sLang: 'cn',			//语言
+
+        iVisit: 0    		//是否能访问 0-无访问权限 1-有访问权限
+    },
+    power:[82,120,4,50,52,122,55,123,54,57,56]
+};
+detail_def_obj.action.iUserId = P_AccountId;	//主账号
+if(P_UserType=='2'){
+    detail_def_obj.action.sChildUserId = P_UserId;	//子账号
+}
+
+var detail_input = $(".js-input-detail");
+var url = '/details/style/';
+var curUrl;
+var params;
+var id = detail_input.data("id");
+var t = detail_input.data("t");
+var col = detail_input.data("col");
+if(col == 121){
+    curUrl = url+'t_'+t+'-id_'+id+'-col_'+col+'/';
+}else{
+    curUrl = url;
+    var encrypt = $("#encrypt");
+    var timeStamp = encrypt.data("timestamp");
+    var sign = encrypt.data("sign");
+    var token = encrypt.data("token");
+    var s_p = {t:t,id:id,col:col,timeStamp:timeStamp,sign:sign};            
+    var s_p_str = JSON.stringify(s_p);
+    params = {s_p:rsa_encrypt(s_p_str),token:token};
+}
+
+if(col == 121) {    
+    $.ajax({
+        type: "post",
+        dataType: "json",
+        url: curUrl,
+        beforeSend: function () {
+            $("#loadingBg").show();
+        },
+        success: function (data){
+            renderFunc(data);
+        }
+    });
+} else{
+    $.ajax({
+        type: "post",
+        dataType: "json",
+        url: curUrl,
+        data:params,
+        beforeSend: function () {
+            $("#loadingBg").show();
+        },
+        success: function (data){
+            renderFunc(data);
+        }
+    });
+}  
+
+
+function renderFunc(data) {
+    if(col != 121){
+        var sign = encrypt.data("sign");
+        data = JSON.parse(aes_decrypt(data.data,sign));
+    }
+    //登陆状态失效
+    if(data.code == 1){
+        alert(data.msg);
+    }
+    var detail_list=data.detailList||[];
+    data.detailList = data.detailList || [{
+        'smallPath':data.cover||''
+    }];
+    
+    POPTOOL.pop.render(J_Title, 'T_Title', data);
+    POPTOOL.pop.render(J_DetailList, 'T_DetailList', data);
+    POPTOOL.pop.render(J_StyleInfo, 'T_StyleInfo', data);
+    POPTOOL.pop.render(J_Label, 'T_Label', data);
+    POPTOOL.pop.render(J_DownloadType, 'T_DownloadType', data);
+    POPTOOL.pop.render(J_DownloadType2, 'T_DownloadType', data);
+    POPTOOL.pop.render(J_Collect, 'T_Collect', data);
+    POPTOOL.pop.render(J_JoinW, 'T_JoinW', data);
+    POPTOOL.pop.render(J_Download, 'T_Download', data);
+    POPTOOL.pop.render(J_VendorAdLists, 'T_VendorAdLists', data);
+    POPTOOL.pop.render(J_Rfabric, 'T_Rfabric', data);
+    POPTOOL.pop.render(J_Spatter, 'T_Spatter', data);
+    POPTOOL.pop.render(J_Vcloth, 'T_Vcloth', data);
+    POPTOOL.pop.render(J_Visit, 'T_Visit', data);
+    POPTOOL.pop.render(J_Mfabric, 'T_Mfabric', data);
+    $('.loading-f5').fadeOut(100);
+    $('.js-nav-right,.detail-footer').show();
+    
+    
+    
+    var _bigbox = $('.js-bigbox');
+    // 右键点击弹出下载格式(款式库，灵感源图库)
+    if (_bigbox.length > 0) {
+        _bigbox[0].oncontextmenu = function(){
+            $('.js-downimg-layer').hide();
+            rightClick(2);
+            return false;
+        }
+    }
+    //大图控制说明
+    var doc_w=$(window).outerWidth(true),doc_h=$(window).outerHeight(true);
+    var tbook_bp_set=$.cookie('tbook_bp_set',{ path:'/', domain:'.pop-fashion.com'});
+    if((doc_w<1300 || doc_h<600) && tbook_bp_set!=1){
+        $('.js-bp-set').show();
+    }else{
+        $('.js-bp-set').hide();
+    }
+    
+    if(data.visit==true){		//有权限
+        $(".js-detail-footer").show();
+    }else{
+        $(".js-detail-footer").hide();
+    }
+    
+    
+    //大图显示
+    var min_pic=$('.js-min-imgs li'),dragg_img=$('#draggable img');
+    if(min_pic.length>0){
+        if(data.visit==true){		//有权限
+            min_pic.eq(0).addClass('img-sec');
+            draggImgF5(min_pic.eq(0),dragg_img);
+        }else{
+            $('.js-min-imgs li').addClass('imgs-no-hv');
+            // 无栏目权限
+            var null_img=$(".js-null-img"),small_img=min_pic.eq(0).find('img').attr('data-sp')||'';
+            if(null_img.length>0){
+                null_img.attr('src',small_img);
+            }
+        }
+    }		
+    
+    //vip情况
+    if($('.js-new-vip-null').length<=0 && min_pic.length>1){
+        $('.js-img-detail').show();
+    }					
+    
+    var _col=data.col||'';
+    var _id=data.id||'';
+    var _t=data.t||'';
+    var visit = data.visit||'';
+    detail_def_obj.id = _id;
+    detail_def_obj.table = _t;
+    detail_def_obj.col = _col;						
+    detail_def_obj.visit = visit;
+
+    $(".bdsharebuttonbox").attr("data-id",detail_def_obj.id);
+    $(".bdsharebuttonbox").attr("data-t",detail_def_obj.table);
+    $(".bdsharebuttonbox").attr("data-col",detail_def_obj.col);	             
+        
+    
+    detail_def_obj.action.sRefererUrl = document.referrer||'';	//上一页
+    if(data.visit){
+        detail_def_obj.action.iVisit = 1;
+    }else{
+        detail_def_obj.action.iVisit = 0;
+    }
+    
+    detail_def_obj.action.sTableName = _t;
+    detail_def_obj.action.iPrid = _id;
+    detail_def_obj.action.iSubColumnId = _col;
+    // 浏览量统计
+    actionView(detail_def_obj.action);
+    
+    
+    if($.inArray(detail_def_obj.col, [82,120,4,50,52,122,55,123,54,57,56]) != -1 && P_UserType !=5){
+        actionFunc(detail_def_obj.table,detail_def_obj.id,'view',request_id,scene_type);
+        if(detail_def_obj.visit){
+            guessLike();
+        }				
+    }	
+
+    //初始底部btn链接
+    detail_def_obj.detail_list=detail_list;
+    btnLinkInit(detail_list,0);
+    imgScroll();
+    
+    // 看了又看列表用方形的
+    if ($.inArray(_col, [82,120,121,124]) != -1) {
+        $('#J_MoreRec').addClass('see-patter');
+    }
+    
+    detail_def_obj['colorPieData'] = data.colorPieData||[];
+    if(detail_def_obj['colorPieData'].length<=0){
+        $('.js-analysis-similar').hide();
+    }else{
+        $('.js-analysis-similar').show();
+    }
+    detail_def_obj.new_analysis = true;		//色彩分析内容更新
+    //弹层订货会合辑
+    if(_col=="52"){
+            var brandInfo = data.brandInfo;             //品牌信息
+            var seasonInfo = data.seasonInfo;           //季节信息
+            if (seasonInfo && brandInfo && seasonInfo != "" && brandInfo != "") {
+                $('.Scrollbar').mCustomScrollbar({
+                    theme:'dark'
+                });
+                var url = "/books/ordermeeting/bra_" + brandInfo.id + "-sea_" + seasonInfo.id + "/#anchor"
+                $.ajax({
+                    type: "post",
+                    dataType: "json",
+                    url: url,
+                    data: {
+                        pageSize:5
+                    },
+                    success: function (data) {
+                        if (data.code == '0') {
+                            var list = data.data;
+                            if(list == "" || list == undefined) return
+                            $('.js-ord-box').show();
+                            var html = '';
+                            for (var i = 0; i < list.length; i++){
+                                if (i<2) {
+                                    html += '<li class="clearfix">';
+                                } else {
+                                    html += '<li class="clearfix hide">';
+                                }
+                                html += '<a href="/books/seclist/id_' + list[i].list.id + '-t_' + list[i].tableName + '-yl_' + list[i].list.iPreviewMode + '-col_' + list[i].columnId + '/" target="_blank">' +
+                                    '<img src="'+list[i].list.cover+'">' +
+                                    '<div class="ordermeeting-title">' +
+                                    '<span class="nameText">'+list[i].list.name_text+'</span>' +
+                                    '<span class="catName">'+list[i].list.categoryName+'</span>' +
+                                    '<span class="catName" style="margin-top: 7px;">'+list[i].list.brandName+'</span></div><a></li>';
+                            }
+                            if (list.length<=2) {
+                                $('.js-ord-more').hide();
+                            }else{
+                                $('.js-ord-more').show();
+                            }
+                            $('.js-ordermeeting-ul').html('');
+                            $('.js-ordermeeting-ul').append(html);
+                            $('.js-ord-more').on('click', function () {
+                                $('.js-ordermeeting-ul .hide').show();
+                                $(this).hide();
+                            })
+                        } else {
+                            $('.js-ord-box').hide();
+                        }
+                    }
+                })
+            }
+        }
+}
+
+
+// echarts图表的配置项和数据画图
+function createPie (main, data) {
+    data = data||[],_len=data.length;
+
+    if(_len<=0){
+        return;
+    }
+
+    for(var i=0;i<_len;i++){
+        var sColorNumber = data[i].sColorNumber||'';
+        var itemStyle = {
+            'normal':{
+                'color':sColorNumber
+            },
+            'emphasis':{
+                'color':sColorNumber
+            }
+        };
+        var labelLine = {
+            'normal':{
+                'lineStyle':{
+                    'color':sColorNumber
+                }
+            },
+            'emphasis':{
+                'lineStyle':{
+                    'color':sColorNumber
+                }
+            }
+        }
+
+
+        if(sColorNumber == '#ffffff' || sColorNumber == '#FFFFFF' || sColorNumber == '#fff' || sColorNumber == '#FFF'){
+            var label = {"normal":{"textStyle":{"color":"#aeaeae"}}};
+            labelLine = {
+                'normal':{
+                    'lineStyle':{
+                        'color':"#aeaeae"
+                    }
+                },
+                'emphasis':{
+                    'lineStyle':{
+                        'color':"#aeaeae"
+                    }
+                }
+            }
+
+            data[i].label = label;
+//              data[i].labelLine = labelLine;
+        }
+
+        data[i].itemStyle = itemStyle;
+        data[i].labelLine = labelLine;
+    }
+
+    $('.js-analysis-similar').find('.pie-box').removeClass('pie-start');
+
+    $('.js-pie-box').removeClass('pie-start');
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(main);
+    var formatter = function(){
+        return "";
+    }
+    var _data = data;
+    // 指定图表的配置项和数据
+    var option = {
+        tooltip: {
+            trigger: 'item',
+            formatter: formatter
+        },
+        series: [
+            {
+                name: '色彩分析',
+                type: 'pie',
+                radius: ['44.6%', '65%'],
+                data: _data,
+                cursor:'default',
+//                  legendHoverLink:false,
+                label: {
+                    normal: {
+                        formatter: '潘通参考值：\n{b} ',
+                        textStyle:{
+                            "fontSize":14,
+                            "lineHeight":16
+                        }
+                    }
+                },
+                labelLine: {
+                    normal: {
+                        length: 10,
+                        length2: 75
+                    }
+                },
+                itemStyle: {
+                    normal: {
+                        shadowBlur: 5,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.2)'
+                    }
+                }
+            }
+        ]
+    };
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+    detail_def_obj.new_analysis = false;
+};
+
+var doc_w=$(window).outerWidth(true);
+if(doc_w>1260){
+    $('.js-detail-search,.detail-down,.js-detail-collect,.detail-share').removeClass('no-detail');
+}else{
+    $('.js-detail-search,.detail-down,.js-detail-collect,.detail-share').addClass('no-detail');
+}
+
+$(window).on('resize',function(){
+    var _w=$(window).outerWidth(true),_h=$(window).outerHeight(true);
+    var tbook_bp_set=$.cookie('tbook_bp_set',{ path:'/', domain:'.pop-fashion.com'});
+    if((_w<1300 || _h<600) && tbook_bp_set!=1){
+        $('.js-bp-set').show();
+    }else{
+        $('.js-bp-set').hide();
+    }
+    if(_w>1260){
+        $('.js-detail-search,.detail-down,.js-detail-collect,.detail-share').removeClass('no-detail');
+    }else{
+        $('.js-detail-search,.detail-down,.js-detail-collect,.detail-share').addClass('no-detail');
+    }
+});
+
+//细节图初始化
+function draggImgF5(ele1, ele2){
+    $("#draggable img").hide();
+    ele2.attr({"src":''});
+    $('.js-bp-load').show();
+    var _img=ele1.find('img');
+    var _bp=_img.data('bp')||'';		//大图
+    var _id=_img.data('id')||'';		//id
+    var _t=_img.data('t')||'';		//大图
+    var _sp=_img.data('sp')||'';		
+    var _bpurlencode=_img.data('bpurlencode')||'';		
+    var _spurlencode=_img.data('spurlencode')||'';		
+    var _staticurl=_img.data('staticurl')||'';		
+    var _sign=_img.data('sign')||'';		
+    var _col=_img.data('col')||'';		
+    var _shape=_img.data('shape')||'';		
+    var _size=_img.data('size')||'';		
+    var _up=_img.data('up')||'';		
+    var _rename=_img.data('rename')||'';		
+    var _footprint=_img.attr('footprint')||'';
+    var s_obj = new Image(),b_obj = new Image();
+    
+    var obj_bp = _bp;
+    var obj_sp = _sp;
+    var bp_timer=null,_w=1,_h=1;
+    s_obj.onload = function(){
+        var detail_con=$(".js-detail-content");
+        var deW=detail_con.width();
+        var deH=detail_con.height();
+        _w=s_obj.width;
+        _h=s_obj.height;
+        if(_w > _h){
+            deW=parseInt(deW*85/100);
+            var now_h = _h/_w*deW;
+            if(now_h>(deH-120)){
+                deH=parseInt((deH-120)*98/100);
+                ele2[0].height=deH;
+                ele2[0].width=_w/_h*deH;
+            }else{
+                ele2[0].width=deW;
+                ele2[0].height=now_h;
+            }
+        }else{
+            deH=parseInt((deH-120)*96/100);
+            ele2[0].height=deH;
+            ele2[0].width=_w/_h*deH;
+        }
+        intBigImg();
+        $('.js-bp-load').hide();
+        $("#draggable img").show();
+    };
+    
+    
+    b_obj.onload=function(){
+        var b_w=b_obj.width||_w;
+        var b_h=b_obj.height||_h;
+        setTimeout(function(){
+            imgSize($("#draggable img"),b_w,b_h);
+        },200)
+    };
+    
+    s_obj.src = obj_sp;
+    b_obj.src =	obj_bp;
+    
+    ele2.attr({
+        "src":_bp,
+        "data-bp": _bp,
+        "data-id":_id,
+        "data-t":_t,
+        "data-sp":_sp,
+        "data-bpurlencode":_bpurlencode,
+        "data-spurlencode":_spurlencode,
+        "data-staticurl":_staticurl,
+        "data-sign":_sign,
+        "data-col":_col,
+        "data-shape":_shape,
+        "data-size":_size,
+        "data-rename":_rename,
+        "footprint":_footprint
+    });
+    $('.js-reset').addClass('on-reset');   //初始不能复位
+}
+
+// 进入弹层重新计算图片大小
+function imgSize(img,_w,_h){
+    if(img.length>0){
+        var detail_con=$(".js-detail-content");
+        var deW=detail_con.width();
+        var deH=detail_con.height();
+        detail_def_obj.imgW=_w;
+        detail_def_obj.imgH=_h;
+        if(_h > deH){
+            if(_w > _h){
+                deW=parseInt(deW*85/100);
+                var now_h = _h/_w*deW;
+                if(now_h>(deH-120)){
+                    deH=parseInt((deH-120)*98/100);
+                    img[0].height=deH;
+                    img[0].width=_w/_h*deH;
+                }else{
+                    img[0].width=deW;
+                    img[0].height=now_h;
+                }
+            }else{
+                deH=parseInt((deH-120)*96/100);
+                img[0].height=deH;
+                img[0].width=_w/_h*deH;
+            }
+        }else{
+            img[0].height=_h;
+            img[0].width=_w;
+        }
+        
+        $('.js-bp-load').hide();
+        $("#draggable img").show();
+    }
+}
+
+
+//重新计算图片位置 
+function intBigImg() {
+    var bigImgBox = $("#draggable");
+    bigImgBox.css({"left": 0,"top": 0,"width":'100%'});
+    bigImgBox.find("img").css({'-moz-transform': 'scale(1)', "zoom": "100%","display":"inline"});
+    radioSet(1);
+}
+
+//放大镜位置同步 倍数同步到距离
+function radioSet(_radio){
+    _radio=_radio||-1;
+    if(_radio!=-1){
+        if(_radio > detail_def_obj.max_radio){
+            _radio = detail_def_obj.max_radio;
+        }else if(_radio < detail_def_obj.min_radio){
+            _radio = detail_def_obj.min_radio;
+        }
+        var _top=50,b_t=50,m_t=24;
+        if(_radio>1){
+            _top = (detail_def_obj.max_radio - _radio)*b_t/2;
+        }else if(_radio<1){
+            _top = b_t+m_t-(_radio - detail_def_obj.min_radio)*m_t*2;
+        }
+        $(".js-control-l").find("i").css('top',_top+'px');
+    }
+}
+
+
+//导航拉开去除其他弹框
+$('.js-all-nav-hv').on('mouseenter',function(){
+    $(".js-downimg-layer,.js-join-workbench-layer,.bd_weixin_popup,.bd_weixin_popup_bg,.js-analysis-similar .prompt-disc").hide();
+});
+
+//免费试用
+$('body').on('click', '.js-apply-item', function(){
+    $(".js-feedback-section-box").fadeIn(200);
+    $(".js-bg-div").fadeIn(400);
+});
+
+
+// 用户行为统计
+var action_data = {
+    t:"",
+    id:"",
+    site:1,
+    action_type:"",
+    timestamp:"",
+    userid:P_AccountId
+};
+var win_search = pop_fashion_global.fn.getLocationParameter(window.location.search);
+var request_id = win_search.request_id || "";
+var scene_type = win_search.scene_type || "";
+function actionFunc(tablename,id,action_type,request_id,scene_type,func){	
+    action_data.request_id = request_id; 
+    action_data.scene_type = scene_type;	
+    action_data.t= tablename;
+    action_data.id=id;
+    action_data.action_type = action_type;
+    action_data.timestamp =new Date().getTime();
+    $.ajax({
+        type: "get",
+        dataType: "jsonp",
+        url: 'https://api.pop136.com/internal/datagrand.php',
+        data:action_data,
+        success:func
+    })
+}
+
+function guessLike(){
+    var def = {
+        guess_data:{
+            t:detail_def_obj.table,
+            id:detail_def_obj.id,
+            col:detail_def_obj.col
+        },
+        is_add_dom:false
+    }		
+    getData()
+    function getData(){			
+        def.is_add_dom = true;			
+        $.ajax({
+            type: "post",
+            dataType: "json",
+            url: '/patterns/getLikeDataByPopId/',
+            data:def.guess_data,
+            success:function(data){
+                def.is_add_dom = false;
+                var arr=data.data||[];
+                if(!arr.length || data.code == 1001){
+                    return false;
+                }
+                $(".guess-you-like").show();
+                loadData(arr);				
+            }
+        })
+    }
+    
+
+    function loadData(totalArr){			
+        var ele = $(".js-guess-imgs");
+        var _html = "";
+        for(var i=0;i<totalArr.length;i++){
+            var cover=totalArr[i]["cover"]?totalArr[i]["cover"]:"";
+            var title=totalArr[i]["title"]?totalArr[i]["title"]:"";
+            var tableName= totalArr[i]["t"]?totalArr[i]["t"]:"";
+            var id=totalArr[i]["id"]?totalArr[i]["id"]:"";
+            var columnId=totalArr[i]["columnId"]?totalArr[i]["columnId"]:"";
+            var request_id = totalArr[i]["request_id"]?totalArr[i]["request_id"]:"";
+            var link=totalArr[i]["link"]?totalArr[i]["link"]:"";
+            cover = cover.indexOf("pop-fashion") != -1 ? cover : static_url+cover;
+            _html+='<li>';
+            _html+='<a href="'+link+'" data-t="'+tableName+'" data-col="'+columnId+'" data-id="'+id+'" data-request_id="'+request_id+'" target="_blank">';
+            _html+='<img alt="'+title+'" src="'+cover+'" />';
+            _html+='</a>';
+            _html+='<span class="js-dislike-img">不喜欢</span>';
+            _html+='</li>';
+        }			
+        ele.html(_html);
+        $('.Scrollbar').mCustomScrollbar({
+            theme:'dark'
+        });		
+    }		
+}
+
+
+
+
+</script>
+{/literal}
+{/block}
+
+
+
+{block name="footer"}{/block}

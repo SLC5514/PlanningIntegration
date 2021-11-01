@@ -1,0 +1,146 @@
+{extends file="layout.html"}
+{block name="title"}定制专属模版-POP(全球)时尚网络机构{/block}
+{block name=keywords}定制服务范围,定制流程,模版定制{/block}
+{block name=description}为满足您的个性化需求，节省开发产品试样成本和快速迭代开发产品，我们从服装廓形、家纺场景、箱包样版、鞋子版型等方面提供全方面的技术支持和服务。{/block}
+{block name="selfcss"}
+	<link rel="stylesheet" type="text/css" href="{$smarty.const.STATIC_URL1}/global/topic/20180920/css/index.css?{$smarty.const.STATIC_CHANGE_TIME}">
+	<link rel="stylesheet" type="text/css" href="{$smarty.const.STATIC_URL1}/global/topic/common.css?{$smarty.const.STATIC_CHANGE_TIME}">
+{/block}
+{block name="main"}
+<div class="content {if $user_type == "TOURIST"}login-content{/if}">
+	<div class="banner-section">
+		<h1>定制专属模版</h1>
+		<span></span>
+		<div>
+			<a href="javascript:void(0);" class="js-contact-qq-btn">提出定制需求</a>
+		</div>
+	</div>
+	<div class="content-section1">
+		<div class="w1200">
+			<div class="d-title clear">
+				<img src="{$smarty.const.STATIC_URL2}/global/topic/20180920/images/l-yh.png">
+				<span>为什么要定制</span>
+				<img src="{$smarty.const.STATIC_URL2}/global/topic/20180920/images/r-yh.png">
+			</div>
+			<ul class="clear">
+				<li class="d-li1" title="在现有产品模型基础上实现多样化的产品线">
+					<img src="{$smarty.const.STATIC_URL2}/global/topic/20180920/images/icon1.png" alt="满足您的个性化需求">
+					<div>
+						<p>满足您的个性化需求</p>
+						<span>在现有产品模型基础上实现多样化的产品线</span>
+					</div>
+				</li>
+				<li class="d-li2" title="快速实现图案在产品应用的效果演示">
+					<img src="{$smarty.const.STATIC_URL2}/global/topic/20180920/images/icon2.png" alt="节省开发产品试样成本">
+					<div>
+						<p>节省开发产品试样成本</p>
+						<span>快速实现图案在产品应用的效果演示</span>
+					</div>
+				</li>
+				<li class="d-li3" title="零成本虚拟线上订货会，快速测试用户偏好">
+					<img src="{$smarty.const.STATIC_URL2}/global/topic/20180920/images/icon3.png" alt="快速迭代开发产品">
+					<div>
+						<p>快速迭代开发产品</p>
+						<span>零成本虚拟线上订货会，快速测试用户偏好</span>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="content-section2">
+		<div class="w1200">
+			<div class="d-title clear">
+				<img src="{$smarty.const.STATIC_URL2}/global/topic/20180920/images/l-yh.png">
+				<span>定制服务范围</span>
+				<img src="{$smarty.const.STATIC_URL2}/global/topic/20180920/images/r-yh.png">
+			</div>
+			<div class="service-area clear">
+				<div class="left-div" title="服装廓形">
+					<img src="{$smarty.const.STATIC_URL2}/global/topic/20180920/images/img1.jpg" alt="服装廓形">
+					<div>
+						<span>服装廓形</span>
+					</div>
+				</div>
+				<div class="right-div" title="家纺场景">
+					<div>
+						<span>家纺场景</span>
+					</div>
+					<img src="{$smarty.const.STATIC_URL2}/global/topic/20180920/images/img2.jpg" alt="家纺场景">					
+				</div>
+				<div title="箱包样版">
+					<img src="{$smarty.const.STATIC_URL2}/global/topic/20180920/images/img3.jpg" alt="箱包样版">
+					<div>
+						<span>箱包样版</span>
+					</div>
+				</div>
+				<div class="margin-div" title="鞋子版型">
+					<div>
+						<span>鞋子版型</span>
+					</div>
+					<img src="{$smarty.const.STATIC_URL2}/global/topic/20180920/images/img4.jpg" alt="鞋子版型">					
+				</div>
+				<div title="更多行业">
+					<img src="{$smarty.const.STATIC_URL2}/global/topic/20180920/images/img5.jpg" alt="更多行业">
+					<div>
+						<span>更多行业</span>
+					</div>
+				</div>
+			</div>			
+		</div>
+	</div>
+	<div class="content-section3">
+		<div class="w1200">
+			<div class="d-title clear">
+				<img src="{$smarty.const.STATIC_URL2}/global/topic/20180920/images/l-yh.png">
+				<span>定制流程</span>
+				<img src="{$smarty.const.STATIC_URL2}/global/topic/20180920/images/r-yh.png">
+			</div>
+			<ul class="clear">
+				<li class="li-bg">
+					<div>
+						<img src="{$smarty.const.STATIC_URL2}/global/topic/20180920/images/step1.png">
+						<span>第一步</span>
+					</div>
+					<span>沟通需求</span>
+					<p>客户提出云图模板需求</p>
+				</li>
+				<li class="arrow-li"></li>
+				<li class="li-bg">
+					<div>
+						<img src="{$smarty.const.STATIC_URL2}/global/topic/20180920/images/step2.png">
+						<span>第二步</span>
+					</div>
+					<span>支付服务费</span>
+					<p>双方达成共识，签订协议，客户根据收费标准付费</p>
+				</li>
+				<li class="arrow-li arrow-li3"></li>
+				<li class="li-bg">
+					<div>
+						<img src="{$smarty.const.STATIC_URL2}/global/topic/20180920/images/step3-new.png">
+						<span>第三步</span>
+					</div>
+					<span>设计云图模板</span>
+					<p>完成后上传至云图后台，客户可见并反馈。可免费修改一次</p>
+				</li>
+				<li class="arrow-li"></li>
+				<li class="li-bg">
+					<div>
+						<img src="{$smarty.const.STATIC_URL2}/global/topic/20180920/images/step5.png">
+						<span>第四步</span>						
+					</div>
+					<span>完成支付</span>
+					<p>修改完成并上传网站云图，客户确认模板</p>
+				</li>
+			</ul>
+			<a href="javascript:void(0);" class="js-contact-qq-btn">提出定制需求</a>
+			<span>咨询热线 4008-210-500</span>
+		</div>
+	</div>
+	<div class="footer-contact">
+		<p>咨询热线 4008-210-500</p>
+	</div>
+</div>
+{/block}
+{block name="self"}
+<script type="text/javascript" src="{$smarty.const.STATIC_URL3}/global/topic/20180920/js/index.js?{$smarty.const.STATIC_CHANGE_TIME}"></script>
+{/block}

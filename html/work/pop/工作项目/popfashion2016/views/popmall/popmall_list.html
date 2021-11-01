@@ -1,0 +1,106 @@
+{extends file="layout.html"}
+
+{block name="selfcss"}
+	<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/popmall.css?{STATIC_CHANGE_TIME}">
+{/block}
+{block name="main"}
+<div class="list_content">
+	<div class="list_nav">
+		<div class="contentx1200">
+			<a class="fl" href="/">首页</a>
+			<span class="fl"></span>
+			<a class="fl" href="/item/">POP商城</a>
+			<span class="fl"></span>
+			<div class="choose_list fl">
+				<a id="rootLink" href="javascript:void(0);" data-link="{$currentOption.link}">{$currentOption.txt}</a><i class="arrow"></i>
+				<div class="md_list">
+                    <a href="/item/seclist/">全部</a>
+                    {foreach $categoryOption as $id => $val}
+					<a href="/item/seclist/mct_{$id}/">{$val}</a>
+                    {/foreach}
+				</div>
+			</div>
+			<span class="fl"></span>
+			<div class="input_div fl">
+				<input type="text" value="{$keyword}" class="js_search" id="myserach-input">
+				<input type="button" id="myserach">
+			</div>
+		</div>
+	</div>
+	<div class="contentx1200">
+        {if $totalCount}
+		<div class="type_div clearfix">
+			<span class="black_span"></span>
+			<div class="type_box fl">
+                {if $subCategoryGroup}
+                    {if $mct==3}
+                    <span>趋势类型：</span>
+                    {elseif $mct==4}
+                    <span>服务类型：</span>
+                    {elseif $mct==5}
+                    <span>周边类型：</span>
+                    {/if}
+                {else}
+                <span>全部商品</span>
+                {/if}
+				{if $subCategoryGroup}<a href="{$allLink}" {if '' == $mst}class="cur"{/if}>全部</a>{/if}
+                {foreach $subCategoryGroup as $val}
+				<a href="{$val.link}" {if $val.mst == $mst}class="cur"{/if}>{$val.txt}</a>
+                {/foreach}
+			</div>
+            {if $totalCount}
+			<div class="type_page fr">
+				<div class="all_page fl">共<span>{$totalCount}</span>个</div>
+				<div class="btn_page fl">
+					<a class="left_btn" href="{$prePage}"></a>
+					<span class="pageN">{$page}</span>/<span class="totalN">{$totalPage}</span>
+					<a class="right_btn" href="{$nextPage}"></a>
+				</div>
+			</div>
+            {/if}
+		</div>
+        {/if}
+
+        {if $totalCount}
+		<div class="type_query_list clearfix">
+			<ul>
+                {foreach $secondList as $val}
+				<li>
+					<a href="/item/detail/id_{$val.id}/" target="_blank" title="{$val.sName}">
+						<div class="img_box"><img src="{STATIC_URL2}{$val.firstImage}"></div>
+						<div class="txt_box">
+							<p class="tit_p">{$val.sName}</p>
+							<p class="price_p"><span class="sell_price">￥{$val.sCurrentPrice}</span>
+                            {if $val.sOriginalPrice}<span class="ori_price"><em>￥{$val.sOriginalPrice}</em></span>{/if}</p>
+                            {if $val.iHotSale == 1}
+							<div class="hot_sell">热卖</div>
+                            {/if}
+						</div>
+					</a>
+				</li>
+				{/foreach}
+			</ul>
+		</div>
+        {else}
+        <div class="type_no_result">
+			<div class="type_s_top clearfix">
+				<span class="q_icon fl"></span>
+				<p class="fl">很抱歉，没有找到符合条件的商品！</p>
+			</div>
+			<div class="type_s_bottom clearfix">
+				<a href="//wpa.qq.com/msgrd?v=3&uin=2355396874&site=qq&menu=yes" target="_blank"><i></i>QQ咨询</a>
+				<span><em></em>咨询热线：<i>4008-210-500</i></span>
+			</div>
+		</div>
+        {/if}
+        {if $totalPage > 1}
+        <div class="rightc_bottom">
+			{$pageHtml}
+		</div>
+        {/if}
+	</div>
+</div>
+{/block}
+{block name="self"}
+<script type="text/javascript" src="{STATIC_URL2}/global/js/fashion/popmall.js?{STATIC_CHANGE_TIME}"></script>
+{/block}

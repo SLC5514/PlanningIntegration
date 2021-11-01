@@ -1,0 +1,40 @@
+{extends file="layout.html"}
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{$smarty.const.STATIC_URL1}/global/css/collect/my-collect.css?{$smarty.const.STATIC_CHANGE_TIME}">
+{/block}
+{block name="main"}
+<!-- 我的收藏 -->
+<div class="content">
+    <div id="cond" data-params="{$params}" data-key="{$key}" style="display:none;"></div>
+    <div class="section">
+            <div class="my-collect-box">
+                <h1>我的收藏</h1>
+                <div class="collect-list-box">
+                    <ul class="js-collect-list js-lists-parent">
+                    </ul>
+                </div>
+                <div class="list-more js-list-more"><span class="icon"></span>下拉加载更...</div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="other"}
+	<!--引入详情页-->
+	<div class="detail-frame js-detail-frame">
+		<iframe src="" width="100%" height="100%" frameborder="no" border="0" scrolling="no" allowtransparency="yes"></iframe>
+    </div>
+    <!-- 功能权限提示层 -->
+	<div class="general-user-info-fixbox js-general-user-info-fixbox">
+	    <div class="section">
+	        <button title="关闭"></button>
+            <h3>企业VIP用户专享</h3>
+            <p>30w大图浏览，提供psd、ai、eps文件下载，图案花型设计更高效，<br/>更可一键模拟成品，快速查找相似图</p>
+	        <a class="" href="/topic/enterprise_service/" title="查看详情" target="_blank">了解企业VIP特权服务</a>
+	    </div>
+	</div>
+{/block}
+{block name="self"}
+<script type="text/javascript" src="{$smarty.const.STATIC_URL3}/global/js/collect/my-collect.js?{$smarty.const.STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{$smarty.const.STATIC_URL3}/global/js/pattern/collect-common.js?{$smarty.const.STATIC_CHANGE_TIME}"></script>
+{/block}

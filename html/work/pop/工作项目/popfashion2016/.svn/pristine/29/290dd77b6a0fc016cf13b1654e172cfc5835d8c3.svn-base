@@ -1,0 +1,129 @@
+
+<!--头部导航-->
+<div class="dropdown-nav js-dropdown-nav" style="z-index: 100;">
+    <div class="widthx80">
+        <div class="nav-category clearfix">
+            <dl class="first-dl">
+                <dt><a href="/trends/" title="趋势解读">趋势解读</a></dt>
+                <dd><a href="/trends/" title="全部">全部</a></dd>
+                <dd><a href="/trends/color/" title="主题色彩">主题色彩</a></dd>
+                <dd><a href="/trends/pattern/" title="图案趋势">图案趋势</a></dd>
+                <dd><a href="/trends/material/" title="面辅料趋势">面辅料趋势</a></dd>
+                <dd><a href="/trends/craft/" title="工艺趋势">工艺趋势</a></dd>
+                <dd><a href="/trends/silhouette/" title="廓形趋势">廓形趋势</a></dd>
+                <dd><a href="/trends/design/" title="企划/组货">企划/组货</a></dd>
+                <dd><a href="/trends/capsules/" title="快反应">快反应</a></dd>
+            </dl>
+            <dl>
+                <dt><a href="/analysis/" title="流行分析">流行分析</a></dt>
+                <dd><a href="/analysis/" title="全部">全部</a></dd>
+                <dd><a href="/analysis/tops/" title="爆款数据">爆款数据</a></dd>
+                <dd><a href="/analysis/runways/" title="T台分析">T台分析</a></dd>
+                <dd><a href="/analysis/shows/" title="订货会分析">订货会分析</a></dd>
+                <dd><a href="/analysis/online/" title="设计师品牌分析">设计师品牌分析</a></dd>
+                <dd><a href="/analysis/retail/" title="标杆品牌分析">标杆品牌分析</a></dd>
+                <dd><a href="/analysis/market/" title="市场分析">市场分析</a></dd>
+                <dd><a href="/analysis/fairs/" title="展会分析">展会分析</a></dd>
+                <dd><a href="/analysis/trendsetters/" title="明星&街拍分析">明星&街拍分析</a></dd>
+            </dl>
+            <dl>
+                <dt><a href="/styles/" title="款式">款式</a></dt>
+                <dd><a href="/styles/" title="全部">全部</a></dd>
+                <dd><a href="/styles/runways/" title="秀场提炼">秀场提炼</a></dd>
+                <dd><a href="/styles/shows/" title="订货会精选">订货会精选</a></dd>
+                <dd><a href="/styles/designerbrand/" title="设计师品牌">设计师品牌</a></dd>
+                <dd><a href="/styles/online/" title="名牌精选">名牌精选</a></dd>
+                <dd><a href="/styles/popular/" title="款式流行">款式流行</a></dd>
+                <dd><a href="/styles/retail/" title="全球实拍">全球实拍</a></dd>
+                <dd><a href="/styles/trendsetters/" title="明星/ins">明星/ins</a></dd>
+                <dd><a href="/styles/streetsnaps/" title="街拍图库">街拍图库</a></dd>
+            </dl>
+            <dl>
+                <dt><a href="/patterns/graphics/" title="图案">图案</a></dt>
+                <dd><a href="/patterns/graphics/" title="图案素材">图案素材</a></dd>
+                <dd><a href="/patterns/topbrands/" title="大牌花型">大牌花型</a></dd>
+                <dd><a href="/patterns/specialtopicpatterns/" title="图案专题">图案专题</a></dd>
+                <dd><a href="/patterns/technics/" title="图案工艺">图案工艺</a></dd>
+                <dd><a href="/patterns/digitalprint/" title="数码云打印">数码云打印</a></dd>
+            </dl>
+            <dl>
+                <dt><a href="/fabriczone/" title="面料">面料</a></dt>
+                <dd><a href="/fabriczone/" title="全部">全部</a></dd>
+                <dd><a href="/fabriczone/#trend" title="面料趋势">面料趋势</a></dd>
+                <dd><a href="/fabriczone/#gallery" title="面料图库">面料图库</a></dd>
+                <!--<dd><a href="/fabriczone/#book" title="面料书籍">面料书籍</a></dd>-->
+            </dl>
+            <dl>
+                <dt><a href="/runways/" title="T台">T台</a></dt>
+                <dd><a href="/runways/" title="全部">全部</a></dd>
+                <dd><a href="/runways/reg_272/" title="巴黎时装周">巴黎时装周</a></dd>
+                <dd><a href="/runways/reg_341/" title="纽约时装周">纽约时装周</a></dd>
+                <dd><a href="/runways/reg_335/" title="米兰时装周">米兰时装周</a></dd>
+                <dd><a href="/runways/reg_323/" title="伦敦时装周">伦敦时装周</a></dd>
+                <dd><a href="/runways/reg_other/" title="其他">其他</a></dd>
+            </dl>
+            <dl>
+                <dt><a href="/books/lookbook/" title="读物">读物</a></dt>
+                <dd><a href="/books/collections/" title="单品合辑">单品合辑</a></dd>
+                <!--<dd><a href="/books/store/" title="趋势手稿">趋势手稿</a></dd>-->
+                <dd><a href="/books/fast/" title="快反应系列">快反应系列</a></dd>
+                <dd><a href="/books/lookbook/" title="广告大片">广告大片</a></dd>
+                <dd><a href="/books/ordermeeting/" title="订货会合辑">订货会合辑</a></dd>
+                <dd><a href="/books/magazine/" title="流行画册">流行画册</a></dd>
+            </dl>
+            <dl>
+                <dt><a href="/references/details/" title="素材">素材</a></dt>
+                <dd><a href="/references/details/" title="款式细节">款式细节</a></dd>
+                <dd><a href="/references/design/" title="款式手稿">款式手稿</a></dd>
+                <dd><a href="/references/visual/" title="店铺陈列">店铺陈列</a></dd>
+                <dd><a href="/references/fabricgallery/" title="展会面料">展会面料</a></dd>
+                <dd><a href="/references/accessories/" title="服饰品">服饰品</a></dd>
+                <dd><a href="/inspiration/" title="灵感源">灵感源</a></dd>
+                <dd><a href="/inspiration/video/" title="灵感视频">灵感视频</a></dd>
+            </dl>
+            <dl>
+                <dt><a href="https://appmfz0ensy5593.pc.xiaoe-tech.com/page/800948" target="_blank" title="在线课堂">在线课堂</a></dt>
+                <dd><a href="https://appmfz0ensy5593.pc.xiaoe-tech.com/page/827920" target="_blank" title="行业课程">行业课程</a></dd>
+                <dd><a href="https://appmfz0ensy5593.pc.xiaoe-tech.com/page/828792" target="_blank" title="趋势讲堂">趋势讲堂</a></dd>
+            </dl>
+            <dl>
+                <dt><a class="no_hover" href="javascript:void(0)" title="研发资源">研发资源</a></dt>
+                <dd><a href="/topic/20171129/" target="_blank" title="设界">设界</a></dd>
+                <dd><a href="http://www.uliaobao.com/" target="_blank" title="优料宝">优料宝</a></dd>
+                <dd><a href="/topic/20171208/" target="_blank" title="找料帮">找料帮</a></dd>
+                <dd><a href="/activity/lists/" target="_blank" title="时尚商学院">时尚商学院</a></dd>
+            </dl>
+            <dl class="last-dl">
+                <dt><a class="no_hover" href="javascript:void(0)" title="更多内容">更多内容</a></dt>
+                <dd><a href="/item/" target="_blank" title="商城">商城</a></dd>
+                <dd><a href="/topic/20180409/" title="POP观点">POP观点</a></dd>
+                <dd><a href="/exclusive/" target="_blank" title="快反应专题">快反应专题</a></dd>
+                <dd><a href="/customer/service/" target="_blank" title="客户服务">客户服务</a></dd>
+                <dd><a href="javascript:void(0);" title="意见反馈" class="js-msg-feedback">意见反馈</a></dd>
+                <!-- <dd><a href="http://www.pop136.com/pop_exe.php" target="_blank" title="客户端下载">客户端下载</a></dd> -->
+            </dl>
+        </div>
+        <div class="dropdown-bottom-content clearfix">
+            <div class="dropdown-area fl">
+                <ul class="clearfix js-area-box">
+                    <li><a href="javascript:void(0)" title="女装" data-id="2" data-key="gen"><span>女装</span></a></li>
+                    <li><a href="javascript:void(0)" title="男装" data-id="1" data-key="gen"><span>男装</span></a></li>
+                    <li><a href="javascript:void(0)" title="童装" data-id="5" data-key="gen"><span>童装</span></a></li>
+                    <li class="area-fg"></li>
+                    <li><a href="javascript:void(0)" title="毛衫" data-id="6" data-key="ind"><span>毛衫</span></a></li>
+                    <li><a href="javascript:void(0)" title="牛仔" data-id="7" data-key="ind"><span>牛仔</span></a></li>
+                    <li><a href="javascript:void(0)" title="皮革/皮草" data-id="8" data-key="ind"><span>皮革<br/>皮草</span></a></li>
+                    <li><a href="javascript:void(0)" title="内衣/泳装" data-id="9" data-key="ind"><span>内衣<br/>泳装</span></a></li>
+                    <li><a href="javascript:void(0)" title="婚纱/礼服" data-id="10" data-key="ind"><span>婚纱<br/>礼服</span></a></li>
+                    <li><a href="javascript:void(0)" title="运动" data-id="11" data-key="ind"><span>运动</span></a></li>
+                </ul>
+            </div>
+            <div class="dropdown-contact fr">
+                <ul class="clearfix">
+                    <li class="product-tel"><em class="fl"></em><p class="fl">产品咨询<br/><span>4008-210-500</span></p></li>
+                    <li class="service-tel"><em class="fl"></em><p class="fl">售后帮助<br/><span>4008-210-662</span></p></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

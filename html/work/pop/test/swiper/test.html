@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>js+css3</title>
+</head>
+<style type="text/css">
+  .clipzone {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    overflow: hidden;
+  }
+
+  .clipped {
+    position: absolute;
+  }
+</style>
+
+<body>
+  <input type="button" value="rotate" onclick="rotate(20);" />
+  <input type="button" value="scale" onclick="scale(1.5);" />
+  <input type="button" value="clip" onclick="clip();" />
+  <input type="button" value="support_canvas_test" onclick="support_canvas_test();" />
+  <div class="clipzone" id="testdiv">
+    <img class="clipped" id="image1" src="http://www.artup.com/img/icon35.png" width="282" height="220">
+  </div>
+  <script type="text/javascript">
+    var totalrotate = 0;
+    var totalscale = 0;
+    function rotate(sum) {
+      totalrotate = totalrotate + sum;
+      var obj = document.getElementById("image1");
+      obj.style.webkitTransform = "rotate(" + totalrotate + "deg)";
+    }
+    function scale(sum) {
+      totalscale = totalscale + sum;
+      var obj = document.getElementById("image1");
+      obj.style.webkitTransform = "scale(" + totalscale + ")";
+    }
+    function clip() {
+      var obj = document.getElementById("image1");
+      obj.style.clip = "rect(20px, auto, auto, 10px)";
+    }
+    function support_canvas_test() {
+      var elem = document.createElement('canvas');
+      var context = elem.getContext('2d');
+      alert(typeof context.fillText === 'function' ? "support" : "not support");
+    }
+    var support_css3 = (function () {
+      var div = document.createElement('div'),
+        vendors = 'ms o moz webkit'.split(' '),
+        len = vendors.length;
+
+      return function (prop) {
+        if (prop in div.style) return true;
+        len = vendors.length;
+        while (len--) {
+          if (vendors[len] + prop in div.style) {
+            return true;
+          }
+        }
+        return false;
+      };
+    })();
+
+  </script>
+</body>
+
+</html>

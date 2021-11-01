@@ -1,0 +1,88 @@
+/*
+    #author     fanglinna
+    #date       2018/01/15
+*/
+#anchor{position: absolute;top:178px;width: 0;	height: 0;}
+/*子栏目导航*/
+.list-nav-r{width: 920px;margin-top: 24px; float: left;height: 92px;background: #fff;}
+.list-nav-r>ul>li{position: relative; float: left;text-align: center;width: 16.6%;height: 100%;}
+.list-nav-r>ul>li>span{display: none; position: absolute;z-index: 2;width: 7px;height: 100%;top: 0;}
+.list-nav-r>ul>li>span.nav-r1{left: -7px; background: url(../../images/lists/hv-nav-l.png) 0 0 no-repeat;}
+.list-nav-r>ul>li>span.nav-r2{right: -7px; background: url(../../images/lists/hv-nav-r.png) 0 0 no-repeat;}
+.list-nav-r>ul>li>a{display: block;height: 79px;padding-top: 13px;width: 100%;}
+.list-nav-r>ul>li>a>i{display: inline-block;height: 36px;width: 36px;background-image: url(../../images/lists/runway-list/r-icon.png);background-repeat: no-repeat;}
+.list-nav-r>ul>li>a>p{padding-top: 7px;color: #333;font-size: 14px;}
+.list-nav-r>ul>li>a:hover p, .list-nav-r>ul>li.cur>a>p{color: #D8B056;}
+.list-nav-r>ul>li:hover span,  .list-nav-r>ul>li.cur span{display: block;}
+.list-nav>a>i{background-position: 2px -26px;}
+.list-nav>a:hover i, .list-nav.cur>a>i{background-position: 2px -86px;}
+
+.list-nav3>a>i{background-position: 0 0;}
+.list-nav272>a>i{background-position: -70px 0;}
+.list-nav341>a>i{background-position: -148px 0;}
+.list-nav335>a>i{background-position: -218px 0;}
+.list-nav323>a>i{background-position: -287px 0;} 
+.list-navother>a>i{background-position: -352px 0;} 
+
+.list-nav3>a:hover i, .list-nav3.cur>a>i{background-position: 0 -73px;}
+.list-nav272>a:hover i, .list-nav272.cur>a>i{background-position: -70px -73px;}
+.list-nav341>a:hover i, .list-nav341.cur>a>i{background-position: -148px -73px;}
+.list-nav335>a:hover i, .list-nav335.cur>a>i{background-position: -218px -73px;}
+.list-nav323>a:hover i, .list-nav323.cur>a>i{background-position: -287px -73px;}
+.list-navother>a:hover i, .list-navother.cur>a>i{background-position: -352px -73px;}
+
+/*T台列表*/
+.runways{margin-left:-20px;}
+.runways>li{float: left;border: 1px solid #eee;background-color: #fff; width:588px;height:178px; margin-left:20px;margin-bottom: 20px; position: relative;z-index:1;font-size: 12px;} 
+.runways>li:hover{box-shadow: 0 0 10px #d9d9d9;}
+.runways>li a.fl{width:180px;height: 138px;font-size: 0;padding:20px; background-color: #fff; position:relative;z-index:1; cursor: pointer;}
+.runways>li>a>img{height:135px;}
+.runways>li .text_down{ border-top: none;overflow: hidden;}
+.runways>li .text_down>a{display:block;padding:20px;}
+.runways>li p.title{overflow:hidden;height:44px;color: #000;font-size: 14px;cursor:pointer;line-height:22px;display:block;}
+.runways>li .leibie{line-height: 22px; height:70px;padding-top:5px;}
+.runways>li .leibie p{width:148px;overflow: hidden;text-overflow:ellipsis; white-space:nowrap;color:#999;}
+.runways>li p.time{color: #999;}
+.runways>li p.time img{vertical-align: -2px;margin-right:5px;}
+.runways>li p.time i{font-style: normal;}
+.runways>li p.time span{margin:2px 0;*width:151px;}
+.runways>li .line-middle{background:url(../../images/brand_line.png) no-repeat; width:1px;height:110px;position:relative;top:50px;}
+.runways-layer{background:#000;opacity:0.3;filter:alpha(opacity=30);width:180px;height:138px;position: absolute;left:35px;top:35px;display:none;}
+.runways-collect-btn{background:url(../../images/vi_icon.png) no-repeat 0 -327px;width:32px;height:32px;position: absolute;left:45px;top:45px;z-index:10;cursor:pointer;display:none;}
+.runways-collect-btn.cur{background-position:-39px -327px;}
+.runways>li:hover .runways-layer{display:block;}
+.runways>li:hover .runways-collect-btn{display:block;}
+.runways>li span.video-icon{background: url(../../images/select_new.png?2020010801) no-repeat -56px -107px;display: inline-block;width: 20px;height: 20px;position: absolute;left: 28px;top: 28px;z-index: 10;}
+
+.scroll-load{text-align:center;padding:30px;}
+
+
+/*水印*/
+.shuiy{background:url(../../images/just-vip-new.png) no-repeat center center;opacity:.8;width:100%;height:100%;position:absolute;top:0;left:0;z-index:1;}
+
+/*未登录提示条*/
+.rightc_.wraning,.rightc_brand{width:100%;}
+.wran{margin-left:0;background:url(../../../images/s_1200_h.png) no-repeat;height:45px; line-height: 45px;margin-top: 10px;padding:0 10px;width:1180px;}
+.w_brand{border: 1px solid #ffcc33;background-color: #ffffcc;margin-top: 10px;padding:15px 6px 5px;}
+.w_brand .brand_name{font-size:14px;color:#000;}
+.rightc_brand div.fl{width:660px;}
+.rightc_brand div.fl a{margin-right:5px;display:inline-block;margin-bottom:10px;font-weight:bold;}
+.rightc_brand div.fl a:hover{color:#d8b056;text-decoration:underline;}
+
+
+
+.discovery-contain{display: block;}
+
+
+@media screen and (min-width: 1500px) {
+  #anchor{top: 226px;}
+	/*子栏目导航*/
+	.list-nav-r{width: 1120px;height: 110px;margin-top: 20px;}
+	.list-nav-r>ul>li>a{height: 88px;padding-top: 22px;}
+	.list-nav-r>ul>li>a>p{font-size: 16px;}
+	
+	/*T台列表*/
+	.runways{margin-left:-22px;}
+	.runways>li{width:483px;margin-left:22px;}
+	
+}

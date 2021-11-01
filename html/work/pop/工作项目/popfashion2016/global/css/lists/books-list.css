@@ -1,0 +1,80 @@
+/*
+    #author     fanglinna
+    #date       2018/01/15
+*/
+
+/*子栏目导航*/
+.list-nav-r{width: 920px;margin-top: 24px; float: left;height: 92px;background: #fff;}
+.list-nav-r>ul>li{position: relative; float: left;text-align: center;width:16.6%;height: 100%;}
+.list-nav-r>ul>li>span{display: none; position: absolute;z-index: 2;width: 7px;height: 100%;top: 0;}
+.list-nav-r>ul>li>span.nav-r1{left: -7px; background: url(../../images/lists/hv-nav-l.png) 0 0 no-repeat;}
+.list-nav-r>ul>li>span.nav-r2{right: -7px; background: url(../../images/lists/hv-nav-r.png) 0 0 no-repeat;}
+.list-nav-r>ul>li>a{display: block;height: 79px;padding-top: 13px;width: 100%;}
+.list-nav-r>ul>li>a>i{display: inline-block;height: 36px;width: 36px;background-image: url(../../images/lists/books-list/icon.png?2018112902);background-repeat: no-repeat;}
+.list-nav-r>ul>li>a>p{padding-top: 7px;color: #333;font-size: 14px;}
+.list-nav-r>ul>li>a:hover p, .list-nav-r>ul>li.cur>a>p{color: #D8B056;}
+.list-nav-r>ul>li:hover span,  .list-nav-r>ul>li.cur span{display: block;}
+.list-nav>a>i{background-position: 2px -26px;}
+.list-nav>a:hover i, .list-nav.cur>a>i{background-position: 2px -86px;}
+
+.list-nav72>a>i{background-position: 0 0;}
+.list-nav70>a>i{background-position: -61px 0;}
+.list-nav115>a>i{background-position: -122px 0;}
+.list-nav71>a>i{background-position: -190px 0;}
+.list-nav130>a>i{background-position: -269px 0;} 
+.list-nav131>a>i{background-position: -335px 0;}
+
+.list-nav72>a:hover i, .list-nav72.cur>a>i{background-position: 0 -61px;}
+.list-nav70>a:hover i, .list-nav70.cur>a>i{background-position: -61px -61px;}
+.list-nav115>a:hover i, .list-nav115.cur>a>i{background-position: -122px -61px;}
+.list-nav71>a:hover i, .list-nav71.cur>a>i{background-position: -190px -61px;}
+.list-nav130>a:hover i, .list-nav130.cur>a>i{background-position: -269px -61px;}
+.list-nav131>a:hover i, .list-nav131.cur>a>i{background-position: -335px -61px;}
+
+/*读物列表*/
+.bookMag{margin-left:-18px;}
+.bookMag>li{width:183px;height:291px;border:1px solid #eee;float:left;margin-left:18px;background-color:#fff;margin-bottom:30px;position:relative;}
+.bookMag>li>div.pic-box{width:165px;height: 223px;margin:8px 9px;position:relative;}
+.bookMag>li>div.pic-box>a{background:url(../../images/lists/books-list/b-bg.png) no-repeat;padding:4px 1px 1px 1px;display:inline-block;width:163px;height:218px;}
+.bookMag>li>div.pic-box>a>img{width:163px;height:218px;}
+.bookMag>li>div .hover-link{position: absolute;width:100%;height:100%;left:0;top:0;background:url(../../images/opa60.png) repeat;z-index:3;display:none;}
+.hover-link>div{position:absolute;left:50%;z-index:11;margin-left:-60px;top:50%;margin-top:-17px;}
+.hover-link>div.buy-link{margin-top:-43px;}
+.hover-link>div>a{display:inline-block;width:120px;height:34px;border-radius:20px;font-size:14px;line-height:34px;text-align:center;}
+.hover-link>div>a.yl{background-color:#fff;color:#d8b056;}
+.hover-link>div>a.wz{background-color:#fff;color:#d8b056;}
+.hover-link>div>a.buy{background-color:#d8b056;color:#fff;margin-top:18px;}
+.hover-link>div>a>i{background:url(../../images/neiyeList.png) no-repeat 0 0;display:inline-block;vertical-align:middle;margin-right:5px;}
+.hover-link>div>a.yl>i{background-position:-158px -31px;width:16px;height:16px;}
+.hover-link>div>a.wz>i{background-position:-157px -95px;width:17px;height:16px;}
+.hover-link>div>a.buy>i{background-position:-156px -65px;width:17px;height:17px;}
+.hover-link>div>a.buy:hover{background-color:#f4cb69;}
+.hover-link>div>a.yl:hover{background-color:#d8b056;color:#fff;}
+.hover-link>div>a.wz:hover{background-color:#d8b056;color:#fff;}
+.hover-link>div>a.yl:hover i{background-position:0 -187px;}
+.hover-link>div>a.wz:hover i{background-position:0 -225px;}
+.hover-link>p.update-time{font-size:12px;color:#fff;position:absolute;bottom:10px;left:44px;}
+.hover-link>p.update-time>img{margin-right:5px;vertical-align:middle;margin-top:-2px;}
+.bookMag>li:hover .hover-link{display:block;}
+.bookMag>li .image-title{height:51px;width:165px;padding:0 9px;}
+.bookMag>li .image-title>p{color:#333;font-size:14px;line-height:22px;height:44px;overflow:hidden;}
+.bookMag>li .s_file_icon{background:url(../../images/lists/books-list/icon.png?20180706) no-repeat -76px -125px;width:45px;height:52px;display:inline-block;position:absolute;z-index:4;top:3px;right:0;}
+.bookMag>li>div.pic-box>span.video-icon{background: url(../../images/select_new.png?2020010801) no-repeat -56px -107px;display: inline-block;width: 20px;height: 20px;position: absolute;left: 10px; top: 10px;}
+
+.scroll-load{text-align:center;padding:30px;}
+
+
+
+/*水印*/
+.shuiy{background:url(../../images/just-vip-new.png) no-repeat center center;opacity:.8;width:100%;height:100%;position:absolute;top:0;left:0;z-index:1;}
+
+@media screen and (min-width: 1500px) {
+	/*子栏目导航*/
+	.list-nav-r{width: 1120px;height: 110px;margin-top: 20px;}
+	.list-nav-r>ul>li>a{height: 88px;padding-top: 22px;}
+	.list-nav-r>ul>li>a>p{font-size: 16px;}
+	
+	.bookMag{margin-left:-34px;}
+	.bookMag>li{margin-left:34px;}
+	
+}

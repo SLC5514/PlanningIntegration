@@ -1,0 +1,78 @@
+$(function() {
+    // 悬浮导航展示
+    $(".js-all-column-type").on("click", function() {
+        $(".all-column-downlist").slideDown(100);
+    });
+
+    $("body").on("click", function() {
+        $(".all-column-downlist").slideUp(50);
+        $(".dropdown-column-list").hide();
+        $(".js-all-nav-li").removeClass("on");
+    })
+
+    // 阻止
+    $(".column-nav-box,.js-all-nav-li,.dropdown-column-list").on("click", function(e) {
+        e.stopPropagation();        
+    })
+
+    $(".js-all-nav-li").on("click", function() {
+        if($(this).hasClass("on")){
+            $(this).removeClass("on");
+            $(this).find(".dropdown-column-list").hide();
+        }else{
+            $(this).addClass("on");
+            $(this).find(".dropdown-column-list").show();
+        }
+    })
+
+    // 滚动导航悬浮
+    var _url = window.location.href; 
+    $(window).on("scroll", function() {
+        var scrollTop = $(this).scrollTop();
+        if(_url.indexOf("/colordata/") == -1){
+            if(scrollTop > 110){
+                $(".js-leftT").hide();
+            }else{
+                $(".js-leftT").show();
+            }
+        }else{
+            if(scrollTop > 110){
+                $(".js-head-top-fixed").show();
+                $(".js-head-top").hide();
+            }else{
+                $(".js-head-top-fixed").hide();
+                $(".js-head-top").show();
+            }
+        }
+        
+    })
+
+    // 全站搜索栏目搜索切换
+    if(columnId != ""){
+        $(".js-f-switch-box>a").find("span").text("栏目搜索");
+        $(".js-column-input-contain").show();
+        $(".js-all-input-contain").hide();
+        $(".js-f-switch-box").on("mouseenter", function() {
+            $(".js-search-type-list").show();
+        }).on("mouseleave", function() {
+            $(".js-search-type-list").hide();
+        });
+    }else{
+        $(".js-f-switch-box").find("a>i").hide();
+        $(".js-f-switch-box").find(".js-search-type-list").hide();
+    }
+    $(".js-search-type-list>a").on("click", function() {
+        var txt = $(this).data("txt");
+        if(txt == "栏目搜索") {
+            $(".js-column-input-contain").show();
+            $(".js-all-input-contain").hide();
+        }else{
+            $(".js-column-input-contain").hide();
+            $(".js-all-input-contain").show();
+        }
+        $(".js-f-switch-box>a").find("span").text(txt);
+        $(".js-search-type-list").hide();
+    });
+
+        
+});

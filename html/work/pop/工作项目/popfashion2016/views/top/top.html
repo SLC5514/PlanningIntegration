@@ -1,0 +1,200 @@
+{extends file="layout.html"}
+
+{block name="title"}{$tdk.t}{/block}
+{block name=keywords}{$tdk.k}{/block}
+{block name=description}{$tdk.d}{/block}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/top/top.css?{STATIC_CHANGE_TIME}">
+{/block}
+
+{block name="main"}
+<div class="top-main">
+    <!-- 没有自定义热榜数据 -->
+    {if !$is_custom_count}
+    <div class="js-no-exist">
+        <div class="top-head" >
+            <div class="head-title">TOP款式热榜</div>
+            <div class="head-describe">根据大数据为用户提供最受欢迎的热榜款式</div>
+            <div class="head-btn result js-add"><img src="{STATIC_URL2}/global/images/top/head-btn.png"/>新增热榜</div>
+        </div>
+        <div class="top-describe">
+            <div class="describe-main">
+                <div class="describe-title">TOP款式热榜是什么？</div>
+                <span>TOP款式热榜是POP-时尚服装基于大数据智能分析，打造出的一款最受服装设计师欢迎的热榜款式图，为设计师展示当下时尚潮流的款式图，快速发掘款式灵感。<br/>
+                    <br/>
+                    <br/>款式热榜是结合大数据从各个行业、属性、人群进行数据处理与深度分析，结合设计师通过行业、性别、品类、季节等多个维护创建自己感兴趣的热榜款式内容。丰富海量的热门款式图每天维护更新，帮助设计师稳定服装研发，并兼顾市场潮流动向。同时还支持APP版本，不受时间、场合限制，数据随时可查看的特点。top热榜已成为众多设计师手中必备的辅助工具之一。</span>
+                <div class="explain clearfix">
+                    <div class="explain-item">
+                        <img src="{STATIC_URL2}/global/images/top/explain1.png" />
+                        <span>3000万款</span>
+                        <label>海量款式库</label>
+                    </div>
+                    <div class="explain-item">
+                        <img src="{STATIC_URL2}/global/images/top/explain2.png" />
+                        <span>3000+</span>
+                        <label>国际国内品牌库</label>
+                    </div>
+                    <div class="explain-item">
+                        <img src="{STATIC_URL2}/global/images/top/explain3.png" />
+                        <span>40000场</span>
+                        <label>全球T台秀场/季</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="top-list">
+            <div class="list-head js-topstyles clearfix">
+                <span class="action" data-id="hot">热门榜</span>
+                <span data-id="1">男装榜</span>
+                <span data-id="2">女装榜</span>
+                <span data-id="5">童装榜</span>
+                <span data-id="region1">日韩榜</span>
+                <span data-id="region2">欧美榜</span>
+            </div>
+            <div class="list js-top-list clearfix">
+               
+            </div>
+            <div class="list-btn js-list-btn js-add"><i></i>新增热榜</div>
+        </div>
+    </div>
+    {else}
+    <!-- 已有自定义热榜数据 -->
+    <div class="exist js-exist">
+        <div class="top-head">
+            <div class="head-title">热门爆款</div>
+            <div class="head-describe">大数据智能分析 及时发现最新爆款</div>
+            <div class="head-btn result js-add"><img src="{STATIC_URL2}/global/images/top/head-btn.png"/>新增热榜</div>
+        </div>
+        <div style="height: 80px;">
+            <div class="tag js-tag">
+                <div class="tag-list js-topstyles">
+                    <span class="action" data-id="custom">自定义</span>
+                    <span data-id="hot">热门榜</span>
+                    <span data-id="1">男装榜</span>
+                    <span data-id="2">女装榜</span>
+                    <span data-id="5">童装榜</span>
+                    <span data-id="region1">日韩榜</span>
+                    <span data-id="region2">欧美榜</span>
+                </div>
+            </div>
+        </div>
+        <!-- 自定义模板 -->
+        <div class="custom js-custom-box">
+            <div class="custom-title clearfix">
+                <span><i></i>热榜数据量:<label class="js-custom" data-count="{$is_custom_count}">{$is_custom_count}/{if $user_type==4}1{else}10{/if}</label></span>
+                {if $user_type==4}
+                    {if $is_custom_count==1}
+                        <div class="custom-des" >升级VIP之后，可以体验完整版<span class="js-contact-qq-btn">申请VIP</span><i class="js-des-close"></i></div>
+                    {/if}
+                {else}
+                    {if $is_custom_count>=7 && 0}
+                        <div class="custom-des" >数量不够用？申请调整上限<span class="js-contact-qq-btn" data-type="1">调整上限</span><i class="js-des-close"></i></div>
+                    {/if}
+                {/if}
+                <div class="custom-add-btn js-add"><i></i>新增热榜</div>
+            </div>
+            <div class="custom-list js-custom-list">
+
+            </div>
+        </div>
+        <!-- 其他模板 -->
+        <div class="other js-other" style="display: none;">
+            <div class="other-des js-other-des">热门榜将综合为你推荐最受欢迎的{if $user_type==4}30{else}100{/if}张款式图</div>
+            <div class="other-list js-other-list clearfix">
+               
+            </div>
+        </div>
+    </div>
+    {/if}
+    <!-- 普通用户提示 -->
+    <div class="ordinary-user js-ordinary-user" style="display: none;">
+        <div class="ordinary-title">
+            <span>普通账户只为试用状态</span>
+            <label>开通VIP可浏览全站趋势图片及行业深度报告书籍</label>
+        </div>
+        <div class="ordinary-btn js-contact-qq-btn">申请VIP试用账号</div>
+    </div>
+    <!-- 游客提示 -->
+    <div class="visitor-user" style="display: none;">
+        <div class="visitor-box">
+            <div class="visitor-head">
+                <span>想了解更多的热榜款式吗？</span>
+                <label>根据用户综合数据评选出时尚最热门的款式图，加入POP让款式开发更得心应手</label>
+            </div>
+            <div class="visitor-btn">
+                <span class='js-contact-qq-btn'>咨询了解VIP，会员体验畅通无阻</span>
+                <a href="/member/pagelogin/" target="_blank">登录/注册 发现热门爆款</a>
+                <a>电话咨询 4008-210-500</a>
+            </div>
+            <div class="visitor-close">
+                <img class="img1" src="{STATIC_URL2}/global/images/top/layer-close.png"/>
+                <img class="img2" src="{STATIC_URL2}/global/images/top/layer-close-hover.png"/>
+            </div>
+        </div>
+    </div>
+    <!-- 加载load -->
+    <div class="top-load js-top-load">
+        <img src="{STATIC_URL2}/global/images/styles_page/loading.gif"/>
+        <span>正在加载中…</span>
+    </div>
+    <!-- 通用底部 -->
+    <div class="bottom">
+        <div class="bottom-head">
+            <span>爆款数据报告</span>
+            <label>Data Analysis</label>
+        </div>
+        <div class="bottom-list">
+            <div class="js-list clearfix">
+                
+            </div>
+        </div>
+        <div class="bottom-btn bottom-left js-prev-logo"></div>
+        <div class="bottom-btn bottom-right js-next-logo"></div>
+    </div>
+    <!-- 热榜数量达到上限弹层 -->
+    <div class="limit js-limit layer" style="display: none;">
+        <img src="{STATIC_URL2}/global/images/top/limit-layer.png"/>
+        <span>热榜数量已到上限</span>
+        <label>请删除后添加</label>
+        <div class="layer-btn">
+            <!--<span class="cancel js-add-close">取消</span>-->
+            <!-- <span class="confirm js-add-close js-contact-qq-btn" data-type="1">确认</span> -->
+            <span class="confirm js-add-close">确认</span>
+        </div>
+        <div class="close js-add-close"></div>
+    </div>
+    <!-- 提示开通VIP弹层 -->
+    <div class="vip js-vip layer" style="display: none;">
+        <img src="{STATIC_URL2}/global/images/top/vip-layer.png"/>
+        <span>申请加入VIP后</span>
+        <label>才能继续添加更多热榜数据哦</label>
+        <div class="layer-btn">
+            <span class="confirm js-add-close js-contact-qq-btn">申请</span>
+        </div>
+        <div class="close js-add-close"></div>
+    </div>
+    <!-- 添加自定义热板数据弹层 -->
+    <div class="exist-layer js-exist-layer" style="display: none;">
+        <div class="head">
+            <span>新增款式热榜</span>
+            <i class="js-add-close"></i>
+        </div>
+        <div class="exist-list contentHolder">
+            <div class="content js-exist-list">
+               
+            </div>
+        </div>
+        <div class="exist-layer-btn">
+            <span class="create action js-create">生成热榜</span>
+            <div class="tips js-tips">请选择时间<a>去看看吧</a>!</div>
+        </div>
+    </div>
+    <!-- 蒙层 -->
+    <div class="mongolia" style="display: none;"></div> 
+</div>
+{/block}
+
+{block name="self"}
+<script type="text/javascript" src="{STATIC_URL2}/global/js/top/top.js?{STATIC_CHANGE_TIME}"></script>
+{/block}

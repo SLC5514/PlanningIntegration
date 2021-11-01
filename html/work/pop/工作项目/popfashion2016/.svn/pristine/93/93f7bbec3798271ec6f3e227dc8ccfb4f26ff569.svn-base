@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {include file="blog/common/head_meta.html"}
+	<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/blog/lists/blog-list.css?{STATIC_CHANGE_TIME}">
+</head>
+
+<body>
+<div class="blog-view js-blog-view">
+		<input type="hidden" id="link" data-total="{$total_count}" data-pagesize="{$page_size}"/>
+	<!-- header -->
+	{include file="blog/common/header.html"}
+	<!-- header -->
+	<div class="blog-wid1200">
+		<div class="blog-banner">
+			<img src="{STATIC_URL2}/global/images/blog/lists/banner.jpg" alt="趋势预见流行">
+		</div>
+		<div class="blog-website-nav">
+			{foreach $websites as $website=>$name}
+			<a {if $site==$website}class="cur"{/if} href="{$site_url[$website]['link']}" {if $site!=$website}target="_blank"{/if}>{$name}<span></span></a>
+			{/foreach}
+    </div>
+    {if !empty($selected_tag)}
+    <div class="blog-hot-tags-select clearfix"><span class="fl">您已选择：</span><div class="fl js-select-tag">
+      <a class="select-tag" href="{$selected_tag.clear_link}">{$selected_tag.name} <i class="select-close"></i></a>
+    </div></div>
+    {/if}
+		<div class="blog-list js-blog-list">
+			<ul class="clearfix js-blog-list-ul">
+				{foreach $list as $row}
+				<li class="js-blog-li">
+					<a href="{$row.url}" title="{$row.sTitle}" target="_blank" title="{$row.sTitle}">
+						<div class="img-box" style="background:url('{STATIC_URL2}{$row.sCoverImgPath}') no-repeat;background-size:100%;">
+						</div>
+						<div class="blog-infor">
+							<p class="blog-title">{$row.sTitle}</p>
+							<div class="author-and-data">
+								<span class="author-span"><img src="{STATIC_URL2}/global/images/blog/common/author.png">作者：{$row.sAuthor}</span>
+								<span class="data-span"><img src="{STATIC_URL2}/global/images/blog/common/data.png">{$row.dPublishTime|date_format:"%Y-%m-%d"}</span>
+							</div>
+						</div>
+					</a>
+				</li>
+				{/foreach}
+			</ul>
+			<div  class="blog-load-more">
+				<a href="javascript:void(0);" class="load-more-btn js-load-more-btn">点击加载更多</a>
+      </div>
+      <div class="blog-hot-tags js-blog-hot-tags">
+        <div class="blog-hot-tags-title">热门标签</div>
+        <div class="hot-tags-ul-box js-hot-tags-ul-box">
+          <ul class="clearfix js-hot-tags-ul">
+        {foreach $hot_labels as $id=>$val}
+              <li class="fl"><a href="{$val.link}">{$val.name}</a></li>
+        {/foreach}
+          </ul>
+        </div>
+        <div class="tags-show-all">
+          <a class="js-show-all" href="javascript:void(0);">显示全部热门标签</a>
+        </div>
+      </div>
+		</div>
+	</div>
+	<!--footer  -->
+	{include file="blog/common/footer.html"}
+	<!-- footer -->
+</div>
+{include file="blog/common/foot_script.html"}
+<script type="text/javascript" src="{STATIC_URL1}/global/js/blog/lists/blog-list.js?{STATIC_CHANGE_TIME}"></script>
+
+</body>
+</html>
+

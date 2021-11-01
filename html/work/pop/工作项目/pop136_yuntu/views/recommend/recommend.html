@@ -1,0 +1,31 @@
+{extends file="layout.html"} 
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{$smarty.const.STATIC_URL1}/global/css/recommend/recommend.css?{$smarty.const.STATIC_CHANGE_TIME}" />
+{/block} 
+ 
+{block name="main"}
+<div class="content">
+	<div class="section datagrand-wrap-all">
+		<div class="guess-like-list-box contentW">
+			<h1><span></span>猜你喜欢<span></span></h1>
+		</div> 
+		<div class="datagrand-box js-datagrand-box">
+			<ul class="js-list-parent clear patterns-recommend"></ul>
+		</div>
+		<div class="scroll-load js-scroll-load"><img src="{$smarty.const.STATIC_URL2}/global/images/common/load_more.gif"></div>
+		<div class="scroll-look-more js-scroll-look-more"><a>查看更多</a></div>		
+	</div>
+</div>
+
+{/block}
+
+{block name="other"}
+	<!--引入详情页-->
+	<div class="detail-frame js-detail-frame">
+		<iframe src="" width="100%" height="100%" frameborder="no" border="0" scrolling="no" allowtransparency="yes"></iframe>
+	</div>
+{/block}
+
+{block name="self"}
+	<script src="{$smarty.const.STATIC_URL3}/global/js/recommend/recommend.js?{$smarty.const.STATIC_CHANGE_TIME}" type="text/javascript" charset="utf-8"></script>
+{/block}

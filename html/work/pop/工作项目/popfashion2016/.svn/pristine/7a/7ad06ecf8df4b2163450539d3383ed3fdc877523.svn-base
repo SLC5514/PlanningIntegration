@@ -1,0 +1,75 @@
+
+
+    {if !$isPdf}
+    <script>
+        ;(function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+
+        })();
+    </script>
+    {/if}
+    <!-- 第三方统计js -->
+    <!-- GrowingIO Analytics code version 2.1 -->
+    <!-- Copyright 2015-2017 GrowingIO, Inc. More info available at http://www.growingio.com -->
+    {literal}
+    <script type='text/javascript'>
+        !function(e,t,n,g,i){e[i]=e[i]||function(){(e[i].q=e[i].q||[]).push(arguments)},n=t.createElement("script"),tag=t.getElementsByTagName("script")[0],n.async=1,n.src=('https:'==document.location.protocol?'https://':'http://')+g,tag.parentNode.insertBefore(n,tag)}(window,document,"script","assets.giocdn.com/2.1/gio.js","gio");
+        gio('init','8de2f524d49e13e1', {});
+        gio('config', {hashtag: true});
+
+        //custom page code begin here
+        var $user_identity = {'1':'会员用户', '2':'会员用户', '3':'试用用户', '4':'普通用户', '5':'游客用户'};
+        var $account_type = {'main':'主账号', 'child':'子账号'};
+
+        var $member_set = {};
+        $member_set.UserIdentity = $user_identity[P_UserType];
+        $member_set.ChannelCode = pid;
+
+        if (P_UserId) {
+            gio('setUserId', P_UserId);
+            $member_set.AccountType = $account_type[P_AccountType];
+            $member_set.AccountId = P_AccountId;
+        } else {
+            gio('clearUserId');
+        }
+
+        gio('people.set', $member_set);
+
+        //custom page code end here
+
+        gio('send');
+
+    </script>
+    {/literal}
+
+    <!-- End GrowingIO Analytics code version: 2.1 -->
+    {if !$isPdf}
+    <script>
+        var _hmt = _hmt || [];
+        var customer_type = 'guest';
+        if( P_UserType == 1) customer_type = 'vip';
+        else if(P_UserType == 4) customer_type = 'normal';
+        _hmt.push(['_setCustomVar', 1, 'customer', customer_type, 3]);
+        (function() {
+            var hm = document.createElement("script");
+            var s = document.getElementsByTagName("script")[0];
+            //百度付费统计代码
+            hm.src = "//hm.baidu.com/hm.js?ec1d5de03c39d652adb3b5432ece711d";
+            s.parentNode.insertBefore(hm, s);
+            //百度免费统计代码(www)
+            hm = document.createElement("script");
+            s = document.getElementsByTagName("script")[0];
+            hm.src = "//hm.baidu.com/hm.js?40163307b5932c7d36838ff99a147621";
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    {/if}

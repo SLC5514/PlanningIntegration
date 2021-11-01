@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>test</title>
+        <style>
+            /* #paper {
+                width: 1132px;
+                height: 886px;
+            } */
+
+            use {
+                cursor: pointer;
+            }
+        </style>
+    </head>
+
+    <body>
+        <svg id="paper" width="1132" height="886" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+            style="background: #e6e6e6;"></svg>
+    </body>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script> -->
+    <script src="./snap.svg-min.js"></script>
+    <script src="./getcanvaspixelcolor.js"></script>
+    <script>
+        var def = {
+            w: 1132,
+            h: 886,
+            pw: 100,
+            ph: 100,
+            svgPaper: Snap("#paper"),
+            bgImgEl: null,
+            paths: [
+                'M188,188l-18,15-13,11-16,24,15,14-19,11s7.552,30.426,20,57,36,79,36,79,15.077,23.154,18,35,1,6,1,6-2.571-52.192-5-75-10.468-74.507-13-92-7.515-43.755-7-64c0.266-10.485.254-18.616,1-21 L82,253l12-11,8-4,10-5,7-3,11-5,7-3,7-2,10-3,2-1-4,6-6,9-5,7,5,5,6,5,4,4-7,4-6,4-6,4,3,9,2,7,7,20,5,12,4,9,5,11,6,14,7,15,7,15,6,14,6,11s15.184,23.322,17,33a63.636,63.636,0,0,1,1,17v8l-3,16-2,17-4,23-3,15-4,21-5,28-4,16-4,22-5,19-4,16-5,17-4,12-4,14-5,8-6,8-7,6-6,4-6,2h-6l-9-2-11-2-8-6V694h3l3-1h2l2-1h3v-5l-2-2-2-1h-3l-2-1-1-2h7l1-1v-2l-1-1-1-4,1-7-1-6-1-6v-4l3-3,1-3,1-4v-5l2-3,3-3,1-3v-4l-2-29-3-32-1-33-1-36-2-41V410l-2-40,1-38-1-18-1-9-5-17-6-18-4-9-5-7Z L83,253l-3,1-1,2-1,2-1,3-1,6-1,5-1,3v11l-2,6v13l-1,5v65l-1,2-1,8-1,7-1,9-1,20v32l-1,11v45l1,8-1,2-1,10v9l-1,6-1,3v17l-1,8v8l-1,31v10l-1,4v22l2,4,2-2,3,1,2-1,5-11,4-4,4-2,2-2,4-1,3-1h9l2-1,2-2a0.657,0.657,0,0,0,1,0,42.1,42.1,0,0,1,5,0l2,4v5l2-2,3-3,2-3v-4l-2-16v-8l-2-22-1-19-1-14-1-36-2-31V445l-1-40-1-41,1-33-1-12-2-14-2-11-3-9-4-13-3-8-4-7-3-3ZM78,567a20.689,20.689,0,0,1,3,0l2,2v5l-2,2H76l-2-2v-5l2-2A8.871,8.871,0,0,0,78,567Zm2,16h5l2,2v5l-2,2H80l-2-2v-5Zm1,14h5l3,3v5l-2,3H81l-3-2v-6l3-3 L254,184v22l-1,11-4,23-3,15-5,20-4,26-4,22-4,26-4,31-7,34-2,13-1,13,2-6,1-5,7-11,7-11,10-16,15-31,16-35,17-34,13-32,2-4-25-9,16-11-7-13-8-11-1.56-4.679L279,205Z L361,244l-5,4-5,7-5,10-4,7-5,10-2,6-2,8-3,10-3,8-2,16v17l1,17v45l-1,8-1,6-1,8v35l-1,9-1,9-1,13-1,11-1,14-1,12-2,14-1,13-1,15-1,18-1,14-1,7-1,8-1,9,7,1h6l6,1,5,1s5.878-.141,6,0,6,1,6,1l7,1s3.69,0.782,4,1,5,5,5,5l1,3-4,4,5,1,2-2,5-3,1,2h2v-3l-1-5V613l1-20,2-37,1-35V446l-1-7,1-30-1-25V355l-1-28V304l-1-22-2-16-2-8-1-6-2-4ZM345,574h4l1,1,1,2v3l-1,2h-7l-1-3v-3l2-2h1Zm-1,14h3l2,2,1,3v2l-1,2-2,1h-4l-3-2v-5l1-2Zm-10,16,1-2,1-1,1-1h5l4,3v6l-2,1-1,1-2,1h-3l-2-1-1-2-1-2 L281,209l4,8,11,18-16,10,24,10-10,24-6,14-11,25-13,26-13,25-8,17-10,17-10,16-7,15v22l1,17,3,16,4,30,3,18,3,19,3,24,3,24,5,22,8,39,6,23,5,14,8,13,7,6,8,1,11-1,7-1,8-3,6-3,8-1,4-1,6-3,4-2,2-5V685h-9l-2,1-6,5s-2.563,1.265-4,1a60.226,60.226,0,0,0-7,0l-1-2-1-3,2-2h3v-4h-5l-1-4-1-5-1-5,2-11,1-5a32.832,32.832,0,0,1,1-5c0.383-.579,1-13,1-13l-3-1,3-16,2-13V579l3-33,3-39,3-30,2-7V453l1-37,2-6V361l-1-9V339l-1-11,2-14,4-7,2-7,3-11,5-13,7-12,4-10,5-6,4-4-4-4-8-5-7-5-5-3-6-3-8-4-10-5-9-2-7-2-5-2-12-1Zm41,436-2,3-1,4v17l2,1h4l1-2,1-3,1-3v-4l-1-4v-4l-1-3-2-2h-2ZM234,430l3,3,1,4v4l-1,1-3,3-2,2h-4l-3-3-1-2-1-1v-4a1.641,1.641,0,0,1,0-1,18.026,18.026,0,0,1,2-2l1-2,2-1,2-1h4Zm6,91,5,3,1,2v7l-4,4-4,1-3-1-3-2v-7l1-2,1-2,2-2,2-1h2Z',
+                // 'M950.000,1554.000 C950.000,1554.000 979.665,1605.039 933.000,1658.000 C892.230,1688.222 870.196,1696.433 793.000,1802.000 C715.804,1907.567 641.198,2037.929 626.000,2122.000 C610.802,2206.071 584.707,2242.503 518.000,2687.000 C444.305,3134.991 395.270,3418.275 409.000,3404.000 C415.447,3404.256 432.070,3393.507 418.000,3418.000 C418.000,3416.608 412.786,3430.678 476.000,3444.000 C532.847,3461.802 568.999,3467.059 592.000,3476.000 C653.910,3498.617 693.392,3480.239 672.000,3509.000 C650.608,3545.542 649.243,3554.991 657.000,3564.000 C664.757,3573.009 677.249,3608.747 723.000,3619.000 C768.751,3629.253 768.611,3632.608 780.000,3636.000 C811.197,3637.741 823.640,3632.241 841.000,3639.000 C899.391,3649.060 973.510,3651.460 986.000,3653.000 C1000.848,3662.793 1073.294,3656.823 1101.000,3658.000 C1121.436,3660.356 1122.936,3663.976 1126.000,3671.000 C1136.335,3678.810 1151.099,3684.897 1185.000,3691.000 C1223.617,3700.836 1294.945,3705.823 1320.000,3705.000 C1419.726,3710.858 1499.447,3701.972 1515.000,3696.000 C1545.290,3692.583 1518.274,3699.718 1542.000,3699.000 C1560.028,3698.478 1572.682,3692.111 1620.000,3695.000 C1659.458,3693.762 1696.278,3694.780 1721.000,3687.000 C1741.006,3683.347 1751.340,3676.480 1808.000,3669.000 C1864.660,3661.520 1869.396,3652.975 1869.000,3664.000 C1869.793,3675.976 1931.922,3663.193 1938.000,3662.000 C1944.078,3660.807 2035.899,3639.588 2053.000,3620.000 C2058.925,3615.629 2057.962,3601.342 2069.000,3616.000 C2078.136,3623.287 2106.481,3605.813 2128.000,3598.000 C2148.805,3590.663 2175.174,3575.424 2202.000,3565.000 C2219.790,3560.045 2218.897,3555.970 2215.000,3543.000 C2208.250,3535.974 2163.726,3380.511 2159.000,3373.000 C2145.898,3336.871 2127.969,3290.970 2116.000,3279.000 C2109.822,3263.941 2088.201,3219.539 2080.000,3209.000 C2068.887,3185.070 1992.955,3044.656 1982.000,3023.000 C1927.738,2930.555 1798.340,2607.732 1754.000,2513.000 C1709.660,2418.268 1615.389,2175.293 1597.000,2149.000 C1578.611,2122.707 1485.739,1887.798 1478.000,1836.000 C1473.179,1802.128 1481.899,1831.874 1474.000,1754.000 C1468.186,1658.617 1421.158,1581.345 1404.000,1564.000 C1387.293,1525.458 1257.048,1418.855 1206.000,1406.000 C1150.893,1398.106 1159.616,1405.831 1084.000,1450.000 C1012.894,1498.679 967.000,1539.000 967.000,1539.000 C967.000,1539.000 950.000,1556.706 950.000,1554.000 Z',
+                // 'M461.72 205.16l-8.46 27.28 6.57 13.57-6.31 25.17-11.41 70.23.32 48.17 20.96 65.82.2 29.32 5.62 33.47 3.64 58.61 3.45 32.43 11.99 15.63L511 628.9l47.44-11.84 15.12-.1 88.55-.59 28.03-8.56 44.17-17.05 8.57-10.53-33.08-101.35-21.09-84.67-10-41.81-7.74-27.18-11.03-33.43-16.37-26.07-4.4-12.53 7.5-8.43-12.02-20.86-11.96-11.44-8.69-8.32-11.92-6.2-16.22-3.03-9.72.06-9.77-6.21-21.62-4.05-23.78-2.98-20.54-3-23.72 6.44-14.99 19.99z',
+                // 'M485.85 627.43l25.12 2.98 43.94-10.93h107.78l32.43-7.95 6.28 7.95 12.56 49.7-18.84 10.93h-21.97v12.93l-3.14 18.88-24.07 2.98H631.3l-21.98 4.98-54.41-7.96-28.25-8.94-15.69-9.94-12.56-2.99-7.32-9.94-5.24-10.93-11.51 6.96-5.23-10.94-15.69-19.88 3.14-21.87 17.78-6.95 11.51 10.93z'
+            ],
+            pathsLen: 0,
+            pathEls: [],
+            useBgEls: [],
+            useMaskEls: [],
+            patternEls: [],
+            images: [/* './连衣裙2/bg1.jpg',  */'./bg2.jpg'],
+            // 拖动
+            patternWHs: [],
+            downStatus: false,
+            hoverStatus: false,
+            idx: -1,
+            x: 0,
+            y: 0,
+            matrix: '',
+            delta: []
+        }
+        def.pathsLen = def.paths.length;
+        // 背景图
+        // def.bgImgEl = def.svgPaper.image("./bg.png", 0, 0, def.w, def.h);
+        def.bgImgEl = def.svgPaper.image("./源文件 png svg/s23wkh-1.png", 0, 0, def.w, def.h);
+        // def.bgImgEl = def.svgPaper.image("./连衣裙2/未标题-1.jpg", 0, 0, def.w, def.h);
+        // 绘制部件路径
+        for (var i = 0; i < def.pathsLen; i++) {
+            def.pathEls[i] && def.pathEls[i].remove();
+            def.useBgEls[i] && def.useBgEls[i].remove();
+            def.useMaskEls[i] && def.useMaskEls[i].remove();
+            def.pathEls[i] = def.svgPaper.path(def.paths[i]).toDefs().data('idx', i);
+            def.useBgEls[i] = def.svgPaper.use(def.pathEls[i]).attr({'fill': 'transparent'}).data('idx', i);
+            def.useMaskEls[i] = def.svgPaper.use(def.pathEls[i]).attr({'fill': 'transparent'}).data('idx', i).addClass('mask-use');
+            def.useBgEls[i].node.style = 'mix-blend-mode: multiply';
+            def.useMaskEls[i].node.style = 'mix-blend-mode: multiply';
+        }
+        // 绘制部件背景色
+        for (var i = 0; i < def.pathsLen; i++) {
+            def.useBgEls[i].attr({'fill': 'skyblue'}).data('idx', i);
+        }
+        def.patternWHs = [];
+        def.delta = [];
+        // 绘制部件背景图-全循环
+        // for (var i = 0; i < def.pathsLen; i++) {
+        //     def.patternEls[i] && def.patternEls[i].remove();
+        //     def.patternEls[i] = def.svgPaper.image(def.images[i], 0, 0, def.pw, def.ph).pattern(0, 0, def.pw, def.ph).attr({'patternTransform': Snap.matrix(1, 0, 0, 1, 0, 0)}).data('idx', i);
+        //     def.useMaskEls[i].attr({'fill': def.patternEls[i]}).data('idx', i);
+        //     def.patternWHs.push({w: def.pw, h: def.ph});
+        //     def.delta.push(0);
+        // }
+        // 绘制部件背景图-垂直循环
+        // for (var i = 0; i < def.pathsLen; i++) {
+        //     def.patternEls[i] && def.patternEls[i].remove();
+        //     def.patternEls[i] = def.svgPaper.image(def.images[i], (def.w - def.pw) / 2, 0, def.pw, def.ph).pattern(0, 0, def.w, def.ph).attr({'patternTransform': Snap.matrix(1, 0, 0, 1, 0, 0)}).data('idx', i);
+        //     def.useMaskEls[i].attr({'fill': def.patternEls[i]}).data('idx', i);
+        //     def.patternWHs.push({w: def.w, h: def.ph});
+        //     def.delta[def.idx].push(0);
+        // }
+        // 绘制部件背景图-水平循环
+        // for (var i = 0; i < def.pathsLen; i++) {
+        //     def.patternEls[i] && def.patternEls[i].remove();
+        //     def.patternEls[i] = def.svgPaper.image(def.images[i], 0, (def.h - def.ph) / 2, def.pw, def.ph).pattern(0, 0, def.pw, def.h).attr({'patternTransform': Snap.matrix(1, 0, 0, 1, 0, 0)}).data('idx', i);
+        //     def.useMaskEls[i].attr({'fill': def.patternEls[i]}).data('idx', i);
+        //     def.patternWHs.push({w: def.pw, h: def.h});
+        //     def.delta[def.idx].push(0);
+        // }
+        // 绘制部件背景图-无循环
+        var tplScale = 0.3;
+        var scaleMax = 4;
+        var panlMax = 1000;
+        var panvMax = 1000;
+        for (var i = 0; i < def.pathsLen; i++) {
+            def.patternEls[i] && def.patternEls[i].remove();
+            // def.patternEls[i] = def.svgPaper.image(def.images[i], 0, 0, def.pw, def.ph).pattern(0, 0, def.pw, def.ph).attr({'patternTransform': Snap.matrix(1, 0, 0, 1, 0, 0)}).data('idx', i);
+            def.patternEls[i] = def.svgPaper.image(def.images[i], 0, 0, def.pw, def.ph).pattern((def.w + def.pw) / 2 * tplScale, (def.h + def.ph) / 2 * tplScale, def.pw * scaleMax + panlMax, def.ph * scaleMax + panvMax);
+            def.useMaskEls[i].attr({'fill': def.patternEls[i]}).data('idx', i);
+            def.patternWHs.push({w: def.pw, h: def.ph});
+            // def.delta[def.idx].push(0);
+        }
+        // 旋转
+        // for (var i = 0; i < def.pathsLen; i++) {
+        //     var matrixArr = def.patternEls[i].attr('patternTransform').match(/matrix\((.*)\)/)[1].split(',');
+        //     def.matrix = Snap.matrix(matrixArr[0], matrixArr[1], matrixArr[2], matrixArr[3], matrixArr[4], matrixArr[5]);
+        //     def.patternEls[i].attr('patternTransform', def.matrix.rotate(30));
+        // }
+
+        // 拖动
+        $(document).on('mousedown', function (e) {
+            var e = e || window.event;
+            var target = $(e.target);
+            if (!def.downStatus && e.button === 0 && target.hasClass('mask-use')) {
+                def.idx = Snap(target[0]).data('idx');
+                def.downStatus = true;
+                def.x = e.clientX;
+                def.y = e.clientY;
+                var matrixArr = def.patternEls[def.idx].attr('patternTransform').match(/matrix\((.*)\)/)[1].split(',');
+                def.matrix = Snap.matrix(matrixArr[0], matrixArr[1], matrixArr[2], matrixArr[3], matrixArr[4], matrixArr[5]);
+            }
+        }).on('mousemove', function (e) {
+            var e = e || window.event;
+            var target = $(e.target);
+            if (def.downStatus && def.idx != -1) {
+                var x = def.x;
+                var y = def.y;
+                def.x = e.clientX;
+                def.y = e.clientY;
+                // 旋转
+                def.matrix.rotate(-30);
+                def.matrix.translate(def.x - x, def.y - y);
+                def.matrix.rotate(30);
+                // 无旋转
+                // def.matrix.translate(def.x - x, def.y - y);
+                def.patternEls[def.idx].attr('patternTransform', def.matrix);
+            }
+            if (!def.downStatus && target.hasClass('mask-use')) {
+                def.hoverStatus = true;
+                def.idx = Snap(target[0]).data('idx');
+            } else {
+                def.hoverStatus = false;
+            }
+        }).on('mouseup', function () {
+            def.downStatus = false;
+        })
+        // 缩放
+        var eventHandle = {
+            getEvent: function (event) {
+                return event || window.event;
+            },
+            addEvent: function (elementName, type, handler) {
+                document.querySelectorAll(elementName).forEach(function (element) {
+                    if (element.addEventListener) {
+                        element.addEventListener(type, handler, false);
+                    }
+                    else if (element.attachEvent) {
+                        element.attachEvent('on' + type, handler);
+                    } else {
+                        element['on' + type] = handler;
+                    }
+                })
+            },
+            getWheelDelta: function (event) {
+                return event.wheelDelta ? event.wheelDelta : (-event.detail) * 40;
+            }
+        }
+        function mouseHandle(e) {
+            if (def.hoverStatus) {
+                var e = e || window.e;
+                e.preventDefault();
+                e = eventHandle.getEvent(e);
+                var delta = eventHandle.getWheelDelta(e);
+                if (delta < 0) {def.delta[def.idx] += -5;}
+                else {def.delta[def.idx] += 5;}
+                if (def.delta[def.idx] <= -def.patternWHs[def.idx].w) {
+                    def.delta[def.idx] = 5 - def.patternWHs[def.idx].w;
+                } else if (def.delta[def.idx] <= -def.patternWHs[def.idx].h) {
+                    def.delta[def.idx] = 5 - def.patternWHs[def.idx].h;
+                } else if (def.delta[def.idx] > def.patternWHs[def.idx].w * 3) {
+                    def.delta[def.idx] = def.patternWHs[def.idx].w * 3;
+                } else if (def.delta[def.idx] > def.patternWHs[def.idx].h * 3) {
+                    def.delta[def.idx] = def.patternWHs[def.idx].h * 3;
+                }
+                // 全循环
+                def.patternEls[def.idx].attr({'width': def.patternWHs[def.idx].w + def.delta[def.idx], 'height': def.patternWHs[def.idx].h + def.delta[def.idx]});
+                // 垂直循环
+                // def.patternEls[def.idx].attr({
+                //     'width': def.patternWHs[def.idx].w + def.delta[def.idx],
+                //     'height': def.patternWHs[def.idx].h + def.delta[def.idx],
+                //     'viewBox': '0 0 ' + (def.patternWHs[def.idx].w + def.delta[def.idx]) + ' ' + (def.patternWHs[def.idx].h + def.delta[def.idx]),
+                //     'x': (def.w - (def.patternWHs[def.idx].w + def.delta[def.idx])) / 2
+                // });
+                // def.patternEls[def.idx].children()[0].attr({'width': def.patternWHs[def.idx].h + def.delta[def.idx], 'height': def.patternWHs[def.idx].h + def.delta[def.idx]});
+                // 水平循环
+                // def.patternEls[def.idx].attr({
+                //     'width': def.patternWHs[def.idx].w + def.delta[def.idx],
+                //     'height': def.patternWHs[def.idx].h + def.delta[def.idx],
+                //     'viewBox': '0 0 ' + (def.patternWHs[def.idx].w + def.delta[def.idx]) + ' ' + (def.patternWHs[def.idx].h + def.delta[def.idx]),
+                //     'y': (def.h - (def.patternWHs[def.idx].h + def.delta[def.idx])) / 2
+                // });
+                // def.patternEls[def.idx].children()[0].attr({'width': def.patternWHs[def.idx].w + def.delta[def.idx], 'height': def.patternWHs[def.idx].w + def.delta[def.idx]});
+            }
+        }
+        eventHandle.addEvent('.mask-use', 'mousewheel', mouseHandle);
+        eventHandle.addEvent('.mask-use', 'DOMMouseScroll', mouseHandle);
+
+        // 图片转base64
+        // var imageAll = def.svgPaper.selectAll('image');
+        // for (var i = 0; i < imageAll.length; i++) {
+        //     getBase64Image(imageAll[i].node.href.baseVal, imageAll[i], function (imgItem, dataURL) {
+        //         imgItem.attr('href', dataURL);
+        //     })
+        // }
+        function getBase64Image(imgSrc, imgItem, success) {
+            var image = new Image();
+            image.src = imgSrc;
+            image.onload = function () {
+                var canvas = document.createElement("canvas");
+                canvas.width = image.width;
+                canvas.height = image.height;
+                var ctx = canvas.getContext("2d");
+                ctx.drawImage(image, 0, 0, image.width, image.height);
+                var ext = image.src.substring(image.src.lastIndexOf(".") + 1).toLowerCase();
+                var dataURL = canvas.toDataURL("image/" + ext);
+                success && success(imgItem, dataURL);
+            }
+        }
+
+        // 取色
+        // def.svgPaper.click(function (e, x, y) {
+        //     var offset = $(this.node).offset();
+        //     getColor(def.svgPaper.outerSVG(), def.svgPaper.getBBox().w, def.svgPaper.getBBox().h, x - offset.left, y - offset.top);
+        // })
+        function getColor(svgXml, w, h, x, y) {
+            var image = new Image();
+            image.src = 'data:image/svg+xml;base64,' + window.btoa(unescape(encodeURIComponent(svgXml)));
+            image.onload = function () {
+                var canvas = document.createElement('canvas');
+                canvas.width = w;
+                canvas.height = h;
+                var context = canvas.getContext('2d');
+                context.drawImage(image, 0, 0, w, h);
+                var colorData = canvas.getPixelColor(x, y);
+                var color = colorData.rgba;
+                $("body").css("backgroundColor", color);
+            }
+        }
+
+        // 保存图片
+        // var filterEl = def.svgPaper.filter(Snap.filter.blur(5, 10));
+        // def.bgImgEl.attr({
+        //     filter: filterEl
+        // });
+        // setTimeout(() => {
+        //     saveSvgImage(def.svgPaper.outerSVG(), def.svgPaper.getBBox().w, def.svgPaper.getBBox().h);
+        // }, 5000);
+        function saveSvgImage(svgXml, w, h) {
+            var image = new Image();
+            image.src = 'data:image/svg+xml;base64,' + window.btoa(unescape(encodeURIComponent(svgXml)));
+            image.onload = function () {
+                var canvas = document.createElement('canvas');
+                canvas.width = w;
+                canvas.height = h;
+                var context = canvas.getContext('2d');
+                context.drawImage(image, 0, 0);
+                var a = document.createElement('a');
+                a.href = canvas.toDataURL('image/png');
+                a.download = "test";
+                a.click();
+            }
+        }
+    </script>
+
+</html>

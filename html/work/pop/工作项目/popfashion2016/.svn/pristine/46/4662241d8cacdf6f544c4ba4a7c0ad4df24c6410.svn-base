@@ -1,0 +1,122 @@
+{extends file="layout.html"}
+{block name="header"}{/block}
+{block name="footer"}{/block}
+{block name='selfcss'}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL1}/global/css/free_login/free_login.css?{STATIC_CHANGE_TIME}">
+{/block}
+{block name="main"}
+<div class="free-login-contain">
+    <h1><img src="{STATIC_URL2}/global/images/free_login/logo.png" /></h1>
+    <div class="windx80">
+        <ul class="free-login-web js-free-login-web">
+            <li class="free-fashion-li" data-website="1">
+                <a href="javascript:void(0);">
+                    <img src="{STATIC_URL2}/global/images/free_login/fashion.png">
+                    <div><span>服装</span></div>
+                </a>
+            </li>
+            <li class="free-shoe-li" data-website="3">
+                <a href="javascript:void(0);">
+                    <img src="{STATIC_URL2}/global/images/free_login/shoe.png">
+                    <div><span>鞋子</span></div>
+                </a>
+            </li>
+            <li class="free-bag-li" data-website="2">
+                <a href="javascript:void(0);">
+                    <img src="{STATIC_URL2}/global/images/free_login/bag.png">
+                    <div><span>箱包</span></div>
+                </a>
+            </li>
+            <li class="free-home-li" data-website="5">
+                <a href="javascript:void(0);">
+                    <img src="{STATIC_URL2}/global/images/free_login/home.png">
+                    <div><span>家纺</span></div>
+                </a>
+            </li>
+            <li class="free-decoration-li" data-website="4">
+                <a href="javascript:void(0);">
+                    <img src="{STATIC_URL2}/global/images/free_login/decoration.png">
+                    <div><span>首饰</span></div>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- 弹层 -->
+    <div class="free-login-bg js-free-login-bg"></div>
+    <div class="free-login-layer js-free-login-layer">
+        <h2>欢迎访问POP时尚趋势</h2>
+        <div class="login-infor-box js-register-infor-box">
+            <p>绑定账号开始畅通使用</p>
+            <div class="login-input-box">
+                <ul>
+                    <li class="input-li">
+                        <div>
+                            <input type="text" name="telphone" placeholder="请输入手机验证码" class="js-sendcode-input">
+                        </div>
+                        <a class="js-send-btn">获取验证码</a>
+                        <span class="input-msg js-code-input-msg">验证码输入错误</span>
+                    </li>
+                    <li class="input-li js-input-li">
+                        <div class="js-pwd-box">
+                            <input type="password" name="password" placeholder="请输入密码，超过6位字符" class="js-password-input">
+                        </div>
+                        <i class="js-pwd-display pwd-display"></i>
+                        <span class="input-msg">密码请以字母+数字组合</span>
+                    </li>
+                    <li class="button-li">
+                        <a href="javascript:void(0);" class="gray-status js-bind-tips">立即绑定</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="login-infor-box js-phone-infor-box">
+            <div class="login-input-box phone-input-box">
+                <ul>
+                    <li class="input-li">
+                        <div>
+                            <input type="text" name="cellphone" placeholder="请输入手机号" class="js-phone-input" maxlength="11">
+                        </div>
+                        <span class="input-msg">请输入正确的手机号</span>
+                    </li>
+                    <li class="button-li">
+                        <a href="javascript:void(0);" class="gray-status js-step-tips">下一步</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="login-infor-box js-password-infor-box">
+            <div class="login-input-box password-input-box">
+                <ul>
+                    <li class="input-li">
+                        <div>
+                            <input type="text" name="telphone" placeholder="请输入密码" class="js-password-login">
+                        </div>
+                        <span class="input-msg js-login-input-msg">密码输入错误</span>
+                    </li>
+                    <li class="button-li">
+                        <a href="javascript:void(0);" class="gray-status js-use-tips">开始使用</a>
+                    </li>
+                    <li class="forget-psw-li"><a href="/member/findpassword/findpassword_2/" target="_blank">忘记密码？</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- 温馨提示 -->
+    <div class="warming-tips-box js-warming-tips-box">
+        <h2>温馨提示</h2>
+        <p>该手机号已经绑定<span class="js-main-account"></span>,请先去登录该账号并操作解绑，或更换其他手机号进行本次访问。</p>
+        <div>
+            <a class="remove-account" href="/member/pagelogin/" target="_blank">去解绑</a>
+            <a class="replace-phone js-replace-phone">更换手机号</a>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="self"}
+<script>
+    var encrypt_user_id = '{$encrypt_user_id}';
+</script>
+<script type="text/javascript" src="{$smarty.const.STATIC_URL3}/global/js/lib/gt.js?{$smarty.const.STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/free_login/free_login.js?{STATIC_CHANGE_TIME}"></script>
+{/block}

@@ -1,0 +1,47 @@
+/*
+    #author     lut000
+    #date       2018/04/04
+*/
+
+@charset "utf-8";
+
+
+.pop-section{width: 1200px;margin: auto;}
+
+.banner-section>img{width: 100%;}
+
+
+.topic-section{margin: 50px auto 60px;}
+.topic-section>h3{padding-bottom: 20px;font-size: 20px;color: #333;border-bottom: 2px solid #333;}
+.topic-section>h3>span{display: inline-block;padding-left: 30px;background-image: url(../images/icon1.png);background-repeat: no-repeat;background-position: left center;}
+.topic-section>h3>label{float: right;display: inline-block;padding-left: 30px;background-image: url(../images/icon2.png);background-repeat: no-repeat;background-position: left center;}
+
+
+.topic-section ul>li>a{display: block;padding: 24px 0px;font-size: 16px;border-bottom: 1px solid #e1e1e1;}
+.topic-section ul>li>a:hover{text-decoration: underline;color: #d8b056}
+.topic-section ul>li>a:hover>span{text-decoration: underline;}
+.topic-section ul>li.last>a{border-bottom: 2px solid #333;}
+.topic-section ul>li>a>span{float: right;}
+
+
+
+
+
+
+.hide{display: none;}
+
+
+
+
+.footerFixed{display: none !important;}
+
+
+
+
+
+
+
+
+@media only screen and (min-width: 1500px){      
+    .pop-section{width: 1500px;}
+}

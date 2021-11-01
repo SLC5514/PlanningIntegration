@@ -1,0 +1,86 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+/**
+ * 趋势解读/图案趋势控制器
+ * 取【服装站】-【趋势解读】-【图案趋势】下，2019年5月份以后打过热门标签的报告
+ * Created by PhpStorm.
+ * User: gcl
+ * Date: 2020/06/16 11:04
+ */
+class TrendsPattern extends POP_Controller
+{
+    public $pageSize = 30;
+
+//    const COL = 3;
+
+    function __construct()
+    {
+        parent::__construct();
+
+        $this->load->model(["TrendsPattern_model"]);
+//        $this->assign("col", self::COL);
+//        // 趋势解读/图案趋势 权限归于 原来的图案库
+//        $this->get_use_type(self::COL);
+//        $this->checkPower();
+    }
+
+    // 首页
+    public function index()
+    {
+        list($lists, $totalCount) = $this->TrendsPattern_model->getList();
+        outPrintApiJson(0, "OK", $lists);
+    }
+
+    // 列表数据
+    public function getList()
+    {
+        $params = $this->input->get_post("params");
+        $paramsArr = decodeParams($params);
+
+        $result = [];
+        $result["selected"] = $this->TrendsPattern_model->getSelected($paramsArr);
+
+        $page = max(intval($paramsArr["page"]), 1);
+        $offset = ($page - 1) * $this->pageSize;
+        list($lists, $total) = $this->TrendsPattern_model->getList($paramsArr, $offset, $this->pageSize);
+        $result["list"] = $lists;
+
+        $info = [];
+        $info["total"] = $total;
+        $info["pagesize"] = $this->pageSize;
+        //取分页
+        $result["pageHtml"] = $this->makePageHtml($paramsArr, $total, $this->pageSize, $page, "/trendspattern/");
+        outPrintApiJson(0, "OK", $result, $info);
+    }
+
+    // 筛选
+    public function filterconditions()
+    {
+        $params = $this->input->get_post("params");
+        $paramsArr = decodeParams($params);
+        $fields = ["sGender", "iSeason"];
+
+        //过滤已选中
+        foreach ($fields as $key => $field) {
+            $temp = $this->TrendsPattern_model->solrCondArr[$field];
+            if (isset($paramsArr[$temp])) {
+                unset($fields[$key]);
+            }
+        }
+        $reslut = $this->TrendsPattern_model->getSelectItems($fields, $paramsArr);
+        outPrintApiJson(0, "OK", $reslut);
+    }
+
+    // 详情数据
+    public function detail()
+    {
+        $id = $this->input->get_post("id");
+        $table = $tableName = $this->input->get_post("t");
+        $tableName = getProductTableName($table);
+
+        if (empty($id) || empty($tableName)) {
+            outPrintApiJson(1, "参数缺失,请重试！");
+        }
+    }
+}

@@ -1,0 +1,446 @@
+{extends file="layout.html"}
+
+{block name="selfcss"}
+	<link rel="stylesheet" type="text/css" href="{$smarty.const.STATIC_URL1}/global/css/lib/perfect-scrollbar-og.css?{$smarty.const.STATIC_CHANGE_TIME}">
+	<link rel="stylesheet" type="text/css" href="{$smarty.const.STATIC_URL1}/global/css/virtual/virtual.css?{$smarty.const.STATIC_CHANGE_TIME}">
+{/block}
+
+{block name="main"}
+<div class="content js-scroll-Sb">
+	<!-- 实景模拟主体盒子 -->
+	<div class="virtual-box">
+		<!-- 侧栏导航 -->
+		{if $isPreview != 1}
+		<div class="aside-nav-box">
+			<!-- 侧栏导航列表 -->
+			<ul class="aside-nav-list js-aside-nav-list js-scroll-Sb">
+				<li class="on"><i class="master-room"></i>我的制版间</li>
+				<li><i class="my-pattern"></i>我的花型</li>
+				<li><i class="custom-made"></i>定制</li>
+				<li class="async" data-id="1"><i class="clothing"></i>服装</li>
+				<li class="async" data-id="5"><i class="home-textile"></i>家纺</li>
+				<li class="async" data-id="2"><i class="bags"></i>箱包</li>
+				<li class="async" data-id="3"><i class="shoes"></i>鞋子</li>
+				<li class="async" data-id="100"><i class="other"></i>其他</li>
+				<li class="pattern"><i class="pattern"></i>图案花型</li>
+			</ul>
+			<!-- 侧栏导航内容 -->
+			<ul class="aside-nav-content-box js-aside-nav-content-box">
+				<li class="aside-nav-content select-tpl master-room on">
+					<!-- 侧栏导航内容控制器 -->
+					<div class="aside-nav-content-control">
+						<div class="select">
+							<span data-id="0">全部</span>
+							<ul class="hide">
+								<!-- <li class="on" data-id="">全部</li> -->
+							</ul>
+						</div>
+					</div>
+					<!-- 侧栏导航内容列表 -->
+					<ul class="aside-nav-content-list movebtn-list js-aside-nav-Sb">
+						<!-- <li data-id=""><img src="" alt=""><button class="move-btn">移动</button></li> -->
+					</ul>
+					<!-- 无内容 -->
+					<div class="empty-list">
+						<img src="{$smarty.const.STATIC_URL2}/global/images/virtual/nav_empty1.png" alt="">
+						<span>你还没有保存过效果图</span>
+					</div>
+					<!-- 底部按钮 -->
+					<a class="js-aside-nav-Sb-next" href="/user/usercenterview/">查看我的制版间</a>
+				</li>
+				<li class="aside-nav-content my-pattern">
+					<!-- 侧栏导航内容控制器 -->
+					<div class="aside-nav-content-control">
+						<label class="upload js-upload" for="uploadIpt"><i></i>上传本地花型
+							<form class="js-upload-form">
+								<input type="file" class="js-upload-ipt" id="uploadIpt" name="material" accept="image/gif,image/jpeg,image/jpg,image/png">
+							</form>
+						</label>
+						<div class="batch js-batch"><!-- on -->
+							<div class="col">批量管理<i></i></div>
+							<div class="clear"><span class="fl cancel">取消</span><button class="fr confirm">确定删除</button></div>
+						</div>
+					</div>
+					<!-- 侧栏导航内容列表 --><!-- checkbtn-list-on -->
+					<ul class="aside-nav-content-list checkbtn-list js-aside-nav-Sb">
+						<!-- <li data-id=""><img src="" alt=""><button class="check-btn"></button></li> -->
+					</ul>
+					<!-- 无内容 -->
+					<div class="empty-list">
+						<img src="{$smarty.const.STATIC_URL2}/global/images/virtual/nav_empty2.png" alt="">
+						<span>你还没上传过花型</span>
+					</div>
+				</li>
+				<li class="aside-nav-content select-tpl custom-made">
+					<!-- 侧栏导航内容控制器 -->
+					<div class="aside-nav-content-control padding5"></div>
+					<!-- 侧栏导航内容列表 -->
+					<ul class="aside-nav-content-list simubtn-list js-aside-nav-Sb">
+						<!-- <li data-id=""><img src="" alt=""><button class="simu-btn">模拟成品</button></li> -->
+					</ul>
+					<!-- 无内容 -->
+					<div class="empty-list">
+						<img src="{$smarty.const.STATIC_URL2}/global/images/virtual/nav_empty3.png" alt="">
+						<span>你还没有定制过模板</span>
+						<a href="/topic/20180920/" target="_blank">立即定制模版</a>
+					</div>
+				</li>
+				<li class="aside-nav-content select-tpl async" data-id="1">
+					<!-- 侧栏导航内容控制器 -->
+					<div class="aside-nav-content-control">
+						<!-- <button class="btn on" data-id="">女装</button> -->
+						<!-- <button class="btn unfold js-classify-more">展开更多</button> -->
+						<!-- <button class="btn collapse js-classify-more">收起</button> -->
+					</div>
+					<!-- 侧栏导航内容列表 -->
+					<ul class="aside-nav-content-list simubtn-list js-aside-nav-Sb">
+						<!-- <li data-id=""><img src="" alt=""><button class="simu-btn">模拟成品</button></li> -->
+					</ul>
+					<!-- 无内容 -->
+					<div class="empty-list">
+						<img src="{$smarty.const.STATIC_URL2}/global/images/virtual/nav_empty5.png" alt="">
+						<span>加载失败</span>
+					</div>
+				</li>
+				<li class="aside-nav-content select-tpl async" data-id="5">
+					<!-- 侧栏导航内容控制器 -->
+					<div class="aside-nav-content-control">
+						<!-- <button class="btn on" data-id="">女装</button> -->
+						<!-- <button class="btn unfold js-classify-more">展开更多</button> -->
+						<!-- <button class="btn collapse js-classify-more">收起</button> -->
+					</div>
+					<!-- 侧栏导航内容列表 -->
+					<ul class="aside-nav-content-list simubtn-list js-aside-nav-Sb">
+						<!-- <li data-id=""><img src="" alt=""><button class="simu-btn">模拟成品</button></li> -->
+					</ul>
+					<!-- 无内容 -->
+					<div class="empty-list">
+						<img src="{$smarty.const.STATIC_URL2}/global/images/virtual/nav_empty5.png" alt="">
+						<span>加载失败</span>
+					</div>
+				</li>
+				<li class="aside-nav-content select-tpl async" data-id="2">
+					<!-- 侧栏导航内容控制器 -->
+					<div class="aside-nav-content-control">
+						<!-- <button class="btn on" data-id="">女装</button> -->
+						<!-- <button class="btn unfold js-classify-more">展开更多</button> -->
+						<!-- <button class="btn collapse js-classify-more">收起</button> -->
+					</div>
+					<!-- 侧栏导航内容列表 -->
+					<ul class="aside-nav-content-list simubtn-list js-aside-nav-Sb">
+						<!-- <li data-id=""><img src="" alt=""><button class="simu-btn">模拟成品</button></li> -->
+					</ul>
+					<!-- 无内容 -->
+					<div class="empty-list">
+						<img src="{$smarty.const.STATIC_URL2}/global/images/virtual/nav_empty5.png" alt="">
+						<span>加载失败</span>
+					</div>
+				</li>
+				<li class="aside-nav-content select-tpl async" data-id="3">
+					<!-- 侧栏导航内容控制器 -->
+					<div class="aside-nav-content-control">
+						<!-- <button class="btn on" data-id="">女装</button> -->
+						<!-- <button class="btn unfold js-classify-more">展开更多</button> -->
+						<!-- <button class="btn collapse js-classify-more">收起</button> -->
+					</div>
+					<!-- 侧栏导航内容列表 -->
+					<ul class="aside-nav-content-list simubtn-list js-aside-nav-Sb">
+						<!-- <li data-id=""><img src="" alt=""><button class="simu-btn">模拟成品</button></li> -->
+					</ul>
+					<!-- 无内容 -->
+					<div class="empty-list">
+						<img src="{$smarty.const.STATIC_URL2}/global/images/virtual/nav_empty5.png" alt="">
+						<span>加载失败</span>
+					</div>
+				</li>
+				<li class="aside-nav-content select-tpl async" data-id="100">
+					<!-- 侧栏导航内容控制器 -->
+					<div class="aside-nav-content-control">
+						<!-- <button class="btn on" data-id="">女装</button> -->
+						<!-- <button class="btn unfold js-classify-more">展开更多</button> -->
+						<!-- <button class="btn collapse js-classify-more">收起</button> -->
+					</div>
+					<!-- 侧栏导航内容列表 -->
+					<ul class="aside-nav-content-list simubtn-list js-aside-nav-Sb">
+						<!-- <li data-id=""><img src="" alt=""><button class="simu-btn">模拟成品</button></li> -->
+					</ul>
+					<!-- 无内容 -->
+					<div class="empty-list">
+						<img src="{$smarty.const.STATIC_URL2}/global/images/virtual/nav_empty5.png" alt="">
+						<span>加载失败</span>
+					</div>
+				</li>
+				<li class="aside-nav-content pattern">
+					<!-- 侧栏导航内容控制器 -->
+					<div class="aside-nav-content-control padding5"></div>
+					<!-- 侧栏导航内容列表 -->
+					<ul class="aside-nav-content-list js-aside-nav-Sb">
+						<!-- <li data-id=""><img src="" alt=""></li> -->
+					</ul>
+					<!-- 无内容 -->
+					<div class="empty-list">
+						<img src="{$smarty.const.STATIC_URL2}/global/images/virtual/nav_empty4.png" alt="">
+						<button>请重新加载</button>
+					</div>
+				</li>
+			</ul>
+			<a class="aside-nav-tpl-btn" href="/topic/20180920/" target="_blank">定制专属模板</a>
+		</div>
+		<!-- 侧栏控制器 -->
+		<div class="aside-control-box js-aside-control-box">
+			<button class="aside-control-collapse"><i></i></button>
+			<div class="aside-control-content js-aside-control-Sb">
+				<div class="aside-control-title"><span>选择部件</span></div>
+				<ul class="com-list js-com-list">
+					<!-- <li class="on" data-idx="0">部件名称</li> -->
+				</ul>
+				<div class="aside-control-title"><span>图案</span></div>
+				<ul class="loop-list js-loop-list">
+					<li data-type="0">无循环</li>
+					<li data-type="1" class="on">全循环</li>
+					<li data-type="2">水平循环</li>
+					<li data-type="3">垂直循环</li>
+				</ul>
+				<ul class="slider-list js-slider-list">
+					<li class="slider-scale js-slider-scale">
+						<div><span>大小</span><span class="text">x1.00</span></div>
+						<div>
+							<i class="sub"></i>
+							<div><button class="js-slider-scale-btn"></button></div>
+							<i class="add"></i>
+						</div>
+					</li>
+					<li class="slider-angle js-slider-angle">
+						<div><span>角度</span><span class="text">0°</span></div>
+						<div>
+							<i class="sub"></i>
+							<div><button class="js-slider-angle-btn"></button></div>
+							<i class="add"></i>
+						</div>
+					</li>
+					<li class="slider-panl js-slider-panl">
+						<div><span>水平平移</span><span class="text">x0</span></div>
+						<div>
+							<i class="sub"></i>
+							<div><button class="js-slider-panl-btn"></button></div>
+							<i class="add"></i>
+						</div>
+					</li>
+					<li class="slider-panv js-slider-panv">
+						<div><span>垂直平移</span><span class="text">x0</span></div>
+						<div>
+							<i class="sub"></i>
+							<div><button class="js-slider-panv-btn"></button></div>
+							<i class="add"></i>
+						</div>
+					</li>
+				</ul>
+				<div class="color-picker js-color-picker">
+					<div class="title">底色调整</div>
+					<div class="color-ribbon-box">
+						<canvas class="color-ribbon"></canvas>
+						<span></span>
+					</div>
+					<div class="color-swatch-box">
+						<canvas class="color-swatch"></canvas>
+						<span></span>
+					</div>
+					<div class="swatch-val">
+						<i class="js-straw"></i>
+						<span>RGB</span>
+						<input readonly type="text" maxlength="11" value="255,255,255">
+						<span>#</span>
+						<input readonly type="text" maxlength="6" value="FFFFFF">
+					</div>
+				</div>
+				<div class="info"><i></i><span>鼠标左键旋转图案素材、鼠标中键缩放图案素材，鼠标右键平移图案素材。</span></div>
+			</div>
+		</div>
+		{/if}
+		<!-- 模拟效果 -->
+		<div class="virtual-content-box js-virtual-content-box js-scroll-Sb">
+			<div class="virtual-content js-virtual-content">
+				<svg id="paper" width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"></svg>
+			</div>
+			{if $isPreview != 1}
+			<ul class="virtual-control js-virtual-control">
+				<li class="js-virtual-save"><i class="save"></i><span>保存至我的制版间</span></li>
+				<li class="js-virtual-download"><i class="download"></i><span>下载模拟效果图</span></li>
+				<li class="js-virtual-reset"><i class="reset"></i><span>重置</span></li>
+				<li class="js-virtual-viewpt nodrop"><i class="viewpt"></i><span>查看图案详情</span></li>
+			</ul>
+			{/if}
+		</div>
+	</div>
+	<!-- 选择关注的品类 -->
+	<div class="select-category-box js-select-category-box">
+		<!-- <i class="close"></i> -->
+		<div class="title">选择关注的品类</div>
+		<p>选择后，您在模拟成品时，将使用对应模版</p>
+		<ul>
+			<li data-id="1">服装</li>
+			<li data-id="2">箱包</li>
+			<li data-id="3">鞋子</li>
+			<li data-id="5">家纺</li>
+			<li data-id="100">其他</li>
+		</ul>
+		<button class="confirm">我决定好了</button>
+	</div>
+	<!-- 提示tip -->
+	<div class="tip-box">提示</div>
+	<!-- 对话框 删除 -->
+	<div class="dialog-box js-dialog-box">
+		<i class="close"></i>
+		<div class="title">确认要删除数据吗？</div>
+		<div class="btns">
+			<button class="cancel">取消</button>
+			<button class="confirm on">确定</button>
+		</div>
+	</div>
+	<!-- 对话框 添加至分组 -->
+	<div class="addmegroup-box js-addmegroup-box">
+		<i class="close"></i>
+		<div class="title">添加至我的分组</div>
+		<div class="ctn">
+			<label for="addMeGroupIpt">选择分组</label>
+			<input class="group-name" id="addMeGroupIpt" type="text" maxlength="20" placeholder="选择分组或创建新的分组">
+			<ul class="megroup-list js-megroup-list js-scroll-Sb">
+				<!-- <li data-id=""><span>女装图案</span><div class="btn">添加</div></li> -->
+			</ul>
+			<div class="empty">
+				<img src="{$smarty.const.STATIC_URL2}/global/images/user/prompt.png" alt="">
+				<span>还没有分组，立即新建</span>
+			</div>
+		</div>
+		<div class="btns clear">
+			<button class="confirm">+ 确认创建分组</button>
+		</div>
+	</div>
+	<!-- 对话框 移动至分组 -->
+	<div class="movegroup-box js-movegroup-box">
+		<i class="close"></i>
+		<div class="title">移动至我的分组</div>
+		<div class="ctn">
+			<label>选择分组</label>
+			<div class="select" id="moveGroupIpt">
+				<span>选择分组</span>
+				<ul class="movegroup-list js-movegroup-list js-scroll-Sb"></ul>
+			</div>
+		</div>
+		<div class="btns clear">
+			<button class="confirm">确定移动</button>
+		</div>
+	</div>
+	<!-- 对话框 上传上限 -->
+	<div class="dialog-box js-upload-limit-box">
+		<i class="close"></i>
+		<div class="title">可上传的素材数量已达上限</div>
+		<p>最多允许上传100张素材，请删除部分图片后再继续上传</p>
+		<div class="btns">
+			<button class="confirm on">知道了</button>
+		</div>
+	</div>
+	<!-- 对话框 分组上限 -->
+	<div class="dialog-box js-group-limit-box">
+		<i class="close"></i>
+		<div class="title">创建分组数量已达上限<br>您可删除部分分组后继续创建</div>
+		<div class="btns">
+			<button class="cancel">取消</button>
+			<button class="confirm on">确定</button>
+		</div>
+	</div>
+</div>
+{/block}
+
+{block name="other"}
+	<div class="detail-frame js-detail-frame">
+		<iframe src="" width="100%" height="100%"  frameborder="no" border="0" scrolling="no" allowtransparency="yes"></iframe>
+	</div>
+{/block}
+
+{block name="footer"}{/block}
+
+{block name="self"}
+	<script>
+		// 添加classList兼容
+		if (!("classList" in document.documentElement)) {
+			Object.defineProperty(HTMLElement.prototype, 'classList', {
+				get: function() {
+					var self = this;
+					function update(fn) {
+						return function(value) {
+							var classes = self.className.split(/\s+/g),
+								index = classes.indexOf(value);
+		
+							fn(classes, index, value);
+							self.className = classes.join(" ");
+						}
+					}
+		
+					return {
+						add: update(function(classes, index, value) {
+							if (!~index) classes.push(value);
+						}),
+		
+						remove: update(function(classes, index) {
+							if (~index) classes.splice(index, 1);
+						}),
+		
+						toggle: update(function(classes, index, value) {
+							if (~index)
+								classes.splice(index, 1);
+							else
+								classes.push(value);
+						}),
+		
+						contains: function(value) {
+							return !!~self.className.split(/\s+/g).indexOf(value);
+						},
+		
+						item: function(i) {
+							return self.className.split(/\s+/g)[i] || null;
+						}
+					};
+				}
+			});
+		}
+
+		// 添加getPixelColor方法
+		if (typeof HTMLElement == 'undefined'){
+			var HTMLElement = function(){};
+			if (window.webkit) document.createElement("iframe"); //fixes safari
+			HTMLElement.prototype = (window.webkit) ? window["[[DOMElement.prototype]]"] : {};
+		}
+		HTMLElement.prototype.getPixelColor = function(x, y){
+			var thisContext = this.getContext("2d");
+			var imageData = thisContext.getImageData(x, y, 1, 1);
+			// 获取该点像素数据
+			var pixel = imageData.data;
+			var r = pixel[0];
+			var g = pixel[1];
+			var b = pixel[2];
+			var a = pixel[3] / 255
+			a = Math.round(a * 100) / 100;
+			var rHex = r.toString(16);
+			r < 16 && (rHex = "0" + rHex);
+			var gHex = g.toString(16);
+			g < 16 && (gHex = "0" + gHex);
+			var bHex = b.toString(16);
+			b < 16 && (bHex = "0" + bHex);
+			var rgbaColor = "rgba(" + r + "," + g + "," + b + "," + a + ")";
+			var rgbColor = "rgb(" + r + "," + g + "," + b + ")";
+			var hexColor = "#" + rHex + gHex + bHex;
+			return {
+				rgba : rgbaColor,
+				rgb : rgbColor,
+				hex : hexColor,
+				r : r,
+				g : g,
+				b : b,
+				a : a
+			};
+		}
+
+	</script>
+	<script type="text/javascript" src="{$smarty.const.STATIC_URL3}/global/js/virtual/virtual.js?{$smarty.const.STATIC_CHANGE_TIME}"></script>
+{/block}

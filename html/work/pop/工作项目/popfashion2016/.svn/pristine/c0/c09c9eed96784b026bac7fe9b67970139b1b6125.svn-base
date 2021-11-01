@@ -1,0 +1,126 @@
+{extends file="layout.html"}
+{block name="main"}
+<div class="aboutUs payment">
+	<div class="ab_banner"><p>PAYMENT METHOD</p><span>付款方式</span></div>
+	<div class="wid1200">
+		<div class="about_content">
+			<div class="content_left fl payment_active">
+				{include file="./left_nav.html"}
+			</div>
+			<div class="content_right fl">
+				<h1 class="big_title">付款<span>方</span>式</h1>
+				<h3 class="small_title"><em></em><span>Payment method</span><em></em></h3>
+				<div class="content_x840">
+					<div class="table_cont">
+						<h4 class="pay_title">一、网上支付 PAY ONLINE</h4>
+						<table class="online_table" width="100%;">
+							<tbody>
+								<tr style="display:none">
+									<td width="25%" class="small_wid"><span>网银在线支付平台</span><br/>ONLINE BANK</td>
+									<td width="75%">
+										<p class="icon_p"><img src="{STATIC_URL1}/global/images/aboutus/unionpay1.jpg"/></p>
+										<p class="red_p">详细支付方式请询问客服<br/>电话：<span>4008-210-500</span><br/>Please infrom us in time after the payment has been settled<br/>Tel. no.：<span>0086-21-4008210500</span></p>
+										<p class="normal_p">（需信用卡或开通过网上支付功能的银行卡才可以进行网上付款Only for credit card or bank card which can pay on line）</p>
+									</td>
+								</tr>
+								<tr>
+									<td class="small_wid" width="25%"><span>扫描支付平台</span><br/>ONLINE BANK</td>
+									<td width="75%">
+										<div class="alipay_box fl" style="text-align:center;width:50%;">
+											<p>支付宝支付</p>
+											<img style="vertical-align: middle;" src="{STATIC_URL1}/global/images/aboutus/alipay2.jpg"/>
+											<p>扫描上图二维码</p>
+										</div>
+										<div class="w_chat_box fl" style="text-align:center;width:50%;">
+											<p>微信支付</p>
+											<img style="vertical-align: middle;" src="{STATIC_URL1}/global/images/aboutus/w_chat2.jpg"/>
+											<p>扫描上图二维码</p>
+										</div>										
+										<p class="call_us clear"><strong>扫描二维码付款</strong><br/>付款后，请及时通知我们，电话：<span>4008-210-500</span></p>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<h4 class="pay_title">二、公司银行帐户（对公汇款 & 转帐）</h4>
+						<table class="bank_table" width="100%">
+							<tbody>
+								<tr>
+									<th width="25%">银行</th>
+									<th width="25%">开户银行</th>
+									<th width="25%">账号</th>
+									<th width="25%">户名</th>
+								</tr>
+								<tr>
+									<td><img src="{STATIC_URL1}/global/images/aboutus/pf.gif"/>上海浦东发展银行</td>
+									<td>上海浦东发展银行<br/>汇金支行</td>
+									<td>96260078801700000236</td>
+									<td>逸尚创展(上海)科技有限公司</td>
+								<!-- </tr>
+									<tr>
+									<td><img src="{STATIC_URL1}/global/images/aboutus/ny.gif"/>中国农业银行</td>
+									<td>中国农业银行<br/>上海徐泾支行</td>
+									<td>03863100040073367</td>
+									<td>逸尚创展(上海)科技有限公司</td>
+								</tr> -->
+								<!-- <tr>
+									<td><img src="{STATIC_URL1}/global/images/aboutus/js.gif"/>中国建设银行</td>
+									<td>中国建设银行<br/>上海徐泾支行</td>
+									<td>31050183380000002305</td>
+									<td>逸尚创展（上海）科技有限公司</td>
+								</tr> -->
+								<tr>
+									<td><img src="{STATIC_URL1}/global/images/aboutus/zg.gif"/>中国银行</td>
+									<td>中国银行<br/>上海徐泾支行</td>
+									<td>449477507790</td>
+									<td>逸尚创展（上海）科技有限公司</td>
+								</tr>
+								<!-- <tr>
+									<td><img src="{STATIC_URL1}/global/images/aboutus/gs.gif"/>中国工商银行</td>
+									<td>中国工商银行<br/>上海新天地支行</td>
+									<td>1001201619300019320</td>
+									<td>逸尚创展(上海)科技有限公司</td>
+								</tr> -->
+								<tr>
+									<td colspan="4" class="last_td">请汇款后及时将汇款底单通过传真或邮件发至我司，以便及时入帐。( 传真号码：021-64083123 )</td>
+								</tr>
+							</tbody>
+						</table>
+						<h4 class="pay_title">三、上门收款</h4>
+						<table class="bank_table home_table" width="100%">
+							<tbody>
+								<tr>
+									<th width="20%">城市</th>
+									<th width="50%">区域限定</th>
+									<th width="30%">预约电话</th>
+								</tr>
+								<tr>
+									<td>上海市</td>
+									<td>上海外环以内区域、青浦区、闵行区等可派专人上门收款</td>
+									<td>客服热线：<span>4008-210-500</span></td>
+								</tr>
+								<tr>
+									<td>浙江省嘉兴市</td>
+									<td>桐乡、海宁、嘉兴等周边地区可派专人上门收款</td>
+									<td>客服热线：<span>4008-210-500</span></td>
+								</tr>				
+								<tr>
+									<td colspan="4" class="last_td">请将邮局汇款回执传真到我司。 ( 传真号码：021-64083123 )</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="other_text">
+						<p><i></i>客户交费确认</p>
+						<ul>
+							<li><i>1</i>请您汇款后将汇款底单传真到 021-64083123 或将底单扫描后发至 hb3288@hotmail.com；</li>
+							<li><i>2</i>传真件或扫描件请务必注明会员名称和用途，若注册过网站会员，请一并写上会员用户名；</li>
+							<li><i>3</i>我司收到有效传真件或扫描件即可为您入帐，开通相应的会员服务；</li>
+							<li><i>4</i>为了加快入帐步伐,建议您及时传真；对于不方便传真或扫描的客户，请在汇款后电话 ( 021-64082902 ) 通知我们进行查帐即可。</li>
+						</ul>
+					</div>
+				</div> 			
+			</div>
+		</div>
+	</div>
+</div>
+{/block}

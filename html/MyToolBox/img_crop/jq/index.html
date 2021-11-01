@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>图像裁剪</title>
+    <style>
+      #crop-box {
+        width: 500px;
+        height: 500px;
+        line-height: 500px;
+        text-align: center;
+        border: 1px solid #999;
+        user-select: none;
+        overflow: hidden;
+        position: relative;
+      }
+      .crop-mask {
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.3);
+        cursor: move;
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: none;
+      }
+      /* 裁剪框 star */
+      .cilp-view {
+        width: 0;
+        height: 0;
+        position: absolute;
+        left: 0;
+        top: 0;
+        outline: 1px solid rgba(51, 153, 255, 0.75);
+        cursor: move;
+        display: none;
+      }
+      .cilp-view-box {
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        overflow: hidden;
+      }
+      .cilp-view-box > img {
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+      .cilp-view span {
+        position: absolute;
+      }
+      .cilp-view .cilp-line {
+        background: rgba(51, 153, 255, 0.1);
+      }
+      .cilp-view .cilp-t,
+      .cilp-view .cilp-b {
+        width: 100%;
+        height: 5px;
+        left: 0;
+      }
+      .cilp-view .cilp-l,
+      .cilp-view .cilp-r {
+        width: 5px;
+        height: 100%;
+        top: 0;
+      }
+      .cilp-view .cilp-t {
+        top: -3px;
+        cursor: n-resize;
+      }
+      .cilp-view .cilp-b {
+        bottom: -3px;
+        cursor: s-resize;
+      }
+      .cilp-view .cilp-l {
+        left: -3px;
+        cursor: w-resize;
+      }
+      .cilp-view .cilp-r {
+        right: -3px;
+        cursor: e-resize;
+      }
+      .cilp-center {
+        width: 7px;
+        height: 7px;
+        left: 50%;
+        top: 50%;
+        margin-left: -4px;
+        margin-top: -4px;
+      }
+      .cilp-center::before {
+        content: "";
+        width: 100%;
+        height: 1px;
+        position: absolute;
+        left: 0;
+        top: 3px;
+        background: rgba(0, 0, 0, 0.2);
+      }
+      .cilp-center::after {
+        content: "";
+        width: 1px;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 3px;
+        background: rgba(0, 0, 0, 0.2);
+      }
+      .cilp-point {
+        width: 5px;
+        height: 5px;
+        background: rgba(51, 153, 255, 0.75);
+        position: absolute;
+      }
+      .cilp-nw,
+      .cilp-ne {
+        top: -3px;
+      }
+      .cilp-sw,
+      .cilp-se {
+        bottom: -3px;
+      }
+      .cilp-nw,
+      .cilp-sw {
+        left: -3px;
+      }
+      .cilp-ne,
+      .cilp-se {
+        right: -3px;
+      }
+      .cilp-nw {
+        cursor: nw-resize;
+      }
+      .cilp-ne {
+        cursor: ne-resize;
+      }
+      .cilp-sw {
+        cursor: sw-resize;
+      }
+      .cilp-se {
+        cursor: se-resize;
+      }
+      .cilp-n {
+        cursor: n-resize;
+      }
+      .cilp-s {
+        cursor: s-resize;
+      }
+      .cilp-w {
+        cursor: w-resize;
+      }
+      .cilp-e {
+        cursor: e-resize;
+      }
+      .cilp-n,
+      .cilp-s {
+        left: 50%;
+        margin-left: -3px;
+      }
+      .cilp-w,
+      .cilp-e {
+        top: 50%;
+        margin-top: -3px;
+      }
+      .cilp-w {
+        left: 0;
+      }
+      .cilp-e {
+        left: 0;
+      }
+      /* 裁剪框 end */
+    </style>
+  </head>
+  <body>
+    <input
+      type="file"
+      id="crop-ipt"
+      name="crop-ipt"
+      accept=".jpg, .jpeg, .png"
+    />
+    <div id="crop-box">
+      <img src="" alt="" id="image" />
+      <div class="crop-mask"></div>
+      <div class="cilp-view">
+        <span class="cilp-view-box">
+          <img src="" alt="" id="cilp-image" />
+        </span>
+        <span class="cilp-line cilp-t">
+          <span class="cilp-point cilp-n"></span>
+        </span>
+        <span class="cilp-line cilp-b">
+          <span class="cilp-point cilp-s"></span>
+        </span>
+        <span class="cilp-line cilp-l">
+          <span class="cilp-point cilp-w"></span>
+        </span>
+        <span class="cilp-line cilp-r">
+          <span class="cilp-point cilp-e"></span>
+        </span>
+        <span class="cilp-center"></span>
+        <span class="cilp-point cilp-nw"></span>
+        <span class="cilp-point cilp-ne"></span>
+        <span class="cilp-point cilp-sw"></span>
+        <span class="cilp-point cilp-se"></span>
+      </div>
+    </div>
+  </body>
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script>
+    //判断浏览器类型
+    var client = (function() {
+      var engine = {
+        ie: 0,
+        gecko: 0,
+        webkit: 0,
+        khtml: 0,
+        opera: 0,
+        ver: null
+      };
+      return {
+        engine: engine
+      };
+    })();
+
+    //滚轮事件兼容
+    var EventUtil = {
+      getEvent: function(event) {
+        return event ? event : window.event;
+      },
+      addHandler: function(element, type, handler) {
+        if (element.addEventListener) {
+          element.addEventListener(type, handler, false);
+        } else if (element.attachEvent) {
+          element.attachEvent("on" + type, handler);
+        } else {
+          element["on" + type] = handler;
+        }
+      },
+      getWheelDelta: function(event) {
+        var driect = null;
+        if (event.wheelDelta) {
+          driect =
+            client.engine.opera && client.engine.opera < 9.5
+              ? -event.wheelDelta
+              : event.wheelDelta;
+        } else {
+          driect = -event.detail * 40;
+        }
+        return driect > 0 ? 1 : -1;
+      }
+    };
+
+    // 鼠标button兼容
+    function getButton(e) {
+      if (e) {
+        return e.button;
+      } else if (window.event) {
+        switch (event.button) {
+          case 1:
+            return 0;
+          case 4:
+            return 1;
+          case 2:
+            return 2;
+        }
+      }
+    }
+  </script>
+  <script>
+    var cropBox = $("#crop-box"),
+      cropBoxLeft = cropBox.offset().left,
+      cropBoxTop = cropBox.offset().top,
+      cropBoxW = cropBox.width(),
+      cropBoxH = cropBox.height();
+    var cropIpt = $("#crop-ipt");
+    var image = $("#image");
+    var mask = $(".crop-mask");
+    var cilpView = $(".cilp-view");
+    var cilpImage = $("#cilp-image");
+    var selectSrc = ""; // 展示的图片地址
+    var files = []; // 选中的图片列表
+    var isMove = false; // 是否在区间内
+    var scal = 1; // 倍数
+    // 图片100%尺寸
+    var imgInitSize = {
+      w: 0,
+      h: 0
+    };
+    // 裁剪框框选信息
+    var cilpSelectMsg = {
+      x: 0,
+      y: 0,
+      w: 0,
+      h: 0,
+      isDown: false
+    };
+    // 裁剪框拖动信息
+    var cilpDropMsg = {
+      x: 0,
+      y: 0,
+      w: 0,
+      h: 0,
+      isDown: false
+    };
+
+    // 选择图片
+    cropIpt.change(function() {
+      files = this.files;
+      selectSrc = window.URL.createObjectURL(files[0]);
+      image.attr("src", selectSrc).load(function() {
+        var self = $(this);
+        imgInitSize.w = self.width();
+        imgInitSize.h = self.height();
+        if (imgInitSize.w > imgInitSize.h) {
+          self.css({ width: "100%", height: "" });
+        } else {
+          self.css({ width: "", height: "100%" });
+        }
+        imgInitSize.w = self.width();
+        imgInitSize.h = self.height();
+        cilpImage.attr("src", selectSrc).css({
+          width: imgInitSize.w,
+          height: imgInitSize.h
+        });
+      });
+    });
+
+    // 禁用右键
+    cropBox[0].oncontextmenu = function() {
+      return false;
+    };
+
+    // 解决图片拖动重影
+    $("img").mousedown(function(e) {
+      var e = e || window.event;
+      e.preventDefault();
+    });
+
+    // move区间
+    cropBox.hover(
+      function() {
+        isMove = true;
+      },
+      function() {
+        isMove = false;
+      }
+    );
+
+    // 框选
+    $(document)
+      .mousedown(function(e) {
+        var e = e || window.event;
+        // 是否有图、hover选中、左键点击
+        if (!files.length || !isMove || getButton(e) != 0) {
+          return;
+        }
+        if (
+          $(e.target).hasClass("cilp-view") ||
+          $(e.target).parents(".cilp-view").length
+        ) {
+          return;
+        }
+        // 边界判断
+        if (e.pageX < image.offset().left || e.pageY < image.offset().top) {
+          return;
+        }
+        if (
+          e.pageX > image.offset().left + imgInitSize.w * scal ||
+          e.pageY > image.offset().top + imgInitSize.h * scal
+        ) {
+          return;
+        }
+
+        cilpSelectMsg.isDown = true;
+        cilpSelectMsg.x = e.pageX - cropBoxLeft;
+        cilpSelectMsg.y = e.pageY - cropBoxTop;
+        cilpImage.css({
+          left: cilpSelectMsg.x * -1,
+          top: cilpSelectMsg.y * -1
+        });
+        cilpView
+          .css({
+            left: cilpSelectMsg.x,
+            top: cilpSelectMsg.y,
+            width: "",
+            height: ""
+          })
+          .show();
+        mask.show();
+      })
+      .mousemove(function(e) {
+        // 是否有图、hover选中、鼠标按下
+        if (!files.length /*  || !isMove */ || !cilpSelectMsg.isDown) {
+          return;
+        }
+
+        var e = e || window.event;
+        cilpSelectMsg.w = e.pageX - cropBoxLeft - cilpSelectMsg.x;
+        cilpSelectMsg.h = e.pageY - cropBoxTop - cilpSelectMsg.y;
+        // 图片边界判断
+        if (
+          cilpSelectMsg.x + cilpSelectMsg.w >
+          imgInitSize.w * scal + image.offset().left - cropBoxLeft
+        ) {
+          cilpSelectMsg.w =
+            imgInitSize.w * scal +
+            image.offset().left -
+            cropBoxLeft -
+            cilpSelectMsg.x;
+        }
+        if (
+          cilpSelectMsg.y + cilpSelectMsg.h >
+          imgInitSize.h * scal + image.offset().top - cropBoxTop
+        ) {
+          cilpSelectMsg.h =
+            imgInitSize.h * scal +
+            image.offset().top -
+            cropBoxTop -
+            cilpSelectMsg.y;
+        }
+        // 裁剪盒子边界判断
+        if (cilpSelectMsg.x + cilpSelectMsg.w > cropBoxW) {
+          cilpSelectMsg.w = cropBoxW - cilpSelectMsg.x;
+        }
+        if (cilpSelectMsg.y + cilpSelectMsg.h > cropBoxH) {
+          cilpSelectMsg.h = cropBoxH - cilpSelectMsg.y;
+        }
+
+        if (cilpSelectMsg.w > 0) {
+          cilpView.css({
+            width: cilpSelectMsg.w
+          });
+        }
+        if (cilpSelectMsg.h > 0) {
+          cilpView.css({
+            height: cilpSelectMsg.h
+          });
+        }
+      })
+      .mouseup(function() {
+        // 是否有图、鼠标按下
+        if (!files.length || !cilpSelectMsg.isDown) {
+          return;
+        }
+        // 边界判断
+        if (cilpView.width() < 6 || cilpView.height() < 6) {
+          cilpView.hide();
+          mask.hide();
+        }
+        cilpSelectMsg.isDown = false;
+      });
+
+    // 裁剪框拖动
+    cilpView
+      .mousedown(function(e) {
+        var e = e || window.event;
+        // 是否有图、hover选中、左键点击、框选鼠标按下
+        if (!files.length || !isMove || getButton(e) != 0 || cilpSelectMsg.isDown) {
+          return;
+        }
+        cilpDropMsg.isDown = true;
+        cilpDropMsg.x = e.pageX - cropBoxLeft;
+        cilpDropMsg.y = e.pageY - cropBoxTop;
+        console.log(cilpDropMsg);
+      })
+      .mousemove(function(e) {
+        // 是否有图、hover选中、左键点击、裁剪框拖动点击
+        if (
+          !files.length /*  || !isMove */ ||
+          cilpSelectMsg.isDown ||
+          !cilpDropMsg.isDown
+        ) {
+          return;
+        }
+        var e = e || window.event;
+        cilpDropMsg.w = e.pageX - cropBoxLeft - cilpDropMsg.x;
+        cilpDropMsg.h = e.pageY - cropBoxTop - cilpDropMsg.y;
+        console.log(cilpDropMsg)
+        // $(this).css({
+        //   left: $(this).offset().left + cilpDropMsg.w,
+        //   top: $(this).offset().top + cilpDropMsg.h
+        // });
+      })
+    //   .mouseup(function() {
+    //     cilpDropMsg.isDown = false;
+    //   });
+
+    // 滚动放大缩小
+    function handleMouseWheel(event) {
+      // 是否有图及选中
+      if (!files.length || !isMove) {
+        return;
+      }
+
+      event = EventUtil.getEvent(event);
+      var delta = EventUtil.getWheelDelta(event);
+      scal += delta * 0.1;
+
+      // 倍数边界判断
+      if (imgInitSize.w > imgInitSize.h) {
+        if (scal * imgInitSize.w < cilpView.width()) scal -= delta * 0.1;
+      } else {
+        if (scal * imgInitSize.h < cilpView.height()) scal -= delta * 0.1;
+      }
+
+      image.css({
+        transform: "scale(" + scal + ")"
+      });
+      cilpImage.css({
+        transform: "scale(" + scal + ")"
+      });
+    }
+    EventUtil.addHandler(document, "mousewheel", handleMouseWheel);
+    EventUtil.addHandler(document, "DOMMouseScroll", handleMouseWheel);
+  </script>
+</html>

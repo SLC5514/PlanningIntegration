@@ -1,0 +1,57 @@
+/*
+	#author		shuzhan
+	#date 		2017/11/07
+*/
+@charset "utf-8";
+
+body{background: #323940;}
+
+.footer{display: none !important;}
+
+.picture-search{padding: 40px 0 240px;position: relative;}
+
+.picture-similar{background: #42494f;width: 695px;height: 712px;margin: 0 auto;text-align: center;}
+
+.picture-similar>h2 {color: #fff;font-size: 18px;font-weight: normal;text-align:center;line-height: 38px;padding: 30px 0;}
+.picture-similar>.picture-box{padding-left: 62px;height: 540px;margin-bottom: 30px;}
+.picture-similar>.picture-box>.picture-set{float: left; background: #fff;height: 540px;width: 540px;position: relative;overflow: hidden;}
+
+
+.picture-similar>.picture-box>.picture-msg{float: left;}
+.picture-similar>.picture-box>.picture-msg>p {line-height: 14px;font-size: 12px;width: 16px;margin-left: 22px;color: #999;text-align: center;}
+.picture-similar>.picture-box>.picture-msg>p>img{width: 16px;margin-bottom: 10px;}
+.picture-similar>.picture-box>.picture-msg>.tool-div{margin-top: 10px;margin-left: 30px;}
+.picture-similar .tool-div>button{display: inline-block;*display: inline;*zoom: 1;width: 30px;height: 30px;margin-left: -14px;border-style: none;background-color: transparent;cursor: pointer;}
+.picture-similar .tool-div>button>img {width: 16px;}
+.picture-similar .tool-div>div {position: relative;width: 2px;height: 121px;margin-top: 10px;margin-bottom: 10px;background-color: #999;}
+
+.picture-similar .tool-div>div>button{position: absolute; bottom: 48px;left: -8px;display: block;width: 18px;height: 18px;border-style: none;background: url(../../images/similar/icon3.png) center no-repeat;cursor: pointer;}
+
+
+.picture-up{position: absolute;z-index: 2;top: 134px;left: 50%;margin-left: 384px; width: 200px;}
+.picture-up>p{font-size: 14px;line-height: 22px;color: #c8cacc;margin-bottom: 12px;}
+.picture-up>p>span{width: 20px;height: 20px;display: inline-block;*display: inline;*zoom: 1;background-position: -306px -240px;vertical-align: middle;}
+.picture-up>.up-img{overflow: hidden;font-size: 0; width: 180px;height: 180px;text-align: center;background: url(../../images/fabric-search/upload-init.jpg) center no-repeat #7a7e83;}
+
+
+
+/*相似图案*/
+.similar-box{text-align: center;position: fixed;z-index: 11;left: 0;bottom: 0;width: 100%;}
+.similar-box>a{display: inline-block;text-align: center; font-size: 14px; background: #d8b056;height: 40px;line-height: 40px;color: #fff; border-radius: 3px;width: 145px;margin:  0 auto;}
+.similar-box>a>span{display: inline-block;*display: inline;*zoom: 1;width: 16px;height: 16px;background-position: -420px -130px;vertical-align: middle;margin-right: 3px;}
+.similar-box>a:hover{background: #dba428;}
+
+.upload-box{position: relative; display: inline-block; width: 145px;height: 40px;margin-left: 18px;border-radius: 3px;cursor: pointer; line-height: 40px;text-align: center;font-size: 14px;color: #fff;background: #d8b056;}
+.upload-box>span{display: inline-block;*display: inline;*zoom: 1;width: 16px;height: 16px;background-position: -198px -82px;vertical-align: -2px;margin-right: 4px;}
+.upload-box:hover{background: #dba428;}
+
+
+
+/*切图框样式*/
+.cropper-view-box{outline: 1px solid #e4af63;}
+.cropper-line{background-color: #e4af63;}
+.cropper-point{background-color: #e4af63;opacity: 1;}
+
+
+
+

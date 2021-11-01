@@ -1,0 +1,286 @@
+{extends file="layout.html"}
+{block name="header"}{/block}
+{block name="footer"}{/block}
+{block name='selfcss'}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL1}/global/css/user/register.css?{STATIC_CHANGE_TIME}">
+
+{/block}
+{block name="self"}
+<script  type="text/javascript">
+	window._agl  =  window._agl  ||  [];
+	(function  ()  {
+			_agl.push(
+					['production',  '_f7L2XwGXjyszb4d1e2oxPybgD']
+			);
+			(function  ()  {
+					var  agl  =  document.createElement('script');
+					agl.type  =  'text/javascript';
+					agl.async  =  true;
+					agl.src  =  'https://fxgate.baidu.com/angelia/fcagl.js?production=_f7L2XwGXjyszb4d1e2oxPybgD';
+					var  s  =  document.getElementsByTagName('script')[0];
+					s.parentNode.insertBefore(agl,  s);
+			})();
+	})();
+</script>
+<script type="text/javascript" src="{$smarty.const.STATIC_URL3}/global/js/common/drag-slide.js?{$smarty.const.STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{$smarty.const.STATIC_URL3}/global/js/user/register.js?{$smarty.const.STATIC_CHANGE_TIME}"></script>
+{/block}
+{block name="main"}
+<div class="contant">
+	<div class="main register">		
+		<div class="con_width">
+			<div class="reg-content clearfix">
+				<div class="reg-images-ad fl">
+					<img src="{$aAds.0.sImagePath}">
+				</div>
+				<div class="reg-content-wrap fl">
+					<a href="/" target="_blank"><img src="{STATIC_URL2}/global/images/user/logo.png"/></a>					
+					<h2>欢迎加入 POP</h2>
+					<div class="reg-content-left fl">
+						<div class="VIP-tequan fl">							
+							<h3>会员专享权利</h3>
+							<div class="reg-intro">
+								<ul>
+									<li><i>•</i>尊贵VIP会员身份标识</li>
+									<li><i>•</i>网站高清大图，趋势分析报告无限量下载</li>
+									<li><i>•</i>一线品牌绝密订货会优先接收</li>
+									<li><i>•</i>智能设计工具优先体验</li>
+									<li><i>•</i>线下活动优先通知，名额预留</li>
+									<li><i>•</i>POP线上线下讲堂免费听</li>
+									<li><i>•</i>一对一售后小秘书答疑解惑</li>
+									<li><i>•</i>企业微信群服务</li>
+								</ul>
+							</div>
+							<p class="reg-contact">咨询热线:<span>4008-210-500</span></p>
+						</div>
+					</div>
+					<div class="reg-content-right fl">
+						<div class="reg-info">
+							<input type='hidden' name="RL" value='{$RL}'>
+							<input type='hidden' name="RID" value='{$RID}'>
+							<input type='hidden' name="UID" value='{$UID}'>
+							<input type='hidden' name="APM" value='{$APM}'>
+							<input type='hidden' name="itype" value='1'>
+							<input type="hidden" name="uid">
+							<input type="hidden" name="time">
+							<input type="hidden" name="hash">
+							<input type="hidden" name="aAreas" value="{$aAreas}">
+							<div class="switch-btn">
+								<a class="now-active" href="/member/register/" title="注册">注册</a>
+								<a href="/member/pagelogin/" title="登录">登录</a>
+							</div>
+							<ul>
+								<p class="errorbox"></p>
+								<li class="clearfix"><label for="usn">用户名</label><input type="text" name="username" id="usn" placeholder="登录时使用，建议使用您常用的字符" /><span class="msg"></span></li>
+								<li class="clearfix"><label for="cp">手机号</label><input class="js-only-number" type="text" name="cellphone" id="cp" maxlength="11" placeholder="请输入手机号" /><span class="msg"></span></li>
+								<!-- <li class="clearfix"><label for="tn">姓名</label><input type="text" name="truename" id="tn" placeholder="以便为您提供更好的服务" /><span class="msg"></span></li> -->
+								<!-- <li class="clearfix imgcaptcha-li">
+									<label>图片验证码</label>
+									<input type="text" name='imgcaptcha' placeholder="请输入图片验证码" maxlength="4"/>
+									<img src="{STATIC_URL2}/global/images/user/img_captcha.png" class="js-imgcaptcha-btn"/>
+									<span class="msg"></span>
+								</li> -->
+								<li class="clearfix veri-code">
+									<label>短信验证码</label>
+									<input type="text" name="verifyCode" placeholder="请输入手机验证码"/>
+									<input type="button" class="fr sms-button" id='sendVerifyCode' itype="1" value="获取验证码" data-cla=".js-puzzle-drag-content1" data-reg="1">
+									<span class="msg"></span>                                
+								</li>
+                                <li class="clearfix"><label for="pw">登录密码</label><div class="js-pwd-box"><input type="text" class="js-pwd-area" name="password" id="pw" placeholder="请输入登录密码" /></div><em class="js-pwd-display"></em><span class="msg"></span></li>
+                                <li class="city-reg js-city-reg-btn">港澳台用户？</li>
+								<li class="reg-btn border-none"><input type="button" name="register_submit" value="立即注册" /></li>
+								<li class="agree-fw border-none">提交注册，即同时同意<a href="javascript:void(0);" id="showAgree" class="on">“POP注册协议”</a></label></li>
+								<li class="agree-fw" style="border:none;text-align: left;">尊敬的用户，POP为了提供更方便、优质的服务，您现在登录注册的账号可在服装、鞋子、家纺、首饰、箱包、官网多个站点登录。</li>
+							</ul>
+						</div>
+					</div>
+				</div>					
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 完善资料 -->
+<!-- <div class="perfect">
+    <div class="perfect-main">
+        <div class="per-title">完善资料</div>
+        <div>
+            <span><i></i></span>
+            <input type="text"/>
+        </div>
+    </div>
+</div> -->
+<div class="shadow_black"></div>
+<div class="closeBtn" style="z-index:101"></div>
+<div class="alertLayer fuwu_alertLayer" style="z-index:101">
+	<div class="layerShadow"></div>
+	<div class="content">
+		<div class="top">
+			<h3>POP服务协议</h3>
+			<span class="xian"></span>
+		</div>
+		<div class="middle">
+			<div class="des">
+				<h5>一、接受条款</h5>
+				<p>通过首页进入"POP(全球)时尚网络机构"网站即表示您同意自己已经与逸尚创展（上海）科技有限公司<a href="https://www.pop136.com/rename_notice.php" target="_blank" style="color: #d8b056;">[更名启事]</a>(以下简称"本公司")订立本协议，且您将受本协议的条款和条件("条款")约束。本公司可随时自行全权决定更改"条款"。如"条款"有任何变更，本公司将在本网站上刊载公告，通知予您。如您不同意相关变更，必须停止使用"服务"。经修订的"条款"一经在本网站的公布后，立即自动生效。您登录或继续使用"服务"将表示您接受经修订的"条款"。除另行明确声明外，任何使"服务"范围扩大或功能增强的新内容均受本协议约束。除非经本公司的授权高层管理人员签订书面协议，本协议不得另行作出修订。</p>
+				<h5>二、您的资料</h5>
+				<p>"您的资料"是您在本网站上的注册资料，或者通过任何电子邮件形式向本公司提供的任何资料。您应对"您的资料"负全部责任，而本公司仅作为您在网上发布和刊登"您的资料"的被动渠道。但是，倘若本公司认为"您的资料"可能使本公司承担任何法律或道义上的责任，或可能使本公司全部或部分地失去本公司互联网服务客户，或你未在本网站规定的期限内登录或再次登录网站，则本公司可自行全权决定对"您的资料"采取本公司认为必要或适当的任何行动，包括但不限于删除该类资料。您特此保证，您对提交给本网站"您的资料"拥有全部权利。</p>
+				<h5>三、关于收费</h5>
+				<p>本网站之作品都是经过本公司设计师精心设计的产品，你在浏览或下载本网站的有偿服务区域时，本网站有收取服务费的权利。您通过网络向本公司获取有偿服务或接触本公司服务器而发生的应纳税赋，以及一切硬件、软件、服务及其他方面的费用均由您负责支付。本公司保留在无须发出通知的情况下，暂时或永久地更改或停止部分或全部服务的权利。</p>
+				<h5>四、注册义务：</h5>
+				<p>如果你在本网站注册，根据本网站注册网址所刊载的会员资料表格的要求，提供关于您或贵公司的真实、准确、完整和反映当前情况的资料；您应该维持并及时更新会员资料，使其保持真实、准确、完整和反映当前情况。倘若您提供任何不真实、不准确、不完整或不能反映当前情况的资料，或本网站有合理理由怀疑该等资料不真实、不准确、不完整或不能反映当前情况，本网站有权暂停或终止您的注册身份及资料，并拒绝您在目前或将来对"服务"(或其任何部分)以任何形式使用。如您代表一家公司或其他法律主体在本公司登记，则您声明和保证，您有权使该公司或其他法律主体受本协议"条款"约束。 在登记过程中，您将选择会员注册名和密码。您须自行负责对您的会员注册名和密码保密，且须对您在会员注册名和密码下发生的所有活动承担责任。您同意：(a)如发现任何人未经授权使用您的会员注册名或密码，或发生违反保密规定的任何其他情况，您会立即通知本网站；及(b)确保您在每个上网时段结束时，以正确步骤离开网站。本网站不能也不会对因您未能遵守本款规定而发生的任何损失或损毁负责。</p>
+				<h5>五、不作商业性利用</h5>
+				<p>您同意，您不得对任何资料作商业性利用，包括但不限于在未经本网站授权高层管理人员事先书面批准的情况下，复制本网站上展示的任何资料。</p>
+				<h5>六、终止或访问限制</h5>
+				<p>您同意，本网站可自行全权决定以任何理由(包括但不限于本网站认为您已违反本协议的字面意义和精神，或以不符合本协议的字面意义和精神的方式行事)终止您的"服务"密码、帐户(或其任何部分)或您对"服务"的使用，本网站同时可自行全权决定，在发出通知或不发出通知的情况下，随时停止提供"服务"或其任何部分。您同意，根据本协议的任何规定终止您使用"服务"之措施可在不发出事先通知的情况下实施，并承认和同意，本网站可立即使您的帐户无效，或撤销您的帐户以及在您的帐户内的所有相关资料和档案，和/或禁止您进一步接入该等档案或"服务"。账号终止后，本网站没有义务为您保留原账号中或与之相关的任何信息。</p>
+				<h5>七、违反规则会有什么后果？</h5>
+				<p>在不限制其他补救措施的前提下，发生下述任一情况，本公司可立即发出警告，暂时中止、永久中止或终止您的会员资格：(i)您违反本协议；(ii)本公司无法核实或鉴定您向本公司提供的任何资料；或(iii)您的账号和第三方共用。</p>
+				<h5>八、服务"按现状"提供</h5>
+				<p>本公司会尽一切努力使您在使用本网站过程中得到乐趣。遗憾的是，本公司不能随时预见到任何技术上的问题或其他困难。该等困难可能会导致数据损失或其他服务中断。为此，您明确理解和同意，您使用"服务"的风险由您自行承担。"服务"以"按现状"和"按可得到"的基础提供。</p>
+				<h5>九、赔偿</h5>
+				<p>您同意，因您违反本协议或经在此提及而纳入本协议的其他文件，包括把账号和密码借给第三方使用，及把我方精心设计的产品图片传播给第三方。</p>
+				<h5>十、链接</h5>
+				<p>由于本网站并不控制链接网站的资源，您承认并同意，本网站并不对该等外在网站或资源的可用性负责，且不认可该等网站或资源上或可从该等网站或资源获取的任何内容、宣传、产品、服务或其他材料，也不对其等负责或承担任何责任。您进一步承认和同意，对于任何因使用或信赖从此类网站或资源上获取的此类内容、宣传、产品、服务或其他材料而造成（或声称造成）的任何直接或间接损失，本网站均不承担责任。</p>
+				<h5>十一、转让</h5>
+				<p>本网站转让本协议无需经您同意。</p>
+				<h5>十二、仲裁</h5>
+				<p>因本协议或本公司服务所引起或与其有关的任何争议应提交上海市仲裁委员会并根据其适用的仲裁规则进行仲裁裁决。</p>
+			</div>
+		</div>
+		<div class="bottom">
+			<input class="noClick" type="button" name="agree" value="接受" />
+			<input type="button" name="cancel" value="取消"/>
+		</div>
+	</div>
+</div>
+<!-- <div class="shadow_black js-shadow-black" style="z-index:100"></div> -->
+<!-- <div class="phone-verification js-phone-verification" style="z-index:101">
+	<div class="veri-top">
+		<p class="veri-title">手机验证</p>
+		<a href="javascript:void(0);" class="veri-close js-veri-close"></a>
+	</div>
+	<div class="veri-list">
+		<input type="hidden" name="uid">
+		<input type="hidden" name="time">
+		<input type="hidden" name="hash">
+		<p class="msg-veri"></p>
+		<ul>
+			<li class="veri-phone clearfix"><label>手机号</label><input class="js-only-number" type="text" maxlength="11"/></li>
+			<li class="l_drag border-none js-l_drag">
+				<div class="drag-box js-drag-box">
+					<span>按住滑块，拖动到最右边</span>
+					<div class="bg js-bg">验证完成</div>
+					<p class="js-btn"></p>
+				</div>
+			</li>
+			<li class="clearfix veri-code"><label>验证码</label><input type="text" name="verifyCode"/><input type="button" class="fr" id='sendVerifyCode' itype="1" value="获取验证码"></li>
+			<li class="veri-success"><a href="javascript:void(0);" class="success">立即体验</a></li>
+		</ul>
+		<p class="reg-infor">验证即可免费浏览精品报告 查看时尚T台发布更多优质趋势咨询等你哦~</p>
+	</div>
+</div> -->
+<div class="supplement_black"></div>
+<div class="supplement">
+    <div class="per-title">完善资料</div>
+	<ul>
+		<li class="border">
+			<label for="linkman"><span>*</span>联系人：</label>
+			<input type="text" name="linkman" id="linkman" placeholder="请输入您的联系人" />
+		</li>
+		<li class="err linkman_err">请输入联系人</li>
+		<li class="border">
+			<label for="enterprise"><span>*</span>企业名称：</label>
+			<input type="text" name="enterprise" id="enterprise" placeholder="请输入您的企业名称" />
+		</li>
+		<li class="err enterprise_err">请输入企业名称</li>
+		<li class="border">
+			<label for="duty"><span>*</span>职务：</label>
+			<input type="text" name="duty" id="duty" placeholder="请输入您的职务" />
+		</li>
+		<li class="err duty_err">请输入职务</li>
+		<li class="industry" data-type="industry1">
+			<label for="">企业类型：</label>
+			<div>
+				<span>面料商</span>
+				<span>品牌企业</span>
+				<span>电商</span>
+				<span>设计师/个人工作室</span>
+				<span>批发商</span>
+				<span>买手/零售商</span>
+				<span>生产企业</span>
+				<span>学校/学生</span>
+				<span class="other">其他</span>
+				<input class="industry1_other_ipt" type="text" placeholder="请输入企业类型">
+			</div>
+		</li>
+		<li class="industry" data-type="industry2">
+			<label for="">行<span class="v-hide">空空</span>业：</label>
+			<div>
+				<span>男装</span>
+				<span>女装</span>
+				<span>童装</span>
+				<span>毛衫</span>
+				<span>牛仔</span>
+				<span>皮革皮草</span>
+				<span>运动</span>
+				<span>婚纱/礼服</span>
+				<span>内衣泳装</span>
+				<span>服饰品/配饰</span>
+				<span>图案</span>
+				<span>家居服</span>
+				<span>面料趋势</span>
+				<span class="other">其他</span>
+				<input class="industry2_other_ipt" type="text" placeholder="请输入您相关行业">
+			</div>
+		</li>
+		<li class="immediately_box">
+			<button class="immediately">立即体验</button>
+		</li>
+		<li class="err_msg"></li>
+	</ul>
+</div>
+
+<!-- 港澳台留资 -->
+<div class="city-reg-layer js-city-reg-layer">
+    <div class="close-city-area js-close-city-area"></div>
+    <h3>申请注册</h3>
+    <ul>
+        <li class="clearfix">
+            <label>*姓名</label>
+            <div class="input-box">
+                <input type="text" id="js-name-input" placeholder="请输入您的姓名"/>
+            </div>
+            <p class="msg-box js-name-msg">请输入姓名</p>
+        </li>
+        <li class="clearfix area-li-box js-area-li-box">
+            <label>*地区</label>
+            <div class="input-box">
+                <input type="text" id="js-area-input" class="area-input js-area-input" placeholder="请选择地区" readonly="readonly"/>
+                <i></i>              
+            </div>
+            <div class="area-downlist js-area-downlist">
+                <a data-val="1">香港<i></i></a>
+                <a data-val="2">澳门<i></i></a>
+                <a data-val="3">台湾<i></i></a>
+                <a data-val="4">其他<i></i></a>
+            </div>
+            <p class="msg-box js-area-msg">请选择地区</p>
+        </li>
+        <li class="clearfix">
+            <label>*联系方式</label>
+            <div class="input-box">
+                <input type="text" id="js-contact-input" placeholder="请输入您的联系方式"/>
+            </div>
+            <p class="msg-box js-contact-msg">请输入联系方式</p>
+        </li>
+        <li class="clearfix">
+            <label>*邮箱地址</label>
+            <div class="input-box">
+                <input type="text" id="js-email-input" placeholder="请输入您的邮箱地址"/>
+            </div>
+            <p class="msg-box js-email-msg">请输入邮箱地址</p>
+        </li>
+        <li class="area-reg-submit js-area-reg-submit"><a>提交</a></li>
+    </ul>
+</div>
+<div class="toast-reg-layer js-toast-reg-layer"></div>
+{/block}

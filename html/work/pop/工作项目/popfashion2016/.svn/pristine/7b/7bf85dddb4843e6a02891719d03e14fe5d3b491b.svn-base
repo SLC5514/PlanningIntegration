@@ -1,0 +1,55 @@
+{extends file="layout.html"}"
+
+{block name="title"}《APM》时尚快反指导书箱使用指南-POP服装趋势网{/block}
+{block name=keywords}趋势色彩,趋势图案,趋势工艺,趋势面料,趋势廓形,趋势细节{/block}
+{block name=description}《APM》时尚快反专家，资讯直达不错过，快时代设计研发解决方案。趋势、灵感、研发，从点到面，全面助力服饰研发，再有书箱搭配网站更有效。{/block}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/topic/20161012/css/index.css?{STATIC_CHANGE_TIME}">
+{/block}
+
+
+{block name="main"}
+   <div itemscope  class="container">
+       <div itemscope  class="header_ban">
+           <div itemscope  class="banner_layer"></div>
+           <div itemscope  class="layer">
+                <p itemprop="description">
+                <p itemprop="description">
+                    <img itemprop="thumbnail" src="{STATIC_URL2}/global/topic/20161012/images/banner_d.png"/>
+                </p>
+           </div>
+       </div>
+       <div itemscope  class="content1">
+           <div itemscope  class="con1_img">
+               <img itemprop="thumbnail" class="doctor" src="{STATIC_URL2}/global/topic/20161012/images/con1imgl.png"/>
+               <img itemprop="thumbnail" class="method" src="{STATIC_URL2}/global/topic/20161012/images/con12.png" />
+           </div>
+       </div>
+       <div itemscope  class="content2"></div>
+       <div itemscope  class="content3">
+           <p itemprop="description" class="conten3_img">
+               <img itemprop="thumbnail" src="{STATIC_URL2}/global/topic/20161012/images/content4.jpg" alt="趋势色彩" title="APM-趋势色彩"/>
+           </p>
+       </div>
+       <div itemscope   class="content4">
+           <p itemprop="description" class="conten3_img">
+               <img itemprop="thumbnail" src="{STATIC_URL2}/global/topic/20161012/images/gongyi.jpg" alt="趋势工艺" title="APM-趋势工艺"/>
+           </p>
+       </div>
+       <div itemscope  class="content6">
+           <p itemprop="description" class="conten3_img">
+               <img itemprop="thumbnail" src="{STATIC_URL2}/global/topic/20161012/images/content6.jpg" alt="趋势廓形" title="APM-趋势廓形"/>
+           </p>
+       </div>
+       <div itemscope   class="content7 ">
+           <p itemprop="description" class="conten3_img">
+               <i class="icon"></i>
+               <img itemprop="thumbnail" src="{STATIC_URL2}/global/topic/20161012/images/content7.jpg" alt="书箱搭配网站更有效" title="书箱精选/网站海量资材"/>
+           </p>
+       </div>
+   </div>
+
+{include file="topic/topic_layer.html"}
+{/block}
+

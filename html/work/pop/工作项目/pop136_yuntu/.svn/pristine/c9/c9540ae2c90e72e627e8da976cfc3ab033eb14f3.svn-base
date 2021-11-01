@@ -1,0 +1,340 @@
+{extends file="layout.html"}
+{block name="selfcss"}
+	<link rel="stylesheet" type="text/css" href="{$smarty.const.STATIC_URL1}/global/css/home/home.css?{$smarty.const.STATIC_CHANGE_TIME}">
+{/block}
+{block name="main"}
+<div class="content">
+	<div class="home-section js-content-section">
+		<!-- 智能设计下线提示 -->
+		{if $is_show_tip}
+		<div class="intelligent-tips js-intelligent-tips">智能设计模块已下线，若对你的使用带来不便，请联系你的专属小秘书，或拨打4008-210-662<a href="javascript:void(0);" class="js-know-btn">我知道了</a></div>
+		{/if}
+		<!-- 智能设计下线提示 -->
+		<div class="section">
+			<ul class="product-nav clear js-product-nav">
+				<li class="bg3 now-light">
+					<a href="/patternlibrary/" title="图案库">
+						<div class="txt-div pattern-txt-div">
+							<div class="circle-div">
+								<div>
+									<span class="icon"></span>
+									<img src="{$smarty.const.STATIC_URL2}/global/images/home/icon3.png" alt="icon"></div>
+								<span></span>
+							</div>
+							图案库<br/>Pattern Library
+							{if $user_type!="VIP"}
+							<div class="ordinary-user-div"></div>
+							{/if}
+							<p>超过27万张图案素材，12万矢量图，<br/>可供客户无限次的下载使用。并且每天都会持<br/>续更新 </p>
+						</div>
+						<div class="h-bg"></div>
+					</a>
+				</li>
+				<li class="bg2 now-light">
+					<a href="/similarpatterns/" title="图搜图">
+						<div class="txt-div">
+							<div class="circle-div">
+								<div>
+									<span class="icon"></span>
+									<img src="{$smarty.const.STATIC_URL2}/global/images/home/icon2.png" alt="icon"></div>
+								<span></span>
+							</div>
+							图搜图<br/>Similar Patterns
+							{if $module_power["yuntu:similar"][1]!=-1}
+							<div class="ordinary-user-div">剩余<span>{$module_power["yuntu:similar"][1]}</span>次体验机会</div>
+							{/if}
+							<p>上传的本地图案，或在图案库选取的图案，<br/>都能快速找到相匹配的图案</p>
+						</div>
+						<div class="h-bg"></div>
+					</a>
+				</li>
+				<li class="bg1 now-light">
+					<a href="/virtualtryon/virtualspl/" title="实景模拟">
+						<div class="txt-div">
+							<div class="circle-div">
+								<div>
+									<span class="icon"></span>
+									<img src="{$smarty.const.STATIC_URL2}/global/images/home/icon1.png" alt="icon"></div>
+								<span></span>
+							</div>
+							实景模拟<br/>All Occasion Styling
+							{if $module_power["yuntu:virtualtry"][1]!=-1}
+							<div class="ordinary-user-div">剩余<span>{$module_power["yuntu:virtualtry"][1]}</span>次体验机会</div>
+							{/if}
+							<p>通过2D贴图方式，模拟图案在实物生活场景中<br/>的效果，支持花型尺寸，循环等操作</p>
+						</div>
+						<div class="h-bg"></div>
+					</a>
+				</li>
+				<li class="bg0 now-light" style="margin-right: 0;">
+					<a href="/simulate3d/" title="3D模拟成品">
+						<div class="txt-div pattern-txt-div">
+							<div class="circle-div">
+								<div>
+									<span class="icon"></span>
+									<img src="{$smarty.const.STATIC_URL2}/global/images/home/fin-cion.png" alt="icon">
+								</div>
+								<span></span>
+							</div>
+							3D模拟成品<br/>Pattern Simulation
+							{if $user_type!="VIP"}
+							<div class="ordinary-user-div"></div>
+							{/if}
+							<p>通过3D模型看图案花型面料在实物上的效果，<br/>支持更换主料辅料</p>
+						</div>
+						<div class="h-bg"></div>
+					</a>
+					<!-- hover提示 -->
+					{if !in_array(1,$templete_2d_sites) && !empty($templete_2d_sites)}
+						<div class="ord-user">
+							<!-- 非服装模板的历史用户 -->
+							<div class="old-user">
+								<div class="old-user-btn">功能升级中，敬请期待</div>
+							</div>
+						</div>
+					{else}
+						{if empty($lastPowerApply3D)}
+							{if $user_type!="VIP"}
+								<!-- 普通用户提示 -->
+								<div class="ord-user">
+									<div class="user">
+										<!-- <div class="video-btn js-video-btn">观看3D模拟成品视频</div> -->
+										<div class="trial-btn" style="margin-top: 210px;">
+											<span>申请免费试用</span>
+											<div class="qq-box">
+												<span>客服热线<br>4008-210-662</span>
+												<div class="qq-btn js-contact-qq-btn">QQ咨询</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							{else}
+								<!-- 服装模板的VIP用户申请免费试用 -->
+								<div class="ord-user">
+									<div class="trial">
+										<div class="tri-btn js-vip-btn">申请免费试用</div>
+									</div>
+								</div>
+							{/if}
+						{else}
+							{if $lastPowerApply3D['isTrial']==1}
+								{if isset($lastPowerApply3D['dEndTime']) && strtotime($lastPowerApply3D['dEndTime'])>time()}
+									<div class="ord-user vip-action">
+										<a href="/simulate3d/" title="3D模拟成品" id="trial"></a>
+										<!-- 服装模板的VIP用户免费试用到期时间 -->
+										<div class="vip-btn js-trial-btn">升级为正式VIP
+											<span>剩余试用时间：{ceil((strtotime($lastPowerApply3D['dEndTime'])-time())/86400)}天</span>
+										</div>
+									</div>
+								{else}
+									<!-- 试用到期 -->
+									<div class="ord-user">
+										<div class="expire" style="display: block;">
+											<div class="expire-btn js-trial-btn">升级为正式VIP
+												<span>试用已过期</span>
+											</div>
+										</div>
+									</div>
+								{/if}
+							{/if}
+						{/if}
+					{/if}
+				</li>
+			</ul>
+			<!-- 开启vip -->
+			{if $user_type!="VIP"}
+			<div class="upgrade-vip">
+				<h3>开启云图无限使用模式</h3>
+				<a href="/topic/enterprise_service/" title="查看详情" target="_blank">咨询了解企业VIP特权</a>
+			</div>
+			{/if}
+			<!-- 蒙层 -->
+			<div class="mongolia" style="display: none;"></div>
+			<!-- 开通VIP弹层 -->
+			<div class="open-vip js-open-vip" style="display: none;">
+				<div class="box-head">开通试用</div>
+				<div class="box-dec">此功能为新增付费功能，您是VIP会员，现申请可限时免费体验{$canTrailTime3D}，<br/>后续仍需使用，可以联系您的专属客服！</div>
+				<div class="box-btn">
+					<span class="cancel js-close">取消</span>
+					<span class="confirm js-confirm">确认开通</span>
+				</div>
+			</div>
+			<!-- 开通成功 -->
+			<div class="vip-success js-vip-success" style="display: none;">
+				<img src="{$smarty.const.STATIC_URL2}/global/images/home/success.png"/>
+				<span>开通成功</span>
+			</div>
+			<!-- 升级为正式VIP -->
+			<div class="upg-vip js-upg-vip" style="display: none;">
+				<div class="upg-head">升级为正式VIP</div>
+				<div class="upg-dec">为保证您的专属客服能够以最快的速度联系到您，请您如实填写信息</div>
+				<div class="upg-tab">
+					<div class="name">
+						<span><i>*</i>姓名</span>
+						<input type="text" id="upg_name"/>
+						<label>请输入您的姓名</label>
+					</div>
+					<div class="phone">
+						<span><i>*</i>手机号</span>
+						<input type="text" id="upg_phone" maxlength="11"/>
+						<label>请输入您的手机号</label>
+					</div>
+				</div>
+				<div class="upg-btn js-upg-btn">提交</div>
+				<div class="close js-close"></div>
+			</div>
+			<!-- 推广视频弹层 -->
+			<div class="video-mongolia" style="display: none;"></div>
+			<div class="video-layer" style="display: none;">
+				<div class="video-main">
+					<!-- <video src="/global/images/home/cesi.mp4" controls="controls" width="1080"></video> -->
+				</div>
+				<div class="close js-close"></div>
+				<div class="video-trial">
+					<span class="js-trial-btn">申请免费试用</span>
+					<div class="layer">
+						<span>客服热线<br/>4008-210-662</span>
+						<div class="qq-btn js-contact-qq-btn">QQ咨询</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{/block}
+{block name="self"}
+<script type="text/javascript" charset="utf-8">
+	require(["jquery","general","msg"],function(jquery,general,msg){
+		$(function(){
+			var def={
+				content_def_height:0,
+				loading_ele:$(".js-loading-div"),                                                                   //加载等待
+				bg_ele:$(".js-bg-div")                                                                              //加载等待
+			};
+			def.content_def_height=$(".js-content-section").height();
+			setSty(def.content_def_height);
+
+			def.loading_ele.fadeOut(200);
+			def.bg_ele.fadeOut(400);
+			$('.js-close').click(function(){
+				$('.mongolia').hide();
+				$('.js-open-vip').hide();
+				$('.js-upg-vip').hide();
+				$('.video-mongolia').hide();
+				$('.video-layer').hide();
+			});
+
+			$(".js-product-nav>li").on("mouseenter",function(){
+				$(this).siblings("li").removeClass("now-light");
+			}).on("mouseleave",function(){
+				$(".js-product-nav>li").addClass("now-light");
+			});
+			$('.js-video-btn').click(function(){
+				$('.video-mongolia').show();
+				$('.video-layer').show();
+			})
+			$('.js-vip-btn').click(function(){
+				$('.js-open-vip').show();
+				$('.mongolia').show();
+			})
+			$('.js-confirm').click(function(){
+				general.fn.subAjax({
+					url:"/simulate3d/opentrial",
+					type:"get",
+					ctp:"application/x-www-form-urlencoded",
+					success:function(data){
+						if(data.code=="0"){
+							$('.js-open-vip').hide();
+							$('.js-vip-success').show();
+							setTimeout(function() {
+								$('.js-vip-success').hide();
+								$('.mongolia').hide();
+								window.location.reload();
+							}, 1200);
+						}
+					},
+					error:function(data){
+						
+					}
+				});
+			})
+			$('.js-trial-btn').click(function(){
+				$('.js-upg-vip').show();
+				$('.mongolia').show();
+				$('.video-mongolia').hide();
+				$('.video-layer').hide();
+			})
+			var sta_name,sta_phone=true;
+			$('#upg_name').blur(function(){
+				var val=$(this).val();
+				if(val==''){
+					sta_name=true;
+					$(this).next().show();
+				}else{
+					sta_name=false;
+					$(this).next().hide();
+				}
+			});
+			$('#upg_phone').blur(function(){
+				var val=$(this).val();
+				if(val==''){
+					sta_phone=true;
+					$(this).next().show();
+				}else{
+					sta_phone=false;
+					$(this).next().hide();
+				}
+			});
+			$('.js-upg-btn').click(function(){
+				var upg_name=$('#upg_name').val();
+				var upg_phone=$('#upg_phone').val();
+				if(!sta_name && !sta_phone){
+					submitFun(upg_name,upg_phone);
+				}
+			})
+			function submitFun(real_name,cellphone){
+				real_name = encodeURIComponent(real_name);
+				general.fn.subAjax({
+					url:"/simulate3d/applytrial?real_name="+real_name+"&cellphone="+cellphone,
+					type:"get",
+					ctp:"application/x-www-form-urlencoded",
+					success:function(data){
+						if(data.code=="0"){
+							msg.msg({ "txt":"提交成功" },1200)
+							$('.js-upg-vip').hide();
+							$('.mongolia').hide();
+						}
+					},
+					error:function(data){
+						
+					}
+				});
+			}
+			
+
+			$(window).on('resize',function(){
+				general.fn.throttle(setSty,null,[def.content_def_height]);
+			});
+			function setSty(nh){
+				var wh=document.documentElement.clientHeight || document.body.clientHeight;
+				if(wh>nh+159+256){
+					$(".js-content-section").height(wh-159-256+"px");
+				}
+			};
+			
+			// 只能设计下线
+			$(".js-know-btn").on("click", function() {
+				$.ajax({
+					url:'/recommend/save_show_tip_user/?'+Math.random(),
+					type:'GET',
+					success:function(){
+						$(".js-intelligent-tips").hide();
+					}
+				});
+				
+			})
+		});
+	});
+</script>
+
+{/block}

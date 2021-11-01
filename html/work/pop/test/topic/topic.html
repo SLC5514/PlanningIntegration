@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" href="./favicon.ico" />
+  <title>test</title>
+  <style>
+    html,body{margin: 0;padding: 0;}
+  </style>
+</head>
+<body>
+  
+</body>
+<script src="../jquery.min.js"></script>
+<!-- <script src="../greensock-js/src/minified/TweenMax.min.js"></script> -->
+<script src="../pixi.min.js"></script>
+<!-- <script src="./main.js"></script>
+<script src="./analytics.js"></script>
+<script src="./linkid.js"></script>
+<script src="./checker.js"></script> -->
+<script>
+  let type = "WebGL"
+  if(!PIXI.utils.isWebGLSupported()){
+    type = "canvas"
+  }
+  PIXI.utils.sayHello(type)
+  //Aliases
+  // let Application = PIXI.Application,
+  //   loader = PIXI.loader,
+  //   resources = PIXI.loader.resources,
+  //   Sprite = PIXI.Sprite;
+
+  // let app = new PIXI.Application({
+  //   width: window.innerWidth,         // default: 800
+  //   height: window.innerHeight,        // default: 600
+  //   antialias: true,    // default: false
+  //   transparent: false, // default: false
+  //   resolution: 1       // default: 1
+  // });
+
+  // document.body.appendChild(app.view);
+  
+  // app.renderer.backgroundColor = 0x061639;
+  // app.renderer.view.style.position = "absolute";
+  // app.renderer.view.style.display = "block";
+  // app.renderer.autoDensity = true;
+  // 开启交互
+  // app.stage.interactive = true;
+  // var cat = PIXI.Sprite.from('./reed_ginventory_cover.jpg');
+  // cat.anchor.set(0.5);
+  // drawBg();
+  // var container = new PIXI.Container();
+  // container.addChild(cat);
+  // app.stage.addChild(container);
+  // var thing = new PIXI.Graphics();
+  // drawMask();
+  // app.stage.addChild(thing);
+  // cat.mask = thing;
+
+  // PIXI.Loader.shared
+  // .add("./reed_ginventory_cover.jpg")
+  // .load(setup);
+
+  // 绘制背景图
+  // function drawBg() {
+  //   cat.x = app.renderer.width / 2;
+  //   cat.y = app.renderer.height / 2;
+  // }
+
+  // 绘制遮罩
+  // function drawMask() {
+  //   thing.clear();
+  //   thing.beginFill(0xE7AE00, 1);
+  //   thing.drawRect(0, 0, window.innerWidth, window.innerHeight);
+  //   thing.endFill();
+  // }
+
+  // 雪碧图
+  // function setup() {
+  //   let texture = PIXI.utils.TextureCache["./reed_ginventory_cover.jpg"];
+  //   let rectangle = new PIXI.Rectangle(850, 120, 400, 150);
+  //   texture.frame = rectangle;
+  //   let rocket = new PIXI.Sprite(texture);
+  //   rocket.x = 400;
+  //   rocket.y = 100;
+  //   app.stage.addChild(rocket);
+  //   app.renderer.render(app.stage);
+  // }
+  /*  */
+  window.onresize = function() {
+    app.renderer.resize(window.innerWidth, window.innerHeight);
+    // drawBg();
+    // drawMask();
+  }
+
+  //创建一个 Pixi应用
+  let app = new PIXI.Application({
+    width: window.innerWidth,         // default: 800
+    height: window.innerHeight,        // default: 600
+    antialias: true,    // default: false
+    transparent: false, // default: false
+    resolution: 1       // default: 1
+  });
+  //获取舞台
+  let stage = app.stage;
+  //获取渲染器
+  // let renderer = app.renderer;
+  //把 Pixi 创建的 canvas 添加到页面上
+  document.body.appendChild(app.view);
+  app.renderer.backgroundColor = 0xE7AE00;
+  app.renderer.view.style.position = "absolute";
+  app.renderer.view.style.display = "block";
+  app.renderer.autoDensity = true;
+
+  //需要加载的图片的地址
+  let imgURL = "./reed_ginventory_cover.jpg";
+  // //加载图像，加载完成后执行setup函数 
+  PIXI.Loader.shared.add(imgURL).load(setup);
+
+  var maskType = false;
+  var maskPlace = {
+    p1: [
+      {
+        w: 300,
+        h: 150,
+        x: 500,
+        y: 300
+      }
+    ]
+  }
+  function setup() {
+    //创建精灵
+    let Pikachu = new PIXI.Sprite(PIXI.Loader.shared.resources[imgURL].texture);
+
+    //创建一个正方形对象
+    let rectangle = new PIXI.Graphics();
+    rectangle.beginFill(0x66CCFF);
+    rectangle.drawRect(0, 0, 300, 100);
+    rectangle.endFill();
+    rectangle.x = 300;
+    rectangle.y = 300;
+
+    //给精灵设置蒙版
+    Pikachu.mask = rectangle;
+
+    //把精灵添加到舞台上
+    stage.addChild(Pikachu);
+    //把正方形对象添加到舞台上
+    stage.addChild(rectangle);
+    
+    var vx = 5;
+    function play(Pikachu, type) {
+      if (type) {
+        Pikachu.vx = Pikachu.x < 340 ? vx * 0.9 : vx;
+        vx = Pikachu.vx;
+        Pikachu.x -= Pikachu.vx;
+      } else {
+        Pikachu.vx = Pikachu.x > 460 ? vx * 0.9 : vx;
+        vx = Pikachu.vx;
+        Pikachu.x += Pikachu.vx;
+      }
+      console.log(vx)
+    }
+
+    var mouseType = 0;
+    app.ticker.add(function () {
+      if (mouseType == 1) {
+        if(rectangle.x < 500 && vx >= 0.05) {
+          play(rectangle)
+        }
+      } else if (mouseType == 2) {
+        if(rectangle.x > 300 && vx >= 0.05) {
+          play(rectangle, true)
+        }
+      }
+    });
+/*  */
+  var eventHandle = {
+    getEvent: function(event){
+      return event || window.event;
+    },
+    addEvent: function(element, type, handler){
+      if(element.addEventListener){
+        element.addEventListener(type, handler, false);
+      }else if(element.attachEvent){
+        element.attachEvent('on'+type, handler);
+      }else{
+        element['on'+type] = handler;
+      }
+    },
+    getWheelDelta: function(event){
+        return event.wheelDelta ? event.wheelDelta : (-event.detail)*40;
+    }
+  }
+
+  function mouseHandle(event){
+    event = eventHandle.getEvent(event);
+    var delta = eventHandle.getWheelDelta(event);
+    console.log( delta )
+    if (delta < 0) {
+      vx = 5;
+      mouseType = 1;
+    } else {
+      vx = 5;
+      mouseType = 2;
+    }
+  }
+
+  eventHandle.addEvent(document, 'mousewheel', mouseHandle);
+  eventHandle.addEvent(document, 'DOMMouseScroll', mouseHandle);
+  }
+</script>
+</html>

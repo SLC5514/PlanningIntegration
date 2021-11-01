@@ -1,0 +1,344 @@
+{extends file="layout.html"}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL1}/global/css/pattern/pattern.css?{STATIC_CHANGE_TIME}">
+{/block}
+{block name="main"}
+<!-- 新的头部 -->
+<div class="report-hd">
+    <div class="head-top-static js-head-top clearfix">
+        <div class="head-t-content clearfix">
+            <div class="head-logo fl js-head-logo">
+                <a href="https://www.pop-fashion.com/" rel="nofollow" title="POP服装趋势"><img src="{STATIC_URL2}/global/images/new_common/nav_logo.png" alt="POP服装趋势"></a>					
+            </div>
+            <h2 class="fl">模拟成品</h2>
+            <div class="user-contain fr">
+                {if $account eq '' && $accountShow neq 'true'}
+                <div class="user-box fl">
+                    <a href='javascript:void(0);' class='loginLayer' rel="nofollow" title="登录"><span class="lg"></span>登录</a>
+                    <i></i>
+                    <a class="reg-btn" href="/member/register/" rel="nofollow" title="注册"><span class="rg"></span>注册</a>
+                </div>
+                {else}
+                <div class="login-user-box fl js-returnLi">
+                    <a><em></em><span>{$account}</span></a>
+                    <div class="login-success-section js-forUl {if $P_UserType eq 1 || $P_UserType eq 2}login-success-vip{/if}">
+                        <div class="login-suc-head">
+                            <div class="login-suc-head-t clearfix">
+                                {if $P_UserType eq 1}
+                                <p class="fl">{$account}<span><i class="common-icon"></i>管理员账号</span></p>                                
+                                {else if $P_UserType eq 2}
+                                <p class="fl">{$account}<span><i class="common-icon"></i>设计师账号</span></p>
+                                {else if $P_UserType eq 3}
+                                <p class="fl">{$account}<span>试用账号</span></p>
+                                {else}
+                                <p class="fl">{$account}<span>普通用户</span></p>
+                                {/if}
+                                {if $issetNewMessage}
+                                <a class="fl infor-account common-icon" href='/member/message/'><span class="ix"></span></a>
+                                {/if}
+                                <a class="fr signout-account js-signOut">退出</a>
+                                {if $canChangLoginAccount}
+                                    {if $P_AccountType=="main"}
+                                    <a class="fr switch-account js-switch" data-type="1"><i class="common-icon"></i>切换</a>                                    
+                                    {else}
+                                    <a class="fr switch-account js-switch" data-type="2"><i class="common-icon"></i>切换</a>
+                                    {/if}
+                                {/if}                                
+                            </div>
+                            {if $P_UserType eq 1}
+                            <p>用VIP主账号，可管理多个子账号哦~<a href="/member/associate/" target="_blank">管理子账号</a></p>
+                            {else if $P_UserType eq 2}
+                            <p>设计师账号，可探索个性化推荐内容</p>
+                            {else if $P_UserType eq 3}
+                            <p>了解潮流趋势 / 服饰研发必备平台</p>
+                            {else}
+                            <p>升级成VIP之后，才能查看网站全部内容</p>
+                            {/if}                            
+                        </div>
+                        <div class="login-suc-content">
+                            <div class="login-suc-link">
+                                <a class="collect-link" href="/member/mycollect/" target="_blank"><span><i></i></span>我的收藏</a>
+                                <a class="history-link" href="/member/myHistory/4/" target="_blank"><span><i></i></span>浏览历史</a>
+                                <a class="workbench-link" href="/member/workbench/" target="_blank"><span><i></i></span>工作室</a>
+                                <a class="color-link" href="/smarttrends/colordata/" target="_blank"><span><i></i></span>色彩分析</a>
+                                <a class="top-link" href="/smarttrends/topstyles/" target="_blank"><span><i></i></span>TOP榜单</a>
+                                <a class="recommend-link" href="/patterns/patternRecommend/" target="_blank"><span><i></i></span>个性推荐</a>
+                            </div>
+                            {if $P_UserType == 4}
+                            <a href="javascript:void(0);" class="js-contact-qq-btn open-account-vip">开通VIP</a>
+                            {/if}
+                        </div>
+                    </div>
+                </div>
+                <!-- 切换账号验证弹层 -->
+                <div class="switch-box js-switch-box" style="display: none;">
+                    <div class="loginClose js-loginClose"></div>
+                    <div class="login-title">
+                        <span>请先进行身份验证</span>
+                    </div>
+                    <div class="login-main">
+                        <p class="errorbox errorbox3" style="top:0px;"></p>
+                        <ul>
+                            <li><input class="js-account" type="text" placeholder="请输入手机号"/></li>
+                            <li>
+                                <input class="js-switch-code" type="text" placeholder="请输入验证码"/>
+                                <span class="code-btn js-code-btn1">获取验证码</span>
+                            </li>
+                            <li class="l_drag border-none" style="padding-top: 15px;border: none;position: relative;">
+                                <div class="code_btn js-click-btn" data-cla=".js-puzzle-drag-content5">点击按钮完成图形验证</div>
+                                <div class="puzzle-drag-wraper js-drag-show" style="display: none;">
+                                    <s class="drag-s"></s>
+                                    <t class="drag-t"></t>
+                                    <div class="puzzle-drag-content js-puzzle-drag-content5">
+                                        <div class="drag-title clearfix">
+                                            <span>为保证你的账户安全，请先完成图形验证</span>
+                                            <span class="close js-close"></span>
+                                            <span class="change js-change"><i></i>换一换</span>
+                                        </div>
+                                        <div class="puzzle-img-box">
+                                            <div class="puzzle-img js-puzzle-img">
+                                                <img>
+                                            </div>
+                                            <div class="puzzle-lost js-puzzle-lost">
+                                                <img>
+                                            </div>
+                                        </div>
+                                        <div class="drag-slide-nav">
+                                            <div class="drag-slide-text">
+                                                <div class="drag-slide-left"></div>
+                                                <div class="drag-slide-center">向右滑动完成拼图</div>
+                                                <div class="drag-slide-right"></div>
+                                            </div>
+                                            <div class="drag-slide-bar js-drag-slide-bar">
+                                                <div class="drag-slide-bar-left"></div>
+                                                <div class="drag-slide-bar-center"></div>
+                                                <div class="drag-slide-bar-right"></div>
+                                            </div>
+                                            <div class="drag-slide-btn js-drag-slide-btn"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="switch-btn js-changeUser">提交</div>
+                    </div>
+                </div>
+                <!-- 弹层背景 -->
+                <div class="switch-bg js-switch-bg" style="display: none;"></div>
+                {/if}
+                {if $P_UserType eq 5 || $P_UserType eq 4}
+                <a href="javascript:void(0);" class="js-contact-qq-btn contact-btn">了解VIP</a>
+                {/if}
+                {if $P_UserType neq 5}
+                <a class="help-center-btn" href="http://www.pop136.com/product_help.php">帮助中心</a>
+                {/if}
+            </div>         
+        </div>
+    </div>
+</div>
+{if !$isLogin}{* 未登录的情况 *}
+<div class="virtual-bg">
+	<div class="authority-judge-tourist js-authority-tourist">
+		<p>这个花型很棒哦〜需登录后查看成品模拟效果</p>
+		<div class="authority-contact">
+			<a href="javascript:void(0);" class="loginLayer login-btn" title="立即登录">立即登录</a>
+			<a href="/member/register/" target="_blank" class="reg-btn" title="注册">注册</a>
+		</div>
+	</div>
+</div>
+{elseif !$canUse}{* 普通用户次数用完的情况*}
+<div class="virtual-bg">
+	<div class="authority-judge-ordinary js-authority-ordinary">
+		<div class="authority-text">您当前为普通用户账号，当前免费使用 <span>20</span> 次仅剩 <span>0</span> 次！</div>
+		<p>想体验更多次数欢迎拨打电话 或 直接联系在线客服</p>
+		<div class="authority-contact">
+			<a class="js-contact-qq-btn" href="javascript:void(0);" title="在线客服"><i></i>在线客服</a>
+			<span>电话咨询 <em>4008-210-500</em></span>
+		</div>
+	</div>
+</div>
+{else}{* 可以正常访问的情况 *}
+	{if $trialInfo}
+	<div class="contentW ordinary-try-section">
+		<div class="ordinary-try-time">
+			<p class="fl" id="trial_time_info">您当前为普通用户，拥有 <span>{$trialInfo.max}</span> 次免费体验机会！还剩余 <span>{$trialInfo.free}</span> 次！</p>
+			<div class="fr">想体验更多内容拨打 <span>4008-210-500</span> 或 直接联系<a class="js-contact-qq-btn" href="javascript:void(0);" title="在线客服"><i></i>在线客服</a></div>
+		</div>
+	</div>
+	{/if}
+<!-- 内容 -->
+<div class="contentW content {if $trialInfo}ordinary-top{/if} nclear">
+	<!-- 模板 -->
+	<div class="pattern-list-div">
+		<ul class="pattern-tab-list nclear js-pattern-tab-list">
+			<li data-classify-id="11808" class="now-choice"><!-- <img src="{STATIC_URL1}/global/images/pattern/icon1-active.png" alt="icon"> --><span style="border-left:none">女装</span></li>
+			<li data-classify-id="11807"><!-- <img src="{STATIC_URL1}/global/images/pattern/icon2.png" alt="icon"> --><span>男装</span></li>
+			<li data-classify-id="11809"><!-- <img src="{STATIC_URL1}/global/images/pattern/icon3.png" alt="icon" style="width: 20px"> --><span>童装</span></li>
+			<li data-classify-id="11810" style="border-right:none"><!-- <img src="{STATIC_URL1}/global/images/pattern/icon4.png" alt="icon" style="width: 20px"> --><span>配饰</span></li>
+		</ul>
+		<div class="item-box">
+			<div class="contentHolder pattern-list-content js-pattern-list-content">
+				<!-- 模板列表 -->
+				{foreach $lists as $cid=>$list}
+				<ul id="pattern_list_{$cid}" class="pattern-list nclear js-pattern-list">
+					{foreach $list as $k=>$img}
+					<li {if $k%2==1}style="margin-right:0"{/if} data-tpl-id="{$img.id}" data-model-src="{STATIC_URL1}{$img.sLargePath}" data-src="{$bg_pic}">
+						<img src="{STATIC_URL1}{$img.sThumbnailPath}" alt="pic">
+						<span>生成模拟成品图</span>
+						<div class="pattern-bg"></div>
+						<div class="border-div"></div>
+					</li>
+					<!-- <li {if $k%2==1}style="margin-right:0"{/if} data-tpl-id="{$img.id}" data-model-src="{STATIC_URL1}/global/images/pattern/dress-mask.png" data-src="{STATIC_URL1}/global/images/pattern/81024-preview-large.jpg">
+						<img src="{STATIC_URL1}{$img.sThumbnailPath}" alt="pic">
+						<span>生成虚拟样衣图</span>
+						<div class="pattern-bg"></div>
+						<div class="border-div"></div>
+					</li> -->
+					{/foreach}
+				</ul>
+				{/foreach}
+			</div>
+		</div>
+	</div>
+	<!-- 虚拟效果 -->
+	<div class="pattern-box nclear js-pattern-box">
+        <div class="pattern-area">
+        	<div class="pattern-div js-pattern-div">
+	            <!-- 模板 -->
+	            <img class="mask-pic js-mask-pic" alt="模型图片" ondragstart="return false;">
+	            <!-- 花型 -->
+	            <img class="pattern-pic js-pattern-pic" data-color="{$defaultColor}" data-full="{$isFull}" alt="图案">
+	        </div>
+        </div>
+        <div class="tool-box nclear">
+        	<a class="detail-btn js-detail-btn" href="{$detailSrc}" target="_blank" title="查看详情"><span>查看<br/>图案</span></a>
+        	<p>
+        		<img src="{STATIC_URL1}/global/images/pattern/icon9.png" alt="icon">
+        		您可以拖拽图案到任意位置<br/>，滚动鼠标放大或缩小图案内容
+        	</p>
+        	<div class="tool-div js-tool-div">
+	            <button class="add-ratio js-add-ratio" title="放大"><img src="{STATIC_URL1}/global/images/pattern/icon6.png" alt="icon"></button>
+	            <div><button></button></div>
+	            <button class="reduce-ratio js-reduce-ratio" title="缩小"><img src="{STATIC_URL1}/global/images/pattern/icon7.png" alt="icon"></button>
+	        </div>
+        </div>
+    </div>
+    <!-- 左侧控制 -->
+    <div class="control-div">
+    	<div class="control-containt">
+    		<h3>图案应用</h3>
+    		<!--<label>花型应用：</label>-->
+    		<ul class="tab-pattern-nav">
+    			<li class="now-choice js-set-type" data-type="1" style="border-radius:5px 0 0 5px">循环</li><li class="js-set-type" data-type="2" style="border-radius:0 5px 5px 0">局部</li>
+    		</ul>
+    		<!--<label>背景色：</label>-->
+    		<div class="color-container" style="display: none;">
+		        <div class="color-series-div js-color-series-div">
+		            <canvas class="series-canvas js-series-canvas"></canvas>
+		            <span></span>
+		        </div><br/>
+		        <div class="check-detail-color">
+		        	<div class="detail-color-div js-detail-color-div">
+			            <canvas class="detail-canvas"></canvas>
+			            <span></span>
+			        </div>
+			        <div class="color-val-div js-color-val-div">
+			            <label>RGB</label><input readonly class="js-color-val" type="text">&nbsp;
+			            <label>#</label><input readonly class="js-color-val" type="text"><br>
+			            <!-- <label>当前选择:</label><span></span> -->
+			        </div>
+			        <button class="js-close-color-btn">关闭</button>
+		        </div>
+		    </div>
+		    <!--<label>本地上传：</label><br/>-->
+		    <label style="display: none;" class="file-btn js-upload-btn" for="file-ele">上传本地花型</label>
+		    <input type="hidden" id="upload-src">
+		    <form class="hide js-form" enctype="multipart/form-data">
+		    	<input class="js-account-id" type="hidden" name="accountId">
+            	<input class="js-upload-ele" id="file-ele" name="material" type="file" accept="image/gif,image/jpeg,image/jpg,image/png">
+            </form>
+    	</div>
+    	<button class="download-pic-btn js-download-btn" title="下载图片">下载模拟成品图</button>
+    	<button class="reset-pattern-btn js-reset-pattern-btn">重置</button>
+    	<div class="custom-systom">
+    		<img src="{STATIC_URL2}/global/images/pattern/virtual-banner.jpg?{STATIC_CHANGE_TIME}" alt="pic"/>
+    	</div>
+    </div>
+</div>
+<!--推荐图案模块-->
+<div class="recommend-box js-recommend-box">
+	<button class="recommend-show-btn js-recommend-show-btn">推荐图案</button>
+	<div>
+		<div class="recommend-contain nclear">
+			<!--列表左右控制按钮-->
+			<div class="recommend-left-btn js-recommend-left"><span></span></div>
+			<div class="recommend-right-btn js-recommend-right"><span></span></div>
+			
+			<!--推荐描述-->
+			<!-- <div class="recommend-disc">
+				<div></div>
+				<p>推荐图案</p>
+			</div> -->
+			
+			<div class="recommend-pics js-recommend-pics nclear">
+				<!--推荐列表-->
+				<ul class="recommend-list js-recommend-list nclear"></ul>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 图片剪裁 -->
+<div class="edit-pic-box js-edit-pic-box">
+	<button titlt="关闭"></button>
+    <h3>
+    	您可以拖拽花型到框内任意位置滚动鼠标放大缩小图片
+        <p>* 为保证呈现效果，图片尺寸不得小于250*250</p>
+    </h3>
+    <div class="shot_pic">
+		<table width="100%" border="0" class="js-cut-table1">
+			<tr>
+				<td rowspan="2" valign="top">
+					<div class="cut-div js-cut-box" id="cut_div">
+						<table class="cut-table2" cellspacing="0" cellpadding="0" border="0" unselectable="on">
+							<tr><td style="background: #000000; height: 75px;" colspan="3"></td></tr>
+							<tr>
+								<td style="background: #000000; width: 75px;"></td>
+								<td id='gd' style="border-style:solid"></td>
+								<td style="background: #000000; width: 75px;"></td>
+							</tr>
+							<tr><td style="background: #000000; height: 75px;" colspan="3"></td></tr>
+						</table>
+						<img class="js-cut-img" id="cut_img" style="position:relative;" src="{STATIC_URL1}/global/images/pattern/81024-preview-large.jpg" alt="占位图片"/>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+    <div class="edit-btn-div">
+        <button class="js-save-btn" title="确定">确定</button>
+    </div>
+</div>
+{/if}
+<div class="loading-div js-loading-div"></div>
+<!-- <div class="bg-div js-bg-div"></div> -->
+<!-- <iframe id="dl_pic" src="" frameborder="0"></iframe> -->
+{/block}
+
+{block name="self"}
+<script type="text/javascript">
+	var tpl_id;
+	var page_img_path_str="{STATIC_URL1}";
+</script>
+<script type="text/javascript" src="{STATIC_URL1}/global/js/pattern/pattern-cut.js?{STATIC_CHANGE_TIME}"></script>
+<!--[if lte IE 8]>
+    <script type="text/javascript" src="{STATIC_URL1}/global/js/pattern/pattern-cut.ie.js?{STATIC_CHANGE_TIME}"></script>
+<![endif]-->
+<script type="text/javascript" src="{STATIC_URL1}/global/js/lib/cropper/cropper.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL1}/global/js/lib/ajaxform/ajaxform.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL1}/global/js/pattern/pattern.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL1}/global/js/pattern/color-card.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL1}/global/js/common/drag.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL1}/global/js/pattern/cut-pic.js?{STATIC_CHANGE_TIME}"></script>
+{/block}
+

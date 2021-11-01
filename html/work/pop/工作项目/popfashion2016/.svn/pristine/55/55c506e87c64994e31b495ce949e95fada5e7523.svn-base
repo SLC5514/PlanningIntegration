@@ -1,0 +1,133 @@
+var oFeedback = {
+	run: function(){
+		var gender = $.cookie('gender');
+		var industry = $.cookie('industry');
+		//首页行业筛选
+		$('.js-area-box li').on('click',function(){
+				var thisli = $(this);
+				var url = '/mutual/';
+				var id= thisli.children("a").data("id");
+				var key =thisli.children("a").data("key");
+				url += key+'_'+id+'/';
+				window.location.href = url;
+		});
+		
+
+		// 行业筛选
+		$('.keycho').on('mouseenter mouseleave','.keyWord_downlist',function(e){
+			var $box = $(this);
+			var $downlist = $box.find('.downlist');
+			if (e.type == 'mouseenter'){
+				$box.addClass('Zindex4');        	
+				$downlist.show();
+			} else if (e.type == 'mouseleave') {
+				$box.removeClass('Zindex4');         	
+				$downlist.hide();
+			}
+	        
+		});
+		
+		//全站搜索(enter)
+		$('.js-Itext').on('keypress',function(event){
+			var key = $(this).val();
+            if(event.keyCode == "13"){
+				if ($.trim(key) === '' || $.trim(key)=='搜索' || $.trim(key)=='时尚咨询一网打尽'){
+					return false;
+				}
+				window.open("/search/"+oCommon.getGenIndInfo()+"?key="+encodeURIComponent(encodeURIComponent(key)).replace(/\'/g,'%27'));
+                searchHis(key);
+                initHistoryHot(key);
+            }
+        });
+
+		//全站搜索(搜索按钮)
+		$('.js-search-btn').on('click',function(){
+			var key = $(this).siblings('.Itext').val();
+			if($.trim(key) === '' || $.trim(key)=='搜索' || $.trim(key)=='时尚咨询一网打尽'){
+				return false;
+			}
+			window.open("/search/"+oCommon.getGenIndInfo()+"?key="+encodeURIComponent(encodeURIComponent(key)).replace(/\'/g,'%27'));
+            searchHis(key);
+            initHistoryHot(key);
+		});	
+        // 搜索记录
+        function searchHis(val) {
+            $.ajax({
+                url: '/suggestion/story/',
+                method: 'post',
+                data: {
+                    keyword: val
+                }
+            })
+        }
+        // 历史记录
+        function initHistoryHot(val) {
+            var history = pop_fashion_global.fn.getSto('search-history') || [];
+            var idx = history.indexOf(String(val));
+            if (idx != -1) {
+                history.splice(idx, 1);
+            }
+            history.unshift(String(val));
+            if (history.length > 5) {
+                history.pop();
+            }
+            pop_fashion_global.fn.setSto('search-history', history);
+        }
+	}
+};
+$(function(){
+	oFeedback.run();
+	var page =2;
+	$(".js-click-load").on('click',function(){
+		var dPushTime = $(".js-folder-date").val();
+		var sOrderName= $(".js-folder-title").val();
+		var sOrderLink = $(".js-click-link").attr('href');
+		var sOrderPwd = $(".js-link-code").find('span').val();
+		pop_fashion_global.fn.subAjax({
+			url:'/ajax/orderpackagezip/?page='+page+'',
+			data:{dPushTime: dPushTime,sOrderName: sOrderName,sOrderLink: sOrderLink,sOrderPwd: sOrderPwd},
+			successFunc:function(data){
+				if(data && data["data"].length >0){
+					var arr = data["data"], _html='',data_box = $(".data-list-box").find('ul');
+					var nowDate = (new Date()).getTime();
+					var oldDate = nowDate-30*24*3600*1000;
+					for(var i=0,len=arr.length;i<len;i++){						
+						var dPushTime=arr[i]["dPushTime"]?arr[i]["dPushTime"]:"";
+						var sOrderName=arr[i]["sOrderName"]?arr[i]["sOrderName"]:"";
+						var sOrderLink=arr[i]["sOrderLink"]?arr[i]["sOrderLink"]:"";
+						var sOrderPwd=arr[i]["sOrderPwd"]?arr[i]["sOrderPwd"]:"";
+						dPushTime=dPushTime.substr(0,10);
+						dPushTime=dPushTime.replace(/-/g,"/");
+						var tdate=(new Date(dPushTime)).getTime();
+						if(tdate < oldDate){
+							_html+='<li class="invalid-folder">';
+						}else{
+							_html+='<li>';
+						}
+						_html+='<div class="data_bg">';
+						_html+='<span class="folder-img"></span>';
+						_html+='<span class="folder-date js-folder-date">'+dPushTime+'</span>';
+						_html+='</div>';
+						_html+='<p class="folder-title js-folder-title">'+sOrderName+'</p>';
+						if(tdate < oldDate){
+							_html+='<a href="javascript:void(0);" title="点击下载" class="click-down-img js-click-link">点击下载</a>';
+						}else{
+							_html+='<a href="'+sOrderLink+'" title="点击下载" target="_blank" class="click-down-img js-click-link">点击下载</a>';
+						}						
+						_html+='<p class="link-code js-link-code">提取码：<span>'+sOrderPwd+'</span></p>';
+						_html+='</li>';
+					}					
+					data_box.append(_html);
+					if(page >= data['pageCount']){
+						$(".js-click-load").hide();
+						return;
+					}
+					page++;
+				}		
+			},
+			errorFunc:null
+		});
+	});
+
+	
+});

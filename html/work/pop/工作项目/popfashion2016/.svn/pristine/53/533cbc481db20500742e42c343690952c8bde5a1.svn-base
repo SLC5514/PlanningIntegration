@@ -1,0 +1,217 @@
+{extends file="layout.html"}
+
+{block name="title"}找趋势面料册-POP服装趋势网{/block}
+{block name=keywords}专业团队,趋势面料册,快速找样,按需送样{/block}
+{block name=description}POP&优料宝联合推出“找料帮”，尊享VIP会员服务，专人服务，满足你找面料的需求，其中包括快速找样、按需送样、帮采购、帮验布、帮送检测、趋势面料册和设界展厅贵宾礼遇等，全力只为找面料、尽心助力设计师。{/block}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/topic/20160920/css/index.css">
+{/block}
+
+
+{block name="main"}
+<div class="lookHelp">
+    <div class="banner">
+        <div class="w1000">
+            <p><img src="{STATIC_URL2}/global/topic/20160920/images/banner.jpg" alt="找料帮’，尊享服务"
+                    title="POP&优料宝联合推出‘找料帮’，尊享服务"></p>
+        </div>
+    </div>
+    <div class="group">
+        <div class="w1000">
+            <ul>
+                <li class="li_lf"><a href="javascript:void(0);"><img
+                            src="{STATIC_URL2}/global/topic/20160920/images/people.jpg"></a></li>
+                <li>
+                    <h3>专业团队</h3>
+                    <p>“POP服装趋势”联合“优料宝”100位专业面料买手，深入全国各大面料市场，实时响应，从寻样到交易到售后，全程为您服务！</p>
+                </li>
+            </ul>
+            <ul class="style">
+                <li class="li_lf">
+                    <h3>趋势面料册</h3>
+                    <p>依托“POP服装趋势”12年专业的时尚资讯背景，精选最新趋势面料，助力应季研发，直观的给予下一季用料的建议和方向。</p>
+                </li>
+                <li class="radio">
+                    <a href="javascript:void(0);">
+                        <img src="{STATIC_URL2}/global/topic/20160920/images/bgradio.jpg">
+                        <p class="radio_2"><img src="{STATIC_URL2}/global/topic/20160920/images/audio.jpg"></p>
+                    </a>
+                </li>
+            </ul>
+            <ul class="quick">
+                <li class="li_lf li_demo"><a><img src="{STATIC_URL2}/global/topic/20160920/images/big.jpg"></a></li>
+                <li>
+                    <h3>快速找样</h3>
+                    <p>根据您的面料实样或图片,线上线下同步找料，3天内快速完成匹配。直接提供供应商联系方式，解决您找料的燃眉之急。</p>
+                </li>
+            </ul>
+            <ul class="need">
+                <li class="li_lf">
+                    <h3>按需送样</h3>
+                    <p>根据客户需求，专人携最新趋势面料样卡，上门提供选样服务，同城直接送达，供您挑选。（目前上海、杭州、湖州、石狮、广州、桐乡已开放中...)</p>
+                </li>
+                <li><a href="javascript:void(0);"><img src="{STATIC_URL2}/global/topic/20160920/images/open.jpg"></a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+    <div class="service">
+        <div class="w1000">
+            <h3><img src="{STATIC_URL2}/global/topic/20160920/images/layer.jpg"></h3>
+            <div class="server_vip">
+                <p class="price price1"><span>2880</span>元/年</p>
+                <p class="price price2"><span>4880</span>元/年</p>
+                <p class="num num1">5款/月</p>
+                <p class="num num2">10款/月</p>
+                <p class="every every1">每季不少于1次，全年不少于4次</p>
+                <p class="every every2">每季不少于2次，全年不少于8次</p>
+                <p class="lining">2册趋势面料册</p>
+                <p class="timer timer1">5次</p>
+                <p class="timer timer2">10次</p>
+            </div>
+            <p class="tel"><i></i>服务咨询：400-821-0500</p>
+        </div>
+    </div>
+    <div class="member">
+        <div class="w1000">
+            <h3> <img src="{STATIC_URL2}/global/topic/20160920/images/member.jpg"></h3>
+            <div class="member_ft">
+                <ul class="member_ul1">
+                    <li class="member_li">
+                        <ul class="member_insert">
+                            <li><img src="{STATIC_URL2}/global/topic/20160920/images/membersmall.jpg"></li>
+                            <li>
+                                <h3>快速找样</h3>
+                            </li>
+                            <li class="list3">
+                                <p>根据您的面料实样或图片,线上线下同步找料，3天内快速完成匹配。直接提供供应商联系方式，解决您找料的燃眉之急。</p>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="member_li member_li_yang">
+                        <ul class="member_insert">
+                            <li><img src="{STATIC_URL2}/global/topic/20160920/images/book.jpg"></li>
+                            <li>
+                                <h3>按需送样</h3>
+                            </li>
+                            <li class="list3">
+                                <p>根据客户需求，专人携最新趋势面料样卡，上门提供选样服务，同城直接送达，供您挑选。</p>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="member_li member_small">
+                        <ul class="member_insert">
+                            <li><img src="{STATIC_URL2}/global/topic/20160920/images/water.jpg"></li>
+                            <li class="li_img">
+                                <h3>趋势面料册</h3>
+                                <p>精选最新趋势面料，助力应季研发，直观的给予下一季用料的建议和方向。</p>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="member_li member_small">
+                        <ul class="member_insert">
+                            <li><img src="{STATIC_URL2}/global/topic/20160920/images/vip2.jpg"></li>
+                            <li>
+                                <h3>「设界」展厅贵宾礼遇</h3>
+                                <p>尊享免费专车接送服务。 上海、杭州、福建石狮、湖州织里现已开通,更多城市陆续开放中...</p>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="member_li member_small order2">
+                        <ul class="member_insert">
+                            <li><img src="{STATIC_URL2}/global/topic/20160920/images/bick.jpg"></li>
+                            <li>
+                                <h3>帮采购</h3>
+                                <p>帮您与面料商协商价格，确保性价比，交易支付担保，安全有保障。</p>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="member_li member_small clothes">
+                        <ul class="member_insert">
+                            <li><img src="{STATIC_URL2}/global/topic/20160920/images/right.jpg"></li>
+                            <li>
+                                <h3>帮验布</h3>
+                                <p>专业验货，确保您的货品数量与质量符合市场标准。</p>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="member_li member_small test order">
+                        <ul class="member_insert ">
+                            <li><img src="{STATIC_URL2}/global/topic/20160920/images/right2.jpg"></li>
+                            <li>
+                                <h3>帮送检测</h3>
+                                <p>发货地免费直送国家级检测机构，代办检测，帮您节约时间成本(检测费由检测机构直接收取)。</p>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="details">
+        <div class="w1000">
+            <h3><img src="{STATIC_URL2}/global/topic/20160920/images/detail.jpg"></h3>
+            <ul>
+                <li>1.专人服务针对有市场现货采购需求的客户（专注绍兴柯桥、广州中大面料市场的货源）； </li>
+                <li>2.目前上海、杭州、湖州、桐乡、石狮、广州已开放<b>“按需送样”</b>服务，更多城市陆续开放中；</li>
+                <li>3.找样次数当月未使用的可以延续到次月，直至服务合同到期；</li>
+                <li>4.以上服务均不包含物流及快递费用。</li>
+            </ul>
+        </div>
+    </div>
+    <div class="contact">
+        <div class="w1000">
+            <h2><img src="{STATIC_URL2}/global/topic/20160920/images/best.jpg"></h2>
+            <ul>
+                <li><a href="javascript:void(0);"><img src="{STATIC_URL2}/global/topic/20160920/images/log.jpg"></a>
+                </li>
+                <li class="phone"><a href="javascript:void(0);"><i></i>服务咨询:4008-210-500</a></li>
+                <li class="inter"><a href="http://www.uliaobao.com" target="_blank"><i></i>官方网址:www.uliaobao.com</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="radio_d">
+        <div class="radio_opa"></div>
+        <p class="p_radio">
+            <i class="close"></i>
+        </p>
+    </div>
+</div>
+
+{include file="topic/topic_layer.html"}
+{/block}
+
+{block name="self"}
+<script type="text/javascript" src="{STATIC_URL2}/global/topic/20160920/js/flowplayer-3.2.4.min.js"></script>
+<script>
+    $(function () {
+        var loadRad;
+        $(".radio").click(function () {
+
+            $(".radio_d").show();
+            loadRad = $("<a href='{STATIC_URL2}/global/topic/20160920/images/Free-Converter.com-1474351769206-28295804.flv'  id='player' ></a>");
+            $(".p_radio").append(loadRad);
+
+            $f("player", "{STATIC_URL2}/global/topic/20160920/js/flowplayer.commercial.swf", {
+                clip: {
+                    autoPlay: true,
+                    autoBuffering: false
+                },
+                plugins: {
+                    controls: {
+                        url: '{STATIC_URL2}/global/topic/20160920/js//flowplayer.controls-3.2.4-dev.swf'
+                    }
+                }
+            })
+        });
+
+        $(".close").click(function () {
+            $("#player").remove();
+            $(".radio_d").hide();
+        })
+    });
+</script>
+{/block}

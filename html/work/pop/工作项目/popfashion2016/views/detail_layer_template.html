@@ -1,0 +1,305 @@
+<div class="detail-contant js-detail-contant conheight">
+	
+    <!-- <div class="detail-close js-pop-close"></div> -->
+    
+    <div class="page-control js-page-control {if $columnPid == 4 || in_array($columnId,[82, 120]) || $work.iWorkbenchId}page-control-guesslike js-page-control-guesslike{/if}">
+        {if !$isF5}
+        <div class="detail-close js-pop-close"></div>
+        {/if}
+        <div class="max-box js-max-box">
+            <p class="max-msg1">全 屏<br/>预 览</p>
+            <p class="max-msg2">关 闭<br/>全 屏</p>
+        </div>
+    </div>
+	
+
+    <!--内容-->
+   
+	<div class="detail-content js-detail-content {if $columnPid == 4 || in_array($columnId,[82, 120]) || $work.iWorkbenchId}detail-content-guesslike js-detail-content-guesslike{/if}">
+		<div class="big-contain">
+			{if !$isF5}
+			<div id="J_LeftRightBtn" class="pics-controls"></div>
+			{/if}
+			<div class="js-visit-quanxian" id="J_Visit"></div>
+		</div>
+		<div class="detail-cont js-see-cont">
+			<div class="see-more ">
+				<div class="see-close js-see-close"></div>
+				<div class="w-1150">
+					<h3 class="see-title">
+						<i></i><span>看了又看</span>
+					</h3>
+                    <div id="J_MoreRec"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <!--侧边导航-->
+	<div class="nav-right js-nav-right Scrollbar {if $columnPid == 4 || in_array($columnId,[82, 120]) || $work.iWorkbenchId}nav-right-guesslike js-nav-right-guesslike{/if}">
+		<div class="right-cont ">
+            {if $isF5}
+            <div style="height: 55px;"></div>
+            {/if}
+			<div class="right-top js-right-top">
+                <h3 id="J_Title"></h3>
+				<div id="J_StyleInfo"></div>
+			</div>
+			<div>
+			<div class="img-detail js-img-detail {if $isF5}hide{/if}">
+				<div class="img-title">
+					<i></i>细节图
+				</div>
+				<ul class="clearfix js-min-imgs" id="J_DetailList"></ul>
+			</div>
+			<div class="T-station">
+				<div class="station-head"><i class="station-icon"></i>更多T台资料</div>
+				<div class="station-list js-station-list clearfix">
+					
+				</div>
+				<div class="station-more">查看更多<i class="more-btn"></i></div>
+			</div>
+            <div class="ordermeeting clearfix js-ord-box">
+                <div class="ordermeeting-head"><i></i>更多订货会资料</div>
+                <ul class="js-ordermeeting-ul">
+                </ul>
+                <div class="ordermeeting-more js-ord-more">查看更多<i></i></div>
+            </div>
+			<div class="guess-you-like">
+				<p><i></i>猜你喜欢</p>
+				<div>
+                    <ul class="clearfix js-guess-imgs {if in_array($columnId,[82, 120])}guess-img-patters{/if}" id="J_GuessList">
+                        <li>
+                            <a  href="'+link+'"  data-t="'+tableName+'" data-col="'+columnId+'" data-id="'+id+'" data-request_id="'+request_id+'" target="_blank">
+                                <img alt="'+title+'" src="/global/images/bookp.jpg" />
+                            </a>
+                            <span class="js-dislike-img">不喜欢</span>
+                        </li>
+                        <li>
+                                <a  href="'+link+'"  data-t="'+tableName+'" data-col="'+columnId+'" data-id="'+id+'" data-request_id="'+request_id+'" target="_blank">
+                                    <img alt="'+title+'" src="/global/images/bookp.jpg" />
+                                </a>
+                                <span class="js-dislike-img">不喜欢</span>
+                            </li>
+                            <li>
+                                    <a  href="'+link+'"  data-t="'+tableName+'" data-col="'+columnId+'" data-id="'+id+'" data-request_id="'+request_id+'" target="_blank">
+                                        <img alt="'+title+'" src="/global/images/bookp.jpg" />
+                                    </a>
+                                    <span class="js-dislike-img">不喜欢</span>
+                                </li>
+                    </ul>
+				</div>
+			</div>
+		</div>
+		</div>
+	</div>
+	<!--底部-->
+	<div class="detail-footer js-detail-footer max-search2 {if $columnPid == 4 || in_array($columnId,[82, 120]) || $work.iWorkbenchId}detail-footer-guesslike js-detail-footer-guesslike{/if}">
+		<div class="clearfix">
+			<div class="footer-cont">
+				<!--图片控制器-->
+				<div class="pic-control-box js-pic-control">
+					<div class="pic-control">
+						<div class="bp-set js-bp-set">
+							<div class="clearfix">
+								<div class="disc-icon">
+									<p style="padding: 8px 0 12px;margin-top: -2px;">
+										<i class="set-icon1"></i>
+									</p>
+									<p class="esc-p">原图</p>
+									<p class="esc-p">复位</p>
+								</div>
+								<div class="dic-msg">
+									<p style="padding-top: 4px;">滚动鼠标中键或<i class="set-icon2"></i>拖拽放大镜，<br />缩放图片</p>
+									<p style="padding-top: 14px;">点击原图，显示原始尺寸</p>
+									<p style="padding-top: 17px;">点击复位，恢复缩放图片为初始状<br />态</p>
+								</div>
+							</div>
+							<div class="dic-close">知道了</div>
+						</div>
+						<div class="control-l js-control-l">
+							<i></i>
+						</div>
+						<p class="js-original">原图</p>
+						<p class="js-reset on-reset">复位</p>
+					</div>
+				</div>	
+				<ul class="clearfix js-foot-list">
+					{if !$isF5}
+					<li class="prompt js-prompt">
+						<i></i>
+						<div class="prompt-disc">
+							<div class="clearfix">
+								<div class="disc-icon">
+									<p style="padding-top: 10px;margin-bottom: -1px;">
+										<i class="disc-icon2"></i>
+									</p>
+									<p>
+										<i class="disc-icon3"></i>
+									</p>
+									<p style="padding-top: 3px;">
+										<i style="margin-right: 1px;" class="disc-icon4"></i><i class="disc-icon5"></i>
+									</p>
+									<p class="esc-p">esc</p>
+								</div>
+								<div class="dic-msg">
+									<p style="padding-top: 9px;">键盘上下键，当前图片细<br />节图切换</p>
+									<p style="padding-top: 14px;">键盘左右键，图片列表前<br />后图切换</p>
+									<p style="padding-top: 13px;">关闭详情弹窗</p>
+								</div>
+							</div>
+							<div class="dic-close">知道了</div>
+						</div>
+					</li>
+					{/if}
+
+					{if !$isF5}
+					<!-- 展开列表 -->
+                    <li class="detail-search js-detail-search detail-search2">
+                        <i></i><span class="search-t1">展开列表</span><span class="search-t2">收起列表</span>
+                        <div class="search-t"></div>
+                        <div class="search-b"></div>
+                    </li>
+					<!-- /展开列表 -->
+					{/if}
+
+					{if $columnId != 121}
+					<!-- 下载单张 -->
+					<li class="detail-down">
+                        <div id="J_Download" class="h-contain"></div>
+                        {if in_array($columnId,[73,80,82,120]) }
+                        <div class="downimg-layer downimg-layer-data js-downimg-layer">
+                            <div class="down-main-top clearfix">
+                                <h2 class="fl">下载文件格式</h2><div class="fr down-close js-down-close"></div>
+                            </div>
+                            <table class="down-table" width="100%" id="J_DownloadType"></table>
+                            <div class="box-arrow"></div>
+                        </div>
+                        {/if}
+                    </li>
+					<!-- /下载单张 -->
+                    {/if}
+					
+					{if !$isUc && in_array($columnId, [4,50,52,54,55,56,57,80,81,82,84,85,91,117,120,122,123,124])}
+					<!-- 加入收藏 -->
+					<li class="detail-collect js-detail-collect" id="J_Collect"></li>
+					<!-- /加入收藏 -->
+					{/if}
+
+					{if $columnId != 121}
+					<!-- 分享 -->
+					<li class="detail-share ">
+						<i></i><span>分享</span>
+						<div class="prompt-disc">
+							<div class=" bdsharebuttonbox clearfix" href="javascript:void(0);">
+							    <a href="javascript:void(0);" class="bds-sqq" data-cmd="sqq" title="分享给QQ好友"></a>
+							    <a href="javascript:void(0);" class="bds-weixin" data-cmd="weixin" title="分享到微信"></a>
+							    <a href="javascript:void(0);" class="bds-qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+							    <a href="javascript:void(0);" class="bds-tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+							</div>
+						</div>
+					</li>
+					<!-- /分享 -->
+					{/if}
+					
+					{if !$isUc && !in_array($columnId, [80,81,82,84,85,91,117,120,121,124])}
+					<!-- 加入工作台 -->
+					<li class="welcome-add js-welcome-add">
+                        <div id="J_JoinW" class="h-contain"></div>
+                        <div id="J_Workbench"></div>
+					</li>
+					<!-- /加入工作台 -->
+					{/if}
+
+					{if !in_array($columnId, [121,124])}
+					<li class="detail-see js-detail-see">
+						<i></i><span>看了又看</span>
+					</li>
+					{/if}
+
+					{if !$isUc && $columnId != 121}
+					<!--  id="J_Spatter" -->
+					<li class="pattern-similar">
+						<a class="js-detail-layer-btn" href="javascript:void(0)"><i></i><span>相似图案</span></a>
+					</li>
+					<!--  id="J_Rfabric" -->
+					<li class="fabric-similar">
+						<a class="js-detail-layer-btn" data-type="uliaobao" href="javascript:void(0)"><i></i><span>相关面料</span></a>
+					</li>
+					{/if}
+                    <li class="popky-similar" id="J_Mfabric"></li>
+                    <li class="cloth-similar" id="J_Vcloth"></li>
+					<li class="analysis-similar js-analysis-similar">
+						<i></i><span>色彩分析</span>
+						<div class="prompt-disc">
+							<h3>色彩分析</h3>
+							<i></i>
+							<div class="pie-box pie-start">
+								<div class="pic-box">
+									<img alt="pic" />
+								</div>
+								
+								<div class="pie" id="analysis-pie">
+									
+								</div>
+								
+							</div>
+							<a class="js-analysis-simil" target="_blank" href="javascript:void(0);" title="查看相同配色款式">查看相同配色款式</a>
+						</div>
+					</li>
+					
+				</ul>
+
+				{if !$isF5}
+				<!-- 图片列表 -->
+				<div class="patter-contain js-patter-contain">
+					<div class="list-prev js-list-prev">
+						<i></i>
+						<div class="btn-load js-btn-load-left"><i></i></div>
+					</div>
+					<div class="list-cont js-list-cont">
+						<ul class="clearfix js-detail-list"></ul>
+					</div>
+					<a href="javascript:void(0);" class="kuan-num js-kuan-num" target="_blank">
+						共<p></p>款
+					</a>
+					<div class="list-next js-list-next">
+						<i></i>
+						<div class="btn-load js-btn-load-right"><i></i></div>
+					</div>
+				</div>
+				<!-- /图片列表 -->
+				{/if}
+			</div>
+		</div>
+	</div>
+	
+	<!-- 加载弹框 -->
+	{if $isF5}
+	<div class="loading-f5" style="display: block;"><div class="noPic"></div></div>
+	{/if}
+	
+    <!-- 右键下载 -->
+    <div class="bg-layer js-bg-layer"></div>
+    <div class="rclick-layer downimg-layer-data js-downimg-right">
+        <div class="down-main-top clearfix">
+            <h2 class="fl">下载文件格式</h2><div class="fr down-close js-down-close"></div>
+        </div>
+        <table class="down-table" width="100%" id="J_DownloadType2"></table>
+    </div>    
+    <!-- 提示浮层 -->
+    <div class="content-layer js-content-layer">
+        <span class="closeBtn"></span>
+        <p></p>
+    </div>
+    <!-- 工作台弹窗 -->
+    <div class="workbench-num js-workbench-num">
+		<p>你的工作台太多了，需要删除一些工作台哦！</p>
+		<div class="admin-btn">
+			<a href="javascript:void(0)" class="w-cancel-btn" title="取消">取消</a>
+			<a href="/member/workbench/" target="_blank" class="w-admin-btn" title="管理工作台">管理工作台</a>
+		</div>
+    </div>
+</div>
+{include file="detail_layer_t_template.html"}
+{include file="more_detail_template.html"}

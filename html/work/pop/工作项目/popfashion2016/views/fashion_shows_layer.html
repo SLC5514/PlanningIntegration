@@ -1,0 +1,54 @@
+{if $res.iUlbId}
+    <iframe src="{$res.ulbReportLink}" frameborder="0" scrolling="no" style="width:100%;" id="iframebox"></iframe>
+{else}
+    {if $res.isPic}
+    <div class="indexdiv clearfix">
+        {if $res.table=='mostrend_content'}
+            {foreach $res.picture as $key => $vp}
+            <div class="img">
+                <div class="book_item lazyload">
+                    <img class="stage-role-img" src="{STATIC_URL3}/global/images/loading/search_loding.gif" data-original="{$vp.image}" alt="pic">
+                </div>
+                {if $vp["children"]}
+                    <div class="positions">
+                    {foreach $vp["children"] as $vc}
+                        {if $vc.genre=='material'}
+                        <a class="position {if $vc.genre=='material'}material{/if}" id="{$vc.id}" data-src="{STATIC_URL2}/{$vc.path}{$vc.picbig}" data-ai="{if $vc.ai}{$vc.path}{$vc.ai}{/if}" data-brand="{$vc['brand']|replace:'_':' '}" data-title="{$vc.tag|replace:',':' '}" data-smallSrc="{STATIC_URL2}/{$vc.path}{$vc.pic}" style="left:{(1300*$vc.coordinateX/850)|string_format:'%.2f'}px;top:{(1300*$vc.coordinateY/850)|string_format:'%.2f'}px;width:{(1300*$vc.coorwidth/850)|string_format:'%.2f'}px;height:{(1300*$vc.coorheight/850)|string_format:'%.2f'}px;z-index:{$vc.seat};" href="javascript:void(0);" title="查看详情">
+                            <p class="position-shadow"></p>
+                            <p class="position-des">
+                                <span>{$vc.tag|replace:',':' '}</span>
+                                {if $vc['brand']}<span>品牌：{$vc['brand']|replace:'_':' '}</span>{/if}
+                            </p>
+                        </a>
+                        {/if}
+                        {if $vc.genre=='materialtext'}
+                        {$wi=$vc['writing']|strpos:'http://'}
+                        <a class="position" {if $wi === 0}href="{$vc['writing']}" target="_blank"{/if} style="left:{(1300*$vc.coordinateX/850)|string_format:'%.2f'}px;top:{(1300*$vc.coordinateY/850)|string_format:'%.2f'}px;width:{(1300*$vc.coorwidth/850)|string_format:'%.2f'}px;height:{(1300*$vc.coorheight/850)|string_format:'%.2f'}px;z-index:{$vc.seat};" title="查看详情">
+                            {if $wi !== 0}
+                            <div class="position-txt">
+                                <p>
+                                    {$vc['writing']}
+                                </p>
+                            </div>
+                            {/if}
+                        </a>
+                        {/if}
+                    {/foreach}
+                    </div>
+                {/if}
+            </div>
+            {/foreach}
+        {else}
+            {foreach $res.images as $image}
+            <div class="img lazyload">
+                <img src="{STATIC_URL3}/global/images/loading/search_loding.gif" data-original="{$image}" alt="pic">
+            </div>
+            {/foreach}
+        {/if}
+    </div>
+    {else}
+    <div id="content-main" class="clearfix lazyload">
+        {$res.reportContent}
+    </div>
+    {/if}
+{/if}

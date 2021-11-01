@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+      canvas {
+        min-height: 100%;
+        width: 100%;
+        background-color: #000;
+      }
+    </style>
+  </head>
+  <body></body>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.16.1/TweenMax.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/3.0.7/pixi.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.5/dat.gui.js"></script>
+  <script>
+    function Trails() {
+      var renderer = PIXI.autoDetectRenderer(
+        window.innerWidth,
+        window.innerHeight,
+        {
+          antialias: true
+        }
+      );
+      var stage = new PIXI.Container();
+      var self = this;
+
+      this.circleRadius = 30;
+      this.trailX = 300;
+      this.trailY = 300;
+      this.sourceX = 0;
+      this.sourceY = 0;
+      this.trailSpeed = 3;
+      this.trailAlpha = 3;
+      this.colorType = "random";
+
+      function init() {
+        document.body.appendChild(renderer.view);
+        renderer.view.style.position = "absolute";
+        renderer.view.style.width = window.innerwidth;
+        renderer.view.style.height = window.innerheight;
+        renderer.view.style.display = "block";
+        stage.interactive = true;
+        document.addEventListener("mousemove", createRect);
+      }
+
+      function returnColor() {
+        var arr = [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "0",
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "f"
+        ];
+        var color = "0x";
+        for (var i = 2; i < 8; i++) {
+          color += arr[getRandomInt(arr.length - 1)];
+        }
+        return color;
+      }
+
+      function createRect(e) {
+        var color;
+        if (self.colorType == "blue") {
+          arr = ["0x123456", "0x345678", "0x567890", "0x7890ab", "0x90abcd"];
+          color = arr[getRandomInt(arr.length)];
+        } else if (self.colorType == "melon") {
+          arr = [
+            "0xffcccc",
+            "0xff9999",
+            "0xcc3333",
+            "0xcc6666",
+            "0x993333",
+            "0x663333"
+          ];
+          color = arr[getRandomInt(arr.length)];
+        } else {
+          color = returnColor();
+        }
+        var scale = Math.random();
+        var dx = e.pageX - 15 + (getRandomInt(self.trailX) - self.trailX * 0.5);
+        var dy = e.pageY - 15 + (getRandomInt(self.trailY) - self.trailY * 0.5);
+        var ox =
+          e.pageX - 15 + (getRandomInt(self.sourceX) - self.sourceX * 0.5);
+        var oy =
+          e.pageY - 15 + (getRandomInt(self.sourceY) - self.sourceY * 0.5);
+
+        var graphics = new PIXI.Graphics();
+        graphics.beginFill(color);
+        graphics.drawCircle(
+          self.circleRadius,
+          self.circleRadius,
+          self.circleRadius
+        );
+
+        var disobj = new PIXI.Container();
+        disobj.addChild(graphics);
+        disobj.pivot.x = 0.5;
+        disobj.pivot.y = 0.5;
+
+        TweenMax.set(disobj.position, {
+          x: ox,
+          y: oy
+        });
+        TweenMax.set(disobj, {
+          alpha: 0
+        });
+        TweenMax.set(disobj.scale, {
+          x: 0.5,
+          y: 0.5
+        });
+        TweenMax.to(disobj, 1, {
+          alpha: Math.random() * 0.25 + 0.5,
+          ease: Expo.easeOut
+        });
+        TweenMax.to(disobj.scale, 0.35, {
+          x: scale,
+          y: scale,
+          ease: Back.easeOut
+        });
+        TweenMax.to(disobj, self.trailAlpha, {
+          alpha: 0,
+          ease: Expo.easeOut,
+          delay: 0.35
+        });
+        TweenMax.to(disobj.position, self.trailSpeed, {
+          ease: Expo.easeOut,
+          x: dx,
+          y: dy
+        });
+        TweenMax.to(disobj.scale, 3, {
+          x: 0,
+          y: 0,
+          ease: Expo.easeOut,
+          delay: 0.35,
+          onComplete: remove,
+          onCompleteParams: [graphics, disobj]
+        });
+
+        stage.addChild(disobj);
+      }
+
+      function remove(graphics, disobj) {
+        disobj.removeChild(graphics);
+        graphics.clear();
+        graphics = null;
+        stage.removeChild(disobj);
+        disobj = null;
+      }
+
+      function getRandomInt($n) {
+        return Math.floor(Math.random() * $n + 1);
+      }
+
+      function animate() {
+        renderer.render(stage);
+        requestAnimationFrame(animate);
+      }
+
+      init();
+
+      // run the render loop
+      animate();
+    }
+
+    var trails = new Trails();
+    var gui = new dat.GUI();
+
+    gui.add(trails, "circleRadius", 5, 150);
+    gui.add(trails, "sourceX", 0, 500);
+    gui.add(trails, "sourceY", 0, 500);
+    gui.add(trails, "trailX", 0, 500);
+    gui.add(trails, "trailY", 0, 500);
+    gui.add(trails, "trailSpeed", 0.25, 8).step(0.25);
+    gui.add(trails, "trailAlpha", 0.25, 8).step(0.25);
+    gui.add(trails, "colorType", ["random", "melon", "blue"]);
+  </script>
+</html>

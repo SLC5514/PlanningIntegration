@@ -1,0 +1,484 @@
+{extends file="layout.html"}
+{block name='selfcss'}
+<!-- <link rel="stylesheet" type="text/css"
+    href="{$smarty.const.STATIC_URL1}/global/css/lib/drag/drag.css?{$smarty.const.STATIC_CHANGE_TIME}"> -->
+    <link rel="stylesheet" type="text/css" href="{$smarty.const.STATIC_URL1}/global/css/user/page-login.css?{$smarty.const.STATIC_CHANGE_TIME}">
+{/block}
+{block name="main"}
+<div class="contant">
+    <div class="con_width">
+        <div class="reg-content clearfix">
+            <div class="reg-content-left fl">
+                <div class="reg-image fl" style="background: url({$aAds.0.sImagePath}) no-repeat center center;"></div>
+                <div class="VIP-tequan fl">
+                    <h2>欢迎加入 POP</h2>
+                    <h3><i></i>会员专享权利</h3>
+                    <div class="reg-intro">
+                        <ul>
+                            <li><i>•</i>尊贵VIP会员身份标识</li>
+                            <li><i>•</i>网站高清大图，趋势分析报告无限量下载</li>
+                            <li><i>•</i>一线品牌绝密订货会优先接收</li>
+                            <li><i>•</i>智能设计工具优先体验</li>
+                            <li><i>•</i>线下活动优先通知，名额预留</li>
+                            <li><i>•</i>POP线上线下讲堂免费听</li>
+                            <li><i>•</i>一对一售后小秘书答疑解惑</li>
+                            <li><i>•</i>企业微信群服务</li>
+                        </ul>
+                    </div>
+                    <p class="reg-contact"><i></i>咨询会员热线:<span>4008-210-500</span></p>
+                </div>
+            </div>
+            <div class="reg-content-right fl">
+                <div class="reg-info">
+                    <div class="switch-btn">
+                        <a href="/member/register/" title="注册">注册</a>
+                        <a class="now-active" href="/member/pagelogin/" title="登录">登录</a>
+                    </div>
+                    <div class="loginClass js-loginClass">
+                        <span class="action" data-type='1'>用户名登录</span>
+                        <span data-type='2'>手机号登录</span>
+                        <!-- <span data-type='3'>手机号验证码登录</span> -->
+                    </div>
+                    <form action="/member/doLogin/" method="post" id="loginForm">
+                        
+                        <input type="hidden" value="173" name="hidRandCode">
+                        <input type="hidden" value="" name="hidEncryptCode">
+                        <input type="hidden" value="1" id="login-type">
+                        <ul class="js-form-ul">
+                            <p class="errorbox"></p>
+                            <li class="l_usename clearfix">
+                                <label class="js-user" style="font-weight: bold">用户名</label>
+                                <input type="text" id="account" name="account" class="js-input-area"
+                                    placeholder="请输入用户名">
+                            </li>
+                            <li class="l_pwd clearfix">
+                                <label class="js-paw" style="font-weight: bold">登录密码</label>
+                                <input type="password" id="password" name="password" class="js-input-area"
+                                    placeholder="请输入登录密码">
+                                <span class="code-btn js-code-btn" style="display: none;">获取验证码</span>
+                                <!-- <em id="pwd-em" class="pwd-display"></em> -->
+                            </li>
+                            <li class="l_drag border-none">
+                                <div class="code_btn js-click-btn" data-cla=".js-puzzle-drag-content1" data-stu="1">点击按钮完成图形验证</div>
+                                <div class="puzzle-drag-wraper js-drag-show" style="display: none;">
+                                    <s class="drag-s"></s>
+                                    <t class="drag-t"></t>
+                                    <div class="puzzle-drag-content js-puzzle-drag-content1">
+                                        <div class="drag-title clearfix">
+                                            <span>为保证你的账户安全，请先完成图形验证</span>
+                                            <span class="close js-close"></span>
+                                            <span class="change js-change"><i></i>换一换</span>
+                                        </div>
+                                        <div class="puzzle-img-box">
+                                            <div class="puzzle-img js-puzzle-img">
+                                                <img>
+                                            </div>
+                                            <div class="puzzle-lost js-puzzle-lost">
+                                                <img>
+                                            </div>
+                                        </div>
+                                        <div class="drag-slide-nav">
+                                            <div class="drag-slide-text">
+                                                <div class="drag-slide-left"></div>
+                                                <div class="drag-slide-center">向右滑动完成拼图</div>
+                                                <div class="drag-slide-right"></div>
+                                            </div>
+                                            <div class="drag-slide-bar js-drag-slide-bar">
+                                                <div class="drag-slide-bar-left"></div>
+                                                <div class="drag-slide-bar-center"></div>
+                                                <div class="drag-slide-bar-right"></div>
+                                            </div>
+                                            <div class="drag-slide-btn js-drag-slide-btn"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="forget_pwd border-none clearfix">
+                                <label>
+                                    <input type="checkbox" name="KeepPassword" value="1" class="js-free-login">
+                                    30天内免登录
+                                </label>
+                                <a href="/member/findaccount/" style="padding: 0 7px;margin-top: 10px;">忘记用户名?</a>
+                                <a class="action"
+                                    style="border-right: 1px solid #e7e7e7;padding: 0 7px;margin-top: 10px;"
+                                    href="/member/findpassword/findpassword_2/">忘记密码?</a>
+                            </li>
+                            <li class="reg-btn border-none clearfix">
+                                <!-- no-login  -->
+                                <input type="button" id="submit" value="立即登录">
+                            </li>
+                        </ul>
+                    </form>
+                    <div class="chooseUser">
+                        <div class="chooseHead">
+                            <span>当前手机号下有两个账号，必须勾选一个登录哦</span>
+                            <s class="close js-user-close"></s>
+                        </div>
+                        <div class="userList clearfix">
+                            <input type="hidden" id="userId" value="" />
+                            <input type="hidden" id="userDef" value="false" />
+                            <input type="hidden" id="jsJwt" value="" />
+                            <div class="userLi">
+                                <div class="default" style="border-right:1px solid #f1f1f1;">
+                                    <!-- <i class="js-userLi i-action"></i> -->
+                                    <span>管理员账号:</span>
+                                    <div class="account" style="margin-top: 10px;">
+                                        <i class="js-default"></i>
+                                        <span class="js-userName">1111137465</span>
+                                    </div>
+                                    <div class="js-default-action" style="margin: 5px 0px 0px 20px;display: none;"><i style="margin-right: 5px;"></i><span>设为默认登录账号</span></div>
+                                </div>
+                            </div>
+                            <div class="userLi">
+                                <div class="default">
+                                    <!-- <i class="js-userLi"></i> -->
+                                    <span>设计师账号:</span>
+                                    <div class="account" style="margin-top: 10px;">
+                                        <i class="js-default"></i>
+                                        <span class="js-userName">1111137465</span>
+                                    </div>
+                                    <div class="js-default-action" style="margin: 5px 0px 0px 20px;display: none;"><i style="margin-right: 5px;"></i><span>设为默认登录账号</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="confirm-btn js-confirm-btn">确认</div>
+                    </div>
+                    <p class="contact-login">
+                        如需帮助请联系：<strong>4008-210-662</strong>
+                        <a class="js-contact-qq-btn" href="javascript:void(0);" data-type='1'><i></i>在线客服</a>
+                        <a class="" href="/member/leavemessage"><i class="i-img"></i>线上留言</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+
+{block name='self'}
+<script type="text/javascript">
+
+    $(function () {
+        var def = {
+            input_ele: $(".js-form-ul").find(".js-input-area"),
+            //is_sub:false,
+            data: {},
+            loginType: '1',
+            url: '//member.pop136.com',
+            codeState: false,  //
+            isChooseUser:false,
+            isPwdem:false,
+            storagePwd:''
+            //click_login:false     //是否可以点击登录按钮
+        };
+        $('.js-loginClass span').on('click', function () {
+            $(this).siblings().removeClass('action');
+            $(this).addClass('action');
+            def.loginType = $(this).attr('data-type');
+            $('#login-type').val(def.loginType);
+            $('.errorbox').hide();
+            $('.js-click-btn').hide();
+            if (def.loginType == "1") {
+                $('.js-user').html('用户名');
+                $('.js-paw').html('登录密码');
+                $('#account').attr('placeholder', '请输入用户名');
+                $('#account').val('');
+                $('#password').attr('placeholder', '请输入登录密码');
+                $('#password').val('');
+                $('.js-code-btn').hide();
+                $('#pwd-em').show();
+                if(def.isPwdem){
+                    $('#password').attr('type', 'password');
+                }
+            } else if (def.loginType == "2") {
+                $('.js-user').html('手机号');
+                $('.js-paw').html('登录密码');
+                $('#account').attr('placeholder', '请输入手机号');
+                $('#account').val('');
+                $('#password').attr('placeholder', '请输入登录密码');
+                $('#password').val('');
+                $('.js-code-btn').hide();
+                $('#pwd-em').show();
+                if(def.isPwdem){
+                    $('#password').attr('type', 'password');
+                }
+            } else if (def.loginType == "3") {
+                $('.js-user').html('手机号');
+                $('.js-paw').html('验证码');
+                $('.js-code-btn').show();
+                $('#pwd-em').hide();
+                $('#password').attr('type', 'text');
+                $('#password').attr('placeholder', '请输入验证码');
+                $('#account').attr('placeholder', '请输入手机号');
+                $('#password').val('');
+            }
+        })
+        //获取验证码
+        $('.js-code-btn').on('click', function () {
+            if (def.codeState) return;
+            var url = def.url + '/captcha/sendSms';
+            var obj = {
+                'mobile': $('#account').val(),   //手机号
+                'website': '1',         //站点
+                'sence': 'USER_LOGIN',   //短信验证类型
+                'dragtoken': _def.slide_Id     //滑块验证，除注册外，非必填
+            }
+            $.ajaxFun(url, obj, function (data) {
+                if (data.code == '0') {
+                    var i = 60;
+                    var code = setInterval(function () {
+                        def.codeState = true;
+                        $('.js-code-btn').text('已发送(' + i + ')');
+                        $('.js-code-btn').css('backgroundColor', '#ccc');
+                        i--;
+                        if (i < 0) {
+                            def.codeState = false;
+                            $('.js-code-btn').text('获取验证码');
+                            $('.js-code-btn').css('backgroundColor', '#d8b056');
+                            clearInterval(code);
+                        }
+                    }, 1000);
+                } else {
+                    $('.errorbox').html('<i></i><span>'+data.msg+'</span>').show();
+                    if (data.errorCode == 'validation.captcha.slide.need' || data.errorCode == 'validation.captcha.slide.incorrect') {
+                        $('.js-click-btn').show();
+                    }
+                }
+            })
+        })
+        //获取页面宽度
+        function clientWid () {
+            var wid = $(window).width();
+            if (wid >= 1500) {
+                _def.clientWidth = 1500;
+            } else {
+                _def.clientWidth = 1200;
+            }
+        };
+        clientWid();
+        $(window).resize(function () {
+            clientWid();
+        });
+        //密码可见
+        $('#pwd-em').on("click", function () {
+            if (!$('#pwd-em').hasClass('pwd-display')) {
+                def.isPwdem = false;
+                $('#pwd-em').addClass('pwd-display');
+                $("#password").attr('type', 'text');
+            } else {
+                def.isPwdem = true;
+                $('#pwd-em').removeClass('pwd-display');
+                $("#password").attr('type', 'password');
+            }
+        })
+        //选中账号登录
+        $('.js-confirm-btn').on('click', function () {
+            if (!def.isChooseUser) return;
+            var url = def.url + '/login/chooseUser'
+            var obj = {
+                'loginId': $('#userId').val(),        //登录账号ID
+                'default': $('#userDef').val() == 'true' ? '1' : '0',       //是否默认登录此账号
+                'jwt': $('#jsJwt').val(),            //登录返回码
+                "website": '1'         //站点
+            }
+            $.ajaxFun(url, obj, function (data) {
+                if (data.code == '0') {
+                    var POP_USER = data.data.jwt;
+                    $.cookie('NO_REFRESH_JWT','1',{ path:'/',domain: 'pop-fashion.com',secure: false,raw:false });
+                    $.cookie('POP_USER',POP_USER,{ expires:data.data.expire,path:'/',domain: 'pop-fashion.com',secure: false,raw:false });
+                    location.href = '/';
+                    //pop_fashion_global.fn.setCookie('POP_USER', POP_USER);
+                }
+            })
+        })
+        /* //选择账号
+        $('.js-userLi').on("click", function () {
+            $('.js-userLi').each(function () {
+                $(this).removeClass('i-action');
+                $(this).next().next().hide();
+                $(this).parent().css('marginTop', '0');
+            })
+            $('.js-userLi').parent().css('marginTop', '-12px');
+            $(this).addClass('i-action');
+            $(this).next().next().show();
+            $('#userId').val($(this).attr('data-id'));
+            $('.js-default').removeClass('i-action');
+            $("#userDef").val(false);
+        }) */
+        
+        $('.js-default').on('click', function () {
+            if ($(this).hasClass('i-action')) {
+                $('.js-default').removeClass('i-action');
+                $(this).parents('.account').next().hide();
+                $('.js-confirm-btn').removeClass('btn-action');
+                $('.userList').css('paddingTop','35px');
+                $('#userId').val('');
+                //清除默认登陆此账号状态
+                $('.js-default-action i').removeClass('i-action');
+                $("#userDef").val(false);
+                def.isChooseUser = false;
+            } else {
+                $('.js-default').removeClass('i-action');
+                $(this).addClass('i-action');
+                $('.js-default-action').hide();
+                $(this).parents('.account').next().show();
+                $('.js-confirm-btn').addClass('btn-action');
+                $('#userId').val($(this).attr('data-id'));
+                $('.userList').css('paddingTop','15px');
+                //清除默认登陆此账号状态
+                $('.js-default-action i').removeClass('i-action');
+                $("#userDef").val(false);
+                def.isChooseUser = true;
+            }
+        })
+        $('.js-default-action i').on('click',function(){
+            if($(this).hasClass('i-action')){
+                $("#userDef").val(false);
+                $('.js-default-action i').removeClass('i-action');
+            }else{
+                $("#userDef").val(true);
+                $('.js-default-action i').removeClass('i-action');
+                $(this).addClass('i-action');
+            }
+            
+        })
+        /* 
+        function initFunc() {
+            objdrag.init();
+            $(".js-drag-box").removeClass("drag-success");
+        } */
+
+        function checkFun(obj) {
+            var index = def.input_ele.index(obj);
+            var is_ok = true, txt = obj.val();
+            var error_ele = obj.parents().find("p.errorbox");
+            txt = txt.replace(/\s/g, "");
+            var msg_txt = "";
+            switch (index) {
+                case 0:
+                    if (txt == "") {
+                        is_ok = false;
+                        if (def.loginType == '1') {
+                            msg_txt = "用户名不能为空！";
+                        } else {
+                            msg_txt = "手机号不能为空";
+                        }
+                    }
+                    break;
+                case 1:
+                    if (txt == "") {
+                        is_ok = false;
+                        if (def.loginType == '3') {
+                            msg_txt = "验证码不能为空！";
+                        } else {
+                            msg_txt = "密码不能为空！";
+                        }
+                        /* initFunc() */
+                    }
+                    break;
+                default:
+                    break;
+            }
+            if (msg_txt != "") {
+                error_ele.show().html('<i></i><span>'+msg_txt+'</span>');
+            } else {
+                error_ele.hide().html("");
+            }
+            return is_ok;
+        }
+
+        /* def.input_ele.eq(0).blur(function () {
+            checkFun($(this));
+        })
+        def.input_ele.eq(1).blur(function () {
+            checkFun($(this));
+        }) */
+        //判断Array类型
+        function isArrayFn(value) {
+            if (typeof Array.isArray === "function") {
+                return Array.isArray(value);
+            } else {
+                return Object.prototype.toString.call(value) === "[object Array]";
+            }
+        }
+        function subFun(obj) {
+            var user = $("#account").val();
+            var pwd = $("#password").val();
+            if (def.loginType == '1') {
+                if(user == ''){
+                    $('.errorbox').html('<i></i><span>用户名不能为空</span>').show();
+                    return;
+                }else if(pwd == ''){
+                    $('.errorbox').html('<i></i><span>密码不能为空</span>').show();
+                    return;
+                }
+                def.data['account'] = user;  //账号
+                def.data['password'] = pwd;
+            } else if (def.loginType == '2') {
+                if(user == ''){
+                    $('.errorbox').html('<i></i><span>手机号不能为空</span>').show();
+                    return;
+                }else if(pwd == ''){
+                    $('.errorbox').html('<i></i><span>密码不能为空</span>').show();
+                    return;
+                }
+                def.data['mobile'] = user;   //手机号
+                def.data['password'] = pwd   //密码
+            } else if (def.loginType == '3') {
+                def.data['mobile'] = user;
+                def.data['captcha'] = pwd    //验证码
+            }
+            def.data['type'] = def.loginType;   //登录方式
+            def.data['website'] = '1'; //登录站点
+            def.data['dragtoken'] = _def.slide_Id;
+            def.data['remember'] = $('.js-free-login').is(':checked') ? 1 : 0;
+            obj.val("提交中...");
+            var url = def.url + '/login?' + Math.random();
+            $.ajaxFun(url, def.data, function (data) {
+                if (data.code == '0') {
+                    var userList = data.data.user;
+                    if (isArrayFn(userList)) {
+                        $('.chooseUser').show();
+                        $('.chooseUser').css('opacity', '1');
+                        $('.js-userName').each(function (index) {
+                            $(this).text(userList[index].account);
+                            $(this).prev().attr('data-id', userList[index].id);
+                        })
+                        $('#jsJwt').val(data.data.jwt);
+                        //默认登录第一个账号
+                        $('#userId').val(userList[0].id);
+                        /* $($('.js-userLi')[0]).next().next().show(); */
+                    } else {
+                        var POP_USER = data.data.jwt;
+                        $.cookie('NO_REFRESH_JWT','1',{ path:'/',domain: 'pop-fashion.com',secure: false,raw:false });
+                        $.cookie('POP_USER',POP_USER,{ expires:data.data.expire,path:'/',domain: 'pop-fashion.com',secure: false,raw:false });
+                        location.href = '/';
+                    }
+                } else {
+                    $('.errorbox').html('<i></i><span>'+data.msg+'</span>').show();
+                    if (data.errorCode == 'validation.captcha.slide.need' || data.errorCode == 'validation.captcha.slide.incorrect') {
+                        $('.js-click-btn').show();
+                    }
+                    $('.js-click-btn').html('点击按钮完成图形验证');
+                    $('.js-click-btn').removeClass('stu');
+                    $('.js-click-btn').attr('data-state','1');
+                }
+                $("#submit").val("立即登录");
+            })
+        }
+
+        $("#submit").on("click", function () {
+            subFun($(this));
+            return false;
+        });
+
+        $(".js-input-code").on("keydown",function (e) {
+            if (e.keyCode == 13) {
+                $(this).parents().find("#submit").click();
+            }
+        });
+    });
+
+</script>
+<script type="text/javascript" src="{$smarty.const.STATIC_URL3}/global/js/common/drag-slide.js?{$smarty.const.STATIC_CHANGE_TIME}"></script>
+{/block}

@@ -1,0 +1,45 @@
+/* 往期回顾 */
+
+.review-contain{height: 749px;background: #151515;}
+.review-msg{width: 1200px;margin: 0 auto;position: relative;padding-top: 90px;height: 618px;}
+
+.review-msg>img{display: block;height: 250px; width: auto;margin: 0 auto;}
+.review-msg>.review-cont{width: 1200px;height: 260px;position: relative; margin: 50px auto 0;}
+.review-msg>.review-cont>.review-list{width: 1052px;position: relative; margin: 0 auto;overflow: hidden;padding: 15px 15px 20px;}
+.review-msg>.review-cont>.left-btn{cursor: pointer; position: absolute;z-index: 2;left: 0;top: 93px; width: 40px;height: 40px;background: url(../../../common/images/re-left.png) no-repeat right;}
+.review-msg>.review-cont>.left-btn:hover{background: url(../../../common/images/re-left-hv.png) no-repeat right;}
+.review-msg>.review-cont>.right-btn{cursor: pointer;position: absolute;z-index: 2;right: 0;top: 93px;width: 40px;height: 40px;background: url(../../../common/images/re-right.png) no-repeat right;}
+.review-msg>.review-cont>.right-btn:hover{background: url(../../../common/images/re-right-hv.png) no-repeat right;}
+
+.review-msg ul{text-align: center;font-size: 0;width: 7500px;margin-left: 0;}
+.review-msg ul>li{float: left; margin-right: 30px;width: 240px;
+			transition: all 0.5s ease ;-webkit-transition: all 0.5s ease ;
+        	transform:scale(1);-webkit-transform:scale(1);-moz-transform:scale(1);-o-transform:scale(1);-ms-transform:scale(1);		
+		}
+.review-msg ul>li:hover{ transform:scale(1.1);-webkit-transform:scale(1.1);-moz-transform:scale(1.1);-o-transform:scale(1.1);-ms-transform:scale(1.1);	}		
+		
+.review-msg ul>li>a{display: block;height: 260px;width: 100%; color: #fff;font-size: 14px;}
+.review-msg ul>li>a img{width: 100%;vertical-align: middle;transition: all 0.3s ease ;-webkit-transition: all 0.5s ease ;}
+.img-c{width: 240px;height: 200px;margin: 0 auto;}
+.review-msg ul>li>a>p{padding-top: 20px;font-size: 14px;height: 40px;overflow: hidden;}
+.review-msg ul>li>a>div{position: relative;}
+/*.review-msg>ul>li>a>div>div{display: none; position: absolute;left: 0;top: 0;height: 100%;width: 100%;background: url(../images/hover-posi.png) center top no-repeat;}*/
+
+
+.review-hover{opacity: 0;width: 256px;height: 216px;left: -8px;top: -8px;}
+.review-hover0{display: none; position: absolute;z-index: 4;background: url(../../../common/images/hover-0.png) 0 0 no-repeat;}
+.review-hover1{display: none; position: absolute;z-index: 4;}
+.review-hover1>img{display: block;width: 100%;}
+.review-hover2{display: none; position: absolute;z-index: 4;background: url(../../../common/images/hover-2.png) 0 0 no-repeat;}
+.review-hover3{display: none; position: absolute;z-index: 4;background: url(../../../common/images/hover-3.png) 0 0 no-repeat;}
+.review-hover5{display: none; position: absolute;z-index: 4;background: url(../../../common/images/hover-5.png) -3px -3px no-repeat;}
+.review-hover6{display: none; position: absolute;z-index: 4;background: url(../../../common/images/hover-6.png) -1px -1px no-repeat;}
+.review-hover7{display: none; position: absolute;z-index: 4;background: url(../../../common/images/hover-7.png) -1px -3px no-repeat;}
+.review-hover8{display: none; position: absolute;z-index: 4;background: url(../../../common/images/hover-8.png) 0px -2px no-repeat;}
+.review-hover9{display: none; position: absolute;z-index: 4;background: url(../../../common/images/hover-9.png) 0px -2px no-repeat;}
+.review-hover10{display: none; position: absolute;z-index: 4;background: url(../../../common/images/hover-10.png) 0px 0 no-repeat;}
+.review-hover11{display: none; position: absolute;z-index: 4;background: url(../../../common/images/hover-11.png) 0px 0 no-repeat;}
+.review-hover12{display: none; position: absolute;z-index: 4;background: url(../../../common/images/hover-12.png) 0px 0 no-repeat;}
+.review-hover13{display: none; position: absolute;z-index: 4;background: url(../../../common/images/hover-13.png) 5px 5px no-repeat;}
+.review-hover14{display: none; position: absolute;z-index: 4;background: url(../../../common/images/hover-14.png) 5px 5px no-repeat;}
+.review-hover15{display: none; position: absolute;z-index: 4;background: url(../../../common/images/hover-15.png) 5px 5px no-repeat;}

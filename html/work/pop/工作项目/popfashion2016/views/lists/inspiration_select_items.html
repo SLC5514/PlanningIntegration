@@ -1,0 +1,25 @@
+<div>
+	<div>
+        <ul class="select_items paixu fl clearfix">
+            {if !empty($types)}
+            <li class="pli">
+                <span class="aspan">灵感分类<i class="nav-icon"></i></span>
+                <div class="showbox short-sum">
+                    <div class="dateHeight contentHolder ps-container">
+                        <div class="content">
+                            {foreach $types as $key => $val}
+                            <a href="{$val.sLink}" class="{if $key != 0}borderTop{/if}" onclick="return oCommon.clickBeforeFlicker(this);" title="{$val.sName}">{$val.sName}</a>
+                            {/foreach}
+                        </div>
+                    </div>
+                </div>
+            </li>
+            {/if}
+        </ul>
+	</div>
+
+    <div class="other">
+        <input type="hidden" name="hidd"/>
+        <script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/select_items.js?{STATIC_CHANGE_TIME}"></script>
+    </div>
+</div>

@@ -1,0 +1,570 @@
+body{background-color: #f7f7f7;}
+/* 首页banner */
+.fashion-home-banner{width: 100%;height: 310px;background:url(../../images/fashion_home/swiper_bg1200.png) no-repeat center center;overflow: hidden;}
+.swiper-container-banner{width: 1200px;overflow: hidden;height: 270px;position: relative;margin:20px auto;text-align: center;}
+.swiper-container-banner>ul.roundabout-holder{position: relative;width: 675px;height: 270px;margin:0 auto}
+.roundabout-holder>li{width: 675px;height: 270px;}
+.roundabout-holder>li>a{display: block;width: 100%;height: 100%;}
+.roundabout-holder>li>a>img{width: 100%;height: 100%;border-radius: 8px;}
+.swiper-btn-switch{position: absolute;top: 50%;width: 52px;height: 51px;cursor: pointer;z-index:30;margin-top: -26px;}
+.swiper-prev{background: url(../../images/fashion_home/s_left.png) no-repeat;left: 42px;}
+.swiper-next{background: url(../../images/fashion_home/s_right.png) no-repeat;right: 48px;}
+.swiper-prev:hover{background: url(../../images/fashion_home/s_left_hover.png) no-repeat;}
+.swiper-next:hover{background: url(../../images/fashion_home/s_right_hover.png) no-repeat;}
+.pagination-switch{position: absolute; bottom: 12px;font-size: 0;display: inline-block;z-index:30;}
+.pagination-switch>span{width: 20px;height: 8px;display: inline-block;background: url(../../images/fashion_home/icon.png) no-repeat -20px -154px;}
+.pagination-switch>span.swiper-on{background-position: -45px -154px;}
+
+
+/* 个性标签 */
+.interest-tags-contain{width: 100%;overflow: hidden;margin-bottom: 35px;}
+.interest-tags-selected{text-align: center;margin-top: 30px;}
+.interest-tags-selected>p{max-width: 380px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;color: #333;font-size: 14px;display: inline-block;vertical-align: middle;}
+.interest-tags-selected>a.set-preference{width: 96px;height: 30px;background-color: #fff;border:1px solid #cfcfcf;border-radius: 15px;display: inline-block;vertical-align: middle;line-height: 30px;font-size: 14px;color: #333;margin-left: 10px;cursor: pointer;}
+.interest-tags-selected>a.set-preference:hover{border-color: #d8b056;}
+.interest-tags-selected>a.open-sub-account{width: 180px;height: 30px;line-height: 30px;text-align: center;color: #333;font-size: 14px;background: #fff;border-radius: 15px;float: right;}
+.interest-tags-selected>a.open-sub-account:hover{color: #d8b056;}
+
+.interest-tags-box{background: url(../../images/fashion_home/ins_bg.png) no-repeat;height: 290px;margin-top: 25px;padding: 30px 30px 0;}
+
+.my-exclusive-box>h2{font-size: 30px;color: #2b2b2b;}
+.my-exclusive-link{margin-top: 17px;}
+.my-exclusive-link>a{display: block;font-size: 18px;color: #333;line-height: 24px;margin-bottom: 20px;}
+.my-exclusive-link>a>i{background: url(../../images/fashion_home/icon.png?2020022701) no-repeat;display: inline-block;vertical-align: middle;margin-right: 11px;margin-top: -3px;}
+.my-exclusive-link>a.is-recommend>i{background-position: -74px -154px;width: 19px;height: 15px;}
+.my-exclusive-link>a.is-history>i{background-position: -104px -154px;width: 20px;height: 20px;}
+.my-exclusive-link>a.is-collect>i{background-position: -132px -154px;width: 21px;height: 21px;}
+.my-exclusive-link>a.is-workbench>i{background-position: -166px -154px;width: 20px;height: 20px;}
+.my-exclusive-link>a.is-information>i{background-position: 0 -184px;width: 18px;height: 16px;}
+.my-exclusive-link>a:hover{color: #FF7A45;}
+
+.special-area-box{width: 320px;margin-left: 90px;}
+.special-area-box>h2{font-size: 30px;color: #2b2b2b;}
+.special-area-link{margin-left: -50px;margin-top: 15px;}
+.special-area-link>li{padding: 0 5px;float: left;margin-left: 50px;margin-bottom: 34px;position: relative;cursor: pointer;}
+.special-area-link>li>a>span{font-size: 18px;font-weight: bold;color: #2b2b2b;position: relative;z-index: 1;}
+.special-area-link>li>a>i{position: absolute;width:0;height: 8px;background-color: #FBDE5A;bottom: 0;left: 0;z-index: 0;transition: all 0.5s;}
+.special-area-link>li:hover i{width: 100%;}
+
+.follow-box{width: 537px;margin-left: 85px;}
+.follow-box>h2{font-size: 30px;color: #2b2b2b;}
+.follow-box>h2>a{font-size: 14px;color: #2b2b2b;position: relative;top: 17px;cursor: pointer;}
+.follow-box>h2>a:hover{color: #D8B056;}
+.follow-link{padding-top: 11px;font-size: 0;margin-left: -20px;height: 212px;overflow: hidden;padding-right: 5px;}
+.follow-link>span{background: #D4D5D9;width: 118px;height: 38px;display: inline-block;margin-left: 20px;margin-bottom: 20px;cursor: pointer;font-size: 24px;color: #333;text-align: center;line-height: 38px;border-radius: 19px;}
+.follow-link>span.on{background-color: #1C232B;color: #fff;}
+.follow-link .follow-tags-list{display: inline;font-size: 0;}
+.follow-link .follow-tags-list>div{width: 118px;height: 38px;text-align: center;border-radius: 19px;background-color: #f1f1f1;display: inline-block;vertical-align: top;margin-left: 20px;margin-bottom: 20px;position: relative;}
+.follow-link .follow-tags-list>div>a{display: inline-block;width: 100%;height: 100%;font-size: 14px;color: #2b2b2b;line-height: 38px;border-radius: 19px;}
+.follow-link .follow-tags-list>div>a:hover{background-color: #1C232B;color: #fff;}
+.follow-link .follow-tags-list>div>em{background: url(../../images/fashion_home/del.png?2019121701) no-repeat 0 0;width: 122px;height: 46px;position: absolute;right: -5px;top: -5px;display: none;z-index: 2;cursor: pointer;}
+.follow-link .follow-tags-list>div>a>span{overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 100px;padding: 0 4px;height: 100%;display: inline-block;}
+
+/* 款式流行排行榜 */
+.top-ranking-style-contain{padding-top: 10px;}
+.ranking-title>h3{font-size: 40px;color: #2b2b2b;line-height: 56px;position: relative;display: inline;}
+.ranking-title>h3>i{background: url(../../images/fashion_home/icon.png) no-repeat -76px 0;width: 12px;height: 12px;position: absolute;top: 7px;right: -16px;cursor: pointer;}
+.ranking-title .ranking-all-intro{background-color: #fff;width: 360px;padding:10px;font-size: 12px;color: #666666; border:1px solid #eee; position: absolute;line-height: 24px;left: 185px;bottom: 55px;display: none;z-index:30;}
+.ranking-title .ranking-all-intro>i{background: url(../../images/fashion_home/arrow.png) no-repeat;width: 11px;height: 8px;display: inline-block;position: absolute;bottom: -8px;left:18px;}
+.ranking-title>i:hover .ranking-all-intro{display: block;}
+.ranking-eng{font-size: 18px;line-height: 25px;color: #acacac;padding-top: 2px;letter-spacing: 0.9px;}
+.top-ranking-box{margin-top: 30px;}
+/* 色彩排行榜 */
+.color-ranking-content{width: 100%;height: 370px;background-color: #fff;border-radius: 5px;}
+.color-ranking-content:hover{box-shadow: 0 0 10px rgba(15,15,15,0.1);}
+.intro-title{height: 65px;border-bottom: 1px solid #f1f1f1;}
+.intro-title>h4{margin-left: 30px;font-size: 20px;color: #333;display: inline-block;position: relative;margin-top: 20px;}
+.intro-title>h4>i{background: url(../../images/fashion_home/icon.png) no-repeat -76px 0;width: 12px;height: 12px;display: inline-block;position: absolute;right:-6px;top: 0;}
+.color-ranking-content .intro-title>h4>i{right: -16px;}
+.ranking-per-intro{background-color: #fff;width: 360px;padding:10px;font-size: 12px;color: #666666; border:1px solid #eee; position: absolute;line-height: 24px;left: 195px;bottom: 38px;display: none;}
+.ranking-per-intro-color{left: 84px;}
+.ranking-per-intro>i{background: url(../../images/fashion_home/arrow.png) no-repeat;width: 11px;height: 8px;display: inline-block;position: absolute;bottom: -8px;left: 18px;}
+.ranking-per-intro>i{background: url(../../images/fashion_home/arrow.png) no-repeat;width: 11px;height: 8px;display: inline-block;position: absolute;bottom: -8px;left: 18px;}
+.season-filter{margin-left: 38px;}
+
+
+/* 色块 */
+.color-ranking-data-box .ranking-all-box{float: left;width: 280px;margin-left: 30px;margin-top: 6px;display: none;}
+.color-ranking-data-box .ranking-all-box>div{width: 280px;height: 232px;}
+.color-ranking-data-box .ranking-all-box>p{font-size: 14px;color: #333;text-align: center;margin-top: 4px;}
+.ranking-all-color .color-value{width: 100%;font-size: 0;margin-top:20px;height: 52px;line-height: 52px;margin-top: 8px;}
+.ranking-all-color .color-value>a{width: 25%;height: 40px;display: inline-block;vertical-align: middle;cursor: pointer;box-shadow: 5px 0 7px rgba(0,0,0,0.1);}
+.ranking-all-color .color-value>a:first-child{border-radius: 5px 0 0 5px;}
+.ranking-all-color .color-value>a:last-child{border-radius: 0 5px 5px 0;}
+.ranking-all-color .color-value>a:hover{box-shadow: 0 0 10px rgba(0,0,0,0.1);}
+.ranking-all-color .color-value>a.on{height:52px;box-shadow: 0 0 10px rgba(0,0,0,0.1);}
+/* 色彩比例条 */
+.ranking-top-color{float: left;padding-left: 6px;margin-top: 14px;width: 870px;height: 290px;overflow: hidden;display: none;}
+.ranking-top-color>ul>li{float: left;text-align: center;width: 85px;margin-bottom: 50px;}
+.ranking-top-color>ul>li>a>span{font-size: 14px;color: #333;display: inline-block;}
+.ranking-top-color>ul>li>a>p{font-size: 16px;color: #333;width: 100%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.ranking-top-color>ul>li>a>div{width: 100%;position: relative;height: 200px;margin:8px 0 10px;}
+.ranking-top-color>ul>li>a>div>em{display: inline-block;width: 40px;position: absolute;bottom: 0;left:50%;border-radius: 20px;margin-left: -20px;transition: all 0.5s;height: 0;box-shadow: 0 2px 7px 0 rgba(0,0,0,0.10);;}
+.ranking-top-color>ul>li:hover a>span{color: #d8b056;}
+.ranking-top-color>ul>li:hover a>p{color: #d8b056;}
+.ranking-top-color>ul>li:hover a>div>em{box-shadow: 0 2px 7px 0 rgba(0,0,0,0.15);}
+
+/* 品牌图案 */
+.brand-pattern-ranking-content{margin-left: -30px;}
+.ranking-content{background-color: #fff;border-radius: 5px;margin-top: 30px;float: left;margin-left: 30px;width: 585px;height: 320px;}
+.ranking-content:hover{box-shadow: 0 0 10px rgba(15,15,15,0.1);}
+.ranking-content>h4{height: 68px;border-bottom: 1px solid #f2f2f2;line-height: 68px;font-size: 20px;color: #333;padding-left: 40px;position: relative;}
+.ranking-content>h4>i{background: url(../../images/fashion_home/icon.png?2019121801) no-repeat -76px 0;width: 12px;height: 12px;position: absolute;top:30px;left:290px;cursor: pointer;} 
+.label-filter{width: 138px;height: 30px;display: inline-block;margin-top: 20px;margin-right: 30px;position: relative;}
+.label-filter>span{width: 124px;height: 30px;display: inline-block;color: #333;font-size: 14px;background-color: #ecedee;line-height: 30px;padding-left: 16px;cursor: pointer;}
+.label-filter>span>i{background: url(../../images/fashion_home/icon.png?2019121801) no-repeat -17px -130px;display: inline-block;width: 11px;height: 6px;position: absolute;right:17px;top: 11px;}
+.label-filter-downlist{width: 100%;position: absolute;left:0;top:30px;background-color: #fff;border:1px solid #f1f1f1;visibility: hidden; z-index:11;}
+.label-filter-content{max-height: 200px;overflow:hidden; position: relative;}
+.label-filter-content>a{display: block;height: 30px;padding-left: 16px;line-height: 30px;cursor: pointer;font-size:14px;}
+.label-filter-content>a:hover{color: #d8b056;}
+.label-filter>span:hover{color: #d8b056;}
+.label-filter>span:hover i{background-position: 0 -130px;}
+
+/* 品牌排行榜 */
+.brand-ranking-data-box>ul{width: 585px;height: 254px;position: relative;display: none;}
+.brand-ranking-data-box>ul>li{position: absolute;white-space: nowrap;cursor: pointer;}
+.brand-ranking-data-box>ul>li>a{border-radius: 50%;display: block;padding:0 5px;text-align: center;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;color: #fff;font-size: 14px;}
+.brand-ranking-data-box>ul>li.brand-position1{left:26px;top:86px;}
+.brand-ranking-data-box>ul>li.brand-position1>a{width: 132px;height: 142px;background-color: #E33872;line-height: 142px;}
+.brand-ranking-data-box>ul>li.brand-position2{left:211px;top:18px;}
+.brand-ranking-data-box>ul>li.brand-position2>a{width: 96px;height: 106px;background-color: #E33872;line-height: 106px;}
+.brand-ranking-data-box>ul>li.brand-position3{left:438px;top:92px;}
+.brand-ranking-data-box>ul>li.brand-position3>a{width: 96px;height: 106px;background-color: #E33872;line-height: 106px;}
+.brand-ranking-data-box>ul>li.brand-position4{left:244px;top:130px;}
+.brand-ranking-data-box>ul>li.brand-position4>a{width: 96px;height: 106px;background-color: #4D52FF;line-height: 106px;}
+.brand-ranking-data-box>ul>li.brand-position5{left:123px;top:14px;}
+.brand-ranking-data-box>ul>li.brand-position5>a{width: 68px;height: 78px;background-color: #4D52FF;line-height: 78px;}
+.brand-ranking-data-box>ul>li.brand-position6{left:328px;top:13px;}
+.brand-ranking-data-box>ul>li.brand-position6>a{width: 61px;height: 71px;background-color: #4D52FF;line-height: 71px;}
+.brand-ranking-data-box>ul>li.brand-position7{left:347px;top:92px;}
+.brand-ranking-data-box>ul>li.brand-position7>a{width: 68px;height: 78px;background-color: #37BEA8;line-height: 78px;}
+.brand-ranking-data-box>ul>li.brand-position8{left:369px;top:177px;}
+.brand-ranking-data-box>ul>li.brand-position8>a{width: 55px;height: 65px;background-color: #37BEA8;line-height: 65px;}
+.brand-ranking-data-box>ul>li.brand-position9{left:424px;top:21px;}
+.brand-ranking-data-box>ul>li.brand-position9>a{width: 50px;height: 60px;background-color: #37BEA8;line-height: 60px;}
+.brand-ranking-data-box>ul>li.brand-position10{left:178px;top:120px;}
+.brand-ranking-data-box>ul>li.brand-position10>a{width: 49px;height: 59px;background-color: #37BEA8;line-height: 59px;}
+.brand-ranking-data-box>ul>li>div{position: absolute;background-color: #fff;box-shadow: 0 1px 4px 0 rgba(0,0,0,0.1);border-radius: 5px 5px 5px 0;padding: 8px 13px;left:50%;top:-48px;line-height: 20px;font-size: 14px;color: #333;z-index:10;display: none;}
+.brand-ranking-data-box>ul>li>div>i{background: url(../../images/fashion_home/icon.png) no-repeat -40px -130px;width: 15px;height: 11px;position: absolute;left: 0;bottom: -10px;}
+.brand-ranking-data-box>ul>li:hover div{display: block;}
+.brand-ranking-data-box>ul>li:hover a{box-shadow: 0 0 2px 2px rgba(0,0,0,0.1);}
+
+/* 图案排行榜 */
+.pattern-ranking-data-box>ul{padding:0 30px;}
+.pattern-ranking-data-box>ul>li{margin-top: 20px;cursor: pointer;}
+.pattern-ranking-data-box>ul>li>a>em{font-size: 14px;color: #333;font-style: normal;width: 30px;display: inline-block;text-align: center;}
+.pattern-ranking-data-box>ul>li>a>span{font-size: 14px;color: #333;width: 80px;display: inline-block;text-align: center;margin:0;}
+.pattern-ranking-data-box>ul>li>a>div.pattern-color-value-box{width: 340px;height: 12px;display: inline-block;position: relative;}
+.pattern-ranking-data-box>ul>li .pattern-color-value-box>div{background-image:linear-gradient(90deg, #7794fe 0%, #4c54fe 100%); background: #4c54fe\0;;width: 100%;height: 100%;border-radius: 20px;position: relative;transition: all 1s;width: 0;}
+.pattern-ranking-data-box>ul>li>a>strong{font-size: 14px;color: #333;margin-left: 16px;}
+.pattern-ranking-data-box>ul>li div.hover-infor{position: absolute;background-color: #fff;box-shadow: 0 1px 4px 0 rgba(0,0,0,0.1);border-radius: 5px 5px 5px 0;padding: 8px 13px;left:40%;top:-66px;line-height: 20px;font-size: 14px;color: #333;z-index:10;display: none;white-space: nowrap;}
+.pattern-ranking-data-box>ul>li div.hover-infor>i{background: url(../../images/fashion_home/icon.png) no-repeat -40px -130px;width: 15px;height: 11px;position: absolute;left: 0;bottom: -10px;}
+.pattern-ranking-data-box>ul>li:hover div.hover-infor{display: block;}
+.pattern-ranking-data-box>ul>li:hover em,.pattern-ranking-data-box>ul>li:hover span,.pattern-ranking-data-box>ul>li:hover strong{color: #d8b056;}
+
+
+
+/* 无数据 */
+.top-data-null{text-align: center;display: none;}
+.top-data-null>img{margin-top: 50px;}
+.top-data-null>div{font-size: 18px;color: #999;line-height: 36px;}
+.top-data-null>div>span{max-width: 140px;display: inline-block;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;vertical-align: middle;margin-top: -5px;}
+.top-data-null>div em{color: #d8b056;padding-left: 5px;}
+
+/* 加载中 */
+.loading-top-data{text-align: center;}
+.loading-top-data>img{margin-top: 70px;}
+
+
+/* 最新报告 - 热门报告 */
+.reports-infor-contain{background: url(../../images/fashion_home/m_1200_bg.jpg) no-repeat center top;width: 100%;margin-top: 50px;padding-top: 70px;}
+.latest-report-box{width: 786px;}
+.latest-report-top{position: relative;}
+.latest-report-title>h3{font-size: 40px;color: #fff;}
+.latest-report-title>p{font-size: 18px;color: #f1f1f1;padding-top: 8px;line-height: 25px;}
+.latest-report-jump{line-height: 30px;height: 30px;position: absolute;right: 15px;bottom: 5px;}
+.latest-report-jump>a{background: url(../../images/fashion_home/icon.png?2019121701) no-repeat 0 0;display: inline-block;width: 30px;height: 30px;cursor: pointer;}
+.latest-report-jump>a.left-jump{background-position: -107px -105px;float: left;}
+.latest-report-jump>a.right-jump{background-position: -153px -105px;float: right;}
+.latest-report-jump>a:hover.left-jump{background-position: 0 -42px;}
+.latest-report-jump>a:hover.right-jump{background-position: -40px -42px;}
+.latest-report-jump>span{font-size: 14px;color: #fff;overflow: hidden;margin:0 10px;width: 28px;float: left;text-align: center;}
+.report-list-box{margin-top: 30px;}
+.report-list-box>ul{margin-left: -10px;display: none;}
+.report-list-box>ul>li{width: 255px;float: left;margin-left: 10px;margin-bottom: 20px;border-radius: 5px;}
+.report-list-box>ul>li .img-box{position: relative;font-size: 0;padding:10px 10px 0;}
+.img-box>a{width: 235px;height: 168px;display: inline-block;overflow: hidden;}
+.img-box>a>img{max-width: 235px;max-height: 168px;border-radius: 5px;}
+.img-box>div.col-date-box{position: absolute;left:10px;bottom: 0;background-color: rgba(255,255,255,0.7);height: 40px;width: 235px;line-height: 40px;border-radius: 0 0 5px 5px;display: none;}
+.img-box>div.col-date-box>a{font-size: 14px;color: #333;margin-left: 10px;}
+.img-box>div.col-date-box>span{font-size: 14px;color: #333;margin-right: 10px;}
+.img-box>div.collect-state{background: url(../../images/fashion_home/icon.png) no-repeat -83px -42px;width: 25px;height: 25px;position: absolute;right:20px;top:20px;cursor: pointer;display: none;}
+.img-box>div.collect-state.on-state,.img-box>div.collect-state:hover{background-position: -121px -42px;}
+.text-labels{position: relative;height: 90px;}
+.text-labels .text-position{position: absolute;left:0;top:0;width: 235px;border-radius: 0 0 5px 5px;padding:0 10px 10px;z-index: 10;}
+.text-position>p{padding-top: 13px;}
+.text-position>p>a{width: 100%;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;font-size: 18px;color: #333;line-height: 30px;display: block;}
+.text-position>div{height: 22px;overflow: hidden;padding-top: 10px;}
+.text-position>div>span{margin-bottom: 10px;display: inline-block;}
+.text-position>div>span>a{font-size: 14px;color: #646464;margin-right: 10px;display: inline-block;}
+.text-position>div>span+span>a{border-left: 1px solid #dfdfdf;padding-left: 10px;}
+.text-position>div>span:hover a{color: #d8b056;}
+.report-list-box>ul>li:hover{background-color: #fff;}
+.report-list-box>ul>li:hover .img-box>div.col-date-box{display: block;}
+.report-list-box>ul>li:hover .text-position{background-color: #fff;}
+.report-list-box>ul>li:hover .text-position>p>a{white-space: normal;}
+.report-list-box>ul>li:hover .collect-state{display: block;}
+
+.hot-reports-box{width: 400px;}
+.hot-reports-box>h3{font-size: 40px;color: #fff;}
+.hot-reports-box>p{font-size: 18px;color: #f1f1f1;padding-top: 8px;}
+.hot-reports-content{background-color: #fff;border-radius: 5px;margin-top: 42px;font-size: 0;height: 534px;overflow: hidden;}
+.hot-reports-content>em.line-top{width: 140px;height: 1px;background-color: #f1f1f1;display: inline-block;margin:35px 0 0 20px;}
+.hot-reports-content>em.line-bottom{float: right;margin-right: 20px;margin-top: 15px;}
+.hot-reports-content>ul{margin-top: 16px;}
+.hot-reports-content>ul>li{width: 100%;height: 60px;line-height: 60px;margin-bottom: 2px;}
+.hot-reports-content>ul>li>a{width: 100%;height: 100%;display: block;}
+.r-ranking-num{width: 30px;height: 30px;border-radius: 50%;text-align: center;line-height: 30px;font-size: 20px;color: #a2a2a2;background-color: #f1f1f1;margin-left: 20px;margin-top:15px;float: left;}
+.r-ranking-num.first-num{background-color: #fcebf1;color: #df3c72;}
+.r-ranking-num.second-num{background-color: #e4e6ff;color: #4c54fe;}
+.r-ranking-num.third-num{background-color: #ebf8f6;color: #37bca8;}
+.r-report-title{font-size: 16px;color: #333;display: inline-block;margin-left: 10px;width: 220px;position: relative;height: 60px;}
+.r-report-title>span{line-height: 30px;position: absolute;left:0;top:50%;-ms-transform:translateY(-50%);transform: translateY(-50%);overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 100%;}
+.r-report-title>span.ellipse{word-break: break-all;text-overflow: ellipsis;display: -webkit-box; -webkit-box-orient: vertical;-webkit-line-clamp: 2;overflow: hidden;white-space: normal;}
+.r-view-num{font-size: 14px;color: #a2a2a2;float: right;margin-right: 22px;}
+.r-view-num>i{background: url(../../images/fashion_home/icon.png) no-repeat -162px -42px;width: 18px;height: 12px;display: inline-block;margin-right: 8px;}
+.hot-reports-content>ul>li:hover{box-shadow: 0 0 10px rgba(0,0,0,0.2);}
+.hot-reports-content>ul>li:last-child{display: none;}
+
+
+/* 推荐title */
+.recommend-title>h3{font-size: 40px;color: #2b2b2b;line-height: 56px;position: relative;display: inline;}
+.recommend-title>h3>i{background: url(../../images/fashion_home/icon.png) no-repeat -76px 0;width: 12px;height: 12px;position: absolute;top: 7px;right: -16px;cursor: pointer;}
+.recommend-title .recommend-all-intro{background-color: #fff;width: 500px;padding:10px;font-size: 12px;color: #666666; border:1px solid #eee; position: absolute;line-height: 24px;left: 145px;bottom: 55px;display: none;}
+.recommend-title .recommend-all-intro>i{background: url(../../images/fashion_home/arrow.png) no-repeat;width: 11px;height: 8px;display: inline-block;position: absolute;bottom: -8px;left:18px;}
+.recommend-title .open-sub-account{width: 180px;height: 30px;line-height: 30px;text-align: center;color: #333;font-size: 14px;background: #fff;border-radius: 15px;margin-left: 32px;display: inline-block;cursor: pointer;}
+.recommend-title .open-sub-account:hover{color: #d8b056;}
+/* 款式推荐 */
+.style-recommend-contain{padding-top: 20px;position: relative;}
+.style-r-top .style-r-title>p{font-size: 18px;color: #acacac;padding-top: 2px;line-height: 25px;}
+.style-r-more{margin-top: 34px;}
+.style-r-more>a{color: #333;font-size: 18px;}
+.style-r-more>a>i{background: url(../../images/fashion_home/icon.png) no-repeat 0 -81px;width: 30px;height: 8px;display: inline-block;margin-right: 13px;vertical-align: middle;}
+.style-r-more>a:hover{color: #d8b056;}
+.style-r-more>a:hover i{background-position: -37px -81px;}
+.style-lists-contain{margin-top: 20px;text-align: center;}
+.style-lists-contain>ul{margin-left: -12px;}
+.style-lists-contain>ul>li{margin-left: 12px;float: left;width: 230px;height: 300px;overflow: hidden;margin-bottom: 30px;border-radius: 5px;font-size: 0;}
+.style-lists-contain>ul>li>a{width: 210px;height: 280px;display: inline-block;line-height: 280px;text-align: center;background-color: #fff;margin:10px}
+.style-lists-contain>ul>li>a>img{max-width: 210px;max-height: 280px;vertical-align: middle;border-radius: 5px;}
+.style-lists-contain .style-more-bottom{width: 200px;height: 85px;display: inline-block;font-size: 18px;color: #333;line-height: 85px;position: relative;margin-top: 10px;}
+.style-more-bottom>span{position:relative;z-index:2;}
+.style-more-bottom>span>i{background: url(../../images/fashion_home/icon.png) no-repeat 0 -81px;width: 30px;height: 8px;display: inline-block;margin-left: 13px;vertical-align: middle;position: relative;}
+.style-more-bottom>em{position: absolute;left:0;top:0;width: 68px;height: 100%;z-index:1;background-color: #d8b056;transition: all 0.1s;}
+.style-more-bottom:hover{color: #fff;}
+.style-more-bottom:hover span>i{background-position: -79px -81px;}
+.style-more-bottom:hover em{width: 100%;}
+.style-lists-contain>ul>li:hover{box-shadow: 0 0 10px rgba(0,0,0,0.2);background-color: #fff;}
+
+/* 图案推荐 */
+.pattern-recommend-contain{padding: 48px 0 48px;position: relative;}
+.pattern-r-top .pattern-r-title>p{font-size: 18px;color: #acacac;padding-top: 2px;line-height: 25px;}
+.pattern-r-more{margin-top: 34px;}
+.pattern-r-more>a{color: #333;font-size: 18px;}
+.pattern-r-more>a>i{background: url(../../images/fashion_home/icon.png) no-repeat 0 -81px;width: 30px;height: 8px;display: inline-block;margin-right: 13px;vertical-align: middle;}
+.pattern-r-more>a:hover{color: #d8b056;}
+.pattern-r-more>a:hover i{background-position: -37px -81px;}
+.pattern-lists-contain{margin-top: 20px;text-align: center;}
+.pattern-lists-contain>ul{margin-left: -26px;}
+.pattern-lists-contain>ul>li{margin-left: 26px;float: left;width: 280px;height: 280px;overflow: hidden;margin-bottom: 30px;border-radius: 5px;font-size: 0;}
+.pattern-lists-contain>ul>li>a{width: 260px;height: 260px;display: inline-block;line-height: 260px;text-align: center;margin:10px;background-color: #fff;}
+.pattern-lists-contain>ul>li>a>img{max-width: 260px;vertical-align: middle;border-radius: 5px;}
+.pattern-lists-contain .pattern-more-bottom{width: 200px;height: 85px;display: inline-block;font-size: 18px;color: #333;line-height: 85px;position: relative;margin-top: 10px;}
+.pattern-more-bottom>span{position:relative;z-index:2;}
+.pattern-more-bottom>span>i{background: url(../../images/fashion_home/icon.png) no-repeat 0 -81px;width: 30px;height: 8px;display: inline-block;margin-left: 13px;vertical-align: middle;position: relative;}
+.pattern-more-bottom>em{position: absolute;left:0;top:0;width: 68px;height: 100%;z-index:1;background-color: #d8b056;transition: all 0.1s;}
+.pattern-more-bottom:hover{color: #fff;}
+.pattern-more-bottom:hover span>i{background-position: -79px -81px;}
+.pattern-more-bottom:hover em{width: 100%;}
+.pattern-lists-contain>ul>li:hover{box-shadow: 0 0 10px rgba(0,0,0,0.2);background-color: #fff;}
+.pattern-lists-contain>ul>li:nth-last-child(1){display: none;}
+.pattern-lists-contain>ul>li:nth-last-child(2){display: none;}
+
+/* 最新T台 */
+.runway-recommend-contain{padding-bottom: 48px;}
+.runway-r-top .runway-r-title>h3{font-size: 40px;color: #2b2b2b;line-height: 56px;}
+.runway-r-top .runway-r-title>p{font-size: 18px;color: #acacac;padding-top: 2px;line-height: 25px;}
+.runway-r-more{margin-top: 34px;}
+.runway-r-more>a{color: #333;font-size: 18px;}
+.runway-r-more>a>i{background: url(../../images/fashion_home/icon.png) no-repeat 0 -81px;width: 30px;height: 8px;display: inline-block;margin-right: 13px;vertical-align: middle;}
+.runway-r-more>a:hover{color: #d8b056;}
+.runway-r-more>a:hover i{background-position: -37px -81px;}
+.runway-lists-contain{background-color: #fff;border-radius: 5px;margin-top: 30px;padding:20px 0;height: 222px;overflow: hidden;}
+.runway-lists-contain>ul{margin-left: 5px;}
+.runway-lists-contain>ul>li{padding:10px;float: left;width: 206px;margin-left: 10px;margin-bottom: 30px;border-radius: 5px;}
+.runway-lists-contain>ul>li>a{width: 100%;height: 100%;display: inline-block;}
+.runway-lists-contain>ul>li div.pic-box{width: 206px;height: 155px;overflow: hidden;line-height: 155px;text-align: center;}
+.runway-lists-contain>ul>li div.pic-box>img{width: 206px;vertical-align: middle;height: 155px;border-radius: 5px;}
+.runway-lists-contain>ul>li>a>p{font-size: 14px;color: #2b2b2b;margin-top:5px;overflow: hidden;text-overflow: ellipsis;-webkit-line-clamp: 2;-webkit-box-orient: vertical;display: -webkit-box;height: 38px;}
+.runway-lists-contain>ul>li:hover{box-shadow: 0 2px 16px rgba(0,0,0,0.1);}
+
+/* 广告大片 */
+.lookbook-recommend-contain{padding-bottom: 48px;}
+.lookbook-r-top .lookbook-r-title>h3{font-size: 40px;color: #2b2b2b;line-height: 56px;}
+.lookbook-r-top .lookbook-r-title>p{font-size: 18px;color: #acacac;padding-top: 2px;line-height: 25px;}
+.lookbook-r-more{margin-top: 34px;}
+.lookbook-r-more>a{color: #333;font-size: 18px;}
+.lookbook-r-more>a>i{background: url(../../images/fashion_home/icon.png) no-repeat 0 -81px;width: 30px;height: 8px;display: inline-block;margin-right: 13px;vertical-align: middle;}
+.lookbook-r-more>a:hover{color: #d8b056;}
+.lookbook-r-more>a:hover i{background-position: -37px -81px;}
+.lookbook-lists-contain{background-color: #fff;border-radius: 5px;margin-top: 30px;padding:20px 0;height: 344px;overflow: hidden;}
+.lookbook-lists-contain>ul{margin-left: 5px;}
+.lookbook-lists-contain>ul>li{padding:10px;float: left;width: 206px;margin-left: 10px;margin-bottom: 30px;border-radius: 5px;}
+.lookbook-lists-contain>ul>li>a{width: 100%;height: 100%;display: inline-block;}
+.lookbook-lists-contain>ul>li div.pic-box{width: 206px;height: 276px;overflow: hidden;line-height: 276px;text-align: center;}
+.lookbook-lists-contain>ul>li div.pic-box>img{width: 206px;height: 276px;border-radius: 5px;}
+.lookbook-lists-contain>ul>li>a>p{font-size: 14px;color: #2b2b2b;margin-top:5px;overflow: hidden;text-overflow: ellipsis;-webkit-line-clamp: 2;-webkit-box-orient: vertical;display: -webkit-box;height: 37px;}
+.lookbook-lists-contain>ul>li:hover{box-shadow: 0 2px 16px rgba(0,0,0,0.1);}
+
+/* 专属看板 */
+.my-board-contain{margin-bottom: 60px;}
+.my-board-title>h3{font-size: 40px;color: #2b2b2b;line-height: 56px;position: relative;display: inline;}
+.my-board-title>h3>i{background: url(../../images/fashion_home/icon.png) no-repeat -76px 0;width: 12px;height: 12px;position: absolute;top: 7px;right: -16px;cursor: pointer;}
+.my-board-title .board-all-intro{background-color: #fff;width: 500px;padding:10px;font-size: 12px;color: #666666; border:1px solid #eee; position: absolute;line-height: 24px;left: 145px;bottom: 55px;display: none;}
+.my-board-title .board-all-intro>i{background: url(../../images/fashion_home/arrow.png) no-repeat;width: 11px;height: 8px;display: inline-block;position: absolute;bottom: -8px;left:18px;}
+.my-board-eng{font-size: 18px;line-height: 25px;color: #acacac;padding-top: 2px;letter-spacing: 0.9px;}
+.borad-search-box{margin-top: 30px;margin-left: -29px;}
+.borad-search-list{display: inline;font-size: 0;}
+.borad-search-list>a{width: 216px;height: 216px;background-color: #fff;border-radius: 8px;display: inline-block;text-align: center;vertical-align: top;cursor: pointer;margin-left: 29px;margin-bottom: 40px;position: relative;}
+.borad-search-list>a>em{background: url(../../images/fashion_home/board_icon.png) no-repeat;width: 42px;height: 42px;display: inline-block;background-size: 100%;margin-top: 34px;}
+.borad-search-list>a>div{font-size: 18px;color: #2b2b2b;overflow: hidden;line-height: 28px;text-overflow: ellipsis;-webkit-line-clamp: 2;-webkit-box-orient: vertical;display: -webkit-box;margin-top: 24px;padding:0 13px;}
+.borad-search-list>a>p{font-size: 16px;color: #646464;margin-top: 10px;}
+.borad-search-list>a>i{background: url(../../images/fashion_home/icon.png?2019121701) no-repeat -25px -154px;display: inline-block;width: 40px;height: 20px;position: absolute;right: 8px;top: 8px;}
+.borad-search-box>span{width: 216px;height: 216px;background-color: #fff;border-radius: 8px;display: inline-block;text-align: center;line-height: 216px;cursor: pointer;margin-left: 29px;margin-bottom: 40px;}
+.borad-search-box>span>img{vertical-align: middle;max-width: 82px;box-shadow: 0 0 2px 2px rgba(0,0,0,0.1);border-radius: 50%;}
+.borad-search-list>a:hover{box-shadow: 0 0 10px rgba(0,0,0,0.1);}
+.borad-search-box>span:hover{box-shadow: 0 0 10px rgba(0,0,0,0.1);}
+
+/* 偏好选择弹框 */
+.preference-select-bg{background: rgba(0,0,0,0.6);width: 100%;height: 100%;position: fixed;left:0;top:0;z-index: 99;display: none;;}
+.preference-select-contain{background-color: #fff;border-radius: 5px;width: 800px;height: 633px;position: fixed;top:15%;left:50%;margin-left: -400px;z-index:100;display: none;}
+.preference-select-close{background: url(../../images/fashion_home/icon.png) no-repeat -168px -81px;width: 17px;height: 17px;display: inline-block;position: absolute;right: 20px;top:20px;cursor: pointer;}
+.preference-select-contain>h2{font-size: 24px;color: #333;text-align: center;margin-top: 25px;}
+.preference-select-contain>h2>span{margin:0 10px;display: inline-block;}
+.preference-select-contain>h2>i{display: inline-block;width: 25px;height: 2px;background-color: #333;position: relative;top: -8px;}
+.preference-select-contain>p{font-size: 16px;color: #999;text-align: center;margin-top: 13px;}
+.labels-select-box{padding:0 100px 0 60px;margin-top: 30px;}
+.labels-select-box>ul{float: left;width: 120px;margin-left: 40px;}
+.labels-select-box>ul.industry-labels-ul1,.labels-select-box>ul.industry-labels-ul3{margin-top: 40px;}
+.labels-select-box>ul>li{width: 120px;height: 120px;margin-bottom: 40px;cursor: pointer;}
+.preference-select-label{position: relative;width: 100%;height: 100%;text-align: center;}
+.preference-select-label>img{width: 120px;height: 120px;border-radius: 50%;}
+.preference-select-label>div.layer-labels-bg{background: url(../../images/fashion_home/ind_bg.png) no-repeat;width: 100%;height: 100%;position: absolute;left:0;top:0;font-size: 20px;color: #fff;line-height: 120px;}
+.select-label-gender>div.layer-labels-bg{background: url(../../images/fashion_home/gender_bg.png) no-repeat;}
+.preference-select-label>div.layer-labels-bg>span{line-height: 30px;display: inline-block;vertical-align: middle;}
+.selected-label-state{background: rgba(0,0,0,0.15);width: 100%;height: 100%;position: absolute;left:0;top:0;border-radius: 50%;line-height: 120px;display: none;}
+.selected-label-state>div{display: inline-block;line-height: 30px;vertical-align: middle;}
+.selected-label-state>div>i{background: url(../../images/fashion_home/icon.png) no-repeat -123px -81px;display: inline-block;width: 32px;height: 20px;}
+.selected-label-state>div>span{font-size: 20px;color: #fff;display: block;}
+.labels-select-box>ul>li.selected .selected-label-state{display: block;}
+.labels-select-box>ul>li.selected .layer-labels-bg{display: none;}
+
+/* 个性化弹框 */
+.interested-select-contain{background-color: #fff;border-radius: 5px;width: 800px;height: 539px;position: fixed;top:15%;left:50%;margin-left: -400px;z-index:100;display: none;}
+.interested-select-contain>p{height: 50px;font-size: 16px;color: #333;line-height: 50px;margin-left: 20px;border-bottom: 1px solid #f1f1f1;}
+.interested-select-close{background: url(../../images/fashion_home/icon.png) no-repeat -168px -81px;width: 17px;height: 17px;display: inline-block;position: absolute;right: 20px;top:20px;cursor: pointer;}
+.interested-select-box{margin-top: 20px;}
+.interested-select-box>ul{height: 386px;overflow-y: auto;margin-right: 20px;}
+.interested-select-box>ul>li{margin-bottom: 29px;}
+.interested-select-box>ul>li label{font-size: 18px;color: #333;display: inline-block;text-align: right;width: 88px;height: 36px;line-height: 36px;}
+.interested-select-box>ul>li i{width: 1px;height: 18px;background-color: #f1f1f1;position: relative;top: 10px;margin-left: 20px;float: left;}
+.interested-select-box>ul>li .brand-input{margin-left: 20px;position: relative;}
+.interested-select-box>ul>li .brand-input>input{width: 296px;height: 36px;border: 1px solid #f1f1f1;line-height: 36px;padding-left: 12px;}
+.brand-labels-searchlist{position: absolute;width: 310px;max-height: 322px;top: 38px;left: 0;background-color: #fff;box-shadow:0px 2px 6px 0px rgba(0,0,0,0.1);border-radius:5px;z-index: 10;padding: 8px 0;display: none;}
+.brand-labels-searchlist>a{display: block;padding-left: 12px;font-size: 14px;color: #333;height: 30px;line-height: 30px;cursor: pointer;padding-right: 10px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+.brand-labels-searchlist>a:hover{background-color: #f9f9f9;}
+.interested-select-brand{margin-left: 130px;}
+.interested-select-brand>a{color: #646464;font-size: 14px;padding: 0 12px;height: 28px;border: 1px solid #f1f1f1;border-radius: 15px;margin-right: 16px;display: inline-block;margin-top: 16px;line-height: 28px;cursor: pointer;position: relative;}
+.interested-select-brand>a:hover,.interested-select-brand>a.selected{color: #222200;background-color: #FEF7D6;border-color: #FEF7D6;}
+.interested-select-brand>a.selected>em{background: url(../../images/fashion_home/icon.png) no-repeat -34px -184px;display: inline-block;width: 16px;height: 16px;
+display: inline-block;position: absolute;right: -4px;top: -4px;}
+.interested-select-labels{border-top:1px solid #f1f1f1;border-left: 1px solid #f1f1f1;max-width: 616px;font-size: 0;margin-left: 20px;}
+.interested-select-labels>a{border-bottom:1px solid #f1f1f1;border-right: 1px solid #f1f1f1;width: 122px;height: 36px;display: inline-block;font-size: 14px;color: #646464;text-align: center;line-height: 36px;position: relative;cursor: pointer;}
+.interested-select-labels>a>span{position: relative;z-index:1;}
+.interested-select-labels>a.selected{color: #222200;}
+.interested-select-labels>a>em{width: 124px;height: 38px;position: absolute;left: -1px;top:-1px;}
+.interested-select-labels>a.selected>em{background: url(../../images/fashion_home/selected.jpg) no-repeat;}
+.interested-select-labels>a.selected-on{color: #646464;}
+.interested-select-labels>a.selected-on>em{background: url(../../images/fashion_home/selected1.jpg) no-repeat;}
+.interested-select-labels>a:hover em{background-color:#fef7d6;}
+.interested-select-labels>a:hover{color: #222200;}
+.save-interested-select{padding:21px 0;text-align: center;}
+.save-interested-select>a{width: 100px;height: 40px;display: inline-block;line-height: 40px;font-size: 16px;border-radius: 5px;cursor: pointer;}
+.save-interested-select>a.cancel-interested-select{background-color: #ccc;margin-right: 35px;color: #333;}
+.save-interested-select>a.confirm-interested-select{background-color: #d8b056;color: #fff;}
+.save-interested-select>a.confirm-interested-select:hover{background-color: #F6CB69;}
+.prompt-layer{width: 349px;height: 40px;position: absolute;top:5px;left:50%;margin-left: -175px;background: rgba(0,0,0,0.7);color: #fff;font-size: 14px;line-height: 40px;text-align: center;border-radius: 20px;display: none;}
+
+/* 确认是否删除个性化标签弹框*/
+.delete-relate-labels-contain{width: 500px;height: 250px;background-color: #fff;border-radius: 5px;position: fixed;left:50%;margin-left: -250px;top:20%;z-index:100;text-align: center;display: none;}
+.delete-relate-labels-contain>p{font-size: 16px;color: #333;margin-top: 55px;}
+.delete-relate-labels-contain>div{margin-top: 80px;font-size: 0;}
+.delete-relate-labels-contain>div>a{display: inline-block;width: 100px;height: 40px;text-align: center;line-height: 40px;font-size: 16px;color: #fff;background-color: #d8b056;border-radius: 5px;cursor: pointer;}
+.delete-relate-labels-contain>div>a.delete-labels{display: none;}
+.delete-relate-labels-contain>div>a.cancel-delete{background-color: #ccc;color: #333;margin-left: 10px;}
+
+/* 添加专属看板 */
+.add-my-borads{width: 840px;height: 400px;background-color: #fff;border-radius: 5px;position: fixed;left:50%;margin-left: -420px;top:20%;z-index:100;text-align: center;display: none;}
+.add-my-borads .close-my-borads{background:url(../../images/fashion_home/icon.png) no-repeat -168px -81px;width: 17px; height: 17px; display: inline-block; position: absolute;right: 16px;top: 16px;cursor: pointer;}
+.add-my-borads>p{font-size: 24px;color: #333;margin-top: 30px;line-height: 31px;}
+.add-my-borads .my-borads-steps{padding:0 30px;margin-top: 35px;}
+.add-my-borads .my-borads-steps>a{float: left;}
+.add-my-borads .my-borads-steps>a>p{font-size: 14px;color: #333;margin-top: 12px;}
+.add-my-borads .my-borads-steps>span{float: left;background: url(../../images/fashion_home/icon.png) no-repeat 0 -154px;width: 13px;height: 22px;margin:0 8px;position: relative;top:62px}
+.jump-search-labels{margin:50px 0 30px;text-align: center;}
+.jump-search-labels>a{width: 100px;height: 40px;display: inline-block;line-height: 40px;font-size: 16px;border-radius: 5px;cursor: pointer;}
+.jump-search-labels>a.cancel-labels{background-color: #ccc;margin-right: 35px;color: #333;}
+.jump-search-labels>a.confirm-labels{background-color: #d8b056;color: #fff;}
+.jump-search-labels>a.confirm-labels:hover{background-color: #F6CB69;}
+
+
+/* 个性化推荐下拉 */
+.my-recommend-nav{position:fixed;left:0;top:40px;width: 100%;height: 370px;background-color: #fff;display: none;box-shadow: 0 4px 10px rgba(0,0,0,0.1);z-index:100;}
+.my-recommend-close{background: url(../../images/fashion_home/icon.png) no-repeat -168px -81px;width: 18px;height: 18px;position: absolute;right:40px;top:30px;cursor: pointer;}
+.my-recommend-nav .wid_900{width: 900px;margin:0 auto;position: relative;}
+.recommend-nav-tab{height: 70px;border-bottom: 1px solid #eee;}
+.recommend-nav-tab>div>a{font-size: 18px;color: #666;line-height: 70px;height: 70px;display: inline-block;margin-right: 58px;position: relative;cursor: pointer;}
+.recommend-nav-tab>div>a.s-on{font-weight: bold;color: #333;}
+.recommend-nav-tab>div>a.s-on>span{width: 100%;display: inline-block;height: 2px;background-color: #d8b056;position: absolute;left:0;bottom: -1px;}
+.modular-show-box{overflow: hidden;height: 290px;}
+.modular-show-box>div{margin-top: 24px;line-height: 18px;}
+.modular-show-box>div>p{font-size: 14px;color: #333;}
+.modular-show-btn>span{font-size: 14px;color: #333;margin-left: 40px;cursor: pointer;}
+.modular-show-btn>span>input[type="radio"]{width: 14px;height: 14px;vertical-align: middle;margin-right: 10px;margin-top: -2px;background: url(../../images/fashion_home/icon.png) no-repeat 0 -105px;-webkit-appearance: none;cursor: pointer;}
+.modular-show-btn>span>input[type="radio"]:checked{background: url(../../images/fashion_home/icon.png) no-repeat -28px -105px;}
+.modular-raking-content .modular-show-btn{margin-top: 10px;}
+.modular-raking-content .modular-show-btn>span{margin-left: 0;margin-right: 40px;}
+.modular-raking-content .modular-show-btn>span>input[type="checkbox"]{width: 14px;height: 14px;margin-right: 10px;vertical-align: middle;margin-top: -2px;background: url(../../images/fashion_home/icon.png) no-repeat -56px -105px;-webkit-appearance: none;}
+.modular-raking-content .modular-show-btn>span>input[type="checkbox"]:checked{background: url(../../images/fashion_home/icon.png) no-repeat -82px -105px;}
+.modular-labels-box{font-size: 0;width: 595px;}
+.modular-labels-box>a{display: inline-block;width: 122px;height: 36px;border:1px solid #f1f1f1;font-size: 14px;color: #646464;text-align: center;line-height: 36px;margin-right: 24px;margin-bottom: 24px;position: relative;cursor: pointer;}
+.modular-labels-box>a>i{background: url(../../images/fashion_home/icon.png) no-repeat -65px -130px;width: 18px;height: 18px;display: none;position: absolute;right:-1px;bottom: -1px;}
+.modular-labels-box>a.selected{background-color: #fef7d6;border-color: #fef7d6;color: #222200;}
+.modular-labels-box>a.selected i{display: block;}
+.modular-labels-box>a:hover{color: #222200;background-color:#fef7d6;border-color: #fef7d6;}
+
+.save-set-btn{width: 140px;height: 50px;display: inline-block;background-color: #d8b056;border-radius: 30px;font-size: 16px;color: #fff;text-align: center;line-height: 50px;cursor: pointer;position: absolute;right:0;bottom: 40px;}
+.save-set-btn:hover{background-color: #F6CB69;}
+
+/* 改变滚动条宽度 */
+.ps-container .ps-scrollbar-y{width: 5px;}
+.ps-container .ps-scrollbar-y-rail{background-color: #fff;}
+
+@media screen and (min-width:1500px) {
+    /* banner */
+    .fashion-home-banner{height: 360px;background:url(../../images/fashion_home/swiper_bg.png) no-repeat center center;}
+    .swiper-container-banner{width: 1500px;height: 300px;margin: 30px auto;}
+    .swiper-container-banner>ul.roundabout-holder{width: 750px;height: 300px;}
+    .roundabout-holder>li{width: 750px;height: 300px;}
+    .swiper-prev{left: 30px;}
+    .swiper-next{right: 30px;}
+
+    /* 个性标签 */
+    .interest-tags-contain{margin-bottom:43px;}
+    .interest-tags-box{padding: 30px 50px 0;}
+    .special-area-box{width: 360px;margin-left: 110px;}
+    .special-area-link{margin-left: -64px;}
+    .special-area-link>li{margin-left: 64px;}
+    .special-area-link>li>a>span{letter-spacing: 1px;}
+    .follow-box{width: 703px;margin-left: 118px;}
+    .follow-link{margin-left: -26px;}
+    .follow-link>span{margin-left: 26px;}
+    .follow-link .follow-tags-list>div{margin-left: 26px;}
+
+    /* 款式流行排行榜 */
+    .color-ranking-content{width: 1500px;height: 370px;}
+    .intro-title{height: 68px;}
+    /* 色彩比例条 */
+    .ranking-top-color{padding-left: 46px;width: 1135px;}
+    .ranking-top-color>ul>li{margin-left: 23px;}
+    /* 品牌图案 */
+    .brand-pattern-ranking-content{margin-left: -40px;}
+    .ranking-content{margin-left: 40px;width: 730px;height: 382px;margin-top: 40px;}
+    /* 图案排行榜 */
+    .pattern-ranking-data-box>ul>li{margin-top: 29px;}
+    .pattern-ranking-data-box>ul>li>a>div.pattern-color-value-box{width: 450px;}
+    /* 品牌排行榜 */
+    .brand-ranking-data-box>ul{width: 730px;height: 314px;}
+    .brand-ranking-data-box>ul>li.brand-position1{left:32px;top:104px;}
+    .brand-ranking-data-box>ul>li.brand-position1>a{width: 168px;height: 178px;background-color: #E33872;line-height: 178px;}
+    .brand-ranking-data-box>ul>li.brand-position2{left:264px;top:18px;}
+    .brand-ranking-data-box>ul>li.brand-position2>a{width: 123px;height: 133px;background-color: #E33872;line-height: 133px;}
+    .brand-ranking-data-box>ul>li.brand-position3{left:548px;top:111px;}
+    .brand-ranking-data-box>ul>li.brand-position3>a{width: 123px;height: 133px;background-color: #E33872;line-height: 133px;}
+    .brand-ranking-data-box>ul>li.brand-position4{left:305px;top:158px;}
+    .brand-ranking-data-box>ul>li.brand-position4>a{width: 123px;height: 133px;background-color: #4D52FF;line-height: 133px;}
+    .brand-ranking-data-box>ul>li.brand-position5{left:154px;top:14px;}
+    .brand-ranking-data-box>ul>li.brand-position5>a{width: 87px;height: 97px;background-color: #4D52FF;line-height: 97px;}
+    .brand-ranking-data-box>ul>li.brand-position6{left:439px;top:111px;}
+    .brand-ranking-data-box>ul>li.brand-position6>a{width: 83px;height: 93px;background-color: #4D52FF;line-height: 93px;}
+    .brand-ranking-data-box>ul>li.brand-position7{left:410px;top:12px;}
+    .brand-ranking-data-box>ul>li.brand-position7>a{width: 79px;height: 89px;background-color: #37BEA8;line-height: 89px;}
+    .brand-ranking-data-box>ul>li.brand-position8{left:482px;top:214px;}
+    .brand-ranking-data-box>ul>li.brand-position8>a{width: 55px;height: 65px;background-color: #37BEA8;line-height: 65px;}
+    .brand-ranking-data-box>ul>li.brand-position9{left:229px;top:148px;}
+    .brand-ranking-data-box>ul>li.brand-position9>a{width: 50px;height: 60px;background-color: #37BEA8;line-height: 60px;}
+    .brand-ranking-data-box>ul>li.brand-position10{left:553px;top:36px;}
+    .brand-ranking-data-box>ul>li.brand-position10>a{width: 46px;height: 56px;background-color: #37BEA8;line-height: 56px;}
+    
+    
+    /* 最新报告 - 热门报告 */
+    .reports-infor-contain{margin-top: 60px;background: url(../../images/fashion_home/m_bg.jpg) no-repeat center top;}
+    .latest-report-box{width: 1040px;}
+    .latest-report-title>h3{color: #fff;}
+    .report-list-box>ul{margin-left: -25px;}
+    .report-list-box>ul>li{width: 330px;margin-left: 25px;margin-bottom: 30px;}
+    .img-box>a{width: 310px;height: 217px;}
+    .img-box>a>img{max-width: 310px;max-height: 217px;}
+    .img-box>div.col-date-box{width: 310px;}
+    .text-labels .text-position{width: 310px;}
+    .text-position>p>a{font-size: 20px;}
+
+    .hot-reports-box{width: 420px;}
+    .hot-reports-content{height: 656px;}
+    .hot-reports-content>ul>li{height: 70px;line-height: 70px;margin-bottom: 0;}
+    .r-ranking-num{margin-top: 20px;}
+    .r-report-title{width: 240px;}
+    .r-report-title{font-size: 18px;height: 70px;}
+    .r-report-title>span{line-height: 30px;}
+    .hot-reports-content>ul>li:last-child{display: block;}
+
+    /* 款式推荐  */
+    .style-r-more{margin-top: 44px;}
+    .style-lists-contain>ul{margin-left: -24px;}
+    .style-lists-contain>ul>li{margin-left: 24px;} 
+    
+    /* 图案推荐  */
+    .pattern-r-more{margin-top: 44px;}
+    .pattern-lists-contain>ul{margin-left: -24px;}
+    .pattern-lists-contain>ul>li{margin-left: 24px;}
+    .pattern-lists-contain>ul>li:nth-last-child(1){display: block;}
+    .pattern-lists-contain>ul>li:nth-last-child(2){display: block;}
+
+    /* 最新T台 */
+    .runway-lists-contain>ul{margin-left: 0;}
+    .runway-lists-contain>ul>li{margin-left: 20px;}
+
+    /* 广告大片 */
+    .lookbook-lists-contain>ul{margin-left: 0;}
+    .lookbook-lists-contain>ul>li{margin-left: 20px;}
+
+    /* 专属看板 */
+    .borad-search-box{margin-left: -39px;}    
+    .borad-search-list>a{width: 268px;height: 268px;margin-left: 39px;}
+    .borad-search-list>a>em{width: 52px;height: 52px;margin-top: 47px;}
+    .borad-search-list>a>div{font-size: 20px;margin-top: 26px;}
+    .borad-search-list>a>p{font-size: 18px;}
+    .borad-search-box>span{width: 268px;height: 268px;line-height: 268px;margin-left: 39px;}
+
+    
+}

@@ -1,0 +1,36 @@
+{extends file="layout.html"}
+{block name="main"}
+<div class="aboutUs contact_us">
+    <div class="ab_banner cus_banner">
+        <p>CONTACT US</p><span>联系我们</span>
+    </div>
+    <div class="wid1200">
+        <div class="about_content">
+            <div class="content_left fl contact_us_active">
+                {include file="./left_nav.html"}
+            </div>
+            <div class="content_right fl">
+                <h1 class="big_title">联系<span>我</span>们</h1>
+                <h3 class="small_title"><em></em><span>Contact US</span><em></em></h3>
+                <div class="content_x840">
+                    <p class="mid_title"><span></span>商务合作 · 产品咨询 · 意见反馈</p>
+                    <div class="feedback">
+                        <div>4008-210-500<span>（售前）</span></div>
+                        <span></span>
+                        <div>4008-210-662<span>（售后）</span></div>
+                    </div>
+                    <p class="mid_title"><span></span>POP服装趋势网客户服务时间</p>
+                    <div class="service_time">周一至周六：09:00-18:00</div>
+                    <p class="mid_title"><span></span>公司地址</p>
+                    <div class="address">上海市虹桥商务区双联路158号东隆大厦3楼<br>逸尚创展（上海）科技有限公司<a
+                            href="https://www.pop136.com/rename_notice.php" target="_blank"
+                            style="color: #d8b056;">[更名启事]</a></div>
+                    <div class="contact_us_code">
+                        <img src="{STATIC_URL3}/global/images/aboutus/contact_us_code.png" alt="contact_us_code">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

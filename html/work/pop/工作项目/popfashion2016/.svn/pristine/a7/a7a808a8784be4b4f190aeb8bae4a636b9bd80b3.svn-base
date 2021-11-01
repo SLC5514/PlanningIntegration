@@ -1,0 +1,32 @@
+{extends file="layout.html"}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/personal.css?{STATIC_CHANGE_TIME}">
+{/block}
+
+{block name="main"}
+<div class="main myWorkTable">
+	<div class="con_width">
+		<div class="section">
+			{$personalHeader}
+		</div>
+		<div class="information_box">
+			<ul>
+				{if $result}
+					{foreach from=$result item=item}
+					<li><span>【{$item.sType}】</span>{$item.sContent}{if $item.sLink}<a class="link_a" href="{$item.sLink}" target="_blank" title="点击查看详情"><i></i>点击查看详情</a>{/if}</li>
+					{/foreach}
+				{else}
+					<li><p>暂无消息</p></li>
+				{/if}
+			</ul>
+		</div>
+
+		<!--分页--页码开始-->
+		<div id = "pages">
+		{$pageHtml}
+		</div>
+		<!--分页--页码结束-->
+	</div>
+</div>
+{/block}

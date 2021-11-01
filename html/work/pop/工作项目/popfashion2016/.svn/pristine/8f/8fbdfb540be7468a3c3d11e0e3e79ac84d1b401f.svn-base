@@ -1,0 +1,52 @@
+{extends file="layout.html"}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/personal.css?{STATIC_CHANGE_TIME}">
+{/block}
+
+{block name="main"}
+<div class="main myWorkTable">
+	<div class="con_width">
+		<div class="section">
+			{$personalHeader}
+		</div>
+		<div class="contentW">
+            <!-- item-manage -->
+			<div class="root_error root_error_width">
+				{if $userType eq 1}
+				<p class="clearfix">
+					<span class="icon"></span>                    
+                    <span class="cont">对不起，只有
+                        <a href="/member/associate/" target="_blank" title="设计师专属账号">设计师专属账号</a>
+                        才能查看我的{if $sectionFlag eq 'workbench'}工作室{elseif $sectionFlag eq 'mydownload'}下载包{elseif $sectionFlag eq 'mycollect'}收藏{elseif $sectionFlag eq 'myOrderZip'}资料包{/if}，
+                        <br/>您可以联系账号管理员或用设计师专属账号登陆查看！
+                    </span>
+				</p>
+				<a class="open-account" href="/member/associate/" target="_blank" title="创建设计师专属账号">创建设计师专属账号</a>
+				<div class="bottom-tel">管理关联账号遇到问题？可咨询客服，或拨打售后电话  4008-210-662<a class="js-contact-qq-btn" href="javascript:void(0);">联系客服</a></div>
+				{else}
+				<p class="clearfix">
+					<span class="icon"></span>
+                    <span class="cont">
+                        对不起，您当前登录账户为{if $userType eq 3}试用用户{elseif $userType eq 4}普通用户{/if}；
+                        <br/>不能使用我的工作室相关功能！
+                    </span>                    
+				</p>
+				<div class="lianxi_box clearfix">
+					<p>请联系您的专属资讯小秘书为您服务：</p>
+					<div class="lianxi_way clearfix">
+						<a href="javascript:void(0);" class="qq_box fl js-contact-qq-btn" data-type="{if $P_UserType|in_array:[1,2]}after{/if}"><i></i>QQ咨询</a>
+						<a class="tel_box fr"><i></i>客服热线：<span>{if $userType eq 1}4008-210-662{else}4008-210-500{/if}</span></a>
+					</div>
+				</div>
+				{/if}
+			</div>
+            <!-- /item-manage -->
+        </div>
+	</div>
+</div>
+{/block}
+
+{block name="self"}
+<script type="text/javascript" src="{STATIC_URL2}/global/js/workbench/workbench.js?{STATIC_CHANGE_TIME}"></script>
+{/block}

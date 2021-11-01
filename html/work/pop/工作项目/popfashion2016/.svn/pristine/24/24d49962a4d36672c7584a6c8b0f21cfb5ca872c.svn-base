@@ -1,0 +1,326 @@
+{extends file="layout.html"}
+
+{block name="title"}POP时尚资讯网助力供应链高效研发-POP服装趋势网{/block}
+{block name=keywords}深度趋势分析,独家智能色彩方案,大数据黑科技,快反APM趋势胶囊,稀缺热门资源,大牌矢量图案花型{/block}
+{block name=description}POP服装趋势网是中国首家最权威最专业时尚资讯服务网站，她的优势呈现专题包含深度趋势分析、独家智能色彩方案、大数据黑科技、快反APM趋势胶囊、稀缺热门资源和大牌矢量图案花型六大版块。{/block}
+
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL1}/global/topic/20180531/css/index.css?{STATIC_CHANGE_TIME}">
+{/block}
+
+
+{block name="main"}
+<div class="main-section">
+	<!-- <img src="{STATIC_URL2}/global/topic/20180531/images/1.jpg?{STATIC_CHANGE_TIME}"> -->
+
+	<div class="page-top js-ani1">
+		<div class="top-section">
+			<div class="top-title"></div>	
+			<div class="top-l"></div>
+			<div class="top-r"></div>
+			<div class="top-msg">
+				<div class="top-text"></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="page-section0 js-ani2">
+		<ul class="clear">
+			<li class="num1"><div></div><p>2004年成立</p></li>
+			<li class="num2"><div></div><p>资深趋势专家团队</p></li>
+			<li class="num3"><div></div><p>面辅料供应商</p></li>
+			<li class="num4"><div></div><p>设计师注册会员</p></li>
+			<li class="num5"><div></div><p>服饰企业信赖之选</p></li>
+				
+		</ul>
+	</div>
+
+	<div class="page-section page-section1 js-ani3">
+		<div class="content-section clear">
+			<img class="title-img" src="{STATIC_URL2}/global/topic/20180531/images/t1.png?{STATIC_CHANGE_TIME}">
+			<div class="left-div">
+				<img src="{STATIC_URL2}/global/topic/20180531/images/txt1.png?{STATIC_CHANGE_TIME}">
+			</div>
+			<div class="right-div">
+				<div class="show-div">
+					<img src="{STATIC_URL2}/global/topic/20180531/images/p1-1.jpg?{STATIC_CHANGE_TIME}">
+
+					<div class="button-div">
+						<a class="hover-button" href="/trends/" target="_blank">
+							了解详情<img src="{STATIC_URL2}/global/topic/20180531/images/icon1.png?{STATIC_CHANGE_TIME}">
+						</a>
+						<a class="default-button" href="/trends/" target="_blank">
+							<img src="{STATIC_URL2}/global/topic/20180531/images/icon1.png?{STATIC_CHANGE_TIME}">
+						</a>
+					</div>
+				</div>
+				<div class="show-div" style="margin-top:-30px;">
+					<img src="{STATIC_URL2}/global/topic/20180531/images/p1-2.jpg?{STATIC_CHANGE_TIME}">
+
+					<div class="button-div" style="bottom:30px;">
+						<a class="hover-button" href="/details/report/t_report-id_3361-col_33/" target="_blank">
+							了解详情<img src="{STATIC_URL2}/global/topic/20180531/images/icon1.png?{STATIC_CHANGE_TIME}">
+						</a>
+						<a class="default-button" href="/details/report/t_report-id_3361-col_33/" target="_blank">
+							<img src="{STATIC_URL2}/global/topic/20180531/images/icon1.png?{STATIC_CHANGE_TIME}">
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- p2 -->
+	<div class="page-section page-section2 js-ani4">
+		<div class="content-section clear">
+			<img class="title-img" src="{STATIC_URL2}/global/topic/20180531/images/t2.png?{STATIC_CHANGE_TIME}">
+			<div class="left-div">
+				
+				<div class="show-div">
+					<img src="{STATIC_URL2}/global/topic/20180531/images/p2-1.png?{STATIC_CHANGE_TIME}">
+
+					<div class="button-div">
+						<a class="hover-button" href="/topic/20171209/#r1" target="_blank">
+							了解详情<img src="{STATIC_URL2}/global/topic/20180531/images/icon1.png?{STATIC_CHANGE_TIME}">
+						</a>
+						<a class="default-button" href="/topic/20171209/#r1" target="_blank">
+							<img src="{STATIC_URL2}/global/topic/20180531/images/icon1.png?{STATIC_CHANGE_TIME}">
+						</a>
+					</div>
+				</div>
+				<div class="show-div" style="margin-top:10px;">
+					<img src="{STATIC_URL2}/global/topic/20180531/images/p2-2.png?{STATIC_CHANGE_TIME}">
+
+					<div class="button-div" style="bottom:34px;left:105px;left:285px\9;">
+						<a class="hover-button" href="/item/detail/id_114/" target="_blank">
+							了解详情<img src="{STATIC_URL2}/global/topic/20180531/images/icon1.png?{STATIC_CHANGE_TIME}">
+						</a>
+						<a class="default-button" href="/item/detail/id_114/" target="_blank">
+							<img src="{STATIC_URL2}/global/topic/20180531/images/icon1.png?{STATIC_CHANGE_TIME}">
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="right-div">
+				<img src="{STATIC_URL2}/global/topic/20180531/images/txt2.png?{STATIC_CHANGE_TIME}">
+			</div>
+		</div>
+	</div>
+	<!-- p3 -->
+	<div class="page-section page-section3 js-ani5">
+		<div class="content-section clear">
+			<img class="title-img" src="{STATIC_URL2}/global/topic/20180531/images/t3.png?{STATIC_CHANGE_TIME}">
+			<div class="left-div">
+				<img src="{STATIC_URL2}/global/topic/20180531/images/txt3.png?{STATIC_CHANGE_TIME}">
+			</div>
+			<div class="right-div">
+				<div class="show-div">
+					<img src="{STATIC_URL2}/global/topic/20180531/images/p3-1.png?{STATIC_CHANGE_TIME}">
+
+					<div class="button-div">
+						<a class="hover-button" href="/topic/20171209/#r2" target="_blank">
+							了解详情<img src="{STATIC_URL2}/global/topic/20180531/images/icon1.png?{STATIC_CHANGE_TIME}">
+						</a>
+						<a class="default-button" href="/topic/20171209/#r2" target="_blank">
+							<img src="{STATIC_URL2}/global/topic/20180531/images/icon1.png?{STATIC_CHANGE_TIME}">
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- p4 -->
+	<div class="page-section page-section4 js-ani6">
+		<div class="content-section clear">
+			<img class="title-img" src="{STATIC_URL2}/global/topic/20180531/images/t4.png?{STATIC_CHANGE_TIME}">
+			<div class="left-div">
+				
+				<div class="show-div">
+					<img src="{STATIC_URL2}/global/topic/20180531/images/p4-1.jpg?{STATIC_CHANGE_TIME}">
+
+					<div class="button-div">
+						<a class="hover-button" href="/item/detail/id_146/" target="_blank">
+							了解详情<img src="{STATIC_URL2}/global/topic/20180531/images/icon1.png?{STATIC_CHANGE_TIME}">
+						</a>
+						<a class="default-button" href="/item/detail/id_146/" target="_blank">
+							<img src="{STATIC_URL2}/global/topic/20180531/images/icon1.png?{STATIC_CHANGE_TIME}">
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="right-div">
+				<img src="{STATIC_URL2}/global/topic/20180531/images/txt4.png?{STATIC_CHANGE_TIME}">
+			</div>
+		</div>
+	</div>
+	<!-- p5 -->
+	<div class="page-section page-section5 js-ani7">
+		<div class="content-section clear">
+			<img class="title-img" src="{STATIC_URL2}/global/topic/20180531/images/t5.png?{STATIC_CHANGE_TIME}">
+			<div class="left-div">
+				<img src="{STATIC_URL2}/global/topic/20180531/images/txt5.png?{STATIC_CHANGE_TIME}">
+			</div>
+			<div class="right-div">
+				<img src="{STATIC_URL2}/global/topic/20180531/images/p5-bg2.png?{STATIC_CHANGE_TIME}">
+				<a class="p5-item1 js-show-big-pic" href="javascript:void(0);" title="查看大图">
+					<img src="{STATIC_URL2}/global/topic/20180531/images/p5-pic1.jpg?{STATIC_CHANGE_TIME}">
+					<button class="ani-trans"></button>
+				</a>
+				<a class="p5-item2 js-show-big-pic" href="javascript:void(0);" title="查看大图">
+					<img src="{STATIC_URL2}/global/topic/20180531/images/p5-pic2.jpg?{STATIC_CHANGE_TIME}">
+					<button class="ani-trans"></button>
+				</a>
+				<a class="p5-item3 js-show-big-pic" href="javascript:void(0);" title="查看大图">
+					<img src="{STATIC_URL2}/global/topic/20180531/images/p5-pic3.jpg?{STATIC_CHANGE_TIME}">
+					<button class="ani-trans"></button>
+				</a>
+				<a class="p5-item4 js-show-big-pic" href="javascript:void(0);" title="查看大图">
+					<img src="{STATIC_URL2}/global/topic/20180531/images/p5-pic4.jpg?{STATIC_CHANGE_TIME}">
+					<button class="ani-trans"></button>
+				</a>
+			</div>
+		</div>
+	</div>
+	<!-- p6 -->
+	<div class="page-section page-section6 js-ani8">
+		<div class="content-section clear">
+			<img class="title-img" src="{STATIC_URL2}/global/topic/20180531/images/t6.png?{STATIC_CHANGE_TIME}">
+			<div class="left-div">
+				<div class="show-div">
+					<img src="{STATIC_URL2}/global/topic/20180531/images/p6-1.jpg?{STATIC_CHANGE_TIME}">
+
+					<div class="button-div">
+						<a class="hover-button" href="/patterns/topbrands/" target="_blank">
+							了解详情<img src="{STATIC_URL2}/global/topic/20180531/images/icon1.png?{STATIC_CHANGE_TIME}">
+						</a>
+						<a class="default-button" href="/patterns/topbrands/" target="_blank">
+							<img src="{STATIC_URL2}/global/topic/20180531/images/icon1.png?{STATIC_CHANGE_TIME}">
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="right-div">
+				<img src="{STATIC_URL2}/global/topic/20180531/images/txt6.png?{STATIC_CHANGE_TIME}">
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="show-big-div js-show-big-div">
+	<button></button>
+	<img src="" alt="大图">
+</div>
+
+{include file="topic/topic_layer.html"}
+{/block}
+
+
+{block name="self"}
+{literal}
+<script type="text/javascript">
+
+	$(function(){
+		var def={
+			bg:$(".js-bg-div"),
+			img_box:$(".js-show-big-div"),
+			scroll_timer: null
+		};
+
+		$(".js-show-big-pic").on("click",function(){
+			var src=$(this).children("img").attr("src") || "";
+			if(src!=""){
+				def.img_box.children("img").attr("src",src);
+				setImgPos(src);
+			}
+		});
+		def.img_box.children("button").on("click",function(){
+			def.img_box.fadeOut(200);
+			def.bg.fadeOut(400);
+		});
+		def.bg.on("click",function(){
+			def.img_box.fadeOut(200);
+			def.bg.fadeOut(400);
+		});
+		
+		function setImgPos(src){
+			var img=new Image();
+			img.onload=function(){
+				var ow=680*this.width/this.height;
+				def.img_box.css({"margin-left":-Math.ceil(ow/2)+"px"});
+				def.img_box.fadeIn(200);
+				def.bg.fadeIn(400);
+			};
+			img.src=src;
+			
+		};
+
+
+    	//根据页面滚动高度执行动画
+    	setTimeout(function(){
+			scrollAni();
+    	},800);
+    	
+    	function scrollAni(){
+    		var _h = document.documentElement.clientHeight || document.body.clientHeight;
+			var w_t = $(window).scrollTop();
+			//var ani_top1 = $('.js-ani1').offset().top;
+			var ani_top2 = $('.js-ani2').offset().top;
+			var ani_top3 = $('.js-ani3').offset().top;
+			var ani_top4 = $('.js-ani4').offset().top;
+			var ani_top5 = $('.js-ani5').offset().top;
+			var ani_top6 = $('.js-ani6').offset().top;
+			var ani_top7 = $('.js-ani7').offset().top;
+			var ani_top8 = $('.js-ani8').offset().top;
+	    	
+			clearTimeout(def.scroll_timer);
+			def.scroll_timer = setTimeout(function(){
+				if( w_t < 500 ){
+					$('.js-ani1').addClass('ani1');
+				}
+
+				if( (ani_top2 - w_t) < (_h - 200) && (ani_top2 - w_t)>-100 ){
+					$('.js-ani2').addClass('ani2');
+				}
+
+				if( (ani_top3 - w_t) < (_h - 300) && (ani_top3 - w_t)>-200 ){
+					$('.js-ani3').addClass('ani3');
+				}
+
+				if( (ani_top4 - w_t) < (_h - 300) && (ani_top4 - w_t)>-200 ){
+					$('.js-ani4').addClass('ani4');
+				}
+
+				if( (ani_top5 - w_t) < (_h - 300) && (ani_top5 - w_t)>-200 ){
+					$('.js-ani5').addClass('ani5');
+				}
+
+
+				if( (ani_top6 - w_t) < (_h - 300) && (ani_top6 - w_t)>-200 ){
+					$('.js-ani6').addClass('ani6');
+				}
+
+				if( (ani_top7 - w_t) < (_h - 300) && (ani_top7 - w_t)>-200 ){
+					$('.js-ani7').addClass('ani7');
+				}
+
+				if( (ani_top8 - w_t) < (_h - 300) && (ani_top8 - w_t)>-200 ){
+					$('.js-ani8').addClass('ani8');
+				}
+				
+				
+			},240);
+			
+    	}
+    	
+    	
+    	//页面滚动
+    	$(window).on('scroll',function(){
+    		scrollAni();
+    	});
+
+
+
+
+	});
+</script>
+{/literal}
+{/block}

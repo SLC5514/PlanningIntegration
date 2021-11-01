@@ -1,0 +1,77 @@
+.head {
+    height: 404px;
+    background: url(../images/head-bg.png) no-repeat center !important;
+    background-size: 100% 100%;
+}
+
+.head>.headSpan {
+    font-size: 72px;
+    padding-top: 106px
+}
+
+.head>.headSpan2 {
+    font-size: 65px;
+    margin: 10px 0;
+}
+
+.head>.headSpan3 {
+    font-size: 37px;
+}
+
+.head>.headSpan3>i {
+    width: 80px;
+    border-bottom: 2px solid #666;
+    display: inline-block;
+    margin: 0 20px;
+    vertical-align: middle;
+}
+
+.topList>.bnt {
+    background: url(../images/btn.png) !important;
+    height: 54px;
+    width: 266px;
+    margin: 100px auto 80px;
+    line-height: 54px;
+    font-size: 18px;
+}
+
+.topList>.bnt>.selectTime {
+    position: absolute;
+    top: 54px;
+    left: 0;
+    width: 250px;
+}
+
+.topList>.bnt>.selectTime>span {
+    line-height: 52px;
+    height: 52px;
+    width: 100%;
+}
+
+.topList>.bnt>i {
+    width: 22px;
+    height: 22px;
+    margin-left: 10px;
+    background: url(../images/ie-title-icon.png) !important;
+}
+
+.topList>ul {
+    width: 1200px;
+}
+
+.topList>ul li {
+    width: 270px;
+    height: 270px;
+    margin: 15px;
+}
+
+.topList>ul li>span {
+    width: 80px;
+    height: 93px;
+}
+
+.bottomBg {
+    height: 221px;
+    background: url(../images/bottom.png) no-repeat center !important;
+    background-size: 100% 100%;
+}

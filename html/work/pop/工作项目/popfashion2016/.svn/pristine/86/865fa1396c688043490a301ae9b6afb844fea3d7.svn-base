@@ -1,0 +1,45 @@
+<div class="blog-footer js-blog-footer">
+    <div class="blog-wid1200">
+        <div class="footer-logo">
+            <a href="http://www.pop136.com/" target="_blank">
+                <img src="{STATIC_URL2}/global/images/blog/common/b-logo.png" alt="logo">
+            </a>
+            <p><span></span></p>
+        </div>
+        <div class="other-website">
+            <ul class="clearfix">
+                <li class="pop-website">
+                    <a href="http://www.pop136.com/" target="_blank">POP官网</a>
+                </li>
+                <li class="fg-point"></li>
+                <li class="pop-website">
+                    <a href="https://www.pop-fashion.com" target="_blank">服装趋势网</a>
+                </li>
+                <li class="fg-point"></li>
+                <li class="pop-website">
+                    <a href="http://www.pop-shoe.com" target="_blank">鞋子趋势网</a>
+                </li>
+                <li class="fg-point h5-hide"></li>
+                <li class="pop-website">
+                    <a href="http://www.pop-bags.com/" target="_blank">箱包趋势网</a>
+                </li>
+                <li class="fg-point"></li>
+                <li class="pop-website">
+                    <a href="http://www.91jiafang.com" target="_blank">家纺趋势网</a>
+                </li>
+                <li class="fg-point"></li>
+                <li class="pop-website">
+                    <a href="http://www.51shoushi.com/" target="_blank">首饰趋势网</a>
+                </li>
+            </ul>
+        </div>
+        <div class="pop-law">
+            <p class="pc-law">逸尚创展（上海）科技有限公司 | 上海逸尚云联信息技术股份有限公司 © 2004-2020  法律顾问：北京中银（上海）律师事务所 <a href="http://www.beian.miit.gov.cn/" target="_blank">沪ICP备06003020号-1</a></p>
+            <p class="h5-law">逸尚创展（上海）科技有限公司 | 上海逸尚云联信息技术股份有限公司 © 2004-2020<br/>法律顾问：北京中银（上海）律师事务所 <a href="http://www.beian.miit.gov.cn/" target="_blank">沪ICP备06003020号-1</a></p>
+            <div class="safty-info">
+                <a target="_blank" class="safty-link" href="http://wap.scjgj.sh.gov.cn/businessCheck/verifKey.do?showType=extShow&serial=9031000020160526093630000000851495-SAIC_SHOW_310000-20120428141018720124&signData=MEUCIQDZWDSUQE195cBFzEmHGyMfx92RgQ9hs6ZMwm3ePnH6kAIgMh9DQQ9W3S+fDej1PTh5x9PdFq9QKDSvtOGWbRJfWZU="><img src="{STATIC_URL1}/global/images/safty1.png" class="fl"></a>
+                <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31010402000973"><img src="{STATIC_URL2}/global/images/safty.png" class="fl"><p class="fl">沪公网安备 31010402000973号</p></a>
+            </div>
+        </div>
+    </div>
+</div>

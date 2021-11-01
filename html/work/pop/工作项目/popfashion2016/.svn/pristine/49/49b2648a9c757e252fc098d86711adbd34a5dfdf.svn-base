@@ -1,0 +1,21 @@
+<div class="contentW clearfix">
+    <div class="hot-banner-contain">
+        <div class="hot-keyword-box">
+            <p>热门推荐</p>
+            <div class="hot-word">
+                {foreach $keys as $key}
+                <a href="{$key.link}">{$key.name}</a>
+                {/foreach}
+            </div>
+        </div>
+        <div class="sp-box">
+            <div class="sp-wp clearfix"></div>            
+        </div>
+        <div class="sp-switch-box">
+            <div class="sp-prev"></div>
+            <div class="sp-next"></div>            
+        </div>
+        <div class="sp-anit-time"><span></span></div>
+    </div>
+    
+</div>

@@ -1,0 +1,81 @@
+{extends file="layout.html"} 
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL1}/global/css/system/system-notice.css?{$smarty.const.STATIC_CHANGE_TIME}" />
+{/block} 
+{block name="main"}
+<div class="content js-content-section">
+	<div class="section vip-null">
+	
+		<div class="null-pic"></div>
+		<p class="msg-line js-msg-line">对不起，您正在使用的是VIP功能，请联系客服<span>开通VIP</span>后使用！</p>
+		<p class="msg-line js-msg-line">您所使用的浏览器不支持模拟成品功能，请用谷歌浏览器（chrome）打开页面或点击<a href="//download.skycn.com/hao123-soft-online-bcs/soft/C/2015-12-17_ChromeStandalone_47.0.2526.106_Setup.1450323126.exe" title="下载">下载</a>安装浏览器！</p>
+		<p class="msg-line js-msg-line">对不起！您帐号限制同时使用人数已满，可稍后再试...<br/>如有任何疑问，您可以联系帐号管理员或售后服务人员进行咨询。</p>
+		<p class="msg-line js-msg-line">对不起！您的登录已超时，请重新<a href="/user/login/" title="去登录">登录</a>！</p>
+		<p class="msg-line js-msg-line">1分钟在线绘制原创图案，想体验？</p>
+		<p class="msg-line js-msg-line">模拟成品体验次数已耗尽，升级为企业账号，从此打样0成本</p>
+		<p class="msg-line js-msg-line">以图搜图体验次数已耗尽，升级为企业VIP账号，可随时随地畅享搜图体验</p>
+		<p class="msg-line js-msg-line">当前账号权限不足，升级为企业VIP账号，查看高清大图，享受智能推荐特权</p>
+		<div class="clear link-msg js-link-msg">
+			{if empty($userId)}
+				<a class="js-contact-qq-btn" href="javascript:void(0);" data-type="2" rel="nofollow"><span class="icon"></span>在线客服</a>
+				<div><span class="icon"></span class="js-tel-spn">咨询热线：4008-210-500</div>
+			{else}
+				<a class="js-contact-qq-btn" href="javascript:void(0);" data-type="1" rel="nofollow"><span class="icon"></span>在线客服</a>
+				<div><span class="icon"></span class="js-tel-spn">咨询热线：4008-210-662</div>
+			{/if}
+		</div>
+		<div class="clear link-msg hide js-upgrade-vip-div">
+			<a class="upgrade-vip-btn" href="/topic/enterprise_service/" target="_blank" data-type="1" rel="nofollow" title="查看详情">了解企业VIP特权服务</a>
+		</div>
+		<a class="js-return-back-btn" href="javascript:void(0);" title="返回">返回</a>
+	</div>
+</div>
+{/block}
+
+{block name="self"}
+<script type="text/javascript" charset="utf-8">
+	
+	require(["jquery","general"],function(jquery,general){
+		$(function(){
+			var def={
+				href_obj:general.fn.getLocationParameter() || {},
+				content_def_height:0,
+				loading_ele:$(".js-loading-div"),                                                                   //加载等待
+	            bg_ele:$(".js-bg-div")	                                                                            //加载等待
+			};
+			def.loading_ele.fadeOut(200);
+	        def.bg_ele.fadeOut(400);
+			var ntype=def.href_obj["type"]!=undefined?def.href_obj["type"]:1;
+			$(".js-msg-line").eq(ntype-1).show();
+			if(ntype==1){
+				// $(".js-contact-qq-btn").attr("data-type",2);
+			}else if(ntype==2){
+				$(".js-contact-qq-btn").attr("data-type",1);
+				$(".js-tel-spn").text("咨询热线：4008-210-662");
+				$(".js-login-out-btn").hide();
+			}else if(ntype==3 || ntype==4){
+				$(".js-login-out-btn").hide();
+				$(".js-personal-center").hide();
+			}else if(ntype==6 || ntype==7){
+				$('.js-link-msg').hide();
+				$('.js-return-back-btn').hide();
+				$('.js-upgrade-vip-div').show();
+			}
+
+			def.content_def_height=$(".js-content-section").height();
+			setSty(def.content_def_height);
+
+			$(window).on('resize',function(){
+	            general.fn.throttle(setSty,null,[def.content_def_height]);
+	        });
+	        function setSty(nh){
+	            var wh=document.documentElement.clientHeight || document.body.clientHeight;
+	            if(wh>nh+159){
+	                $(".js-content-section").height(wh-159+"px");
+	            }
+	        };
+		});
+	});
+</script>
+
+{/block} 

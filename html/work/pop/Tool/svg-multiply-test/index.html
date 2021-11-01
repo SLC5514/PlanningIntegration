@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>svg-multiply-test</title>
+</head>
+<body>
+    <svg
+        id="paper"
+        width="1132"
+        height="886"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        style="background: #e6e6e6;"
+    ></svg>
+</body>
+<script src="./snap.svg-min.js"></script>
+<script>
+    var def = {
+        w: 1600, // 手动设置 ***************************
+        h: 1600, // 手动设置 ***************************
+        pw: 100,
+        ph: 100,
+        svgPaper: Snap("#paper"),
+        bgImgEl: null,
+        paths: [
+            // 手动设置 ***************************
+            'M407,211H844V647H408Z',
+        ],
+        pathsLen: 0,
+        pathEls: [],
+        useBgEls: [],
+        useMaskEls: [],
+        patternEls: [],
+        images: [],
+        // 拖动
+        patternWHs: [],
+        downStatus: false,
+        hoverStatus: false,
+        idx: -1,
+        x: 0,
+        y: 0,
+        matrix: '',
+        delta: []
+    }
+    def.pathsLen = def.paths.length;
+    // 背景图 // 手动设置 ***************************
+    def.bgImgEl = def.svgPaper.image("./bg.png", 0, 0, def.w, def.h);
+    // 绘制部件路径
+    for (var i = 0; i < def.pathsLen; i++) {
+        def.pathEls[i] && def.pathEls[i].remove();
+        def.useBgEls[i] && def.useBgEls[i].remove();
+        def.useMaskEls[i] && def.useMaskEls[i].remove();
+        def.pathEls[i] = def.svgPaper.path(def.paths[i]).toDefs().data('idx', i);
+        def.useBgEls[i] = def.svgPaper.use(def.pathEls[i]).attr({'fill': 'transparent'}).data('idx', i);
+        def.useMaskEls[i] = def.svgPaper.use(def.pathEls[i]).attr({'fill': 'transparent'}).data('idx', i).addClass('mask-use');
+        def.useBgEls[i].node.style = 'mix-blend-mode: multiply';
+        def.useMaskEls[i].node.style = 'mix-blend-mode: multiply';
+    }
+    // 绘制部件背景色
+    for (var i = 0; i < def.pathsLen; i++) {
+        def.useBgEls[i].attr({'fill': 'skyblue'}).data('idx', i);
+    }
+</script>
+</html>

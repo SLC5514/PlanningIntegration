@@ -1,0 +1,38 @@
+{assign var=cntSubTopic value=count($res.subTopic)}
+{if $cntSubTopic > 1}
+<ul class="leftnavfix">
+    {foreach $res.subTopic as $key => $topic}
+    <li onclick="javascript:document.getElementById('index_{$key}').scrollIntoView()">
+        <i></i>
+        <span class="spanHover">{$key + 1}</span>
+        <span class="spanHoverTitle">{$topic.sTitle}</span>
+    </li>
+    {/foreach}
+</ul>
+{/if}
+{foreach $res.subTopic as $key => $topic}
+<div class="indexdiv clearfix" id="index_{$key}">
+    <h3><span>{$topic.sTitle}</span></h3>
+    <div class="xq">
+		{if $topic.sDesc}
+        <p class="fl">{$topic.sDesc}</p>
+		{/if}
+    </div>
+    <div class="ullist ullist_150">
+        <ul>
+            {foreach $topic.images as $image}
+            <li>
+                <a target="_blank" href="{$image.link}" class="lazyload" title="查看详情">
+                    <img src="{STATIC_URL3}/global/images/loading/search_loding.gif" data-original="{STATIC_URL3}{$image.imgurl}" alt="pic">
+                    <div class="divhover">
+                        <p class="hoverp1">{$image.colsName}</p>
+                        <p class="hoverp4">{$image.sCategoryName}</p>
+                        <p class="hoverp5"><i></i></p>
+                    </div>
+                </a>
+            </li>
+            {/foreach}
+        </ul>
+    </div>
+</div>
+{/foreach}

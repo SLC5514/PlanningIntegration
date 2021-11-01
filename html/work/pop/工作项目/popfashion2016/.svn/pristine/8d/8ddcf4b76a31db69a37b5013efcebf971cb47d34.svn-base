@@ -1,0 +1,308 @@
+{extends file="layout.html"}
+{block name="title"}色彩搜图_以色搜图_颜色搜图-POP服装趋势网{/block}
+{block name=keywords}POP色彩识别,色彩搜图,以色搜图,颜色搜图,服装流行色,服装色彩流行趋势{/block}
+{block name=description}POP服装趋势网色彩搜图智能搜索系统，为时尚企业和设计师提供通过颜色搜索任何服饰相关款式、图片的搜索服务，通过对流行色彩掌握，快速找款，省时省力。{/block}
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/per.css?{STATIC_CHANGE_TIME}">
+<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/search_color.css?{STATIC_CHANGE_TIME}">
+{/block}
+<!-- header start -->
+{block name="header"}
+
+{/block}
+<!-- header end -->
+{block name="main"}
+<div id='html_controller'>
+    <div style="background: #fff;">
+        <div class="con_width" class="js-con_width">
+            {include file="common/search_head.html"}
+        </div>
+        <!-- 下拉 -->
+        <div class="head_slide js-head-slide">
+            <div class="slide_main">
+                <div class="fl">
+                    <a href="/"><img src="{STATIC_URL2}/global/images/lists/nav_logo.png?{STATIC_CHANGE_TIME}"></a>
+                </div>
+                <div class="screen-btn js-screen-btn">
+                    <span>筛选</span>
+                    <i></i>
+                    <div class="screen-list">
+                        <i></i>
+                        <div class="sex clearfix">
+                            <div class="sex-left">性别:</div>
+                            <div class="sex-right js-gen-list">
+                                
+                            </div>
+                        </div>
+                        <div class="model js-model-list clearfix">
+                            <div class="model-left js-model action"><i></i>款式</div>
+                            <div class="model-right">
+                                <div class="model-box clearfix">
+                                    <span class="head">行业：</span>
+                                    <div class="list js-ind-list clearfix">
+
+                                    </div>
+                                    <div class="model-btn js-model-btn">展开<i></i></div>
+                                </div>
+                                <div class="model-box clearfix">
+                                    <span class="head">季节：</span>
+                                    <div class="list js-sea-list clearfix">
+                                        
+                                    </div>
+                                    <div class="model-btn js-model-btn">展开<i></i></div>
+                                </div>
+                                <div class="model-box clearfix">
+                                    <span class="head">单品：</span>
+                                    <div class="list js-cat-list clearfix">
+                                        
+                                    </div>
+                                    <div class="model-btn js-model-btn">展开<i></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="model clearfix">
+                            <div class="model-left js-pattern action"><i></i>图案</div>
+                            <div class="model-right js-pat-list clearfix" style="max-width: 580px;">
+
+                            </div>
+                        </div>
+                        <span style="display:none;">请选择<label>款式</label>后,再选择标签哦</span>
+                    </div>
+                </div>
+                <div class="screen_text">
+                    <input id="search_box1" class="js-search-ipt" data-staut="1" value="" placeholder="搜索你想要的" οnfοcus="this.placeholder=''" οnblur="this.placeholder='搜索你想要的'" growing-track="true" type="text"  autocomplete='off'>
+                    <!-- 历史记录 -->
+                    <div class="search_listDown" style="width: 100%;">
+                        <div class="menu"></div>
+                        <div class="hot-menu">
+                            <div class="menu-hot-list">
+                                <div class="label js-history-label">历史记录<div class="fr"><span class="operat js-clear-operat">清除记录</span></div></div>
+                                <ul class="history-list"></ul>
+                                <div class="label">热门搜索</div>
+                                <ul class="hot-list"></ul>
+                            </div>
+                        </div>
+                        <!-- <div class="look-brand-box">
+                            <a class="look-all-brand js-look-all-brand" href="javascript:void(0)" title="查看所有品牌">查看所有品牌<em></em></a>
+                        </div> -->
+                    </div>
+                    <a href="/Colorsearch/" class="sea-color"></a>
+                    <div class="sea-col js-sea-color" style="top: 14px;" data-stu="1">
+            
+                    </div>
+                    <!-- 上传图片 -->
+                    <div class="files js-figure-btn"></div>
+                    <!-- 上传图片end -->
+                    <div class="search-filesImg" style="display: none;">
+                        <img src=""/>
+                    </div>
+                    <div class="btn_icon js-search-btn"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 次数限制 -->
+    <div class="authority-bg js-authority-bg" style="display: none;">
+        <div class="authority-main">
+            <span class="main-h1">普通用户拥有20次体验机会，当前账号已经耗尽！</span>
+            <span class="main-h2">想体验更多次数，拨打<label>4008-210-500</label>联系在线客服</span>
+            <span class="main-btn js-contact-qq-btn">联系客服 快速开通VIP试用账号</span>
+        </div>
+        <input type="hidden" value="1" id="fre"/>
+    </div>
+    <!-- 剩余次数 -->
+    <div class="free-times js-free-times" style="display: none;">
+        <div class="times-txt">
+            当前账号为普通用户，拥有<span>20</span>次免费体验机会，还剩余<span class="js-num"></span>次机会
+        </div>
+    </div>
+    {* 可以正常访问的情况 *}
+    <!-- 有数据 -->
+    <div class="js-screen" style="display: none;">
+        <div class="screen">
+            <div class="screen-btn js-screen-btn">
+                <span>筛选</span>
+                <i></i>
+                <div class="screen-list">
+                    <i></i>
+                    <div class="sex clearfix">
+                        <div class="sex-left">性别:</div>
+                        <div class="sex-right js-gen-list">
+                            
+                        </div>
+                    </div>
+                    <div class="model clearfix js-model-list">
+                        <div class="model-left js-model action"><i></i>款式</div>
+                        <div class="model-right">
+                            <div class="model-box clearfix">
+                                <span class="head">行业：</span>
+                                <div class="list js-ind-list clearfix">
+
+                                </div>
+                                <div class="model-btn js-model-btn">展开<i></i></div>
+                            </div>
+                            <div class="model-box clearfix">
+                                <span class="head">季节：</span>
+                                <div class="list js-sea-list clearfix">
+                                    
+                                </div>
+                                <div class="model-btn js-model-btn">展开<i></i></div>
+                            </div>
+                            <div class="model-box clearfix">
+                                <span class="head">单品：</span>
+                                <div class="list js-cat-list clearfix">
+                                    
+                                </div>
+                                <div class="model-btn js-model-btn">展开<i></i></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="model clearfix">
+                        <div class="model-left js-pattern action"><i></i>图案</div>
+                        <div class="model-right js-pat-list clearfix" style="max-width: 580px;">
+
+                        </div>
+                    </div>
+                    <span style="display: none;">请选择<label>款式</label>后,再选择标签哦</span>
+                </div>
+            </div>
+            <div class="screen-txt js-screen-txt">
+                搜索内容为<span>款式--秀场提炼</span>和<span>图案素材</span>,如果只想看款式或图案，可以在筛选中设置！
+                <i></i>
+            </div>
+        </div>
+        <div class="moving-water clearfix">
+            <div class="moving-list js-moving-list clearfix">
+                
+            </div>
+            <!-- 下拉加载load -->
+            <div class="data-load js-data-load">
+                <img src="{STATIC_URL2}/global/images/styles_page/loading.gif?{STATIC_CHANGE_TIME}"/>
+                <span>正在加载中…</span>
+            </div>
+        </div>
+        <!-- 无数据 -->
+        <div class="no-data js-no-data" style="display: none;">
+            <div class="no-data-box">
+                <img src="{STATIC_URL2}/global/images/common/search-result.png?{STATIC_CHANGE_TIME}"/>
+                <span class="img-text">抱歉没有找到符合条件的内容</span>
+                <div class="dividing"></div>
+                <span class="qq-text">如有其他疑问，请联系您的专属资讯秘书为您服务：</span>
+                <a class="qq-btn js-contact-qq-btn">QQ咨询</a>
+                <span class="tpl">小秘书热线：<label>4008-210-662</label></span>
+            </div>
+        </div>
+        <!-- 加载load -->
+        <div class="list-load js-list-load">
+            <img src="{STATIC_URL2}/global/images/styles_page/loading.gif?{STATIC_CHANGE_TIME}"/><br/>
+            <span>正在加载中…</span>
+        </div>
+    </div>
+    <!-- 未选择颜色 -->
+    <div class="upload-color js-upload-img">
+        <div class="upload-box">
+            <div class="color-head js-color-head clearfix">
+                <div class="color-list js-color-list clearfix">
+                    <!-- <span class="action selection" style="background-color: #FBE337;"><em></em><i style="background-color: #FFB100;"></i></span> -->
+                </div>
+                <div class="color-btn js-color-btn">色彩搜图</div>
+                <span style="display: none;"></span>
+            </div>
+            <div class="color-opt js-color-opt clearfix">
+                <!-- <div class="color-box action" style="background:#F6D6D8;">
+                    <div class="color-txt">
+                        <span>火珊蝴色</span>
+                        <span>16-1543TPG<img src="{STATIC_URL2}/global/images/common/col-close1.png?{STATIC_CHANGE_TIME}"/></span>
+                        <span>#ff8272</span>  
+                    </div>
+                    <div class="selection"></div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <!-- 选中显示 -->
+    <div class="color-select js-color-select">
+        <!-- 未选择 -->
+        <div class="not-select js-not-select">
+            <img src="{STATIC_URL2}/global/images/common/not-select.png?{STATIC_CHANGE_TIME}">
+            <span>还未选择颜色<br/>最多可支持3种颜色搜索</span>
+        </div>
+        <!-- 已选择 -->
+        <div class="color-selected js-color-selected" style="display: none;">
+            <!-- <div class="color" style="background: #ff8272;">
+                <span style="padding-top: 10px;">火珊蝴色</span>
+                <span>16-1543TPG<img src="{STATIC_URL2}/global/images/common/col-close1.png?{STATIC_CHANGE_TIME}"/></span>
+                <span>#ff8272</span>
+            </div> -->
+        </div>
+        <div class="select-tips js-select-tips"><img src="{STATIC_URL2}/global/images/common/tips-icon.png?{STATIC_CHANGE_TIME}"/>已为您找到包含以上任一颜色的图片</div>
+        <div class="select-btn js-select-btn">重新选择</div>
+        <div class="select-btn js-return-btn">返回结果页</div>
+    </div>
+    <!-- 上传图片load -->
+    <div class="upload-load js-upload-load" style="display: none;">
+        <img src="{STATIC_URL2}/global/images/styles_page/loading.gif?{STATIC_CHANGE_TIME}"/>
+        <span>正在努力加载…</span>
+    </div>
+</div>
+<!-- 切换账号验证弹层 -->
+<div class="switch-box js-switch-box" style="display: none;">
+    <div class="loginClose js-loginClose"></div>
+    <div class="login-title">
+        <span>请先进行身份验证</span>
+    </div>
+    <div class="login-main">
+        <p class="errorbox errorbox3" style="top:0px;"></p>
+        <ul>
+            <li><input class="js-account" type="text" placeholder="请输入手机号"/></li>
+            <li>
+                <input class="js-switch-code" type="text" placeholder="请输入验证码"/>
+                <span class="code-btn js-code-btn1">获取验证码</span>
+            </li>
+            <li class="l_drag border-none" style="padding-top: 15px;border: none;position: relative;">
+                <div class="code_btn js-click-btn" data-cla=".js-puzzle-drag-content5" data-stu="1">点击按钮完成图形验证</div>
+                <div class="puzzle-drag-wraper js-drag-show" style="display: none;">
+                    <s class="drag-s"></s>
+                    <t class="drag-t"></t>
+                    <div class="puzzle-drag-content js-puzzle-drag-content5">
+                        <div class="drag-title clearfix">
+                            <span>为保证你的账户安全，请先完成图形验证</span>
+                            <span class="close js-close"></span>
+                            <span class="change js-change"><i></i>换一换</span>
+                        </div>
+                        <div class="puzzle-img-box">
+                            <div class="puzzle-img js-puzzle-img">
+                                <img>
+                            </div>
+                            <div class="puzzle-lost js-puzzle-lost">
+                                <img>
+                            </div>
+                        </div>
+                        <div class="drag-slide-nav">
+                            <div class="drag-slide-text">
+                                <div class="drag-slide-left"></div>
+                                <div class="drag-slide-center">向右滑动完成拼图</div>
+                                <div class="drag-slide-right"></div>
+                            </div>
+                            <div class="drag-slide-bar js-drag-slide-bar">
+                                <div class="drag-slide-bar-left"></div>
+                                <div class="drag-slide-bar-center"></div>
+                                <div class="drag-slide-bar-right"></div>
+                            </div>
+                            <div class="drag-slide-btn js-drag-slide-btn"></div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="switch-btn js-changeUser">提交</div>
+    </div>
+</div>
+<!-- 弹层背景 -->
+<div class="switch-bg js-switch-bg" style="display: none;"></div>
+{/block}
+
+{block name="self"}
+<script type="text/javascript" src="{STATIC_URL1}/global/js/fashion/search.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL1}/global/js/fashion/search-color.js?{STATIC_CHANGE_TIME}"></script>
+{/block}

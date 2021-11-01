@@ -1,0 +1,466 @@
+{extends file="layout.html"}
+
+{block name="selfcss"}
+	<link rel="stylesheet" type="text/css" href="{$smarty.const.STATIC_URL1}/global/css/lib/perfect-scrollbar.css?{$smarty.const.STATIC_CHANGE_TIME}">
+	<link rel="stylesheet" type="text/css" href="{$smarty.const.STATIC_URL1}/global/css/virtual/virtual.css?{$smarty.const.STATIC_CHANGE_TIME}">
+{/block}
+
+{block name="main"}
+<div class="content js-scroll-Sb">
+	<!-- 实景模拟主体盒子 -->
+	<div class="virtual-box">
+		<!-- 侧栏导航 -->
+		<div class="aside-nav-box">
+			<!-- 侧栏导航列表 -->
+			<ul class="aside-nav-list js-aside-nav-list">
+				<li class="on"><i class="master-room"></i>我的制版间</li>
+				<li><i class="my-pattern"></i>我的花型</li>
+				<li><i class="custom-made"></i>定制</li>
+				<li class="async" data-id="1"><i class="clothing"></i>服装</li>
+				<li class="async" data-id="2"><i class="home-textile"></i>家访</li>
+				<li class="async" data-id="3"><i class="shoes"></i>鞋子</li>
+				<li class="async" data-id="5"><i class="bags"></i>箱包</li>
+				<li class="async" data-id="100"><i class="other"></i>其他</li>
+				<li><i class="pattern"></i>图案花型</li>
+			</ul>
+			<!-- 侧栏导航内容 -->
+			<ul class="aside-nav-content-box js-aside-nav-content-box">
+				<li class="aside-nav-content on">
+					<!-- 侧栏导航内容控制器 -->
+					<div class="aside-nav-content-control">
+						<div class="select">
+							<span>全部</span>
+							<ul>
+								<li class="on">全部</li>
+								<li>女装图案</li>
+								<li>男装图案</li>
+								<li>童装图案</li>
+								<li>花卉图案</li>
+							</ul>
+						</div>
+					</div>
+					<!-- 侧栏导航内容列表 -->
+					<ul class="aside-nav-content-list movebtn-list js-aside-nav-Sb">
+						<li><img src="" alt=""><button class="move-btn">移动</button></li>
+						<li><img src="" alt=""><button class="move-btn">移动</button></li>
+						<li><img src="" alt=""><button class="move-btn">移动</button></li>
+						<li><img src="" alt=""><button class="move-btn">移动</button></li>
+						<li><img src="" alt=""><button class="move-btn">移动</button></li>
+						<li><img src="" alt=""><button class="move-btn">移动</button></li>
+						<li><img src="" alt=""><button class="move-btn">移动</button></li>
+						<li><img src="" alt=""><button class="move-btn">移动</button></li>
+						<li><img src="" alt=""><button class="move-btn">移动</button></li>
+						<li><img src="" alt=""><button class="move-btn">移动</button></li>
+						<li><img src="" alt=""><button class="move-btn">移动</button></li>
+						<li><img src="" alt=""><button class="move-btn">移动</button></li>
+						<li><img src="" alt=""><button class="move-btn">移动</button></li>
+						<li><img src="" alt=""><button class="move-btn">移动</button></li>
+						<li><img src="" alt=""><button class="move-btn">移动</button></li>
+						<li><img src="" alt=""><button class="move-btn">移动</button></li>
+						<li><img src="" alt=""><button class="move-btn">移动</button></li>
+						<li><img src="" alt=""><button class="move-btn">移动</button></li>
+						<li><img src="" alt=""><button class="move-btn">移动</button></li>
+						<li><img src="" alt=""><button class="move-btn">移动</button></li>
+					</ul>
+					<!-- 无内容 -->
+					<div class="empty-list">
+						<img src="./virtualSplSvgImg/nav_empty1.png" alt="">
+						<span>你还没有保存过效果图</span>
+					</div>
+					<!-- 底部按钮 -->
+					<button class="js-aside-nav-Sb-next">查看我的制版间</button>
+				</li>
+				<li class="aside-nav-content">
+					<!-- 侧栏导航内容控制器 -->
+					<div class="aside-nav-content-control">
+						<button class="upload"><i></i>上传本地花型</button>
+						<div class="batch"><!-- on -->
+							<div>批量管理<i></i></div>
+							<div class="clear"><span class="fl">取消</span><button class="fr">确定删除</button></div>
+						</div>
+					</div>
+					<!-- 侧栏导航内容列表 --><!-- checkbtn-list-on -->
+					<ul class="aside-nav-content-list checkbtn-list js-aside-nav-Sb">
+						<li><img src="" alt=""><button class="check-btn"></button></li>
+						<li><img src="" alt=""><button class="check-btn"></button></li>
+						<li><img src="" alt=""><button class="check-btn"></button></li>
+						<li><img src="" alt=""><button class="check-btn"></button></li>
+						<li><img src="" alt=""><button class="check-btn"></button></li>
+						<li><img src="" alt=""><button class="check-btn"></button></li>
+						<li><img src="" alt=""><button class="check-btn"></button></li>
+						<li><img src="" alt=""><button class="check-btn"></button></li>
+						<li><img src="" alt=""><button class="check-btn"></button></li>
+						<li><img src="" alt=""><button class="check-btn"></button></li>
+						<li><img src="" alt=""><button class="check-btn"></button></li>
+						<li><img src="" alt=""><button class="check-btn"></button></li>
+						<li><img src="" alt=""><button class="check-btn"></button></li>
+						<li><img src="" alt=""><button class="check-btn"></button></li>
+						<li><img src="" alt=""><button class="check-btn"></button></li>
+						<li><img src="" alt=""><button class="check-btn"></button></li>
+						<li><img src="" alt=""><button class="check-btn"></button></li>
+						<li><img src="" alt=""><button class="check-btn"></button></li>
+						<li><img src="" alt=""><button class="check-btn"></button></li>
+						<li><img src="" alt=""><button class="check-btn"></button></li>
+					</ul>
+					<!-- 无内容 -->
+					<div class="empty-list">
+						<img src="./virtualSplSvgImg/nav_empty2.png" alt="">
+						<span>你还没上传过花型</span>
+					</div>
+				</li>
+				<li class="aside-nav-content">
+					<!-- 占位 -->
+					<div style="height: 10px;"></div>
+					<!-- 侧栏导航内容列表 -->
+					<ul class="aside-nav-content-list js-aside-nav-Sb">
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+					</ul>
+					<!-- 无内容 -->
+					<div class="empty-list">
+						<img src="./virtualSplSvgImg/nav_empty3.png" alt="">
+						<span>你还没有定制过模板</span>
+						<button>立即定制模版</button>
+					</div>
+				</li>
+				<li class="aside-nav-content async" data-id="1">
+					<!-- 侧栏导航内容控制器 -->
+					<div class="aside-nav-content-control">
+						<button class="btn on">女装</button>
+						<button class="btn">男装</button>
+						<button class="btn">童装</button>
+						<button class="btn">配装</button>
+					</div>
+					<!-- 侧栏导航内容列表 -->
+					<ul class="aside-nav-content-list simubtn-list js-aside-nav-Sb">
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+					</ul>
+				</li>
+				<li class="aside-nav-content async" data-id="2">
+					<!-- 侧栏导航内容控制器 -->
+					<div class="aside-nav-content-control">
+						<button class="btn on">女装</button>
+						<button class="btn">男装</button>
+						<button class="btn">童装</button>
+						<button class="btn">配装</button>
+					</div>
+					<!-- 侧栏导航内容列表 -->
+					<ul class="aside-nav-content-list simubtn-list js-aside-nav-Sb">
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+					</ul>
+				</li>
+				<li class="aside-nav-content async" data-id="3">
+					<!-- 侧栏导航内容控制器 -->
+					<div class="aside-nav-content-control">
+						<button class="btn on">女装</button>
+						<button class="btn">男装</button>
+						<button class="btn">童装</button>
+						<button class="btn">配装</button>
+					</div>
+					<!-- 侧栏导航内容列表 -->
+					<ul class="aside-nav-content-list simubtn-list js-aside-nav-Sb">
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+					</ul>
+				</li>
+				<li class="aside-nav-content async" data-id="5">
+					<!-- 侧栏导航内容控制器 -->
+					<div class="aside-nav-content-control">
+						<button class="btn on">女装</button>
+						<button class="btn">男装</button>
+						<button class="btn">童装</button>
+						<button class="btn">配装</button>
+					</div>
+					<!-- 侧栏导航内容列表 -->
+					<ul class="aside-nav-content-list simubtn-list js-aside-nav-Sb">
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+						<li><img src="" alt=""><button class="simu-btn">模拟成品</button></li>
+					</ul>
+				</li>
+				<li class="aside-nav-content async" data-id="100">
+					<!-- 占位 -->
+					<div style="height: 10px;"></div>
+					<!-- 侧栏导航内容列表 -->
+					<ul class="aside-nav-content-list js-aside-nav-Sb">
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+					</ul>
+					<!-- 无内容 -->
+					<div class="empty-list">
+						<img src="./virtualSplSvgImg/nav_empty1.png" alt="">
+						<span>无内容</span>
+					</div>
+				</li>
+				<li class="aside-nav-content">
+					<!-- 占位 -->
+					<div style="height: 10px;"></div>
+					<!-- 侧栏导航内容列表 -->
+					<ul class="aside-nav-content-list js-aside-nav-Sb">
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+					</ul>
+					<!-- 无内容 -->
+					<div class="empty-list">
+						<img src="./virtualSplSvgImg/nav_empty4.png" alt="">
+						<button>请重新加载</button>
+					</div>
+				</li>
+			</ul>
+			<button class="aside-nav-tpl-btn">定制专属模板</button>
+		</div>
+		<!-- 侧栏控制器 -->
+		<div class="aside-control-box">
+			<button class="aside-control-collapse"></button>
+			<div class="aside-control-content js-aside-control-Sb">
+				<div class="aside-control-title">选择部件</div>
+				<ul class="com-list js-com-list">
+					<!-- <li class="on" data-idx="0">部件名称</li> -->
+				</ul>
+				<div class="aside-control-title">图案</div>
+				<ul class="loop-list">
+					<li>无循环</li>
+					<li class="on">全循环</li>
+					<li>水平循环</li>
+					<li>垂直循环</li>
+				</ul>
+				<ul class="slider-list">
+					<li>
+						<div><span>大小</span><span>x1</span></div>
+						<div>
+							<i class="sub"></i>
+							<div><button></button></div>
+							<i class="add"></i>
+						</div>
+					</li>
+					<li>
+						<div><span>角度</span><span>0°</span></div>
+						<div>
+							<i class="sub"></i>
+							<div><button></button></div>
+							<i class="add"></i>
+						</div>
+					</li>
+					<li>
+						<div><span>水平平移</span><span>x0</span></div>
+						<div>
+							<i class="sub"></i>
+							<div><button></button></div>
+							<i class="add"></i>
+						</div>
+					</li>
+					<li>
+						<div><span>垂直平移</span><span>x0</span></div>
+						<div>
+							<i class="sub"></i>
+							<div><button></button></div>
+							<i class="add"></i>
+						</div>
+					</li>
+				</ul>
+				<div class="color-picker js-color-picker">
+					<div class="title">底色调整</div>
+					<canvas class="color-ribbon"></canvas>
+					<canvas class="color-swatch"></canvas>
+					<div class="swatch-val">
+						<i></i>
+						<span>RGB</span>
+						<input readonly type="text" maxlength="11" value="255,255,255">
+						<span>#</span>
+						<input readonly type="text" maxlength="6" value="FFFFFF">
+					</div>
+				</div>
+				<div class="info"><i></i><span>鼠标左键旋转图案素材、鼠标中键缩放图案素材，鼠标右键平移图案素材。</span></div>
+			</div>
+		</div>
+		<!-- 模拟效果 -->
+		<div class="virtual-content-box js-scroll-Sb">
+			<div class="virtual-content">
+				<svg id="paper" width="430" height="770" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"></svg>
+			</div>
+			<ul class="virtual-control">
+				<li><i class="save"></i><span>保存至我的制版间</span></li>
+				<li><i class="download"></i><span>下载模拟效果图</span></li>
+				<li><i class="reset"></i><span>重置</span></li>
+				<li><i class="view"></i><span>查看图案详情</span></li>
+			</ul>
+		</div>
+	</div>
+	<!-- 选择关注的品类 -->
+	<div class="select-category-box js-select-category-box">
+		<i class="close js-select-category-close"></i>
+		<div class="title">选择关注的品类</div>
+		<p>选择后，您在模拟成品时，将使用对应模版</p>
+		<ul>
+			<li>服装</li>
+			<li>箱包</li>
+			<li>家纺</li>
+			<li>鞋子</li>
+			<li>其他</li>
+		</ul>
+		<button>我决定好了</button>
+	</div>
+</div>
+{/block}
+
+{block name="footer"}
+{/block}
+
+{block name="self"}
+	<script type="text/javascript" src="{$smarty.const.STATIC_URL3}/global/js/virtual/virtual.js?{$smarty.const.STATIC_CHANGE_TIME}"></script>
+{/block}

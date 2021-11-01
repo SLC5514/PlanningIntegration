@@ -1,0 +1,446 @@
+<div>
+	<div class="select_items">
+		<div id="HotBrandIds" style="display:none">{$HotBrandIdsStr}</div>
+		<span class="fl select-title">筛选项：</span>
+		<ul class="paixu fl clearfix">
+		    {if !empty($sGender) && !isset($paramsArr['gcen'])}
+		    <li class="pli">
+		        <span  class="aspan">男童/女童<em></em></span>
+		        <div class="showbox showDate sum">
+		            <div class="dateHeight contentHolder">
+		                <div class="content">
+		                    {foreach $sGender as $key=>$gender}
+		                    <a class="clickme {if $key != 0}borderTop{/if}" href="{$gender.link}" onclick="return oCommon.clickBeforeFlicker(this);" title="{$gender.name}">{$gender.name}</a>
+		                    {/foreach}
+		                </div>
+		            </div>
+		        </div>
+		    </li>
+		    {/if}
+			{if isset($iSeason) && !empty($iSeason)}
+			<li class="pli">
+				<span class="aspan">季节<em></em></span>
+				<div class="showbox sum">
+					<div class="dateHeight contentHolder ">
+						<div class="content">
+							{foreach $iSeason as $key => $val}
+							<a href="{$val.link}" class="{if $key != 0}borderTop{/if}" onclick="return oCommon.clickBeforeFlicker(this);" title="{$val.name}">{$val.name}</a>
+							{/foreach}
+						</div>
+					</div>
+				</div>
+			</li>
+			{/if}
+
+            <!-- 57 明星/ins（潮流领袖）-->
+			{if isset($iStarInsData) && !empty($iStarInsData) && $columnId == 57}
+			<li class="pli new-pli-labels">
+				<span class="aspan">明星/ins<em></em><i></i></span>
+				<div class="showbox sum">
+					<div class="dateHeight contentHolder ">
+						<div class="content">
+							{foreach $iStarInsData as $key => $val}
+							<a href="{$val.link}" class="{if $key != 0}borderTop{/if}" onclick="return oCommon.clickBeforeFlicker(this);" title="{$val.name}">{$val.name}</a>
+							{/foreach}
+						</div>
+					</div>
+				</div>
+			</li>
+			{/if}
+
+			{if $region && !isset($paramsArr['reg'])}
+			<li class="pli">
+				<span class="aspan">地区<em></em></span>
+				<div class="showbox region_box category_box">
+					<!-- <div class="region_recommend clearfix">
+						<ul>
+							<li><a><img src="{STATIC_URL1}/global/images/regionimage/london.png"/><span>伦敦<br/><em>London</em></span></a></li>
+						</ul>
+					</div> -->
+					<div class="allcc">
+						<div class="area_qh"><a href="javascript:void(0);" class="on">按区域</a>|<a href="javascript:void(0);">按大洲</a></div>
+						<!--<a href="{$allSingle.reg}" class="clearall fr clickme" onclick="return oCommon.clickBeforeFlicker(this);">清除地区选择</a>-->
+					</div>
+					<div class="mingc">
+						<div class="fl">
+							<span>大洲名称：</span>
+							<a href="javascript:void(0);">美洲</a>
+						</div>
+						<div class="fr">
+							<input class="fl searInput" type="text" value="请输入国家或城市的关键字">
+							<input class="fr button neiyeList" type="button">
+						</div>
+					</div>
+					<div class="allred"><a href="javascript:void(0);" >全部亚洲国家>></a></div>
+					 <div class="category_div contentHolder ps-container">
+						<div class="content">
+						</div>
+					</div>
+				</div>
+			</li>
+			{/if}
+			{if !empty($sExhibitionName)}
+			<li class="pli">
+				<span  class="aspan">展会名称<em></em></span>
+				<div class="showbox showdiv1">
+					<div class="zhcontent contentHolder">
+						<div class="content">
+							<!-- 内衣/家居服/泳装展加class="long_dl" -->
+							{foreach $sExhibitionName as $key => $val}
+							<dl class="clearfix {if $val['name'] == '内衣家居服泳装'} long_dl {/if}">
+								<dt><a href="javascript:void(0);" class="default_cur" title="{$val['name']}">{$val['name']}<i></i></a></dt>
+								<dd class="{if $key != count($sExhibitionName)-1} border-bottom {/if}">
+									{if is_array($val['attrs'])}
+									{foreach $val['attrs'] as $k => $v}
+									<a class="ex_a" href="{$v.link}" title="{$v['name']}">{$v['name']}</a>
+									{/foreach}
+									{/if}
+								</dd>
+							</dl>
+							{/foreach}
+					</div>
+						</div>
+				</div>
+			</li>
+			{/if}
+            {if !empty($sMarketType)}
+			<li class="pli">
+				<span class="aspan">市场类型<em></em></span>
+				<div class="showbox sum">
+					 <div class="dateHeight contentHolder ps-container">
+						<div class="content">
+							{foreach $sMarketType as $key => $val}
+							<a href="{$val.link}" class="{if $key != 0}borderTop{/if}" onclick="return oCommon.clickBeforeFlicker(this);" title="{$val.name}">{$val.name}</a>
+							{/foreach}
+						</div>
+					</div>
+				</div>
+			</li>
+			{/if}
+			{if !empty($sMarketHotPosition)}
+			<li class="pli">
+				<span class="aspan">品牌定位<em></em></span>
+				<div class="showbox sum sum_leixing">
+					<div class="dateHeight contentHolder ">
+						<div class="content">
+							{foreach $sMarketHotPosition as $key => $val}
+							<a href="{$val.link}" class="{if $key != 0}borderTop{/if}" onclick="return oCommon.clickBeforeFlicker(this);" title="{$val.name}">{$val.name}</a>
+							{/foreach}
+						</div>
+					</div>
+				</div>
+			</li>
+			{/if}
+			{if isset($star) && !isset($paramsArr['sta'])}
+			<li class="pli">
+				<span class="aspan">人名<em></em></span>
+				<div class="category_box showPro showbox">
+					<div class="label_ca" style="min-width:670px;">
+						{foreach $star as $val}
+						<div class="items">
+							<div class="letter" name="{$val}">{$val}</div>
+						</div>
+						{/foreach}
+						<div class="labellist" style="margin-top:10px;">
+							<div class="inputBox"><input type="text" class="searInputbox fl" value="搜索人名" name="A" style="color: rgb(148, 147, 147);"><span class="fr neiyeList"></span>
+							</div>
+							<div class="brand_result contentHolder js-page-select">
+								<div class="content">
+									<ul class="clearfix" id="popBrand_0-9"></ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</li>
+			{/if}
+			{if isset($brands) && !isset($paramsArr['bra']) && $columnId neq "56" && $columnId neq "57"}
+			<li class="pli">
+				<span class="aspan">品牌<em></em></span>
+				<div class="category_box showPro showbox">
+                    <div class="inputBox"><input type="text" class="searInputbox fl" value="搜索热门品牌名" name="HOT" style="color: rgb(148, 147, 147);"><span class="fr neiyeList"></span>
+                    </div>
+					<div class="brands_ca">
+						<div class="items">
+							<div class="letter" name="STAR"><i></i></div>
+						</div>
+						{foreach $brands as $val}
+						<div class="items">
+							<div class="letter" name="{$val}">{$val}</div>
+						</div>
+						{/foreach}
+						<div class="brandslist">
+							<div class="brand_result contentHolder">
+								<div class="content">
+									<ul class="clearfix" id="popBrand_0-9"></ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</li>
+			{/if}
+			{if !empty($categorys)}
+			<li class="pli">
+				<span class="aspan">单品<em></em></span>
+				<div class="showbox category_box">
+                    <div class="category_div contentHolder ps-container">
+						<div class="content">
+							{foreach $categorys as $key=>$category}
+							<dl class="category_dl clearfix {if $key < count($categorys)-1}border-bottom{/if}">
+								<dt><a class="clickme" href="{$category.link}" onclick="return oCommon.clickBeforeFlicker(this);" title="{$category.name}">{$category.name}</a></dt>
+								{if isset($category.subcategorys)}
+								<dd>
+								{foreach $category.subcategorys as $key=>$subcategory}
+								<a class="clickme" href="{$subcategory.link}" onclick="return oCommon.clickBeforeFlicker(this);" title="{$subcategory.name}">{$subcategory.name}</a>
+								{/foreach}
+								</dd>
+								{/if}
+							</dl>
+							{/foreach}
+						</div>
+					</div>
+				</div>
+			</li>
+			{/if}
+            {if !empty($sAssortColor)}
+            <li class="pli">
+                <span class="aspan">色系<em></em></span>
+                <div class="showbox sum sum_color">
+                    <div class="dateHeight contentHolder">
+                        <div class="content">
+                            {foreach $sAssortColor as $key => $val}
+                            <a href="{$val.link}"  onclick="return oCommon.clickBeforeFlicker(this);">
+                                <div class="box_color" style="background-color:{$val['sAlias']}"><span>{$val['sName']}</span></div>
+                            </a>
+                            {/foreach}
+                        </div>
+                    </div>
+                </div>
+            </li>
+            {/if}
+			{if !empty($sAgeLayer)}
+			<li class="pli">
+				<span class="aspan">年龄层<em></em></span>
+				<div class="showbox sum sum_leixing">
+					<div class="dateHeight contentHolder ">
+						<div class="content">
+							{foreach $sAgeLayer as $key => $val}
+							<a href="{$val.link}" class="{if $key != 0}borderTop{/if}" onclick="return oCommon.clickBeforeFlicker(this);" title="{$val.name}">{$val.name}</a>
+							{/foreach}
+						</div>
+					</div>
+				</div>
+			</li>
+			{/if}
+            {if $sManner}
+            <li class="pli">
+                <span  class="aspan">风格<i></i><em></em></span>
+                <div class="showbox sum-style">
+                    <div class="dateHeight contentHolder">
+                        <div class="content">
+                            {foreach $sManner as $key=>$val}
+                            <a class="clickme {if $key != 0}borderTop{/if}" href="{$val.link}" onclick="return oCommon.clickBeforeFlicker(this);" title="{$val.name}">{$val.name}</a>
+                            {/foreach}
+                        </div>
+                    </div>
+                </div>
+            </li>
+            {/if}
+			{if !empty($sWearing)}
+			<li class="pli">
+				<span class="aspan">穿着<em></em></span>
+				<div class="showbox sum">
+					<div class="dateHeight contentHolder ">
+						<div class="content">
+							{foreach $sWearing as $key => $val}
+							<a href="{$val.link}" class="{if $key != 0}borderTop{/if}" onclick="return oCommon.clickBeforeFlicker(this);" title="{$val.name}">{$val.name}</a>
+							{/foreach}
+						</div>
+					</div>
+				</div>
+			</li>
+			{/if}
+			{if !empty($sRegionalStyle)}
+			<li class="pli">
+				<span class="aspan">地域风格<em></em></span>
+				<div class="showbox sum">
+					<div class="dateHeight contentHolder ">
+						<div class="content">
+							{foreach $sRegionalStyle as $key => $val}
+							<a href="{$val.link}" class="{if $key != 0}borderTop{/if}" onclick="return oCommon.clickBeforeFlicker(this);" title="{$val.name}">{$val.name}</a>
+							{/foreach}
+						</div>
+					</div>
+				</div>
+			</li>
+			{/if}
+			{if !empty($sCharacterStyle)}
+			<li class="pli">
+				<span class="aspan">性格风格</span>
+				<div class="showbox sum">
+					<div class="dateHeight contentHolder ">
+						<div class="content">
+							{foreach $sCharacterStyle as $key => $val}
+							<a href="{$val.link}" class="{if $key != 0}borderTop{/if}" onclick="return oCommon.clickBeforeFlicker(this);" title="{$val.name}">{$val.name}</a>
+							{/foreach}
+						</div>
+					</div>
+				</div>
+			</li>
+			{/if}
+			<!-- 暂时隐藏
+			{if !empty($sFashionWeek)}
+			<li class="pli">
+				<span class="aspan">时装周专题<em></em></span>
+				<div class="showbox category_box">
+					 <div class="category_div contentHolder ps-container">
+						<div class="content">
+							{foreach $sFashionWeek as $val}
+							<dl class="category_dl clearfix">
+								<dt><a class="clickme" href="{$val.link}" onclick="return oCommon.clickBeforeFlicker(this);">{$val.name}</a></dt>
+								{if isset($val.attrs)}
+								<dd class="{if $key != count($sFashionWeek)-1} border-bottom {/if}">
+								{foreach $val.attrs as $v}
+								<a class="clickme {if empty({$v.link})} default_cur {/if}" href="{$v.link}" onclick="return oCommon.clickBeforeFlicker(this);">{$v.name}</a>
+								{/foreach}
+								</dd>
+								{/if}
+							</dl>
+							{/foreach}
+						</div>
+					</div>
+				</div>
+			</li>
+			{/if}-->
+			<!-- 暂时隐藏
+			{if !empty($sStreetBeatType)}
+			<li class="pli">
+				<span  class="aspan">街拍类型<em></em></span>
+				<div class="showbox sum">
+					<div class="dateHeight contentHolder">
+						<div class="content">
+							{foreach $sStreetBeatType as $key=>$val}
+							<a class="clickme  {if $key != 0}borderTop{/if}" href="{$val.link}">{$val.name}</a>
+							{/foreach}
+						</div>
+					</div>
+				</div>
+			</li>
+			{/if}-->
+			<!-- {if !empty($iRegion) && !isset($paramsArr['reg'])}
+			<li class="pli">
+				<span class="aspan">城市<em></em></span>
+				<div class="showbox category_box">
+					 <div class="category_div contentHolder ps-container">
+						<div class="content">
+							{foreach $iRegion as $val}
+							<dl class="category_dl clearfix">
+								<dt><a class="clickme" href="{$val.link}" onclick="return oCommon.clickBeforeFlicker(this);">{$val.name}</a></dt>
+								{if isset($val.attrs)}
+								<dd class="{if $key != count($iRegion)-1} border-bottom {/if}">
+								{foreach $val.attrs as $v}
+								<a class="clickme {if empty({$v.link})} default_cur {/if}" href="{$v.link}" onclick="return oCommon.clickBeforeFlicker(this);">{$v.name}</a>
+								{/foreach}
+								</dd>
+								{/if}
+							</dl>
+							{/foreach}
+						</div>
+					</div>
+				</div>
+			</li>
+			{/if} -->
+		    <!--{if !empty($labels) && !isset($paramsArr['hot'])}
+		    <li class="pli">
+		        <span  class="aspan">热门元素<em></em></span>
+		        <div class="showbox showDate sum">
+		            <div class="dateHeight contentHolder">
+		                <div class="content">
+		                    {foreach $labels as $key=>$option}
+		                    <a class="clickme {if $key != 0}borderTop{/if}" href="{$option.link}" onclick="return oCommon.clickBeforeFlicker(this);">{$option.name}</a>
+		                    {/foreach}
+		                </div>
+		            </div>
+		        </div>
+		    </li>
+		    {/if}-->
+		    <!-- 暂时隐藏 -->
+            {if (!isset($paramsArr['shap']) && !isset($paramsArr['spe']) && !isset($paramsArr['tech']) && !isset($paramsArr['pat']) && !isset($paramsArr['fab']) && !isset($paramsArr['acc'])) && ($sShape || $sSpecifics || $sTechnologys || $sPattern || $sFabric || $sAccessory)}
+            <li class="pli">
+                <span  class="aspan">元素<i></i><em></em></span>
+                <div class="showbox showdiv1">
+                    <div class="zhcontent contentHolder">
+                        <div class="content">
+                            {if $sShape}
+                            <dl class="clearfix">
+                                <dt><a href="javascript:void(0);" class="default_cur">廓形<i></i></a></dt>
+                                <dd class="border-bottom">
+                                    {foreach $sShape as $k => $v}
+                                    <a class="ex_a" href="{$v.link}" title="{$v['name']}">{$v['name']}</a>
+                                    {/foreach}
+                                </dd>
+                            </dl>
+                            {/if}
+                            {if $sSpecifics}
+                            <dl class="clearfix">
+                                <dt><a href="javascript:void(0);" class="default_cur">细节<i></i></a></dt>
+                                <dd class="border-bottom">
+                                    {foreach $sSpecifics as $k => $v}
+                                    <a class="ex_a" href="{$v.link}" title="{$v['name']}">{$v['name']}</a>
+                                    {/foreach}
+                                </dd>
+                            </dl>
+                            {/if}
+                            {if $sTechnologys}
+                            <dl class="clearfix">
+                                <dt><a href="javascript:void(0);" class="default_cur">工艺<i></i></a></dt>
+                                <dd class="border-bottom">
+                                    {foreach $sTechnologys as $k => $v}
+                                    <a class="ex_a" href="{$v.link}" title="{$v['name']}">{$v['name']}</a>
+                                    {/foreach}
+                                </dd>
+                            </dl>
+                            {/if}
+                            {if $sPattern}
+                            <dl class="clearfix">
+                                <dt><a href="javascript:void(0);" class="default_cur">图案<i></i></a></dt>
+                                <dd class="border-bottom">
+                                    {foreach $sPattern as $k => $v}
+                                    <a class="ex_a" href="{$v.link}" title="{$v['name']}">{$v['name']}</a>
+                                    {/foreach}
+                                </dd>
+                            </dl>
+                            {/if}
+                            {if $sFabric}
+                            <dl class="clearfix">
+                                <dt><a href="javascript:void(0);" class="default_cur">面料<i></i></a></dt>
+                                <dd class="border-bottom">
+                                    {foreach $sFabric as $k => $v}
+                                    <a class="ex_a" href="{$v.link}" title="{$v['name']}">{$v['name']}</a>
+                                    {/foreach}
+                                </dd>
+                            </dl>
+                            {/if}
+                            {if $sAccessory}
+                            <dl class="clearfix">
+                                <dt><a href="javascript:void(0);" class="default_cur">辅料<i></i></a></dt>
+                                <dd class="border-bottom">
+                                    {foreach $sAccessory as $k => $v}
+                                    <a class="ex_a" href="{$v.link}" title="{$v['name']}">{$v['name']}</a>
+                                    {/foreach}
+                                </dd>
+                            </dl>
+                            {/if}
+                        </div>
+                    </div>
+                </div>
+            </li>
+            {/if}
+		</ul>
+	</div>
+	<div class="other">
+		<input type="hidden" name="hidd" data-bpos="{$bpos}" data-star='{$sStarLabel}' />
+		<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/select_items.js?{STATIC_CHANGE_TIME}"></script>
+	</div>
+</div>

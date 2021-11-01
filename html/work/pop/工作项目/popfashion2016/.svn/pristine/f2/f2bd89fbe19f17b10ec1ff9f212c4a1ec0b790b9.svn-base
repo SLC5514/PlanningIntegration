@@ -1,0 +1,113 @@
+{extends file="layout.html"}
+{block name="selfcss"}
+	<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/pop_layer.css?{STATIC_CHANGE_TIME}">
+	<link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/perfect-scrollbar.css?{STATIC_CHANGE_TIME}">
+    <link rel="stylesheet" type="text/css" href="{STATIC_URL2}/global/css/new-detail/tbook-detail.css?{STATIC_CHANGE_TIME}">
+{/block}
+{block name="other"}
+<div id="loadingBg"><div class="noPic"></div></div>
+{/block}
+
+{block name="main"}
+<div class="contant book bookp" id="main">
+    <input id="encrypt" type="hidden" data-sign="{$sign}" data-timestamp="{$timeStamp}" data-token="{$token}">
+    <input type="hidden" id="param" data-url="/collect/setcollect/" data-col="{$columnId}" data-id="{$id}" data-t="{$ct}">
+    <div class="neiyeTitbox">
+        <div class="con_width">
+            <div class="crumb-nav"><a href="/" title="首页">首页</a><span>></span><a href="/books/" title="读物">读物</a><span>></span><a href="{$sColLink}" title="{$sColName}">{$sColName}</a><span>></span><a class="child-column" title="{$theme}">{$theme}</a></div>
+            <div class="neiye-information-box">
+                <div class="book-infor-top">
+                    <div class="book-title-box clearfix">
+                        <h3 class="fl tit">{$theme}</h3>
+                        {if $bIsCollect == 1}
+                        <a class="fr zt" id="collect" href="javascript:void(0);" data-iscollected="{$bIsCollect}" data-col="{$columnId}" data-tab="{$ct}" data-id="{$id}" data-type="8" data-para="mid={$mainID}&mtab={$mtab}" title="已收藏"><span>已收藏</span></a>
+                        {else}
+                        <a class="fr zt nzt" id="collect" href="javascript:void(0);" data-iscollected="{$bIsCollect}" data-col="{$columnId}" data-tab="{$ct}" data-id="{$id}" data-type="8" data-para="mid={$mainID}&mtab={$mtab}" title="收藏"><i></i><span>收藏</span></a>
+                        {/if}
+                    </div>
+                    <div class="introduction">
+                        {if !empty($sBookNumber)}
+                        <p>
+                            <label>编　号：</label>
+                            <span>{$sBookNumber}</span>
+                        </p>
+                        {/if}
+                        {if !empty($bookDescription)}
+                        <p>
+                            <label>简　介：</label>
+                            <span>{$bookDescription}</span>
+                        </p>
+                        {/if}
+                    </div>
+                </div>
+                <div class="neiye-infor-bottom">
+                    <div class="listNav fl">
+                        <a href="javascript:void(0);" class="on" title="手稿合辑列表">手稿合辑列表</a>
+                    </div>
+                    <div class="list-down-page fr">
+                        <div class="page-box fl clearfix" id="s_result">
+                            <p class="findstyle">共找到 <a href="javascript:void(0);" title="{$totalCount}">{$totalCount}</a>页合辑图片</p>
+                            <!--分页--页码开始-->
+                            {$simplePageHtml}
+                            <!--分页--页码结束-->
+                        </div>
+                        <span class="fl"></span>
+                        {if $sBuyingLinks}
+                        <a class="buy_fr fl" href="{$sBuyingLinks}" target="_blank" title="立即购买">立即购买</a>
+                        {/if}
+                        {if $downLoadUrl neq ''}
+                        <a class="download fl" href="{$downLoadUrl}" title="立即打包下载">立即打包下载</a>
+                        {else}
+                        <a class="download no-download fl" href="javascript:void(0);" title="暂不支持打包下载">暂不支持打包下载</a>
+                        {/if}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="con_width">
+        <ul class="picbox lazyload">
+            {foreach $list as $key => $val}
+            <li>
+                <a class="img_click" href="/details/bookpresscon/t_{$val.realName}-id_{$val.id}-col_{$val.columnId}-index_{$val.index}/" data-total="{if $viewMode eq 'fastView'} 3 {else} {$totalCount} {/if}" data-index="{$val.index}" data-t="{$val.realName}" data-id="{if isset($val.id)}{$val.id}{else}{$id}{/if}" data-col="{$val.columnId}" data-bp="/" data-sp="{$val.smallPicPath}" title="查看详情">
+                    {if $viewMode eq 'fastView' && $page eq 1 && $key gt 2}
+                    <div {if $shadeFlag} class="shuiy" {/if}></div>
+                    {/if}
+                    {if !empty($val.smallPicPath)}
+                    <img  src="{STATIC_URL2}/global/images/loading/reference150-150.gif" data-original="{$val.smallPicPath}" alt="pic">
+                    {else}
+                    <img src="{STATIC_URL1}/global/images/loading/referenceMR150.jpg" alt="pic">
+                    {/if}
+                </a>
+            </li>
+            {/foreach}
+        </ul>
+        <div class="rightc_bottom">
+            <!--分页--页码开始-->
+            {$pageHtml}
+            <!--分页--页码结束-->
+        </div>
+    </div>
+</div>
+<div class="pop_layer_page pop_layer_page1" id="pop_layer">
+    {include file="bookpresscon_layer_template.html"}
+</div>
+{/block}
+
+{block name="self"}
+<script type="text/javascript" src="{STATIC_URL3}/global/js/secret/crypto-js/crypto-js.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/secret/jsencrypt.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL2}/global/js/fashion/index.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL2}/global/js/fashion/global.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL2}/global/js/fashion/book.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/common/template.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL2}/global/js/common/imagesloaded.pkgd.min.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL2}/global/js/fashion/aggregation.js?{STATIC_CHANGE_TIME}"></script>
+<script type="text/javascript" src="{STATIC_URL3}/global/js/fashion/util.collect.js?{STATIC_CHANGE_TIME}"></script>
+{literal}
+<script>         
+eval(function(p,a,c,k,e,d){e=function(c){return(c<a?"":e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)d[e(c)]=k[c]||e(c);k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1;};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p;}('8 B(2,b){D(C 2==\'x\'){2=w.n(2)}3 a=1.o.7(2,1.4.5.c(b),{r:1.4.5.c(\'e\')});9 1.4.s.n(a.y)};8 z(2,b){3 q=1.o.6(2,1.4.5.c(b),{r:1.4.5.c(\'e\')});9 q.A(1.4.5)};8 u(a){3 6=h d();6.t(v());p=6.6(R(a));9 p};8 T(m){3 7=h d();7.U(0());3 k=7.7(m);i=S(k).Q(/\\+/g,\'%X\');9 i};8 0(){3 0=\'-----Y l j-----\';0+=\'V+f+W\';0+=\'P\';0+=\'H+I\';0+=\'G\';0+=\'E/F/J\';0+=\'N/O+M\';0+=\'K\';0+=\'-----L l j-----\';9 0};',61,61,'pub_key|CryptoJS|plainText|var|enc|Utf8|decrypt|encrypt|function|return|encrypted|AES_KEY|parse|JSEncrypt|1234567887654301|||new|data_str|KEY|res|PUBLIC|str|stringify|AES|data_decrypted|decrypted|iv|Base64|setPrivateKey|rsa_decrypt|pri_key|JSON|object|ciphertext|aes_decrypt|toString|aes_encrypt|typeof|if|Avw5eS3UkIPixj4B0mZkhn9VZ9mOgBRgs9Lo|Ihc|GHGXr73iXRhLgqfQhC5dlMisbr3GqnGtPNVOBDYGtGgKS4mpaYzpO60kunooKmdH|3PSU5jrzuzDUEqZvEQaOHfKcUXRx3C61iR9iTnA6YCZLlIX3CnRJzYWCJNRjV|qp|hJXAk3kZvzQjIpzKrYAqHYp|hwIDAQAB|END|EfjuWjJxz02MuWsi|4cKyAfWCegA0G0fGo2aJWqpFrAg25FTDXFf0DRDz|AIEvJu|rcEaJOO94OSQsWzIQSGWM4yoVOVg85YKhW5JlwAHH53Zd8sASLk0ypQv5ze68zeS|replace|decodeURIComponent|encodeURI|rsa_encrypt|setPublicKey|MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1053Mcqn6WH|liJid6|2B|BEGIN'.split('|'),0,{}))
+</script>
+{/literal}
+{/block}
+

@@ -1,0 +1,308 @@
+{literal}
+<script id="T_Title" type="text/html">{{stitle}}</script>
+
+<script id="T_LeftRightBtn" type="text/html">
+{{if lUrl && visit }}<div class="leftBtn" data-col="{{lcol}}" data-t="{{ltable}}" data-id="{{lid}}" data-total={{ltotal}} data-index="{{loffset}}" data-type="{{type}}" data-isuc="{{isuc}}" data-wbid="{{wbid}}" data-ver="{{ver}}">上<br>一<br>{{word}}</div>{{/if}}
+{{if rUrl }}<div class="rightBtn" data-col="{{rcol}}" data-t="{{rtable}}" data-id="{{rid}}" data-total={{rtotal}} data-index="{{roffset}}" data-type="{{type}}" data-isuc="{{isuc}}" data-wbid="{{wbid}}" data-ver="{{ver}}">下<br>一<br>{{word}}</div>{{/if}}
+</script>
+
+<script id="T_Tab" type="text/html">
+{{if detailCnt>1}}
+{{each detailList as value index}}
+    <li {{if index==0}}class="on"{{/if}}>{{++index}}</li>
+{{/each}}
+{{/if}}
+</script>
+
+<script id="T_DetailList" type="text/html">
+{{if visit}}
+    {{if detailCnt}}
+    {{each detailList as value index}}
+    <img class="bigpic {{if index==0}}on{{/if}}" {{if index==0}}style="display: inline;"{{/if}}  src="{{if index==0}}{{value.bigPath}}{{/if}}" data-t="{{value.simpleName}}" data-id="{{value.id}}" data-sp="{{value.smallPath}}" data-bp="{{value.bigPath}}" data-col="{{value.columnid}}" data-shape="{{value.shape}}" data-size="{{value.size}}" alt="pic">
+    {{/each}}
+    <i class="enlarge" title="高清浏览"></i>
+    {{/if}}
+{{else}}
+<div class="qx_remind">
+    <div class="remind_info clearfix">
+        <span class="fl"></span>
+        <p class="fl">对不起，本书暂时只提供预览版本…<br/><span>如您想提前阅读本书内容，可咨询并购买实体版本</span></p>
+    </div>
+    <div class="remind_cous">
+        <a class="qq_ic" href="{{qqlink}}" target="_blank" title="QQ咨询"><i></i>QQ咨询</a>
+        <a class="tel_ic" href="javascript:void(0);" title="咨询电话"><i></i>咨询电话：{{telnumber}}</a>
+    </div>
+    <div class="remind_img">
+        <span></span>
+    </div>
+</div>
+{{/if}}
+</script>
+
+<script id="T_StyleInfo" type="text/html">
+    {{if styleInfoCnt}}
+    <div class="inf inf1 shadow">
+        <h3>{{info}}信息</h3>
+        <ul class="inflist repeat_inflist
+        ">
+            {{if styleInfo.brand.name}}
+            <li class="brand_detail">
+                <p>
+                    <label>品牌：</label>
+                    <span><a href="{{styleInfo.brand.link}}" target="_blank" class="mousehover" title="{{styleInfo.brand.name}}">{{styleInfo.brand.name}}</a></span>
+                </p>
+            </li>
+            {{/if}}
+            {{if styleInfo.classify.name}}
+            <li>
+                <p>
+                    <label>归类：</label>
+                    <span><a href="{{styleInfo.classify.link}}" target="_blank" class="mousehover" title="{{styleInfo.classify.name}}">{{styleInfo.classify.name}}</a></span>
+                </p>
+            </li>
+            {{/if}}
+			{{if styleInfo.industry.length > 0}}
+			<li>
+				<p>
+					<label>行业：</label>
+					<span>
+					{{each styleInfo.industry as value index}}
+						<a href="{{value.link}}" target="_blank" class="mousehover" title="{{value.name}}">{{value.name}}</a>
+					{{/each}}
+					</span>
+				</p>
+			</li>
+			{{/if}}
+            {{if styleInfo.gender.length > 0}}
+            <li>
+                <p>
+                    <label>性别：</label>
+                    <span>
+					{{each styleInfo.gender as value index}}
+						<a href="{{value.link}}" target="_blank" class="mousehover" title="{{value.name}}">{{value.name}}</a>
+					{{/each}}
+					</span>
+                </p>
+            </li>
+            {{/if}}
+			{{if styleInfo.catagory.length > 0}}
+			<li>
+				<p>
+					<label>分类：</label>
+					<span>
+					{{each styleInfo.catagory as value index}}
+						<a href="{{value.link}}" target="_blank" class="mousehover" title="{{value.name}}">{{value.name}}</a>
+					{{/each}}
+					</span>
+				</p>
+			</li>
+			{{/if}}
+			
+            {{if styleInfo.subcatagory.name}}
+            <li>
+                <p>
+                    <label>品名：</label>
+                    <span><a href="{{styleInfo.subcatagory.link}}" target="_blank" class="mousehover" title="{{styleInfo.subcatagory.name}}">{{styleInfo.subcatagory.name}}</a></span>
+                </p>
+            </li>
+            {{/if}}
+            {{if view_count}}
+            <li>
+                <p>
+                    <label>浏览量：</label>
+                    <span>{{view_count}}次</span>
+                </p>
+            </li>
+            {{/if}}
+            {{if updateTime}}
+            <li class="updateTime">
+                <p>
+                    <label>更新日期：</label>
+                    <span>{{updateTime}}</span>
+                </p>
+            </li>
+            {{/if}}
+            {{if source}}
+            <li class="pic_laiyuan">
+                <p>
+                    <label>图片来源：</label>
+                    {{#source}}
+                </p>
+            </li>
+            {{/if}}
+        </ul>
+    </div>
+    {{/if}}
+</script>
+
+<script id="T_Label" type="text/html">
+    {{if relationLabelsCnt}}
+    <div class="keyword1 shadow">
+        <h3>关键词</h3>
+        <div class="keylist">
+            {{each relationLabels as value index}}
+            <a target="_blank" href="{{value}}" title="{{index}}">{{index}}</a>
+            {{/each}}
+        </div>
+    </div>
+    {{/if}}
+</script>
+<script id="T_StyleAd" type="text/html">
+{{if adsCnt}}
+<div class="add shadow">
+    {{each ads as value index}}
+    <a {{if value.sNewWindow}}target="_blank"{{/if}} href="{{value.sLink}}" title="{{value.sTitle}}"><img src="{{value.sImagePath}}" alt="{{value.sTitle}}"></a>
+    {{/each}}
+</div>
+{{/if}}
+</script>
+<!--<script id="T_SeaNum" type="text/html">
+{{total}}
+</script>
+<script id="T_MoreSeaLi" type="text/html">
+{{each result as value index}}
+<li class="grid">
+    <a><img src="{{value.smallPath}}" data-bigpic="{{value.bigPath}}" data-t="{{value.tableName}}" data-id="{{value.id}}" data-index="{{value.offset}}" data-col="{{value.columnId}}" data-total="{{total}}" data-type="{{type}}" data-ver="{{value.ver}}"></a>
+</li>
+{{/each}}
+</script>-->
+<script id="T_MoreRec" type="text/html">
+<div class="layer_dwid clearfix">
+    <ul class="layer_down_left fl">
+        {{each report_one as report}}
+        <li>
+            <a href="{{report.link}}" class="abox" title="查看详情">
+                <img src="{{report.smallPath}}" alt="pic">
+                <!-- <div class="cenIconText showdiv">
+                    <p class="togg1">{{report.title}}</p>
+                    <div class="togg2">
+                        <div class="tit">
+                            <span>{{report.colsName}}</span>
+                            <strong>{{report.colsEnName}}</strong>
+                        </div>
+                        <p class="textDetail">{{report.title}}</p>
+                    </div>
+                </div> -->
+            </a>
+            <div class="text_down">
+                <p class="title">{{report.title}}</p>
+                <p class="time">
+                    <span class="fl"><img src="{{STATIC_URL3}}/global/images/zzjd_02.png" alt="icon">{{report.order_time}}</span> 
+                    <span class="fr"><img src="{{STATIC_URL3}}/global/images/zzjd_03.png" alt="icon">浏览（<i>{{report.view_count}}</i>）</span>
+                </p>
+            </div>
+        </li>
+        {{/each}}
+    </ul>
+    <span class="fl line"></span>
+    <ul class="layer_down_right fl">
+        {{each style_one as style}}
+        <li>
+            <a href="{{style.link}}" class="abox" title="查看详情"><img src="{{style.smallPath}}" alt="pic">
+                <!-- <div class="cenIconText showdiv">
+                    <p class="togg1">{{style.title}}</p>
+                    <div class="togg2">
+                        <div class="tit">
+                            <span>{{style.colsName}}</span>
+                            <strong>{{style.colsEnName}}</strong>
+                        </div>
+                        <p class="textDetail">{{style.title}}</p>
+                    </div>
+                </div> -->
+            </a>
+            <div class="picTxt">
+                <p><a href="{{style.seasonLink}}" title="{{style.seasonText}}">{{style.seasonText}}</a></p>
+                <p><a href="{{style.categoryLink}}" title="{{style.categoryText}}">{{style.categoryText}} </a><a href="{{style.subCategoryLink}}" title="{{style.subCategoryText}}">{{style.subCategoryText}}</a></p>
+            </div>
+            <p class="Picpp"><a href="{{style.brandLink}}" title="{{style.brandText}}">{{style.brandText}}</a></p>
+        </li>
+        {{/each}}
+    </ul>
+</div>
+<div class="layer_dwid clearfix">
+    <ul class="layer_down_left fl">
+        {{each report_two as report}}
+       <li>
+            <a href="{{report.link}}" class="abox" title="查看详情">
+                <img src="{{report.smallPath}}" alt="pic">
+                <!-- <div class="cenIconText showdiv">
+                    <p class="togg1">{{report.title}}</p>
+                    <div class="togg2">
+                        <div class="tit">
+                            <span>{{report.colsName}}</span>
+                            <strong>{{report.colsEnName}}</strong>
+                        </div>
+                        <p class="textDetail">{{report.title}}</p>
+                    </div>
+                </div> -->
+            </a>
+            <div class="text_down">
+                <p class="title">{{report.title}}</p>
+                <p class="time">
+                    <span class="fl"><img src="{{STATIC_URL3}}/global/images/zzjd_02.png" alt="icon">{{report.order_time}}</span> 
+                    <span class="fr"><img src="{{STATIC_URL3}}/global/images/zzjd_03.png" alt="icon">浏览（<i>{{report.view_count}}</i>）</span>
+                </p>
+            </div>
+        </li>
+        {{/each}}
+    </ul>
+    <span class="fl line"></span>
+    <ul class="layer_down_right fl">
+        {{each style_two as style}}
+        <li>
+            <a href="{{style.link}}" class="abox" 查看详情><img src="{{style.smallPath}}" alt="pic">
+                <!-- <div class="cenIconText showdiv">
+                    <p class="togg1">{{style.title}}</p>
+                    <div class="togg2">
+                        <div class="tit">
+                            <span>{{style.colsName}}</span>
+                            <strong>{{style.colsEnName}}</strong>
+                        </div>
+                        <p class="textDetail">{{style.title}}</p>
+                    </div>
+                </div> -->
+            </a>
+            <div class="picTxt">
+                <p><a href="{{style.seasonLink}}" title="{{style.seasonText}}">{{style.seasonText}}</a></p>
+                <p><a href="{{style.categoryLink}}" title="{{style.categoryText}}">{{style.categoryText}} </a><a href="{{style.subCategoryLink}}" title="{{style.subCategoryText}}">{{style.subCategoryText}}</a></p>
+            </div>
+            <p class="Picpp"><a href="{{style.brandLink}}" title="{{style.brandText}}">{{style.brandText}}</a></p>
+        </li>
+        {{/each}}
+    </ul>
+</div>
+</script>
+<script id="T_RecFabric" type="text/html">
+{{each fabricList as fabric index}}
+    <a target="_blank" href="{{fabric.link}}" title="{{fabric.sTitle}}"><img src="{{fabric.sImgPath1}}" alt="{{fabric.sTitle}}"></a>
+{{/each}}
+</script>
+<script id="T_Workbench" type="text/html">
+{{each workbench as value index}}
+<li data-workbenchid="{{value.id}}">{{value.name}}</li>
+{{/each}}
+</script>
+<script id="T_DownloadType" type="text/html">
+<thead>
+	<tr>
+		<th width="25%">格式</th>
+		<th width="25%">尺寸</th>
+		<th width="25%">文件大小</th>
+		<th width="25%">点击下载</th>
+	</tr>
+</thead>
+<tbody {{if downloadType}} data-downtype='{{downloadType}}'{{/if}}>		
+	{{if !downloadType}}
+	<tr>
+		<td>.jpg</td>
+		<td id="imgShape">尺寸</td>
+		<td id="imgSize">文件大小</td>
+		<td><a class="download_btn" href="javascript:void(0);" data-bp="" title="下载">下载</a></td>
+	</tr>
+	{{/if}}
+</tbody>
+</script>
+<script id="T_Download" type="text/html">
+    <a href="javascript:void(0);" class="top_bg grey downbtn {{if visit}}grey{{else}}pow_down{{/if}} {{if !download}}pow{{/if}}" id="J_DownNumContanier" data-path="" data-column="" data-id="" title="下载"><span id="downtxt">下载</span></a>
+</script>
+{/literal}

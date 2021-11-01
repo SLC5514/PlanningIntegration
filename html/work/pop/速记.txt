@@ -1,0 +1,10 @@
+text-align: justify （+ white-space: nowrap） 失效
+内容（+<span style="display:inline-black;width:100%"></span> && 无nowrap）使不生效的生效
+
+display:inline-black;间距问题：父级font-size:0;解决右边间距，vertical-align:bottom;解决底部间距
+
+gif在ie或苹果中动画很慢为图片和浏览器问题
+
+行内块vertical-align: middle; 可搭配 margin-top
+
+

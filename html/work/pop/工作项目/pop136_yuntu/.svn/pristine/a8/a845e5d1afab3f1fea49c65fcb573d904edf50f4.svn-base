@@ -1,0 +1,177 @@
+{extends file="layout.html"} 
+{block name="selfcss"}
+<link rel="stylesheet" type="text/css" href="{$smarty.const.STATIC_URL1}/global/css/lib/perfect-scrollbar.css?{$smarty.const.STATIC_CHANGE_TIME}">
+<link rel="stylesheet" type="text/css" href="{$smarty.const.STATIC_URL1}/global/css/pattern/pattern.css?{$smarty.const.STATIC_CHANGE_TIME}" />
+{/block} 
+ 
+{block name="main"}
+<div class="content">
+	<div id="cond" data-params="{$params}" data-key="{$key}" style="display:none;"></div>
+	<div class="section pattern-content">
+
+        <!-- 我的设计花型 -->
+        <div class="design-content js-design-content">
+            <div class="pattern-title">
+                <span></span>猜你喜欢<span></span>
+			</div>
+            <div class="designs-box">
+                <div class="design-div js-design-div">
+                    <ul class="clear">
+                        <li>
+                            <a href="javascript:void(0);">
+                                <img src="" alt="">
+                            </a>
+                        </li> 
+                        <li>
+                            <a href="javascript:void(0);">
+                                <img src="" alt="">
+                            </a>
+                        </li>
+                    </ul>
+                    <a href="/recommend/" target="_blank" class="js-recommend-more">
+                        全部
+                        <div>
+                            <span></span><span></span><span></span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+		<!--canvas图标-->
+		<div class="pattern-top">
+			<div class="analysis-box js-analysis-box">
+                <div class="pattern-title">
+                    <span></span>图案灵感库<span></span>
+                </div>
+				<div class="color-analysis js-color-analysis load-pie clear">
+					<div class="pie">
+						<div class="analysis-pic js-analysis-pic1"></div>
+						<!--canvas图表-->
+						<div class="color" id="main-color">
+							
+						</div>
+					</div>
+					<div class="pie">
+						<div class="analysis-pic js-analysis-pic2"></div>
+						<div class="category" id="main-category">
+	
+						</div>
+					</div>
+				</div>
+				<div class="tech-support">
+					<p>颜色识别技术由码隆科技  <img src="{STATIC_URL2}/global/images/pattern/p_icon1.png"> 合作提供</p>
+				</div>
+			</div>
+			<div class="analysis-show">
+				<div class="js-analysis-slid"></div>
+			</div>
+		</div>
+	
+		<!--删选条件列表-->
+		<div class="select-tbox">
+			<div class="screen-box clear">
+				<!--删选搜索项-->
+				<div class="clear screen-result">
+					<p class="finds-tyle js-finds-tyle">
+						共 <span>0</span> 个
+					</p>
+					<div class="search-box js-search-box clear">
+						<input class="sear-input js-sear-input" type="text" value="搜索">
+						<input class="icon neiye-list js-neiye-list" type="button">
+					</div>
+				</div>
+	
+				<ul class="paixu js-paixu clear">
+					<li class="paixu-load">
+						<img src="{STATIC_URL1}/global/images/common/alertloading.gif" alt="" />筛选项加载中，请稍等...
+					</li>
+				</ul>
+			</div>
+	
+			<!--已筛选-->
+			<div class="keycho js-keycho clear">
+				<span class="yixz">您已选择：</span>
+				<div class="key-allbox js-key-allbox clear">
+					<div class="key-word">
+						<a class="auto-sx" href="javascript:void(0);" title="局部图案">局部/满身:
+							<p>局部图案</p><span class="icon"></span>
+						</a>
+					</div>
+					<div class="key-word">
+						<a class="auto-sx" href="javascript:void(0);" title="局部图案">局部/满身:
+							<p>局部图案</p><span class="icon"></span>
+						</a>
+					</div>
+					<div class="key-word">
+						<a class="auto-sx" href="javascript:void(0);" title="局部图案">局部/满身:
+							<p>局部图案</p><span class="icon"></span>
+						</a>
+					</div>
+					<div class="key-word">
+						<a class="auto-sx" href="javascript:void(0);" title="局部图案">色系:
+							<p class="bg-p"></p><span class="icon"></span>
+						</a>
+					</div>
+					<a class="delefilter" href="javascript:void(0);"><span class="icon"></span>清空筛选</a>
+				</div>
+	
+			</div>
+	
+		</div>
+	
+		<!--搜索结果为空-->
+		<div class="pattern-null js-pattern-null">
+			<div class="null-pic"></div>
+			<p>抱歉，搜索不到相关结果！可尝试更换关键字或减少筛选条件哦~</p>
+			<div class="clear link-msg">
+				<a class="js-contact-qq-btn" href="javascript:void(0);" data-type="1" rel="nofollow"><span class="icon"></span>在线客服</a>
+				<div><span class="icon"></span>咨询热线：4008-210-662</div>
+			</div>
+	
+		</div>
+	
+		<!--图案列表-->
+		<div class="pattern-section js-pattern-section">
+			<div class="pattern-list">
+				<ul class="clear js-pattern-list js-lists-parent"></ul>
+			</div>
+	
+			<!--分页-->
+			<div class="rightc-bottom js-rightc-bottom"></div>
+			<div class="list-more js-list-more"><span class="icon"></span>下拉加载更...</div>
+		</div>
+	
+	</div>
+	
+
+</div>
+
+{/block}
+
+{block name="other"}
+	<!--引入详情页-->
+	<div class="detail-frame js-detail-frame">
+		<iframe src="" width="100%" height="100%" frameborder="no" border="0" scrolling="no" allowtransparency="yes"></iframe>
+	</div>
+
+	<!-- 功能权限提示层 -->
+	<div class="general-user-info-fixbox js-general-user-info-fixbox">
+	    <div class="section">
+	        <button title="关闭"></button>
+            <h3>企业VIP用户专享</h3>
+            <p>30w大图浏览，提供psd、ai、eps文件下载，图案花型设计更高效，<br/>更可一键模拟成品，快速查找相似图</p>
+	        <a class="" href="/topic/enterprise_service/" title="查看详情" target="_blank">了解企业VIP特权服务</a>
+	    </div>
+	</div>
+{/block}
+
+{block name="self"}
+	<script type="text/javascript">
+		var pattern_list_back_obj={
+			col_user_type:'{$col_user_type}'
+		};
+	</script>
+	<script src="{$smarty.const.STATIC_URL3}/global/js/pattern/pattern.js?{$smarty.const.STATIC_CHANGE_TIME}" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="{$smarty.const.STATIC_URL3}/global/js/pattern/collect-common.js?{$smarty.const.STATIC_CHANGE_TIME}"></script>
+{/block}

@@ -7,6 +7,7 @@ const count = ref(0);
   <section id="active-container">
     <h1>关于</h1>{{count}}<button @click="count++">add</button>
     <p>目录规则：序号.标题</p>
+    <p>参考地址：官方平台网站</p>
     <section>
       <h2>已实现</h2>
       <ul>
@@ -25,8 +26,8 @@ const count = ref(0);
       <ul>
         <li>路由权限 <mark>*</mark>：须配合账号登陆系统</li>
         <li>列表过渡</li>
-        <li>全局动态配置 <mark>*</mark>：进行中</li>
-        <li>错误日志</li>
+        <li>全局动态配置</li>
+        <li>错误日志 <mark>*</mark>：进行中</li>
         <li>复制内容</li>
         <li>代码块</li>
         <li>国际化</li>

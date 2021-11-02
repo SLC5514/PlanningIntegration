@@ -10,6 +10,7 @@
     "isolatedModules": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
+    "suppressImplicitAnyIndexErrors": false,
     "lib": ["esnext", "dom"],
     "types": ["vite/client"],
     "paths": {

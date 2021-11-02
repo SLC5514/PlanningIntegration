@@ -1,7 +1,5 @@
 <script lang="ts" setup>
-import Sidebar from './Sidebar/index.vue';
-import Navbar from './Navbar/index.vue';
-import Tagbar from './Tagbar/index.vue';
+import { Sidebar, Navbar, Tagbar, Settings } from './components';
 import { computed } from 'vue';
 import { useStore } from 'vuex';
 
@@ -14,7 +12,8 @@ const cachedViews = computed(() => store.state.tagsView.cachedViews)
   <div id="main">
     <header id="header">
       <Navbar />
-      <Tagbar />{{cachedViews.length}}
+      <Tagbar />
+      {{ cachedViews.length }}
     </header>
     <router-view v-slot="{ Component }">
       <transition name="fade-transform" mode="out-in" :appear="true">
@@ -23,6 +22,7 @@ const cachedViews = computed(() => store.state.tagsView.cachedViews)
         </keep-alive>
       </transition>
     </router-view>
+    <Settings />
   </div>
 </template>
 

@@ -2,7 +2,7 @@
  * @Author: SLC
  * @Date: 2021-07-27 11:27:46
  * @LastEditors: SLC
- * @LastEditTime: 2021-08-24 14:50:27
+ * @LastEditTime: 2021-11-04 17:40:09
  * @Description: file content
  */
 
@@ -29,7 +29,20 @@
 //   }
 // });
 
-/* 客户端 */
+/* 本地数据存储 */
+const low = require('lowdb');
+const FileSync = require('lowdb/adapters/FileSync');
+const adapter = new FileSync('db.json');
+const db = low(adapter);
+
+db.defaults({
+  Checked: 0,
+  Account: '',
+  Password: '',
+  Website: 0
+}).write();
+
+/* 客户端逻辑 */
 const { ipcRenderer } = require("electron");
 const $ = require("jquery");
 const os = require("os");
@@ -64,7 +77,7 @@ let selData = {
   type: ''
 };
 let defBrowser = '';
-const cookieUrl = 'http://www.pop-fashion.com';
+// const cookieUrl = 'http://www.pop-fashion.com';
 
 if ($('.js-browser-section').is(':visible')) {
   ipcRenderer.send('setBounds', {
@@ -83,7 +96,13 @@ window.electron.getDefBrowser(function (defBrowser) {
 getWebsites();
 
 // 账号密码回显
-sessionCookies('get', cookieUrl).then(res => {
+const dbState = db.getState();
+remPasCheck.prop("checked", dbState['Checked'] === 1 ? true : false);
+accountIpt.val(decrypt(dbState['Account'], Secret));
+passwordIpt.val(decrypt(dbState['Password'], Secret));
+formData.Account = accountIpt.val();
+formData.Password = passwordIpt.val();
+/* sessionCookies('get', cookieUrl).then(res => {
   let count = 0;
   for (let i = 0; i < res.length; i++) {
     if (res[i].name === 'Account') {
@@ -103,7 +122,7 @@ sessionCookies('get', cookieUrl).then(res => {
     }
     if (count === 3) break;
   }
-});
+}); */
 
 // 登录
 $('.js-login').on('click', function() {
@@ -114,21 +133,37 @@ $('.js-login').on('click', function() {
   // 记住密码
   const checked = remPasCheck.is(':checked');
   if (checked) {
-    sessionCookies('set', cookieUrl, 'Checked', '1');
-    sessionCookies('set', cookieUrl, 'Account', formData.Account);
-    sessionCookies('set', cookieUrl, 'Password', formData.Password);
-    sessionCookies('set', cookieUrl, 'Website', comParams.Site);
+    db.setState({
+      Checked: 1,
+      Account: encrypt(formData.Account, Secret),
+      Password: encrypt(formData.Password, Secret),
+      Website: comParams.Site,
+    }).write();
+    // sessionCookies('set', cookieUrl, 'Checked', '1');
+    // sessionCookies('set', cookieUrl, 'Account', formData.Account);
+    // sessionCookies('set', cookieUrl, 'Password', formData.Password);
+    // sessionCookies('set', cookieUrl, 'Website', comParams.Site);
   } else {
-    sessionCookies('remove', cookieUrl, 'Checked');
-    sessionCookies('remove', cookieUrl, 'Account');
-    sessionCookies('remove', cookieUrl, 'Password');
-    sessionCookies('remove', cookieUrl, 'Website');
+    db.setState({
+      Checked: 0,
+      Account: '',
+      Password: '',
+      Website: 0
+    }).write();
+    // sessionCookies('remove', cookieUrl, 'Checked');
+    // sessionCookies('remove', cookieUrl, 'Account');
+    // sessionCookies('remove', cookieUrl, 'Password');
+    // sessionCookies('remove', cookieUrl, 'Website');
   }
   // 登录
   clientLogin();
 })
 // 绑定
 $('.js-bind').on('click', function() {
+  if (!verify()) return;
+  formData.Account = accountIpt.val();
+  formData.Password = passwordIpt.val();
+  comParams.Site = websiteSel.val();
   clientBinding();
 })
 // 退出
@@ -169,7 +204,7 @@ function verify() {
     showMessageBox('error', '错误', '密码不能为空', ['ok']);
     return false;
   }
-  if (!websiteSel.val()) {
+  if (!parseInt(websiteSel.val())) {
     showMessageBox('error', '错误', '站点不能为空', ['ok']);
     return false;
   }
@@ -186,7 +221,32 @@ function toSortString(data) {
   return str;
 }
 
-/* 生成sign */
+/* 加密 */
+function encrypt(str, key) {
+  if (typeof str == 'object') str = JSON.stringify(str);
+  try {
+    const cipher = crypto.createCipheriv('aes-256-cbc', key, key.substring(0, 16));
+    cipher.setAutoPadding(true);
+    return cipher.update(String(str), 'utf8', 'hex') + cipher.final('hex');
+  } catch(e) {
+    console.error(e)
+    return '';
+  }
+}
+
+/* 解密 */
+function decrypt(str, key) {
+  try {
+    const decipher = crypto.createDecipheriv('aes-256-cbc', key, key.substring(0, 16));
+    decipher.setAutoPadding(true);
+    return decipher.update(String(str), 'hex', 'utf8') + decipher.final('utf8');
+  } catch(e) {
+    console.error(e)
+    return '';
+  }
+}
+
+/* 生成sign签名 */
 function createSign(data) {
   return crypto
     .createHash("md5")
@@ -304,14 +364,17 @@ function getWebsites() {
       if (code != 0) {
         console.warn('getWebsites', message);
       } else {
-        let html = '<option value="">请选择</option>';
+        let html = '<option value="0">请选择</option>';
         for (let i in website) {
           html += `<option value="${i}">${website[i]}</option>`;
         }
         websiteSel.html(html);
 
         // 站点回显
-        sessionCookies('get', cookieUrl, 'Website').then(res => {
+        const dbState = db.getState();
+        websiteSel.find(`option[value=${dbState['Website']}]`).prop('selected', true);
+        comParams.Site = websiteSel.val();
+        /* sessionCookies('get', cookieUrl, 'Website').then(res => {
           let count = 0;
           for (let i = 0; i < res.length; i++) {
             if (res[i].name === 'Website') {
@@ -321,7 +384,7 @@ function getWebsites() {
             }
             if (count === 1) break;
           }
-        });
+        }); */
       }
     },
     error: function (err) {

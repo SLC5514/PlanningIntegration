@@ -1,5 +1,5 @@
 {
-  "name": "electron-demo",
+  "name": "pop-client",
   "version": "1.0.0",
   "description": "My Electron app",
   "main": "main.js",
@@ -7,19 +7,28 @@
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make",
-    "package-win": "electron-packager . myApp --platform=win32 --arch=x64 --download.mirrorOptions.mirror=https://npm.taobao.org/mirrors/electron/ --asar --out=out --icon=favicon.ico",
-    "package-mac": "electron-packager . myApp --platform=darwin --arch=x64 --download.mirrorOptions.mirror=https://npm.taobao.org/mirrors/electron/ --asar --out=out --icon=favicon.ico",
-    "package-linux": "electron-packager . myApp --platform=linux --arch=x64 --download.mirrorOptions.mirror=https://npm.taobao.org/mirrors/electron/ --asar --out=out --icon=favicon.ico"
+    "builder-dir": "electron-builder --dir",
+    "builder": "electron-builder",
+    "packager": "yarn package-win && yarn package-mac && yarn package-linux",
+    "package-win": "electron-packager . client --platform=win32 --arch=x64 --overwrite --download.mirrorOptions.mirror=https://npm.taobao.org/mirrors/electron/ --icon=favicon.ico --asar --app-version=0.0.1 --out=out",
+    "package-mac": "electron-packager . client --platform=darwin --arch=x64 --overwrite --download.mirrorOptions.mirror=https://npm.taobao.org/mirrors/electron/ --asar --app-version=0.0.1 --out=out",
+    "package-linux": "electron-packager . client --platform=linux --arch=x64 --overwrite --download.mirrorOptions.mirror=https://npm.taobao.org/mirrors/electron/ --asar --app-version=0.0.1 --out=out",
+    "build": "node build.js"
   },
   "author": "slc",
   "license": "ISC",
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.58",
+    "@electron-forge/maker-appx": "^6.0.0-beta.59",
     "@electron-forge/maker-deb": "^6.0.0-beta.58",
+    "@electron-forge/maker-dmg": "^6.0.0-beta.59",
+    "@electron-forge/maker-flatpak": "^6.0.0-beta.59",
+    "@electron-forge/maker-pkg": "^6.0.0-beta.59",
     "@electron-forge/maker-rpm": "^6.0.0-beta.58",
     "@electron-forge/maker-squirrel": "^6.0.0-beta.58",
     "@electron-forge/maker-zip": "^6.0.0-beta.58",
     "electron": "^13.1.7",
+    "electron-builder": "^22.11.7",
     "electron-packager": "^15.3.0"
   },
   "dependencies": {
@@ -29,29 +38,67 @@
     "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "^7.14.8",
     "ajax": "^0.0.4",
-    "crypto": "^1.0.1",
-    "cryptojs": "^2.5.3",
-    "devtron": "^1.4.0",
     "electron-squirrel-startup": "^1.0.0",
+    "electron-winstaller": "^5.0.0",
     "getmac": "^5.18.0",
     "iconv-lite": "^0.6.3",
     "jquery": "^3.6.0",
-    "jsencrypt": "^3.2.0",
-    "jsonpath": "^1.1.1",
-    "moment": "^2.29.1",
-    "node-gyp": "^8.1.0",
-    "node-rsa": "^1.1.1",
-    "sign": "^1.0.2"
+    "lowdb": "1.0.0",
+    "moment": "^2.29.1"
+  },
+  "build": {
+    "productName": "pop-client",
+    "appId": "com.electron.pop-client",
+    "copyright": "xxxx",
+    "directories": {
+      "output": "build"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "pop-ico"
+    },
+    "dmg": {
+      "contents": [
+        {
+          "x": 410,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        },
+        {
+          "x": 130,
+          "y": 150,
+          "type": "file"
+        }
+      ]
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "mac": {},
+    "linux": {}
   },
   "config": {
     "forge": {
-      "packagerConfig": {},
+      "packagerConfig": {
+        "name": "pop-client",
+        "icon": "./favicon.ico"
+      },
       "makers": [
         {
           "name": "@electron-forge/maker-squirrel",
-          "config": {
-            "name": "electron_demo"
-          }
+          "config": {}
         },
         {
           "name": "@electron-forge/maker-zip",
@@ -60,7 +107,19 @@
           ]
         },
         {
+          "name": "@electron-forge/maker-dmg",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-pkg",
+          "config": {}
+        },
+        {
           "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-flatpak",
           "config": {}
         },
         {

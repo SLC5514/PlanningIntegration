@@ -3,9 +3,10 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import Pages from 'vite-plugin-pages'
 import Layouts from 'vite-plugin-vue-layouts'
-import VueI18n from '@intlify/vite-plugin-vue-i18n'
 import AutoImport from 'unplugin-auto-import/vite'
+import VueI18n from '@intlify/vite-plugin-vue-i18n'
 import Components from 'unplugin-vue-components/vite'
+import WindiCSS from 'vite-plugin-windicss'
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
@@ -30,6 +31,27 @@ export default defineConfig(({ mode }) => {
 
     resolve: {
       alias
+    },
+
+    css: {
+      postcss: {
+        plugins: [
+          require('autoprefixer'),
+          require('postcss-flexbugs-fixes'),
+        ]
+      }
+    },
+
+    server: {
+      fs: {
+        strict: true,
+      },
+    },
+
+    // https://github.com/antfu/vite-ssg
+    ssgOptions: {
+      script: 'async',
+      formatting: 'minify',
     },
 
     plugins: [
@@ -58,6 +80,7 @@ export default defineConfig(({ mode }) => {
           'vue-router',
           'vue-i18n',
           '@vueuse/head',
+          '@vueuse/core',
         ],
         dts: 'src/auto-imports.d.ts',
       }),
@@ -90,19 +113,10 @@ export default defineConfig(({ mode }) => {
         include: [resolve(__dirname, 'locales/**')],
       }),
 
+      // https://github.com/antfu/vite-plugin-windicss
+      WindiCSS(),
+
     ],
-
-    server: {
-      fs: {
-        strict: true,
-      },
-    },
-
-    // https://github.com/antfu/vite-ssg
-    ssgOptions: {
-      script: 'async',
-      formatting: 'minify',
-    },
 
   }
 })

@@ -7,32 +7,25 @@ useHead({
   ]
 })
 
-const { t, locale, availableLocales } = useI18n()
-
-const toggleLocales = () => {
-  // change to some real logic
-  const locales = availableLocales
-  locale.value = locales[(locales.indexOf(locale.value) + 1) % locales.length]
-}
+const { t } = useI18n()
 
 import { useUserStore } from '~/stores/user'
 const user = useUserStore()
 </script>
 
 <template>
-<!-- <Head>
+  <!-- <Head>
   <title>Test</title>
   <meta name="description" content="Home Description">
-</Head> -->
-
-Home
-<button @click="user.setName('Home')">修改：{{user.getName}}</button>
-<p>{{ t('intro.desc') }}</p>
-
-<a class="icon-btn mx-2" :title="t('button.toggle_langs')" @click="toggleLocales">
-  <!-- <carbon-language /> -->
-  <i>Lang</i>
-</a>
+  </Head>-->
+  <p>Home</p>
+  <button class="m-3 text-sm btn" @click="user.setName('Home')">修改：{{ user.getName }}</button>
+  <p>
+    <a rel="noreferrer" href="https://github.com/antfu/vitesse" target="_blank">Vitesse</a>
+  </p>
+  <p>
+    <em class="text-sm opacity-75">{{ t('intro.desc') }}</em>
+  </p>
 </template>
 
 <route lang="yaml">

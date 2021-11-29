@@ -1,0 +1,71 @@
+{
+  "name": "vue-cli-ssr",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "node -r dotenv/config app.js",
+    "serve": "vue-cli-service serve",
+    "prebuild": "rimraf public/{js,css,fonts,img}",
+    "build": "cross-env VUE_ENV=client vue-cli-service build --no-clean && cross-env VUE_ENV=server vue-cli-service build --no-clean",
+    "postbuild": "rimraf public/index.html",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "core-js": "^3.10.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "vue": "^2.6.12",
+    "vue-router": "^3.5.1",
+    "vue-server-renderer": "^2.6.12",
+    "vuex": "^3.6.2",
+    "vuex-router-sync": "^5.0.0",
+    "webpack-node-externals": "^2.5.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.12",
+    "@vue/cli-plugin-eslint": "~4.5.12",
+    "@vue/cli-plugin-router": "~4.5.12",
+    "@vue/cli-plugin-vuex": "~4.5.12",
+    "@vue/cli-service": "~4.5.12",
+    "@vue/eslint-config-airbnb": "^5.0.0",
+    "babel-eslint": "^10.1.0",
+    "cross-env": "^7.0.0",
+    "eslint": "^7.24.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-vue": "^7.9.0",
+    "rimraf": "^3.0.2",
+    "vue-template-compiler": "^2.6.12"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "browser": true,
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {
+      "no-alert": "off",
+      "no-console": "off",
+      "no-debugger": "off",
+      "no-param-reassign": "off",
+      "no-underscore-dangle": "off",
+      "no-return-assign": "off",
+      "arrow-parens": "off",
+      "arrow-body-style": "off",
+      "prefer-promise-reject-errors": "off",
+      "import/prefer-default-export": "off",
+      "import/no-unresolved": "off"
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

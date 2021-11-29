@@ -1,0 +1,149 @@
+{
+  "vite/modulepreload-polyfill": [
+    "/assets/Inter-Italic.bab4e808.woff2",
+    "/assets/Inter-Italic.7b187d57.woff"
+  ],
+  "src/App.vue?vue&type=style&index=0&lang.css": [
+    "/assets/Inter-Italic.bab4e808.woff2",
+    "/assets/Inter-Italic.7b187d57.woff"
+  ],
+  "plugin-vue:export-helper": [
+    "/assets/Inter-Italic.bab4e808.woff2",
+    "/assets/Inter-Italic.7b187d57.woff"
+  ],
+  "src/App.vue": [
+    "/assets/Inter-Italic.bab4e808.woff2",
+    "/assets/Inter-Italic.7b187d57.woff"
+  ],
+  "vite/preload-helper": [
+    "/assets/Inter-Italic.bab4e808.woff2",
+    "/assets/Inter-Italic.7b187d57.woff"
+  ],
+  "src/router.js": [
+    "/assets/Inter-Italic.bab4e808.woff2",
+    "/assets/Inter-Italic.7b187d57.woff"
+  ],
+  "src/main.js": [
+    "/assets/Inter-Italic.bab4e808.woff2",
+    "/assets/Inter-Italic.7b187d57.woff"
+  ],
+  "src/entry-client.js": [
+    "/assets/Inter-Italic.bab4e808.woff2",
+    "/assets/Inter-Italic.7b187d57.woff"
+  ],
+  "index.html": [
+    "/assets/Inter-Italic.bab4e808.woff2",
+    "/assets/Inter-Italic.7b187d57.woff"
+  ],
+  "node_modules/@vue/shared/dist/shared.esm-bundler.js": [
+    "/assets/vendor.fbe34875.js"
+  ],
+  "node_modules/@vue/reactivity/dist/reactivity.esm-bundler.js": [
+    "/assets/vendor.fbe34875.js"
+  ],
+  "node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.js": [
+    "/assets/vendor.fbe34875.js"
+  ],
+  "node_modules/@vue/runtime-dom/dist/runtime-dom.esm-bundler.js": [
+    "/assets/vendor.fbe34875.js"
+  ],
+  "node_modules/vue/dist/vue.runtime.esm-bundler.js": [
+    "/assets/vendor.fbe34875.js"
+  ],
+  "node_modules/@vue/devtools-api/lib/esm/env.js": [
+    "/assets/vendor.fbe34875.js"
+  ],
+  "node_modules/@vue/devtools-api/lib/esm/const.js": [
+    "/assets/vendor.fbe34875.js"
+  ],
+  "node_modules/@vue/devtools-api/lib/esm/proxy.js": [
+    "/assets/vendor.fbe34875.js"
+  ],
+  "node_modules/@vue/devtools-api/lib/esm/api/api.js": [
+    "/assets/vendor.fbe34875.js"
+  ],
+  "node_modules/@vue/devtools-api/lib/esm/api/app.js": [
+    "/assets/vendor.fbe34875.js"
+  ],
+  "node_modules/@vue/devtools-api/lib/esm/api/component.js": [
+    "/assets/vendor.fbe34875.js"
+  ],
+  "node_modules/@vue/devtools-api/lib/esm/api/context.js": [
+    "/assets/vendor.fbe34875.js"
+  ],
+  "node_modules/@vue/devtools-api/lib/esm/api/hooks.js": [
+    "/assets/vendor.fbe34875.js"
+  ],
+  "node_modules/@vue/devtools-api/lib/esm/api/util.js": [
+    "/assets/vendor.fbe34875.js"
+  ],
+  "node_modules/@vue/devtools-api/lib/esm/api/index.js": [
+    "/assets/vendor.fbe34875.js"
+  ],
+  "node_modules/@vue/devtools-api/lib/esm/plugin.js": [
+    "/assets/vendor.fbe34875.js"
+  ],
+  "node_modules/@vue/devtools-api/lib/esm/index.js": [
+    "/assets/vendor.fbe34875.js"
+  ],
+  "node_modules/vue-router/dist/vue-router.esm-bundler.js": [
+    "/assets/vendor.fbe34875.js"
+  ],
+  "src/pages/About.vue?vue&type=style&index=0&scoped=true&lang.css": [
+    "/assets/About.959c7369.js",
+    "/assets/About.41cb2065.css"
+  ],
+  "src/pages/About.vue": [
+    "/assets/About.959c7369.js",
+    "/assets/About.41cb2065.css"
+  ],
+  "node_modules/example-external-component/ExampleExternalComponent.vue": [
+    "/assets/External.8dcb9c8a.js"
+  ],
+  "src/pages/External.vue": [
+    "/assets/External.8dcb9c8a.js"
+  ],
+  "src/assets/logo.png": [
+    "/assets/Home.f226b47e.js",
+    "/assets/Home.6cdc6a8c.css",
+    "/assets/logo.03d6d6da.png"
+  ],
+  "@foo": [
+    "/assets/Home.f226b47e.js",
+    "/assets/Home.6cdc6a8c.css",
+    "/assets/logo.03d6d6da.png"
+  ],
+  "src/pages/Home.vue?vue&type=style&index=0&scoped=true&lang.css": [
+    "/assets/Home.f226b47e.js",
+    "/assets/Home.6cdc6a8c.css",
+    "/assets/logo.03d6d6da.png"
+  ],
+  "src/pages/Home.vue": [
+    "/assets/Home.f226b47e.js",
+    "/assets/Home.6cdc6a8c.css",
+    "/assets/logo.03d6d6da.png"
+  ],
+  "node_modules/vuex/dist/vuex.esm-bundler.js": [
+    "/assets/Store.a24cb872.js",
+    "/assets/Store.424e932e.css"
+  ],
+  "src/pages/Store.vue?vue&type=style&index=0&scoped=true&lang.css": [
+    "/assets/Store.a24cb872.js",
+    "/assets/Store.424e932e.css"
+  ],
+  "src/pages/Store.vue": [
+    "/assets/Store.a24cb872.js",
+    "/assets/Store.424e932e.css"
+  ],
+  "src/components/ImportType.vue": [
+    "/assets/ImportType.2bc24b16.js"
+  ],
+  "src/components/foo.css": [
+    "/assets/Foo.695f320e.js",
+    "/assets/Foo.a8752494.css"
+  ],
+  "src/components/Foo.jsx": [
+    "/assets/Foo.695f320e.js",
+    "/assets/Foo.a8752494.css"
+  ]
+}

@@ -2,13 +2,14 @@
  * @Author: SLC
  * @Date: 2021-07-27 16:21:07
  * @LastEditors: SLC
- * @LastEditTime: 2021-08-30 15:59:28
+ * @LastEditTime: 2021-11-09 16:17:18
  * @Description: file content
  */
 
 const { app, BrowserWindow, Menu, ipcMain, dialog, session/* , globalShortcut, Notification */ } = require("electron");
 // const fs = require("fs");
 const path = require("path");
+const { version } = require("./package.json");
 // const cp = require("child_process");
 
 // let progressInterval;
@@ -17,8 +18,10 @@ let win;
 // 创建窗口
 function createWindow() {
   win = new BrowserWindow({
+    title: "POP客户端 V" + version.split('.').slice(0, 2).join('.'),
     width: 300,
-    height: 430,
+    height: 410,
+    icon: path.join(__dirname, "./favicon.ico"),
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
@@ -75,13 +78,13 @@ function createWindow() {
 // ];
 // const menu = Menu.buildFromTemplate(template);
 const template = [
-  {
-    label: 'DevTools',
-    submenu: [{
-      role: 'toggleDevTools',
-      accelerator: 'CommandOrControl+Shift+I'
-    }]
-  }
+  // {
+  //   label: 'DevTools',
+  //   submenu: [{
+  //     role: 'toggleDevTools',
+  //     accelerator: 'CommandOrControl+Shift+I'
+  //   }]
+  // }
 ]
 const menu = Menu.buildFromTemplate(template);
 

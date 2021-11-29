@@ -2,7 +2,7 @@
  * @Author: SLC
  * @Date: 2021-07-27 11:27:46
  * @LastEditors: SLC
- * @LastEditTime: 2021-11-04 17:40:09
+ * @LastEditTime: 2021-11-09 15:30:25
  * @Description: file content
  */
 
@@ -77,17 +77,20 @@ let selData = {
   type: ''
 };
 let defBrowser = '';
+const winWidth = 300;
+const winHeight = 410;
+const winHeightToggle = 616;
 // const cookieUrl = 'http://www.pop-fashion.com';
 
 if ($('.js-browser-section').is(':visible')) {
   ipcRenderer.send('setBounds', {
-    width: 300,
-    height: 636
+    width: winWidth,
+    height: winHeightToggle
   });
 } else {
   ipcRenderer.send('setBounds', {
-    width: 300,
-    height: 430
+    width: winWidth,
+    height: winHeight
   });
 }
 window.electron.getDefBrowser(function (defBrowser) {
@@ -175,13 +178,13 @@ $('.js-set-browser').on('click', function() {
   $('.js-browser-section').toggle();
   if ($('.js-browser-section').is(':visible')) {
     ipcRenderer.send('setBounds', {
-      width: 300,
-      height: 636
+      width: winWidth,
+      height: winHeightToggle
     });
   } else {
     ipcRenderer.send('setBounds', {
-      width: 300,
-      height: 430
+      width: winWidth,
+      height: winHeight
     });
   }
 })

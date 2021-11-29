@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    ul{list-style: none;padding: 0;margin: 0;}
+    section{float: left;width: 200px;margin-left: 10px;}
+    .list>li{width: 200px;height: 200px;overflow: hidden;}
+    .list>li>a{display: block;width: 100%;height: 100%;position: relative;}
+    .list>li>a>img{width: 100%;height: 100%;}
+
+    /* 方案一 */
+    .list1 .auto-scroll{position: absolute;left: 0;top: 0;width: 100%;font-size: 0;opacity: 0;transition: all 0.3s linear;transform-style: preserve-3d;}
+    .list1 .auto-scroll>img{width: 200px;height: 200px;object-fit: cover;}
+    .list1>li>a:hover .auto-scroll{opacity: 1;animation: auto-scroll 6s linear 0.3s infinite alternate none;}
+    @keyframes auto-scroll {
+      0%,100%{
+        transform: translateY(0);
+      }
+      50%{
+        transform: translateY(-75%); /* 适用于固定高度 -(scrollH - itemH) / scrollH * 100 */
+      }
+    }
+
+    /* 方案二 */
+    .list2 .auto-scroll{position: absolute;left: 0;top: 0;width: 100%;height: 100%;overflow: auto;font-size: 0;opacity: 0;transition: all 0.3s linear;transform-style: preserve-3d;background-color: rgba(0,0,0,0.5);}
+    .list2 .auto-scroll>img{width: 100%;}
+    .list2 .auto-scroll::-webkit-scrollbar{display: none;}
+    .list2>li>a:hover .auto-scroll{opacity: 1;}
+  </style>
+</head>
+<body>
+  <section>
+    方案一：使用CSS3动画改变translateY，需要同一高度计算出位移比例
+    <ul class="list list1">
+      <li>
+        <a href="javascript:;">
+          <img src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg" alt="">
+          <div class="auto-scroll">
+            <img class="lazy" data-original="https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg" alt="">
+            <img class="lazy" data-original="https://fuss10.elemecdn.com/1/34/19aa98b1fcb2781c4fba33d850549jpeg.jpeg" alt="">
+            <img class="lazy" data-original="https://fuss10.elemecdn.com/3/28/bbf893f792f03a54408b3b7a7ebf0jpeg.jpeg" alt="">
+            <img class="lazy" data-original="https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg" alt="">
+          </div>
+        </a>
+      </li>
+      <li>
+        <a href="javascript:;">
+          <img src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg" alt="">
+          <div class="auto-scroll">
+            <img class="lazy" data-original="https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg" alt="">
+            <img class="lazy" data-original="https://fuss10.elemecdn.com/1/34/19aa98b1fcb2781c4fba33d850549jpeg.jpeg" alt="">
+            <img class="lazy" data-original="https://fuss10.elemecdn.com/3/28/bbf893f792f03a54408b3b7a7ebf0jpeg.jpeg" alt="">
+            <img class="lazy" data-original="https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg" alt="">
+          </div>
+        </a>
+      </li>
+      <li>
+        <a href="javascript:;">
+          <img src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg" alt="">
+          <div class="auto-scroll">
+            <img class="lazy" data-original="https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg" alt="">
+            <img class="lazy" data-original="https://fuss10.elemecdn.com/1/34/19aa98b1fcb2781c4fba33d850549jpeg.jpeg" alt="">
+            <img class="lazy" data-original="https://fuss10.elemecdn.com/3/28/bbf893f792f03a54408b3b7a7ebf0jpeg.jpeg" alt="">
+            <img class="lazy" data-original="https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg" alt="">
+          </div>
+        </a>
+      </li>
+      <li>
+        <a href="javascript:;">
+          <img src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg" alt="">
+          <div class="auto-scroll">
+            <img class="lazy" data-original="https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg" alt="">
+            <img class="lazy" data-original="https://fuss10.elemecdn.com/1/34/19aa98b1fcb2781c4fba33d850549jpeg.jpeg" alt="">
+            <img class="lazy" data-original="https://fuss10.elemecdn.com/3/28/bbf893f792f03a54408b3b7a7ebf0jpeg.jpeg" alt="">
+            <img class="lazy" data-original="https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg" alt="">
+          </div>
+        </a>
+      </li>
+      <li>
+        <a href="javascript:;">
+          <img src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg" alt="">
+          <div class="auto-scroll">
+            <img class="lazy" data-original="https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg" alt="">
+            <img class="lazy" data-original="https://fuss10.elemecdn.com/1/34/19aa98b1fcb2781c4fba33d850549jpeg.jpeg" alt="">
+            <img class="lazy" data-original="https://fuss10.elemecdn.com/3/28/bbf893f792f03a54408b3b7a7ebf0jpeg.jpeg" alt="">
+            <img class="lazy" data-original="https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg" alt="">
+          </div>
+        </a>
+      </li>
+      <li>
+        <a href="javascript:;">
+          <img src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg" alt="">
+          <div class="auto-scroll">
+            <img class="lazy" data-original="https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg" alt="">
+            <img class="lazy" data-original="https://fuss10.elemecdn.com/1/34/19aa98b1fcb2781c4fba33d850549jpeg.jpeg" alt="">
+            <img class="lazy" data-original="https://fuss10.elemecdn.com/3/28/bbf893f792f03a54408b3b7a7ebf0jpeg.jpeg" alt="">
+            <img class="lazy" data-original="https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg" alt="">
+          </div>
+        </a>
+      </li>
+      <li>
+        <a href="javascript:;">
+          <img src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg" alt="">
+          <div class="auto-scroll">
+            <img class="lazy" data-original="https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg" alt="">
+            <img class="lazy" data-original="https://fuss10.elemecdn.com/1/34/19aa98b1fcb2781c4fba33d850549jpeg.jpeg" alt="">
+            <img class="lazy" data-original="https://fuss10.elemecdn.com/3/28/bbf893f792f03a54408b3b7a7ebf0jpeg.jpeg" alt="">
+            <img class="lazy" data-original="https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg" alt="">
+          </div>
+        </a>
+      </li>
+    </ul>
+  </section>
+  <section>
+    方案二：使用滚动条，手动滚动，或js控制scrollTop自动滚动
+    <ul class="list list2">
+      <li>
+        <a href="javascript:;">
+          <img src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg" alt="">
+          <div class="auto-scroll">
+            <img class="lazy" data-original="https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg" alt="">
+            <img class="lazy" data-original="https://fuss10.elemecdn.com/1/34/19aa98b1fcb2781c4fba33d850549jpeg.jpeg" alt="">
+            <img class="lazy" data-original="https://fuss10.elemecdn.com/3/28/bbf893f792f03a54408b3b7a7ebf0jpeg.jpeg" alt="">
+            <img class="lazy" data-original="https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg" alt="">
+          </div>
+        </a>
+      </li>
+      <li>
+        <a href="javascript:;">
+          <img src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg" alt="">
+          <div class="auto-scroll">
+            <img class="lazy" data-original="https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg" alt="">
+          </div>
+        </a>
+      </li>
+      <li>
+        <a href="javascript:;">
+          <img src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg" alt="">
+          <div class="auto-scroll">
+            <img class="lazy" data-original="https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg" alt="">
+            <img class="lazy" data-original="https://fuss10.elemecdn.com/1/34/19aa98b1fcb2781c4fba33d850549jpeg.jpeg" alt="">
+          </div>
+        </a>
+      </li>
+      <li>
+        <a href="javascript:;">
+          <img src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg" alt="">
+          <div class="auto-scroll">
+            <img class="lazy" data-original="https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg" alt="">
+            <img class="lazy" data-original="https://fuss10.elemecdn.com/1/34/19aa98b1fcb2781c4fba33d850549jpeg.jpeg" alt="">
+            <img class="lazy" data-original="https://fuss10.elemecdn.com/3/28/bbf893f792f03a54408b3b7a7ebf0jpeg.jpeg" alt="">
+          </div>
+        </a>
+      </li>
+      <li>
+        <a href="javascript:;">
+          <img src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg" alt="">
+          <div class="auto-scroll">
+            <img class="lazy" data-original="https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg" alt="">
+            <img class="lazy" data-original="https://fuss10.elemecdn.com/1/34/19aa98b1fcb2781c4fba33d850549jpeg.jpeg" alt="">
+            <img class="lazy" data-original="https://fuss10.elemecdn.com/3/28/bbf893f792f03a54408b3b7a7ebf0jpeg.jpeg" alt="">
+            <img class="lazy" data-original="https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg" alt="">
+          </div>
+        </a>
+      </li>
+      <li>
+        <a href="javascript:;">
+          <img src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg" alt="">
+          <div class="auto-scroll">
+            <img class="lazy" data-original="https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg" alt="">
+            <img class="lazy" data-original="https://fuss10.elemecdn.com/1/34/19aa98b1fcb2781c4fba33d850549jpeg.jpeg" alt="">
+            <img class="lazy" data-original="https://fuss10.elemecdn.com/3/28/bbf893f792f03a54408b3b7a7ebf0jpeg.jpeg" alt="">
+            <img class="lazy" data-original="https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg" alt="">
+          </div>
+        </a>
+      </li>
+      <li>
+        <a href="javascript:;">
+          <img src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg" alt="">
+          <div class="auto-scroll">
+            <img class="lazy" data-original="https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg" alt="">
+            <img class="lazy" data-original="https://fuss10.elemecdn.com/1/34/19aa98b1fcb2781c4fba33d850549jpeg.jpeg" alt="">
+            <img class="lazy" data-original="https://fuss10.elemecdn.com/3/28/bbf893f792f03a54408b3b7a7ebf0jpeg.jpeg" alt="">
+            <img class="lazy" data-original="https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg" alt="">
+          </div>
+        </a>
+      </li>
+    </ul>
+  </section>
+</body>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+<script>
+  /**
+   * 方案一：使用CSS3动画改变translateY，需要计算出位移比例，懒加载无法响应动画中的元素入场
+   */
+
+  // threshold: 0, // 临界值
+  // failure_limit: 0, // 循环查找
+  // event: "scroll", // 触发事件
+  // effect: "show", // 显示方式
+  // container: window, // 容器
+  // data_attribute: "original", // 属性
+  // skip_invisible: true, // true不加载隐藏的不可见图像，false加载
+  // appear: null, // img触发appear事件时执行的回调
+  // load: null, // img触发load事件时执行的回调
+  // placeholder: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC",
+
+  $(".list1 img.lazy").lazyload({
+    effect : "fadeIn",
+  }); // 可搭配浏览器滚动渲染（防止hover再加载时有空白体验）
+
+  $('.list1 a').hover(function() {
+    intervalLazy($(this).find("img.lazy")); // 预防无法响应动画元素入场（主要是列表底部会出现这种现象）
+  }, function() {
+    intervalLazy();
+  });
+
+  // 方案一漏洞解决方案
+  var timer;
+  function intervalLazy(item) {
+    clearInterval(timer);
+    if (!item) return;
+    timer = setInterval(function() {
+      item.lazyload();
+    }, 100);
+  };
+
+  /**
+   * 方案二：js控制scrollTop
+   */
+
+  $(".list2 .auto-scroll").each(function(idx, el) {
+    $(el).find('img.lazy').lazyload({
+      container : el,
+      effect : "fadeIn",
+      threshold: 100,
+      failure_limit: 3,
+    });
+  });
+
+  $('.list2 a').hover(function() {
+    var box = $(this).find('.auto-scroll');
+    box.data('auto', 1);
+    box.data('toggle', 1);
+    animateLazy(box, box.height());
+  }, function() {
+    var box = $(this).find('.auto-scroll');
+    box.data('auto', '');
+  });
+
+  var timer;
+  function animateLazy(box, boxH) {
+    var top = box.scrollTop();
+    var step = function () {
+      var auto = box.data('auto');
+      var toggle = box.data('toggle');
+      var max = box[0].scrollHeight - boxH;
+      if (toggle) {
+        top += 3;
+      } else {
+        top -= 3;
+      }
+      if (top < 0) {
+        box.data('toggle', 1);
+        top = 0;
+      } else if (top > max) {
+        box.data('toggle', '');
+        top = max;
+      }
+      box.scrollTop(top);
+      // console.log(top, max, auto)
+      if (auto) {
+        window.requestAnimationFrame(step);
+      } else {
+        clearTimeout(timer);
+        timer = setTimeout(function() {
+          box.scrollTop(0);
+        }, 300);
+      }
+    }
+    window.requestAnimationFrame(step);
+  };
+
+</script>
+</html>

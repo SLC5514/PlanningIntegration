@@ -2,15 +2,13 @@
  * @Author: SLC
  * @Date: 2021-07-27 11:28:16
  * @LastEditors: SLC
- * @LastEditTime: 2021-08-24 14:44:37
+ * @LastEditTime: 2021-11-09 15:23:04
  * @Description: file content
  */
 
 const package = require("../package.json");
 const { contextBridge, shell } = require("electron");
 const cp = require("child_process");
-
-document.title += " v" + package.version;
 
 // 自定义api
 // contextBridge.exposeInMainWorld("electron", {

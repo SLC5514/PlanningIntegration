@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <!-- <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <meta
+      http-equiv="X-Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    /> -->
+    <!-- <title>POP客户端</title> -->
+    <link rel="stylesheet" href="index.css">
+  </head>
+  <body>
+    <!-- We are using <br>
+    Node.js <span id="node-version"></span>, <br>
+    Chromium <span id="chrome-version"></span>, <br>
+    and Electron <span id="electron-version"></span>.<br> -->
+    <div class="banner">POP全球时尚网络机构</div>
+    <section class="form-section js-form-section">
+      <label>
+        <span>登录账号</span>
+        <input type="text" name="Account" autocomplete="off" spellcheck="false">
+      </label>
+      <label>
+        <span>登录密码</span>
+        <input type="password" name="Password" autocomplete="off">
+      </label>
+      <label>
+        <span>业务网站</span>
+        <select name="website" id="website">
+          <option>获取中</option>
+        </select>
+      </label>
+      <div class="flex">
+        <span class="hidden">占位字符</span>
+        <label class="pointer">
+          <input type="checkbox" name="remember-password" id="remember-password">
+          <span>记住密码</span>
+        </label>
+      </div>
+    </section>
+    <section class="btn-section">
+      <div class="flex">
+        <button class="js-login">登录</button>
+        <button class="js-bind">绑定</button>
+      </div>
+      <button class="js-exit">退出</button>
+      <button class="js-set-browser">设置浏览器</button>
+    </section>
+    <section class="browser-section js-browser-section">
+      <div class="title">选择浏览器</div>
+      <ul class="js-browser-list">
+        <li class="on" data-cmd="" data-cwd="">默认浏览器</li>
+        <li data-cmd="chrome.exe" data-cwd="">谷歌浏览器（Chrome）</li>
+        <li data-cmd="firefox.exe" data-cwd="">火狐浏览器（Firefox）</li>
+        <li data-cmd="oprea.exe" data-cwd="">欧鹏浏览器（Oprea）</li>
+        <li data-cmd="360chrome.exe" data-cwd="">360急速浏览器</li>
+        <li data-cmd="360se.exe" data-cwd="">360安全浏览器</li>
+        <li data-cmd="QQBrowser.exe" data-cwd="D:\Program Files (x86)\Tencent\QQBrowser">QQ浏览器</li>
+        <li data-cmd="SogouExplorer.exe" data-cwd="">搜狗浏览器</li>
+        <li data-cmd="msedge.exe" data-cwd="">Edge浏览器</li>
+        <li data-cmd="iexplore.exe" data-cwd="">IE浏览器</li>
+      </ul>
+    </section>
+
+    <!-- You can also require other files to run in this process -->
+    <script src="render.js"></script>
+  </body>
+</html>

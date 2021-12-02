@@ -3,17 +3,17 @@ import { acceptHMRUpdate, defineStore } from 'pinia'
 export const useUserStore = defineStore('user', {
   state: () => {
     return {
-      name: ''
+      name: '',
     }
   },
   getters: {
-    getName: state => state.name
+    getName: state => state.name,
   },
   actions: {
     setName(name: string) {
       this.name = name
-    }
-  }
+    },
+  },
 })
 
 if (import.meta.hot)

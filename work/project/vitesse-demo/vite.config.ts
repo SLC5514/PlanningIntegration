@@ -26,11 +26,11 @@ export default defineConfig(({ mode }) => {
     // base: __DEV__ ? '/' : VITE_LOCALE ? `/${VITE_LOCALE}/` : '/zh_CN/',
 
     build: {
-      outDir: 'dist' + (VITE_LOCALE ? `/${VITE_LOCALE}` : '/zh_CN'),
+      outDir: `dist${VITE_LOCALE ? `/${VITE_LOCALE}` : '/zh_CN'}`,
     },
 
     resolve: {
-      alias
+      alias,
     },
 
     css: {
@@ -38,8 +38,8 @@ export default defineConfig(({ mode }) => {
         plugins: [
           require('autoprefixer'),
           require('postcss-flexbugs-fixes'),
-        ]
-      }
+        ],
+      },
     },
 
     server: {
@@ -65,7 +65,7 @@ export default defineConfig(({ mode }) => {
         extendRoute(route) {
           // if (__DEV__) route.path = (VITE_LOCALE ? `/${VITE_LOCALE}` : '/zh_CN') + route.path
           return {
-            ...route
+            ...route,
           }
         },
       }),

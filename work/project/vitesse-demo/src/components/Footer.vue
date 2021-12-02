@@ -17,9 +17,13 @@ const toggleLocales = () => {
       <i>Home</i>
     </router-link>
 
-    <button class="icon-btn mx-2 !outline-none" :title="t('button.toggle_dark')" @click="toggleDark()">
+    <button
+      class="icon-btn mx-2 !outline-none"
+      :title="t('button.toggle_dark')"
+      @click="toggleDark()"
+    >
       <!-- <carbon-moon v-if="isDark" />
-      <carbon-sun v-else /> -->
+      <carbon-sun v-else />-->
       <i v-if="isDark">月</i>
       <i v-else>日</i>
     </button>
@@ -34,7 +38,13 @@ const toggleLocales = () => {
       <i>About</i>
     </router-link>
 
-    <a class="icon-btn mx-2" rel="noreferrer" href="https://github.com/antfu/vitesse" target="_blank" title="GitHub">
+    <a
+      class="icon-btn mx-2"
+      rel="noreferrer"
+      href="https://github.com/antfu/vitesse"
+      target="_blank"
+      title="GitHub"
+    >
       <!-- <carbon-logo-github /> -->
       <i>GitHub</i>
     </a>

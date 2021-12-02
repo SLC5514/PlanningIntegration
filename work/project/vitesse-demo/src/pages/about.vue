@@ -1,12 +1,12 @@
 <script lang="ts" setup>
+import { useUserStore } from '~/stores/user'
+
 useHead({
   title: 'About',
   meta: [
-    { name: 'description', content: "About Description" }
-  ]
+    { name: 'description', content: 'About Description' },
+  ],
 })
-
-import { useUserStore } from '~/stores/user'
 const user = useUserStore()
 </script>
 

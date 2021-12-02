@@ -23,3 +23,5 @@ export const install: UserModule = ({ app }) => {
 
   app.use(i18n)
 }
+
+export default install

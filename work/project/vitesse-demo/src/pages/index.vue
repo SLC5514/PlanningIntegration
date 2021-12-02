@@ -1,15 +1,15 @@
 <script lang="ts" setup>
 // import { Head } from '@vueuse/head';
+import { useUserStore } from '~/stores/user'
+
 useHead({
   title: 'Home',
   meta: [
-    { name: 'description', content: "Home Description" }
-  ]
+    { name: 'description', content: 'Home Description' },
+  ],
 })
 
 const { t } = useI18n()
-
-import { useUserStore } from '~/stores/user'
 const user = useUserStore()
 </script>
 

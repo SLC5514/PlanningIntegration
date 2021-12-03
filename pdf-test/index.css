@@ -18,11 +18,11 @@ div, h1, h2, h3, h4, p, form, label, textarea, img, span {
 body {font-family: "微软雅黑", Verdana, Geneva, sans-serif;}
 
 /* 新报告 */
-@font-face {
+/* @font-face {
 	font-family: 'txtlink_iconfont';
 	src: url('./txtlink_iconfont.ttf?t=1624253226712') format('truetype');
-}
-.report-content-wrap{margin: 0 auto;}
+} */
+.report-content-wrap{margin: 0 auto;font-family: "思源", "Arial", sans-serif;}
 .report-content-wrap .report-sub-content{position: relative;padding: 0;margin: 0 0 0 -32px;overflow: hidden;}
 .report-content-wrap .report-sub-content .element{position: absolute;box-sizing: border-box;}
 .report-content-wrap .report-sub-content .element-text p{font: inherit;word-break: break-all;}

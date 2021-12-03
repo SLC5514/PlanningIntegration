@@ -769,6 +769,7 @@
               color: "#fff",
               textShadow: "0 0 8px #000",
               textStroke: "2px #f00",
+              fontFamily: "&quot;思源&quot;, &quot;Arial&quot;, sans-serif"
             },
           },
         ],
@@ -776,6 +777,31 @@
         cover_host: "https://imgf1.pop-fashion.com",
       },
     ];
+    // const font = new FontFace(
+    //   '思源',
+    //   `url(${location.href.split('#')[0]}assets/font.woff)`,
+    //   // `url(${location.href.split('#')[0]}assets/思源黑体-粗体.woff)`,
+    // )
+    // font.load().then(() => {
+    //   document.fonts.add(font)
+    //   document.body.classList.add('fonts-loaded')
+    // })
+    setTimeout(function () {
+      var newStyle = document.createElement('style');
+      newStyle.appendChild(document.createTextNode("\
+        @font-face {\
+          font-family: '思源';\
+          src: url('" + (location.href.split('#')[0]) + "assets/思源黑体-粗体.woff') format('woff');\
+        }\
+      "));
+      // newStyle.appendChild(document.createTextNode("\
+      //   @font-face {\
+      //     font-family: '思源';\
+      //     src: url('" + (location.href.split('#')[0]) + "assets/SourceHanSansCN-Bold2.otf') format('otf');\
+      //   }\
+      // "));
+      document.head.appendChild(newStyle);
+    }, 2000);
     var _html = "";
     for (var i = 0; i < reportData.length; i++) {
       _html +=

@@ -66,9 +66,9 @@ export default defineConfig(({ mode }) => {
         '@vueuse/core',
         '@vueuse/head',
       ],
-      exclude: [
-        'vue-demi',
-      ],
+      // exclude: [
+      //   'vue-demi',
+      // ],
     },
 
     plugins: [

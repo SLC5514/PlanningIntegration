@@ -40,6 +40,11 @@ export default defineConfig(({ mode }) => {
           require('postcss-flexbugs-fixes'),
         ],
       },
+      preprocessorOptions: {
+        scss: {
+          charset: false,
+        },
+      },
     },
 
     server: {
@@ -52,6 +57,18 @@ export default defineConfig(({ mode }) => {
     ssgOptions: {
       script: 'async',
       formatting: 'minify',
+    },
+
+    optimizeDeps: {
+      include: [
+        'vue',
+        'vue-router',
+        '@vueuse/core',
+        '@vueuse/head',
+      ],
+      exclude: [
+        'vue-demi',
+      ],
     },
 
     plugins: [

@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import imgUrl from '~/assets/思源黑体-粗体.woff'
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
 
@@ -33,15 +34,18 @@ const handleSubmit = ({ values, errors }) => {
   console.log('values:', values, '\nerrors:', errors)
 }
 
-const font = new FontFace(
-  '思源',
-  `url(${location.href.split('#')[0]}src/assets/思源黑体-粗体.woff)`,
-  // `url(${location.href.split('#')[0]}src/assets/SourceHanSansCN-Bold.woff)`,
-  // `url(${location.href.split('#')[0]}src/assets/SourceHanSansCN-Bold2.otf)`,
-)
-font.load().then(() => {
-  document.fonts.add(font)
-  document.body.classList.add('fonts-loaded')
+onMounted(() => {
+  const font = new FontFace(
+    '思源',
+    `url(${imgUrl})`,
+    // `url(${location.href.split('#')[0]}src/assets/思源黑体-粗体.woff)`,
+    // `url(${location.href.split('#')[0]}src/assets/SourceHanSansCN-Bold.woff)`,
+    // `url(${location.href.split('#')[0]}src/assets/SourceHanSansCN-Bold2.otf)`,
+  )
+  font.load().then(() => {
+    document.fonts.add(font)
+    document.body.classList.add('fonts-loaded')
+  })
 })
 </script>
 

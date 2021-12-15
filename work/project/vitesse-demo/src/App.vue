@@ -87,6 +87,9 @@ onMounted(() => {
       <component :is="Component" :key="route" />
     </transition>
   </router-view>
+  <p>
+    <Parent />
+  </p>
 </template>
 
 <style lang="scss" scoped>

@@ -4,8 +4,10 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
+    Child: typeof import('./components/Child.vue')['default']
     Footer: typeof import('./components/Footer.vue')['default']
     HelloWorld: typeof import('./components/HelloWorld.vue')['default']
+    Parent: typeof import('./components/Parent.vue')['default']
   }
 }
 

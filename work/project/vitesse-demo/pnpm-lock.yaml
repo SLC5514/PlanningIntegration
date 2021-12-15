@@ -2,7 +2,6 @@ lockfileVersion: 5.3
 
 specifiers:
   '@antfu/eslint-config': ^0.11.1
-  '@arco-design/web-vue': ~2.9.0
   '@intlify/vite-plugin-vue-i18n': ^3.2.1
   '@types/node': ^16.11.12
   '@types/nprogress': ^0.2.0
@@ -41,7 +40,6 @@ dependencies:
 
 devDependencies:
   '@antfu/eslint-config': registry.npmmirror.com/@antfu/eslint-config/0.11.1_eslint@8.4.1+typescript@4.5.4
-  '@arco-design/web-vue': registry.npmmirror.com/@arco-design/web-vue/2.9.0_vue@3.2.26
   '@intlify/vite-plugin-vue-i18n': registry.npmmirror.com/@intlify/vite-plugin-vue-i18n/3.2.1_vite@2.7.2+vue-i18n@9.1.9
   '@types/node': registry.npmmirror.com/@types/node/16.11.13
   '@types/nprogress': registry.npmmirror.com/@types/nprogress/0.2.0
@@ -415,12 +413,6 @@ packages:
       delayed-stream: registry.nlark.com/delayed-stream/1.0.0
     dev: true
 
-  registry.nlark.com/compute-scroll-into-view/1.0.17:
-    resolution: {integrity: sha1-aojxis2dQunPS6pr7H4FImB6t6s=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/compute-scroll-into-view/download/compute-scroll-into-view-1.0.17.tgz}
-    name: compute-scroll-into-view
-    version: 1.0.17
-    dev: true
-
   registry.nlark.com/concat-map/0.0.1:
     resolution: {integrity: sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/concat-map/download/concat-map-0.0.1.tgz}
     name: concat-map
@@ -484,12 +476,6 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       cssom: registry.nlark.com/cssom/0.3.8
-    dev: true
-
-  registry.nlark.com/dayjs/1.10.7:
-    resolution: {integrity: sha1-LPX5Gt0oEWdIRAhmoKHSbzps5Gg=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/dayjs/download/dayjs-1.10.7.tgz}
-    name: dayjs
-    version: 1.10.7
     dev: true
 
   registry.nlark.com/decimal.js/10.3.1:
@@ -1161,12 +1147,6 @@ packages:
     version: 0.2.1
     dev: true
 
-  registry.nlark.com/is-arrayish/0.3.2:
-    resolution: {integrity: sha1-RXSirlb3qyBolvtDHq7tBm/fjwM=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/is-arrayish/download/is-arrayish-0.3.2.tgz}
-    name: is-arrayish
-    version: 0.3.2
-    dev: true
-
   registry.nlark.com/is-bigint/1.0.4:
     resolution: {integrity: sha1-CBR6GHW8KzIAXUHM2Ckd/8ZpHfM=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/is-bigint/download/is-bigint-1.0.4.tgz}
     name: is-bigint
@@ -1477,12 +1457,6 @@ packages:
       p-locate: registry.nlark.com/p-locate/4.1.0
     dev: true
 
-  registry.nlark.com/lodash.isequal/4.5.0:
-    resolution: {integrity: sha1-QVxEePK8wwEgwizhDtMib30+GOA=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/lodash.isequal/download/lodash.isequal-4.5.0.tgz}
-    name: lodash.isequal
-    version: 4.5.0
-    dev: true
-
   registry.nlark.com/lodash.merge/4.6.2:
     resolution: {integrity: sha1-VYqlO0O2YeGSWgr9+japoQhf5Xo=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/lodash.merge/download/lodash.merge-4.6.2.tgz}
     name: lodash.merge
@@ -1597,12 +1571,6 @@ packages:
     name: nprogress
     version: 0.2.0
     dev: false
-
-  registry.nlark.com/number-precision/1.5.1:
-    resolution: {integrity: sha1-6jQ5kECdhzRkB0NT/LMKwQWpDmE=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/number-precision/download/number-precision-1.5.1.tgz}
-    name: number-precision
-    version: 1.5.1
-    dev: true
 
   registry.nlark.com/nwsapi/2.2.0:
     resolution: {integrity: sha1-IEh5qePQaP8qVROcLHcngGgaOLc=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/nwsapi/download/nwsapi-2.2.0.tgz}
@@ -1950,12 +1918,6 @@ packages:
     name: require-directory
     version: 2.1.1
     engines: {node: '>=0.10.0'}
-    dev: true
-
-  registry.nlark.com/resize-observer-polyfill/1.5.1:
-    resolution: {integrity: sha1-DpAg3T0hAkRY1OvSfiPkAmmBBGQ=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/resize-observer-polyfill/download/resize-observer-polyfill-1.5.1.tgz}
-    name: resize-observer-polyfill
-    version: 1.5.1
     dev: true
 
   registry.nlark.com/resolve-from/4.0.0:
@@ -2598,33 +2560,6 @@ packages:
     transitivePeerDependencies:
       - supports-color
       - typescript
-    dev: true
-
-  registry.npmmirror.com/@arco-design/color/0.4.0:
-    resolution: {integrity: sha1-Ut20DTGO5t8QV8qMZTzBZ1Ajko8=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@arco-design/color/download/@arco-design/color-0.4.0.tgz}
-    name: '@arco-design/color'
-    version: 0.4.0
-    dependencies:
-      color: registry.npmmirror.com/color/3.2.1
-    dev: true
-
-  registry.npmmirror.com/@arco-design/web-vue/2.9.0_vue@3.2.26:
-    resolution: {integrity: sha512-DwU1zHV4XRAMu3IJN74cx5JsQ9FRnLe3+m0rq34VmPIywDGc9YRZIybErtUN6iuk+e46leFuP/ytamDMpXUhsg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@arco-design/web-vue/download/@arco-design/web-vue-2.9.0.tgz}
-    id: registry.npmmirror.com/@arco-design/web-vue/2.9.0
-    name: '@arco-design/web-vue'
-    version: 2.9.0
-    peerDependencies:
-      vue: ^3.1.0
-    dependencies:
-      '@arco-design/color': registry.npmmirror.com/@arco-design/color/0.4.0
-      b-tween: registry.npmmirror.com/b-tween/0.3.3
-      b-validate: registry.npmmirror.com/b-validate/1.3.1
-      compute-scroll-into-view: registry.nlark.com/compute-scroll-into-view/1.0.17
-      dayjs: registry.nlark.com/dayjs/1.10.7
-      number-precision: registry.nlark.com/number-precision/1.5.1
-      resize-observer-polyfill: registry.nlark.com/resize-observer-polyfill/1.5.1
-      scroll-into-view-if-needed: registry.npmmirror.com/scroll-into-view-if-needed/2.2.28
-      vue: registry.npmmirror.com/vue/3.2.26
     dev: true
 
   registry.npmmirror.com/@babel/code-frame/7.16.0:
@@ -3544,20 +3479,6 @@ packages:
       postcss-value-parser: registry.npmmirror.com/postcss-value-parser/4.2.0
     dev: false
 
-  registry.npmmirror.com/b-tween/0.3.3:
-    resolution: {integrity: sha1-epPtGZyYzUGjO6THEaD6fobbP6I=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/b-tween/download/b-tween-0.3.3.tgz}
-    name: b-tween
-    version: 0.3.3
-    dev: true
-
-  registry.npmmirror.com/b-validate/1.3.1:
-    resolution: {integrity: sha512-MCT3BbvIQtkpDR3p+SzfbCAvAQSZ7USrYCzADzeApbw9ZL8pp2IVAg5UyrzyOH6K4NUvsMzn2W4e9jbnBUFSwQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/b-validate/download/b-validate-1.3.1.tgz}
-    name: b-validate
-    version: 1.3.1
-    dependencies:
-      lodash.isequal: registry.nlark.com/lodash.isequal/4.5.0
-    dev: true
-
   registry.npmmirror.com/browserslist/4.19.1:
     resolution: {integrity: sha512-u2tbbG5PdKRTUoctO3NBD8FQ5HdPh1ZXPHzp1rwaa5jTc+RV9/+RlWiAIKmjRPQF+xbGM9Kklj5bZQFa2s/38A==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/browserslist/download/browserslist-4.19.1.tgz}
     name: browserslist
@@ -3637,24 +3558,6 @@ packages:
       string-width: registry.npmmirror.com/string-width/4.2.3
       strip-ansi: registry.npmmirror.com/strip-ansi/6.0.1
       wrap-ansi: registry.nlark.com/wrap-ansi/7.0.0
-    dev: true
-
-  registry.npmmirror.com/color-string/1.9.0:
-    resolution: {integrity: sha512-9Mrz2AQLefkH1UvASKj6v6hj/7eWgjnT/cVsR8CumieLoT+g900exWeNogqtweI8dxloXN9BDQTYro1oWu/5CQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/color-string/download/color-string-1.9.0.tgz}
-    name: color-string
-    version: 1.9.0
-    dependencies:
-      color-name: registry.nlark.com/color-name/1.1.4
-      simple-swizzle: registry.npmmirror.com/simple-swizzle/0.2.2
-    dev: true
-
-  registry.npmmirror.com/color/3.2.1:
-    resolution: {integrity: sha1-NUTcGYyvRJDD7MmnkLVP6f9F4WQ=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/color/download/color-3.2.1.tgz}
-    name: color
-    version: 3.2.1
-    dependencies:
-      color-convert: registry.nlark.com/color-convert/1.9.3
-      color-string: registry.npmmirror.com/color-string/1.9.0
     dev: true
 
   registry.npmmirror.com/commander/2.20.3:
@@ -4937,22 +4840,6 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       xmlchars: registry.nlark.com/xmlchars/2.2.0
-    dev: true
-
-  registry.npmmirror.com/scroll-into-view-if-needed/2.2.28:
-    resolution: {integrity: sha1-WhWy9YpSZCyIyOylhGROAXA9ZFo=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/scroll-into-view-if-needed/download/scroll-into-view-if-needed-2.2.28.tgz}
-    name: scroll-into-view-if-needed
-    version: 2.2.28
-    dependencies:
-      compute-scroll-into-view: registry.nlark.com/compute-scroll-into-view/1.0.17
-    dev: true
-
-  registry.npmmirror.com/simple-swizzle/0.2.2:
-    resolution: {integrity: sha1-pNprY1/8zMoz9w0Xy5JZLeleVXo=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/simple-swizzle/download/simple-swizzle-0.2.2.tgz}
-    name: simple-swizzle
-    version: 0.2.2
-    dependencies:
-      is-arrayish: registry.nlark.com/is-arrayish/0.3.2
     dev: true
 
   registry.npmmirror.com/source-map-js/1.0.1:

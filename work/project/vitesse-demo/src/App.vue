@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { useUserStore } from './stores/user'
 import imgUrl from '~/assets/思源黑体-粗体.woff'
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
@@ -12,6 +13,9 @@ useHead({
     { name: 'description', content: 'Opinionated Vite Starter Template' },
   ],
 })
+
+const store = useUserStore()
+console.log(store)
 
 // 动态数据
 const flowConfig = [

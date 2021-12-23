@@ -29,7 +29,7 @@ body {font-family: "微软雅黑", Verdana, Geneva, sans-serif;}
 .report-content-wrap .report-sub-content .element-text p *{line-height: 1;}
 .report-content-wrap .report-sub-content .element-text a{position: relative;font-weight: bold;cursor: pointer;}
 .report-content-wrap .report-sub-content .element-text a::before{content: "";position: absolute;z-index: -1;left: 0;bottom: 0;width: 40%;height: 0.5em;background: rgba(255, 223, 52, 0.6);transition: width 0.3s ease-in-out;}
-.report-content-wrap .report-sub-content .element-text a::after {content: "\e612";display: inline-block;font-family: "txtlink_iconfont";font-size: inherit;font-style: normal;font-weight: normal;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;margin-left: 7px;}
+.report-content-wrap .report-sub-content .element-text a::after{content: "\e612";display: inline-block;font-family: "txtlink_iconfont";font-size: inherit;font-style: normal;font-weight: normal;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;margin-left: 7px;text-indent: initial;}
 .report-content-wrap .report-sub-content .element-text a:hover::before{width: 100%;}
 .report-content-wrap .report-sub-content .element-svg svg{width: 100%;height: 100%;}
 .report-content-wrap .report-sub-content .element-image .preview-img{cursor: pointer;}

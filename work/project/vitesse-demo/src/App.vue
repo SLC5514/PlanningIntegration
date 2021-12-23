@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { useStore } from 'vuex'
 import { useUserStore } from './stores/user'
 import imgUrl from '~/assets/思源黑体-粗体.woff'
 // This starter template is using Vue 3 <script setup> SFCs
@@ -15,7 +16,15 @@ useHead({
 })
 
 const store = useUserStore()
-console.log(store)
+console.log(store.getName)
+store.setName('123')
+console.log(store.getName)
+
+const storeVuex = useStore()
+const userSetName = val => storeVuex.commit('user/setName', val)
+console.log(storeVuex.state.user)
+userSetName(123)
+console.log(storeVuex.state.user)
 
 onMounted(() => {
   const font = new FontFace(

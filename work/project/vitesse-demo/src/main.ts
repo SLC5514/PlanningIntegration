@@ -5,17 +5,15 @@ import { setupLayouts } from 'virtual:generated-layouts'
 import App from '~/App.vue'
 
 import 'virtual:windi.css'
-import '~/styles/main.css'
-
 // // windicss layers
 // import 'virtual:windi-base.css'
 // import 'virtual:windi-components.css'
 // // windicss utilities should be the last style import
 // import 'virtual:windi-utilities.css'
-// // windicss devtools support (dev only)
-// import 'virtual:windi-devtools'
-// // your custom styles here
-// import './styles/main.css'
+// windicss devtools support (dev only)
+import 'virtual:windi-devtools'
+// your custom styles here
+import '~/styles/main.css'
 
 // https://github.com/antfu/vite-ssg
 export const createApp = ViteSSG(

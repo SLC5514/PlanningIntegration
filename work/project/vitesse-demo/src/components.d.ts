@@ -6,8 +6,10 @@ declare module 'vue' {
   export interface GlobalComponents {
     Child: typeof import('./components/Child.vue')['default']
     Footer: typeof import('./components/Footer.vue')['default']
+    Header: typeof import('./components/Header.vue')['default']
     HelloWorld: typeof import('./components/HelloWorld.vue')['default']
     Parent: typeof import('./components/Parent.vue')['default']
+    Sidebar: typeof import('./components/Sidebar.vue')['default']
   }
 }
 

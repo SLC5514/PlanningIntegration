@@ -3,8 +3,9 @@
     "@antfu"
   ],
   "rules": {
+    // "vue/singleline-html-element-content-newline": "off",
+    // "vue/multiline-html-element-content-newline": "off",
     "no-console": "warn",
-    "vue/singleline-html-element-content-newline": "off",
     "no-restricted-syntax": "off"
   }
 }

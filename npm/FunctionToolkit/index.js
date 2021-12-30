@@ -2,12 +2,14 @@
  * @Author: SLC
  * @Date: 2021-07-30 10:10:30
  * @LastEditors: SLC
- * @LastEditTime: 2021-12-30 13:51:37
- * @Description: file content
+ * @LastEditTime: 2021-12-30 15:05:50
+ * @Description: 函数工具包
  */
 
-(function (g) {
-  const fntk = {
+(function () {
+  "use strict";
+
+  var fntk = {
     /* 基础函数 ================================ */
 
     /**
@@ -45,7 +47,7 @@
      * @return {*}
      */
     stopBubble: function (ev) {
-      const e = ev || window.event;
+      var e = ev || window.event;
       if (e && e.stopPropagation) {
         e.stopPropagation();
       } else {
@@ -60,11 +62,11 @@
      * @return {Object} 转化对象
      */
     getUrlParams: function (url) {
-      const ogUrl = url ? url : location.href;
-      const urlObj = ogUrl.replace(/[^\?]*\?/, "").split("&");
-      let obj = {};
-      for (let i = 0; i < urlObj.length; i++) {
-        const arr = urlObj[i].split("=");
+      var ogUrl = url ? url : location.href;
+      var urlObj = ogUrl.replace(/[^\?]*\?/, "").split("&");
+      var obj = {};
+      for (var i = 0; i < urlObj.length; i++) {
+        var arr = urlObj[i].split("=");
         obj[decodeURIComponent(arr[0])] = decodeURIComponent(arr[1]);
       }
       return obj;
@@ -270,6 +272,7 @@
       return new moment(...arguments);
     },
   };
+
   if (typeof module !== "undefined" && module.exports) {
     module.exports = fntk;
   } else if (typeof define == "function" && define.amd) {
@@ -277,9 +280,10 @@
       return fntk;
     });
   } else {
-    g.fntk = fntk;
+    try {
+      if (typeof window) window.fntk = fntk;
+      if (typeof global) global.fntk = fntk;
+    } catch (e) {}
   }
   return fntk;
-})(window || global, function () {
-  "use strict";
-});
+})();

@@ -2,7 +2,7 @@
  * @Author: SLC
  * @Date: 2021-07-30 10:10:30
  * @LastEditors: SLC
- * @LastEditTime: 2021-08-03 15:51:31
+ * @LastEditTime: 2021-12-30 13:51:37
  * @Description: file content
  */
 
@@ -280,6 +280,6 @@
     g.fntk = fntk;
   }
   return fntk;
-})(window, function () {
+})(window || global, function () {
   "use strict";
 });

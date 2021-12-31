@@ -1,0 +1,18 @@
+{
+  "name": "rollupjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bundle.umd.js",
+  "module": "bundle.esm.js",
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.1.1",
+    "rollup": "^2.62.0"
+  }
+}

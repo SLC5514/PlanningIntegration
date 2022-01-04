@@ -12,8 +12,8 @@ export default {
   },
   plugins: [
     json(),
-    typescript({ lib: ["es5", "es6", "dom"], target: "es5" }),
     commonjs(),
+    typescript({ lib: ["es5", "es6", "dom"], target: "es5" }),
     nodeResolve(),
     babel({
       exclude: "node_modules/**", // 只编译我们的源代码

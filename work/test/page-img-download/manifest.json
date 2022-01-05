@@ -22,6 +22,8 @@
     "scripts": [
       "libs/blob-util/2.0.2/blob-util.min.js",
       "libs/moment/2.29.1/moment.min.js",
+      "libs/jszip/jszip.min.js",
+      "libs/FileSaver/FileSaver.min.js",
       "scripts/function.js",
       "scripts/background.js"
     ]

@@ -32,32 +32,72 @@ chrome.contextMenus.onClicked.addListener(function (info, tab) {
     let nameIdx = 0;
     let allImgs = tabImgs.length,
       imgCount = 0;
-    for (let i = 0; i < tabImgs.length; i++) {
-      blobUtil
-        .imgSrcToBlob(tabImgs[i].url)
-        .then(function (blob) {
-          imgCount++;
-          nameIdx++;
-          // const blobUrl = blobUtil.createObjectURL(blob);
-          const filename = _p_orchid(pathUrl) + "/" + nameIdx + "." + tabImgs[i].suffix;
-          chrome.downloads.download({
-            url: tabImgs[i].url,
-            filename: filename,
-            saveAs: false,
-            conflictAction: "uniquify",
-          });
-          _p_complete(imgCount, allImgs);
-        })
-        .catch(function () {
-          imgCount++;
-          console.log(
-            `%c[${i + 1}]图片获取失败 ${tabImgs[i].suffix}：\n${
-              tabImgs[i].url
-            }`,
-            "color:red"
-          );
-          _p_complete(imgCount, allImgs);
-        });
+    const zip = new JSZip()
+    const folder = zip.folder(prefix)
+    const hostFolder = folder.folder(host)
+    const timeFolder = hostFolder.folder(momentCor.format("YYYY-MM-DD") + '_' + momentCor.format("HH-mm-ss"))
+    const titleFolder = timeFolder.folder(title)
+    for (let i = 0; i < allImgs; i++) {
+      // 方式一
+      // blobUtil
+      //   .imgSrcToBlob(tabImgs[i].url)
+      //   .then(function (blob) {
+          // imgCount++;
+          // nameIdx++;
+      //     // const blobUrl = blobUtil.createObjectURL(blob);
+      //     const filename = _p_orchid(pathUrl) + "/" + nameIdx + "." + tabImgs[i].suffix;
+      //     chrome.downloads.download({
+      //       url: tabImgs[i].url,
+      //       filename: filename,
+      //       saveAs: false,
+      //       conflictAction: "uniquify",
+      //     });
+      //     _p_complete(imgCount, allImgs);
+      //   })
+      //   .catch(function () {
+      //     imgCount++;
+      //     console.log(
+      //       `%c[${i + 1}]图片获取失败 ${tabImgs[i].suffix}：\n${
+      //         tabImgs[i].url
+      //       }`,
+      //       "color:red"
+      //     );
+      //     _p_complete(imgCount, allImgs);
+      //   });
+
+      // 方式二
+      const image = new Image();
+      image.setAttribute('crossOrigin', 'anonymous');
+      image.onload = () => {
+        let selfIdx = -1;
+        for (let j = 0; j < tabImgs.length; j++) {
+          if (tabImgs[j].url === image.data_src) {
+            selfIdx = j;
+            break;
+          }
+        }
+        if (selfIdx < 0) return;
+        imgCount++;
+        nameIdx++;
+        const selfImg = tabImgs[selfIdx]
+        const canvas = document.createElement('canvas')
+        canvas.width = image.width
+        canvas.height = image.height
+        const context = canvas.getContext('2d')
+        context.drawImage(image, 0, 0, image.width, image.height)
+        const url = canvas.toDataURL('image/' + selfImg.suffix, 1)
+        titleFolder.file(nameIdx + "." + selfImg.suffix, url.substring(22), { base64: true })
+        if (imgCount === allImgs) {
+          zip.generateAsync({ type: 'blob' }).then(function (content) {
+            saveAs(content, prefix + '.zip')
+          }).catch((err) => {
+            console.log('Error', err)
+          })
+        }
+      }
+      image.onerror = () => {}
+      image.data_src = tabImgs[i].url;
+      image.src = tabImgs[i].url;
     }
   }
 });
@@ -181,6 +221,9 @@ function _p_suffix(suffix) {
       break;
     case "vnd.wap.wbmp":
       str = "wbmp";
+      break;
+    case "svg+xml":
+      str = "svg";
       break;
     default:
       break;

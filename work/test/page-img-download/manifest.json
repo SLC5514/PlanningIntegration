@@ -1,0 +1,42 @@
+{
+  "manifest_version": 2,
+  "name": "POP图片助手",
+  "description": "批量图片下载器",
+  "default_locale": "zh_CN",
+  "version": "1.0.0",
+  "icons": {
+    "64": "images/icon.png",
+    "128": "images/icon128.png",
+    "512": "images/icon512.png"
+  },
+  "browser_action": {
+    "default_icon": "images/icon.png",
+    "default_popup": "popup.html"
+  },
+  "options_ui": {
+    "open_in_tab": true,
+    "page": "options.html"
+  },
+  "background": {
+    "persistent": true,
+    "scripts": [
+      "libs/blob-util/2.0.2/blob-util.min.js",
+      "libs/moment/2.29.1/moment.min.js",
+      "scripts/function.js",
+      "scripts/background.js"
+    ]
+  },
+  "permissions": [
+    "tabs",
+    "webRequest",
+    "webRequestBlocking",
+    "storage",
+    "downloads",
+    "notifications",
+    "contextMenus",
+    "fontSettings",
+    "<all_urls>"
+  ],
+  "web_accessible_resources": [],
+  "content_scripts": []
+}

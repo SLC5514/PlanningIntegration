@@ -1,0 +1,827 @@
+{
+   "_w_abuse": {
+      "message": "自定义选项"
+   },
+   "_w_alert": {
+      "message": "当前浏览器未开放下载接口，推荐使用最新原版Chrome浏览器以获得更全面的功能。"
+   },
+   "_w_amble": {
+      "message": "文字水印"
+   },
+   "_w_aorta": {
+      "message": "提取所有"
+   },
+   "_w_apogee": {
+      "message": "选择全部"
+   },
+   "_w_argot": {
+      "message": "大图预览"
+   },
+   "_w_aria": {
+      "message": "Y轴间距"
+   },
+   "_w_armory": {
+      "message": " 扩展选项"
+   },
+   "_w_array": {
+      "message": "删除选中"
+   },
+   "_w_arroyo": {
+      "message": "起始值:"
+   },
+   "_w_aspect": {
+      "message": "&nbsp;打开下载目录"
+   },
+   "_w_aviary": {
+      "message": "已选中图片："
+   },
+   "_w_avowal": {
+      "message": "边框粗细"
+   },
+   "_w_balk": {
+      "message": "下载图片格式转换"
+   },
+   "_w_balm": {
+      "message": " 重试收藏"
+   },
+   "_w_banter": {
+      "message": " 为当前页面生成二维码"
+   },
+   "_w_bauble": {
+      "message": "cURL下载脚本:"
+   },
+   "_w_beam": {
+      "message": "类型: "
+   },
+   "_w_bedlam": {
+      "message": " 数据推送成功。"
+   },
+   "_w_bench": {
+      "message": "Google图片搜索关键词"
+   },
+   "_w_blazon": {
+      "message": "保存位置"
+   },
+   "_w_blight": {
+      "message": "请输入关键词，多个关键词以空格隔开"
+   },
+   "_w_botany": {
+      "message": "特征提取URL："
+   },
+   "_w_bower": {
+      "message": "去重差异阈值："
+   },
+   "_w_brand": {
+      "message": "URL筛选："
+   },
+   "_w_brat": {
+      "message": "定点水印"
+   },
+   "_w_brim": {
+      "message": "停止播放幻灯片"
+   },
+   "_w_brink": {
+      "message": "测试URL："
+   },
+   "_w_bulk": {
+      "message": "客户端返回信息异常"
+   },
+   "_w_cane": {
+      "message": " 等待可推送数据。"
+   },
+   "_w_chant": {
+      "message": "Sogou上查找图片的其他尺寸"
+   },
+   "_w_chapel": {
+      "message": "原始图片"
+   },
+   "_w_chord": {
+      "message": "从该链接页面提取图片"
+   },
+   "_w_cinder": {
+      "message": "开新窗口采集"
+   },
+   "_w_cleft": {
+      "message": "图片类型："
+   },
+   "_w_climax": {
+      "message": "URL列表为空"
+   },
+   "_w_clown": {
+      "message": "关闭提取页"
+   },
+   "_w_comity": {
+      "message": ""
+   },
+   "_w_con": {
+      "message": "(按 \"V\" 键切换图片预览模式)"
+   },
+   "_w_consul": {
+      "message": "资源列表: "
+   },
+   "_w_coup": {
+      "message": "关于扩展"
+   },
+   "_w_crab": {
+      "message": "批量生成提取地址："
+   },
+   "_w_credit": {
+      "message": "反选"
+   },
+   "_w_credo": {
+      "message": "关闭"
+   },
+   "_w_creek": {
+      "message": "原始图片分辨率："
+   },
+   "_w_critic": {
+      "message": "当前进度："
+   },
+   "_w_crumb": {
+      "message": "图片去重"
+   },
+   "_w_crypt": {
+      "message": "属性嗅探并发数："
+   },
+   "_w_cuff": {
+      "message": "Firefox应用商店: "
+   },
+   "_w_curb": {
+      "message": "图片筛选页载入的图片数量达到此值会启用图片动态载入功能。由于页面中图片会消耗大量内存，页面中加载大量图片可能因系统无法再为页面分配更多内存而导致页面崩溃，动态载入功能会在图片所在页面区域不可见时卸载，图片所在页面区域可见时重新载入图片，从而节省内存使用量让页面能够加载更多的图片。"
+   },
+   "_w_cygnet": {
+      "message": "自动收藏"
+   },
+   "_w_debate": {
+      "message": "操作完成！"
+   },
+   "_w_defile": {
+      "message": "全选"
+   },
+   "_w_delta": {
+      "message": "结束值"
+   },
+   "_w_deputy": {
+      "message": " 生成cURL下载脚本"
+   },
+   "_w_digit": {
+      "message": "下载选中"
+   },
+   "_w_dismay": {
+      "message": "作为水印发送到图片编辑器"
+   },
+   "_w_dogma": {
+      "message": "为选中的文字生成二维码"
+   },
+   "_w_dose": {
+      "message": "Sogou上查找图片的相关信息"
+   },
+   "_w_doyen": {
+      "message": "自动下载"
+   },
+   "_w_drone": {
+      "message": "下载所有"
+   },
+   "_w_dummy": {
+      "message": "水印透明度"
+   },
+   "_w_dune": {
+      "message": "URL列表为空,在执行特征提取URL前，请在URL列表中加入需要进行特征提取的源URL数据。"
+   },
+   "_w_dwarf": {
+      "message": "为图片地址生成二维码"
+   },
+   "_w_edict": {
+      "message": " 关闭"
+   },
+   "_w_epic": {
+      "message": "隐私声明"
+   },
+   "_w_epoch": {
+      "message": "图片地址正则替换规则"
+   },
+   "_w_fabric": {
+      "message": "Blob模式"
+   },
+   "_w_facade": {
+      "message": "描边文字"
+   },
+   "_w_fag": {
+      "message": "扩展没有从该页面中提取图片的权限。"
+   },
+   "_w_farce": {
+      "message": "其他"
+   },
+   "_w_fathom": {
+      "message": "左裁剪(px)"
+   },
+   "_w_felon": {
+      "message": "点击事件行为"
+   },
+   "_w_ferry": {
+      "message": "操作菜单开关"
+   },
+   "_w_filth": {
+      "message": "为本页地址生成二维码"
+   },
+   "_w_flak": {
+      "message": "每行一条规则，使用分割符 \u003Cb>{#^_^#}\u003C/b> 隔离正则匹配部分和正则替换部分, 以 // 开始的行为注释行, 清空规则将恢复默认值,规则按由上到下的顺序执行，匹配后将不再检查后续规则。"
+   },
+   "_w_flask": {
+      "message": "项目主页: "
+   },
+   "_w_fluke": {
+      "message": "为图片生成二维码"
+   },
+   "_w_flush": {
+      "message": "Y轴偏移"
+   },
+   "_w_foil": {
+      "message": " 条未展示"
+   },
+   "_w_ford": {
+      "message": "不选"
+   },
+   "_w_freak": {
+      "message": "过滤器菜单开关"
+   },
+   "_w_fret": {
+      "message": "通配符最小长度:"
+   },
+   "_w_fringe": {
+      "message": "下载"
+   },
+   "_w_frond": {
+      "message": "二维码文字"
+   },
+   "_w_furor": {
+      "message": "图片助手多地址提取"
+   },
+   "_w_fury": {
+      "message": "注：分辨率小于此尺寸的图片将被直接忽略，请谨慎设置此项，数值设置过大将导致小尺寸图片无法提取展示。"
+   },
+   "_w_fusion": {
+      "message": "水印文字"
+   },
+   "_w_gaggle": {
+      "message": "无法连接到客户端"
+   },
+   "_w_galaxy": {
+      "message": "前景颜色"
+   },
+   "_w_gander": {
+      "message": "替换地址："
+   },
+   "_w_germ": {
+      "message": " 下载配置"
+   },
+   "_w_glance": {
+      "message": "筛选页最大载入图片数量，为避免加载过多图片耗尽系统内存导致浏览器崩溃，当载入图片数量达到该值时页面将暂停载入更多的图片，直到人工处理图片并删除部分图片后页面会继续加载剩余的图片数据直至再次达到本上限值。"
+   },
+   "_w_gleam": {
+      "message": " 数据推送失败！"
+   },
+   "_w_glut": {
+      "message": "图片编辑器(试验功能)：添加水印"
+   },
+   "_w_goggle": {
+      "message": "版本: "
+   },
+   "_w_graft": {
+      "message": "图片动态载入仅在批量提取大量图片(如数千张图片)时有用，此值设置过小将影响体验；因此，在不出现筛选页崩溃的情况，此值应尽量大，如：512、1024等，根据实际机器内存情况及扩展使用情况定。"
+   },
+   "_w_grief": {
+      "message": "文字字体"
+   },
+   "_w_grit": {
+      "message": "筛选页点击事件行为"
+   },
+   "_w_groom": {
+      "message": "图片助手(ImageAssistant)"
+   },
+   "_w_grouch": {
+      "message": "新提取的图片将依配置自动下载，如果希望停止自动下载，请关闭对话框。"
+   },
+   "_w_gulch": {
+      "message": "上裁剪(px)"
+   },
+   "_w_guru": {
+      "message": "Chrome应用商店: "
+   },
+   "_w_hack": {
+      "message": "当前图像 {current} 总共 {total}"
+   },
+   "_w_hammer": {
+      "message": "采集列表"
+   },
+   "_w_handle": {
+      "message": "旋转角度"
+   },
+   "_w_harbor": {
+      "message": "从当前页面多地址提取图片"
+   },
+   "_w_haven": {
+      "message": "多地址提取"
+   },
+   "_w_hawker": {
+      "message": "宽度"
+   },
+   "_w_hedge": {
+      "message": "尺寸选项"
+   },
+   "_w_heed": {
+      "message": "打开下载目录"
+   },
+   "_w_heir": {
+      "message": "Google上查找图片的其他尺寸"
+   },
+   "_w_helot": {
+      "message": "提示"
+   },
+   "_w_helve": {
+      "message": "测试地址不合法~"
+   },
+   "_w_herald": {
+      "message": "图片助手(ImageAssistant)"
+   },
+   "_w_heresy": {
+      "message": "图片裁剪"
+   },
+   "_w_hold": {
+      "message": "转换成blob地址再下载，会消耗更多的CPU及内存资源，但能绕过部分站点的强力防盗链机制。"
+   },
+   "_w_homage": {
+      "message": "每行一条URL地址"
+   },
+   "_w_hue": {
+      "message": "分组关键词过滤："
+   },
+   "_w_husk": {
+      "message": "点击预览"
+   },
+   "_w_hybrid": {
+      "message": "URL特征2"
+   },
+   "_w_imp": {
+      "message": "Edge应用商店: "
+   },
+   "_w_iodine": {
+      "message": "收藏选中"
+   },
+   "_w_iota": {
+      "message": "不同于以往提供类似功能的浏览器扩展，本扩展融合了多种数据提取方式来保证在各种复杂结构页面中尽可能全面地提取到出现过的图片，更多关于扩展用法、快捷键及其他帮助说明请移步至项目主页。你也可以关注我的公众号以便能快速获取到扩展的最新信息及不定期的资源推送。"
+   },
+   "_w_ivory": {
+      "message": " 关于扩展"
+   },
+   "_w_jaunt": {
+      "message": "原始链接"
+   },
+   "_w_jerk": {
+      "message": "待处理的URL："
+   },
+   "_w_ken": {
+      "message": "指定大小"
+   },
+   "_w_knack": {
+      "message": "扩展选项"
+   },
+   "_w_knave": {
+      "message": "删除不可见"
+   },
+   "_w_lancet": {
+      "message": "Y轴偏移"
+   },
+   "_w_leeway": {
+      "message": " 图片助手"
+   },
+   "_w_levy": {
+      "message": "替换图片分辨率："
+   },
+   "_w_lint": {
+      "message": "使用默认规则"
+   },
+   "_w_list": {
+      "message": "没有可下载的内容！"
+   },
+   "_w_locust": {
+      "message": "本功能需要客户端的支持，请先安装客户端并启动后再操作(暂不可用)。"
+   },
+   "_w_loft": {
+      "message": "尺寸漏斗："
+   },
+   "_w_lumber": {
+      "message": "发送到图片编辑器(试验功能)"
+   },
+   "_w_lumen": {
+      "message": "背景颜色"
+   },
+   "_w_lust": {
+      "message": "Google上查找图片的相关信息"
+   },
+   "_w_mallet": {
+      "message": "提示"
+   },
+   "_w_margin": {
+      "message": "&nbsp;\n\u003Cb>批量处理\u003C/b>&nbsp;功能仅在部分浏览器中有效\n\u003Cbr />由于国内各浏览器厂商都着重对下载功能进行了阉割修改，该功能仅针对实现上符合chrome.downloads.download定义的浏览器。"
+   },
+   "_w_marsh": {
+      "message": "异步请求并发数："
+   },
+   "_w_martyr": {
+      "message": "文字大小"
+   },
+   "_w_mason": {
+      "message": "URL特征3:"
+   },
+   "_w_mate": {
+      "message": "生成URL"
+   },
+   "_w_maze": {
+      "message": "添加所有"
+   },
+   "_w_menace": {
+      "message": "&nbsp;批量处理"
+   },
+   "_w_mime": {
+      "message": "在进行下一步操作前，请确保您的浏览器配置中已经取消勾选\"下载前询问每个文件的保存位置\"选项(注：chrome衍生浏览器中配置文字可能有差别)以保证文件能自动下载，如果后续连续弹出的\u003C另存为>对话框对你造成了困扰，请参照\u003C\u003Ca target=\"_pullywood_\" href=\"http://www.pullywood.com/ImageAssistant/#docs-faq-download-modal\">帮助\u003C/a>>进行设置。"
+   },
+   "_w_mint": {
+      "message": "URL通配符表达式："
+   },
+   "_w_minuet": {
+      "message": "请等待提取完成后关闭此页！"
+   },
+   "_w_mitten": {
+      "message": "此图片无法加载"
+   },
+   "_w_molar": {
+      "message": "默认尺寸漏斗"
+   },
+   "_w_moment": {
+      "message": "点击选中"
+   },
+   "_w_mortar": {
+      "message": " 预取链接(核弹)"
+   },
+   "_w_mosaic": {
+      "message": "分辨率大小："
+   },
+   "_w_mote": {
+      "message": "&nbsp;反向透明"
+   },
+   "_w_mulct": {
+      "message": "&nbsp;重置参数"
+   },
+   "_w_mural": {
+      "message": "X轴间距"
+   },
+   "_w_nectar": {
+      "message": "POP菜单页"
+   },
+   "_w_oar": {
+      "message": "URL特征2:"
+   },
+   "_w_omelet": {
+      "message": "&nbsp;水平居中"
+   },
+   "_w_pact": {
+      "message": " 添加到收藏"
+   },
+   "_w_palate": {
+      "message": "切换到原始页"
+   },
+   "_w_panel": {
+      "message": "步进值:"
+   },
+   "_w_panic": {
+      "message": "通配符最小长度"
+   },
+   "_w_pariah": {
+      "message": "自动下载中..."
+   },
+   "_w_pastor": {
+      "message": "另存为"
+   },
+   "_w_pastry": {
+      "message": "Baidu图片搜索关键词"
+   },
+   "_w_pecan": {
+      "message": "重置筛选"
+   },
+   "_w_pier": {
+      "message": "扩展只能从URL地址以http://或https://开头的WEB页面中提取图片。"
+   },
+   "_w_pillar": {
+      "message": " 扩展选项"
+   },
+   "_w_pirate": {
+      "message": "分辨率: "
+   },
+   "_w_planet": {
+      "message": "尺寸大小"
+   },
+   "_w_pleat": {
+      "message": "URL特征1"
+   },
+   "_w_plight": {
+      "message": " 普利坞出品"
+   },
+   "_w_ploy": {
+      "message": "图片筛选"
+   },
+   "_w_pluck": {
+      "message": "URL:http://www.domain.com/path/path/character_(*).html, 其中(*)为通配符."
+   },
+   "_w_poncho": {
+      "message": " 默认"
+   },
+   "_w_pore": {
+      "message": "Google上查找类似的图片"
+   },
+   "_w_prey": {
+      "message": "文字颜色"
+   },
+   "_w_putter": {
+      "message": "水印缩放"
+   },
+   "_w_pygmy": {
+      "message": "清空选择"
+   },
+   "_w_quill": {
+      "message": "X轴偏移"
+   },
+   "_w_quiver": {
+      "message": "水印图片"
+   },
+   "_w_rafter": {
+      "message": "持续滚动被提取页"
+   },
+   "_w_raisin": {
+      "message": "为链接生成二维码"
+   },
+   "_w_ram": {
+      "message": "仅用于实名验证"
+   },
+   "_w_realm": {
+      "message": "筛选页图片动态载入阈值"
+   },
+   "_w_regent": {
+      "message": " 批量提取图片"
+   },
+   "_w_reign": {
+      "message": "高度"
+   },
+   "_w_relish": {
+      "message": "该URL通配符表达式不合法，请输入以http:// 或 https://开头，并包含(*)通配符的表达式。"
+   },
+   "_w_rhyme": {
+      "message": "选中的图片格式将在下载时转换为*.png格式。"
+   },
+   "_w_ripple": {
+      "message": "大小排序开关"
+   },
+   "_w_ritual": {
+      "message": " 扩展选项"
+   },
+   "_w_rival": {
+      "message": "X轴偏移"
+   },
+   "_w_rue": {
+      "message": "加载图片："
+   },
+   "_w_saga": {
+      "message": "图片数："
+   },
+   "_w_salute": {
+      "message": " 关于扩展"
+   },
+   "_w_sap": {
+      "message": "已选数："
+   },
+   "_w_sash": {
+      "message": " 特征提取地址"
+   },
+   "_w_scad": {
+      "message": "附加信息"
+   },
+   "_w_scamp": {
+      "message": " 开新窗口批量提取图片(推荐)"
+   },
+   "_w_scarp": {
+      "message": "图片编辑器"
+   },
+   "_w_scoff": {
+      "message": "普利坞(Pullywood.com)"
+   },
+   "_w_scoop": {
+      "message": "开始播放幻灯片"
+   },
+   "_w_scope": {
+      "message": "可见数："
+   },
+   "_w_script": {
+      "message": " 关于扩展"
+   },
+   "_w_scrub": {
+      "message": "是一款运行于chromium(chrome环境下开发)及其衍生浏览器(如：360安全浏览器、360极速浏览器、猎豹浏览器、百度浏览器、UC浏览器等)提供分析、提取网页中的图片并以多种筛选方式辅助用户选取下载等功能的扩展软件。"
+   },
+   "_w_scythe": {
+      "message": "开发人员: "
+   },
+   "_w_seine": {
+      "message": "结束值:"
+   },
+   "_w_sham": {
+      "message": "链接任务数："
+   },
+   "_w_sheen": {
+      "message": "&nbsp;垂直居中"
+   },
+   "_w_shoal": {
+      "message": "从该链接页面多地址提取图片"
+   },
+   "_w_shrub": {
+      "message": " 继续下载"
+   },
+   "_w_shuck": {
+      "message": "下裁剪(px)"
+   },
+   "_w_signal": {
+      "message": " 收藏图片"
+   },
+   "_w_silt": {
+      "message": "留言簿"
+   },
+   "_w_slab": {
+      "message": "原始地址："
+   },
+   "_w_slag": {
+      "message": "显示比例："
+   },
+   "_w_slant": {
+      "message": " 图片编辑器(试验功能)"
+   },
+   "_w_slice": {
+      "message": "筛选页最大载入图片数"
+   },
+   "_w_slight": {
+      "message": "分辨率下标开关"
+   },
+   "_w_slit": {
+      "message": "不能对页面自身进行提取操作！"
+   },
+   "_w_slosh": {
+      "message": "前一页"
+   },
+   "_w_slot": {
+      "message": "保留选中"
+   },
+   "_w_sloth": {
+      "message": "加入提取列表"
+   },
+   "_w_slouch": {
+      "message": "起始值"
+   },
+   "_w_snatch": {
+      "message": "&nbsp;亮度转透明度"
+   },
+   "_w_sock": {
+      "message": "不小于"
+   },
+   "_w_solace": {
+      "message": " 分析预取数据(氢弹)"
+   },
+   "_w_sonnet": {
+      "message": "无规则匹配当前URL~"
+   },
+   "_w_soot": {
+      "message": "图片水印"
+   },
+   "_w_spate": {
+      "message": "默认(不勾选)情况下，单击图片会弹出放大的图片浏览窗口，如希望点击图片仅选中，则请勾选下方选框。"
+   },
+   "_w_spire": {
+      "message": "目标提取页不存在！"
+   },
+   "_w_spoke": {
+      "message": "背景透明度"
+   },
+   "_w_sprout": {
+      "message": "请先选取图片！"
+   },
+   "_w_stanza": {
+      "message": "步进值"
+   },
+   "_w_staple": {
+      "message": "未检测到下载接口，无法进行下载"
+   },
+   "_w_stern": {
+      "message": "二维码水印"
+   },
+   "_w_sting": {
+      "message": " 普利坞出品"
+   },
+   "_w_strife": {
+      "message": "添加选项"
+   },
+   "_w_strip": {
+      "message": "后一页"
+   },
+   "_w_succor": {
+      "message": "睡虫子(Joey)"
+   },
+   "_w_swamp": {
+      "message": "URL特征3"
+   },
+   "_w_swarm": {
+      "message": "此内容无法加载"
+   },
+   "_w_swipe": {
+      "message": "正在推送数据..."
+   },
+   "_w_tangle": {
+      "message": "下载任务添加完成。 ^_^"
+   },
+   "_w_tatter": {
+      "message": "文字透明度"
+   },
+   "_w_tease": {
+      "message": "扩展只能在以http://及https://开头的页面中创建二维码。"
+   },
+   "_w_tenure": {
+      "message": " 下载"
+   },
+   "_w_threat": {
+      "message": "像素点增强"
+   },
+   "_w_tissue": {
+      "message": "开新窗口"
+   },
+   "_w_tread": {
+      "message": "平铺水印"
+   },
+   "_w_trophy": {
+      "message": " 取消"
+   },
+   "_w_tureen": {
+      "message": "URL特征1:"
+   },
+   "_w_tyrant": {
+      "message": "不合法的URL通配符表达式"
+   },
+   "_w_uproar": {
+      "message": "  多地址提取"
+   },
+   "_w_vagary": {
+      "message": "&nbsp;在执行&nbsp;\n\u003Cb>批量处理\u003C/b>&nbsp;前,请确保您的浏览器配置中已经取消勾选\"下载前询问每个文件的保存位置\"选项。\n\u003Cbr />"
+   },
+   "_w_vanity": {
+      "message": "右裁剪(px)"
+   },
+   "_w_vermin": {
+      "message": " 我的收藏"
+   },
+   "_w_verse": {
+      "message": "加水印图片(IA图片助手)"
+   },
+   "_w_vessel": {
+      "message": "特征URL集采集"
+   },
+   "_w_volley": {
+      "message": "图片缩放"
+   },
+   "_w_welter": {
+      "message": " 提取本页图片"
+   },
+   "_w_whiff": {
+      "message": "/privacy_zh_CN.md"
+   },
+   "_w_wick": {
+      "message": "保存路径："
+   },
+   "_w_wig": {
+      "message": "请输入新开Tab页面提取时自动关闭超时时间(最小8秒)："
+   },
+   "_w_woe": {
+      "message": " 数据推送失败，将自动重试。"
+   },
+   "_w_wrist": {
+      "message": " 取消下载"
+   },
+   "manifest_description": {
+      "message": "一款用于嗅探、分析网页图片并提供批量下载等功能及在线收藏、检索、分享服务的浏览器扩展程序。"
+   },
+   "manifest_ext_name": {
+      "message": "图片助手(ImageAssistant) 批量图片下载器"
+   },
+   "manifest_extract_description": {
+      "message": "从当前页面中提取图片"
+   },
+   "manifest_multi_extract_description": {
+      "message": "从当前页面中多地址提取图片"
+   },
+   "manifest_short_name": {
+      "message": "IA"
+   }
+}

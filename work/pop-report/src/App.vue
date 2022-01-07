@@ -1,13 +1,7 @@
-<script setup lang="ts">
-import Header from '~/components/Header.vue';
-</script>
-
 <template>
-<Header />
-<el-button>I am ElButton</el-button>
+  <router-view v-slot="{ Component, route }">
+    <transition name="slide-fade" mode="out-in" appear>
+      <component :is="Component" :key="route" />
+    </transition>
+  </router-view>
 </template>
-
-<style>
-#app {
-}
-</style>

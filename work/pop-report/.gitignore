@@ -3,3 +3,8 @@ node_modules
 dist
 dist-ssr
 *.local
+.vite-ssg-dist
+.vite-ssg-temp
+.idea
+.vscode
+*.log

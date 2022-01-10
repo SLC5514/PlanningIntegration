@@ -3,13 +3,6 @@ import { Head } from '@vueuse/head'
 import { useAppStore } from '~/stores/app'
 
 const appStore = useAppStore()
-
-// useHead({
-//   title: `首页-${appStore.title}`,
-//   // meta: [
-//   //   { name: 'description', content: 'Home Description' },
-//   // ],
-// })
 </script>
 
 <route lang="yaml">

@@ -1,11 +1,21 @@
 <script lang="ts" setup>
-</script>
+import { useAppStore } from '~/stores/app'
 
-<template>
-  <div>not-found</div>
-</template>
+const appStore = useAppStore()
+
+useHead({
+  title: `404-${appStore.title}`,
+  meta: [
+    { name: 'description', content: `404-${appStore.description}` },
+  ],
+})
+</script>
 
 <route lang="yaml">
 meta:
   layout: 404
 </route>
+
+<template>
+  <div>not-found</div>
+</template>

@@ -10,6 +10,11 @@ const appStore = useAppStore()
       <el-button>返回列表</el-button>
     </div>
     <div>
+      <el-skeleton class="inline-block w-60px">
+        <template #template>
+          <el-skeleton-item variant="rect" class="w-60px h-32px" style="width: 60px; height: 32px" />
+        </template>
+      </el-skeleton>
       <el-button>撤销</el-button>
       <el-button>前进</el-button>
       <el-button>文字</el-button>
@@ -24,8 +29,12 @@ const appStore = useAppStore()
       <el-button>操作说明</el-button>
       <el-button>模板设置</el-button>
       <el-select v-model="appStore.locale">
-        <el-option value="zh-CN">中文</el-option>
-        <el-option value="en">English</el-option>
+        <el-option
+          v-for="(item, index) in appStore.localeList"
+          :key="index"
+          :value="item.value"
+          :label="item.name"
+        />
       </el-select>
     </div>
   </el-header>

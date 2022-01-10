@@ -13,11 +13,13 @@ declare module 'vue' {
     ElMain: typeof import('element-plus/es')['ElMain']
     ElOption: typeof import('element-plus/es')['ElOption']
     ElSelect: typeof import('element-plus/es')['ElSelect']
+    ElSkeleton: typeof import('element-plus/es')['ElSkeleton']
+    ElSkeletonItem: typeof import('element-plus/es')['ElSkeletonItem']
     ElTabPane: typeof import('element-plus/es')['ElTabPane']
     ElTabs: typeof import('element-plus/es')['ElTabs']
-    Head: typeof import('./components/Head.vue')['default']
     Header: typeof import('./components/Header.vue')['default']
     IMdiLightChevronLeft: typeof import('~icons/mdi-light/chevron-left')['default']
+    Loading: typeof import('element-plus/es')['ElLoadingDirective']
     T: typeof import('./components/T.vue')['default']
   }
 }

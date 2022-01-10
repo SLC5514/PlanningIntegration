@@ -3,8 +3,8 @@ import { useAppStore } from '~/stores/app';
 
 const appStore = useAppStore()
 
-appStore.title = 'POP报告后台-404'
-appStore.description = 'POP报告后台-404'
+appStore.title = `${appStore.title}-404`
+appStore.description = `${appStore.description}-404`
 
 useHead({
   title: appStore.title,

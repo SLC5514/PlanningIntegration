@@ -7,6 +7,7 @@ import Pages from 'vite-plugin-pages'
 import Layouts from 'vite-plugin-vue-layouts'
 
 import Icons from 'unplugin-icons/vite'
+import WindiCSS from 'vite-plugin-windicss'
 import IconsResolver from 'unplugin-icons/resolver'
 import VueI18n from '@intlify/vite-plugin-vue-i18n'
 
@@ -112,6 +113,8 @@ export default defineConfig(() => {
         compositionOnly: true,
         include: [resolve(__dirname, 'locales/**')],
       }),
+      // https://github.com/antfu/vite-plugin-windicss
+      WindiCSS(),
     ],
   }
 })

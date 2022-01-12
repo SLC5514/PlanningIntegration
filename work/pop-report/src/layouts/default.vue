@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Head } from '@vueuse/head'
-import { useAppStore } from '~/stores/app';
+import { useAppStore } from '~/stores/app'
 
 const appStore = useAppStore()
 

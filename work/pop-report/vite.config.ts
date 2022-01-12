@@ -68,16 +68,17 @@ export default defineConfig(() => {
         },
       },
     },
-    optimizeDeps: {
-      include: [
-        'vue',
-        'pinia',
-        'vue-i18n',
-        'vue-router',
-        '@vueuse/core',
-        '@vueuse/head',
-      ],
-    },
+    // optimizeDeps: {
+    //   include: [
+    //     'vue',
+    //     'pinia',
+    //     // 'vue-i18n',
+    //     'vue-router',
+    //     '@vueuse/core',
+    //     '@vueuse/head',
+    //     // 'element-plus',
+    //   ],
+    // },
     plugins: [
       vue(),
       Pages(),

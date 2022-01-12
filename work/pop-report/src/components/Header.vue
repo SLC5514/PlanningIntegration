@@ -2,6 +2,11 @@
 import { useAppStore } from '~/stores/app'
 
 const appStore = useAppStore()
+const loading = ref(true)
+
+setTimeout(function() {
+  loading.value = false
+}, 3000)
 </script>
 
 <template>
@@ -10,20 +15,30 @@ const appStore = useAppStore()
       <el-button>返回列表</el-button>
     </div>
     <div>
-      <el-skeleton class="inline-block w-60px">
+      <el-skeleton :loading="loading" animated>
         <template #template>
-          <el-skeleton-item variant="rect" class="w-60px h-32px" style="width: 60px; height: 32px" />
+          <el-skeleton-item variant="rect" class="w-60px h-32px align-middle" />
+          <el-skeleton-item variant="rect" class="w-60px h-32px align-middle" />
+          <el-skeleton-item variant="rect" class="w-60px h-32px align-middle" />
+          <el-skeleton-item variant="rect" class="w-60px h-32px align-middle" />
+          <el-skeleton-item variant="rect" class="w-60px h-32px align-middle" />
+          <el-skeleton-item variant="rect" class="w-60px h-32px align-middle" />
+          <el-skeleton-item variant="rect" class="w-60px h-32px align-middle" />
+          <el-skeleton-item variant="rect" class="w-60px h-32px align-middle" />
+          <el-skeleton-item variant="rect" class="w-60px h-32px align-middle" />
+        </template>
+        <template #default>
+          <el-button>撤销</el-button>
+          <el-button>前进</el-button>
+          <el-button>文字</el-button>
+          <el-button>图片</el-button>
+          <el-button>下载</el-button>
+          <el-button>复制</el-button>
+          <el-button>另存为</el-button>
+          <el-button>预览</el-button>
+          <el-button>保存</el-button>
         </template>
       </el-skeleton>
-      <el-button>撤销</el-button>
-      <el-button>前进</el-button>
-      <el-button>文字</el-button>
-      <el-button>图片</el-button>
-      <el-button>下载</el-button>
-      <el-button>复制</el-button>
-      <el-button>另存为</el-button>
-      <el-button>预览</el-button>
-      <el-button>保存</el-button>
     </div>
     <div>
       <el-button>操作说明</el-button>
@@ -53,6 +68,9 @@ const appStore = useAppStore()
   justify-content: space-between;
   .el-button + .el-select {
     width: 100px;
+    margin-left: 12px;
+  }
+  .el-skeleton .el-skeleton__item + .el-skeleton__item {
     margin-left: 12px;
   }
 }

@@ -3,6 +3,7 @@
 // console.log(useUserStore())
 
 // import { getPageReport } from "~/api/report"
+// import { getResource } from "~/api/report"
 
 // getPageReport({
 //   site: 1,
@@ -13,6 +14,8 @@
 // }).catch(err => {
 //   console.log(err)
 // })
+
+// const route = useRoute()
 
 const isCollapse = ref(false)
 const initTab = ref({}) // tab初始状态
@@ -26,6 +29,15 @@ const tabTypeSub = reactive({
   material: '', // 素材
 }) // 二级tab
 
+// 转换请求
+// const transformApi = function (tabVal: string) {
+//   console.log(tabVal)
+
+//   getResource(route.query.main_id, 1, 1, 1, '').then(res => {
+//     console.log(res)
+//   }).catch(() => {});
+// }
+
 // 一二级监听初始
 watch([tabType, tabTypeSub], ([tabTypeVal, tabTypeSubVal]) => {
   if (tabTypeVal && !initTab.value[tabTypeVal]) {
@@ -37,6 +49,7 @@ watch([tabType, tabTypeSub], ([tabTypeVal, tabTypeSubVal]) => {
     if (tabTypeSubVal[i] && !initTab.value[tabTypeSubVal[i]]) {
       initTab.value[tabTypeSubVal[i]] = true
       console.log(tabTypeSubVal[i], '二级初始')
+      // transformApi(tabTypeSubVal[i])
     }
   }
 })

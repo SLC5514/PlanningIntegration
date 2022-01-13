@@ -2,10 +2,12 @@
 import { Head } from '@vueuse/head'
 import { useAppStore } from '~/stores/app'
 
+// const route = useRoute()
 const appStore = useAppStore()
 
 appStore.title = `${appStore.title}-Default`
 appStore.description = `${appStore.description}-Default`
+// appStore.query = route.query
 
 const loading = ref(false)
 </script>

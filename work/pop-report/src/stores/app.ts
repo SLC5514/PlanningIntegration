@@ -3,7 +3,8 @@ import { acceptHMRUpdate, defineStore } from 'pinia'
 export const useAppStore = defineStore('app', () => {
   const title = ref('POP报告后台')
   const description = ref('POP报告后台')
-  const { locale } = useI18n() // 默认语言
+  const query = ref() // 路由参数
+  // const locale = ref('zh-CN') // 默认语言
   const localeList = ref([
     {
       name: '简体中文',
@@ -18,7 +19,8 @@ export const useAppStore = defineStore('app', () => {
   return {
     title,
     description,
-    locale,
+    query,
+    // locale,
     localeList,
   }
 })

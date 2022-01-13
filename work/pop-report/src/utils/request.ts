@@ -1,6 +1,6 @@
 import axios from 'axios'
-// import store from '@/store'
 import { ElMessage } from 'element-plus'
+import { useAppStore } from '~/stores/app'
 
 // create an axios instance
 const service = axios.create({
@@ -10,10 +10,21 @@ const service = axios.create({
 // request interceptor
 service.interceptors.request.use(
   config => {
-    if (config.method.toLocaleUpperCase() === 'GET') {
-      config.params = { ...config.params, /* site: store.getters.site, hash: store.getters.hash, translate: store.getters.translate || null */ }
-    } else if (config.method.toLocaleUpperCase() === 'POST') {
-      config.data = { ...config.data, /* site: store.getters.site, hash: store.getters.hash, translate: store.getters.translate || null */ }
+    const appStore = useAppStore()
+    if (config.method?.toLocaleUpperCase() === 'GET') {
+      config.params = {
+        ...config.params,
+        site: appStore.query?.site,
+        hash: appStore.query?.hash,
+        translate: appStore.query?.translate
+      }
+    } else if (config.method?.toLocaleUpperCase() === 'POST') {
+      config.data = {
+        ...config.data,
+        site: appStore.query?.site,
+        hash: appStore.query?.hash,
+        translate: appStore.query?.translate
+      }
     }
     return config
   },

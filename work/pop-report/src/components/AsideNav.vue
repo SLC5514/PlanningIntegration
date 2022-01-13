@@ -3,7 +3,7 @@
 // console.log(useUserStore())
 
 // import { getPageReport } from "~/api/report"
-// import { getResource } from "~/api/report"
+import { getResource } from "~/api/report"
 
 // getPageReport({
 //   site: 1,
@@ -15,7 +15,7 @@
 //   console.log(err)
 // })
 
-// const route = useRoute()
+const route = useRoute()
 
 const isCollapse = ref(false)
 const initTab = ref({}) // tab初始状态
@@ -33,9 +33,9 @@ const tabTypeSub = reactive({
 // const transformApi = function (tabVal: string) {
 //   console.log(tabVal)
 
-//   getResource(route.query.main_id, 1, 1, 1, '').then(res => {
-//     console.log(res)
-//   }).catch(() => {});
+  getResource(route.query.main_id, 1, 1, 1, '').then(res => {
+    console.log(res)
+  }).catch(() => {});
 // }
 
 // 一二级监听初始

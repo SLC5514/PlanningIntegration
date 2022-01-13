@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { useAppStore } from '~/stores/app'
 
+const { locale } = useI18n()
 const appStore = useAppStore()
 const loading = ref(true)
 
@@ -43,7 +44,7 @@ setTimeout(function() {
     <div>
       <el-button>操作说明</el-button>
       <el-button>模板设置</el-button>
-      <el-select v-model="appStore.locale">
+      <el-select v-model="locale">
         <el-option
           v-for="(item, index) in appStore.localeList"
           :key="index"

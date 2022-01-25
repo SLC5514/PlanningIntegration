@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>新首页动效调研</title>
+</head>
+<body>
+  <!-- <section>
+    <div>近大远小</div>
+  </section>
+  <section>
+    <div>磁力吸附</div>
+  </section> -->
+  <div id="app">
+    test
+    <textarea name="" id="" cols="30" rows="10" v-model="text"></textarea>
+    {{text}}
+  </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<script type="module">
+  // import Vue from 'https://cdn.skypack.dev/vue';
+  var app = new Vue({
+    el: '#app',
+    data: {
+      text: 'Hello \n Vue!'
+    }
+  })
+</script>
+<!-- <script type="module">
+
+  // Find the latest version by visiting https://cdn.skypack.dev/three.
+
+  import * as THREE from 'https://cdn.skypack.dev/three';
+
+  const scene = new THREE.Scene();
+
+  console.log(scene)
+</script> -->
+</html>

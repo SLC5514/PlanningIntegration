@@ -1,1666 +1,398 @@
 // https://wkhtmltopdf.org/downloads.html
+
+// 新报告
 var isPdf = true;
-var reportData = [
-  {
-    sub_id: 93216,
-    page_id: 345945,
-    uuid: "698139d2-7f87-4d30-9416-6a09cddf7550",
-    tpl_id: "00000000-0000-0000-0000-000000000000",
-    type: "page",
-    title: "测试",
-    tag: [],
-    style: { width: 1176, height: 868 },
-    backgroundElement: {
-      uuid: "90adb624-04d8-407f-8737-6240a66b7f28",
-      type: "background",
-      style: {
-        width: "100%",
-        height: "100%",
-        left: 0,
-        top: 0,
-        borderStyle: "solid",
-        borderColor: "#000000",
-        borderWidth: 0,
-        borderRadius: 0,
-        paddingTop: 0,
-        paddingBottom: 0,
-        paddingLeft: 0,
-        paddingRight: 0,
-        opacity: 100,
-        rotate: 0,
-        fliph: 1,
-        flipv: 1,
-        shadowColor: "#000000",
-        shadowH: 0,
-        shadowV: 0,
-        shadowBlur: 0,
-        color: "#333333",
-        fontSize: 14,
-        fontWeight: "normal",
-        textDecoration: "none",
-        textAlign: "left",
-        letterSpacing: 0,
-        lineHeight: 1,
-        background:
-          "linear-gradient(188deg, rgba(255, 255, 255, 1) 0%, rgba(238, 221, 232, 1) 59%, rgba(206, 188, 214, 1) 59%, rgba(220, 206, 231, 1) 113%)",
-      },
-      clip: {
-        w: 0,
-        h: 0,
-        x: 0,
-        y: 0,
-        scale: 1,
-        image: "",
-        cutout: "",
-        origin: "",
-        host: "",
-      },
-    },
-    elements: [
-      {
-        uuid: "7d389b91-2241-45c5-b32a-b9703099b0e2",
-        type: "text",
-        text: "01 多层次穿衣法则--女装连衣裙组货搭配",
-        style: {
-          width: 656,
-          height: 60,
-          left: 32,
-          top: 32,
-          borderStyle: "solid",
-          borderColor: "#000000",
-          borderWidth: 0,
-          borderRadius: 0,
-          paddingTop: 0,
-          paddingBottom: 0,
-          paddingLeft: 0,
-          paddingRight: 0,
-          opacity: 100,
-          rotate: 0,
-          fliph: 1,
-          flipv: 1,
-          shadowColor: "#000000",
-          shadowH: 0,
-          shadowV: 0,
-          shadowBlur: 0,
-          color: "#ffffff",
-          fontSize: 36,
-          fontWeight: "bold",
-          textDecoration: "none",
-          textAlign: "center",
-          // letterSpacing: 10,
-          lineHeight: 60,
-          background: "#1A232C",
-          fontFamily: "Voca"
-        },
-      },
-      {
-        uuid: "b76cd7d2-7c06-4c74-a1f6-139099489399",
-        type: "text",
-        text: "为满足现代女性<span style=\"color: red;\">对新生活</span>的精致要求，连衣裙单品的穿 <a href='' target='_blank'>Onepiece</a> 搭方式不再以单一的Onepiece呈现。将层层单品往身上叠的 Layering 技巧已经大肆流行开来，连衣裙单品也在2022春夏中与各类单品层叠组合呈现，整体造型诠释错落的视觉效果、里外的对比关系，让原本柔和优雅的单品通过不同的穿搭方式表达出更多的情绪风格。为满足现代女性对新生活的精致要求，连衣裙单品的穿搭方式不再以单一的Onepiece呈现。",
-        style: {
-          width: 1112,
-          height: 88,
-          left: 32,
-          top: 116,
-          borderStyle: "solid",
-          borderColor: "#000000",
-          borderWidth: 0,
-          borderRadius: 0,
-          paddingTop: 0,
-          paddingBottom: 0,
-          paddingLeft: 0,
-          paddingRight: 0,
-          opacity: 100,
-          rotate: 0,
-          fliph: 1,
-          flipv: 1,
-          shadowColor: "#000000",
-          shadowH: 0,
-          shadowV: 0,
-          shadowBlur: 0,
-          color: "#555555",
-          fontSize: 16,
-          fontWeight: "normal",
-          textDecoration: "none",
-          textAlign: "left",
-          letterSpacing: 0,
-          lineHeight: 30,
-          textIndent: '2em'
-        },
-      },
-      {
-        uuid: "2302b9fb-345a-4665-9aa2-24827cd9dbb0",
-        type: "image",
-        attr: {
-          brandName: "",
-          imageInfo: "",
-          linkType: 0,
-          link: "",
-          videoId: "",
-          position: { h: "left", v: "bottom", x: 6, y: 6 },
-        },
-        style: {
-          width: 275,
-          height: 400,
-          left: 32,
-          top: 222,
-          borderStyle: "solid",
-          borderColor: "#000000",
-          borderWidth: 0,
-          borderRadius: 0,
-          paddingTop: 0,
-          paddingBottom: 0,
-          paddingLeft: 0,
-          paddingRight: 0,
-          opacity: 100,
-          rotate: 0,
-          fliph: 1,
-          flipv: 1,
-          shadowColor: "#000000",
-          shadowH: 0,
-          shadowV: 0,
-          shadowBlur: 0,
-          color: "#333333",
-          fontSize: 14,
-          fontWeight: "normal",
-          textDecoration: "none",
-          textAlign: "left",
-          letterSpacing: 0,
-          lineHeight: 1,
-          background: "#EEEFFF",
-        },
-        clip: {
-          w: 0,
-          h: 0,
-          x: 0,
-          y: 0,
-          scale: 1,
-          image: "",
-          cutout: "",
-          origin: "",
-          host: "",
-        },
-      },
-      {
-        uuid: "9999c798-905d-41ba-90e6-f950f0e0531f",
-        type: "image",
-        attr: {
-          brandName: "",
-          imageInfo: "",
-          linkType: 0,
-          link: "",
-          videoId: "",
-          position: { h: "left", v: "bottom", x: 6, y: 6 },
-        },
-        style: {
-          width: 275,
-          height: 210,
-          left: 32,
-          top: 626,
-          borderStyle: "solid",
-          borderColor: "#000000",
-          borderWidth: 0,
-          borderRadius: 0,
-          paddingTop: 0,
-          paddingBottom: 0,
-          paddingLeft: 0,
-          paddingRight: 0,
-          opacity: 100,
-          rotate: 0,
-          fliph: 1,
-          flipv: 1,
-          shadowColor: "#000000",
-          shadowH: 0,
-          shadowV: 0,
-          shadowBlur: 0,
-          color: "#333333",
-          fontSize: 14,
-          fontWeight: "normal",
-          textDecoration: "none",
-          textAlign: "left",
-          letterSpacing: 0,
-          lineHeight: 1,
-          background: "#EEEFFF",
-        },
-        clip: {
-          w: 0,
-          h: 0,
-          x: 0,
-          y: 0,
-          scale: 1,
-          image: "",
-          cutout: "",
-          origin: "",
-          host: "",
-        },
-      },
-      {
-        uuid: "ed907825-3647-46cb-b076-9dfca12e7510",
-        type: "image",
-        attr: {
-          brandName: "",
-          imageInfo: "",
-          linkType: 0,
-          link: "",
-          videoId: "",
-          position: { h: "left", v: "bottom", x: 6, y: 6 },
-        },
-        style: {
-          width: 275,
-          height: 210,
-          left: 311,
-          top: 222,
-          borderStyle: "solid",
-          borderColor: "#000000",
-          borderWidth: 0,
-          borderRadius: 0,
-          paddingTop: 0,
-          paddingBottom: 0,
-          paddingLeft: 0,
-          paddingRight: 0,
-          opacity: 100,
-          rotate: 0,
-          fliph: 1,
-          flipv: 1,
-          shadowColor: "#000000",
-          shadowH: 0,
-          shadowV: 0,
-          shadowBlur: 0,
-          color: "#333333",
-          fontSize: 14,
-          fontWeight: "normal",
-          textDecoration: "none",
-          textAlign: "left",
-          letterSpacing: 0,
-          lineHeight: 1,
-          background: "#EEEFFF",
-        },
-        clip: {
-          w: 0,
-          h: 0,
-          x: 0,
-          y: 0,
-          scale: 1,
-          image: "",
-          cutout: "",
-          origin: "",
-          host: "",
-        },
-      },
-      {
-        uuid: "43b9e55c-c492-4c0d-b3f6-cf31434f46df",
-        type: "image",
-        attr: {
-          brandName: "",
-          imageInfo: "",
-          linkType: 0,
-          link: "",
-          videoId: "",
-          position: { h: "left", v: "bottom", x: 6, y: 6 },
-        },
-        style: {
-          width: 275,
-          height: 400,
-          left: 311,
-          top: 436,
-          borderStyle: "solid",
-          borderColor: "#000000",
-          borderWidth: 0,
-          borderRadius: 0,
-          paddingTop: 0,
-          paddingBottom: 0,
-          paddingLeft: 0,
-          paddingRight: 0,
-          opacity: 100,
-          rotate: 0,
-          fliph: 1,
-          flipv: 1,
-          shadowColor: "#000000",
-          shadowH: 0,
-          shadowV: 0,
-          shadowBlur: 0,
-          color: "#333333",
-          fontSize: 14,
-          fontWeight: "normal",
-          textDecoration: "none",
-          textAlign: "left",
-          letterSpacing: 0,
-          lineHeight: 1,
-          background: "#EEEFFF",
-        },
-        clip: {
-          w: 0,
-          h: 0,
-          x: 0,
-          y: 0,
-          scale: 1,
-          image: "",
-          cutout: "",
-          origin: "",
-          host: "",
-        },
-      },
-      {
-        uuid: "48576248-2560-4d23-b5d6-f6f415a2c6c0",
-        type: "image",
-        attr: {
-          brandName: "",
-          imageInfo: "",
-          linkType: 0,
-          link: "",
-          videoId: "",
-          position: { h: "left", v: "bottom", x: 6, y: 6 },
-        },
-        style: {
-          width: 275,
-          height: 400,
-          left: 590,
-          top: 222,
-          borderStyle: "solid",
-          borderColor: "#000000",
-          borderWidth: 0,
-          borderRadius: 0,
-          paddingTop: 0,
-          paddingBottom: 0,
-          paddingLeft: 0,
-          paddingRight: 0,
-          opacity: 100,
-          rotate: 0,
-          fliph: 1,
-          flipv: 1,
-          shadowColor: "#000000",
-          shadowH: 0,
-          shadowV: 0,
-          shadowBlur: 0,
-          color: "#333333",
-          fontSize: 14,
-          fontWeight: "normal",
-          textDecoration: "none",
-          textAlign: "left",
-          letterSpacing: 0,
-          lineHeight: 1,
-          background: "#EEEFFF",
-        },
-        clip: {
-          w: 0,
-          h: 0,
-          x: 0,
-          y: 0,
-          scale: 1,
-          image: "",
-          cutout: "",
-          origin: "",
-          host: "",
-        },
-      },
-      {
-        uuid: "08384eec-3149-4dd9-8151-6b4c0407d978",
-        type: "image",
-        attr: {
-          brandName: "",
-          imageInfo: "",
-          linkType: 0,
-          link: "",
-          videoId: "",
-          position: { h: "left", v: "bottom", x: 6, y: 6 },
-        },
-        style: {
-          width: 275,
-          height: 210,
-          left: 590,
-          top: 626,
-          borderStyle: "solid",
-          borderColor: "#000000",
-          borderWidth: 0,
-          borderRadius: 0,
-          paddingTop: 0,
-          paddingBottom: 0,
-          paddingLeft: 0,
-          paddingRight: 0,
-          opacity: 100,
-          rotate: 0,
-          fliph: 1,
-          flipv: 1,
-          shadowColor: "#000000",
-          shadowH: 0,
-          shadowV: 0,
-          shadowBlur: 0,
-          color: "#333333",
-          fontSize: 14,
-          fontWeight: "normal",
-          textDecoration: "none",
-          textAlign: "left",
-          letterSpacing: 0,
-          lineHeight: 1,
-          background: "#EEEFFF",
-        },
-        clip: {
-          w: 0,
-          h: 0,
-          x: 0,
-          y: 0,
-          scale: 1,
-          image: "",
-          cutout: "",
-          origin: "",
-          host: "",
-        },
-      },
-      {
-        uuid: "af7b3d19-70a6-4800-afed-c4e9930c5b9f",
-        type: "image",
-        attr: {
-          brandName: "",
-          imageInfo: "",
-          linkType: 0,
-          link: "",
-          videoId: "",
-          position: { h: "left", v: "bottom", x: 6, y: 6 },
-        },
-        style: {
-          width: 275,
-          height: 210,
-          left: 869,
-          top: 222,
-          borderStyle: "solid",
-          borderColor: "#000000",
-          borderWidth: 0,
-          borderRadius: 0,
-          paddingTop: 0,
-          paddingBottom: 0,
-          paddingLeft: 0,
-          paddingRight: 0,
-          opacity: 100,
-          rotate: 0,
-          fliph: 1,
-          flipv: 1,
-          shadowColor: "#000000",
-          shadowH: 0,
-          shadowV: 0,
-          shadowBlur: 0,
-          color: "#333333",
-          fontSize: 14,
-          fontWeight: "normal",
-          textDecoration: "none",
-          textAlign: "left",
-          letterSpacing: 0,
-          lineHeight: 1,
-          background: "#EEEFFF",
-        },
-        clip: {
-          w: 0,
-          h: 0,
-          x: 0,
-          y: 0,
-          scale: 1,
-          image: "",
-          cutout: "",
-          origin: "",
-          host: "",
-        },
-      },
-      {
-        uuid: "325e9912-4f77-4e57-a834-4a3950e93a4f",
-        type: "image",
-        attr: {
-          brandName: "",
-          imageInfo: "",
-          linkType: 0,
-          link: "",
-          videoId: "",
-          position: { h: "left", v: "bottom", x: 6, y: 6 },
-        },
-        style: {
-          width: 275,
-          height: 400,
-          left: 869,
-          top: 436,
-          borderStyle: "solid",
-          borderColor: "#000000",
-          borderWidth: 0,
-          borderRadius: 0,
-          paddingTop: 0,
-          paddingBottom: 0,
-          paddingLeft: 0,
-          paddingRight: 0,
-          opacity: 100,
-          rotate: 0,
-          fliph: 1,
-          flipv: 1,
-          shadowColor: "#000000",
-          shadowH: 0,
-          shadowV: 0,
-          shadowBlur: 0,
-          color: "#333333",
-          fontSize: 14,
-          fontWeight: "normal",
-          textDecoration: "none",
-          textAlign: "left",
-          letterSpacing: 0,
-          lineHeight: 1,
-          background: "#EEEFFF",
-        },
-        clip: {
-          w: 0,
-          h: 0,
-          x: 0,
-          y: 0,
-          scale: 1,
-          image: "",
-          cutout: "",
-          origin: "",
-          host: "",
-        },
-      },
-      {
-        uuid: "92dbfaec-a2bc-48a4-ac2e-014f462787fd",
-        type: "image",
-        attr: {
-          brandName: "",
-          imageInfo: "",
-          linkType: 0,
-          link: "",
-          videoId: "",
-          position: { h: "left", v: "bottom", x: 6, y: 6 },
-        },
-        style: {
-          width: 228,
-          height: 228,
-          left: 194,
-          top: 510,
-          borderStyle: "solid",
-          borderColor: "#ffffff",
-          borderWidth: 4,
-          borderRadius: 114,
-          paddingTop: 0,
-          paddingBottom: 0,
-          paddingLeft: 0,
-          paddingRight: 0,
-          opacity: 100,
-          rotate: 0,
-          fliph: 1,
-          flipv: 1,
-          shadowColor: "#000000",
-          shadowH: 0,
-          shadowV: 0,
-          shadowBlur: 0,
-          color: "#333333",
-          fontSize: 14,
-          fontWeight: "normal",
-          textDecoration: "none",
-          textAlign: "left",
-          letterSpacing: 0,
-          lineHeight: 1,
-          background: "#EEEFFF",
-        },
-        clip: {
-          w: 0,
-          h: 0,
-          x: 0,
-          y: 0,
-          scale: 1,
-          image: "",
-          cutout: "",
-          origin: "",
-          host: "",
-        },
-      },
-      {
-        uuid: "0060e7e4-e472-4587-908a-b69d8d298e9b",
-        type: "image",
-        attr: {
-          brandName: "",
-          imageInfo: "",
-          linkType: 0,
-          link: "",
-          videoId: "",
-          position: { h: "left", v: "bottom", x: 6, y: 6 },
-        },
-        style: {
-          width: 228,
-          height: 228,
-          left: 748,
-          top: 318,
-          borderStyle: "solid",
-          borderColor: "#ffffff",
-          borderWidth: 4,
-          borderRadius: 114,
-          paddingTop: 0,
-          paddingBottom: 0,
-          paddingLeft: 0,
-          paddingRight: 0,
-          opacity: 100,
-          rotate: 0,
-          fliph: 1,
-          flipv: 1,
-          shadowColor: "#000000",
-          shadowH: 0,
-          shadowV: 0,
-          shadowBlur: 0,
-          color: "#333333",
-          fontSize: 14,
-          fontWeight: "normal",
-          textDecoration: "none",
-          textAlign: "left",
-          letterSpacing: 0,
-          lineHeight: 1,
-          background: "#EEEFFF",
-        },
-        clip: {
-          w: 0,
-          h: 0,
-          x: 0,
-          y: 0,
-          scale: 1,
-          image: "",
-          cutout: "",
-          origin: "",
-          host: "",
-        },
-      },
-      {
-        uuid: "1ca4e4c3-662b-4eee-8c63-b86c75d226eb",
-        type: "svg",
-        paths: [
-          {
-            path: "M720.987429 877.714286H302.994286C216.557714 877.714286 146.285714 807.442286 146.285714 720.987429V302.994286C146.285714 216.557714 216.557714 146.285714 303.012571 146.285714H721.005714C807.442286 146.285714 877.714286 216.557714 877.714286 303.012571V721.005714C877.714286 807.442286 807.442286 877.714286 720.987429 877.714286z",
-            fill: "",
-          },
-          {
-            path: "M519.661714 376.667429c0.256-40.32 0-80.365714 0.256-120.667429h80.822857c-0.237714 7.168 0.804571 14.317714 1.828572 20.955429h-59.428572v326.454857a78.299429 78.299429 0 0 1-9.929142 39.771428 66.084571 66.084571 0 0 1-51.108572 33.152c-13.293714 1.060571-26.843429-1.334857-38.838857-8.228571A68.352 68.352 0 0 1 420.571429 647.424c20.608 11.666286 47.451429 10.605714 67.529142-2.377143 19.309714-12.214857 31.817143-34.742857 31.817143-58.349714-0.256-69.741714-0.256-140.032-0.256-210.029714z m133.248-23.076572a116.096 116.096 0 0 0 36.754286 15.652572c7.826286 1.846857 15.396571 2.377143 23.478857 2.377142v18.56a115.620571 115.620571 0 0 1-60.233143-36.589714z",
-            fill: "#25F4EE",
-          },
-          {
-            path: "M379.977143 461.110857A137.801143 137.801143 0 0 1 475.428571 440.374857v19.437714a148.150857 148.150857 0 0 0-26.148571 3.145143 150.345143 150.345143 0 0 0-58.642286 27.044572c-18.797714 14.445714-33.005714 34.121143-42.916571 55.917714a155.904 155.904 0 0 0-13.952 66.925714c0 25.472 6.857143 49.883429 18.285714 72.210286 5.302857 10.24 11.666286 19.931429 19.785143 28.086857a141.732571 141.732571 0 0 1-40.868571-46.464 155.904 155.904 0 0 1-20.059429-81.371428 157.092571 157.092571 0 0 1 21.577143-74.313143 146.413714 146.413714 0 0 1 47.488-49.883429z",
-            fill: "#25F4EE",
-          },
-          {
-            path: "M544.512 274.285714h59.282286c2.066286 11.538286 6.217143 22.564571 11.392 33.060572 8.283429 16.274286 20.187429 30.701714 35.474285 40.155428 1.024 0.786286 1.792 1.298286 2.322286 2.358857a113.554286 113.554286 0 0 0 60.050286 36.205715c0.256 20.992 0 42.496 0 63.762285a188.233143 188.233143 0 0 1-110.537143-35.419428c0 50.651429 0 101.284571 0.256 151.917714 0 6.564571 0.256 13.385143 0 20.48a167.405714 167.405714 0 0 1-21.485714 70.308572 149.851429 149.851429 0 0 1-41.673143 47.744 133.083429 133.083429 0 0 1-76.105143 26.514285c-13.970286 0.256-27.684571-0.274286-41.398857-3.419428a144.896 144.896 0 0 1-53.065143-23.606857l-1.042286-1.060572c-8.027429-8.118857-14.500571-17.828571-20.187428-28.068571A151.058286 151.058286 0 0 1 329.142857 603.062857c-0.256-22.838857 4.406857-46.189714 14.262857-66.925714 10.075429-21.76 25.088-41.435429 43.721143-55.881143a151.68 151.68 0 0 1 86.473143-30.171429c0.256 8.137143 0 16.274286 0.256 23.881143v41.197715c-10.093714-3.419429-21.229714-3.419429-31.579429-1.060572-12.434286 2.889143-24.338286 8.411429-33.92 16.804572a59.172571 59.172571 0 0 0-14.482285 18.633142c-6.217143 12.068571-8.283429 25.965714-7.003429 39.350858 1.298286 13.110857 7.003429 25.709714 15.286857 35.419428 5.430857 7.094857 12.928 12.342857 20.187429 17.316572 5.942857 8.411429 13.458286 15.488 22.509714 20.48a70.857143 70.857143 0 0 0 38.582857 8.118857c20.699429-1.298286 40.374857-14.427429 50.724572-32.786286 6.473143-12.068571 10.093714-25.728 9.837714-39.369143 0.768-108.361143 0.512-216.210286 0.512-323.785143z",
-            fill: "#FFFFFF",
-          },
-          {
-            path: "M598.930286 274.285714c6.985143 0.256 13.952 0 21.174857 0 0 23.515429 7.241143 47.012571 20.662857 66.340572 1.828571 2.358857 3.364571 4.443429 5.174857 6.528-15.232-9.398857-27.373714-23.771429-35.382857-39.954286a155.062857 155.062857 0 0 1-11.629714-32.914286z m109.257143 111.268572c7.753143 1.828571 15.232 2.358857 23.241142 2.358857v81.737143c-39.515429 0.274286-79.030857-13.056-111.323428-36.297143v161.938286a154.569143 154.569143 0 0 1-3.346286 36.315428 149.540571 149.540571 0 0 1-58.88 90.642286 143.597714 143.597714 0 0 1-52.699428 23.771428 144.237714 144.237714 0 0 1-69.211429-1.060571A142.994286 142.994286 0 0 1 365.714286 702.134857a142.336 142.336 0 0 0 52.937143 23.497143c13.44 3.145143 27.392 3.931429 41.325714 3.401143a133.632 133.632 0 0 0 75.940571-26.386286c17.042286-12.525714 30.72-28.982857 41.581715-47.542857a167.497143 167.497143 0 0 0 21.430857-69.997714c0.256-6.528 0.256-13.312 0-20.370286-0.256-50.413714-0.256-100.827429-0.256-151.222857a183.972571 183.972571 0 0 0 110.281143 35.254857c-0.768-20.900571-0.512-42.057143-0.768-63.213714z",
-            fill: "#FE2C55",
-          },
-          {
-            path: "M470.454857 457.142857c7.753143 0 15.506286 0.256 23.259429 1.261714v80.512a63.506286 63.506286 0 0 0-34.889143-1.261714 66.249143 66.249143 0 0 0-47.835429 41.398857 63.817143 63.817143 0 0 0 8.777143 60.946286 70.4 70.4 0 0 1-20.150857-16.548571c-8.265143-9.545143-13.952-21.577143-15.250286-33.865143-1.28-12.8 0.786286-26.331429 6.985143-37.632 3.364571-6.765714 8.777143-12.8 14.464-17.810286 9.837714-8.027429 21.979429-13.037714 33.865143-16.054857 10.349714-2.249143 21.467429-2.249143 31.542857 1.005714v-39.369143c-0.768-7.277714-0.256-15.049143-0.768-22.582857z",
-            fill: "#FE2C55",
-          },
-        ],
-        style: {
-          width: 200,
-          height: 200,
-          left: 32,
-          top: 227,
-          borderStyle: "solid",
-          borderColor: "#000000",
-          borderWidth: 0,
-          borderRadius: 0,
-          paddingTop: 0,
-          paddingBottom: 0,
-          paddingLeft: 0,
-          paddingRight: 0,
-          opacity: 100,
-          rotate: 0,
-          fliph: 1,
-          flipv: 1,
-          shadowColor: "#000000",
-          shadowH: 0,
-          shadowV: 0,
-          shadowBlur: 0,
-          color: "#333333",
-          fontSize: 14,
-          fontWeight: "normal",
-          textDecoration: "none",
-          textAlign: "left",
-          letterSpacing: 0,
-          lineHeight: 1,
-          w: 1024,
-          h: 1024,
-          fill: "#170B1A",
-          stroke: "",
-          strokeWidth: 0,
-        },
-      },
-      {
-        uuid: "480f411c-5756-445b-9cf6-e049205c1c5e",
-        type: "text",
-        text: "01 双击此处添加文字",
-        style: {
-          width: 323.5,
-          height: 224,
-          left: 397,
-          top: 227,
-          borderStyle: "dashed",
-          borderColor: "rgba(25, 118, 232, 1)",
-          borderWidth: 5,
-          borderRadius: 20,
-          paddingTop: 0,
-          paddingBottom: 0,
-          paddingLeft: 0,
-          paddingRight: 0,
-          opacity: 100,
-          rotate: 20,
-          fliph: 1,
-          flipv: 1,
-          shadowColor: "rgba(207, 97, 97, 1)",
-          shadowH: 8,
-          shadowV: 8,
-          shadowBlur: 8,
-          color: "#333333",
-          fontSize: 70,
-          fontWeight: "bold",
-          textDecoration: "none",
-          textAlign: "left",
-          letterSpacing: 0,
-          lineHeight: 1,
-          color: "#fff",
-          textShadow: "0 0 8px #000",
-          textStroke: "2px #f00",
-          fontFamily: "SourceHanSansSC-Bold"
-        },
-      },
-    ],
-    cover: "/upload/report/page_cover/1/93216_345945.jpg",
-    cover_host: "https://imgf1.pop-fashion.com",
-  },
-  {
-    sub_id: 93217,
-    page_id: 345946,
-    uuid: "698139d2-7f87-4d30-9416-6a09cddf7551",
-    tpl_id: "00000000-0000-0000-0000-000000000000",
-    type: "page",
-    title: "测试ce",
-    tag: [],
-    style: { width: 1176, height: 1568 },
-    backgroundElement: {
-      uuid: "90adb624-04d8-407f-8737-6240a66b7f28",
-      type: "background",
-      style: {
-        width: "100%",
-        height: "100%",
-        left: 0,
-        top: 0,
-        borderStyle: "solid",
-        borderColor: "#000000",
-        borderWidth: 0,
-        borderRadius: 0,
-        paddingTop: 0,
-        paddingBottom: 0,
-        paddingLeft: 0,
-        paddingRight: 0,
-        opacity: 100,
-        rotate: 0,
-        fliph: 1,
-        flipv: 1,
-        shadowColor: "#000000",
-        shadowH: 0,
-        shadowV: 0,
-        shadowBlur: 0,
-        color: "#333333",
-        fontSize: 14,
-        fontWeight: "normal",
-        textDecoration: "none",
-        textAlign: "left",
-        letterSpacing: 0,
-        lineHeight: 1,
-        background:
-          "linear-gradient(188deg, rgba(255, 255, 255, 1) 0%, rgba(238, 221, 232, 1) 59%, rgba(206, 188, 214, 1) 59%, rgba(220, 206, 231, 1) 113%)",
-      },
-      clip: {
-        w: 0,
-        h: 0,
-        x: 0,
-        y: 0,
-        scale: 1,
-        image: "",
-        cutout: "",
-        origin: "",
-        host: "",
-      },
-    },
-    elements: [
-      {
-        uuid: "7d389b91-2241-45c5-b32a-b9703099b0e2",
-        type: "text",
-        text: "多层次穿衣法则--女装连衣裙组货搭配",
-        style: {
-          width: 656,
-          height: 60,
-          left: 32,
-          top: 32,
-          borderStyle: "solid",
-          borderColor: "#000000",
-          borderWidth: 0,
-          borderRadius: 0,
-          paddingTop: 0,
-          paddingBottom: 0,
-          paddingLeft: 0,
-          paddingRight: 0,
-          opacity: 100,
-          rotate: 0,
-          fliph: 1,
-          flipv: 1,
-          shadowColor: "#000000",
-          shadowH: 0,
-          shadowV: 0,
-          shadowBlur: 0,
-          color: "#ffffff",
-          fontSize: 36,
-          fontWeight: "bold",
-          textDecoration: "none",
-          textAlign: "center",
-          letterSpacing: 10,
-          lineHeight: 60,
-          background: "#1A232C",
-        },
-      },
-      {
-        uuid: "b76cd7d2-7c06-4c74-a1f6-139099489399",
-        type: "text",
-        text: "为满足现代女性对新生活的精致要求，连衣裙单品的穿 <a href='' target='_blank'>Onepiece</a> 搭方式不再以单一的Onepiece呈现。将层层单品往身上叠的 Layering 技巧已经大肆流行开来，连衣裙单品也在2022春夏中与各类单品层叠组合呈现，整体造型诠释错落的视觉效果、里外的对比关系，让原本柔和优雅的单品通过不同的穿搭方式表达出更多的情绪风格。为满足现代女性对新生活的精致要求，连衣裙单品的穿搭方式不再以单一的Onepiece呈现。",
-        style: {
-          width: 1112,
-          height: 88,
-          left: 32,
-          top: 116,
-          borderStyle: "solid",
-          borderColor: "#000000",
-          borderWidth: 0,
-          borderRadius: 0,
-          paddingTop: 0,
-          paddingBottom: 0,
-          paddingLeft: 0,
-          paddingRight: 0,
-          opacity: 100,
-          rotate: 0,
-          fliph: 1,
-          flipv: 1,
-          shadowColor: "#000000",
-          shadowH: 0,
-          shadowV: 0,
-          shadowBlur: 0,
-          color: "#555555",
-          fontSize: 16,
-          fontWeight: "normal",
-          textDecoration: "none",
-          textAlign: "left",
-          letterSpacing: 0,
-          lineHeight: 30,
-        },
-      },
-      {
-        uuid: "2302b9fb-345a-4665-9aa2-24827cd9dbb0",
-        type: "image",
-        attr: {
-          brandName: "",
-          imageInfo: "",
-          linkType: 0,
-          link: "",
-          videoId: "",
-          position: { h: "left", v: "bottom", x: 6, y: 6 },
-        },
-        style: {
-          width: 275,
-          height: 400,
-          left: 32,
-          top: 222,
-          borderStyle: "solid",
-          borderColor: "#000000",
-          borderWidth: 0,
-          borderRadius: 0,
-          paddingTop: 0,
-          paddingBottom: 0,
-          paddingLeft: 0,
-          paddingRight: 0,
-          opacity: 100,
-          rotate: 0,
-          fliph: 1,
-          flipv: 1,
-          shadowColor: "#000000",
-          shadowH: 0,
-          shadowV: 0,
-          shadowBlur: 0,
-          color: "#333333",
-          fontSize: 14,
-          fontWeight: "normal",
-          textDecoration: "none",
-          textAlign: "left",
-          letterSpacing: 0,
-          lineHeight: 1,
-          background: "#EEEFFF",
-        },
-        clip: {
-          w: 0,
-          h: 0,
-          x: 0,
-          y: 0,
-          scale: 1,
-          image: "",
-          cutout: "",
-          origin: "",
-          host: "",
-        },
-      },
-      {
-        uuid: "9999c798-905d-41ba-90e6-f950f0e0531f",
-        type: "image",
-        attr: {
-          brandName: "",
-          imageInfo: "",
-          linkType: 0,
-          link: "",
-          videoId: "",
-          position: { h: "left", v: "bottom", x: 6, y: 6 },
-        },
-        style: {
-          width: 275,
-          height: 210,
-          left: 32,
-          top: 626,
-          borderStyle: "solid",
-          borderColor: "#000000",
-          borderWidth: 0,
-          borderRadius: 0,
-          paddingTop: 0,
-          paddingBottom: 0,
-          paddingLeft: 0,
-          paddingRight: 0,
-          opacity: 100,
-          rotate: 0,
-          fliph: 1,
-          flipv: 1,
-          shadowColor: "#000000",
-          shadowH: 0,
-          shadowV: 0,
-          shadowBlur: 0,
-          color: "#333333",
-          fontSize: 14,
-          fontWeight: "normal",
-          textDecoration: "none",
-          textAlign: "left",
-          letterSpacing: 0,
-          lineHeight: 1,
-          background: "#EEEFFF",
-        },
-        clip: {
-          w: 0,
-          h: 0,
-          x: 0,
-          y: 0,
-          scale: 1,
-          image: "",
-          cutout: "",
-          origin: "",
-          host: "",
-        },
-      },
-      {
-        uuid: "ed907825-3647-46cb-b076-9dfca12e7510",
-        type: "image",
-        attr: {
-          brandName: "",
-          imageInfo: "",
-          linkType: 0,
-          link: "",
-          videoId: "",
-          position: { h: "left", v: "bottom", x: 6, y: 6 },
-        },
-        style: {
-          width: 275,
-          height: 210,
-          left: 311,
-          top: 222,
-          borderStyle: "solid",
-          borderColor: "#000000",
-          borderWidth: 0,
-          borderRadius: 0,
-          paddingTop: 0,
-          paddingBottom: 0,
-          paddingLeft: 0,
-          paddingRight: 0,
-          opacity: 100,
-          rotate: 0,
-          fliph: 1,
-          flipv: 1,
-          shadowColor: "#000000",
-          shadowH: 0,
-          shadowV: 0,
-          shadowBlur: 0,
-          color: "#333333",
-          fontSize: 14,
-          fontWeight: "normal",
-          textDecoration: "none",
-          textAlign: "left",
-          letterSpacing: 0,
-          lineHeight: 1,
-          background: "#EEEFFF",
-        },
-        clip: {
-          w: 0,
-          h: 0,
-          x: 0,
-          y: 0,
-          scale: 1,
-          image: "",
-          cutout: "",
-          origin: "",
-          host: "",
-        },
-      },
-      {
-        uuid: "43b9e55c-c492-4c0d-b3f6-cf31434f46df",
-        type: "image",
-        attr: {
-          brandName: "",
-          imageInfo: "",
-          linkType: 0,
-          link: "",
-          videoId: "",
-          position: { h: "left", v: "bottom", x: 6, y: 6 },
-        },
-        style: {
-          width: 275,
-          height: 400,
-          left: 311,
-          top: 436,
-          borderStyle: "solid",
-          borderColor: "#000000",
-          borderWidth: 0,
-          borderRadius: 0,
-          paddingTop: 0,
-          paddingBottom: 0,
-          paddingLeft: 0,
-          paddingRight: 0,
-          opacity: 100,
-          rotate: 0,
-          fliph: 1,
-          flipv: 1,
-          shadowColor: "#000000",
-          shadowH: 0,
-          shadowV: 0,
-          shadowBlur: 0,
-          color: "#333333",
-          fontSize: 14,
-          fontWeight: "normal",
-          textDecoration: "none",
-          textAlign: "left",
-          letterSpacing: 0,
-          lineHeight: 1,
-          background: "#EEEFFF",
-        },
-        clip: {
-          w: 0,
-          h: 0,
-          x: 0,
-          y: 0,
-          scale: 1,
-          image: "",
-          cutout: "",
-          origin: "",
-          host: "",
-        },
-      },
-      {
-        uuid: "48576248-2560-4d23-b5d6-f6f415a2c6c0",
-        type: "image",
-        attr: {
-          brandName: "",
-          imageInfo: "",
-          linkType: 0,
-          link: "",
-          videoId: "",
-          position: { h: "left", v: "bottom", x: 6, y: 6 },
-        },
-        style: {
-          width: 275,
-          height: 400,
-          left: 590,
-          top: 222,
-          borderStyle: "solid",
-          borderColor: "#000000",
-          borderWidth: 0,
-          borderRadius: 0,
-          paddingTop: 0,
-          paddingBottom: 0,
-          paddingLeft: 0,
-          paddingRight: 0,
-          opacity: 100,
-          rotate: 0,
-          fliph: 1,
-          flipv: 1,
-          shadowColor: "#000000",
-          shadowH: 0,
-          shadowV: 0,
-          shadowBlur: 0,
-          color: "#333333",
-          fontSize: 14,
-          fontWeight: "normal",
-          textDecoration: "none",
-          textAlign: "left",
-          letterSpacing: 0,
-          lineHeight: 1,
-          background: "#EEEFFF",
-        },
-        clip: {
-          w: 0,
-          h: 0,
-          x: 0,
-          y: 0,
-          scale: 1,
-          image: "",
-          cutout: "",
-          origin: "",
-          host: "",
-        },
-      },
-      {
-        uuid: "08384eec-3149-4dd9-8151-6b4c0407d978",
-        type: "image",
-        attr: {
-          brandName: "",
-          imageInfo: "",
-          linkType: 0,
-          link: "",
-          videoId: "",
-          position: { h: "left", v: "bottom", x: 6, y: 6 },
-        },
-        style: {
-          width: 275,
-          height: 210,
-          left: 590,
-          top: 626,
-          borderStyle: "solid",
-          borderColor: "#000000",
-          borderWidth: 0,
-          borderRadius: 0,
-          paddingTop: 0,
-          paddingBottom: 0,
-          paddingLeft: 0,
-          paddingRight: 0,
-          opacity: 100,
-          rotate: 0,
-          fliph: 1,
-          flipv: 1,
-          shadowColor: "#000000",
-          shadowH: 0,
-          shadowV: 0,
-          shadowBlur: 0,
-          color: "#333333",
-          fontSize: 14,
-          fontWeight: "normal",
-          textDecoration: "none",
-          textAlign: "left",
-          letterSpacing: 0,
-          lineHeight: 1,
-          background: "#EEEFFF",
-        },
-        clip: {
-          w: 0,
-          h: 0,
-          x: 0,
-          y: 0,
-          scale: 1,
-          image: "",
-          cutout: "",
-          origin: "",
-          host: "",
-        },
-      },
-      {
-        uuid: "af7b3d19-70a6-4800-afed-c4e9930c5b9f",
-        type: "image",
-        attr: {
-          brandName: "",
-          imageInfo: "",
-          linkType: 0,
-          link: "",
-          videoId: "",
-          position: { h: "left", v: "bottom", x: 6, y: 6 },
-        },
-        style: {
-          width: 275,
-          height: 210,
-          left: 869,
-          top: 222,
-          borderStyle: "solid",
-          borderColor: "#000000",
-          borderWidth: 0,
-          borderRadius: 0,
-          paddingTop: 0,
-          paddingBottom: 0,
-          paddingLeft: 0,
-          paddingRight: 0,
-          opacity: 100,
-          rotate: 0,
-          fliph: 1,
-          flipv: 1,
-          shadowColor: "#000000",
-          shadowH: 0,
-          shadowV: 0,
-          shadowBlur: 0,
-          color: "#333333",
-          fontSize: 14,
-          fontWeight: "normal",
-          textDecoration: "none",
-          textAlign: "left",
-          letterSpacing: 0,
-          lineHeight: 1,
-          background: "#EEEFFF",
-        },
-        clip: {
-          w: 0,
-          h: 0,
-          x: 0,
-          y: 0,
-          scale: 1,
-          image: "",
-          cutout: "",
-          origin: "",
-          host: "",
-        },
-      },
-      {
-        uuid: "325e9912-4f77-4e57-a834-4a3950e93a4f",
-        type: "image",
-        attr: {
-          brandName: "",
-          imageInfo: "",
-          linkType: 0,
-          link: "",
-          videoId: "",
-          position: { h: "left", v: "bottom", x: 6, y: 6 },
-        },
-        style: {
-          width: 275,
-          height: 400,
-          left: 869,
-          top: 436,
-          borderStyle: "solid",
-          borderColor: "#000000",
-          borderWidth: 0,
-          borderRadius: 0,
-          paddingTop: 0,
-          paddingBottom: 0,
-          paddingLeft: 0,
-          paddingRight: 0,
-          opacity: 100,
-          rotate: 0,
-          fliph: 1,
-          flipv: 1,
-          shadowColor: "#000000",
-          shadowH: 0,
-          shadowV: 0,
-          shadowBlur: 0,
-          color: "#333333",
-          fontSize: 14,
-          fontWeight: "normal",
-          textDecoration: "none",
-          textAlign: "left",
-          letterSpacing: 0,
-          lineHeight: 1,
-          background: "#EEEFFF",
-        },
-        clip: {
-          w: 0,
-          h: 0,
-          x: 0,
-          y: 0,
-          scale: 1,
-          image: "",
-          cutout: "",
-          origin: "",
-          host: "",
-        },
-      },
-      {
-        uuid: "92dbfaec-a2bc-48a4-ac2e-014f462787fd",
-        type: "image",
-        attr: {
-          brandName: "",
-          imageInfo: "",
-          linkType: 0,
-          link: "",
-          videoId: "",
-          position: { h: "left", v: "bottom", x: 6, y: 6 },
-        },
-        style: {
-          width: 228,
-          height: 228,
-          left: 194,
-          top: 510,
-          borderStyle: "solid",
-          borderColor: "#ffffff",
-          borderWidth: 4,
-          borderRadius: 114,
-          paddingTop: 0,
-          paddingBottom: 0,
-          paddingLeft: 0,
-          paddingRight: 0,
-          opacity: 100,
-          rotate: 0,
-          fliph: 1,
-          flipv: 1,
-          shadowColor: "#000000",
-          shadowH: 0,
-          shadowV: 0,
-          shadowBlur: 0,
-          color: "#333333",
-          fontSize: 14,
-          fontWeight: "normal",
-          textDecoration: "none",
-          textAlign: "left",
-          letterSpacing: 0,
-          lineHeight: 1,
-          background: "#EEEFFF",
-        },
-        clip: {
-          w: 0,
-          h: 0,
-          x: 0,
-          y: 0,
-          scale: 1,
-          image: "",
-          cutout: "",
-          origin: "",
-          host: "",
-        },
-      },
-      {
-        uuid: "0060e7e4-e472-4587-908a-b69d8d298e9b",
-        type: "image",
-        attr: {
-          brandName: "",
-          imageInfo: "",
-          linkType: 0,
-          link: "",
-          videoId: "",
-          position: { h: "left", v: "bottom", x: 6, y: 6 },
-        },
-        style: {
-          width: 228,
-          height: 228,
-          left: 748,
-          top: 318,
-          borderStyle: "solid",
-          borderColor: "#ffffff",
-          borderWidth: 4,
-          borderRadius: 114,
-          paddingTop: 0,
-          paddingBottom: 0,
-          paddingLeft: 0,
-          paddingRight: 0,
-          opacity: 100,
-          rotate: 0,
-          fliph: 1,
-          flipv: 1,
-          shadowColor: "#000000",
-          shadowH: 0,
-          shadowV: 0,
-          shadowBlur: 0,
-          color: "#333333",
-          fontSize: 14,
-          fontWeight: "normal",
-          textDecoration: "none",
-          textAlign: "left",
-          letterSpacing: 0,
-          lineHeight: 1,
-          background: "#EEEFFF",
-        },
-        clip: {
-          w: 0,
-          h: 0,
-          x: 0,
-          y: 0,
-          scale: 1,
-          image: "",
-          cutout: "",
-          origin: "",
-          host: "",
-        },
-      },
-      {
-        uuid: "1ca4e4c3-662b-4eee-8c63-b86c75d226eb",
-        type: "svg",
-        paths: [
-          {
-            path: "M720.987429 877.714286H302.994286C216.557714 877.714286 146.285714 807.442286 146.285714 720.987429V302.994286C146.285714 216.557714 216.557714 146.285714 303.012571 146.285714H721.005714C807.442286 146.285714 877.714286 216.557714 877.714286 303.012571V721.005714C877.714286 807.442286 807.442286 877.714286 720.987429 877.714286z",
-            fill: "",
-          },
-          {
-            path: "M519.661714 376.667429c0.256-40.32 0-80.365714 0.256-120.667429h80.822857c-0.237714 7.168 0.804571 14.317714 1.828572 20.955429h-59.428572v326.454857a78.299429 78.299429 0 0 1-9.929142 39.771428 66.084571 66.084571 0 0 1-51.108572 33.152c-13.293714 1.060571-26.843429-1.334857-38.838857-8.228571A68.352 68.352 0 0 1 420.571429 647.424c20.608 11.666286 47.451429 10.605714 67.529142-2.377143 19.309714-12.214857 31.817143-34.742857 31.817143-58.349714-0.256-69.741714-0.256-140.032-0.256-210.029714z m133.248-23.076572a116.096 116.096 0 0 0 36.754286 15.652572c7.826286 1.846857 15.396571 2.377143 23.478857 2.377142v18.56a115.620571 115.620571 0 0 1-60.233143-36.589714z",
-            fill: "#25F4EE",
-          },
-          {
-            path: "M379.977143 461.110857A137.801143 137.801143 0 0 1 475.428571 440.374857v19.437714a148.150857 148.150857 0 0 0-26.148571 3.145143 150.345143 150.345143 0 0 0-58.642286 27.044572c-18.797714 14.445714-33.005714 34.121143-42.916571 55.917714a155.904 155.904 0 0 0-13.952 66.925714c0 25.472 6.857143 49.883429 18.285714 72.210286 5.302857 10.24 11.666286 19.931429 19.785143 28.086857a141.732571 141.732571 0 0 1-40.868571-46.464 155.904 155.904 0 0 1-20.059429-81.371428 157.092571 157.092571 0 0 1 21.577143-74.313143 146.413714 146.413714 0 0 1 47.488-49.883429z",
-            fill: "#25F4EE",
-          },
-          {
-            path: "M544.512 274.285714h59.282286c2.066286 11.538286 6.217143 22.564571 11.392 33.060572 8.283429 16.274286 20.187429 30.701714 35.474285 40.155428 1.024 0.786286 1.792 1.298286 2.322286 2.358857a113.554286 113.554286 0 0 0 60.050286 36.205715c0.256 20.992 0 42.496 0 63.762285a188.233143 188.233143 0 0 1-110.537143-35.419428c0 50.651429 0 101.284571 0.256 151.917714 0 6.564571 0.256 13.385143 0 20.48a167.405714 167.405714 0 0 1-21.485714 70.308572 149.851429 149.851429 0 0 1-41.673143 47.744 133.083429 133.083429 0 0 1-76.105143 26.514285c-13.970286 0.256-27.684571-0.274286-41.398857-3.419428a144.896 144.896 0 0 1-53.065143-23.606857l-1.042286-1.060572c-8.027429-8.118857-14.500571-17.828571-20.187428-28.068571A151.058286 151.058286 0 0 1 329.142857 603.062857c-0.256-22.838857 4.406857-46.189714 14.262857-66.925714 10.075429-21.76 25.088-41.435429 43.721143-55.881143a151.68 151.68 0 0 1 86.473143-30.171429c0.256 8.137143 0 16.274286 0.256 23.881143v41.197715c-10.093714-3.419429-21.229714-3.419429-31.579429-1.060572-12.434286 2.889143-24.338286 8.411429-33.92 16.804572a59.172571 59.172571 0 0 0-14.482285 18.633142c-6.217143 12.068571-8.283429 25.965714-7.003429 39.350858 1.298286 13.110857 7.003429 25.709714 15.286857 35.419428 5.430857 7.094857 12.928 12.342857 20.187429 17.316572 5.942857 8.411429 13.458286 15.488 22.509714 20.48a70.857143 70.857143 0 0 0 38.582857 8.118857c20.699429-1.298286 40.374857-14.427429 50.724572-32.786286 6.473143-12.068571 10.093714-25.728 9.837714-39.369143 0.768-108.361143 0.512-216.210286 0.512-323.785143z",
-            fill: "#FFFFFF",
-          },
-          {
-            path: "M598.930286 274.285714c6.985143 0.256 13.952 0 21.174857 0 0 23.515429 7.241143 47.012571 20.662857 66.340572 1.828571 2.358857 3.364571 4.443429 5.174857 6.528-15.232-9.398857-27.373714-23.771429-35.382857-39.954286a155.062857 155.062857 0 0 1-11.629714-32.914286z m109.257143 111.268572c7.753143 1.828571 15.232 2.358857 23.241142 2.358857v81.737143c-39.515429 0.274286-79.030857-13.056-111.323428-36.297143v161.938286a154.569143 154.569143 0 0 1-3.346286 36.315428 149.540571 149.540571 0 0 1-58.88 90.642286 143.597714 143.597714 0 0 1-52.699428 23.771428 144.237714 144.237714 0 0 1-69.211429-1.060571A142.994286 142.994286 0 0 1 365.714286 702.134857a142.336 142.336 0 0 0 52.937143 23.497143c13.44 3.145143 27.392 3.931429 41.325714 3.401143a133.632 133.632 0 0 0 75.940571-26.386286c17.042286-12.525714 30.72-28.982857 41.581715-47.542857a167.497143 167.497143 0 0 0 21.430857-69.997714c0.256-6.528 0.256-13.312 0-20.370286-0.256-50.413714-0.256-100.827429-0.256-151.222857a183.972571 183.972571 0 0 0 110.281143 35.254857c-0.768-20.900571-0.512-42.057143-0.768-63.213714z",
-            fill: "#FE2C55",
-          },
-          {
-            path: "M470.454857 457.142857c7.753143 0 15.506286 0.256 23.259429 1.261714v80.512a63.506286 63.506286 0 0 0-34.889143-1.261714 66.249143 66.249143 0 0 0-47.835429 41.398857 63.817143 63.817143 0 0 0 8.777143 60.946286 70.4 70.4 0 0 1-20.150857-16.548571c-8.265143-9.545143-13.952-21.577143-15.250286-33.865143-1.28-12.8 0.786286-26.331429 6.985143-37.632 3.364571-6.765714 8.777143-12.8 14.464-17.810286 9.837714-8.027429 21.979429-13.037714 33.865143-16.054857 10.349714-2.249143 21.467429-2.249143 31.542857 1.005714v-39.369143c-0.768-7.277714-0.256-15.049143-0.768-22.582857z",
-            fill: "#FE2C55",
-          },
-        ],
-        style: {
-          width: 200,
-          height: 200,
-          left: 32,
-          top: 227,
-          borderStyle: "solid",
-          borderColor: "#000000",
-          borderWidth: 0,
-          borderRadius: 0,
-          paddingTop: 0,
-          paddingBottom: 0,
-          paddingLeft: 0,
-          paddingRight: 0,
-          opacity: 100,
-          rotate: 0,
-          fliph: 1,
-          flipv: 1,
-          shadowColor: "#000000",
-          shadowH: 0,
-          shadowV: 0,
-          shadowBlur: 0,
-          color: "#333333",
-          fontSize: 14,
-          fontWeight: "normal",
-          textDecoration: "none",
-          textAlign: "left",
-          letterSpacing: 0,
-          lineHeight: 1,
-          w: 1024,
-          h: 1024,
-          fill: "#170B1A",
-          stroke: "",
-          strokeWidth: 0,
-        },
-      },
-      {
-        uuid: "480f411c-5756-445b-9cf6-e049205c1c5e",
-        type: "text",
-        text: "双击此处添加文字",
-        style: {
-          width: 323.5,
-          height: 224,
-          left: 397,
-          top: 227,
-          borderStyle: "dashed",
-          borderColor: "rgba(25, 118, 232, 1)",
-          borderWidth: 5,
-          borderRadius: 20,
-          paddingTop: 0,
-          paddingBottom: 0,
-          paddingLeft: 0,
-          paddingRight: 0,
-          opacity: 100,
-          rotate: 20,
-          fliph: 1,
-          flipv: 1,
-          shadowColor: "rgba(207, 97, 97, 1)",
-          shadowH: 8,
-          shadowV: 8,
-          shadowBlur: 8,
-          color: "#333333",
-          fontSize: 70,
-          fontWeight: "bold",
-          textDecoration: "none",
-          textAlign: "left",
-          letterSpacing: 0,
-          lineHeight: 1,
-          color: "#fff",
-          textShadow: "0 0 8px #000",
-          textStroke: "2px #f00",
-          // fontFamily: "思源"
-          fontFamily: "SourceHanSansSC-Bold"
-        },
-      },
-    ],
-    cover: "/upload/report/page_cover/1/93216_345945.jpg",
-    cover_host: "https://imgf1.pop-fashion.com",
-  },
+// var isPdf = $('.pop-report .layer-main').data('type') || '';
+var reportData = [{"sub_id":96981,"page_id":349706,"uuid":"3227d28a-c130-45b5-be57-d5c2cc046e13","tpl_id":"b8882b93-99a0-4e57-a069-e92e6c7fc154","type":"page","title":"针法几何","tag":[],"style":{"width":1176,"height":868},"backgroundElement":{"uuid":"3ea366f7-1ea6-43ee-a599-26f4ef81981a","type":"background","style":{"width":"100%","height":"100%","left":0,"top":0,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000000","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"background":"#f9eff9"},"clip":{"w":0,"h":0,"x":0,"y":0,"scale":1,"image":"","cutout":"","origin":"","host":""}},"elements":[{"uuid":"855df31c-3d42-43c9-b469-a9684bcbd574","type":"group","appflag":"","style":{"width":312.99997965495,"height":75.500000847711,"left":0,"top":24.734369913737,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000000","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"elements":[{"uuid":"f49ff6c1-460f-4b71-a718-d9e8a1269a29","type":"svg","paths":[{"path":"M105.673143 91.428571h231.990857v45.970286H158.592V512H105.618286zM927.780571 932.571429H685.714286v-47.963429h186.843428V493.714286h55.277715z","fill":""}],"style":{"width":313,"height":75.509527755971,"left":0.0078342982700974,"top":0.010866208277282,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"w":1024,"h":1024,"fill":"rgba(168, 201, 223, 1)","stroke":"","strokeWidth":0}},
+{"uuid":"9db23453-7601-444d-9bf9-f6fc1235c032","type":"svg","paths":[{"path":"M438.857143 73.142857h493.714286v877.714286H54.857143z","fill":""}],"style":{"width":129.90427675352,"height":44.16185913398,"left":166.09572324648,"top":27.358534830268,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"w":1024,"h":1024,"fill":"rgba(168, 201, 223, 1)","stroke":"","strokeWidth":0}}]},
+{"uuid":"e78ac634-98c9-479c-bbc7-850dbde7e61d","type":"text","text":"<span style=\"color: rgb(68, 64, 64);\">针法几何</span>","style":{"width":308.92775449648,"height":60,"left":32,"top":32,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":24,"paddingRight":24,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"rgba(65, 65, 65, 1)","fontSize":36,"fontWeight":"bold","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":60,"background":"rgba(26, 35, 44, 0)","fontFamily":"SourceHanSansSC-Regular.woff","textStrokeWidth":0,"textStrokeColor":"#000"}},
+{"uuid":"f7c9f193-de9d-4be5-bc1e-fb336e65c4dc","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"clip":{"w":0,"h":0,"x":null,"y":null,"scale":1,"image":"","cutout":"","origin":"","host":""},"style":{"width":297.98833490728,"height":650,"left":31.99214054988,"top":186,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"background":"rgba(168, 201, 223, 1)"}},
+{"uuid":"e1ec9666-dc9b-4585-ac33-73ee316f9db9","type":"image","attr":{"brandName":"品牌名","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":254.62987275176,"height":398.53191489362,"left":52.63087949648,"top":235,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"background":"rgba(255, 255, 255, 1)"},"clip":{"w":1488.308366825,"h":1347.9948253558,"x":-617.84951399038,"y":-509.99137559293,"scale":0.31,"image":"/upload/report/image/20220112/lS7SvtCwz0SnmPgu6J6ibsNFbJZ4pcRq38NzRhk7.jpeg","cutout":"/upload/report/image/20220112/lS7SvtCwz0SnmPgu6J6ibsNFbJZ4pcRq38NzRhk7clear_bg.png","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null},
+{"uuid":"aa7154ae-3b2e-46f2-89ef-c21f7a972afe","type":"text","text":"文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字","style":{"width":1112,"height":63,"left":32,"top":112,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#555555","fontSize":16,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":30,"fontFamily":"REEJI-ZhenyanGB2.0-Medium.ttf","textStrokeWidth":0,"textStrokeColor":"#000"}},
+{"uuid":"3b42d6fd-777a-4068-a9c1-35a207fed07a","type":"text","text":"针法POLO衫","style":{"width":295.92775449648,"height":54.185809488011,"left":32,"top":696.78687150597,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#FFFFFF","fontSize":38,"fontWeight":"bold","textDecoration":"none","textAlign":"center","letterSpacing":5,"lineHeight":39.8,"fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000"}},
+{"uuid":"fa309488-3e1a-4e26-a188-63ef06e13ab6","type":"text","text":"<span style=\"font-size: 30px; font-weight: 400;\">颗粒肌理</span>","style":{"width":295.92775449648,"height":74.185809488011,"left":32,"top":745.78687150597,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#FFFFFF","fontSize":38,"fontWeight":"bold","textDecoration":"none","textAlign":"center","letterSpacing":6,"lineHeight":30,"fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000"}},
+{"uuid":"a2c2276b-e90b-40c2-837f-6ff65431639e","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":262.9456928839,"height":327.83697745196,"left":881.07671120938,"top":508.18384344829,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":1500,"h":2275,"x":-616.52715355805,"y":-977.75,"scale":0.24,"image":"/upload/report/image/20220112/lliQYZWHhA4fubOrTF9epwr5uWlOmUPJeLT5MckL.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null},
+{"uuid":"aff2fe35-ef19-4e12-b91a-20b1071750d8","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":262.4456928839,"height":316.33700118785,"left":881.57671120938,"top":186.02082090025,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":-1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":534,"h":712,"x":-133.77715355805,"y":-217.56,"scale":0.53,"image":"/upload/report/image/20220112/2oX5Xm2VS90wFcJ2ywZU1SeKzcGQgUvstKg3jiKV.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null},
+{"uuid":"1e8d85cb-c49e-4cfa-9a07-ce5c126ea4a1","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":262.9456928839,"height":327.83697745196,"left":610.07671120938,"top":508.18386718418,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":3247,"h":4329,"x":-1488.0271535581,"y":-2028.34,"scale":0.1,"image":"/upload/report/image/20220112/3mhGJelov7AvMrkDqVwTa1kBjoJauvDc9rteWkfF.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null},
+{"uuid":"978edd1b-8bcb-4011-b77b-b5f6cf45f827","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":262.4456928839,"height":316.33697745196,"left":610.57671120938,"top":186.02084463614,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":984,"h":1312,"x":-367.77715355805,"y":-500.88,"scale":0.33,"image":"/upload/report/image/20220112/8kx6P2b4q2Bz4XTz7CTgbu5RRcJPQVy8dxRoatlT.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null},
+{"uuid":"fc02808d-48ce-4f0e-8bb9-a9044b6bc81b","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":262.9456928839,"height":327.83697745196,"left":340.94197926923,"top":508.18386718418,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":1500,"h":2000,"x":-624.52715355805,"y":-858,"scale":0.23,"image":"/upload/report/image/20220112/qOXK1WHm2Gp9paEub912KaUkjDHx0hPBff0HGz4T.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null},
+{"uuid":"eb7e2efe-dbfe-4f6b-a877-bfc5fbf9a607","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":262.4456928839,"height":316.33697745196,"left":341.44197926923,"top":186.02084463614,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":1369,"h":1826,"x":-564.27715355805,"y":-750.53,"scale":0.19,"image":"/upload/report/image/20220112/4XKseDtSwbyXm1kW5pIN8j8wFYp0A3bUb4ppQo1O.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null},
+{"uuid":"ebde1bad-5dcd-456d-aa50-a37601895df0","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":223.80509745127,"height":314.70266763967,"left":769.67416248374,"top":290.29733236033,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000000","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":235.90904620665,"h":314.70266763967,"x":-6.6571718154545,"y":0,"scale":1,"image":"/upload/report/image/20220112/KqeaNqXmAZWsTIrUtjhGyugnUGtgxQ8LDkbChfDU.jpeg","cutout":"/upload/report/image/20220112/KqeaNqXmAZWsTIrUtjhGyugnUGtgxQ8LDkbChfDUclear_bg.png","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null},
+{"uuid":"594fdbe5-1b4a-4044-9266-b63ced755e86","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":178,"height":178,"left":450,"top":383,"borderStyle":"solid","borderColor":"#ffffff","borderWidth":4,"borderRadius":114,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"background":"#EEEFFF"},"clip":{"w":1585,"h":2000,"x":-596.5,"y":-1157,"scale":0.41,"image":"/upload/report/image/20220112/syLleFhxychM0ijSd3QfR4z2WrLofvsFY2fzrRht.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null},
+{"uuid":"57cf45e5-0cfb-464e-b109-6331e45e8e7a","type":"text","text":"123456","style":{"width":138,"height":38,"left":371,"top":47,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#555555","fontSize":16,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":30,"fontFamily":"Voca.ttf","textStrokeWidth":0,"textStrokeColor":"#000"}},
+{"uuid":"42f5a48c-8a2e-4578-bbc9-dbe9d08eec7a","type":"svg","paths":[{"path":"M493.714286 512m-457.142857 0a457.142857 457.142857 0 1 0 914.285714 0 457.142857 457.142857 0 1 0-914.285714 0Z","fill":""}],"style":{"width":200,"height":200,"left":488,"top":334,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000000","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"w":1024,"h":1024,"fill":"#FF8D40","stroke":"","strokeWidth":0}}],"cover":"/upload/report/page_cover/1/96981_349706.jpg","cover_host":"https://imgf1.pop-fashion.com"},
+{"sub_id":96982,"page_id":349707,"uuid":"55674e6b-d51c-4a3b-99de-a478cc3b452d","tpl_id":"b8882b93-99a0-4e57-a069-e92e6c7fc154","type":"page","title":"宽条纹","tag":[],"style":{"width":1176,"height":868},"backgroundElement":{"uuid":"00000010-0000-0000-0000-000000000001","type":"background","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"clip":{"w":0,"h":0,"x":0,"y":0,"scale":1,"image":"","cutout":"","origin":"","host":""},"style":{"width":"100%","height":"100%","left":0,"top":0,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"background":"#ffffff"}},"elements":[{"uuid":"f459d75c-3290-4973-bf5f-c5218685cc9b","type":"group","appflag":"","style":{"width":312.99997965495,"height":75.500000847711,"left":0,"top":24.734369913737,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000000","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"elements":[{"uuid":"f49ff6c1-460f-4b71-a718-d9e8a1269a29","type":"svg","paths":[{"path":"M105.673143 91.428571h231.990857v45.970286H158.592V512H105.618286zM927.780571 932.571429H685.714286v-47.963429h186.843428V493.714286h55.277715z","fill":""}],"style":{"width":313,"height":75.509527755971,"left":0.0078342982700974,"top":0.010866208277282,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"w":1024,"h":1024,"fill":"rgba(168, 201, 223, 1)","stroke":"","strokeWidth":0}},
+{"uuid":"9db23453-7601-444d-9bf9-f6fc1235c032","type":"svg","paths":[{"path":"M438.857143 73.142857h493.714286v877.714286H54.857143z","fill":""}],"style":{"width":129.90427675352,"height":44.16185913398,"left":166.09572324648,"top":27.358534830268,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"w":1024,"h":1024,"fill":"rgba(168, 201, 223, 1)","stroke":"","strokeWidth":0}}]},
+{"uuid":"586383ae-c808-4caf-9a75-80958044643b","type":"text","text":"<span style=\"color: rgb(68, 64, 64);\">宽条纹&nbsp;</span>","style":{"width":308.92775449648,"height":60,"left":32,"top":32,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":24,"paddingRight":24,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"rgba(65, 65, 65, 1)","fontSize":36,"fontWeight":"bold","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":60,"background":"rgba(26, 35, 44, 0)","fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000"}},
+{"uuid":"8c2645af-0a1b-43ec-9726-b1056e1ac3ef","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"clip":{"w":0,"h":0,"x":null,"y":null,"scale":1,"image":"","cutout":"","origin":"","host":""},"style":{"width":297.98833490728,"height":650,"left":31.99214054988,"top":186,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"background":"rgba(168, 201, 223, 1)"}},
+{"uuid":"d56f173d-3316-4a07-a309-e09f1a28d284","type":"image","attr":{"brandName":"品牌名","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":256.59375,"height":444.06382978723,"left":52.63087949648,"top":235,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"background":"rgba(255, 255, 255, 1)"},"clip":{"w":1061,"h":1500,"x":-411.203125,"y":-525,"scale":0.5,"image":"/upload/report/image/20220112/vwdNZQlaVfB7YV0Ip8EyOpn4wZBQlcG9H0HaCrve.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null},
+{"uuid":"cd235c65-1901-41b1-bfd6-0d9d08886154","type":"text","text":"文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字","style":{"width":1112,"height":63,"left":32,"top":112,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#555555","fontSize":16,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":30,"fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000"}},
+{"uuid":"2e0a435b-1551-450b-9254-e7b689f8f7cf","type":"text","text":"针法POLO衫","style":{"width":295.92775449648,"height":54.185809488011,"left":32,"top":696.78687150597,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#FFFFFF","fontSize":38,"fontWeight":"bold","textDecoration":"none","textAlign":"center","letterSpacing":5,"lineHeight":39.8,"fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000"}},
+{"uuid":"36c50a23-22ea-4ffe-bac2-920f9e4bb003","type":"text","text":"<span style=\"font-size: 30px; font-weight: 400;\">颗粒肌理</span>","style":{"width":295.92775449648,"height":74.185809488011,"left":32,"top":745.78687150597,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#FFFFFF","fontSize":38,"fontWeight":"bold","textDecoration":"none","textAlign":"center","letterSpacing":6,"lineHeight":30,"fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000"}},
+{"uuid":"9bde0bfa-6ec7-4faf-bafe-3f8adddd47f1","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":262.4456928839,"height":650.00002373589,"left":881.57671120938,"top":186.02082090025,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":1000,"h":1500,"x":-375.77715355805,"y":-417,"scale":0.46,"image":"/upload/report/image/20220112/ajHBJB3HdGWUFx7XGbOAs0JAnSFp0fPSHsrY4G3q.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null},
+{"uuid":"78bcdf5f-7397-4bee-94e9-f9bfb76b5c57","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":262.9456928839,"height":327.83697745196,"left":610.07671120938,"top":508.18386718418,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":2065,"h":2753,"x":-902.02715355805,"y":-1209.555,"scale":0.18,"image":"/upload/report/image/20220112/Puc7myMh2fMkU8i0FsL1T1cy1XS9T6b2ZN9gSLet.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null},
+{"uuid":"125a997b-9b62-4703-a05f-c1d7446d1029","type":"image","attr":{"brandName":"lv","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":262.4456928839,"height":316.33697745196,"left":610.57671120938,"top":186.02084463614,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":1000,"h":1500,"x":-344.77715355805,"y":-418,"scale":0.58,"image":"/upload/report/image/20220112/NqrXu2qcz4i1fSFbNA3D2FI8OyqfCNcVrF1ZuzYO.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null},
+{"uuid":"ed821e8b-86b6-443c-b2df-6f6ace9c6de7","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":262.9456928839,"height":234.83697745196,"left":340.94197926923,"top":601.18386718418,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":1000,"h":1000,"x":-513.52715355805,"y":-422,"scale":0.96,"image":"/upload/report/image/20220112/imcOyrxu0kdttqt2W1BPxqVFnupRjcA17YR7IJ1u.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null},
+{"uuid":"67e91c63-bef1-4885-9190-e44d846c274b","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":262.4456928839,"height":407.33697745196,"left":341.44197926923,"top":186.02084463614,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":628,"h":838,"x":-181.77715355805,"y":-218.02,"scale":0.46,"image":"/upload/report/image/20220112/c2OUvdj4ORNTqwJVyUhiQva4fGdTrT4P2bnARXQi.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null},
+{"uuid":"e92d9481-d3b2-4585-83b4-deea3dfd97df","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":178,"height":178,"left":857,"top":476,"borderStyle":"solid","borderColor":"#ffffff","borderWidth":4,"borderRadius":114,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"background":"#EEEFFF"},"clip":{"w":224,"h":217,"x":-99,"y":-4.785,"scale":1.49,"image":"/upload/report/image/20220112/xADeqs6bHPNiIDghxLcsI3tQ8Bv3w3JLIsWaaGAS.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null}],"cover":"/upload/report/page_cover/1/96923_349648.jpg","cover_host":"https://imgf1.pop-fashion.com"},
+{"sub_id":96353,"page_id":349079,"uuid":"e558e7d6-f8b7-459e-bf62-ecd5634dbc79","tpl_id":"7d13ddd7-c663-4bee-8872-0bcf63d81db1","type":"page","title":"主题灵感","tag":[],"style":{"width":1176,"height":868},"backgroundElement":{"uuid":"00000010-0000-0000-0000-000000000001","type":"background","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"clip":{"w":0,"h":0,"x":0,"y":0,"scale":1,"image":"","cutout":"","origin":"","host":""},"style":{"width":"100%","height":"100%","left":0,"top":0,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"background":"#ffffff"}},"elements":[{"uuid":"ced454a8-a807-4a81-a9d7-7e19ef6887a1","type":"text","text":"&nbsp; &nbsp; 色彩源自万物，身心栖居自然。极简柔和的自然光谱色调安抚心灵，抚平焦虑与浮躁，万物于逆境中重生。我们于自然中探寻造物之美，于都市中构建自然栖居地，寻求身体与心灵的和谐统一，穴居于都市的艺术漫游者追求物感与耐久品质，同时以愉悦的幽默与感趣味性，打破艺术、时尚、生活陈规。\\r","style":{"width":1112,"height":66,"left":32,"top":116,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#555555","fontSize":16,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":30,"fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000"}},
+{"uuid":"5ed47f1f-6844-4acb-8a2f-0d1aa38cc632","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"clip":{"w":4000,"h":2250,"x":-1448,"y":-818,"scale":0.28,"image":"/upload/report/image/20220104/aUSNf80t77qo1tqPK0SvmN7IccgxIze27Ly852Ie.png","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"style":{"width":1112,"height":614,"left":32,"top":222,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"styleLibrary":null},
+{"uuid":"678c37a0-274e-47e7-a1fc-f069ddedbbb0","type":"text","text":"主题背景","style":{"width":396,"height":60,"left":32,"top":32,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#1C232B","fontSize":36,"fontWeight":"bold","fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000000","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":60,"background":"url(https://imgf1.pop-fashion.com/upload/report/image/20210713/GQLMahrgTQ2RkYtIh624ePFuPFhME4elMCNnTcOC.png) no-repeat left center / auto 100%"},"id":415}],"cover":"/upload/report/page_cover/1/96296_349022.jpg","cover_host":"https://imgf1.pop-fashion.com"},
+{"sub_id":96354,"page_id":349080,"uuid":"286df46d-dec5-4515-9aeb-09f0262e1ac0","tpl_id":"7d13ddd7-c663-4bee-8872-0bcf63d81db1","type":"page","title":"主题灵感","tag":[],"style":{"width":1176,"height":868},"backgroundElement":{"uuid":"00000010-0000-0000-0000-000000000001","type":"background","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"clip":{"w":0,"h":0,"x":0,"y":0,"scale":1,"image":"","cutout":"","origin":"","host":""},"style":{"width":"100%","height":"100%","left":0,"top":0,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"background":"#ffffff"}},"elements":[{"uuid":"a5744fcc-6274-4fc7-9d7a-ffa72305aa9f","type":"text","text":"自然恬居、艺术浸染是万物有灵下的消费群体所追求的生活方式。简欧中淑和成熟优雅是该主题下毛衫设计的主要风格。高品质纱线是毛衫开发要点，重在打造耐久实穿的款式。细腻的针法变化和考究的细节点缀凸显精致调性。而在色彩上则更加注重色彩的百搭性。\\r","style":{"width":1112,"height":68,"left":32,"top":116,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#555555","fontSize":16,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":30,"fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000"}},
+{"uuid":"b0ed2dec-173a-4dc1-be30-c8aea672d113","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"clip":{"w":4000,"h":2250,"x":-1444,"y":-810,"scale":0.28,"image":"/upload/report/image/20220104/q7utmKgwaiH1RzxxVzKbLqtwFAduCIZupYzJUf11.png","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"style":{"width":1112,"height":614,"left":32,"top":222,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"styleLibrary":null},
+{"uuid":"73f59fbb-0c64-481f-9acd-d637e2e49806","type":"text","text":"消费者群体","style":{"width":396,"height":60,"left":32,"top":32,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#1C232B","fontSize":36,"fontWeight":"bold","fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000000","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":60,"background":"url(https://imgf1.pop-fashion.com/upload/report/image/20210713/GQLMahrgTQ2RkYtIh624ePFuPFhME4elMCNnTcOC.png) no-repeat left center / auto 100%"},"id":415}],"cover":"/upload/report/page_cover/1/96286_349012.jpg","cover_host":"https://imgf1.pop-fashion.com"},
+{"sub_id":96360,"page_id":349086,"uuid":"7ad90afe-93a0-42b2-a63a-721ae6c7f87e","tpl_id":"00000010-0000-0000-0000-000000000000","type":"page","title":"RICHAGN ","tag":[],"style":{"width":1176,"height":868},"backgroundElement":{"uuid":"75b6c267-06f8-40fc-bfda-1e438e7643cf","type":"background","style":{"width":"100%","height":"100%","left":0,"top":0,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000000","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"background":"#f9f1a6"},"clip":{"w":0,"h":0,"x":0,"y":0,"scale":1,"image":"","cutout":"","origin":"","host":""}},"elements":[{"uuid":"e7e09754-b5ad-4832-935d-38493d1a7971","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":178.8270781823,"height":234.86690784098,"left":338.33492102339,"top":439.18565557219,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000000","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":177.90125189619,"h":233.65095129107,"x":0,"y":0,"scale":1,"image":"/upload/report/image/20220103/Xh4j8RYUx8sT4HNbxHmmuLcPhoxKMZuhLnGukfGy.png","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"}},
+{"uuid":"283ff107-bb90-4660-805f-4a2a085e3eef","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":206.07332442769,"height":219.12333646612,"left":-446.86269014504,"top":23.608175750834,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000000","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":206.03111111111,"h":219.07844990548,"x":0,"y":0,"scale":1,"image":"/upload/report/image/20220104/05cWnPHNrRXCbnyintaaeWFodcUhzy35xZjZm00B.png","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"}},
+{"uuid":"832746df-028b-4205-af81-f9811ec1f096","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":130.47481306572,"height":368.78364849833,"left":-260.5,"top":279.60817575083,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000000","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":128.92737279003,"h":364.40984900942,"x":0,"y":0,"scale":1,"image":"/upload/report/image/20220103/hBPdHZGGdMYkUkOsHxHh3I38fKqWfyZfQ6YpsEEy.png","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"}},
+{"uuid":"96e5ea78-b80f-4971-a2aa-9d88137c75af","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":170.5650708984,"height":169.27778734444,"left":-346.87504654916,"top":817.9267070504,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000000","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":169.14041433568,"h":167.86388290673,"x":0,"y":0,"scale":1,"image":"/upload/report/image/20220104/2INVx0uvgCuN6SOzB2jX03sncFPc55OYfPaSVjPn.png","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"}},
+{"uuid":"68b50b14-f94d-46f0-9941-9d1d4efa0091","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":191.37037037037,"height":194.98113207547,"left":-235.12173856023,"top":730.36284806307,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000000","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":190.51363019461,"h":194.10822699074,"x":0,"y":0,"scale":1,"image":"/upload/report/image/20220104/hjKR2zTuVegXbTMZkN22PPEWCLOv3bDMDz7jOmdb.png","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"}},
+{"uuid":"57161dbe-c50f-46f3-a74f-d5e208988f9e","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":179.94287357241,"height":308.69823166322,"left":1345.0610789264,"top":-15.09005591239,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000000","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":177.16407861563,"h":303.93111267551,"x":0,"y":0,"scale":1,"image":"/upload/report/image/20220104/eWGTZl1U36oMNpPmRaiUQBaVoVEuX0DP2Ec6f1wN.png","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"}},
+{"uuid":"9cd938af-a1c2-4adc-9e02-924b647f1109","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":151.43504028431,"height":376.06927964174,"left":1213.5649597157,"top":15.96536017913,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000000","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":153.3538413387,"h":380.83437316928,"x":0,"y":0,"scale":1,"image":"/upload/report/image/20220103/fnvbOHzFCKamUuvxNn9NjTy4PQqfMOWySLbrQBnP.png","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"}},
+{"uuid":"290035e3-05d6-48b6-bc03-9cda5ab6abf7","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":134.17253172144,"height":233.25945288292,"left":1236.8599839912,"top":730.43981645226,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000000","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":648.19061947597,"h":1126.8818388007,"x":-257.56172858372,"y":-445.11832632628,"scale":0.21,"image":"/upload/report/image/20220103/GDXSLu1cQrpo9YSJjstpIIyv28ZAOYv1EyPQFAW6.png","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null},
+{"uuid":"3e8dce58-d909-4a4f-aaac-5818c1d833fa","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":121.69002434923,"height":371.32292014864,"left":-268,"top":79.461960944577,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000000","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":124.06943040449,"h":378.58340028563,"x":0,"y":0,"scale":1,"image":"/upload/report/image/20220104/b6PfxbaIOygvxlkvx5HXujsgyokYuvq7GstB68CS.png","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"}},
+{"uuid":"56e480a1-6c45-4fd3-a895-3363bbefa076","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":131.99712740118,"height":354.28395653164,"left":-389.15640239251,"top":445.03471809775,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000000","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":864,"h":2319,"x":-366.00143629941,"y":-985.575,"scale":0.15,"image":"/upload/report/image/20220104/e0oz8SrCdMpnbBO5fapP8C8w2g4a8eAW17bsAME3.png","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null},
+{"uuid":"5ce7dc99-0434-4680-8c26-03be45ef6885","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":178.43985253338,"height":231.97180829339,"left":-369.032464092,"top":582.08192822009,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000000","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":1460.40224837,"h":1898.522922881,"x":-641.08695224856,"y":-835.35008606766,"scale":0.12,"image":"/upload/report/image/20220104/zHMPItTdH164rhyPK61XDjuYiJFEQhwHyHEhdS8V.png","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null},
+{"uuid":"b9e12e37-aea9-47cd-bceb-00bc16cfe44f","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":152.83848660173,"height":181.92411374896,"left":706.33123207984,"top":265.1234210189,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000000","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":151.88933796088,"h":180.79433924556,"x":0,"y":0,"scale":1,"image":"/upload/report/image/20220104/p2gLRaOtj9ybh9jdT8m8nAjLCGghjHrIyHDSDqnI.png","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"}},
+{"uuid":"29bc210d-59b6-4064-b274-4968623b6ade","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":177.93069669718,"height":184.38559578871,"left":1230.1018190155,"top":477.7725243889,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000000","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":176.79252611137,"h":183.2061351028,"x":0,"y":0,"scale":1,"image":"/upload/report/image/20220103/4ykZnUWxetxDmzTRvJ6b65XlbPiMcuTotduHNrMY.png","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"}},
+{"uuid":"47b4e45d-fa7d-434c-9ac2-6d8e29c0ccbf","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":126.86746274434,"height":95.769583508021,"left":1169.5624621747,"top":858,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000000","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":126.8548939306,"h":95.760095574464,"x":0,"y":0,"scale":1,"image":"/upload/report/image/20220104/iBJeQKwa1mct6gRsWpONO8QTletVybOYVynA3V4K.png","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"}},
+{"uuid":"2b644e86-3383-4a3d-a10f-c985d880d06d","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":134.60960960961,"height":90.866155387698,"left":681.02642727503,"top":685.00673875841,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":-1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000000","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":134.60960960961,"h":179.65931863727,"x":0,"y":-46.642323107754,"scale":1,"image":"/upload/report/image/20220104/WpBf3HfnGxGft7vjACrnt6QnFP0AFDpdGelMP0BV.jpeg","cutout":"/upload/report/image/20220104/WpBf3HfnGxGft7vjACrnt6QnFP0AFDpdGelMP0BVclear_bg.png","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null},
+{"uuid":"a5c2953f-05ba-4642-b11b-e10ddf4ffef6","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":108.82652074582,"height":40.202191017673,"left":-122.75935338176,"top":147.11987134561,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000000","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":105.80509745127,"h":141.144,"x":0,"y":-49.943261538462,"scale":1,"image":"/upload/report/image/20220104/DwSZnOMb3XmXRgECvQLUAWc0fqZGPlHTDkWJzmV0.jpeg","cutout":"/upload/report/image/20220104/DwSZnOMb3XmXRgECvQLUAWc0fqZGPlHTDkWJzmV0clear_bg.png","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null},
+{"uuid":"b32973d6-c2e5-4156-b0c6-a29dd0065c74","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":138.80318548866,"height":86.270035425243,"left":1419.2007670102,"top":680.05256341317,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":-1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000000","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":137.27542480947,"h":85.320489725327,"x":0,"y":0,"scale":1,"image":"/upload/report/image/20220104/7OR1n0Zqn0KeJzf3gm2aCPFGDIIBDkKYPC6Y9yEQ.png","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"}},
+{"uuid":"d6fa2ea2-3e8c-4d64-b21d-5c114c4b8574","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":170.625,"height":242.66666666667,"left":1336.5624621747,"top":356.43919105557,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000000","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":170.625,"h":242.66666666667,"x":0,"y":0,"scale":1,"image":"/upload/report/image/20220103/QXnDaU3qQAYGjlnjkmRhUPj77MZOqLdaH89ukEm8.png","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"}},
+{"uuid":"f412ce3a-83e0-4663-8d0a-601e1c30ec84","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":176.61479736734,"height":235.67037023704,"left":602.85460052202,"top":-48.996636151537,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000000","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":175.69555035129,"h":234.44375,"x":0,"y":0,"scale":1,"image":"/upload/report/image/20220104/aFopS6R3n77ulBm1EMVYwV87PCPjU1BxSkcdVS8O.png","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"}},
+{"uuid":"9167bcbf-402d-408c-a3ae-440d595b0f6d","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"clip":{"w":2574,"h":3861,"x":-1181.5,"y":-1619.755,"scale":0.17,"image":"/upload/report/image/20220104/n89MKuvs1NTsB2ajMdu3Wgx9zDAq9k95ogFdlgek.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"style":{"width":237,"height":614,"left":907,"top":222,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"styleLibrary":null},
+{"uuid":"9dde7f4c-8688-4d29-adca-fc0ec07f8a69","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":352,"height":48.267090620032,"left":277,"top":222,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000000","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":1176,"h":168.26709062003,"x":-412,"y":-61,"scale":0.3,"image":"/upload/report/image/20220104/kRRPXAaCvACmodocr36chwowzEwn7bJpRKFBjQV1.png","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"}},
+{"uuid":"5c974a98-96cb-4a02-89ec-867a6357b4c3","type":"text","text":"手绘质感的蝴蝶结图案通过缩小竖排形式、放大与风景组合形式；工艺上通过胶印、绣花、贴布绣等展现在T恤、连衣裙等单品；搭配牛仔、休闲短裤，营造一种舒适休闲穿搭感受。手绘质感的蝴蝶结图案通过缩小竖排形式、放大与风景组合形式；工艺上通过胶印、绣花、贴布绣等展现在T恤、连衣裙等单品；搭配牛仔、休闲短裤，营造一种舒适休闲穿搭感受。","style":{"width":1112,"height":88,"left":132,"top":216,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#555555","fontSize":16,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":30,"fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000"}},
+{"uuid":"581699fa-72f9-4532-b6e8-75467f91e9e9","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":137.66666985768,"height":369.50116597217,"left":442.8492331135,"top":-37.494427213764,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000000","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":877.41105353901,"h":2354.995640228,"x":-369.87219184067,"y":-989.09816889575,"scale":0.16,"image":"/upload/report/image/20220104/dqUshSY2cuyK4fwLi8tnkqJNGoDiIpG7DVT9zLVT.png","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null},
+{"uuid":"02d89468-10aa-4628-9b69-bdc205502db7","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"clip":{"w":2599.7364549304,"h":3899.6046823956,"x":-1198.8237832208,"y":-1646.3643518489,"scale":0.17,"image":"/upload/report/image/20220103/1PAA1kE086uR4rOsgpXizDOvADgdsCBKKm0sg1eV.png","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"style":{"width":240.6787264916,"height":623.53054036221,"left":38.953197883997,"top":202.91468534791,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"styleLibrary":null},
+{"uuid":"ce3d6b33-8bac-4cfe-8622-3642ffb34f9b","type":"group","appflag":"","style":{"width":1114.5000701255,"height":154.54689188206,"left":2.5000207779255,"top":918.61122829555,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000000","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"elements":[{"uuid":"578d4de9-8c40-4d41-95c8-21b8ff4171ee","type":"text","text":"细节工艺--1","style":{"width":396,"height":60,"left":0.000020777925531235,"top":0.0088424376782754,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#1C232B","fontSize":36,"fontWeight":"bold","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":60,"background":"url(https://imgf1.pop-fashion.com/upload/report/image/20210713/GQLMahrgTQ2RkYtIh624ePFuPFhME4elMCNnTcOC.png) no-repeat left center / auto 100%","fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000"},"id":415},
+{"uuid":"4b0687a6-386e-47da-8d5c-5006675e738b","type":"text","text":"手绘质感的蝴蝶结图案通过缩小竖排形式、放大与风景组合形式；工艺上通过胶印、绣花、贴布绣等展现在T恤、连衣裙等单品；搭配牛仔、休闲短裤，营造一种舒适休闲穿搭感受。手绘质感的蝴蝶结图案通过缩小竖排形式、放大与风景组合形式；工艺上通过胶印、绣花、贴布绣等展现在T恤、连衣裙等单品；搭配牛仔、休闲短裤，营造一种舒适休闲穿搭感受。","style":{"width":1112,"height":88,"left":2.5000207779255,"top":66.546881493102,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#555555","fontSize":16,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":30,"fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000"}}]},
+{"uuid":"4f8cd65d-f115-438c-b9dc-fe257e08f07b","type":"text","text":"细节工艺--1","style":{"width":396,"height":60,"left":29.5,"top":49.461960944577,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#1C232B","fontSize":36,"fontWeight":"bold","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":60,"background":"url(https://imgf1.pop-fashion.com/upload/report/image/20210713/GQLMahrgTQ2RkYtIh624ePFuPFhME4elMCNnTcOC.png) no-repeat left center / auto 100%","fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000"},"id":415},
+{"uuid":"b5eb4c87-5822-49db-b2b2-128131f6fa1b","type":"text","text":"手绘质感的蝴蝶结图案通过缩小竖排形式、放大与风景组合形式；工艺上通过胶印、绣花、贴布绣等展现在T恤、连衣裙等单品；搭配牛仔、休闲短裤，营造一种舒适休闲穿搭感受。手绘质感的蝴蝶结图案通过缩小竖排形式、放大与风景组合形式；工艺上通过胶印、绣花、贴布绣等展现在T恤、连衣裙等单品；搭配牛仔、休闲短裤，营造一种舒适休闲穿搭感受。","style":{"width":1112,"height":88,"left":32,"top":116,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#555555","fontSize":16,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":30,"fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000"}}],"cover":"/upload/report/page_cover/1/96361_349087.jpg","cover_host":"https://imgf1.pop-fashion.com"},
+{"sub_id":96355,"page_id":349081,"uuid":"27ee6a9e-adc8-4448-b5d7-7851139f9750","tpl_id":"3ace06e4-158d-46ec-b6a0-99a953831ec1","type":"page","title":"主题色彩","tag":[],"style":{"width":1176,"height":868},"backgroundElement":{"uuid":"00000000-0000-0000-0001-000000000000","type":"background","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":"100%","height":"100%","left":0,"top":0,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"background":"#ffffff"},"clip":{"w":0,"h":0,"x":0,"y":0,"scale":1,"image":"","cutout":"","origin":"","host":""}},"elements":[{"uuid":"58e5bb3b-160b-49eb-ac93-2ce2144b941e","type":"text","text":"本系列颜色灵感来源于自然和我们所处的建筑世界，从大地和建筑中汲取色彩，使整个系列呈现一种低调极简的氛围感，辅以最新的薄荷绿和香芋紫，给整组系列带来活力。<p><br></p>","style":{"width":1112,"height":88,"left":32,"top":114,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#555555","fontSize":16,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":30,"fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000"}},
+{"uuid":"cabea94b-9498-462b-b6b0-f0abca5d6c19","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":1112,"height":611,"left":32,"top":225,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"background":"rgba(238, 239, 255, 0)"},"clip":{"w":5457,"h":2965,"x":-2170.5,"y":-1177,"scale":0.2,"image":"/upload/report/image/20220104/uSQMEDY3KpXhh5IXhODPZsRr4lCRgZS2d9slf7oc.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null},
+{"uuid":"66020f65-87c6-4b4f-99e0-55c701b353c3","type":"text","text":"灵感看板","style":{"width":396,"height":60,"left":32,"top":32,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#1C232B","fontSize":36,"fontWeight":"bold","fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000000","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":60,"background":"url(https://imgf1.pop-fashion.com/upload/report/image/20210713/GQLMahrgTQ2RkYtIh624ePFuPFhME4elMCNnTcOC.png) no-repeat left center / auto 100%"},"id":415}],"cover":"/upload/report/page_cover/1/96287_349013.jpg","cover_host":"https://imgf1.pop-fashion.com"},
+{"sub_id":96356,"page_id":349082,"uuid":"d749379e-771e-4eb3-92a9-1e9a449e745c","tpl_id":"0b5f9d03-2725-403f-8c97-f80c22efca2b","type":"page","title":"关键单品","tag":[],"style":{"width":1176,"height":868},"backgroundElement":{"uuid":"00000009-0000-0000-0000-000000000001","type":"background","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"clip":{"w":0,"h":0,"x":0,"y":0,"scale":1,"image":"","cutout":"","origin":"","host":""},"style":{"width":"100%","height":"100%","left":0,"top":0,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"background":"#ffffff"}},"elements":[{"uuid":"c89c398f-771e-4d71-8ef1-5f7fcae581b3","type":"image","attr":{"brandName":"品牌名","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"clip":{"w":880,"h":1174,"x":-358.14369258939,"y":-472.47,"scale":0.21,"image":"/upload/report/image/20220104/cPmv3RycReViLGZxo3DmyYrkF1kYoQdDOFgjqSQd.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"style":{"width":163.71261482123,"height":246.34236827781,"left":1163.8682688606,"top":719.73572846906,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"styleLibrary":null},
+{"uuid":"25f6c40c-43e7-40b5-8395-e7b65593a34c","type":"text","text":"<p>大衣作为秋冬季最为关键的单品，廓型显得极为重要</p>","style":{"width":147,"height":139.17118413891,"left":40.999987284342,"top":165.68124001975,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#555555","fontSize":16,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":30,"fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000"}},
+{"uuid":"ce5ccdf3-2be7-4951-bdd9-5b12f090736d","type":"image","attr":{"brandName":"品牌名","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"clip":{"w":500,"h":500,"x":-166.14369258939,"y":-131.5,"scale":0.51,"image":"/upload/report/image/20220103/iT4DydeqQbzcDiojDuMA1Je99r3rs98tpaQyTChp.jpeg","cutout":"/upload/report/image/20220104/iT4DydeqQbzcDiojDuMA1Je99r3rs98tpaQyTChpclear_bg.png","origin":"upload","host":"https://imgf1.pop-fashion.com"},"style":{"width":163.71261482123,"height":246.34236827781,"left":31.926674458452,"top":323.55958011763,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"styleLibrary":null},
+{"uuid":"9d9c9770-1a54-4559-b5e3-48c2d1c050c9","type":"image","attr":{"brandName":"品牌名","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"clip":{"w":828,"h":1105,"x":-333.14369258939,"y":-424,"scale":0.24,"image":"/upload/report/image/20220103/7DIvfNQqZp4w5PJ8TcRMe6A0xDlEuwnpZ5kZPzQE.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"style":{"width":163.71261482123,"height":246.34236827781,"left":-250,"top":458.47545418928,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"styleLibrary":null},
+{"uuid":"16548e17-8ac7-4cac-b55d-b3529b057309","type":"text","text":"<p><span style=\"font-size: 26px; font-weight: 700;\">括肩背心</span></p>","style":{"width":115.47141691952,"height":44.097768208435,"left":56.764278824584,"top":121.58347181132,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#555555","fontSize":16,"fontWeight":"normal","textDecoration":"none","textAlign":"center","letterSpacing":0,"lineHeight":31,"fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000"}},
+{"uuid":"41e49798-3da5-4cda-8d75-9bd708e41c40","type":"text","text":"<p><span style=\"font-size: 26px; font-weight: 700;\">收腰打底衫</span></p>","style":{"width":137.59201587037,"height":44.097768208435,"left":1217.1205989509,"top":56,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#555555","fontSize":16,"fontWeight":"normal","textDecoration":"none","textAlign":"center","letterSpacing":0,"lineHeight":31,"fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000"}},
+{"uuid":"68f982cd-d618-4961-87e0-cc3be4f15da6","type":"image","attr":{"brandName":"品牌名","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"clip":{"w":892,"h":1188,"x":-364.14369258939,"y":-476.08,"scale":0.21,"image":"/upload/report/image/20220103/S6NCpZlbR5eWjdyvuDm4GkGeQU1MR005dUGsWJC9.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"style":{"width":163.71261482123,"height":246.34236827781,"left":1229,"top":121.56454433015,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"styleLibrary":null},
+{"uuid":"a90ca342-39a4-4d1a-9aa8-1b985308b0e2","type":"image","attr":{"brandName":"品牌名","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"clip":{"w":2048,"h":2667,"x":-942.14369258939,"y":-1217.82,"scale":0.12,"image":"/upload/report/image/20220103/3gIvuugq7CzVMs1PxCkVqPjvlTZzOV8uZwpJzqYq.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"style":{"width":163.71261482123,"height":246.34236827781,"left":1272.8563074106,"top":282.55958011763,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"styleLibrary":null},
+{"uuid":"be6823bb-6b39-46a2-8543-8b8a87cd7a92","type":"text","text":"<p><span style=\"font-size: 26px; font-weight: bold;\">中长开衫</span></p><p><br style=\"font-size: 26px;\"></p>","style":{"width":108.47141691952,"height":44.097768208435,"left":283.26423502621,"top":110,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#555555","fontSize":16,"fontWeight":"normal","textDecoration":"none","textAlign":"center","letterSpacing":0,"lineHeight":31,"fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000"}},
+{"uuid":"bafebf68-3047-4f97-a6b5-a3f9529091b5","type":"image","attr":{"brandName":"品牌名","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"clip":{"w":801,"h":1055,"x":-315.64369258939,"y":-418,"scale":0.26,"image":"/upload/report/image/20220104/gpdzjNRtM7R625pEz8dIhyx6H2CB6vZ7fWS8ZU4i.jpeg","cutout":"/upload/report/image/20220104/gpdzjNRtM7R625pEz8dIhyx6H2CB6vZ7fWS8ZU4iclear_bg.png","origin":"upload","host":"https://imgf1.pop-fashion.com"},"style":{"width":163.71261482123,"height":246.34236827781,"left":-254,"top":196.09776820844,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"styleLibrary":null},
+{"uuid":"f38bf047-73e4-47b4-866a-b726ef15c3f1","type":"text","text":"<span style=\"font-size: 26px; font-weight: 700;\">宽松套衫</span>","style":{"width":133.47141691952,"height":41.097768208435,"left":510.36842203793,"top":110,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#555555","fontSize":16,"fontWeight":"normal","textDecoration":"none","textAlign":"center","letterSpacing":0,"lineHeight":31,"fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000"}},
+{"uuid":"671fbf71-6816-4bd9-852c-f2af56bb81fd","type":"image","attr":{"brandName":"品牌名","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"clip":{"w":1700,"h":1700,"x":-766.14369258939,"y":-728,"scale":0.18,"image":"/upload/report/image/20220104/5yjqF7AgsC3ym2GC4Z90zfh8q2JqwqvMXVunNyTH.jpeg","cutout":"/upload/report/image/20220104/5yjqF7AgsC3ym2GC4Z90zfh8q2JqwqvMXVunNyTHclear_bg.png","origin":"upload","host":"https://imgf1.pop-fashion.com"},"style":{"width":163.71261482123,"height":246.34236827781,"left":-307.87942007309,"top":572.55958011763,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"styleLibrary":null},
+{"uuid":"2f7976da-4062-4581-8af9-0151dad70a09","type":"image","attr":{"brandName":"品牌名","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"clip":{"w":1598,"h":2560,"x":-720.14369258939,"y":-1160,"scale":0.11,"image":"/upload/report/image/20220103/I1hfoDe7m14dIFHnM8PqUQ9z5jigbPp6wzqkFqIV.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"style":{"width":163.71261482123,"height":246.34236827781,"left":264.28738517877,"top":282.55958011763,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"styleLibrary":null},
+{"uuid":"729d38f2-6b76-4fce-bc21-22d1ada67872","type":"text","text":"<span style=\"font-size: 26px; font-weight: 700;\">修身连衣裙</span>","style":{"width":133.47141691952,"height":41.097768208435,"left":761.36845905462,"top":110,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#555555","fontSize":16,"fontWeight":"normal","textDecoration":"none","textAlign":"center","letterSpacing":0,"lineHeight":31,"fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000"}},
+{"uuid":"2d0b9223-b167-42b9-9621-35091c02b3b9","type":"image","attr":{"brandName":"品牌名","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"clip":{"w":918,"h":1225,"x":-381.14369258939,"y":-490.25,"scale":0.21,"image":"/upload/report/image/20220104/swLdldyP0sTynWu2JJypHYoZRZ51GrLU1fx44QFt.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"style":{"width":163.71261482123,"height":246.34236827781,"left":309.87934453511,"top":473.39336019125,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"styleLibrary":null},
+{"uuid":"07568477-7894-4b4c-ac07-d8b8d458500e","type":"text","text":"<p><span style=\"font-size: 26px; font-weight: 700;\">套装</span></p>","style":{"width":133.47141691952,"height":41.097768208435,"left":987.36853139258,"top":110,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#555555","fontSize":16,"fontWeight":"normal","textDecoration":"none","textAlign":"center","letterSpacing":0,"lineHeight":31,"fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000"}},
+{"uuid":"9d03961e-a707-4f3f-aefb-c1a884fcbf06","type":"image","attr":{"brandName":"品牌名","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"clip":{"w":627,"h":836,"x":-219.64369258939,"y":-250.32,"scale":0.21,"image":"/upload/report/image/20220104/OSNDuTcJ8DK9PGpFOUV19Yj77YK5KJmhnMHDTpVK.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"style":{"width":163.71261482123,"height":246.34236827781,"left":1200.2873851788,"top":72.92658406953,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"styleLibrary":null},
+{"uuid":"c977d911-7151-4ac8-a981-90a18b8be5df","type":"image","attr":{"brandName":"品牌名","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"clip":{"w":1266,"h":1709,"x":-554.14369258939,"y":-653.415,"scale":0.29,"image":"/upload/report/image/20220104/WVZQl1mduC5rZ0QnfaOisxOA5MQ1Zr4yR8xBLVMJ.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"style":{"width":163.71261482123,"height":246.34236827781,"left":1197.2873851788,"top":394.54360320437,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"styleLibrary":null},
+{"uuid":"3b5da454-f46f-4859-a4c1-d5a8e5cc14eb","type":"text","text":"重点单品","style":{"width":396,"height":60,"left":32,"top":32,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#1C232B","fontSize":36,"fontWeight":"bold","fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000000","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":60,"background":"url(https://imgf1.pop-fashion.com/upload/report/image/20210713/GQLMahrgTQ2RkYtIh624ePFuPFhME4elMCNnTcOC.png) no-repeat left center / auto 100%"},"id":415},
+{"uuid":"8c408a2b-58f6-47e0-aada-a35913960410","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":152.66536345997,"height":203.26671806236,"left":1245.7245762712,"top":-68.217833958138,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000000","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":150.33507633353,"h":200.16405085875,"x":0,"y":0,"scale":1,"image":"/upload/report/image/20220104/DBrM6Uc0LFNM2MUMyO3vpNbKjiRUwnPPLehdSEXk.jpeg","cutout":"/upload/report/image/20220104/DBrM6Uc0LFNM2MUMyO3vpNbKjiRUwnPPLehdSEXkclear_bg.png","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null},
+{"uuid":"97e934a7-8f9a-4611-8874-a17e8ef40356","type":"text","text":"<p>大衣作为秋冬季最为关键的单品，廓型显得极为重要</p>","style":{"width":147,"height":139.17118413891,"left":263.99994348597,"top":154.09776820844,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#555555","fontSize":16,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":30,"fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000"}},
+{"uuid":"f7862937-1575-4abe-8468-15c9bed64488","type":"text","text":"<p>大衣作为秋冬季最为关键的单品，廓型显得极为重要</p>","style":{"width":147,"height":139.17118413891,"left":503.60413049769,"top":154.09776820844,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#555555","fontSize":16,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":30,"fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000"}},
+{"uuid":"da6103eb-1c8b-40bc-9ec9-4443c1dce688","type":"text","text":"<p>大衣作为秋冬季最为关键的单品，廓型显得极为重要</p>","style":{"width":147,"height":139.17118413891,"left":754.60416751438,"top":154.09776820844,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#555555","fontSize":16,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":30,"fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000"}},
+{"uuid":"bdf16384-b9a0-4fd2-92d3-4542d5d7dec4","type":"text","text":"<p>大衣作为秋冬季最为关键的单品，廓型显得极为重要</p>","style":{"width":147,"height":139.17118413891,"left":980.60423985234,"top":154.09776820844,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#555555","fontSize":16,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":30,"fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000"}},
+{"uuid":"15262ad6-3b53-4d4a-a9bc-0d917b84499f","type":"image","attr":{"brandName":"品牌名","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"clip":{"w":844,"h":1126,"x":-340.14369258939,"y":-449.03,"scale":0.23,"image":"/upload/report/image/20220104/fs7x309zuFkavQVgdAEeJGy3peeKamUtH9YBnMfN.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"style":{"width":163.71261482123,"height":246.34236827781,"left":75.926687174109,"top":514.39336019125,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"styleLibrary":null},
+{"uuid":"ca6f68cd-5390-4b1e-8756-62f2d0cdce29","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":138.07998372183,"height":122.50210080535,"left":81.926687174109,"top":143.63235591554,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":23,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":138.54246958321,"h":121.19243708344,"x":0,"y":0,"scale":1,"image":"/upload/report/image/20210926/TQkdjPW1iZgw2RcWEgp8xut5Yl2WZAha8NkwXwVE.png","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"}}],"cover":"/upload/report/page_cover/1/96356_349082.jpg","cover_host":"https://imgf1.pop-fashion.com"},
+{"sub_id":96357,"page_id":349083,"uuid":"7944b048-6362-4ee1-98d1-b1015d999dce","tpl_id":"fb11ce27-b826-4f5f-86ac-506a913b7ccc","type":"page","title":"细节工艺","tag":[],"style":{"width":1176,"height":868},"backgroundElement":{"uuid":"00000000-0000-0000-0001-000000000000","type":"background","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":"100%","height":"100%","left":0,"top":0,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"background":"#ffffff"},"clip":{"w":0,"h":0,"x":0,"y":0,"scale":1,"image":"","cutout":"","origin":"","host":""}},"elements":[{"uuid":"24e7adcd-cdb4-4df4-94ec-db18b3a45296","type":"text","text":"强调精致细节","style":{"width":396,"height":60,"left":29.5,"top":49.461960944577,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#1C232B","fontSize":36,"fontWeight":"bold","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":60,"background":"url(https://imgf1.pop-fashion.com/upload/report/image/20210713/GQLMahrgTQ2RkYtIh624ePFuPFhME4elMCNnTcOC.png) no-repeat left center / auto 100%","fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000"},"id":415},
+{"uuid":"ba20b141-2d11-4970-b4fa-31f6d124ffe1","type":"image","attr":{"brandName":"品牌名","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":202.21563149397,"height":258.50916314677,"left":1197.284368506,"top":18.89091571987,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"background":"#EEEFFF"},"clip":{"w":500,"h":500,"x":-76.892184253014,"y":18,"scale":1.1,"image":"/upload/report/image/20220104/3daS22LfvDyy2tnRJVwUN0WrDjmee9GhOGNOwYRU.png","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null},
+{"uuid":"fd445b79-d712-4cc4-b590-63ce5a34736a","type":"image","attr":{"brandName":"品牌名","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":"6","y":"6"}},"style":{"width":191.3306223914,"height":235.06500478637,"left":1263.284368506,"top":100.02497691909,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"background":"#EEEFFF"},"clip":{"w":2000,"h":2353,"x":-804.3346888043,"y":-1099.85,"scale":0.31,"image":"/upload/report/image/20220104/STkSs26p5OZLKlPyfangZY7k2rZNleKHgCCIGa3X.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null},
+{"uuid":"4a086d95-c70c-4d8e-abe5-42944a68b711","type":"image","attr":{"brandName":"品牌名","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":149.58832956184,"height":236.51576454559,"left":1227.8082024941,"top":730.85531635153,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":1440,"h":1638,"x":-583.20583521908,"y":-907.1,"scale":0.6,"image":"/upload/report/image/20220103/nfuVgT1aGrzqPGqc18LH9EsTJNK3ZkQx33RlZgvs.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null},
+{"uuid":"23e7ecf3-d4d4-4a00-9770-af43bbecb158","type":"image","attr":{"brandName":"品牌名","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":339.72029126641,"height":532.4517106835,"left":1202.3597251358,"top":219.68141747023,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":1567.0692237357,"h":1937.3280457103,"x":-591.91877409803,"y":-705.352790301,"scale":0.32,"image":"/upload/report/image/20220104/Ht8iA6cdoviXdrykvP1uR0c6Z7GJOLt3E8FoS1Rr.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null},
+{"uuid":"a1ed9c30-63b5-411e-9c37-d6f44e6e8d04","type":"image","attr":{"brandName":"品牌名","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":219.26734417854,"height":329.03895821301,"left":1267.7628599667,"top":442.0737920133,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":941.64521489546,"h":1256.2603217414,"x":-360.87540070129,"y":-483.66022387043,"scale":0.28,"image":"/upload/report/image/20220104/FbbcMMyKhMZpl5rhZcQ8H0vlCTWS49iULRlFhN8T.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null},
+{"uuid":"db44cfcf-b5f6-4d0b-984f-a6df61c40880","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":682.07998372183,"height":151,"left":33.000032680394,"top":142.05747931228,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":23,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":684.36454619278,"h":151,"x":0,"y":0,"scale":1,"image":"/upload/report/image/20210926/TQkdjPW1iZgw2RcWEgp8xut5Yl2WZAha8NkwXwVE.png","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"}},
+{"uuid":"802afb6b-7e8b-45fc-a03a-8e411a5ea74c","type":"text","text":"本系列通过有质感面料的绑带抽褶设计，大翻领的重塑，在硬朗的廓形中加入柔和的感觉，风琴褶的运用，参考建筑的平面感，走动起来有流水的线条感，整体从简约帅气中加入女性元素。","style":{"width":632.49883202206,"height":88,"left":46.290608530279,"top":153.50002191006,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#555555","fontSize":16,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":30,"fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000"}},
+{"uuid":"df409dca-8053-4e3b-bb52-4d013c5d8695","type":"image","attr":{"brandName":"品牌名","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":259.99492602388,"height":456.90480949745,"left":-309.64027486419,"top":-105.85913362891,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"background":"#EEEFFF"},"clip":{"w":2989.2540441287,"h":4684.1440318275,"x":-1093.7284113032,"y":-1997.8185109361,"scale":0.39,"image":"/upload/report/image/20220104/k7vNbJPwNJxhpwgD9wngiKw9UUff0RXtgTERVjff.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null},
+{"uuid":"e4b34bda-b79b-401e-9426-ca3f67772087","type":"image","attr":{"brandName":"品牌名","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":415.56960950827,"height":221.72816369428,"left":1154.4303904917,"top":-41.942520687723,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"background":"#EEEFFF"},"clip":{"w":638.81743101111,"h":479.89657828809,"x":-131.36825850109,"y":-114.77740355045,"scale":0.85,"image":"/upload/report/image/20220104/gq3LKk0G7bWCSZvLHR7S4wJFhZmhkPakTdTCcUCq.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null},
+{"uuid":"090c30a5-e494-4f09-9581-a259e9728f3e","type":"image","attr":{"brandName":"品牌名","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":213.40208959773,"height":276.71782451079,"left":1310.392184253,"top":298.08998170546,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":984,"h":1312,"x":-385.29895520114,"y":-511.68,"scale":0.22,"image":"/upload/report/image/20220104/Do8cwb0his4kHnu2LPVhlzl9H4tG4BC06OhESQ4E.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null},
+{"uuid":"87e09bc0-326f-4a81-937a-54c88bd0cd23","type":"image","attr":{"brandName":"品牌名","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":154.32354524305,"height":457.87475862891,"left":-207.57916975928,"top":458.14086637109,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":1421.3092438886,"h":4462.8103975967,"x":-645.33709302182,"y":-1985.9506269305,"scale":0.19,"image":"/upload/report/image/20220104/oKmqjkhP8Yp3bZsTFJYxyzlX5aJaOIsghme7lzsi.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null},
+{"uuid":"30d76ed8-4eee-4561-8620-aedf5defa037","type":"image","attr":{"brandName":"品牌名","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":159.54168867185,"height":236.61484802106,"left":1352.2525851789,"top":696.52992426904,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":2000,"h":1333,"x":-948.22915566408,"y":-551.18,"scale":0.2,"image":"/upload/report/image/20220104/rwPGu3EekUCER5B7F0unKnVjYvasPdI13jGqwEFQ.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null},
+{"uuid":"b871f0bb-15cd-4497-a3b9-89704104bf45","type":"image","attr":{"brandName":"品牌名","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":329.53999186091,"height":532.4517106835,"left":33.000032680394,"top":303.5639143165,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":3814.1540471219,"h":5874.7096332883,"x":-1898.5015099772,"y":-2164.6045494962,"scale":0.29,"image":"/upload/report/image/20220104/uEzNpamnYp1jat07wijZFpSHAX9qnEGVHgLQjgSV.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null},
+{"uuid":"88ba37f9-8b8b-487a-b125-c2a947f9b680","type":"image","attr":{"brandName":"品牌名","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"clip":{"w":1500,"h":1875,"x":-672.57920243967,"y":-823.75,"scale":0.14,"image":"/upload/report/image/20220104/uyBLy2UHG47AIsyvocAjCsWIuaPuWo51lJHMImDh.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"style":{"width":156.84159512065,"height":233.22309392088,"left":-285.99996731961,"top":212.53322532966,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"styleLibrary":null},
+{"uuid":"78eee5fa-b1a7-444b-8ee2-22e096c62d16","type":"text","text":"<span style=\"font-weight: bold; font-size: 20px;\">关键词：字母点缀/线条装饰/手钩/精巧细节/挺括下摆</span>","style":{"width":632.49883202206,"height":31,"left":46.290608530279,"top":251.18141747023,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#555555","fontSize":16,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":30,"fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000"}}],"cover":"/upload/report/page_cover/1/96357_349083.jpg","cover_host":"https://imgf1.pop-fashion.com"},
+{"sub_id":96544,"page_id":349270,"uuid":"6020f13b-14b4-4b0a-a3c0-42a07f5bf2b8","tpl_id":"fb11ce27-b826-4f5f-86ac-506a913b7ccc","type":"page","title":"细节工艺","tag":[],"style":{"width":1176,"height":868},"backgroundElement":{"uuid":"00000000-0000-0000-0001-000000000000","type":"background","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":"100%","height":"100%","left":0,"top":0,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"background":"#ffffff"},"clip":{"w":0,"h":0,"x":0,"y":0,"scale":1,"image":"","cutout":"","origin":"","host":""}},"elements":[{"uuid":"84910345-43e8-4264-a967-94700f2a0527","type":"text","text":"强调精致细节","style":{"width":396,"height":60,"left":29.5,"top":49.461960944577,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#1C232B","fontSize":36,"fontWeight":"bold","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":60,"background":"url(https://imgf1.pop-fashion.com/upload/report/image/20210713/GQLMahrgTQ2RkYtIh624ePFuPFhME4elMCNnTcOC.png) no-repeat left center / auto 100%","fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000"},"id":415},
+{"uuid":"66b1f969-af51-4bd8-a50d-2a17333d081b","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":682.07998372183,"height":151,"left":33.000032680394,"top":142.05747931228,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":23,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":684.36454619278,"h":151,"x":0,"y":0,"scale":1,"image":"/upload/report/image/20210926/TQkdjPW1iZgw2RcWEgp8xut5Yl2WZAha8NkwXwVE.png","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"}},
+{"uuid":"17bc6ed0-7fee-4567-9356-1955054e1278","type":"text","text":"本系列通过有质感面料的绑带抽褶设计，大翻领的重塑，在硬朗的廓形中加入柔和的感觉，风琴褶的运用，参考建筑的平面感，走动起来有流水的线条感，整体从简约帅气中加入女性元素。","style":{"width":632.49883202206,"height":88,"left":46.290608530279,"top":153.50002191006,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#555555","fontSize":16,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":30,"fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000"}},
+{"uuid":"04bcde57-aec9-47d3-abd1-4771fc845e9a","type":"image","attr":{"brandName":"品牌名","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":329.53999186091,"height":532.4517106835,"left":33.000032680394,"top":303.5639143165,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":3814.1540471219,"h":5874.7096332883,"x":-1898.5015099772,"y":-2164.6045494962,"scale":0.29,"image":"/upload/report/image/20220104/uEzNpamnYp1jat07wijZFpSHAX9qnEGVHgLQjgSV.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null},
+{"uuid":"d77bd2e7-1043-476f-a383-f18f578e64d9","type":"text","text":"<span style=\"font-weight: bold; font-size: 20px;\">关键词：字母点缀/线条装饰/手钩/精巧细节/挺括下摆</span>","style":{"width":632.49883202206,"height":31,"left":46.290608530279,"top":251.18141747023,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#555555","fontSize":16,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":30,"fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000"}}],"cover":"/upload/report/page_cover/1/96544_349270.jpg","cover_host":"https://imgf1.pop-fashion.com"},
+{"sub_id":96358,"page_id":349084,"uuid":"4e09fb93-7e3c-4281-a93e-0353ba909459","tpl_id":"fb11ce27-b826-4f5f-86ac-506a913b7ccc","type":"page","title":"细节工艺","tag":[],"style":{"width":1176,"height":868},"backgroundElement":{"uuid":"00000000-0000-0000-0001-000000000000","type":"background","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":"100%","height":"100%","left":0,"top":0,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"background":"#ffffff"},"clip":{"w":0,"h":0,"x":0,"y":0,"scale":1,"image":"","cutout":"","origin":"","host":""}},"elements":[{"uuid":"f9392610-5590-4478-886e-0216a17fccb5","type":"text","text":"伶俐针法线条","style":{"width":396,"height":60,"left":29.5,"top":49.461960944577,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#1C232B","fontSize":36,"fontWeight":"bold","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":60,"background":"url(https://imgf1.pop-fashion.com/upload/report/image/20210713/GQLMahrgTQ2RkYtIh624ePFuPFhME4elMCNnTcOC.png) no-repeat left center / auto 100%","fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000"},"id":415},
+{"uuid":"c4cfe427-c44f-4090-a502-282a5c282c87","type":"image","attr":{"brandName":"品牌名","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":"6","y":"6"}},"style":{"width":191.3306223914,"height":235.06500478637,"left":-275.56960950827,"top":277.93499521363,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"background":"#EEEFFF"},"clip":{"w":1920,"h":2562,"x":-1016.3346888043,"y":-1059.9,"scale":0.3,"image":"/upload/report/image/20220103/kwaRHbB8yfQ5XAiJAMTe3g16T92jPmXUyDTB9knG.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null},
+{"uuid":"686e7b6f-f933-4be9-82d3-418ecbf07a79","type":"image","attr":{"brandName":"品牌名","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":202.21563149397,"height":258.50916314677,"left":-306.5747278212,"top":-34.199266157603,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"background":"#EEEFFF"},"clip":{"w":1920,"h":2560,"x":-813.89218425301,"y":-1212.2,"scale":0.21,"image":"/upload/report/image/20220103/OeDfHN0nVYZQ4zMDzHl4LIm6EM07wwlVyVfqzOv4.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null},
+{"uuid":"169a4278-4ba0-4c82-92ed-52206d1568ef","type":"image","attr":{"brandName":"品牌名","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":232.64027486419,"height":315.87298746319,"left":720.35972513581,"top":142.05747931228,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":1748.3007838962,"h":2568.1302623659,"x":-779.71136570371,"y":-1229.4923631077,"scale":0.23,"image":"/upload/report/image/20220104/CC0O3A9zAEgcvE0gWsWrG6kZffIEWlfCw6TXtzqL.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null},
+{"uuid":"6c0da129-a184-456f-8153-de09ac34e9aa","type":"image","attr":{"brandName":"品牌名","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":199.89441349288,"height":299.96737459795,"left":377.89502705945,"top":303.5639143165,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":1598,"h":2560,"x":-699.05279325356,"y":-1162.6,"scale":0.23,"image":"/upload/report/image/20220103/04stesjcyNCtk9U772JRI4DI47p3PWK7oWAo4iom.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null},
+{"uuid":"a2a0ac91-071e-4350-8173-ce05cab45324","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":682.07998372183,"height":151,"left":33.000032680394,"top":142.05747931228,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":23,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":684.36454619278,"h":151,"x":0,"y":0,"scale":1,"image":"/upload/report/image/20210926/TQkdjPW1iZgw2RcWEgp8xut5Yl2WZAha8NkwXwVE.png","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"}},
+{"uuid":"fe94a4cd-49d9-4fb0-855a-4b3139d08463","type":"text","text":"本系列通过有质感面料的绑带抽褶设计，大翻领的重塑，在硬朗的廓形中加入柔和的感觉，风琴褶的运用，参考建筑的平面感，走动起来有流水的线条感，整体从简约帅气中加入女性元素。","style":{"width":632.49883202206,"height":88,"left":46.290608530279,"top":153.50002191006,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#555555","fontSize":16,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":30,"fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000"}},
+{"uuid":"aea093fe-f13f-474b-ac2f-63224efdc1ec","type":"image","attr":{"brandName":"品牌名","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":166.99492602388,"height":249.90480949745,"left":1277.4016060321,"top":547.49526936919,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"background":"#EEEFFF"},"clip":{"w":534,"h":713,"x":-174.50253698806,"y":-296.985,"scale":0.51,"image":"/upload/report/image/20220104/MIwXFYshXC3KOnf3QgdIqyeghSFFRybx0R3NyPZg.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null},
+{"uuid":"3e90e38f-d89c-42fb-9884-0d84347a589e","type":"image","attr":{"brandName":"品牌名","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":217.21926809916,"height":258.50483535379,"left":-212.96873037681,"top":95.057479312277,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"background":"#EEEFFF"},"clip":{"w":1161,"h":1548,"x":-469.89036595042,"y":-606.94,"scale":0.59,"image":"/upload/report/image/20220103/aLvIkGJONF2jyuK3Sbn8pbWO3SyhI9slwoPxMX6O.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null},
+{"uuid":"71ba53b1-ece9-4762-848d-b38d081fdb73","type":"image","attr":{"brandName":"品牌名","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":213.40208959773,"height":276.71782451079,"left":-246.70993888392,"top":478.40077697894,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":500,"h":500,"x":-125.29895520114,"y":26.5,"scale":1.23,"image":"/upload/report/image/20220104/xQYRKGE9kPKChdtFndx32gplP963nFS0238zqJdk.png","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null},
+{"uuid":"a90adec5-d4df-4e7a-8985-49f79bdf3cda","type":"image","attr":{"brandName":"品牌名","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":143.32354524305,"height":171.18139556017,"left":1264.0729868129,"top":84.000021910056,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":2000,"h":3000,"x":-924.33822737848,"y":-1412,"scale":0.07,"image":"/upload/report/image/20220104/m1glAsIojU9oCjVzXd28vmWn4NsgXzbhqV9JDncA.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null},
+{"uuid":"334f2e93-a134-4af0-9e95-47b013b289dd","type":"image","attr":{"brandName":"品牌名","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":183.13663596097,"height":315.87298746319,"left":960.86336403903,"top":142.05747931228,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":2220.8618023263,"h":3585.4584721797,"x":-866.63250677269,"y":-1247.81424537,"scale":0.48,"image":"/upload/report/image/20220104/zhtH5HOaHP4D0ic6YW3QJm4WNFx0DIRfS4RgFdsy.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null},
+{"uuid":"2b93b5eb-1dcb-471e-bc12-f163e44284eb","type":"image","attr":{"brandName":"品牌名","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":270.5,"height":359.28734309174,"left":642.5,"top":515.49526936919,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":3263.0875128315,"h":4070.3358558225,"x":-1527.3810496438,"y":-1835.7260495315,"scale":0.18,"image":"/upload/report/image/20220103/zCgtHqw5p2jK9hLUaoeRtnOqsQOM3RTnlYzyVWyf.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null},
+{"uuid":"b9a495b5-9820-434e-9fbe-42b61bd1fdee","type":"text","text":"<span style=\"font-weight: bold; font-size: 20px;\">关键词：浮线</span>","style":{"width":632.49883202206,"height":31,"left":46.290608530279,"top":251.18141747023,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#555555","fontSize":16,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":30,"fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000"}},
+{"uuid":"26abe0bf-7a95-4e46-b4b4-0e8399f427ca","type":"image","attr":{"brandName":"品牌名","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":339.72029126641,"height":532.4517106835,"left":29.5,"top":303.5639143165,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":1567.0692237357,"h":1937.3280457103,"x":-591.91877409803,"y":-705.352790301,"scale":0.32,"image":"/upload/report/image/20220104/Ht8iA6cdoviXdrykvP1uR0c6Z7GJOLt3E8FoS1Rr.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null}],"cover":"/upload/report/page_cover/1/96358_349084.jpg","cover_host":"https://imgf1.pop-fashion.com"},
+{"sub_id":96361,"page_id":349087,"uuid":"e13b0ddf-e157-4c1d-9899-5ef800566ecd","tpl_id":"00000010-0000-0000-0000-000000000000","type":"page","title":"RICHAGN ","tag":[],"style":{"width":1176,"height":868},"backgroundElement":{"uuid":"00000010-0000-0000-0000-000000000001","type":"background","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"clip":{"w":0,"h":0,"x":0,"y":0,"scale":1,"image":"","cutout":"","origin":"","host":""},"style":{"width":"100%","height":"100%","left":0,"top":0,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"background":"#ffffff"}},"elements":[{"uuid":"370ddd56-5930-476d-add6-66e87dd94c32","type":"image","attr":{"brandName":"1123","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":137.9861902142,"height":368.01926585177,"left":723.0138097858,"top":391.95138333882,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000000","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":139.24143818572,"h":371.36710403922,"x":0,"y":0,"scale":1,"image":"/upload/report/image/20220104/36QnsqBvjGeZ7CHX18e6zCNaS5KVPnI1fxwN3M96.png","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"}},
+{"uuid":"2573917e-363c-4bba-817d-266b91d7d35b","type":"text","text":"手绘质感的蝴蝶结图案通过缩小竖排形式、放大与风景组合形式；工艺上通过胶印、绣花、贴布绣等展现在T恤、连衣裙等单品；搭配牛仔、休闲短裤，营造一种舒适休闲穿搭感受。手绘质感的蝴蝶结图案通过缩小竖排形式、放大与风景组合形式；工艺上通过胶印、绣花、贴布绣等展现在T恤、连衣裙等单品；搭配牛仔、休闲短裤，营造一种舒适休闲穿搭感受。","style":{"width":1112,"height":88,"left":32,"top":116,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#555555","fontSize":16,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":30,"fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000"}},
+{"uuid":"e25eb97a-379c-4568-90ed-11cc9ed0a467","type":"text","text":"细节工艺--1","style":{"width":396,"height":60,"left":29.5,"top":49.461960944577,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#1C232B","fontSize":36,"fontWeight":"bold","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":60,"background":"url(https://imgf1.pop-fashion.com/upload/report/image/20210713/GQLMahrgTQ2RkYtIh624ePFuPFhME4elMCNnTcOC.png) no-repeat left center / auto 100%","fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000"},"id":415},
+{"uuid":"52cc3351-f3dd-4650-9449-80b7aa6cdfd3","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":131.11640874886,"height":42.813521224116,"left":827.98825565943,"top":282.58415773292,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000000","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":128.51048903756,"h":41.962608665324,"x":0,"y":0,"scale":1,"image":"/upload/report/image/20220104/wN6nd3KGIsKHadW24IN22XghM3AGURCyMPPZulNr.png","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"}},
+{"uuid":"792a2864-dc9a-45f6-8175-760f362b6e8d","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":155,"height":134,"left":697.5069048929,"top":504.73271276596,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000000","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":155,"h":134,"x":0,"y":0,"scale":1,"image":"/upload/report/image/20210714/H6eXYHE9ChYxw2D9B7Ac0y5WwCgHh1YzCHuusK9D.png","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"}}],"cover":"/upload/report/page_cover/1/96361_349087.jpg","cover_host":"https://imgf1.pop-fashion.com"},
+{"sub_id":97045,"page_id":349770,"uuid":"79e52d66-414d-4460-9511-7606939681fc","tpl_id":"00000000-0000-0000-0000-000000000000","type":"page","title":"123","tag":[],"style":{"width":1176,"height":868},"backgroundElement":{"uuid":"00000000-0000-0000-0001-000000000000","type":"background","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":"100%","height":"100%","left":0,"top":0,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"background":"#ffffff"},"clip":{"w":0,"h":0,"x":0,"y":0,"scale":1,"image":"","cutout":"","origin":"","host":""}},"elements":[{"uuid":"eb0f42f6-21af-4f8a-81dc-711601450a31","type":"text","text":"多层次穿衣法则--女装连衣裙组货搭配","style":{"width":656,"height":60,"left":32,"top":32,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#ffffff","fontSize":36,"fontWeight":"bold","textDecoration":"none","textAlign":"center","letterSpacing":0,"lineHeight":60,"background":"#1A232C","fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000"}},
+{"uuid":"fe967139-026e-484c-9878-262c28eb9f1e","type":"text","text":"为满足现代女性对新生活的精致要求，连衣裙单品的穿 <a href='' target='_blank'>Onepiece</a> 搭方式不再以单一的Onepiece呈现。将层层单品往身上叠的 Layering 技巧已经大肆流行开来，连衣裙单品也在2022春夏中与各类单品层叠组合呈现，整体造型诠释错落的视觉效果、里外的对比关系，让原本柔和优雅的单品通过不同的穿搭方式表达出更多的情绪风格。为满足现代女性对新生活的精致要求，连衣裙单品的穿搭方式不再以单一的Onepiece呈现。","style":{"width":1112,"height":88,"left":32,"top":116,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#555555","fontSize":16,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":30,"fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000"}},
+{"uuid":"db234d55-692b-46f8-81df-850699d767cc","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":275,"height":400,"left":32,"top":222,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"background":"#EEEFFF"},"clip":{"w":0,"h":0,"x":0,"y":0,"scale":1,"image":"","cutout":"","origin":"","host":""}},
+{"uuid":"3a35fc84-2863-4046-9797-294cee33ad9a","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":275,"height":210,"left":32,"top":626,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"background":"#EEEFFF"},"clip":{"w":0,"h":0,"x":0,"y":0,"scale":1,"image":"","cutout":"","origin":"","host":""}},
+{"uuid":"6764b7d2-48e3-4172-a922-5740c370c0a2","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":275,"height":210,"left":311,"top":222,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"background":"#EEEFFF"},"clip":{"w":0,"h":0,"x":0,"y":0,"scale":1,"image":"","cutout":"","origin":"","host":""}},
+{"uuid":"14e65b35-7df0-4592-ae0d-131d36387462","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":275,"height":400,"left":311,"top":436,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"background":"#EEEFFF"},"clip":{"w":0,"h":0,"x":0,"y":0,"scale":1,"image":"","cutout":"","origin":"","host":""}},
+{"uuid":"c7b2a392-e5b6-4927-9b90-957861bb6f7b","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":275,"height":400,"left":590,"top":222,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"background":"#EEEFFF"},"clip":{"w":0,"h":0,"x":0,"y":0,"scale":1,"image":"","cutout":"","origin":"","host":""}},
+{"uuid":"0d045d1e-7647-44ef-9f55-258c78ab5483","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":275,"height":210,"left":590,"top":626,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"background":"#EEEFFF"},"clip":{"w":0,"h":0,"x":0,"y":0,"scale":1,"image":"","cutout":"","origin":"","host":""}},
+{"uuid":"bc730751-2747-4a75-a5e7-d78537495004","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":275,"height":210,"left":869,"top":222,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"background":"#EEEFFF"},"clip":{"w":0,"h":0,"x":0,"y":0,"scale":1,"image":"","cutout":"","origin":"","host":""}},
+{"uuid":"bbe73274-0c59-447f-b7a4-a5329513c58e","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":275,"height":400,"left":869,"top":436,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"background":"#EEEFFF"},"clip":{"w":0,"h":0,"x":0,"y":0,"scale":1,"image":"","cutout":"","origin":"","host":""}},
+{"uuid":"c0da16d5-04c4-4190-a774-f96812000995","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":228,"height":228,"left":194,"top":510,"borderStyle":"solid","borderColor":"#ffffff","borderWidth":4,"borderRadius":114,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"background":"#EEEFFF"},"clip":{"w":0,"h":0,"x":0,"y":0,"scale":1,"image":"","cutout":"","origin":"","host":""}},
+{"uuid":"00986c22-84c2-4f43-8528-f33cc0b26fe9","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":228,"height":228,"left":748,"top":318,"borderStyle":"solid","borderColor":"#ffffff","borderWidth":4,"borderRadius":114,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"background":"#EEEFFF"},"clip":{"w":0,"h":0,"x":0,"y":0,"scale":1,"image":"","cutout":"","origin":"","host":""}}]},
+{"sub_id":"","page_id":"","uuid":"0852e42a-c867-4293-ae2c-36396c2db50d","tpl_id":"b8882b93-99a0-4e57-a069-e92e6c7fc154","type":"page","title":"针法几何","tag":[],"style":{"width":1176,"height":868},"backgroundElement":{"uuid":"00000010-0000-0000-0000-000000000001","type":"background","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"clip":{"w":0,"h":0,"x":0,"y":0,"scale":1,"image":"","cutout":"","origin":"","host":""},"style":{"width":"100%","height":"100%","left":0,"top":0,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"background":"#ffffff"}},"elements":[{"uuid":"7a449fc3-7bb3-4f9b-a7f7-6d7e4d8e48ac","type":"group","appflag":"","style":{"width":312.99997965495,"height":75.500000847711,"left":0,"top":24.734369913737,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000000","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"elements":[{"uuid":"f49ff6c1-460f-4b71-a718-d9e8a1269a29","type":"svg","paths":[{"path":"M105.673143 91.428571h231.990857v45.970286H158.592V512H105.618286zM927.780571 932.571429H685.714286v-47.963429h186.843428V493.714286h55.277715z","fill":""}],"style":{"width":313,"height":75.509527755971,"left":0.0078342982700974,"top":0.010866208277282,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"w":1024,"h":1024,"fill":"rgba(168, 201, 223, 1)","stroke":"","strokeWidth":0}},
+{"uuid":"9db23453-7601-444d-9bf9-f6fc1235c032","type":"svg","paths":[{"path":"M438.857143 73.142857h493.714286v877.714286H54.857143z","fill":""}],"style":{"width":129.90427675352,"height":44.16185913398,"left":166.09572324648,"top":27.358534830268,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"w":1024,"h":1024,"fill":"rgba(168, 201, 223, 1)","stroke":"","strokeWidth":0}}]},
+{"uuid":"034fcc8f-1bc4-4f53-9144-7b2a2d39e548","type":"text","text":"<span style=\"color: rgb(68, 64, 64);\">针法几何</span>","style":{"width":308.92775449648,"height":60,"left":32,"top":32,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":24,"paddingRight":24,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"rgba(65, 65, 65, 1)","fontSize":36,"fontWeight":"bold","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":60,"background":"rgba(26, 35, 44, 0)","fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000"}},
+{"uuid":"9b022b52-b42a-4846-bb04-0d67e1221150","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"clip":{"w":0,"h":0,"x":null,"y":null,"scale":1,"image":"","cutout":"","origin":"","host":""},"style":{"width":297.98833490728,"height":650,"left":31.99214054988,"top":186,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"background":"rgba(168, 201, 223, 1)"}},
+{"uuid":"5ff53316-39b5-4aae-9c75-ec03a16a3590","type":"image","attr":{"brandName":"品牌名","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":256.59375,"height":444.06382978723,"left":52.63087949648,"top":235,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"background":"rgba(255, 255, 255, 1)"},"clip":{"w":1500,"h":1500,"x":-622.703125,"y":-567.5,"scale":0.31,"image":"/upload/report/image/20220112/lS7SvtCwz0SnmPgu6J6ibsNFbJZ4pcRq38NzRhk7.jpeg","cutout":"/upload/report/image/20220112/lS7SvtCwz0SnmPgu6J6ibsNFbJZ4pcRq38NzRhk7clear_bg.png","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null},
+{"uuid":"3a994083-8e63-4c6d-b154-52d91529abb3","type":"text","text":"文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字","style":{"width":1112,"height":63,"left":32,"top":112,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#555555","fontSize":16,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":30,"fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000"}},
+{"uuid":"94abbcf3-846d-40ff-8ada-c7356a1d1aa4","type":"text","text":"针法POLO衫","style":{"width":295.92775449648,"height":54.185809488011,"left":32,"top":696.78687150597,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#FFFFFF","fontSize":38,"fontWeight":"bold","textDecoration":"none","textAlign":"center","letterSpacing":5,"lineHeight":39.8,"fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000"}},
+{"uuid":"5e420b44-1822-4a5e-8a36-9db9824f0501","type":"text","text":"<span style=\"font-size: 30px; font-weight: 400;\">颗粒肌理</span>","style":{"width":295.92775449648,"height":74.185809488011,"left":32,"top":745.78687150597,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#FFFFFF","fontSize":38,"fontWeight":"bold","textDecoration":"none","textAlign":"center","letterSpacing":6,"lineHeight":30,"fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000"}},
+{"uuid":"8a8918d2-71fc-4f0f-817b-fb0a890b0bd5","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":262.9456928839,"height":327.83697745196,"left":881.07671120938,"top":508.18384344829,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":1500,"h":2275,"x":-616.52715355805,"y":-977.75,"scale":0.24,"image":"/upload/report/image/20220112/lliQYZWHhA4fubOrTF9epwr5uWlOmUPJeLT5MckL.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null},
+{"uuid":"38b0742a-b135-4ba6-bcb6-63dd5ad87eee","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":262.4456928839,"height":316.33700118785,"left":881.57671120938,"top":186.02082090025,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":-1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":534,"h":712,"x":-133.77715355805,"y":-217.56,"scale":0.53,"image":"/upload/report/image/20220112/2oX5Xm2VS90wFcJ2ywZU1SeKzcGQgUvstKg3jiKV.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null},
+{"uuid":"524b8842-12f0-48c9-8873-a1867f11bd54","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":262.9456928839,"height":327.83697745196,"left":610.07671120938,"top":508.18386718418,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":3247,"h":4329,"x":-1488.0271535581,"y":-2028.34,"scale":0.1,"image":"/upload/report/image/20220112/3mhGJelov7AvMrkDqVwTa1kBjoJauvDc9rteWkfF.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null},
+{"uuid":"8401eaac-90a8-4f86-b41e-9b5470e0fec0","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":262.4456928839,"height":316.33697745196,"left":610.57671120938,"top":186.02084463614,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":984,"h":1312,"x":-367.77715355805,"y":-500.88,"scale":0.33,"image":"/upload/report/image/20220112/8kx6P2b4q2Bz4XTz7CTgbu5RRcJPQVy8dxRoatlT.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null},
+{"uuid":"fe604dc0-2d58-44f5-9d37-0eb28f4f2ae3","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":262.9456928839,"height":327.83697745196,"left":340.94197926923,"top":508.18386718418,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":1500,"h":2000,"x":-624.52715355805,"y":-858,"scale":0.23,"image":"/upload/report/image/20220112/qOXK1WHm2Gp9paEub912KaUkjDHx0hPBff0HGz4T.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null},
+{"uuid":"21c385fc-d8a7-46fc-b65f-96df1627eeb5","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":262.4456928839,"height":316.33697745196,"left":341.44197926923,"top":186.02084463614,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":1369,"h":1826,"x":-564.27715355805,"y":-750.53,"scale":0.19,"image":"/upload/report/image/20220112/4XKseDtSwbyXm1kW5pIN8j8wFYp0A3bUb4ppQo1O.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null},
+{"uuid":"76381f38-9c0c-4674-a69c-1ae63021b4f3","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":223.80509745127,"height":314.70266763967,"left":769.67416248374,"top":290.29733236033,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000000","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1},"clip":{"w":235.90904620665,"h":314.70266763967,"x":-6.6571718154545,"y":0,"scale":1,"image":"/upload/report/image/20220112/KqeaNqXmAZWsTIrUtjhGyugnUGtgxQ8LDkbChfDU.jpeg","cutout":"/upload/report/image/20220112/KqeaNqXmAZWsTIrUtjhGyugnUGtgxQ8LDkbChfDUclear_bg.png","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null},
+{"uuid":"0779caa7-152d-4d38-b7a7-1f519096d6f4","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":178,"height":178,"left":450,"top":383,"borderStyle":"solid","borderColor":"#ffffff","borderWidth":4,"borderRadius":114,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"background":"#EEEFFF"},"clip":{"w":1585,"h":2000,"x":-596.5,"y":-1157,"scale":0.41,"image":"/upload/report/image/20220112/syLleFhxychM0ijSd3QfR4z2WrLofvsFY2fzrRht.jpeg","cutout":"","origin":"upload","host":"https://imgf1.pop-fashion.com"},"styleLibrary":null}],"cover":"/upload/report/page_cover/1/96916_349641.jpg","cover_host":"https://imgf1.pop-fashion.com"},
+{"sub_id":97290,"page_id":350015,"uuid":"4c3c0b95-59e6-49eb-9094-ea5032c9c918","tpl_id":"00000000-0000-0000-0000-000000000000","type":"page","title":"aa","tag":[],"style":{"width":1176,"height":868},"backgroundElement":{"uuid":"00000000-0000-0000-0001-000000000000","type":"background","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":"100%","height":"100%","left":0,"top":0,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"background":"#ffffff"},"clip":{"w":0,"h":0,"x":0,"y":0,"scale":1,"image":"","cutout":"","origin":"","host":""}},"elements":[{"uuid":"f4eb7cad-a679-4729-a4f7-66d20776f216","type":"text","text":"多层次穿衣法则--女装连衣裙组货搭配是哈哈哈哈哈哈<p>就睡觉时间</p>","style":{"width":656,"height":185,"left":32,"top":32,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#ffffff","fontSize":36,"fontWeight":"bold","textDecoration":"none","textAlign":"center","letterSpacing":0,"lineHeight":60,"background":"#1A232C","fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000"}},
+{"uuid":"da9e067d-520d-43b2-a076-ef3147606e53","type":"text","text":"为满足现代女性对新生活的精致要求，连衣裙单品的穿 <a href='' target='_blank'>Onepiece</a> 搭方式不再以单一的Onepiece呈现。将层层单品往身上叠的 Layering 技巧已经大肆流行开来，连衣裙单品也在2022春夏中与各类单品层叠组合呈现，整体造型诠释错落的视觉效果、里外的对比关系，让原本柔和优雅的单品通过不同的穿搭方式表达出更多的情绪风格。为满足现代女性对新生活的精致要求，连衣裙单品的穿搭方式不再以单一的Onepiece呈现。","style":{"width":1112,"height":88,"left":32,"top":182,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#555555","fontSize":16,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":30,"fontFamily":"inherit","textStrokeWidth":0,"textStrokeColor":"#000"}},
+{"uuid":"7cb6aa49-f729-49ea-90d2-4fd6d9fdbd5d","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":275,"height":400,"left":32,"top":222,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"background":"#EEEFFF"},"clip":{"w":0,"h":0,"x":0,"y":0,"scale":1,"image":"","cutout":"","origin":"","host":""}},
+{"uuid":"6ee32527-fe2a-47fe-a67f-c54a66777e90","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":275,"height":210,"left":32,"top":626,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"background":"#EEEFFF"},"clip":{"w":0,"h":0,"x":0,"y":0,"scale":1,"image":"","cutout":"","origin":"","host":""}},
+{"uuid":"017c61ee-eb32-4ca5-ab2d-e93adcbfa52f","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":275,"height":210,"left":311,"top":222,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"background":"#EEEFFF"},"clip":{"w":0,"h":0,"x":0,"y":0,"scale":1,"image":"","cutout":"","origin":"","host":""}},
+{"uuid":"9059219b-50a0-42a6-be9b-589b7c2faba4","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":275,"height":400,"left":311,"top":436,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"background":"#EEEFFF"},"clip":{"w":0,"h":0,"x":0,"y":0,"scale":1,"image":"","cutout":"","origin":"","host":""}},
+{"uuid":"d73f5445-0f43-4f36-8390-20524fad2506","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":275,"height":400,"left":590,"top":222,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"background":"#EEEFFF"},"clip":{"w":0,"h":0,"x":0,"y":0,"scale":1,"image":"","cutout":"","origin":"","host":""}},
+{"uuid":"e24f2b1f-62f5-42a6-b825-ddc9f50f6da4","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":275,"height":210,"left":590,"top":626,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"background":"#EEEFFF"},"clip":{"w":0,"h":0,"x":0,"y":0,"scale":1,"image":"","cutout":"","origin":"","host":""}},
+{"uuid":"ac502e19-cbbc-4beb-8b8c-ccccde3fe7bf","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":275,"height":210,"left":869,"top":222,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"background":"#EEEFFF"},"clip":{"w":0,"h":0,"x":0,"y":0,"scale":1,"image":"","cutout":"","origin":"","host":""}},
+{"uuid":"9f152e7b-2e60-4b37-8eca-a2cb6e1e240e","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":275,"height":400,"left":869,"top":436,"borderStyle":"solid","borderColor":"#000000","borderWidth":0,"borderRadius":0,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"background":"#EEEFFF"},"clip":{"w":0,"h":0,"x":0,"y":0,"scale":1,"image":"","cutout":"","origin":"","host":""}},
+{"uuid":"bdecff99-b4e9-4f36-8008-5b25106180b4","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":228,"height":228,"left":194,"top":510,"borderStyle":"solid","borderColor":"#ffffff","borderWidth":4,"borderRadius":114,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"background":"#EEEFFF"},"clip":{"w":0,"h":0,"x":0,"y":0,"scale":1,"image":"","cutout":"","origin":"","host":""}},
+{"uuid":"1b4c3966-769d-4324-b07f-0d680b0693a9","type":"image","attr":{"brandName":"","imageInfo":"","linkType":0,"link":"","videoId":"","position":{"h":"left","v":"bottom","x":6,"y":6}},"style":{"width":228,"height":228,"left":748,"top":318,"borderStyle":"solid","borderColor":"#ffffff","borderWidth":4,"borderRadius":114,"paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0,"opacity":100,"rotate":0,"fliph":1,"flipv":1,"shadowColor":"#000000","shadowH":0,"shadowV":0,"shadowBlur":0,"color":"#333333","fontSize":14,"fontWeight":"normal","textDecoration":"none","textAlign":"left","letterSpacing":0,"lineHeight":1,"background":"#EEEFFF"},"clip":{"w":0,"h":0,"x":0,"y":0,"scale":1,"image":"","cutout":"","origin":"","host":""}}]}
 ];
-// var newStyle = document.createElement('style');
-// var fontFamily = 'SourceHanSansSC-Bold.woff';
-// var name = fontFamily ? fontFamily.replace(/\.\w+$/, '') : '';
-// console.log(name, fontFamily)
-// newStyle.appendChild(document.createTextNode("@font-face {font-family: '" + name + "';src: url(https://imgf3.pop-fashion.com/global/report-font/" + fontFamily + ");}"));
-// newStyle.appendChild(document.createTextNode("@font-face {font-family: 'Voca';src: url('http://localhost:9000/assets/font/锐字潮牌真言简2.0/锐字潮牌真言简2.0免费 超粗(REEJI-ZhenyanGB2.0-Heavy).ttf');}"));
-// newStyle.appendChild(document.createTextNode("@font-face {font-family: '思源';src: url('http://localhost:9000/assets/font/思源/SourceHanSansCN-Bold.otf');}"));
-// console.log(newStyle.innerText.indexOf('SourceHanSansSC-Bold'))
-// document.head.appendChild(newStyle);
-// document.querySelector('.test').innerText = newStyle.innerText;
-var _html = "";
+
+var _html = '';
+var newStyle = document.createElement('style');
 for (var i = 0; i < reportData.length; i++) {
-  _html +=
-    '<div class="report-sub-content indexdiv" id="index_' +
-    reportData[i].sub_id +
-    '" data-pageid="' +
-    reportData[i].page_id +
-    '" style="' +
-    renderRpStyle(reportData[i].type, reportData[i].style) +
-    'page-break-after: always;">';
+  _html += '<div class="report-sub-content indexdiv" id="index_' + reportData[i].sub_id + '" data-pageid="' + reportData[i].page_id + '" style="' + renderRpStyle(reportData[i].type, reportData[i].style) + 'page-break-after: always;">';
+  _html += (window.is_generate_pdf != undefined && window.is_generate_pdf) ? '<div class="report-watermark"><a href="' + report_href + '" title="查看详情"></a></div>' : '';
+  // if (isPdf) {
+  //     _html += '<img src="' + (reportData[i].cover_host + reportData[i].cover) + '" style="width:100%;max-width:none;" />';
+  // } else {
   if (reportData[i].backgroundElement) {
     _html += renderRpElement(reportData[i].backgroundElement);
   }
   for (var j = 0; j < reportData[i].elements.length; j++) {
     _html += renderRpElement(reportData[i].elements[j]);
   }
-  _html += "</div>";
+  // }
+  _html += '</div>';
 }
-if (isPdf) $(".js-report-content-wrap").addClass("ispdf");
-$(".js-report-content-wrap").html(_html);
-loadFontFace('Voca.ttf');
+document.head.appendChild(newStyle);
+if (isPdf) $('.js-report-content-wrap').addClass('ispdf');
+$('.js-report-content-wrap').html(_html);
+if (!isPdf) {
+  $('.js-report-content-wrap img').lazyload({
+    effect: "fadeIn",
+    threshold: 200,
+    failurelimit: 10
+  });
+}
+$('.js-hover-wrap img').on('dragstart selectstart contextmenu', function (e) {
+  e.preventDefault();
+  return false;
+})
+// var $rpt_player = $("#reportPlayer");
+// var reportPlayer;
+$('.js-report-content-wrap').on('click', '.video-play', function () {
+  $('.js-report-video-bg').show();
+  $('.js-report-video-section').show();
+  if ($rpt_player.length) {
+    reportPlayer = video_player('reportPlayer', $(this).attr("data-videoId"));
+  }
+}).on('click', '.js-preview-img-btn', function (e) {
+  var src = $(this).attr("data-src") || "";
+  var id = $(this).attr("data-id") || "";
+  var uuid = $(this).attr("data-uuid") || "";
+  var rename = $(this).attr("data-rename") || "";
+  if (id.indexOf('col_') > 0) {
+    var col = id.substring(id.indexOf('col_'), id.length + 4);
+    if (col && (col != 80 && col != 81 && col != 84 && col != 85 && col != 117 && col != 124)) {
+      $('.js-show-pic-section').addClass('status');
+      $('.js-recommend').show();
+    } else {
+      $('.js-show-pic-section').removeClass('status');
+      $('.js-recommend').hide();
+    }
+  } else {
+    $('.js-show-pic-section').addClass('status');
+    $('.js-recommend').hide();
+  }
+  //禁止浏览器滚动
+  document.body.style.overflow = 'hidden';
+  document.addEventListener("touchmove", bodyScroll, false);//禁止页面滑动
+  // src="https://imgf3.pop-fashion.com/global/images/banner03.jpg";
+  if (src != "") {
+    modelChangeImg(src);
+    $('.js-show-pic-section').show();
+    $('.js-show-pic-bg').show();
+    var nimg = new Image();
+    nimg.src = $('.js-down-img')[0].src;
+    $('.js-down-img')[0].onload = function () {
+      $('.js-gifImg').hide();
+      $('.js-down-img').show();
+    };
+    $('.js-src').each(function () {
+      $(this).attr('data-src', src)
+      $(this).attr('data-id', id)
+      $(this).attr('data-rename', rename)
+    })
+    // downPage(id);
+    initDownPage(uuid);
+  } else {
+    //alert("图片链接为空！");
+  }
+  e.stopPropagation();
+}).on('click', '.js-download-img-btn', function (e) {
+  e.stopPropagation();
+  if (!oCommon.downloadPrivilege()) {
+    return false;
+  }
+  var id = $(this).attr("data-id") || "";
+  var src = $(this).attr("data-src") || "";
+  var rename = $(this).attr("data-rename") == undefined || $(this).attr("data-rename") == "" ? "" : $(this).attr("data-rename");
+  src = src + '?rename=' + rename;
+  if (!isNaN(id)) {
+    down(src, "", "", "");
+    // 下载统计
+    actionDown();
+    return false;
+  }
+  var _t = id.split('t_')[1] || '';
+  _t = _t.split('-')[0] || '';
+  var _col = id.split('col_')[1] || '';
+  _col = parseFloat(_col) || 0;
+  var _id = id.split('id_')[1] || '';
+  _id = _id.split('-col_')[0] || '';
+  var timeStamp = encrypt.data("timestamp");
+  var sign = encrypt.data("sign");
+  var token = encrypt.data("token");
+  var s_p = { t: _t, id: _id, col: _col, timeStamp: timeStamp, sign: sign };
+  var s_p_str = JSON.stringify(s_p);
+  cur_params = { s_p: rsa_encrypt(s_p_str), token: token, from: 'report' }
+  if (id != "") {
+    getDownload(cur_params, src);
+  } else {
+    alert("无法下载图片！");
+  }
+});
+/* function video_player(player_id, vid) {
+    var params = {
+        styleid: '0',
+        client_id: '6304acd0252780d2',
+        vid: vid,
+        newPlayer: true,
+        autoplay: true,
+        show_related: false
+    };
+    return new YKU.Player(player_id, params);
+} */
 function initDownPage(uuid) {
   _def.down_list = [];
-  var status = false,
-    imgList = [];
-  for (var i = 0; i < reportData.length; i++) {
-    status = false;
-    imgList = [];
-    for (var j = 0; j < reportData[i].elements.length; j++) {
-      if (
-        reportData[i].elements[j].type === "image" &&
-        (reportData[i].elements[j].clip.cutout ||
-          reportData[i].elements[j].clip.image)
-      ) {
-        imgList.push(reportData[i].elements[j]);
-      }
+  var status = false, imgList = getElementImages(reportData, uuid);
+  for (var i = 0; i < imgList.length; i++) {
+    if (imgList[i].uuid === uuid) {
+      status = true;
+      _def.page = i;
+      break;
     }
-    for (var j = 0; j < imgList.length; j++) {
-      if (imgList[j].uuid === uuid) {
-        status = true;
-        _def.page = j;
-        break;
-      }
-    }
-    if (status) {
-      for (var j = 0; j < imgList.length; j++) {
-        var styleLibrary = imgList[j].styleLibrary || {};
-        var src =
-          (imgList[j].clip.host || "https://imgf1.pop-fashion.com") +
-          (imgList[j].clip.cutout || imgList[j].clip.image);
-        var suffix = src.replace(/.+(\.\w+)$/, "$1");
-        _def.down_list.push({
-          photo: {
-            id: styleLibrary.id + "" || "",
-            big: src,
-            rename:
-              "pop_" +
-              (styleLibrary.brand || imgList[j].attr.brandName) +
-              (styleLibrary.brand ? "_" + styleLibrary.brand_id : "") +
-              suffix,
-          },
-        });
-      }
+  }
+  if (status) {
+    for (var i = 0; i < imgList.length; i++) {
+      var styleLibrary = imgList[i].styleLibrary || {};
+      var src = (imgList[i].clip.host || 'https://imgf1.pop-fashion.com') + (imgList[i].clip.cutout || imgList[i].clip.image);
+      var suffix = src.replace(/.+(\.\w+)$/, '$1');
+      _def.down_list.push({
+        photo: {
+          id: styleLibrary.id || '',
+          big: src,
+          rename: (styleLibrary.brand || imgList[i].attr && imgList[i].attr.brandName) ? ('pop_' + (styleLibrary.brand || imgList[i].attr && imgList[i].attr.brandName) + (styleLibrary.brand ? '_' + styleLibrary.brand_id : '') + suffix) : ''
+        }
+      });
     }
   }
 }
-function renderRpElement(element) {
-  var _html = "";
-  _html +=
-    '<div class="element element-' +
-    element.type +
-    '" style="' +
-    renderRpStyle(element.type, element.style) +
-    '">';
-  if (element.type === "text") {
-    _html += "<p>" + element.text + "</p>";
+function getElementImages(elements, uuid) {
+  var imgs = [];
+  for (var i = 0; i < elements.length; i++) {
+    if (elements[i].type === 'page') {
+      var has = hasElement(elements[i].elements, uuid);
+      if (has) {
+        imgs = imgs.concat(getElementImages(elements[i].elements, uuid));
+        break;
+      }
+    } else if (elements[i].type === 'group') {
+      imgs = imgs.concat(getElementImages(elements[i].elements, uuid));
+    } else if (elements[i].type === 'image' && (elements[i].clip.cutout || elements[i].clip.image)) {
+      imgs.push(elements[i]);
+    }
   }
-  if (
-    (element.type === "image" || element.type === "background") &&
-    (element.clip.cutout || element.clip.image)
-  ) {
+  return imgs;
+}
+function hasElement(elements, uuid) {
+  var has = false;
+  for (var i = 0; i < elements.length; i++) {
+    if (elements[i].type === 'page') {
+      var val = hasElement(elements[i].elements, uuid);
+      if (val) has = true;
+    } else if (elements[i].type === 'group') {
+      var val = hasElement(elements[i].elements, uuid);
+      if (val) has = true;
+    } else if (elements[i].uuid === uuid) {
+      has = true;
+    }
+    if (has) break;
+  }
+  return has;
+}
+
+function renderRpElement(element) {
+  var styleLibrary = element.styleLibrary || {};
+  var libraryId = styleLibrary.id ? 't_' + styleLibrary.t + '-id_' + styleLibrary.id + '-col_' + styleLibrary.col : '';
+  var big = element.clip ? element.clip.cutout || element.clip.image || '' : '';
+  var suffix = big.replace(/.+(\.\w+)$/, '$1');
+  var rename = (styleLibrary.brand || element.attr && element.attr.brandName) ? ('pop_' + (styleLibrary.brand || element.attr && element.attr.brandName) + (styleLibrary.brand ? '_' + styleLibrary.brand_id : '') + suffix) : '';
+  var src = element.clip ? (element.clip.host || 'https://imgf1.pop-fashion.com') + (element.clip.cutout || element.clip.image) : '';
+  var _html = '<div class="element-warp ' + (element.type === 'background' ? 'paved' : '') + '">';
+  _html += '<div class="element element-' + element.type + '" style="' + renderRpStyle(element.type, element.style) + '">';
+  if (element.type === 'text') {
+    _html += '<div>' + element.text + '</div>';
+    loadFontFace(element.style.fontFamily);
+  }
+  if ((element.type === 'image' || element.type === 'background') && (element.clip.cutout || element.clip.image)) {
     var imgStyle = {
-      width: element.clip.w ? element.clip.w + "px" : "auto",
-      height: element.clip.h ? element.clip.h + "px" : "auto",
-      left: element.clip.x + "px",
-      top: element.clip.y + "px",
-      transform:
-        "scale(" +
-        element.clip.scale * element.style.fliph +
-        ", " +
-        element.clip.scale * element.style.flipv +
-        ")",
-    };
-    var src =
-      (element.clip.host || "https://imgf1.pop-fashion.com") +
-      (element.clip.cutout || element.clip.image);
-    var styleLibrary = element.styleLibrary || {};
-    var big = element.clip.cutout || element.clip.image || "";
-    var suffix = big.replace(/.+(\.\w+)$/, "$1");
-    var rename =
-      styleLibrary.brand || (element.attr && element.attr.brandName)
-        ? "pop_" +
-        (styleLibrary.brand || (element.attr && element.attr.brandName)) +
-        (styleLibrary.brand ? "_" + styleLibrary.brand_id : "") +
-        suffix
-        : "";
-    if (
-      element.type !== "background" &&
-      !(element.attr && element.attr.videoId)
-    ) {
-      _html +=
-        '<div class="img-wrap preview-img js-preview-img-btn" data-uuid="' +
-        element.uuid +
-        '" data-id="' +
-        (styleLibrary.id || "") +
-        '" data-src="' +
-        src +
-        '" data-rename="' +
-        rename +
-        '">';
+      width: element.clip.w ? element.clip.w + 'px' : 'auto',
+      height: element.clip.h ? element.clip.h + 'px' : 'auto',
+      left: element.clip.x + 'px',
+      top: element.clip.y + 'px',
+      transform: 'scale(' + element.clip.scale * element.style.fliph + ', ' + element.clip.scale * element.style.flipv + ')'
+    }
+    if (element.type !== 'background' && !(element.attr && element.attr.videoId)) {
+      _html += '<div class="img-wrap preview-img js-preview-img-btn" data-uuid="' + element.uuid + '" data-id="' + libraryId + '" data-src="' + src + '" data-rename="' + rename + '">';
     } else {
       _html += '<div class="img-wrap">';
     }
-    if (isPdf && imgStyle.width !== "auto" && imgStyle.height !== "auto") {
+    if (isPdf && imgStyle.width !== 'auto' && imgStyle.height !== 'auto') {
       var w = parseFloat(imgStyle.width);
       var h = parseFloat(imgStyle.height);
       var l = parseFloat(imgStyle.left);
@@ -1669,197 +401,111 @@ function renderRpElement(element) {
       var sh = h * element.clip.scale;
       var x = l + (w - sw) / 2;
       var y = t + (h - sh) / 2;
-      if (element.style.fliph < 0)
-        x = parseFloat(element.style.width) - (sw + (l + (w - sw) / 2));
-      if (element.style.flipv < 0)
-        y = parseFloat(element.style.height) - (sh + (t + (h - sh) / 2));
+      if (element.style.fliph < 0) x = parseFloat(element.style.width) - (sw + x);
+      if (element.style.flipv < 0) y = parseFloat(element.style.height) - (sh + y);
       var testStyle = {
-        width: "100%",
-        height: "100%",
-        backgroundRepeat: "no-repeat",
-        backgroundSize:
-          parseFloat(sw.toFixed(2)) +
-          "px " +
-          parseFloat(sh.toFixed(2)) +
-          "px",
-        backgroundPosition:
-          parseFloat(x.toFixed(2)) +
-          "px " +
-          parseFloat(y.toFixed(2)) +
-          "px",
-        backgroundImage: "url(" + src + ")",
-        transform:
-          "scale(" + element.style.fliph + ", " + element.style.flipv + ")",
-        borderRadius: "inherit",
-      };
-      _html +=
-        '<div class="hover-wrap js-hover-wrap"><div style="' +
-        styleToString(testStyle) +
-        '"></div></div>';
-    } else {
-      _html +=
-        '<div class="hover-wrap js-hover-wrap"><img ' +
-        (isPdf ? "src" : "data-original") +
-        '="' +
-        src +
-        '" style="' +
-        styleToString(imgStyle) +
-        '" /></div>';
-    }
-    _html += "</div>";
-    if (
-      element.type === "image" &&
-      !(element.attr && element.attr.videoId) &&
-      (element.clip.cutout || element.clip.image)
-    ) {
-      _html +=
-        '<div class="img-tool" style="transform: rotate(' +
-        -element.style.rotate +
-        'deg);">';
-      _html +=
-        '<a class="tool-preview js-preview-img-btn" href="javascript:;" title="查看大图" data-uuid="' +
-        element.uuid +
-        '" data-id="' +
-        (styleLibrary.id || "") +
-        '" data-src="' +
-        src +
-        '" data-rename="' +
-        rename +
-        '"></a>';
-      _html +=
-        '<a class="tool-download js-download-img-btn" href="javascript:;" title="下载" data-uuid="' +
-        element.uuid +
-        '" data-id="' +
-        (styleLibrary.id || "") +
-        '" data-src="' +
-        src +
-        '" data-rename="' +
-        rename +
-        '"></a>';
-      if (element.attr && element.attr.link) {
-        _html +=
-          '<a class="tool-link" href="' +
-          element.attr.link +
-          '" title="详情" target="_blank"></a>';
+        width: '100%',
+        height: '100%',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: parseFloat(sw.toFixed(2)) + 'px ' + parseFloat(sh.toFixed(2)) + 'px',
+        backgroundPosition: parseFloat(x.toFixed(2)) + 'px ' + parseFloat(y.toFixed(2)) + 'px',
+        backgroundImage: "url('" + src + "')",
+        transform: 'scale(' + element.style.fliph + ', ' + element.style.flipv + ')',
+        borderRadius: 'inherit'
       }
-      _html += "</div>";
+      _html += '<div class="hover-wrap js-hover-wrap"><div style="' + styleToString(testStyle) + '"></div></div>';
+    } else {
+      _html += '<div class="hover-wrap js-hover-wrap"><img ' + (isPdf ? 'src' : 'data-original') + '="' + src + '" style="' + styleToString(imgStyle) + '" ondragstart="return false;" oncontextmenu="return false;" onselectstart="return false;" /></div>';
     }
+    _html += '</div>';
   }
-  if (element.type === "svg") {
-    _html +=
-      '<svg viewBox="0 0 ' +
-      element.style.w +
-      " " +
-      element.style.h +
-      '" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">';
+  if (element.type === 'svg') {
+    _html += '<svg viewBox="0 0 ' + element.style.w + ' ' + element.style.h + '" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">';
     for (var i = 0; i < element.paths.length; i++) {
-      _html +=
-        '<path d="' +
-        element.paths[i].path +
-        '" fill="' +
-        element.paths[i].fill +
-        '"></path>';
+      _html += '<path d="' + element.paths[i].path + '" fill="' + element.paths[i].fill + '"></path>';
     }
-    _html += "</svg>";
+    _html += '</svg>';
   }
-  if (element.type === "group") {
+  if (element.type === 'group') {
     for (var i = 0; i < element.elements.length; i++) {
       _html += renderRpElement(element.elements[i]);
     }
   }
-  if (element.type === "image" && element.attr && element.attr.brandName) {
-    var position = element.attr.position || {};
-    var brandNameStyle = {
-      transform: "rotate(" + -element.style.rotate + "deg)",
-    };
-    brandNameStyle[position.h || "left"] = (position.x || 6) + "px";
-    brandNameStyle[position.h === "right" ? "left" : "right"] = "auto";
-    brandNameStyle[position.v || "bottom"] = (position.y || 6) + "px";
-    brandNameStyle[position.v === "bottom" ? "top" : "bottom"] = "auto";
-    _html +=
-      '<a class="brand-name" href="' +
-      ("/search/?key=" +
-        encodeURIComponent(encodeURIComponent(element.attr.brandName))) +
-      '" target="_blank" style="' +
-      styleToString(brandNameStyle) +
-      '">' +
-      element.attr.brandName +
-      "</a>";
+  _html += '</div>';
+  if (element.type === 'image') {
+    var maskWarpStyle = {
+      width: element.style.width + 'px',
+      height: element.style.height + 'px',
+      left: element.style.left + 'px',
+      top: element.style.top + 'px',
+      transform: 'rotate(' + element.style.rotate + 'deg)'
+    }
+    _html += '<div class="mask-warp" style="' + styleToString(maskWarpStyle) + '">';
+    if (element.type === 'image' && !(element.attr && element.attr.videoId) && (element.clip.cutout || element.clip.image)) {
+      _html += '<div class="img-tool" style="transform: rotate(' + (-element.style.rotate) + 'deg);">';
+      _html += '<a class="tool-preview js-preview-img-btn" href="javascript:;" title="查看大图" data-uuid="' + element.uuid + '" data-id="' + libraryId + '" data-src="' + src + '" data-rename="' + rename + '"></a>';
+      _html += '<a class="tool-download js-download-img-btn" href="javascript:;" title="下载" data-uuid="' + element.uuid + '" data-id="' + libraryId + '" data-src="' + src + '" data-rename="' + rename + '"></a>';
+      if (element.attr && !element.attr.link && styleLibrary.id) { // 款式图数据兼容
+        element.attr.link = styleLibrary.link || '/details/style/t_' + styleLibrary.t + '-id_' + styleLibrary.id + '-col_' + styleLibrary.col;
+      }
+      if (element.attr && element.attr.link) {
+        _html += '<a class="tool-link" href="' + element.attr.link + '" title="详情" target="_blank"></a>';
+      }
+      _html += '</div>';
+    }
+    if (element.type === 'image' && element.attr && element.attr.brandName) {
+      var position = element.attr.position || {};
+      var brandNameStyle = {
+        transform: 'rotate(' + (-element.style.rotate) + 'deg)'
+      }
+      brandNameStyle[position.h || 'left'] = (position.x || 6) + 'px';
+      brandNameStyle[position.h === 'right' ? 'left' : 'right'] = 'auto';
+      brandNameStyle[position.v || 'bottom'] = (position.y || 6) + 'px';
+      brandNameStyle[position.v === 'bottom' ? 'top' : 'bottom'] = 'auto';
+      _html += '<a class="brand-name" href="' + ('/search/?key=' + encodeURIComponent(encodeURIComponent(element.attr.brandName))) + '" target="_blank" style="' + styleToString(brandNameStyle) + '">' + element.attr.brandName + '</a>';
+    }
+    if (element.type === 'image' && element.attr && element.attr.videoId) {
+      var videoPlayStyle = {
+        transform: 'rotate(' + (-element.style.rotate) + 'deg)'
+      }
+      _html += '<button class="video-play" title="播放" data-videoId="' + element.attr.videoId + '" style="' + styleToString(videoPlayStyle) + '"><i></i>视频</button>';
+    }
+    _html += '</div>';
   }
-  if (element.type === "image" && element.attr && element.attr.videoId) {
-    var videoPlayStyle = {
-      transform: "rotate(" + -element.style.rotate + "deg)",
-    };
-    _html +=
-      '<button class="video-play" title="播放" data-videoId="' +
-      element.attr.videoId +
-      '" style="' +
-      styleToString(videoPlayStyle) +
-      '"><i></i>视频</button>';
-  }
-  _html += "</div>";
+  _html += '</div>';
   return _html;
 }
 function renderRpStyle(type, styles) {
   var style = {};
-  var needUnitStr = [
-    "width",
-    "height",
-    "top",
-    "left",
-    "paddingTop",
-    "paddingLeft",
-    "paddingRight",
-    "paddingBottom",
-    "marginTop",
-    "marginLeft",
-    "marginRight",
-    "marginBottom",
-    "borderWidth",
-    "fontSize",
-    "borderRadius",
-    "letterSpacing",
-  ];
-  var textStyleStr = [
-    "paddingTop",
-    "paddingLeft",
-    "paddingRight",
-    "paddingBottom",
-  ];
+  var needUnitStr = ['width', 'height', 'top', 'left', 'paddingTop', 'paddingLeft', 'paddingRight', 'paddingBottom', 'marginTop', 'marginLeft', 'marginRight', 'marginBottom', 'borderWidth', 'fontSize', 'borderRadius', 'letterSpacing'];
+  var textStyleStr = ['paddingTop', 'paddingLeft', 'paddingRight', 'paddingBottom'];
   var transformStr = ["rotate", "fliph", "flipv"];
   var shadowStr = ["shadowColor", "shadowBlur", "shadowH", "shadowV"];
-  var noNeedUnitStr = ["x", "y", "w", "h"];
+  var noNeedUnitStr = ['x', 'y', 'w', 'h'];
   for (var key in styles) {
-    if (
-      styles[key] === "auto" ||
-      styles[key] === "normal" ||
-      styles[key] === "100%"
-    ) {
-      // 属性兼容
+    if (styles[key] === "auto" || styles[key] === "normal" || styles[key] === '100%') { // 属性兼容
       style[key] = styles[key];
     } else if (needUnitStr.indexOf(key) !== -1) {
       if (textStyleStr.indexOf(key) !== -1) {
-        if (type === "text") style[key] = styles[key] + "px";
+        if (type === 'text' || type === 'svg') style[key] = styles[key] + "px";
       } else {
         style[key] = styles[key] + "px";
       }
     } else if (noNeedUnitStr.indexOf(key) !== -1) {
       continue;
-    } else if (key === "opacity") {
+    } else if (key === 'opacity') {
       style[key] = styles[key] / 100;
     } else if (transformStr.indexOf(key) !== -1) {
-      style["transform"] = "rotate(" + styles["rotate"] + "deg)";
+      style['transform'] = 'rotate(' + styles['rotate'] + 'deg)';
     } else if (shadowStr.indexOf(key) !== -1) {
-      style["boxShadow"] =
-        styles["shadowH"] +
-        "px " +
-        styles["shadowV"] +
-        "px " +
-        styles["shadowBlur"] +
-        "px " +
-        styles["shadowColor"];
-    } else if (key === "lineHeight" && styles[key] > 10) {
+      style['boxShadow'] = styles['shadowH'] + 'px ' + styles['shadowV'] + 'px ' + styles['shadowBlur'] + 'px ' + styles['shadowColor'];
+    } else if (key === 'lineHeight' && styles[key] > 10) {
       style[key] = styles[key] + "px";
+    } else if (key === 'fontFamily') {
+      style[key] = styles[key] === "inherit" ? styles[key] : "'" + styles[key].replace(/\.\w+$/, '') + "'";
+    } else if (key === 'textStrokeWidth' || key === 'textStrokeColor') {
+      style['text-stroke'] = styles['textStrokeWidth'] + 'px ' + styles['textStrokeColor'] || 'transparent';
+      style['-webkit-text-stroke'] = styles['textStrokeWidth'] + 'px ' + styles['textStrokeColor'] || 'transparent';
     } else {
       style[key] = styles[key];
     }
@@ -1867,46 +513,23 @@ function renderRpStyle(type, styles) {
   return styleToString(style);
 }
 function styleToString(styles) {
-  var style = "";
+  var style = '';
   for (var i in styles) {
     var key = i.replace(/([A-Z])/g, function ($1) {
-      return "-" + $1.toLowerCase();
+      return '-' + $1.toLowerCase();
     });
-    if (isPdf && key === "letter-spacing") {
-      // style += key + ":0;";
-      style += key + ":" + styles[i] + ";";
-    } else if (
-      key === "background" &&
-      styles[i] &&
-      styles[i].length === 9
-    ) {
-      style += key + ":" + hex8ToRgba(styles[i]) + ";";
+    if (isPdf && key === 'letter-spacing') {
+      style += key + ':0;';
+    } else if (key === 'background' && styles[i] && styles[i].length === 9) {
+      style += key + ':' + hex8ToRgba(styles[i]) + ';';
     } else {
-      style += key + ":" + styles[i] + ";";
+      style += key + ':' + styles[i] + ';';
     }
-    if (key === "transform" && styles[i]) {
-      style += "-webkit-transform:" + styles[i] + ";";
-    } else if (key === "text-stroke" && styles[i]) {
-      style += "-webkit-text-stroke:" + styles[i] + ";";
-    } else if (
-      key === "background" &&
-      styles[i] &&
-      styles[i].indexOf("linear-gradient") !== -1
-    ) {
-      var matchStr = styles[i]
-        .match(/^linear-gradient\((.*)\)$/)[1]
-        .split(/deg,\s?|%,\s?|%/)
-        .filter(function (v) {
-          return v;
-        })
-        .map(function (v, i) {
-          if (i === 0) {
-            return 90 - parseFloat(v) + "deg";
-          }
-          return v + "%";
-        })
-        .toString();
-      style += key + ":-webkit-linear-gradient(" + matchStr + ");";
+    if (key === 'transform' && styles[i]) {
+      style += '-webkit-transform:' + styles[i] + ';';
+    } else if (key === 'background' && styles[i] && styles[i].indexOf('linear-gradient') !== -1) {
+      var matchStr = styles[i].match(/^linear-gradient\((.*)\)$/)[1].split(/deg,\s?|%,\s?|%/).filter(function (v) { return v }).map(function (v, i) { if (i === 0) { return (90 - parseFloat(v)) + 'deg' } return v + '%' }).toString();
+      style += key + ':-webkit-linear-gradient(' + matchStr + ');';
     }
   }
   return style;
@@ -1914,42 +537,59 @@ function styleToString(styles) {
 function hex8ToRgba(bgColor) {
   var color = bgColor.slice(1);
   var rgba = [
-    parseInt("0x" + color.slice(0, 2)),
-    parseInt("0x" + color.slice(2, 4)),
-    parseInt("0x" + color.slice(4, 6)),
-    parseInt("0x" + color.slice(6, 8)),
+    parseInt('0x' + color.slice(0, 2)),
+    parseInt('0x' + color.slice(2, 4)),
+    parseInt('0x' + color.slice(4, 6)),
+    parseInt('0x' + color.slice(6, 8))
   ];
-  return "rgba(" + rgba.toString() + ")";
+  return 'rgba(' + rgba.toString() + ')';
 }
+// 字体加载 (font.woff)
 function loadFontFace(fontFamily) {
-  document.querySelector('.element-text').children[0].innerText = '1'
+  if (fontFamily === 'inherit') return;
   var name = fontFamily ? fontFamily.replace(/\.\w+$/, '') : '';
-  var test = "12px '" + name + "'";
-  document.querySelector('.element-text').children[0].innerText = '2';
-  if (!document.fonts) return;
-  if (!fontFamily || fontFamily === 'inherit' || document.fonts.check(test)) {
-    document.querySelector('.element-text').children[0].innerText = '3'
-    document.documentElement.style.background = 'green'
-    return;
-  } else {
-    document.querySelector('.element-text').children[0].innerText = '9'
-  }
-  try {
-    document.querySelector('.element-text').children[0].innerText = '4'
-    var url = "url(" + (location.href.split('#')[0]) + "assets/font/" + fontFamily + ")";
-    var font = new FontFace(name, url);
-    document.querySelector('.element-text').children[0].innerText = '8'
-    font.load().then(function () {
-      document.querySelector('.element-text').children[0].innerText = '5'
-      document.fonts.add(font);
-      document.documentElement.style.background = 'blue'
-    }).catch(function () {
-      document.querySelector('.element-text').children[0].innerText = '6'
-      document.documentElement.style.background = 'red'
-    })
-  } catch (err) {
-    document.querySelector('.element-text').children[0].innerText = '7'
-    console.log('字体加载失败', err);
-    document.documentElement.style.background = 'orange'
-  }
+  if (newStyle.innerText.indexOf(name) !== -1) return;
+  newStyle.appendChild(document.createTextNode("@font-face {font-family: '" + name + "';src: url(https://imgf3.pop-fashion.com/global/report-font/" + fontFamily + ");}"));
+  // if (!fontFamily || fontFamily === 'inherit' || document.fonts.check(`12px '${name}'`)) return;
+  // try {
+  //   var font = new FontFace(
+  //     name,
+  //     "url(https://imgf3.pop-fashion.com/global/report-font/" + fontFamily + ")",
+  //   );
+  //   font.load().then(() => {
+  //     document.fonts.add(font);
+  //   });
+  // } catch(err) {
+  //   console.log('字体加载失败', err);
+  // }
 }
+
+/* 文字行高兼容 */
+var userAgent = navigator.userAgent.toLocaleLowerCase();
+var chromeV = userAgent.match(/chrome\/\d+/);
+if (chromeV) chromeV = parseFloat(chromeV[0].split('/')[1]);
+var hasSe = userAgent.match(/se 2.x/);
+var hasQQbrowser = userAgent.match(/qqbrowser/);
+if ((hasSe || hasQQbrowser) && chromeV && chromeV < 78) $('.js-report-content-wrap').addClass('compatible');
+
+/* 页面定位 */
+var id = getQueryString("searchId");
+function getQueryString(name) {
+  var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+  var r = window.location.search.substr(1).match(reg);
+  if (r != null) {
+    return unescape(r[2]);
+  }
+  return null;
+}
+if (id != null && id != undefined) {
+  document.getElementById('search-loading').style.display = "block";
+  setTimeout(function () {
+    document.getElementById(id).scrollIntoView();
+    document.getElementById('search-loading').style.display = "none";
+  }, 2000);
+}
+
+window.onload = function () {
+  window.status = 'render-pdf';
+};

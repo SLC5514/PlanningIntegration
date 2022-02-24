@@ -2,7 +2,7 @@
  * @Author: SLC
  * @Date: 2021-07-27 16:21:07
  * @LastEditors: SLC
- * @LastEditTime: 2021-11-12 13:14:08
+ * @LastEditTime: 2022-01-14 15:03:23
  * @Description: file content
  */
 
@@ -23,7 +23,7 @@ if (require('electron-squirrel-startup')) { // eslint-disable-line global-requir
 const createWindow = () => {
   // Create the browser window.
   win = new BrowserWindow({
-    title: "POP客户端 V" + version.split('.').slice(0, 2).join('.'),
+    title: "POP客户端 V" + version/* .split('.').slice(0, 2).join('.') */,
     width: 300,
     height: 410,
     icon: path.join(__dirname, "../favicon.ico"),
@@ -140,6 +140,9 @@ app.on('activate', () => {
 app.on("will-quit", () => {
   globalShortcut.unregisterAll();
 });
+
+// 忽略证书相关的错误
+app.commandLine.appendSwitch('ignore-certificate-errors');
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.

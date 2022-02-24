@@ -1,20 +1,21 @@
 {
   "name": "pop-client",
-  "productName": "pop-client",
-  "version": "2.1.0",
+  "productName": "POP客户端",
+  "version": "2.0.3",
   "description": "POP客户端",
   "main": "src/index.js",
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make",
+    "make64": "electron-forge make --platform=win32 --arch=x64",
+    "make32": "electron-forge make --platform=win32 --arch=ia32",
     "publish": "electron-forge publish",
     "lint": "echo \"No linting configured\""
   },
   "keywords": [],
   "author": {
-    "name": "slc5514",
-    "email": "slc5514@163.com"
+    "name": "POP"
   },
   "license": "MIT",
   "config": {
@@ -22,7 +23,7 @@
       "packagerConfig": {
         "name": "POP客户端",
         "appBundleId": "popClientAppId",
-        "appCopyright": "Copyright© 2004-2021 逸尚创展（上海）科技有限公司.",
+        "appCopyright": "Copyright© 2004-至今 逸尚创展（上海）科技有限公司.",
         "icon": "./favicon",
         "platform": [
           "win32",
@@ -32,7 +33,6 @@
           ".gitignore",
           "yarn.lock",
           "README.md",
-          "db.json",
           "pic.png",
           "backup"
         ]
@@ -42,7 +42,11 @@
           "name": "@electron-forge/maker-squirrel",
           "platforms": [
             "win32"
-          ]
+          ],
+          "config": {
+            "/* certificateFile */": "./POP.pfx",
+            "/* certificatePassword */": 123456
+          }
         },
         {
           "name": "@electron-forge/maker-dmg",

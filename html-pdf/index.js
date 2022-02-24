@@ -593,3 +593,5 @@ if (id != null && id != undefined) {
 window.onload = function () {
   window.status = 'render-pdf';
 };
+
+// wkhtmltopdf -B 0 -L 0 -R 0 -T 0 -O Landscape --javascript-delay 10000 --no-stop-slow-scripts --window-status render-pdf --image-quality 94 --page-width 238mm --page-height 282.5mm -q "http://127.0.0.1:5500/pdf-test/index.html" test.pdf

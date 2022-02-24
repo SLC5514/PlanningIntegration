@@ -2,7 +2,7 @@
  * @Author: SLC
  * @Date: 2021-11-10 18:15:09
  * @LastEditors: SLC
- * @LastEditTime: 2021-11-10 18:16:55
+ * @LastEditTime: 2022-02-24 13:44:55
  * @Description: file content
  */
 
@@ -80,7 +80,7 @@ let defBrowser = '';
 const winWidth = 300;
 const winHeight = 410;
 const winHeightToggle = 616;
-// const cookieUrl = 'http://www.pop-fashion.com';
+// const cookieUrl = 'https://www.pop-fashion.com';
 
 if ($('.js-browser-section').is(':visible')) {
   ipcRenderer.send('setBounds', {
@@ -96,13 +96,14 @@ if ($('.js-browser-section').is(':visible')) {
 window.electron.getDefBrowser(function (defBrowser) {
   defBrowser = defBrowser.name;
 });
-getWebsites();
+// getWebsites();
 
 // 账号密码回显
 const dbState = db.getState();
 remPasCheck.prop("checked", dbState['Checked'] === 1 ? true : false);
 accountIpt.val(decrypt(dbState['Account'], Secret));
 passwordIpt.val(decrypt(dbState['Password'], Secret));
+websiteSel.val(dbState['Website']);
 formData.Account = accountIpt.val();
 formData.Password = passwordIpt.val();
 /* sessionCookies('get', cookieUrl).then(res => {
@@ -265,7 +266,7 @@ function clientBinding() {
   });
   params.Sign = createSign(params);
   $.ajax({
-    url: "http://www.pop-fashion.com/interface/client/binding",
+    url: "https://www.pop-fashion.com/interface/client/binding",
     data: params,
     success: function (res) {
       const code = res.querySelector("code").textContent;
@@ -290,7 +291,7 @@ function clientLogin() {
   });
   params.Sign = createSign(params);
   $.ajax({
-    url: "http://www.pop-fashion.com/interface/client/login",
+    url: "https://www.pop-fashion.com/interface/client/login",
     data: params,
     success: function (res) {
       const code = res.querySelector("code").textContent;
@@ -331,7 +332,7 @@ function clientLog(message) {
   });
   params.Sign = createSign(params);
   $.ajax({
-    url: "http://www.pop-fashion.com/interface/client/log",
+    url: "https://www.pop-fashion.com/interface/client/log",
     data: params,
     success: function (res) {
       const code = res.querySelector("code").textContent;
@@ -354,7 +355,7 @@ function getWebsites() {
   });
   params.Sign = createSign(params);
   $.ajax({
-    url: "http://www.pop-fashion.com/interface/client/websites/",
+    url: "https://www.pop-fashion.com/interface/client/websites/",
     data: params,
     success: function (res) {
       const code = res.querySelector("code").textContent;

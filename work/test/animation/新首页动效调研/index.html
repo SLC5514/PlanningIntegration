@@ -6,17 +6,68 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>新首页动效调研</title>
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .fixed {
+      position: fixed;
+      left: 0;
+      top: 0;
+    }
+
+    .circle {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background-color: #ccc;
+      position: fixed;
+      left: 300px;
+      top: 300px;
+    }
+
+    .circle>span {
+      border: 1px solid #999;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%) scale(0);
+    }
+  </style>
+  <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+  <script src="./lib/TweenMax.min.js"></script>
+  <!-- <script src="./lib/pixi.min.js"></script>
+  <script src="./lib/PixiPlugin.min.js"></script> -->
 </head>
 
 <body>
-  <section>
-    <div>近大远小</div>
-  </section>
-  <section>
-    <div>磁力吸附</div>
-  </section>
+  <div class="fixed">
+    <section>
+      <div>近大远小</div>
+    </section>
+    <section>
+      <div>磁力吸附</div>
+    </section>
+
+    <!-- <div class="test">
+      <div class="circle">
+        <span>111111</span>
+        <span>222222222222</span>
+        <span>333333</span>
+      </div>
+    </div> -->
+
+    <canvas id="scene"></canvas>
+  </div>
 </body>
-<script type="module">
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/three.js/r70/three.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.16.1/TweenMax.min.js"></script>
+
+<!-- <script type="module">
 
   // Find the latest version by visiting https://cdn.skypack.dev/three.
 
@@ -285,6 +336,352 @@
   // Add to stage
   app.stage.addChild(redSquare, greenSquare);
 
+</script> -->
+
+<script type="module">
+  import * as THREE from './build/three.module.js';
+  import { OBJLoader } from './jsm/loaders/OBJLoader.js';
+  import { OrbitControls } from './jsm/controls/OrbitControls.js';
+
+  var tl = new TimelineMax({
+    repeat: -1,
+    repeatDelay: 1
+  });
+
+  // 创建光源
+  function createLight(scene, type, color, x, y, z) {
+    var point = null;
+    switch (type) {
+      case 1: point = new THREE.PointLight(color); break; // 点光源
+      case 2: point = new THREE.DirectionalLight(color); break; // 平行光
+      case 3: point = new THREE.AmbientLight(color); break; // 环境光
+      default: break;
+    }
+    if (!point) return;
+    if (type !== 3) point.position.set(x, y, z);
+    scene.add(point);
+    if (type === 3) return;
+    // 创建观察对象
+    var geometry = new THREE.SphereGeometry(5, 5, 5); // 创建一个球体几何对象
+    var material = new THREE.MeshLambertMaterial({ color: color }); // 材质对象Material
+    var mesh = new THREE.Mesh(geometry, material); // 网格模型对象Mesh
+    mesh.position.set(x, y, z);
+    scene.add(mesh);
+    // console.log(geometry, material, mesh)
+  }
+
+  /**
+   * 创建场景对象Scene
+   */
+  var scene = new THREE.Scene();
+
+  /**
+   * 创建网格模型
+   */
+  // var geometry = new THREE.SphereGeometry(60, 40, 40); //创建一个球体几何对象
+  var geometry = new THREE.BoxGeometry(10, 10, 10); //创建一个立方体几何对象Geometry
+  var material = new THREE.MeshLambertMaterial({
+    color: 0x0000ff
+  }); //材质对象Material
+  var mesh = new THREE.Mesh(geometry, material); //网格模型对象Mesh
+  scene.add(mesh); //网格模型添加到场景中
+
+  /**
+   * 光源设置
+   */
+  // 点光源
+  createLight(scene, 1, 0xffffff, 0, 160, -400);
+  // createLight(scene, 1, 0xffffff, 500, 100, 0);
+  // createLight(scene, 1, 0xffffff, -500, 100, 0);
+  // 平行光
+  createLight(scene, 2, 0xffffff, 200, 0, 0);
+  createLight(scene, 2, 0xffffff, -200, 0, 0);
+  // 环境光
+  createLight(scene, 3, 0x444444);
+
+  /**
+   * 相机设置
+   */
+  var width = window.innerWidth; //窗口宽度
+  var height = window.innerHeight; //窗口高度
+  var k = width / height; //窗口宽高比
+  var s = 300; //三维场景显示范围控制系数，系数越大，显示的范围越大
+  //创建相机对象
+  var camera = new THREE.OrthographicCamera(-s * k, s * k, s, -s, 1, 1000);
+  camera.position.set(0, 0, 300); //设置相机位置
+  camera.lookAt(scene.position); //设置相机方向(指向的场景对象)
+  window.camera = camera;
+
+  /* ======================================================================== */
+
+  /**
+   * 加载3D对象
+   */
+  var loader = new OBJLoader();
+  // 没有材质文件，系统自动设置Phong网格材质
+  loader.load('./model/model2.obj', function (obj) {
+    // 控制台查看返回结构：包含一个网格模型Mesh的组Group
+    console.log(obj);
+    // 查看加载器生成的材质对象：MeshPhongMaterial
+    // console.log(obj.children[0].material);
+    var material = new THREE.MeshLambertMaterial({
+      color: 0xff0000
+    }); //材质对象Material
+    obj.children[0].material = material;
+    // obj.children[0].material.color.set(0xff0000);
+    var material = new THREE.MeshStandardMaterial({
+      // color: 0x1e1e1e,
+      roughness: 0.5,
+      metalness: 1
+    }); //材质对象Material
+    obj.children[1].material = material;
+    // obj.children[1].material.color.set(0x111111);
+    scene.add(obj);
+    window.obj3D = obj;
+    // render();
+
+    // tl.to(obj.position, 3, {
+    //   x: -100,
+    //   // ease: Back.easeIn
+    // });
+    // tl.to(obj.rotation, 3, {
+    //   // x: Math.PI / 180 * 15,
+    //   y: Math.PI / 180 * 15,
+    //   // ease: Back.easeInOut
+    // });
+  })
+
+  /* ======================================================================== */
+
+  /**
+   * 创建渲染器对象
+   */
+  var renderer = new THREE.WebGLRenderer();
+  renderer.setSize(width, height);//设置渲染区域尺寸
+  renderer.setClearColor(0xb9d3ff, 1); //设置背景颜色
+  document.body.appendChild(renderer.domElement); //body元素中插入canvas对象
+
+  var controls = new OrbitControls(camera, renderer.domElement);//创建控件对象
+  // controls.enabled = false;
+  // controls.autoRotate = true;
+  // controls.autoRotateSpeed = 2;
+  controls.enableDamping = true; // 启用阻尼或自动旋转时需要动画循环
+  // controls.dampingFactor = 0.001;
+  // controls.maxAzimuthAngle = Math.PI/180*20;
+  // controls.minAzimuthAngle = Math.PI/180*-20;
+  controls.maxPolarAngle = Math.PI/180*85;
+  controls.minPolarAngle = Math.PI/180*85;
+  // controls.maxZoom = 1;
+  // controls.minZoom = 1;
+  // 已经通过requestAnimationFrame(render);周期性执行render函数，没必要再通过监听鼠标事件执行render函数
+  // controls.addEventListener('change', render)
+  window.controls = controls;
+
+  //执行渲染操作   指定场景、相机作为参数
+  function render() {
+    renderer.render(scene, camera);//执行渲染操作
+    // required if controls.enableDamping or controls.autoRotate are set to true
+    controls.update();
+    // mesh.rotateY(0.01);//每次绕y轴旋转0.01弧度
+    // window.obj3D && window.obj3D.rotateY(0.01);//每次绕y轴旋转0.01弧度
+    requestAnimationFrame(render);//请求再次执行渲染函数render
+  }
+  render();
+
+  // onresize 事件会在窗口被调整大小时发生
+  window.onresize = function () {
+    // 重置渲染器输出画布canvas尺寸
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    // 重置相机投影的相关参数
+    k = window.innerWidth / window.innerHeight;//窗口宽高比
+    camera.left = -s * k;
+    camera.right = s * k;
+    camera.top = s;
+    camera.bottom = -s;
+    // 渲染器执行render方法的时候会读取相机对象的投影矩阵属性projectionMatrix
+    // 但是不会每渲染一帧，就通过相机的属性计算投影矩阵(节约计算资源)
+    // 如果相机的一些属性发生了变化，需要执行updateProjectionMatrix ()方法更新相机的投影矩阵
+    camera.updateProjectionMatrix();
+  };
+
+  window.addEventListener('mousemove', function(e) {
+    // var ratio = Math.round(e.clientX/window.innerWidth*100);
+    // var rotate = ratio/100*40-20;
+    // var angel = Math.PI/180*rotate;
+    // console.log(controls)
+    // console.log(camera.rotateX)
+    // camera.rotateX(angel)
+    // camera.position.setX(0);
+    // console.log(ratio, angel)
+    // console.log(controls.getAzimuthalAngle)
+
+    var ra = 0.6;
+    var rect = renderer.domElement.getBoundingClientRect();
+    var ogX = rect.width / 2 + rect.x;
+    var x = (e.clientX - ogX)*ra;
+    console.log(x)
+    tl.to(obj3D.position, 0, {
+      x: x,
+      // ease: Back.easeIn
+    });
+    // tl.to(obj.rotation, 3, {
+    //   // x: Math.PI / 180 * 15,
+    //   y: Math.PI / 180 * 15,
+    //   // ease: Back.easeInOut
+    // });
+  }, false)
 </script>
+
+<!-- <script>
+  var circle = document.querySelector('.circle');
+  var child = document.querySelectorAll('.circle>span');
+  var radius = 50;
+  var timer = null;
+
+  child.forEach(function(el, idx) {
+    var deg = idx * (360 / child.length) - 90;
+    TweenMax.set(el, {
+      transformOrigin: 'left center',
+      opacity: 0,
+      transform: 'translateY(-50%) rotate(' + deg + 'deg) translateX(0px) scale(0.1)',
+    });
+  })
+  circle.addEventListener('mouseenter', function() {
+    timer = setTimeout(function () {
+      render(true);
+      clearTimeout(timer);
+    }, 1000);
+  }, false);
+  circle.addEventListener('mouseleave', function() {
+    render(false);
+  }, false);
+
+  function render(status) {
+    console.log(status)
+    if (status) {
+      child.forEach(function(el, idx) {
+        var deg = idx * (360 / child.length) - 90;
+        TweenMax.to(el, 2, {
+          opacity: 1,
+          transform: 'translateY(-50%) rotate(' + deg + 'deg) translateX(100px) scale(1)',
+        });
+      })
+    } else {
+      child.forEach(function(el, idx) {
+        var deg = idx * (360 / child.length) - 90;
+        TweenMax.to(el, 2, {
+          opacity: 0,
+          transform: 'translateY(-50%) rotate(' + deg + 'deg) translateX(0px) scale(0.1)',
+        });
+      })
+    }
+  }
+</script> -->
+
+<!-- <script>
+  var renderer, scene, camera, cube;
+
+  var ww = window.innerWidth,
+    wh = window.innerHeight;
+
+  function init() {
+
+    renderer = new THREE.WebGLRenderer({
+      canvas: document.getElementById('scene')
+    });
+    renderer.setSize(ww, wh);
+
+    scene = new THREE.Scene();
+
+    camera = new THREE.PerspectiveCamera(50, ww / wh, 0.1, 10000);
+    camera.position.set(0, 0, 500);
+    scene.add(camera);
+
+    //Add a light in the scene
+    directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+    directionalLight.position.set(0, 0, 350);
+    directionalLight.lookAt(new THREE.Vector3(0, 0, 0));
+    scene.add(directionalLight);
+
+    //Add a cube in the scene add apply animation
+    createCube();
+
+    //Render the scene and start request animation frame
+    render();
+  }
+
+  var createCube = function () {
+
+    //Create a new cube with simple geometry & material
+    var geometry = new THREE.BoxGeometry(150, 150, 150);
+    var texture = new THREE.MeshLambertMaterial({
+      color: 0x00ff00,
+      transparent: true
+    });
+    cube = new THREE.Mesh(geometry, texture);
+
+    //Create a new timeline
+    //I like to add my timeline to my element object so I know to which element it refers to
+    //But we could declare a new variable which contains the timeline
+    cube.tl = new TimelineMax({
+      repeat: -1,
+      repeatDelay: 1
+    });
+    //I add a few animations in my timeline
+    //The cube turn on itself
+    cube.tl.to(cube.rotation, 3, {
+      y: -Math.PI * 3.25,
+      x: -Math.PI * 1.25,
+      ease: Back.easeInOut
+    });
+
+    //Then it will move to the left and fade out
+    cube.tl.to(cube.position, 1, {
+      x: -150,
+      ease: Power3.easeOut
+    });
+    cube.tl.to(cube.material, 1, {
+      opacity: 0,
+      ease: Power3.easeOut
+    }, "-=1");
+
+    //Move the cube without transition
+    cube.tl.set(cube.position, {
+      x: 100,
+      y: -100
+    });
+
+    //Fade In the cube
+    cube.tl.to(cube.material, 1, {
+      opacity: 1,
+      ease: Power3.easeOut
+    });
+
+    //It goes back to its initial position
+    cube.tl.to(cube.position, 3, {
+      x: 0,
+      y: 0,
+      ease: Back.easeInOut.config(2)
+    });
+    cube.tl.to(cube.rotation, 3, {
+      x: 0,
+      y: 0,
+      ease: Back.easeInOut.config(2)
+    }, "-=3");
+
+
+    //Add the cube in the scene
+    scene.add(cube);
+  };
+
+  var render = function () {
+    requestAnimationFrame(render);
+
+    //Simply render the scene with a request animation frame and the timeline from GreenSock will do the rest ;)
+    renderer.render(scene, camera);
+  };
+
+  init();
+</script> -->
 
 </html>

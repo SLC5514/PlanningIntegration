@@ -1,95 +1,97 @@
-var path = require('path');
-// var fs = require('fs');
-// var pdf = require('html-pdf');
-// var html = fs.readFileSync('./index.html', 'utf8');
-// var options = {
-//   format: 'A3',
-//   orientation: 'landscape',
-//   localUrlAccess: true,
-//   childProcessOptions : {
-//     detached : false
-//   }
-// };
-
-// pdf.create(html, options).toFile('./test.pdf', function(err, res) {
-//   if (err) return console.log(err);
-//   console.log(res); // { filename: '/to/path/test.pdf' }
-// });
-
-// const puppeteer = require('puppeteer');
-
-// (async () => {
-//   const browser = await puppeteer.launch();
-//   const page = await browser.newPage();
-//   await page.goto('https://example.com');
-//   await page.screenshot({ path: 'example.png' });
-
-//   await browser.close();
-// })();
-
 try {
-
   const puppeteer = require("puppeteer");
 
   (async () => {
-    const browser = await puppeteer.launch();
-    const page = await browser.newPage();
-    const timeout = 1000 * 60 * 10;
-    const defParams = {
-      path: "test.pdf",
-      width: 1176,
-      height: 868,
-      margin: {
-        left: 20,
-        right: 20,
-      },
-      printBackground: true,
-      timeout: 0,
-      // format: "a3",
-      // landscape: true,
-    };
-    const arguments = process.argv.splice(2);
-    const params = {};
-    const reg = /^--/;
-    for (let i = 0; i < arguments.length; i++) {
-      if (reg.test(arguments[i]) && !reg.test(arguments[i + 1])) {
-        params[arguments[i].substring(2)] = isNaN(arguments[i + 1]) ? arguments[i + 1] : Number(arguments[i + 1]);
-      }
-    }
-    for (const i in defParams) {
-      if (params[i] === undefined) {
-        params[i] = defParams[i]
-      }
-    }
-    console.log(params)
-
-    await page.setDefaultNavigationTimeout(timeout);
-    await page.setDefaultTimeout(timeout);
-    await page.goto(
-      "https://www.pop-fashion.com/details/reportpdf/t_report-id_12642-col_21/?sign=2022020981510115e75018bb2d33aa3bad4bc6c9ebd52&refresh=1&generatepdf=1&zoom=1.5",
-      {
-        timeout: 0,
-        // waitUntil: "networkidle2",
+      const timeout = 1000 * 60 * 10;
+      const browser = await puppeteer.launch({
+          timeout: timeout,
+          args: ['--no-sandbox', '--disable-setuid-sandbox']
       });
-    await page.addStyleTag({
-      content: '.report-pdf-hd{position: static;margin-bottom: -40px;}.report-pdf-hd .head-top-static{position: static;margin-bottom: -40px;}.bless-alert{display: none;}'
-    })
-    await page.pdf({
-      path: "test.pdf",
-      // format: "a3",
-      // landscape: true,
-      width: 1176,
-      height: 868,
-      margin: {
-        left: 20,
-        right: 20,
-      },
-      printBackground: true,
-      timeout: 0,
-    });
-    await browser.close();
-  })();
+      const page = await browser.newPage();
 
+      // 参数配置 --site 站点（1-5） --url 页面链接 --path 保存位置
+      const defParams = {
+          path: "test.pdf",
+          width: 1176,
+          height: 868,
+          left: 20,
+          right: 20,
+          printBackground: true,
+          timeout: timeout,
+          // format: "a3",
+          // landscape: true,
+          // preferCSSPageSize: true,
+      };
+      const siteParams = {
+          1: {
+              width: 1176,
+              height: 868,
+          },
+          2: {
+              width: 1176,
+              height: 868,
+          },
+          3: {
+              width: 1176,
+              height: 868,
+          },
+          4: {
+              width: 1176,
+              height: 868,
+          },
+          5: {
+              width: 1176,
+              height: 868,
+          },
+      }
+
+      // 参数归整
+      const arguments = process.argv.splice(2);
+      const nodeParams = {}; // --url 页面链接
+      const params = {}; // 最终参数
+      const reg = /^--/;
+      for (let i = 0; i < arguments.length; i++) {
+          if (reg.test(arguments[i]) && !reg.test(arguments[i + 1])) {
+              nodeParams[arguments[i].substring(2)] = isNaN(arguments[i + 1]) ? arguments[i + 1] : Number(arguments[i + 1]);
+          }
+      }
+      Object.assign(params, defParams, siteParams[nodeParams.site] || {}, nodeParams);
+      // console.log(params)
+
+      // 必传项 --url 页面链接 --path 保存位置/xxx/xxx.pdf
+      if (!params.url) {
+          console.log('Error:', '请传入页面链接 --url');
+          process.exit(1);
+      }
+      if (!params.path) {
+          console.log('Error:', '请传入保存位置 --path');
+          process.exit(1);
+      }
+
+      // 执行
+      await page.setDefaultNavigationTimeout(params.timeout);
+      await page.setDefaultTimeout(params.timeout);
+      await page.goto(params.url, { waitUntil: 'networkidle0' });
+      // 解决头部绝对定位遮挡
+      // await page.addStyleTag({
+      //     content: '.report-pdf-hd{position: relative;margin-bottom: -40px;}.report-pdf-hd .head-top-static{position: relative;margin-bottom: -40px;}'
+      // })
+      await page.pdf({
+          path: params.path,
+          width: params.width,
+          height: params.height,
+          margin: {
+              left: params.left,
+              right: params.right,
+          },
+          printBackground: params.printBackground,
+          timeout: params.timeout
+      });
+      await browser.close();
+  })();
 } catch (err) {
   console.log('Error:', err);
+  process.exit(1);
 }
+
+// node render --site 1 --url "http://localhost:9000/" --path test.pdf

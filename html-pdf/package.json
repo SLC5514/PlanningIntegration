@@ -9,6 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "hidpi-canvas": "^1.0.10",
+    "playwright": "^1.19.2",
     "puppeteer": "^13.0.1"
   }
 }
